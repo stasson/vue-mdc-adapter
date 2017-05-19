@@ -1,9 +1,13 @@
 {
-  "name": "vue-material-components",
+  "name": "vue-mdc-adapter",
   "version": "0.0.1",
   "description": "Vue wrapper arround mdc",
+  "keywords":["vue", "material", "components", "adapter", "mdc", "design"],
   "author": "Sebastien Tasson <sebastien.tasson@gmail.com>",
-  "private": true,
+  "repository": { 
+    "type": "git", 
+    "url": "https://github.com/stasson/vue-mdc-apdapter.git"
+  },
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
