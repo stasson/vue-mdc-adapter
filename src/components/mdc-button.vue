@@ -1,5 +1,6 @@
 <template>
-  <button class="mdc-button" :class="classes" :disabled="disabled">
+  <button class="mdc-button" :class="classes" :disabled="disabled" 
+    @click="dispatchEvent">
     <slot></slot>
   </button>
 </template>
@@ -10,14 +11,17 @@
 
 <script>
 
-var mdcButton = {
+import {MDCRipple} from '@material/ripple'
+
+export default {
   props: {
     disabled: Boolean,
     primary: Boolean,
     accent: Boolean,
     dense: Boolean,
     raised: Boolean,
-    compact: Boolean
+    compact: Boolean,
+    noRipple: Boolean
   },
   computed: {
     classes: function () {
@@ -32,14 +36,24 @@ var mdcButton = {
 
       return classes
     }
+  },
+  methods: {
+    dispatchEvent (event) {
+      this.$emit(event.type)
+    }
+  },
+  mounted () {
+    if (!this.noRipple) {
+      this.$el.classList.add('mdc-ripple-surface')
+      this.mdc_ripple_ = MDCRipple.attachTo(this.$el)
+    }
+  },
+  beforeDestroy () {
+    if (this.mdc_ripple_) {
+      this.mdc_ripple_.destroy()
+      delete this.mdc_ripple_
+    }
   }
 }
 
-export function install (vm) {
-  vm.component('mdc-button', mdcButton)
-}
-
-export default mdcButton
-
 </script>
-

@@ -1,7 +1,7 @@
 <script>
 import {MDCRipple} from '@material/ripple'
 
-var directive = {
+export default {
   bind (el, context) {
     if (!context.modifiers.custom) {
       el.classList.add('mdc-ripple-surface')
@@ -17,10 +17,5 @@ var directive = {
   }
 }
 
-export function install (vm) {
-  vm.directive('mdc-ripple', directive)
-}
-
-export default directive
 </script>
     
