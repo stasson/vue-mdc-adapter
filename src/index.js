@@ -1,7 +1,8 @@
 //
 // vue PlugIn
 //
-import './components/mdc-typography.scss'
+import '@material/typography/mdc-typography.scss'
+import '@material/theme/mdc-theme.scss'
 
 export default {
   install (vm) {
@@ -15,5 +16,10 @@ export default {
     vm.component('mdc-snackbar', require('./components/mdc-snackbar'))
     vm.component('mdc-grid-list', require('./components/mdc-grid-list'))
     vm.component('mdc-grid-tile', require('./components/mdc-grid-tile'))
+    vm.component('mdc-card', require('./components/mdc-card'))
+    vm.component('mdc-card-header', require('./components/mdc-card-header'))
+    vm.component('mdc-card-content', require('./components/mdc-card-content'))
+    vm.component('mdc-card-actions', require('./components/mdc-card-actions'))
+    vm.component('mdc-card-media', require('./components/mdc-card-media'))
   }
 }

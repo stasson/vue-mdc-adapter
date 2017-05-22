@@ -1,12 +1,45 @@
 <template>
   <div id="doc" class="mdc-typography">
 
+  <section class="doc-section" style="text-align:center">
     <img src="static/vmc-logo.png" style="height:100px; width:100px">
     <h1 class="mdc-typography--display3">Big header</h1>
     <p class="mdc-typography--body1">
       A paragraph with <span class="mdc-typography--body2">emphasis</span>.
     </p>
+  </section>
 
+
+  <section class="doc-section">
+    <mdc-card style="width:350px; margin:auto">
+      <mdc-card-media src="static/vmc-logo.png">
+        <mdc-card-header>
+          <h1>Title</h1>
+          <h2>subtitle</h2>
+        </mdc-card-header>
+      </mdc-card-media>
+      <mdc-card-content>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </mdc-card-content>
+      <mdc-card-actions :actions="{action1:'Action1', action2:'Action2'}"
+        @action1="log('action1')" @action2="log('action2')" vertical>
+      </mdc-card-actions>
+    </mdc-card>
+  </section>
+
+
+  <section class="doc-section">
+    <mdc-grid-list with-icon-start with-support-text width=300>
+      <mdc-grid-tile src="static/vmc-logo.png"
+        :title="'Title ' + (index + 1)" cover icon="star_border" support-text="support text"
+        v-for="(item, index) in 3" :key="index"></mdc-grid-tile>
+    </mdc-grid-list>
+  </section>
+
+  <section class="doc-section">
     <mdc-layout-grid class=grid margin=40 gutter=40>
       <mdc-layout-cell class="cell" desktop=3 tablet=3 >
         <p>Cell</p>
@@ -21,7 +54,9 @@
         Bottom
       </mdc-layout-cell>
     </mdc-layout-grid>
+  </section>
 
+  <section class="doc-section" style="text-center">
     <div>
       <mdc-button>Flat</mdc-button>
       <mdc-button primary>Flat</mdc-button>
@@ -47,13 +82,7 @@
       <mdc-button @click.native="showSnackbarNative">Snackbar Native</mdc-button>
       <mdc-snackbar ref="snackbar"></mdc-snackbar>
     </div>
-
-    <mdc-grid-list with-icon-start with-support-text width=300>
-      <mdc-grid-tile src="static/vmc-logo.png"
-        :title="'Title ' + (index + 1)" cover icon="star_border" support-text="support text"
-        v-for="(item, index) in 3" :key="index"></mdc-grid-tile>
-    </mdc-grid-list>
-
+  </section>
 
   </div>
 </template>
@@ -73,6 +102,9 @@ export default {
       this.$refs.snackbar.show({
         message: 'Show Snackbar Native'
       })
+    },
+    log (value) {
+      console.log(value)
     }
   }
 }
@@ -90,7 +122,12 @@ export default {
 }
 
 #doc {
-  text-align: center;
   margin-top: 60px;
+}
+
+.doc-section {
+  margin:auto;
+  max-width: 1280px;
+  min-width: 800px;
 }
 </style>

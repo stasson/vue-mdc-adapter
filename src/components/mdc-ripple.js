@@ -1,4 +1,3 @@
-<script>
 import {MDCRipple} from '@material/ripple'
 
 export default {
@@ -17,5 +16,3 @@ export default {
   }
 }
 
-</script>
-    
