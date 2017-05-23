@@ -15,4 +15,3 @@ export default {
     delete el.mdc_ripple_
   }
 }
-

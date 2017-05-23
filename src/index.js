@@ -18,8 +18,10 @@ export default {
     vm.component('mdc-grid-tile', require('./components/mdc-grid-tile'))
     vm.component('mdc-card', require('./components/mdc-card'))
     vm.component('mdc-card-header', require('./components/mdc-card-header'))
-    vm.component('mdc-card-content', require('./components/mdc-card-content'))
+    vm.component('mdc-card-text', require('./components/mdc-card-text'))
     vm.component('mdc-card-actions', require('./components/mdc-card-actions'))
     vm.component('mdc-card-media', require('./components/mdc-card-media'))
+    vm.component('mdc-card-horizontal', require('./components/mdc-card-horizontal'))
+    vm.component('mdc-card-img', require('./components/mdc-card-img'))
   }
 }

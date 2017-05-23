@@ -7,13 +7,17 @@
     <div class="mdc-grid-tile__primary" v-else>
         <img class="mdc-grid-tile__primary-content" :src="src" />
     </div>
-    <span class="mdc-grid-tile__secondary" v-if="hasContent">
+    <span class="mdc-grid-tile__secondary" v-if="title || supportText">
       <i class="mdc-grid-tile__icon material-icons" v-if="icon">{{ icon }}</i>
       <span class="mdc-grid-tile__title" v-if="title">{{ title }}</span>
       <span class="mdc-grid-tile__support-text" v-if="supportText">{{ supportText }}</span>
     </span>
   </li>
 </template>
+
+<style lang="scss">
+  @import '@material/layout-grid/mdc-layout-grid';
+</style>
 
 
 <script>
@@ -25,11 +29,6 @@ export default {
     icon: String,
     title: String,
     supportText: String
-  },
-  computed: {
-    hasContent () {
-      return this.title || this.caption
-    }
   }
 }
 </script>

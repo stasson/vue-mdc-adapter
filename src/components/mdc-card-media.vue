@@ -1,33 +1,39 @@
 <template>
-  <section class="mdc-card__media" :style="styles">
+  <section class="mdc-card-media mdc-card__media" :style="styles">
     <slot>
     </slot>
   </section>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import '@material/card/mdc-card';
+  
+  .mdc-card-media {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 </style>
 
 <script>
 
 export default {
   props: {
-    src: String,
+    src: {
+      type: String,
+      required: true
+    },
     height: [String, Number]
   },
   computed: {
     styles () {
       var styles = {
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
+        backgroundImage: `url(${this.src})`
       }
-      if (this.src) {
-        styles.backgroundImage = `url(${this.src})`
-      }
+
       if (this.height) {
         styles.height = `${this.height}px`
       }
+
       return styles
     }
   }

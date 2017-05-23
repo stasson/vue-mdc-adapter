@@ -1,38 +1,28 @@
 <template>
-  <section class="mdc-card__primary">
+  <section class="mdc-card-header mdc-card__primary">
     <slot>
-      <h1 class="title" v-if="title">{{ title }}</h1>
-      <h2 class="subtitle" v-if="subtitle">{{ subtitle }}</h2>
+      <h1 class="mdc-card-title mdc-card__title" v-if="title"
+          :classes="{'mdc-card__title--large': titleLarge}">
+        {{ title }}
+      </h1>
+      <h2 class="mdc-card-subtitle mdc-card__subtitle" v-if="subtitle">
+        {{ subtitle }}
+      </h2>
     </slot>
   </section>
 </template>
 
-<style scoped lang="scss">
+
+<style lang="scss">
   @import '@material/card/mdc-card';
-
-  h1 {
-    @extend .mdc-card__title;
-  }
-
-  .title {
-    @extend .mdc-card__title;
-    &-large {
-      @extend .mdc-card__title--large;
-    }
-  }
-
-  h2, .subtitle {
-    @extend .mdc-card__subtitle;
-  }
-
 </style>
-
 
 
 <script>
 export default {
   props: {
     title: String,
+    'title-large': Boolean,
     subtitle: String
   }
 }

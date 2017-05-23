@@ -1,11 +1,11 @@
 <template>
-  <section class="mdc-card__supporting-text">
+  <section class="mdc-card-text mdc-card__supporting-text">
     <slot>
     </slot>
   </section>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import '@material/card/mdc-card';
 </style>
 

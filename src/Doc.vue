@@ -9,38 +9,39 @@
     </p>
   </section>
 
-
   <section class="doc-section">
-    <mdc-card style="width:350px; margin:auto">
-      <mdc-card-media src="static/vmc-logo.png">
-        <mdc-card-header>
-          <h1>Title</h1>
-          <h2>subtitle</h2>
+    <mdc-card style="width:600px; margin:auto">
+      <mdc-card-media src="https://material-components-web.appspot.com/images/16-9.jpg">
+        <mdc-card-header title="Title" subtitle="subtitle">
         </mdc-card-header>
       </mdc-card-media>
-      <mdc-card-content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </mdc-card-content>
+      <mdc-card-horizontal>
+        <mdc-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.
+        </mdc-card-text>
+          <mdc-card-img src="static/vmc-logo.png" mult=1></mdc-card-img>
+      </mdc-card-horizontal>
       <mdc-card-actions :actions="{action1:'Action1', action2:'Action2'}"
-        @action1="log('action1')" @action2="log('action2')" vertical>
+        @action1="log('action1')" @action2="log('action2')">
       </mdc-card-actions>
     </mdc-card>
   </section>
 
 
   <section class="doc-section">
-    <mdc-grid-list with-icon-start with-support-text width=300>
+    <mdc-grid-list with-icon-start with-support-text width=150>
       <mdc-grid-tile src="static/vmc-logo.png"
-        :title="'Title ' + (index + 1)" cover icon="star_border" support-text="support text"
+        :title="'Title ' + (index + 1)"
+        support-text="support text" cover icon="star_border"
         v-for="(item, index) in 3" :key="index"></mdc-grid-tile>
     </mdc-grid-list>
   </section>
 
-  <section class="doc-section">
-    <mdc-layout-grid class=grid margin=40 gutter=40>
+  <section class="doc-section" >
+    <mdc-layout-grid class=grid>
       <mdc-layout-cell class="cell" desktop=3 tablet=3 >
         <p>Cell</p>
       </mdc-layout-cell>
@@ -56,7 +57,7 @@
     </mdc-layout-grid>
   </section>
 
-  <section class="doc-section" style="text-center">
+  <section class="doc-section" style="text-align:center">
     <div>
       <mdc-button>Flat</mdc-button>
       <mdc-button primary>Flat</mdc-button>
@@ -113,7 +114,7 @@ export default {
 <style>
 
 .grid {
-  min-height: 100px;
+  min-height: 50px;
   border: 1px solid;
 }
 
@@ -126,8 +127,7 @@ export default {
 }
 
 .doc-section {
-  margin:auto;
-  max-width: 1280px;
-  min-width: 800px;
+  margin: 70px auto;
+  max-width: 720px;
 }
 </style>

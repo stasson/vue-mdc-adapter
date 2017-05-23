@@ -7,7 +7,12 @@
 </template>
 
 
-<script lang="babel">
+<style lang="scss">
+  @import "@material/grid-list/mdc-grid-list";
+</style>
+
+
+<script>
 
 import { MDCGridListFoundation } from '@material/grid-list'
 
@@ -21,7 +26,7 @@ export default {
   props: {
     width: [String, Number],
     ratio: String,
-    narrowPadding: Number,
+    narrowGutter: Number,
     headerCaption: Boolean,
     withIconStart: Boolean,
     withIconEnd: Boolean,
@@ -30,7 +35,7 @@ export default {
   computed: {
     classes () {
       var classes = []
-      if (this.narrowPadding) {
+      if (this.narrowGutter) {
         classes.push('mdc-grid-list--tile-gutter-1')
       }
       if (this.headerCaption) {
@@ -40,15 +45,14 @@ export default {
         classes.push(`mdc-grid-list--tile-aspect-${this.ratio}`)
       }
       if (this.withIconStart) {
-        classes.push(`mdc-grid-list--with-icon-align-start`)
+        classes.push('mdc-grid-list--with-icon-align-start')
       }
       if (this.withIconEnd) {
-        classes.push(`mdc-grid-list--with-icon-align-end`)
+        classes.push('mdc-grid-list--with-icon-align-end')
       }
       if (this.withSupportText) {
-        classes.push(`mdc-grid-list--twoline-caption`)
+        classes.push('mdc-grid-list--twoline-caption')
       }
-
       return classes
     },
     styles () {
@@ -88,9 +92,3 @@ export default {
   }
 }
 </script>
-
-
-
-<style lang="scss">
-@import "@material/grid-list/mdc-grid-list";
-</style>

@@ -1,7 +1,9 @@
 <template>
-  <section class="mdc-card__actions" :class="{ 'mdc-card__actions--vertical': vertical}">
+  <section class="mdc-card-actions mdc-card__actions" 
+          :class="{ 'mdc-card__actions--vertical': vertical}">
     <slot>
-      <button v-for="(value, key) in actions" 
+      <button class="mdc-button mdc-button--compact mdc-card__action"
+        v-for="(value, key) in actions"
         @click="$emit(key)" ref="key">
         {{ value }}
       </button>
@@ -9,17 +11,10 @@
   </section>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import '@material/card/mdc-card';
   @import '@material/button/mdc-button';
-
-  button, .mdc-card-action {
-    @extend .mdc-button;
-    @extend .mdc-button--compact;
-    @extend .mdc-card__action;
-  }
 </style>
-
 
 
 <script>

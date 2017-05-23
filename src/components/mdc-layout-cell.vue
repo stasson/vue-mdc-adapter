@@ -1,12 +1,11 @@
 <template>
   <div class="mcd-layout-cell mdc-layout-grid__cell" :class="classes">
-    <slot>
-    </slot>
+    <slot></slot>
   </div>
 </template>
 
-<stylelang="scss">
-@import '@material/layout-grid/mdc-layout-grid';
+<style lang="scss">
+  @import '@material/layout-grid/mdc-layout-grid';
 </style>
 
 <script>
@@ -64,4 +63,3 @@ export default {
 }
 
 </script>
-

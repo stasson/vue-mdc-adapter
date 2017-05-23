@@ -1,13 +1,14 @@
 <template>
   <div class="mdc-layout-grid" :style=styles>
-    <slot>
-    </slot>
+    <slot></slot>
   </div>
 </template>
 
+
 <style lang="scss">
-    @import '@material/layout-grid/mdc-layout-grid';
+  @import '@material/layout-grid/mdc-layout-grid';
 </style>
+
 
 <script>
 
