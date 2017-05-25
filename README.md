@@ -1,4 +1,4 @@
-# vue-material-components
+# vue-mdc-adapter
 
 > [VueJS](https://vuejs.org) wrapper arround Google's [Material Components](https://material.io/components/web/)
 
