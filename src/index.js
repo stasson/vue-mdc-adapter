@@ -23,5 +23,6 @@ export default {
     vm.component('mdc-card-media', require('./components/mdc-card-media'))
     vm.component('mdc-card-horizontal', require('./components/mdc-card-horizontal'))
     vm.component('mdc-card-img', require('./components/mdc-card-img'))
+    vm.component('mdc-icon-toggle', require('./components/mdc-icon-toggle'))
   }
 }

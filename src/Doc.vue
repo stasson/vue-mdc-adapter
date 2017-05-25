@@ -83,6 +83,22 @@
       <mdc-button @click.native="showSnackbarNative">Snackbar Native</mdc-button>
       <mdc-snackbar ref="snackbar"></mdc-snackbar>
     </div>
+    <div>
+      <mdc-icon-toggle 
+        :toggle-on="{label: 'Remove from favorites', content: 'favorite'}"
+        :toggle-off="{label: 'Add to favorites', content: 'favorite_border'}">
+      ></mdc-icon-toggle>
+      <mdc-icon-toggle primary
+        :toggle-on="{label: 'Remove from favorites', content: 'favorite'}"
+        :toggle-off="{label: 'Add to favorites', content: 'favorite_border'}">
+      ></mdc-icon-toggle>
+      <mdc-icon-toggle accent
+        :toggle-on="{label: 'Remove from favorites', content: 'favorite'}"
+        :toggle-off="{label: 'Add to favorites', content: 'favorite_border'}">
+      ></mdc-icon-toggle>
+    </div>
+
+
   </section>
 
   </div>
