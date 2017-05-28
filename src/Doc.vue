@@ -83,8 +83,11 @@
       <mdc-button @click.native="showSnackbarNative">Snackbar Native</mdc-button>
       <mdc-snackbar ref="snackbar"></mdc-snackbar>
     </div>
+  </section>
+
+  <section class="doc-section" style="text-align:center">
     <div>
-      <mdc-icon-toggle 
+      <mdc-icon-toggle
         :toggle-on="{label: 'Remove from favorites', content: 'favorite'}"
         :toggle-off="{label: 'Add to favorites', content: 'favorite_border'}">
       ></mdc-icon-toggle>
@@ -97,9 +100,29 @@
         :toggle-off="{label: 'Add to favorites', content: 'favorite_border'}">
       ></mdc-icon-toggle>
     </div>
+  </section>
 
+  <section class="doc-section" style="text-align:center">
+    <div>
+      <mdc-checkbox v-model="checked" :label="checked?'checked':'unchecked'"></mdc-checkbox>
+    </div>
+    <div>
+      <mdc-textfield v-model="textField" label="Simple Textfield"></mdc-textfield>
+      <p v-if="textField">{{ textField }}</p>
+
+      <mdc-textfield label="Textfield with help text" helptext="Help text..."></mdc-textfield>
+      <mdc-textfield label="Disabled text field" disabled></mdc-textfield>
+      <mdc-textfield type="password" label="Password" 
+      required minlength=8 maxlength=10
+      helptext="passord must be 8 to 10 characters"
+      helptext-persistent helptext-validation
+      v-model="password"></mdc-textfield>
+      <p v-if="password">{{ password }}</p>
+      <mdc-textfield label="Fullwidth text field" fullwidth ></mdc-textfield>
+    </div>
 
   </section>
+
 
   </div>
 </template>
@@ -107,6 +130,13 @@
 <script>
 export default {
   // name: 'app',
+  data () {
+    return {
+      checked: false,
+      textField: '',
+      password: ''
+    }
+  },
   methods: {
     showSnackbar: function (event) {
       console.log('show snackbar')

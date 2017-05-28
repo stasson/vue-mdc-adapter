@@ -1,6 +1,6 @@
 
 <template>
-<i class="mdc-icon-toggle material-icons" :class="objectClass"
+<i class="mdc-icon-toggle material-icons" :class="classes"
     role="button" aria-pressed="false"
    :tabindex="tabIndex"
    :data-toggle-on='toggleOnData'
@@ -22,7 +22,10 @@ export default {
   },
   data () {
     return {
-      classes: {},
+      classes: {
+        'mdc-icon-toggle--primary': this.primary,
+        'mdc-icon-toggle--accent': this.accent
+      },
       tabIndex: 0,
       text: '',
       foundation: null
@@ -94,11 +97,6 @@ export default {
     }
   },
   computed: {
-    objectClass () {
-      this.classes['mdc-icon-toggle--primary'] = this.primary
-      this.classes['mdc-icon-toggle--accent'] = this.accent
-      return this.classes
-    },
     toggleOnData () {
       return JSON.stringify(this.toggleOn)
     },
