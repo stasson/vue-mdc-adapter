@@ -10,6 +10,20 @@
   </section>
 
   <section class="doc-section">
+    <mdc-menu-anchor class="myAnchor">
+      <button  @click="$refs.menu.show()">Open Menu</button>
+      <span>{{ menuMessage }}</span>
+      <mdc-menu ref="menu" @selected="menuSelect" @cancel="menuCancel">
+        <mdc-menu-item>A Menu Item</mdc-menu-item>
+        <mdc-menu-item>Another Menu Item</mdc-menu-item>
+        <mdc-menu-divider>Another Menu Item</mdc-menu-divider>
+        <mdc-menu-item>Parted Menu Item</mdc-menu-item>
+      </mdc-menu>
+    </mdc-menu-anchor>
+  </section>
+
+
+  <section class="doc-section">
     <mdc-card style="margin:auto">
       <mdc-card-media src="https://material-components-web.appspot.com/images/16-9.jpg">
         <mdc-card-header title="Title" subtitle="subtitle">
@@ -106,9 +120,6 @@
     </div>
   </section>
 
-
-
-
   <section class="doc-section" style="text-align:center">
     <div>
       <mdc-button @click="showSnackbar">Snackbar</mdc-button>
@@ -117,18 +128,18 @@
     </div>
   </section>
 
-
   <section class="doc-section" style="text-align:center">
+
     <div>
       <mdc-checkbox v-model="checked" :label="checked?'checked':'unchecked'"></mdc-checkbox>
       <mdc-checkbox disabled label="Disabled Checkbox"></mdc-checkbox>
     </div>
+
     <div>
       <mdc-switch v-model="checked" :label="checked?'switch on':'switch off'"></mdc-switch>
       <mdc-switch disabled label="Disabled Switch"></mdc-switch>
-    
-
     </div>
+
     <div>
       <mdc-textfield v-model="textField" label="Simple Textfield"></mdc-textfield>
       <p v-if="textField">{{ textField }}</p>
@@ -141,7 +152,7 @@
       helptext-persistent helptext-validation
       v-model="password"></mdc-textfield>
       <p v-if="password">{{ password }}</p>
-      <mdc-textfield label="Fullwidth text field" fullwidth ></mdc-textfield>
+      <!--<mdc-textfield label="Fullwidth text field" fullwidth ></mdc-textfield>-->
     </div>
 
     <div>
@@ -151,6 +162,75 @@
     </div>
 
   </section>
+
+  <section class="doc-section" >
+    <mdc-list bordered>
+      <mdc-list-item>Single-line item</mdc-list-item>
+      <mdc-list-item>Single-line item</mdc-list-item>
+      <mdc-list-item>Single-line item</mdc-list-item>
+    </mdc-list>
+
+    <mdc-list two-line bordered>
+      <mdc-list-item>
+        <span slot="text">First line</span>
+        <span slot="secondary">Second line</span>
+      </mdc-list-item>
+      <mdc-list-item>
+        <span slot="text">First line</span>
+        <span slot="secondary">Second line</span>
+      </mdc-list-item>
+      <mdc-list-item>
+        <span slot="text">First line</span>
+        <span slot="secondary">Second line</span>
+      </mdc-list-item>
+    </mdc-list>
+
+
+    <mdc-list dense bordered>
+      <mdc-list-item>Dense item</mdc-list-item>
+      <mdc-list-item>Dense item</mdc-list-item>
+      <mdc-list-item>Dense item</mdc-list-item>
+    </mdc-list>
+
+    <mdc-list bordered>
+      <mdc-list-item>
+        <i slot="start-detail" class="material-icons">favorite_border</i>
+        With start details
+      </mdc-list-item>
+      <mdc-list-item>
+        With end details
+        <i slot="end-detail" class="material-icons">star_border</i>
+      </mdc-list-item>
+      <mdc-list-item>
+        <i slot="start-detail" class="material-icons">favorite_border</i>
+        With both details
+        <i slot="end-detail" class="material-icons">star_border</i>
+      </mdc-list-item>
+    </mdc-list>
+
+  </section>
+  <section class="doc-section">
+
+    <mdc-list-group>
+      <mdc-list-group-header>Group 1</mdc-list-group-header>
+      <mdc-list>
+        <mdc-list-item>Single-line item</mdc-list-item>
+        <mdc-list-item>Single-line item</mdc-list-item>
+        <mdc-list-item>Single-line item</mdc-list-item>
+      </mdc-list>
+      <mdc-list-group-divider></mdc-list-group-divider>
+      <mdc-list-group-header>Group 1</mdc-list-group-header>
+      <mdc-list>
+        <mdc-list-item>Single-line item</mdc-list-item>
+        <mdc-list-item>Single-line item</mdc-list-item>
+        <mdc-list-item>Single-line item</mdc-list-item>
+      </mdc-list>
+
+    </mdc-list-group>
+
+  </section>
+
+
   </div>
 </template>
 
@@ -162,21 +242,28 @@ export default {
       checked: false,
       textField: '',
       password: '',
-      picked: null
+      picked: null,
+      menuMessage: ''
     }
   },
   methods: {
-    showSnackbar: function (event) {
+    showSnackbar (event) {
       console.log('show snackbar')
       this.$refs.snackbar.show({
         message: 'Snackbar'
       })
     },
-    showSnackbarNative: function (event) {
+    showSnackbarNative (event) {
       console.log('show snackbar')
       this.$refs.snackbar.show({
         message: 'Show Snackbar Native'
       })
+    },
+    menuSelect (selected) {
+      this.menuMessage = `${selected.index}: ${selected.item.textContent}`
+    },
+    menuCancel () {
+      this.menuMessage = 'Menu Canceled'
     },
     log (value) {
       console.log(value)
@@ -203,5 +290,6 @@ export default {
 .doc-section {
   margin: 70px auto;
   max-width: 720px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>
