@@ -3,7 +3,7 @@
   <div ref="checkbox" class="mdc-checkbox" :class="classes">
     <input ref="input" :id="_uid" type="checkbox"
            class="mdc-checkbox__native-control"
-           @change="checkboxChanged" v-model="checked" />
+           @change="checkboxChanged"  />
     <div class="mdc-checkbox__background">
       <svg class="mdc-checkbox__checkmark"
            viewBox="0 0 24 24">
@@ -30,14 +30,20 @@ import { MDCCheckboxFoundation } from '@material/checkbox'
 import {getCorrectEventName} from '@material/animation'
 
 export default {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
   props: {
-    'value': Boolean,
+    'checked': Boolean,
+    'true-value': { type: null, default () { return true } },
+    'false-value': { type: null, default () { return false } },
     'label': String,
-    'alignEnd': Boolean
+    'alignEnd': Boolean,
+    'disabled': Boolean
   },
   data () {
     return {
-      checked: this.value,
       classes: {},
       changeHandlers: [],
       foundation: null
@@ -71,13 +77,14 @@ export default {
         return vm.$refs.input
       },
       forceLayout () {
-        return vm.$refs.checkbox.offsetWidth
+        return vm.$forceUpdate()
       },
       isAttachedToDOM () {
         Boolean(vm.$el.parentNode)
       }
     })
     this.foundation.init()
+    this.setDisabled(this.disabled)
   },
   beforeDestroy () {
     this.foundation.destroy()
@@ -85,9 +92,20 @@ export default {
   methods: {
     checkboxChanged (event) {
       this.changeHandlers.forEach((h) => h(event))
-      this.$emit('input', this.checked)
+      this.$emit('change',
+        event.target.checked ? this.trueValue : this.falseValue)
+    },
+    setDisabled (disabled) {
+      this.foundation.setDisabled(disabled)
+      this.$set(this.classes, 'mdc-checkbox--disabled', disabled)
+    }
+  },
+  watch: {
+    disabled () {
+      this.setDisabled(this.disabled)
     }
   }
+
 }
 </script>
 

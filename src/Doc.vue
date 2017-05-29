@@ -105,6 +105,7 @@
   <section class="doc-section" style="text-align:center">
     <div>
       <mdc-checkbox v-model="checked" :label="checked?'checked':'unchecked'"></mdc-checkbox>
+      <mdc-checkbox disabled label="Disabled Checkbox"></mdc-checkbox>
     </div>
     <div>
       <mdc-textfield v-model="textField" label="Simple Textfield"></mdc-textfield>
@@ -112,7 +113,7 @@
 
       <mdc-textfield label="Textfield with help text" helptext="Help text..."></mdc-textfield>
       <mdc-textfield label="Disabled text field" disabled></mdc-textfield>
-      <mdc-textfield type="password" label="Password" 
+      <mdc-textfield type="password" label="Password"
       required minlength=8 maxlength=10
       helptext="passord must be 8 to 10 characters"
       helptext-persistent helptext-validation
@@ -121,9 +122,13 @@
       <mdc-textfield label="Fullwidth text field" fullwidth ></mdc-textfield>
     </div>
 
+    <div>
+      <mdc-radio label="Radio1" name="radios" value="radio1" v-model="picked" checked></mdc-radio>
+      <mdc-radio label="Radio2" name="radios" value="radio2" v-model="picked"></mdc-radio>
+      <p>{{ picked }}</p>
+    </div>
+
   </section>
-
-
   </div>
 </template>
 
@@ -134,7 +139,8 @@ export default {
     return {
       checked: false,
       textField: '',
-      password: ''
+      password: '',
+      picked: null
     }
   },
   methods: {

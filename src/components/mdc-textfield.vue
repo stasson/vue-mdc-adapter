@@ -154,6 +154,9 @@ export default {
       }
     })
     this.foundation.init()
+  },
+  beforeDestroy () {
+    this.foundation.destroy()
   }
 }
 </script>
