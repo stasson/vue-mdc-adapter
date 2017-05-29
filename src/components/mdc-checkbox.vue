@@ -2,8 +2,8 @@
 <div :class="{'mdc-form-field': label, 'mdc-form-field--align-end': label && alignEnd}">
   <div ref="checkbox" class="mdc-checkbox" :class="classes">
     <input ref="input" :id="_uid" type="checkbox"
-           class="mdc-checkbox__native-control"
-           @change="checkboxChanged"  />
+       class="mdc-checkbox__native-control"
+       @change="checkboxChanged"  :checked="checked" :disabled="disabled" />
     <div class="mdc-checkbox__background">
       <svg class="mdc-checkbox__checkmark"
            viewBox="0 0 24 24">
@@ -44,7 +44,7 @@ export default {
   },
   data () {
     return {
-      classes: {},
+      classes: { 'mdc-checkbox--disabled': this.disabled },
       changeHandlers: [],
       foundation: null
     }
@@ -84,7 +84,6 @@ export default {
       }
     })
     this.foundation.init()
-    this.setDisabled(this.disabled)
   },
   beforeDestroy () {
     this.foundation.destroy()
@@ -94,18 +93,8 @@ export default {
       this.changeHandlers.forEach((h) => h(event))
       this.$emit('change',
         event.target.checked ? this.trueValue : this.falseValue)
-    },
-    setDisabled (disabled) {
-      this.foundation.setDisabled(disabled)
-      this.$set(this.classes, 'mdc-checkbox--disabled', disabled)
-    }
-  },
-  watch: {
-    disabled () {
-      this.setDisabled(this.disabled)
     }
   }
-
 }
 </script>
 

@@ -31,6 +31,7 @@ export default {
     vm.component('mdc-card-img', require('./components/mdc-card-img'))
 
     vm.component('mdc-checkbox', require('./components/mdc-checkbox'))
+    vm.component('mdc-switch', require('./components/mdc-switch'))
     vm.component('mdc-textfield', require('./components/mdc-textfield'))
     vm.component('mdc-radio', require('./components/mdc-radio'))
   }

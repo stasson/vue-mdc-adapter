@@ -124,6 +124,12 @@
       <mdc-checkbox disabled label="Disabled Checkbox"></mdc-checkbox>
     </div>
     <div>
+      <mdc-switch v-model="checked" :label="checked?'switch on':'switch off'"></mdc-switch>
+      <mdc-switch disabled label="Disabled Switch"></mdc-switch>
+    
+
+    </div>
+    <div>
       <mdc-textfield v-model="textField" label="Simple Textfield"></mdc-textfield>
       <p v-if="textField">{{ textField }}</p>
 
