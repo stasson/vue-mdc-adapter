@@ -16,7 +16,7 @@
 </style>
 
 <script lang="babel">
-import { MDCSnackbarFoundation } from '@material/snackbar'
+import MDCSnackbarFoundation from '@material/snackbar/foundation'
 import { getCorrectEventName } from '@material/animation'
 
 export default {

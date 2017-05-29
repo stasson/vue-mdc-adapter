@@ -10,7 +10,7 @@
 </template>
 
 <script lang="babel">
-import { MDCIconToggleFoundation } from '@material/icon-toggle'
+import MDCIconToggleFoundation from '@material/icon-toggle/foundation'
 
 export default {
   props: {

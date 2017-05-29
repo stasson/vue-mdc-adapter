@@ -11,6 +11,7 @@ export default {
 
     // Components
     vm.component('mdc-button', require('./components/mdc-button'))
+    vm.component('mdc-fab', require('./components/mdc-fab'))
     vm.component('mdc-icon-toggle', require('./components/mdc-icon-toggle'))
 
     vm.component('mdc-layout-grid', require('./components/mdc-layout-grid'))

@@ -26,7 +26,7 @@
 
 
 <script lang="babel">
-import { MDCCheckboxFoundation } from '@material/checkbox'
+import MDCCheckboxFoundation from '@material/checkbox/foundation'
 import {getCorrectEventName} from '@material/animation'
 
 export default {

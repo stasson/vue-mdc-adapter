@@ -10,7 +10,7 @@
   </section>
 
   <section class="doc-section">
-    <mdc-card style="width:600px; margin:auto">
+    <mdc-card style="margin:auto">
       <mdc-card-media src="https://material-components-web.appspot.com/images/16-9.jpg">
         <mdc-card-header title="Title" subtitle="subtitle">
         </mdc-card-header>
@@ -70,19 +70,23 @@
     </div>
     <div>
       <mdc-button compact >Compact</mdc-button>
-      <mdc-button compact no-ripple primary>Compact</mdc-button>
+      <mdc-button compact primary>Compact</mdc-button>
       <mdc-button compact accent>Compact</mdc-button>
     </div>
     <div>
       <mdc-button raised >Raised</mdc-button>
-      <mdc-button raised no-ripple primary>Raised</mdc-button>
+      <mdc-button raised primary>Raised</mdc-button>
       <mdc-button raised accent>Raised</mdc-button>
     </div>
-    <div>
-      <mdc-button @click="showSnackbar">Snackbar</mdc-button>
-      <mdc-button @click.native="showSnackbarNative">Snackbar Native</mdc-button>
-      <mdc-snackbar ref="snackbar"></mdc-snackbar>
-    </div>
+  </section>
+
+  <section class="doc-section" style="text-align:center">
+    <mdc-fab>favorite</mdc-fab>
+    <mdc-fab mini>favorite</mdc-fab>
+    <mdc-fab plain>favorite</mdc-fab>
+    <mdc-fab mini plain>favorite</mdc-fab>
+    <mdc-fab mini disabled>favorite</mdc-fab>
+    <mdc-fab absolute plain>mode_edit</mdc-fab>
   </section>
 
   <section class="doc-section" style="text-align:center">
@@ -101,6 +105,18 @@
       ></mdc-icon-toggle>
     </div>
   </section>
+
+
+
+
+  <section class="doc-section" style="text-align:center">
+    <div>
+      <mdc-button @click="showSnackbar">Snackbar</mdc-button>
+      <mdc-button @click.native="showSnackbarNative">Snackbar Native</mdc-button>
+      <mdc-snackbar ref="snackbar"></mdc-snackbar>
+    </div>
+  </section>
+
 
   <section class="doc-section" style="text-align:center">
     <div>

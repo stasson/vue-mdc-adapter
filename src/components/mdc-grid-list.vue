@@ -14,7 +14,7 @@
 
 <script>
 
-import { MDCGridListFoundation } from '@material/grid-list'
+import MDCGridListFoundation from '@material/grid-list/foundation'
 
 export default {
   name: 'mdc-grid-list',

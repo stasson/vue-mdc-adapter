@@ -38,7 +38,7 @@
 
 
 <script lang="babel">
-import { MDCTextfieldFoundation } from '@material/textfield'
+import MDCTextfieldFoundation from '@material/textfield/foundation'
 
 export default {
   props: {

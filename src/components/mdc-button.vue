@@ -13,7 +13,6 @@
 
 
 <script>
-
 import {MDCRipple} from '@material/ripple'
 
 export default {
@@ -23,8 +22,7 @@ export default {
     accent: Boolean,
     dense: Boolean,
     raised: Boolean,
-    compact: Boolean,
-    noRipple: Boolean
+    compact: Boolean
   },
   computed: {
     classes: function () {
@@ -43,16 +41,12 @@ export default {
     }
   },
   mounted () {
-    if (!this.noRipple) {
-      this.$el.classList.add('mdc-ripple-surface')
-      this.mdc_ripple_ = MDCRipple.attachTo(this.$el)
-    }
+    this.$el.classList.add('mdc-ripple-surface')
+    this.mdc_ripple_ = MDCRipple.attachTo(this.$el)
   },
   beforeDestroy () {
-    if (this.mdc_ripple_) {
-      this.mdc_ripple_.destroy()
-      delete this.mdc_ripple_
-    }
+    this.mdc_ripple_.destroy()
+    delete this.mdc_ripple_
   }
 }
 
