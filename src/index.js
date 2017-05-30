@@ -10,6 +10,13 @@ export default {
     vm.directive('mdc-ripple', require('./components/mdc-ripple'))
 
     // Components
+    vm.component('mdc-display', require('./components/mdc-display'))
+    vm.component('mdc-headline', require('./components/mdc-headline'))
+    vm.component('mdc-title', require('./components/mdc-title'))
+    vm.component('mdc-subheading', require('./components/mdc-subheading'))
+    vm.component('mdc-body', require('./components/mdc-body'))
+    vm.component('mdc-caption', require('./components/mdc-caption'))
+
     vm.component('mdc-button', require('./components/mdc-button'))
     vm.component('mdc-fab', require('./components/mdc-fab'))
     vm.component('mdc-icon-toggle', require('./components/mdc-icon-toggle'))

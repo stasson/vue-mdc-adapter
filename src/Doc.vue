@@ -3,11 +3,8 @@
 
   <section class="doc-section" style="text-align:center">
     <img src="static/vmc-logo.png" style="height:100px; width:100px">
-    <h1 class="mdc-typography--display3">Big header</h1>
-    <p class="mdc-typography--body1">
-      A paragraph with <span class="mdc-typography--body2">emphasis</span>.
-    </p>
   </section>
+    
 
   <section class="doc-section">
     <mdc-menu-anchor class="myAnchor">
@@ -100,7 +97,6 @@
     <mdc-fab plain>favorite</mdc-fab>
     <mdc-fab mini plain>favorite</mdc-fab>
     <mdc-fab mini disabled>favorite</mdc-fab>
-    <mdc-fab absolute plain>mode_edit</mdc-fab>
   </section>
 
   <section class="doc-section" style="text-align:center">
@@ -227,6 +223,17 @@
       </mdc-list>
 
     </mdc-list-group>
+
+  <section class="doc-section">
+    <mdc-display>Display</mdc-display>
+    <mdc-headline>Headline</mdc-headline>
+    <mdc-title>Title <mdc-caption>Caption</mdc-caption></mdc-title>
+    <mdc-subheading>Subheading</mdc-subheading>
+    <mdc-body >Body</mdc-body>
+  </section>
+
+
+
 
   </section>
 
