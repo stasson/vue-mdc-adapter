@@ -135,7 +135,7 @@
       })
       this.initFoundation()
     },
-    beforeDestroy () {
+    beforeDestroy () { // beforeDestroy or destroyed?
       this.destroyFoundation()
     }
   }
