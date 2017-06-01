@@ -39,6 +39,7 @@ export default {
     vm.component('mdc-snackbar', require('./components/snackbar/mdc-snackbar'))
     vm.component('mdc-switch', require('./components/switch/mdc-switch'))
     // TODO mdc-tabs here
+    vm.component('mdc-toolbar', require('./components/toolbar/mdc-toolbar'))
     vm.component('mdc-textfield', require('./components/textfield/mdc-textfield'))
     vm.component('mdc-body', require('./components/typography/mdc-body'))
     vm.component('mdc-caption', require('./components/typography/mdc-caption'))
