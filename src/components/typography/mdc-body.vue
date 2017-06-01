@@ -1,4 +1,4 @@
-<template>
+e<template>
   <p :class="classes" class="mdc-typography--adjust-margin">
     <slot></slot>
   </p>
