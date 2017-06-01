@@ -52,5 +52,7 @@ export default {
     vm.component('mdc-switch', require('./components/mdc-switch'))
     vm.component('mdc-textfield', require('./components/mdc-textfield'))
     vm.component('mdc-radio', require('./components/mdc-radio'))
+
+    vm.component('mdc-temporary-drawer', require('./components/drawer/mdc-temporary-drawer'))
   }
 }
