@@ -15,7 +15,7 @@
 </template>
 
 <script lang="babel">
-  import {MDCToolbarFoundation} from '@material/toolbar'
+  import MDCToolbarFoundation from '@material/toolbar/foundation'
   import * as util from '@material/toolbar/util'
 
   export default {
@@ -31,7 +31,7 @@
       this.foundation.updateAdjustElementStyles()
     },
     mounted () {
-      const CHANGE_EVENT = 'MDCToolbar:change' // because `MDCToolbarFoundation.strings.CHANGE_EVENT` is undefined
+      const CHANGE_EVENT = (MDCToolbarFoundation.strings.CHANGE_EVENT || 'MDCToolbar:change') // because `MDCToolbarFoundation.strings.CHANGE_EVENT` is undefined. WTF?
 
       let vm = this
       this.foundation = new MDCToolbarFoundation({
