@@ -1,5 +1,5 @@
 <template>
-  <header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall mdc-theme--primary">
+  <header class="mdc-toolbar">
     <!-- here are some sugar slots -->
     <div class="mdc-toolbar__row" v-if="$slots.icon || $slots.title">
       <section class="mdc-toolbar__section mdc-toolbar__section--align-start" v-if="$slots.icon">
@@ -27,8 +27,41 @@
         foundation: null
       }
     },
+    methods: {
+      /**
+       * Init the foundation manually if it exists.
+       * Should be useful for testing/debugging.
+       *
+       * @return {void}
+       */
+      initFoundation () {
+        if (this.foundation) {
+          this.foundation.init()
+        }
+      },
+      /**
+       * Destroy the foundation manually if it exists.
+       * Should be useful for testing/debugging.
+       *
+       * @return {void}
+       */
+      destroyFoundation () {
+        if (this.foundation) {
+          this.foundation.destroy()
+        }
+      },
+      /**
+       * Update the fixed adjust element's style
+       * @return {void}
+       */
+      updateAdjustElementStyles () {
+        if (this.foundation) {
+          this.foundation.updateAdjustElementStyles()
+        }
+      }
+    },
     updated () { // should this be beforeUpdate?
-      this.foundation.updateAdjustElementStyles()
+      this.updateAdjustElementStyles() // this may be a factor in waterfall functionality not working correctly
     },
     mounted () {
       const CHANGE_EVENT = (MDCToolbarFoundation.strings.CHANGE_EVENT || 'MDCToolbar:change') // because `MDCToolbarFoundation.strings.CHANGE_EVENT` is undefined. WTF?
@@ -44,12 +77,14 @@
         hasClass (className) {
           return Boolean(vm.classes[className]) || (vm.$el && vm.$el.classList.contains(className))
         },
+        // I think this is the wrong implementation. Does not work correctly in electron.
         registerScrollHandler (handler) {
           window.addEventListener('scroll', handler, util.applyPassive())
         },
         deregisterScrollHandler (handler) {
           window.removeEventListener('scroll', handler, util.applyPassive())
         },
+        //
         registerResizeHandler (handler) {
           window.addEventListener('resize', handler)
         },
@@ -65,10 +100,13 @@
         getOffsetHeight () {
           vm.$el.offsetHeight
         },
+        // all `if (el)` checks are because there is no guarantee that the element has been initialized yet
+        // probably need to wait until next tick or something
         getFlexibleRowElementOffsetHeight () {
-          // due to a bug in MDC, this still gets called even when the toolbar has no flexible row
-          // therefore we add `|| vm.$el` to get around a TypeError
-          (vm.$props.flexibleRowElement || vm.$slots.flexibleRow || vm.$el).offsetHeight
+          let el = (vm.$props.flexibleRowElement || vm.$slots.flexibleRow)
+          if (el) {
+            el.offsetHeight
+          }
         },
         notifyChange (evtData) {
           vm.$emit(CHANGE_EVENT, evtData)
@@ -77,20 +115,28 @@
           vm.$el.style.setProperty(property, value)
         },
         setStyleForTitleElement (property, value) {
-          (vm.$props.titleElement || vm.$slots.title).style.setProperty(property, value)
+          let el = (vm.$props.titleElement || vm.$slots.title)
+          if (el) {
+            el.style.setProperty(property, value)
+          }
         },
         setStyleForFlexibleRowElement (property, value) {
-          // same deal here, `|| vm.$el` should not be here
-          (vm.$props.flexibleRowElement || vm.$slots.flexibleRow || vm.$el).style.setProperty(property, value)
+          let el = (vm.$props.flexibleRowElement || vm.$slots.flexibleRow)
+          if (el) {
+            el.style.setProperty(property, value)
+          }
         },
         setStyleForFixedAdjustElement (property, value) {
-          vm.$props.fixedAdjustElement.style.setProperty(property, value)
+          let el = vm.$props.fixedAdjustElement
+          if (el) {
+            el.style.setProperty(property, value)
+          }
         }
       })
-      this.foundation.init()
+      this.initFoundation()
     },
     beforeDestroy () {
-      this.foundation.destroy()
+      this.destroyFoundation()
     }
   }
 </script>
