@@ -1,7 +1,7 @@
 <template>
   <header class="mdc-toolbar">
     <!-- here are some sugar slots -->
-    <div class="mdc-toolbar__row" v-if="$slots.icon || $slots.title">
+    <div class="mdc-toolbar__row" v-if="$slots.icon || $slots.title" ref="firstRow">
       <section class="mdc-toolbar__section mdc-toolbar__section--align-start" v-if="$slots.icon">
         <slot name="icon" />
       </section>
@@ -20,7 +20,7 @@
 
   export default {
     name: 'Toolbar',
-    props: ['titleElement', 'flexibleRowElement', 'fixedAdjustElement'],
+    props: ['titleElement', 'flexibleRowElement', 'fixedAdjustElement', 'firstRowElement'],
     data () {
       return {
         classes: {},
@@ -102,8 +102,8 @@
         },
         // all `if (el)` checks are because there is no guarantee that the element has been initialized yet
         // probably need to wait until next tick or something
-        getFlexibleRowElementOffsetHeight () {
-          let el = (vm.$props.flexibleRowElement || vm.$slots.flexibleRow)
+        getFlexibleRowElementOffsetHeight () { // TODO: rename this to getFirstRowElementOffsetHeight when toolbar is updated
+          let el = (vm.$props.firstRowElement || vm.$refs.firstRow || vm.$props.flexibleRowElement || vm.$slots.flexibleRow)
           if (el) {
             el.offsetHeight
           }
