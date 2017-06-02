@@ -19,7 +19,7 @@
   import * as util from '@material/toolbar/util'
 
   export default {
-    name: 'Toolbar',
+    name: 'mdc-toolbar',
     props: ['titleElement', 'flexibleRowElement', 'fixedAdjustElement', 'firstRowElement'],
     data () {
       return {
