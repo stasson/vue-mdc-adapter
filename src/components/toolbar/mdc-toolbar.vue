@@ -92,20 +92,20 @@
           window.removeEventListener('resize', handler)
         },
         getViewportWidth () {
-          window.innerWidth()
+          return window.innerWidth()
         },
         getViewportScrollY () {
-          window.pageYOffset()
+          return window.pageYOffset()
         },
         getOffsetHeight () {
-          vm.$el.offsetHeight()
+          return vm.$el.offsetHeight()
         },
         // all `if (el)` checks are because there is no guarantee that the element has been initialized yet
         // probably need to wait until next tick or something
-        getFlexibleRowElementOffsetHeight () { // TODO: rename this to getFirstRowElementOffsetHeight when toolbar is updated
+        getFlexibleRowElementOffsetHeight () { // TODO: rename this to getFirstRowElementOffsetHeight when toolbar is updated to new version
           let el = (vm.$props.firstRowElement || vm.$refs.firstRow || vm.$props.flexibleRowElement || vm.$slots.flexibleRow)
           if (el) {
-            el.offsetHeight()
+            return el.offsetHeight()
           }
         },
         notifyChange (evtData) {
