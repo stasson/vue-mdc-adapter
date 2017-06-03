@@ -1,5 +1,5 @@
 <template>
-  <button class="mdc-card-action mdc-button mdc-button--compact mdc-card__action "
+  <button class="mdc-card-action mdc-button mdc-button--compact mdc-card__action mdc-ripple-surface"
   @click=dispatchEvent >
     <slot></slot>
   </button>
