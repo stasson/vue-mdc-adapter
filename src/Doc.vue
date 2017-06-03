@@ -21,7 +21,7 @@
 
   <section class="doc-section">
     <mdc-menu-anchor class="myAnchor">
-      <button  @click="$refs.menu.show()">Open Menu</button>
+      <mdc-button raised primary  @click="$refs.menu.show()">Open Menu</mdc-button>
       <span>{{ menuMessage }}</span>
       <mdc-menu ref="menu" @selected="menuSelect" @cancel="menuCancel">
         <mdc-menu-item>A Menu Item</mdc-menu-item>
@@ -36,7 +36,9 @@
   <section class="doc-section">
     <mdc-card style="margin:auto">
       <mdc-card-media src="https://material-components-web.appspot.com/images/16-9.jpg">
-        <mdc-card-header title="Title" subtitle="subtitle">
+        <mdc-card-header>
+          <mdc-card-title>Title</mdc-card-title>
+          <mdc-card-subtitle>Subtitle</mdc-card-subtitle>
         </mdc-card-header>
       </mdc-card-media>
       <mdc-card-horizontal>
@@ -48,8 +50,9 @@
         </mdc-card-text>
           <mdc-card-img src="static/vmc-logo.png" mult=1></mdc-card-img>
       </mdc-card-horizontal>
-      <mdc-card-actions :actions="{action1:'Action1', action2:'Action2'}"
-        @action1="log('action1')" @action2="log('action2')">
+      <mdc-card-actions>
+        <mdc-card-action @click="alert('action1')">Action1</mdc-card-action>
+        <mdc-card-action @click="alert('action2')">Action2</mdc-card-action>
       </mdc-card-actions>
     </mdc-card>
   </section>
@@ -287,6 +290,9 @@ export default {
     },
     log (value) {
       console.log(value)
+    },
+    alert (value) {
+      window.alert(value)
     }
   }
 }

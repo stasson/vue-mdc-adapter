@@ -4,16 +4,13 @@
 import '@material/typography/mdc-typography.scss'
 import '@material/theme/mdc-theme.scss'
 
+import mdcButton from './components/button'
+import mdcCard from './components/card'
+
 export default {
   install (vm) {
-    vm.component('mdc-button', require('./components/button/mdc-button'))
-    vm.component('mdc-card', require('./components/card/mdc-card'))
-    vm.component('mdc-card-header', require('./components/card/mdc-card-header'))
-    vm.component('mdc-card-text', require('./components/card/mdc-card-text'))
-    vm.component('mdc-card-actions', require('./components/card/mdc-card-actions'))
-    vm.component('mdc-card-media', require('./components/card/mdc-card-media'))
-    vm.component('mdc-card-horizontal', require('./components/card/mdc-card-horizontal'))
-    vm.component('mdc-card-img', require('./components/card/mdc-card-img'))
+    vm.use(mdcButton)
+    vm.use(mdcCard)
     vm.component('mdc-checkbox', require('./components/checkbox/mdc-checkbox'))
     // TODO mdc-dialog here
     vm.component('mdc-temporary-drawer', require('./components/drawer/mdc-temporary-drawer'))

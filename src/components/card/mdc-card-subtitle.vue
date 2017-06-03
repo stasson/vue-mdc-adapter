@@ -1,8 +1,8 @@
 <template>
-  <section class="mdc-card-header mdc-card__primary">
+  <h2 class="mdc-card-subtitle mdc-card__subtitle">
     <slot>
     </slot>
-  </section>
+  </h2>
 </template>
 
 
@@ -13,6 +13,6 @@
 
 <script>
 export default {
-  name: 'mdc-card-header'
+  name: 'mdc-card-subtitle'
 }
 </script>

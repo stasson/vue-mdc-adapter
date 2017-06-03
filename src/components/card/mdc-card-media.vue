@@ -17,6 +17,7 @@
 <script>
 
 export default {
+  name: 'mdc-card-media',
   props: {
     src: {
       type: String,

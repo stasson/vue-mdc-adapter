@@ -9,3 +9,8 @@
   @import '@material/card/mdc-card';
 </style>
 
+<script>
+export default {
+  name: 'mdc-text'
+}
+</script>

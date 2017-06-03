@@ -1,5 +1,6 @@
 <template>
-  <button class="mdc-button" :class="classes" :disabled="disabled" 
+  <button class="mdc-button mdc-ripple-surface" 
+    :class="classes" :disabled="disabled" 
     @click="dispatchEvent">
     <slot>
     </slot>
@@ -41,12 +42,10 @@ export default {
     }
   },
   mounted () {
-    this.$el.classList.add('mdc-ripple-surface')
     this.mdc_ripple_ = MDCRipple.attachTo(this.$el)
   },
   beforeDestroy () {
     this.mdc_ripple_.destroy()
-    delete this.mdc_ripple_
   }
 }
 

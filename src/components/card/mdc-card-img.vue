@@ -12,6 +12,7 @@
 <script>
 
 export default {
+  name: 'mdc-card-img',
   props: {
     src: {
       type: String,
