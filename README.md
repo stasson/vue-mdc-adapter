@@ -1,32 +1,55 @@
 # vue-mdc-adapter
 
-> [VueJS](https://vuejs.org) wrapper arround Google's [Material Components](https://material.io/components/web/)
+> [VueJS](https://vuejs.org) wrapper arround 
+Google's [Material Components](https://material.io/components/web/)
 
-For now this is just a vue webpack  boilerplate,  
-it will eventually turn up to a full wrapper...
+*under development, check the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki) 
+for more ...*
 
+## Installation
 
+- install vue-mdc-adapter
 
-## Build Setup
+`npm install --save vue-mdc-adapter`
 
-``` bash
-# install dependencies
-npm install
+- Import google's Material font's and icons:
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
+```
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- register the vue_mdc_adapter plugin
+
+```
+import Vue from 'vue'
+import VueMdcAdapter from 'vue-mdc-adapter'
+
+Vue.use(VueMdcAdapter)
+```
+
+_OR_
+
+```
+import Vue from 'vue'
+import VueMdcButton from 'vue-mdc-adapter/button'
+
+Vue.use(VueMdcButton)
+```
+
+ 
+## Documentation
+
+doc and demo coming soon...
+in the mean time you can have a look at the preview:
+
+
+```
+# clone from [github](https://github.com/stasson/vue-mdc-adapter)
+
+# install dependencies
+npm install
+ 
+# serve at localhost:8080
+npm run dev
+```

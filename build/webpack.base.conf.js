@@ -9,7 +9,8 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    mdc: './components/index.js',
+    demo: './demo/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -22,7 +23,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('components')
     }
   },
   module: {
@@ -31,7 +32,10 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
+        include: [
+          resolve('components'), 
+          resolve('demo'), 
+          resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -44,7 +48,12 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), path.join(__dirname, '../node_modules/@material')]
+        include: [
+          resolve('components'), 
+          resolve('demo'), 
+          resolve('test'), 
+          path.join(__dirname, '../node_modules/@material')
+          ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
