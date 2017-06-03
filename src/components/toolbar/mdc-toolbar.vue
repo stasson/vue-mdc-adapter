@@ -1,83 +1,68 @@
 <template>
-  <header class="mdc-toolbar">
-    <!-- here are some sugar slots -->
-    <div class="mdc-toolbar__row" v-if="$slots.icon || $slots.title" ref="firstRow">
-      <section class="mdc-toolbar__section mdc-toolbar__section--align-start" v-if="$slots.icon">
-        <slot name="icon" />
-      </section>
-      <section class="mdc-toolbar__section mdc-toolbar__section--align-start" v-if="$slots.title">
-         <slot name="title" />
-      </section>
+  <header>
+    <!--Toolbar-->
+    <div ref="root" :class="rootClasses" :style="rootStyles">
+        <slot></slot>
     </div>
-    <!-- if the user doesn't want to use the sugar slots then they can inject their own content here -->
-    <slot/>
+    <!-- Fixed Adjust Element-->
+    <div ref="fixed-adjust" class="mdc-toolbar-fixed-adjust" 
+      :style="adjustStyles"
+      v-if="fixed || waterfall || fixedLastrow"></div>
   </header>
 </template>
 
+<style lang="scss">
+  @import "@material/toolbar/mdc-toolbar";
+</style>
+
+
 <script lang="babel">
+
   import MDCToolbarFoundation from '@material/toolbar/foundation'
   import * as util from '@material/toolbar/util'
 
   export default {
-    name: 'Toolbar',
-    props: ['titleElement', 'flexibleRowElement', 'fixedAdjustElement', 'firstRowElement'],
+    name: 'mdc-toolbar',
+    props: {
+      'fixed': Boolean,
+      'waterfall': Boolean,
+      'fixed-lastrow': Boolean,
+      'flexible': Boolean,
+      'flexible-default': { type: Boolean, default: true }
+    },
     data () {
       return {
-        classes: {},
+        rootClasses: {
+          'mdc-toolbar': true,
+          'mdc-toolbar--fixed': this.fixed || this.waterfall ||
+                                  this.fixedLastrow,
+          'mdc-toolbar--waterfall': this.waterfall,
+          'mdc-toolbar--fixed-lastrow-only': this.fixedLastrow,
+          'mdc-toolbar--flexible': this.flexible,
+          'mdc-toolbar--flexible-default-behavior': this.flexible &&
+                                                      this.flexibleDefault
+        },
+        rootStyles: {},
+        adjustStyles: {
+          height: '0.1px' // to avoid top margin collapse with :after el
+                          // 0.1 px should be rounded to 0px
+                          // TODO: find a better trick
+        },
         foundation: null
       }
     },
-    methods: {
-      /**
-       * Init the foundation manually if it exists.
-       * Should be useful for testing/debugging.
-       *
-       * @return {void}
-       */
-      initFoundation () {
-        if (this.foundation) {
-          this.foundation.init()
-        }
-      },
-      /**
-       * Destroy the foundation manually if it exists.
-       * Should be useful for testing/debugging.
-       *
-       * @return {void}
-       */
-      destroyFoundation () {
-        if (this.foundation) {
-          this.foundation.destroy()
-        }
-      },
-      /**
-       * Update the fixed adjust element's style
-       * @return {void}
-       */
-      updateAdjustElementStyles () {
-        if (this.foundation) {
-          this.foundation.updateAdjustElementStyles()
-        }
-      }
-    },
-    updated () { // should this be beforeUpdate?
-      this.updateAdjustElementStyles() // this may be a factor in waterfall functionality not working correctly
-    },
     mounted () {
-      const CHANGE_EVENT = (MDCToolbarFoundation.strings.CHANGE_EVENT || 'MDCToolbar:change') // because `MDCToolbarFoundation.strings.CHANGE_EVENT` is undefined. WTF?
-
       let vm = this
       this.foundation = new MDCToolbarFoundation({
         addClass (className) {
-          vm.$set(vm.classes, className, true)
+          vm.$set(vm.rootClasses, className, true)
         },
         removeClass (className) {
-          vm.$delete(vm.classes, className)
+          vm.$delete(vm.rootClasses, className)
         },
         hasClass (className) {
-          return Boolean(vm.classes[className]) || (vm.$el && vm.$el.classList.contains(className))
+          return Boolean(vm.rootClasses[className])
         },
-        // I think this is the wrong implementation. Does not work correctly in electron.
         registerScrollHandler (handler) {
           window.addEventListener('scroll', handler, util.applyPassive())
         },
@@ -92,51 +77,40 @@
           window.removeEventListener('resize', handler)
         },
         getViewportWidth () {
-          window.innerWidth
+          return window.innerWidth
         },
         getViewportScrollY () {
-          window.pageYOffset
+          return window.pageYOffset
         },
         getOffsetHeight () {
-          vm.$el.offsetHeight
+          return vm.$refs.root.offsetHeight
         },
-        // all `if (el)` checks are because there is no guarantee that the element has been initialized yet
-        // probably need to wait until next tick or something
-        getFlexibleRowElementOffsetHeight () { // TODO: rename this to getFirstRowElementOffsetHeight when toolbar is updated
-          let el = (vm.$props.firstRowElement || vm.$refs.firstRow || vm.$props.flexibleRowElement || vm.$slots.flexibleRow)
-          if (el) {
-            el.offsetHeight
-          }
+        getFlexibleRowElementOffsetHeight () {
+          let el = vm.$refs.root.querySelector(MDCToolbarFoundation.strings.FLEXIBLE_ROW_SELECTOR)
+          return (el) ? el.offsetHeight : undefined
         },
         notifyChange (evtData) {
-          vm.$emit(CHANGE_EVENT, evtData)
+          vm.$emit('change', evtData)
         },
         setStyle (property, value) {
-          vm.$el.style.setProperty(property, value)
+          vm.$set(vm.rootStyles, property, value)
         },
         setStyleForTitleElement (property, value) {
-          let el = (vm.$props.titleElement || vm.$slots.title)
-          if (el) {
-            el.style.setProperty(property, value)
-          }
+          let el = vm.$refs.root.querySelector(MDCToolbarFoundation.strings.TITLE_SELECTOR)
+          if (el) el.style.setProperty(property, value)
         },
         setStyleForFlexibleRowElement (property, value) {
-          let el = (vm.$props.flexibleRowElement || vm.$slots.flexibleRow)
-          if (el) {
-            el.style.setProperty(property, value)
-          }
+          let el = vm.$refs.root.querySelector(MDCToolbarFoundation.strings.FLEXIBLE_ROW_SELECTOR)
+          if (el) el.style.setProperty(property, value)
         },
         setStyleForFixedAdjustElement (property, value) {
-          let el = vm.$props.fixedAdjustElement
-          if (el) {
-            el.style.setProperty(property, value)
-          }
+          vm.$set(vm.adjustStyles, property, value)
         }
       })
-      this.initFoundation()
+      this.foundation.init()
     },
-    beforeDestroy () { // beforeDestroy or destroyed?
-      this.destroyFoundation()
+    beforeDestroy () {
+      this.foundation.destroy()
     }
   }
 </script>

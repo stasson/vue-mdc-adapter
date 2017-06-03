@@ -1,5 +1,18 @@
 <template>
-  <div id="doc" class="mdc-typography">
+<div id="doc" class="mdc-typography">
+  <mdc-toolbar waterfall>
+    <mdc-toolbar-row>
+      <mdc-toolbar-section align-start >
+        <i class="material-icons">menu</i>
+      </mdc-toolbar-section>
+      <mdc-toolbar-section align-start>
+        <mdc-toolbar-title>Title</mdc-toolbar-title>
+      </mdc-toolbar-section>
+      <mdc-toolbar-section align-start>
+        <a>Nav</a>
+      </mdc-toolbar-section>
+    </mdc-toolbar-row>
+  </mdc-toolbar>
 
   <section class="doc-section" style="text-align:center">
     <img src="static/vmc-logo.png" style="height:100px; width:100px">
@@ -290,8 +303,14 @@ export default {
   border: 1px dashed;
 }
 
+body {
+  margin:0;
+  padding:0;
+}
+
 #doc {
-  margin-top: 60px;
+  margin:0;
+  padding:0;
 }
 
 .doc-section {
