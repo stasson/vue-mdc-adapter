@@ -19,7 +19,7 @@ for more ...*
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 ```
 
-OR - Import icons with webpack and ES6
+_OR_ - Import icons with webpack and ES6
 
 ```
 npm install material-design-icons
