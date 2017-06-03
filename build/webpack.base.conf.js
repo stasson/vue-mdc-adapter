@@ -32,7 +32,10 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('components'), resolve('demo'), resolve('test')],
+        include: [
+          resolve('components'), 
+          resolve('demo'), 
+          resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -45,7 +48,12 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('componnents'), resolve('demo'), resolve('test'), path.join(__dirname, '../node_modules/@material')]
+        include: [
+          resolve('components'), 
+          resolve('demo'), 
+          resolve('test'), 
+          path.join(__dirname, '../node_modules/@material')
+          ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
