@@ -19,6 +19,16 @@ for more ...*
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 ```
 
+_OR_ - Import icons with webpack and ES6
+
+```
+npm install material-design-icons
+```
+
+```
+import 'material-design-icons/iconfont/material-icons.css'
+```
+
 - register the vue_mdc_adapter plugin
 
 ```
