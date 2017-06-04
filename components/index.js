@@ -22,7 +22,7 @@ import mdcSnackbar from './snackbar'
 import mdcSwitch from './switch'
 import mdcTabs from './tabs'
 import mdcTexfield from './textfield'
-import mdToolbar from './toolbar'
+import mdcToolbar from './toolbar'
 import mdcTypography from './typography'
 
 export default {
@@ -45,7 +45,7 @@ export default {
     vm.use(mdcSwitch)
     vm.use(mdcTabs)
     vm.use(mdcTexfield)
-    vm.use(mdToolbar)
+    vm.use(mdcToolbar)
     vm.use(mdcTypography)
   }
 }
