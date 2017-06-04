@@ -30,9 +30,9 @@
       'flexible': Boolean,
       'flexible-default': { type: Boolean, default: true }
     },
-    data () {
-      return {
-        rootClasses: {
+    computed: {
+      classes () {
+        return {
           'mdc-toolbar': true,
           'mdc-toolbar--fixed': this.fixed || this.waterfall ||
                                   this.fixedLastrow,
@@ -40,8 +40,14 @@
           'mdc-toolbar--fixed-lastrow-only': this.fixedLastrow,
           'mdc-toolbar--flexible': this.flexible,
           'mdc-toolbar--flexible-default-behavior': this.flexible &&
-                                                      this.flexibleDefault
-        },
+                                                      this.flexibleDefault,
+          ...this.rootClasses
+        }
+      }
+    },
+    data () {
+      return {
+        rootClasses: {},
         rootStyles: {},
         adjustStyles: {
           height: '0.1px' // to avoid top margin collapse with :after el
