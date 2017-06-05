@@ -2,6 +2,7 @@
 
 <template>
   <aside class="mdc-temporary-drawer mdc-typography" :class="classes">
+    <toolbar-spacer temporary v-if="spacer" />
     <nav ref="drawer" class="mdc-temporary-drawer__drawer">
       <slot/>
     </nav>
@@ -16,8 +17,16 @@
 import MDCTemporaryDrawerFoundation from '@material/drawer/temporary/foundation'
 import * as utils from '@material/drawer/util'
 
+import ToolbarSpacer from './mdc-drawer-toolbar-spacer'
+
 export default {
   name: 'mdc-temporary-drawer',
+  props: {
+    spacer: Boolean
+  },
+  components: {
+    ToolbarSpacer
+  },
   methods: {
     open () {
       this.foundation.open()

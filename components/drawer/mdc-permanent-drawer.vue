@@ -1,6 +1,7 @@
 
 <template>
   <nav class="mdc-permanent-drawer mdc-typography">
+    <toolbar-spacer permanent v-if="spacer" />
     <nav class="mdc-permanent-drawer__content">
       <slot />
     </nav>
@@ -12,7 +13,15 @@
 </style>
 
 <script lang="babel">
+import ToolbarSpacer from './mdc-drawer-toolbar-spacer'
+
 export default {
-  name: 'mdc-permanent-drawer'
+  name: 'mdc-permanent-drawer',
+  props: {
+    spacer: Boolean
+  },
+  components: {
+    ToolbarSpacer
+  }
 }
 </script>

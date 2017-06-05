@@ -1,6 +1,7 @@
 
 <template>
   <aside class="mdc-persistent-drawer mdc-typography" :class="classes">
+    <toolbar-spacer persistent v-if="spacer" />
     <nav ref="drawer" class="mdc-persistent-drawer__drawer">
       <slot />
     </nav>
@@ -15,8 +16,16 @@
 import MDCPersistentDrawerFoundation from '@material/drawer/persistent/foundation'
 import * as utils from '@material/drawer/util'
 
+import ToolbarSpacer from './mdc-drawer-toolbar-spacer'
+
 export default {
   name: 'mdc-persistent-drawer',
+  props: {
+    spacer: Boolean
+  },
+  components: {
+    ToolbarSpacer
+  },
   methods: {
     open () {
       this.foundation.open()
