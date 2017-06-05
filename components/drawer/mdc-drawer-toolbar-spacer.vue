@@ -1,6 +1,6 @@
 
 <template>
-  <div :class="'mdc-' + this.type.toString() + '-drawer__toolbar-spacer'">
+  <div :class="classes">
     <slot />
   </div>
 </template>
