@@ -1,6 +1,6 @@
 {
   "name": "vue-mdc-adapter",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Vue wrapper arround mdc",
   "keywords": [
     "vue",
@@ -19,10 +19,7 @@
     "LICENSE",
     "README.md"
   ],
-  "unpkg": {
-    "vue-mdc-adapter.js": "dist/vue-mdc-adapter.js",
-    "vue-mdc-adapter.css": "dist/vue-mdc-adapter.css"
-  },
+  "unpkg": "dist/index.html",
   "repository": {
     "type": "git",
     "url": "https://github.com/stasson/vue-mdc-adapter.git"
@@ -33,7 +30,9 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js",
+    "build": "node build/build-lib.js",
+    "build-lib": "node build/build-lib.js",
+    "build-demo": "node build/build-demo.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"

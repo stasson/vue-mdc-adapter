@@ -15,14 +15,7 @@ var env = process.env.NODE_ENV === 'testing'
 
 var prodConfig = {
   entry: {
-    index: './components/index.js',
-  },
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    index: './demo/main.js',
   }
 }
 
@@ -69,7 +62,7 @@ var webpackConfig = merge(baseWebpackConfig, prodConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.build.index,
-      template: 'index.html',
+      template: 'demo/index.html',
       inject: true,
       minify: {
         removeComments: true,

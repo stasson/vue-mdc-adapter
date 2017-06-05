@@ -15,7 +15,7 @@
   </mdc-toolbar>
 
   <section class="doc-section" style="text-align:center">
-    <img src="static/vmc-logo.png" style="height:100px; width:100px">
+    <img src="static/logo.png" style="height:100px; width:100px">
   </section>
     
 
