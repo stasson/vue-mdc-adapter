@@ -8,6 +8,10 @@
   </aside>
 </template>
 
+<style lang="scss">
+  @import "@material/drawer/temporary/mdc-temporary-drawer";
+</style>
+
 <script lang="babel">
 import MDCTemporaryDrawerFoundation from '@material/drawer/temporary/foundation'
 import * as utils from '@material/drawer/util'
