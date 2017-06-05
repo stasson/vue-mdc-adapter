@@ -4,8 +4,22 @@ var utils = require('./utils')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseConfig = require('./webpack.base.conf')
+var config = require('../config')
 
-var webpackConfig = merge(baseConfig, {
+var testConfig = {
+  entry: {
+    components: './components/index.js'
+  },
+  output: {
+    path: config.build.assetsRoot,
+    filename: '[name].js',
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
+  }
+}
+
+var webpackConfig = merge(baseConfig, testConfig, {
   // use inline sourcemap for karma-sourcemap-loader
   module: {
     rules: utils.styleLoaders()

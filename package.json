@@ -1,6 +1,6 @@
 {
   "name": "vue-mdc-adapter",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Vue wrapper arround mdc",
   "keywords": [
     "vue",
@@ -12,9 +12,23 @@
   ],
   "author": "Sebastien Tasson <sebastien.tasson@gmail.com>",
   "license": "MIT",
+  "main": "components/index.js",
+  "files": [
+    "dist",
+    "components",
+    "LICENSE",
+    "README.md"
+  ],
+  "unpkg": {
+    "vue-mdc-adapter.js": "dist/vue-mdc-adapter.js",
+    "vue-mdc-adapter.css": "dist/vue-mdc-adapter.css"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/stasson/vue-mdc-adapter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stasson/vue-mdc-adapter/issues"
   },
   "scripts": {
     "dev": "node build/dev-server.js",
