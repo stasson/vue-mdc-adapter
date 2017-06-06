@@ -3,8 +3,7 @@
 > [VueJS](https://vuejs.org) wrapper arround 
 Google's [Material Components](https://material.io/components/web/)
 
-*under development, check the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki) 
-for more ...*
+*under development, check the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki) for more ...*
 
 ## Installation
 
@@ -50,12 +49,16 @@ Vue.use(VueMdcButton)
  
 ## Documentation
 
-doc and demo coming soon...
-in the mean time you can have a look at the preview:
+Doc and Demo coming soon...
 
+In the mean time you can have a look at the [preview](https://stasson.github.io/vue-mdc-adapter/)
+
+Or clone from [github](https://github.com/stasson/vue-mdc-adapter)
 
 ```
-# clone from [github](https://github.com/stasson/vue-mdc-adapter)
+# get the repository
+git clone https://github.com/stasson/vue-mdc-adapter.git
+cd vue-mdc-adapter
 
 # install dependencies
 npm install
