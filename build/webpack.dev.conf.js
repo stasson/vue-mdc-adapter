@@ -8,7 +8,6 @@ var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 var devConfig = {
   entry: {
-    components: './components/index.js',
     demo: './demo/main.js'
   },
   output: {
