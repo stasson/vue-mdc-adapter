@@ -1,8 +1,18 @@
 <template>
 <div id="doc" class="mdc-typography">
 
+  <component :is="drawerComponent" spacer ref="drawer">
+    <mdc-drawer-header :type="drawerType" class="mdc-theme--primary-bg mdc-theme--text-primary-on-primary">Header</mdc-drawer-header>
+    <mdc-button flat primary @click="switchDrawer('temporary')">Temporary</mdc-button>
+    <mdc-button flat primary @click="switchDrawer('persistent')">Persistent</mdc-button>
+    <mdc-button flat primary @click="switchDrawer('permanent')">Permanent</mdc-button>
+  </component>
+
   <mdc-toolbar waterfall>
     <mdc-toolbar-row>
+      <mdc-toolbar-section align-start >
+        <a @click="toggleDrawer" id="menu-icon" href="#" class="material-icons mdc-theme--text-icon-on-primary">menu</a>
+      </mdc-toolbar-section>
       <mdc-toolbar-section align-start >
         <mdc-toolbar-title>Vue MDC Adapter</mdc-toolbar-title>
       </mdc-toolbar-section>
@@ -271,16 +281,31 @@
 <script>
 export default {
   // name: 'app',
+  computed: {
+    drawerComponent () {
+      return 'mdc-' + this.drawerType.toString() + '-drawer'
+    }
+  },
   data () {
     return {
       checked: false,
       textField: '',
       password: '',
       picked: null,
-      menuMessage: ''
+      menuMessage: '',
+      drawerType: 'temporary'
     }
   },
   methods: {
+    toggleDrawer () {
+      if (this.drawerType !== 'permanent') this.$refs.drawer.foundation.isOpen() ? this.$refs.drawer.close() : this.$refs.drawer.open()
+    },
+    switchDrawer (drawer) {
+      this.drawerType = drawer
+      this.$nextTick(function () { // vue updates DOM with async functions so this guarantees that the drawer is defined
+        if (this.drawerType !== 'permanent') this.$refs.drawer.open()
+      })
+    },
     showSnackbar (event) {
       console.log('show snackbar')
       this.$refs.snackbar.show({
@@ -338,6 +363,10 @@ body {
 .doc-center {
   margin: auto;
   max-width: 600px;
+}
+
+#menu-icon {
+  text-decoration: none;
 }
 
 </style>
