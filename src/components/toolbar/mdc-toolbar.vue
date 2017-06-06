@@ -1,7 +1,7 @@
 <template>
   <header>
     <!--Toolbar-->
-    <div ref="root" :class="rootClasses" :style="rootStyles">
+    <div ref="root" :class="classes" :style="rootStyles">
         <slot></slot>
     </div>
     <!-- Fixed Adjust Element-->
