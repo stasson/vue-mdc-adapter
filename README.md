@@ -51,7 +51,7 @@ Vue.use(VueMdcButton)
 
 Doc and Demo coming soon...
 
-In the mean time you can have a look at the [preview](https://stasson.github.io/vue-mdc-adapter/)
+In the meantime you can have a look at the [preview](https://stasson.github.io/vue-mdc-adapter)
 
 Or clone from [github](https://github.com/stasson/vue-mdc-adapter)
 
