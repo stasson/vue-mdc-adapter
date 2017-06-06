@@ -7,7 +7,7 @@
     <!-- Fixed Adjust Element-->
     <div ref="fixed-adjust" class="mdc-toolbar-fixed-adjust" 
       :style="adjustStyles"
-      v-if="fixed || waterfall || fixedLastrow"></div>
+      v-if="isFixed()"></div>
   </header>
 </template>
 
@@ -28,19 +28,31 @@
       'waterfall': Boolean,
       'fixed-lastrow': Boolean,
       'flexible': Boolean,
-      'flexible-default': { type: Boolean, default: true }
+      'flexible-default': { type: Boolean, default: true },
+      'type': String
+    },
+    methods: {
+      isFixed () {
+        return this.fixed || this.waterfall || this.fixedLastrow ||
+                                          this.type === 'fixed' ||
+                                          this.type === 'waterfall' ||
+                                          this.type === 'fixed-lastrow'
+      }
     },
     computed: {
       classes () {
         return {
           'mdc-toolbar': true,
-          'mdc-toolbar--fixed': this.fixed || this.waterfall ||
-                                  this.fixedLastrow,
-          'mdc-toolbar--waterfall': this.waterfall,
-          'mdc-toolbar--fixed-lastrow-only': this.fixedLastrow,
-          'mdc-toolbar--flexible': this.flexible,
-          'mdc-toolbar--flexible-default-behavior': this.flexible &&
-                                                      this.flexibleDefault,
+          'mdc-toolbar--fixed': this.isFixed(),
+          'mdc-toolbar--waterfall': this.waterfall ||
+                                      this.type === 'waterfall',
+          'mdc-toolbar--fixed-lastrow-only': this.fixedLastrow ||
+                                              this.type === 'fixed-lastrow',
+          'mdc-toolbar--flexible': this.flexible || this.type === 'flexible',
+          'mdc-toolbar--flexible-default-behavior': (this.flexible ||
+                                                      this.type === 'flexible') &&
+                                                      (this.flexibleDefault ||
+                                                      this.type === 'flexible-default'),
           ...this.rootClasses
         }
       }
