@@ -1,6 +1,6 @@
 {
   "name": "vue-mdc-adapter",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Vue wrapper arround mdc",
   "keywords": [
     "vue",
@@ -19,7 +19,7 @@
     "LICENSE",
     "README.md"
   ],
-  "unpkg": "dist/index.html",
+  "unpkg": "dist/vue-mdc-adapter.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/stasson/vue-mdc-adapter.git"
