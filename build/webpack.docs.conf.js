@@ -15,7 +15,8 @@ var env = process.env.NODE_ENV === 'testing'
 
 var prodConfig = {
   entry: {
-    index: './demo/main.js',
+    components: './components/index.js',
+    docs: './src/docs/main.js',
   }
 }
 
@@ -29,7 +30,7 @@ var webpackConfig = merge(baseWebpackConfig, prodConfig, {
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
-    path: config.build.assetsRoot,
+    path: config.build.docsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
@@ -62,7 +63,7 @@ var webpackConfig = merge(baseWebpackConfig, prodConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.build.index,
-      template: 'demo/index.html',
+      template: 'src/docs/index.html',
       inject: true,
       minify: {
         removeComments: true,

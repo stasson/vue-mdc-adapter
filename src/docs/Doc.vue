@@ -103,21 +103,21 @@
   <section id="input-controls" class="doc-section" >
     <mdc-headline>Input and Controls</mdc-headline>
 
-    <mdc-subtitle>Checkbox</mdc-subtitle>
+    <mdc-subheading>Checkbox</mdc-subheading>
     <div class="doc-center">
       <p><mdc-checkbox v-model="checked" :label="checked?'checked':'unchecked'"></mdc-checkbox></p>
       <p><mdc-checkbox disabled label="Disabled"></mdc-checkbox></p>
       <p><br></p>
     </div>
   
-    <mdc-subtitle>Switch</mdc-subtitle>
+    <mdc-subheading>Switch</mdc-subheading>
     <div class="doc-center">
       <p><mdc-switch v-model="checked" :label="checked?'switch on':'switch off'"></mdc-switch></p>
       <p><mdc-switch disabled label="Disabled"></mdc-switch></p>
       <p><br></p>
     </div>
   
-    <mdc-subtitle>Textfield</mdc-subtitle>
+    <mdc-subheading>Textfield</mdc-subheading>
     <div class="doc-center">
       <p><mdc-textfield v-model="textField" label="Simple Textfield"></mdc-textfield></p>
       <p v-if="textField">{{ textField }}</p>
@@ -131,7 +131,7 @@
       <p><br></p>
     </div>
   
-    <mdc-subtitle>Radio</mdc-subtitle>
+    <mdc-subheading>Radio</mdc-subheading>
     <div class="doc-center">
       <mdc-radio label="Radio1" name="radios" value="radio1" v-model="picked" checked></mdc-radio>
       <mdc-radio label="Radio2" name="radios" value="radio2" v-model="picked"></mdc-radio>
@@ -258,7 +258,8 @@
       <mdc-display display=1>Display1</mdc-display>
       <mdc-headline>Headline</mdc-headline>
       <mdc-title>Title <mdc-caption>Caption</mdc-caption></mdc-title>
-      <mdc-subheading>Subheading</mdc-subheading>
+      <mdc-subheading subheading=2>Subheading2</mdc-subheading>
+      <mdc-subheading subheading=1>Subheading1</mdc-subheading>
       <mdc-body body=1>Body1</mdc-body>
       <mdc-body body=2>Body2</mdc-body>
     </div>

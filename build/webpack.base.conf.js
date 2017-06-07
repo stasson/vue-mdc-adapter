@@ -23,7 +23,7 @@ module.exports = {
         enforce: 'pre',
         include: [
           resolve('components'), 
-          resolve('demo'), 
+          resolve('src'), 
           resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')
@@ -39,7 +39,7 @@ module.exports = {
         loader: 'babel-loader',
         include: [
           resolve('components'), 
-          resolve('demo'), 
+          resolve('src'), 
           resolve('test'), 
           path.join(__dirname, '../node_modules/@material')
           ]

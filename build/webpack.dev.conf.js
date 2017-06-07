@@ -8,7 +8,8 @@ var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 var devConfig = {
   entry: {
-    demo: './demo/main.js'
+    components: './components/index.js',
+    docs: './src/docs/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -41,7 +42,7 @@ module.exports = merge(baseWebpackConfig, devConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'demo/index.html',
+      template: 'src/docs/index.html',
       inject: true
     }),
     new FriendlyErrorsPlugin()
