@@ -1,26 +1,25 @@
-<!-- thanks to petejohanson for this implementation -->
 
 <template>
-  <aside class="mdc-temporary-drawer mdc-typography" :class="classes">
-    <toolbar-spacer temporary v-if="spacer" />
-    <nav ref="drawer" class="mdc-temporary-drawer__drawer">
-      <slot/>
+  <aside class="mdc-persistent-drawer mdc-typography" :class="classes">
+    <toolbar-spacer persistent v-if="spacer" />
+    <nav ref="drawer" class="mdc-persistent-drawer__drawer">
+      <slot />
     </nav>
   </aside>
 </template>
 
 <style lang="scss">
-  @import "@material/drawer/temporary/mdc-temporary-drawer";
+  @import "@material/drawer/persistent/mdc-persistent-drawer";
 </style>
 
 <script lang="babel">
-import MDCTemporaryDrawerFoundation from '@material/drawer/temporary/foundation'
+import MDCPersistentDrawerFoundation from '@material/drawer/persistent/foundation'
 import * as utils from '@material/drawer/util'
 
 import ToolbarSpacer from './mdc-drawer-toolbar-spacer'
 
 export default {
-  name: 'mdc-temporary-drawer',
+  name: 'mdc-persistent-drawer',
   props: {
     spacer: Boolean
   },
@@ -43,10 +42,10 @@ export default {
     }
   },
   mounted () {
-    const {FOCUSABLE_ELEMENTS, OPACITY_VAR_NAME} = MDCTemporaryDrawerFoundation.strings
+    const {FOCUSABLE_ELEMENTS} = MDCPersistentDrawerFoundation.strings
 
     let vm = this
-    this.foundation = new MDCTemporaryDrawerFoundation({
+    this.foundation = new MDCPersistentDrawerFoundation({
       addClass (className) {
         vm.$set(vm.classes, className, true)
       },
@@ -92,9 +91,6 @@ export default {
           value === null ? null : `translateX(${value}px)`
         )
       },
-      updateCssVariable (value) {
-        vm.$el.style.setProperty(OPACITY_VAR_NAME, value)
-      },
       getFocusableElements () {
         return vm.$refs.drawer.querySelectorAll(FOCUSABLE_ELEMENTS)
       },
@@ -107,9 +103,18 @@ export default {
       makeElementUntabbable (el) {
         el.setAttribute('tabindex', -1)
       },
+      notifyOpen () {
+        vm.$emit('open')
+      },
+      notifyClose () {
+        vm.$emit('close')
+      },
       isRtl () {
         /* global getComputedStyle */
         return getComputedStyle(vm.$el).getPropertyValue('direction') === 'rtl'
+      },
+      isDrawer (el) {
+        return el === vm.$refs.drawer
       }
     })
     this.foundation.init()
