@@ -388,7 +388,7 @@ body {
 }
 
 .drawer-header {
-  background-image: url("static/logo.png");
+  background-image: url("/static/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
