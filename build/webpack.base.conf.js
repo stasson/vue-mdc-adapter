@@ -12,7 +12,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('components')
+      'components': resolve('components')
     }
   },
   module: {
@@ -41,7 +41,7 @@ module.exports = {
           resolve('components'), 
           resolve('src'), 
           resolve('test'), 
-          path.join(__dirname, '../node_modules/@material')
+          resolve('node_modules/@material')
           ]
       },
       {
