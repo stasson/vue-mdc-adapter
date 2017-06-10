@@ -1,7 +1,7 @@
 <template>
   <div id="doc" class="mdc-typography" style="height=100%">
   
-    <mdc-toolbar waterfall>
+    <mdc-toolbar :type="this.toolbarType">
       <mdc-toolbar-row>
         <mdc-toolbar-section align-start >
           <a @click="toggleDrawer" id="menu-icon" href="#" 
@@ -11,6 +11,16 @@
         </mdc-toolbar-section>
         <mdc-toolbar-section align-start >
           <mdc-toolbar-title class="mdc-theme--text-icon-on-primary">Vue MDC Adapter</mdc-toolbar-title>
+        </mdc-toolbar-section>
+        <mdc-toolbar-section align-end >
+          <mdc-menu-anchor class="myAnchor">
+            <mdc-button raised accent @click="$refs.toolbarMenu.show()">Change Toolbar Type</mdc-button>
+            <mdc-menu ref="toolbarMenu" @selected="switchToolbar">
+              <mdc-menu-item>Normal</mdc-menu-item>
+              <mdc-menu-item toolbar="fixed">Fixed</mdc-menu-item>
+              <mdc-menu-item toolbar="waterfall">Waterfall</mdc-menu-item>
+            </mdc-menu>
+          </mdc-menu-anchor>
         </mdc-toolbar-section>
       </mdc-toolbar-row>
     </mdc-toolbar>
@@ -330,6 +340,7 @@ export default {
       password: '',
       picked: null,
       menuMessage: '',
+      toolbarType: 'waterfall',
       drawerType: 'persistent'
     }
   },
@@ -364,6 +375,9 @@ export default {
       this.$refs.snackbar.show({
         message: 'Show Snackbar Native'
       })
+    },
+    switchToolbar (selected) {
+      this.toolbarType = selected.item.getAttribute('toolbar')
     },
     menuSelect (selected) {
       this.menuMessage = `${selected.index}: ${selected.item.textContent}`
