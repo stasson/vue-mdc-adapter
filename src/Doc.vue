@@ -103,7 +103,7 @@
                 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                 commodo consequat.
               </mdc-card-text>
-                <mdc-card-img src="static/logo.png" mult="1.5"></mdc-card-img>
+                <mdc-card-img :src="logo" mult="1.5"></mdc-card-img>
             </mdc-card-horizontal>
             <mdc-card-actions>
               <mdc-card-action @click="alert('action1')">Action1</mdc-card-action>
@@ -123,7 +123,7 @@
         <section id="grid-list" class="doc-section" >
           <mdc-headline>Grid List</mdc-headline>
           <mdc-grid-list with-icon-start with-support-text width=150 class="doc-center">
-            <mdc-grid-tile src="static/logo.png"
+            <mdc-grid-tile :src="logo"
               :title="'Title ' + (index + 1)"
               support-text="support text" cover icon="star_border"
               v-for="(item, index) in 6" :key="index"></mdc-grid-tile>
@@ -309,6 +309,7 @@ export default {
   },
   data () {
     return {
+      logo: require('./assets/logo.png'),
       sections: [],
       checked: false,
       textField: '',
@@ -388,7 +389,7 @@ body {
 }
 
 .drawer-header {
-  background-image: url("/static/logo.png");
+  background-image: url("./assets/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

@@ -6,27 +6,12 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
-var devConfig = {
-  entry: {
-    components: './components/index.js',
-    docs: './src/docs/main.js'
-  },
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
-  }
-}
-
-
 // add hot-reload related code to entry chunks
-Object.keys(devConfig.entry).forEach(function (name) {
-  devConfig.entry[name] = ['./build/dev-client'].concat(devConfig.entry[name])
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+  baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
 
-module.exports = merge(baseWebpackConfig, devConfig, {
+module.exports = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
   },
@@ -42,7 +27,7 @@ module.exports = merge(baseWebpackConfig, devConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/docs/index.html',
+      template: 'index.html',
       inject: true
     }),
     new FriendlyErrorsPlugin()
