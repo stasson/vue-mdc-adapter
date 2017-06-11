@@ -18,12 +18,25 @@
   right: 1rem;
 }
 
+.mdc-fab--fixed {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
 @media(min-width: 1024px) {
-   .mdc-fab--absolute {
+  .mdc-fab--absolute {
+    bottom: 3rem;
+    right: 5rem;
+  }
+
+  .mdc-fab--fixed {
     bottom: 3rem;
     right: 5rem;
   }
 }
+
+
 </style>
 
 
@@ -35,14 +48,16 @@ export default {
     disabled: Boolean,
     mini: Boolean,
     plain: Boolean,
-    absolute: Boolean
+    absolute: Boolean,
+    fixed: Boolean
   },
-  computed: {
-    classes: function () {
-      return {
+  data () {
+    return {
+      classes: {
         'mdc-fab--mini': this.mini,
         'mdc-fab--plain': this.plain,
-        'mdc-fab--absolute': this.absolute
+        'mdc-fab--absolute': this.absolute,
+        'mdc-fab--fixed': this.fixed
       }
     }
   },
@@ -52,12 +67,10 @@ export default {
     }
   },
   mounted () {
-    this.$el.classList.add('mdc-ripple-surface')
-    this.mdc_ripple_ = MDCRipple.attachTo(this.$el)
+    this.mdc_ripple = MDCRipple.attachTo(this.$el)
   },
   beforeDestroy () {
-    this.mdc_ripple_.destroy()
-    delete this.mdc_ripple_
+    this.mdc_ripple.destroy()
   }
 }
 

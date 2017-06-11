@@ -38,21 +38,25 @@
               <mdc-button>Flat</mdc-button>
               <mdc-button primary>Flat</mdc-button>
               <mdc-button accent>Flat</mdc-button>
+              <mdc-button disabled>Flat</mdc-button>
             </div>
             <div>
               <mdc-button dense >Dense</mdc-button>
               <mdc-button dense primary>Dense</mdc-button>
               <mdc-button dense accent>Dense</mdc-button>
+              <mdc-button dense disabled>Dense</mdc-button>
             </div>
             <div>
               <mdc-button compact >Compact</mdc-button>
               <mdc-button compact primary>Compact</mdc-button>
               <mdc-button compact accent>Compact</mdc-button>
+              <mdc-button compact disabled>Compact</mdc-button>
             </div>
             <div>
               <mdc-button raised >Raised</mdc-button>
               <mdc-button raised primary>Raised</mdc-button>
               <mdc-button raised accent>Raised</mdc-button>
+              <mdc-button raised disabled>Raised</mdc-button>
             </div>
           </div>
         </section>
@@ -65,24 +69,29 @@
             <mdc-fab plain>favorite</mdc-fab>
             <mdc-fab mini plain>favorite</mdc-fab>
             <mdc-fab mini disabled>favorite</mdc-fab>
+            <mdc-fab plain fixed @click="scrollToTop">home</mdc-fab>
           </div>
         </section>
       
         <section id="icon-toggle" class="doc-section" >
           <mdc-headline>Icon Toggle</mdc-headline>
           <div class="doc-center">
-            <mdc-icon-toggle
+            <mdc-icon-toggle v-model="toggle"
               :toggle-on="{label: 'Remove from favorites', content: 'favorite'}"
               :toggle-off="{label: 'Add to favorites', content: 'favorite_border'}">
+            Toogle Icon</mdc-icon-toggle>
+            <mdc-icon-toggle primary v-model="toggle"
+              :toggle-on="{label: 'Remove from favorites', content: 'star'}"
+              :toggle-off="{label: 'Add to favorites', content: 'star_border'}">
             ></mdc-icon-toggle>
-            <mdc-icon-toggle primary
-              :toggle-on="{label: 'Remove from favorites', content: 'favorite'}"
-              :toggle-off="{label: 'Add to favorites', content: 'favorite_border'}">
+            <mdc-icon-toggle accent v-model="toggle"
+              :toggle-on="{label: 'Remove from favorites', content: 'cloud_done'}"
+              :toggle-off="{label: 'Add to favorites', content: 'cloud'}">
             ></mdc-icon-toggle>
-            <mdc-icon-toggle accent
-              :toggle-on="{label: 'Remove from favorites', content: 'favorite'}"
-              :toggle-off="{label: 'Add to favorites', content: 'favorite_border'}">
-            ></mdc-icon-toggle>
+            <mdc-icon-toggle disabled
+              :toggle-on="{label: 'Remove from favorites', content: 'mood_bad'}"
+              :toggle-off="{label: 'Add to favorites', content: 'mood'}">
+            Toogle Icon</mdc-icon-toggle>
           </div>
         </section>
       
@@ -90,7 +99,7 @@
         <section id="cards" class="doc-section">
           <mdc-headline>Cards</mdc-headline>
           <mdc-card class="doc-center">
-            <mdc-card-media height=150 src="https://material-components-web.appspot.com/images/16-9.jpg">
+            <mdc-card-media height=150 :src="image.card">
             </mdc-card-media>
               <mdc-card-header>
                 <mdc-card-title large>Title</mdc-card-title>
@@ -103,7 +112,7 @@
                 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                 commodo consequat.
               </mdc-card-text>
-                <mdc-card-img :src="logo" mult="1.5"></mdc-card-img>
+                <mdc-card-img :src="image.tile" mult="1.5"></mdc-card-img>
             </mdc-card-horizontal>
             <mdc-card-actions>
               <mdc-card-action @click="alert('action1')">Action1</mdc-card-action>
@@ -123,7 +132,7 @@
         <section id="grid-list" class="doc-section" >
           <mdc-headline>Grid List</mdc-headline>
           <mdc-grid-list with-icon-start with-support-text width=150 class="doc-center">
-            <mdc-grid-tile :src="logo"
+            <mdc-grid-tile :src="image.tile"
               :title="'Title ' + (index + 1)"
               support-text="support text" cover icon="star_border"
               v-for="(item, index) in 6" :key="index"></mdc-grid-tile>
@@ -309,9 +318,14 @@ export default {
   },
   data () {
     return {
-      logo: require('./assets/logo.png'),
+      image: {
+        card: require('./assets/card-16-9.jpg'),
+        tile: require('./assets/tile-1-1.jpg'),
+        logo: require('./assets/logo.png')
+      },
       sections: [],
       checked: false,
+      toggle: false,
       textField: '',
       password: '',
       picked: null,
@@ -362,6 +376,9 @@ export default {
     },
     alert (value) {
       window.alert(value)
+    },
+    scrollToTop () {
+      window.scrollTo(0, 0)
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <button class="mdc-button mdc-ripple-surface" 
+  <button class="mdc-button" 
     :class="classes" :disabled="disabled" 
     @click="dispatchEvent">
     <slot>
@@ -25,9 +25,9 @@ export default {
     raised: Boolean,
     compact: Boolean
   },
-  computed: {
-    classes: function () {
-      return {
+  data () {
+    return {
+      classes: {
         'mdc-button--primary': this.primary,
         'mdc-button--accent': this.accent,
         'mdc-button--dense': this.dense,
