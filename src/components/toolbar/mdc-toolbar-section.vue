@@ -16,9 +16,9 @@ export default {
     'align-end': Boolean,
     'shrink-to-fit': Boolean
   },
-  data () {
-    return {
-      classes: {
+  computed: {
+    classes () {
+      return {
         'mdc-toolbar__section--align-start': this.alignStart,
         'mdc-toolbar__section--align-end': this.alignEnd,
         'mdc-toolbar__section--shrink-to-fit': this.shrinkToFit

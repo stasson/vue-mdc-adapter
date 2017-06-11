@@ -1,13 +1,13 @@
 <template>
   <header>
     <!--Toolbar-->
-    <div ref="root" :class="rootClasses" :style="rootStyles">
+    <div ref="root" :class="classes" :style="rootStyles">
         <slot></slot>
     </div>
     <!-- Fixed Adjust Element-->
     <div ref="fixed-adjust" class="mdc-toolbar-fixed-adjust" 
       :style="adjustStyles"
-      v-if="fixed || waterfall || fixedLastrow"></div>
+      v-if="isFixed"></div>
   </header>
 </template>
 
@@ -28,20 +28,51 @@
       'waterfall': Boolean,
       'fixed-lastrow': Boolean,
       'flexible': Boolean,
-      'flexible-default': { type: Boolean, default: true }
+      'flexible-default': { type: Boolean, default: true },
+      'type': String
+    },
+    computed: {
+      // by computing each of the classes individually, it will
+      // improve the performance of the `classes` computation
+      // otherwise, it would unnecessarily recompute every
+      // single one of classes every time `classes` is accessed
+      isFixed () {
+        return this.fixed ||
+                this.waterfall ||
+                this.fixedLastrow ||
+                this.type === 'fixed' ||
+                this.type === 'waterfall' ||
+                this.type === 'fixed-lastrow'
+      },
+      isWaterfall () {
+        return this.waterfall || this.type === 'waterfall'
+      },
+      isFixedLastrowOnly () {
+        return this.fixedLastrow || this.type === 'fixed-lastrow'
+      },
+      isFlexible () {
+        return this.flexible || this.type === 'flexible'
+      },
+      hasFlexibleDefaultBehavior () {
+        return (this.flexible || this.type === 'flexible') &&
+        (this.flexibleDefault || this.type === 'flexible-default')
+      },
+      classes () {
+        return {
+          'mdc-toolbar': true,
+          'mdc-toolbar--fixed': this.isFixed,
+          'mdc-toolbar--waterfall': this.isWaterfall,
+          'mdc-toolbar--fixed-lastrow-only': this.isFixedLastrowOnly,
+          'mdc-toolbar--flexible': this.isFlexible,
+          'mdc-toolbar--flexible-default-behavior': this.hasFlexibleDefaultBehavior,
+          ...this.rootClasses // spread the classes from data, so changes by the
+                              // foundation are reflected in the element
+        }
+      }
     },
     data () {
       return {
-        rootClasses: {
-          'mdc-toolbar': true,
-          'mdc-toolbar--fixed': this.fixed || this.waterfall ||
-                                  this.fixedLastrow,
-          'mdc-toolbar--waterfall': this.waterfall,
-          'mdc-toolbar--fixed-lastrow-only': this.fixedLastrow,
-          'mdc-toolbar--flexible': this.flexible,
-          'mdc-toolbar--flexible-default-behavior': this.flexible &&
-                                                      this.flexibleDefault
-        },
+        rootClasses: {},
         rootStyles: {},
         adjustStyles: {
           height: '0.1px' // to avoid top margin collapse with :after el
