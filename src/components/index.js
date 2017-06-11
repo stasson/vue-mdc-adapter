@@ -1,8 +1,6 @@
 //
 // vue PlugIn
 //
-import '@material/typography/mdc-typography.scss'
-import '@material/theme/mdc-theme.scss'
 
 import mdcButton from './button'
 import mdcCard from './card'

@@ -18,10 +18,7 @@
     <div class="drawer-layout">
       <div>
         <component :is="drawerComponent" ref="drawer" >
-          <mdc-drawer-header :type="drawerType" class="drawer-header"
-              :class="{'mdc-theme--primary-bg': drawerType==='temporary'}"
-                      >
-          </mdc-drawer-header>
+          <mdc-drawer-header :type="drawerType" class="drawer-header"></mdc-drawer-header>
            <mdc-list>
              <a class="mdc-list-item" v-for="item in sections" :key="item.id"
              :href="'#'+item.id"
