@@ -1,6 +1,6 @@
 {
   "name": "vue-mdc-adapter",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Vue wrapper arround mdc",
   "keywords": [
     "vue",
