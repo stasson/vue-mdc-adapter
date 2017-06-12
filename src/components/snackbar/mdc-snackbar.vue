@@ -21,13 +21,17 @@ import { getCorrectEventName } from '@material/animation'
 
 export default {
   props: {
-    event: String,
-    eventSource: {
+    event: {
+      type: String,
+      default: 'show-snackbar'
+    },
+    'event-source': {
       required: false,
       default () {
         return this.$root
       }
-    }
+    },
+    'dismisses-on-action': {type: Boolean, default: true}
   },
   data () {
     return {
@@ -37,8 +41,15 @@ export default {
       hidden: false,
       actionHidden: false,
       animHandlers: [],
-      actionClickHandlers: [],
-      foundation: null
+      actionClickHandlers: []
+    }
+  },
+  methods: {
+    actionClicked (event) {
+      this.actionClickHandlers.forEach((h) => h(event))
+    },
+    show (data) {
+      this.foundation.show(data)
     }
   },
   mounted () {
@@ -90,17 +101,10 @@ export default {
         this.foundation.show(data)
       })
     }
+    this.foundation.setDismissOnAction(this.dismissesOnAction)
   },
   beforeDestroy () {
     this.foundation.destroy()
-  },
-  methods: {
-    actionClicked (event) {
-      this.actionClickHandlers.forEach((h) => h(event))
-    },
-    show (data) {
-      this.foundation.show(data)
-    }
   }
 }
 </script>
