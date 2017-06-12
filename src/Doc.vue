@@ -351,15 +351,12 @@ export default {
       })
     },
     showSnackbar (event) {
-      console.log('show snackbar')
-      this.$refs.snackbar.show({
-        message: 'Snackbar'
-      })
-    },
-    showSnackbarNative (event) {
-      console.log('show snackbar')
-      this.$refs.snackbar.show({
-        message: 'Show Snackbar Native'
+      this.$root.$emit('show-snackbar', {
+        message: 'This is a snackbar',
+        actionText: 'action',
+        actionHandler () {
+          window.alert('snackbar action')
+        }
       })
     },
     menuSelect (selected) {
