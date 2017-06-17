@@ -141,7 +141,11 @@
       
           <mdc-subheading>Checkbox</mdc-subheading>
           <div class="doc-center">
-            <p><mdc-checkbox v-model="checked" :label="checked?'checked':'unchecked'"></mdc-checkbox></p>
+            <p><mdc-checkbox v-model="checked" :indeterminate.sync="indeterminate"
+                :label="checked?'checked':'unchecked'"
+                ></mdc-checkbox>
+              <mdc-button dense raised @click="makeIndeterminate">make indeterminate</mdc-button>
+            </p>
             <p><mdc-checkbox disabled label="Disabled"></mdc-checkbox></p>
             <p><br></p>
           </div>
@@ -327,7 +331,8 @@ export default {
       password: '',
       picked: null,
       menuMessage: '',
-      drawerType: 'persistent'
+      drawerType: 'persistent',
+      indeterminate: false
     }
   },
   mounted () {
@@ -373,6 +378,9 @@ export default {
     },
     scrollToTop () {
       window.scrollTo(0, 0)
+    },
+    makeIndeterminate () {
+      this.indeterminate = true
     }
   }
 }
