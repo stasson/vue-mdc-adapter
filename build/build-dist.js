@@ -8,14 +8,15 @@ var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
-var webpackConfig = require('./webpack.dist.conf')
+var webpackDist = require('./webpack.dist.conf')
+var webpackCDN = require('./webpack.cdn.conf')
 
 var spinner = ora('building distribution...')
 spinner.start()
 
 rm(path.join(path.resolve(__dirname, '../dist'),  '*'), err => {
   if (err) throw err
-  webpack(webpackConfig, function (err, stats) {
+  webpack( [webpackDist, webpackCDN], function (err, stats) {
     spinner.stop()
     if (err) throw err
     process.stdout.write(stats.toString({

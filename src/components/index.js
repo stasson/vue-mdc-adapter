@@ -23,7 +23,7 @@ import mdcTexfield from './textfield'
 import mdcToolbar from './toolbar'
 import mdcTypography from './typography'
 
-export default {
+const plugin = {
   install (vm) {
     vm.use(mdcButton)
     vm.use(mdcCard)
@@ -46,4 +46,17 @@ export default {
     vm.use(mdcToolbar)
     vm.use(mdcTypography)
   }
+}
+
+export default plugin
+
+// Auto-install
+let _Vue = null
+if (typeof window !== 'undefined') {
+  _Vue = window.Vue
+} else if (typeof global !== 'undefined') {
+  _Vue = global.Vue
+}
+if (_Vue) {
+  _Vue.use(plugin)
 }
