@@ -1,27 +1,31 @@
 // Model
 // ref="root" on the mdc root element
 // data object contains a classes & styles element
+//
+// let adapter = new VueMDCAdapter(vm)
+// let options = {
+//   addClass: (className) => adapter.addClass(className),
+//   removeClass: (className) => adapter.removeClass(className),
+//   hasClass: (className) => adapter.hasClass(className),
+//   updateCssVariable: (varName, value) => adapter.updateCssVariable(varName, value),
+//   registerInteractionHandler: (evt, handler) => adapter.registerInteractionHandler(evt, handler),
+//   deregisterInteractionHandler: (evt, handler) => adapter.deregisterInteractionHandler(evt, handler),
+//   forceLayout: () => adapter.forceLayout(),
+//   isAttachedToDOM: () => adapter.isAttachedToDOM()
+// }
 
 export default class VueMDCAdapter {
   constructor (vm) {
     this.vm = vm
   }
 
-  static create (vm, options) {
-    let adapter = new VueMDCAdapter(vm)
-    return Object.assign({
-      addClass: (className) => adapter.addClass(className),
-      removeClass: (className) => adapter.removeClass(className),
-      hasClass: (className) => adapter.hasClass(className),
-      updateCssVariable: (varName, value) => adapter.updateCssVariable(varName, value),
-      registerInteractionHandler: (evt, handler) => adapter.registerInteractionHandler(evt, handler),
-      deregisterInteractionHandler: (evt, handler) => adapter.deregisterInteractionHandler(evt, handler)
-    }, options)
-  }
-
   // assumes ref="root" on the mdc root element
   get root () {
     return this.vm.$refs.root
+  }
+
+  get control () {
+    return this.vm.$refs.control
   }
 
   // assumes a data 'classes' property on the root element
@@ -44,13 +48,29 @@ export default class VueMDCAdapter {
     this.vm.$set(this.vm.styles, varName, value)
   }
 
-  // assumes ref="root" on the mdc root element
-  registerInteractionHandler (evt, handler) {
-    this.root.addEventListener(evt, handler)
+  forceLayout () {
+    // TODO check wether that's really what we want to do ...
+    this.vm.$forceUpdate()
+    return this.root.offsetWidth
   }
 
-  // assumes ref="root" on the mdc root element
+  isAttachedToDOM () {
+    Boolean(this.vm.$el.parentNode)
+  }
+
+  registerInteractionHandler (evt, handler) {
+    this.vm.$el.addEventListener(evt, handler)
+  }
+
   deregisterInteractionHandler (evt, handler) {
-    this.root.removeEventListener(evt, handler)
+    this.vm.$el.removeEventListener(evt, handler)
+  }
+
+  registerChangeHandler (handler) {
+    this.vm.$el.addEventListener('change', handler)
+  }
+
+  deregisterChangeHandler (handler) {
+    this.vm.$el.removeEventListener('change', handler)
   }
 }

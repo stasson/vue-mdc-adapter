@@ -44,5 +44,5 @@ var vm = new Vue({
 
 
 ### Reference
-- https://material-components-web.appspot.com/checkbox.html
+- https://material.io/components/web/catalog/input-controls/checkboxes/
 - https://material.io/guidelines/components/selection-controls.html#selection-controls-checkbox

@@ -10,7 +10,7 @@
 </style>
 
 <script>
-import {VueMDCRippleAdapter} from '../base'
+import {VueMDCRipple} from '../base'
 
 export default {
   name: 'mdc-button',
@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted () {
-    this.ripple = new VueMDCRippleAdapter(this).ripple
+    this.ripple = new VueMDCRipple(this)
     this.ripple.init()
   },
   beforeDestroy () {

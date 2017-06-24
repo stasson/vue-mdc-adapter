@@ -1,10 +1,10 @@
 <template>
 <div :class=formFieldClasses>
-  <div ref="checkbox" class="mdc-checkbox" 
-   :class="checkboxClasses" :style="styles">
-    <input ref="input" :id="_uid" type="checkbox"
-       class="mdc-checkbox__native-control"
-       @change="checkboxChanged"  :value="value" />
+  <div ref="root" class="mdc-checkbox" 
+   :class="classes" :style="styles">
+    <input ref="control" :id="_uid" type="checkbox"
+       class="mdc-checkbox__native-control" :value="value" 
+       @change="onChange"/>
     <div class="mdc-checkbox__background">
       <svg class="mdc-checkbox__checkmark"
            viewBox="0 0 24 24">
@@ -32,8 +32,8 @@
 /* global HTMLElement */
 import MDCCheckboxFoundation from '@material/checkbox/foundation'
 import {getCorrectEventName} from '@material/animation'
-import MDCRippleFoundation from '@material/ripple/foundation'
-import {getMatchesProperty, supportsCssVariables} from '@material/ripple/util'
+
+import {VueMDCAdapter, VueMDCRipple} from '../base'
 
 export default {
   model: {
@@ -51,8 +51,7 @@ export default {
   data () {
     return {
       styles: {},
-      checkboxClasses: {},
-      changeHandlers: []
+      classes: {}
     }
   },
   computed: {
@@ -65,6 +64,7 @@ export default {
   },
   watch: {
     'checked' (value) {
+      console.log('setChecked: ' + value)
       this.foundation.setChecked(value)
     },
     'disabled' (value) {
@@ -76,63 +76,32 @@ export default {
   },
   mounted () {
     let vm = this
+    let adapter = new VueMDCAdapter(vm)
+
     this.foundation = new MDCCheckboxFoundation({
-      addClass (className) {
-        vm.$set(vm.checkboxClasses, className, true)
+      addClass: (className) => adapter.addClass(className),
+      removeClass: (className) => adapter.removeClass(className),
+      registerAnimationEndHandler: (handler) => {
+        adapter.root.addEventListener(getCorrectEventName(window, 'animationend'), handler)
       },
-      removeClass (className) {
-        vm.$delete(vm.checkboxClasses, className)
+      deregisterAnimationEndHandler: (handler) => {
+        adapter.root.removeEventListener(getCorrectEventName(window, 'animationend'), handler)
       },
-      registerAnimationEndHandler (handler) {
-        vm.$refs.checkbox.addEventListener(getCorrectEventName(window, 'animationend'), handler)
-      },
-      deregisterAnimationEndHandler (handler) {
-        vm.$refs.checkbox.removeEventListener(getCorrectEventName(window, 'animationend'), handler)
-      },
-      registerChangeHandler (handler) {
-        vm.changeHandlers.push(handler)
-      },
-      deregisterChangeHandler (handler) {
-        let index = vm.changeHandlers.indexOf(handler)
-        if (index >= 0) {
-          vm.changeHandlers.splice(index, 1)
-        }
-      },
-      getNativeControl () {
-        return vm.$refs.input
-      },
-      forceLayout () {
-        return vm.$forceUpdate()
-      },
-      isAttachedToDOM () {
-        Boolean(vm.$el.parentNode)
-      }
+      getNativeControl: () => adapter.control,
+      forceLayout: () => adapter.forceLayout(),
+      isAttachedToDOM: () => adapter.isAttachedToDOM()
     })
+
     this.foundation.setChecked(this.checked)
     this.foundation.setDisabled(this.disabled)
     this.foundation.setIndeterminate(this.indeterminate)
     this.foundation.init()
 
-    this.ripple = new MDCRippleFoundation({
-      browserSupportsCssVars: () => supportsCssVariables(window),
+    this.ripple = new VueMDCRipple(vm, {
       isUnbounded: () => true,
-      isSurfaceActive: () => vm.$refs.input[getMatchesProperty(HTMLElement.prototype)](':active'),
-      isSurfaceDisabled: () => vm.disabled,
-      addClass (className) {
-        vm.$set(vm.checkboxClasses, className, true)
-      },
-      removeClass (className) {
-        vm.$delete(vm.checkboxClasses, className)
-      },
-      registerInteractionHandler: (type, handler) => vm.$refs.input.addEventListener(type, handler),
-      deregisterInteractionHandler: (type, handler) => vm.$refs.input.removeEventListener(type, handler),
-      registerResizeHandler: (handler) => window.addEventListener('resize', handler),
-      deregisterResizeHandler: (handler) => window.removeEventListener('resize', handler),
-      updateCssVariable: (varName, value) => {
-        vm.styles[varName] = value
-      },
+      isSurfaceActive: () => VueMDCRipple.isSurfaceActive(adapter.control),
       computeBoundingRect: () => {
-        const {left, top} = vm.$refs.checkbox.getBoundingClientRect()
+        const {left, top} = adapter.control.getBoundingClientRect()
         const DIM = 40
         return {
           top,
@@ -142,8 +111,7 @@ export default {
           width: DIM,
           height: DIM
         }
-      },
-      getWindowPageOffset: () => ({x: window.pageXOffset, y: window.pageYOffset})
+      }
     })
     this.ripple.init()
   },
@@ -152,8 +120,7 @@ export default {
     this.foundation.destroy()
   },
   methods: {
-    checkboxChanged (event) {
-      this.changeHandlers.forEach((h) => h(event))
+    onChange (event) {
       this.$emit('update:indeterminate', this.foundation.isIndeterminate())
       this.$emit('change', this.foundation.isChecked())
     }
