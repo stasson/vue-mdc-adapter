@@ -64,7 +64,6 @@ export default {
   },
   watch: {
     'checked' (value) {
-      console.log('setChecked: ' + value)
       this.foundation.setChecked(value)
     },
     'disabled' (value) {

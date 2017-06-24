@@ -1,7 +1,9 @@
 <template>
-<div :class="{'mdc-form-field': label, 'mdc-form-field--align-end': label && alignEnd}">
-  <div class="mdc-switch" :class="{ 'mdc-switch--disabled': disabled }">
-    <input type="checkbox" :id="_uid" class="mdc-switch__native-control" 
+<div :class="formFieldClasses">
+  <div class="mdc-switch" ref=root 
+    :class="{ 'mdc-switch--disabled': disabled }">
+    <input ref="control" type="checkbox" :id="_uid" 
+      class="mdc-switch__native-control" 
       @change="onChanged" :checked="checked" :disabled="disabled"/>
     <div class="mdc-switch__background">
       <div class="mdc-switch__knob"></div>
@@ -20,22 +22,36 @@
 <script lang="babel">
 
 export default {
+  name: 'mdc-switch',
   model: {
     prop: 'checked',
     event: 'change'
   },
   props: {
     'checked': Boolean,
-    'true-value': { type: null, default () { return true } },
-    'false-value': { type: null, default () { return false } },
     'label': String,
     'alignEnd': Boolean,
-    'disabled': Boolean
+    'disabled': Boolean,
+    'value': { type: String, default () { return 'on' } }
+  },
+  data () {
+    return {
+      formFieldClasses: {
+        'mdc-form-field': this.label,
+        'mdc-form-field--align-end': this.label && this.alignEnd
+      }
+    }
+  },
+  watch: {
+    'disabled' (value) {
+      this.foundation.setDisabled(value)
+    }
+  },
+  computed: {
   },
   methods: {
     onChanged (event) {
-      this.$emit('change',
-        event.target.checked ? this.trueValue : this.falseValue)
+      this.$emit('change', event.target.checked)
     }
   }
 }
