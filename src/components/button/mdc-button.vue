@@ -1,22 +1,19 @@
 <template>
-  <button class="mdc-button" 
-    :class="classes" :disabled="disabled" 
-    @click="dispatchEvent">
-    <slot>
-    </slot>
+  <button ref="root" :class="classes" :style="styles" :disabled="disabled" 
+    @click="$emit('click')">
+    <slot />
   </button>
 </template>
-
 
 <style lang="scss">
   @import '@material/button/mdc-button';
 </style>
 
-
 <script>
-import {MDCRipple} from '@material/ripple'
+import {VueMDCRippleAdapter} from '../base'
 
 export default {
+  name: 'mdc-button',
   props: {
     disabled: Boolean,
     primary: Boolean,
@@ -28,24 +25,22 @@ export default {
   data () {
     return {
       classes: {
+        'mdc-button': true,
         'mdc-button--primary': this.primary,
         'mdc-button--accent': this.accent,
         'mdc-button--dense': this.dense,
         'mdc-button--raised': this.raised,
         'mdc-button--compact': this.compact
-      }
-    }
-  },
-  methods: {
-    dispatchEvent (event) {
-      this.$emit(event.type)
+      },
+      styles: {}
     }
   },
   mounted () {
-    this.mdc_ripple_ = MDCRipple.attachTo(this.$el)
+    this.ripple = new VueMDCRippleAdapter(this).ripple
+    this.ripple.init()
   },
   beforeDestroy () {
-    this.mdc_ripple_.destroy()
+    this.ripple.destroy()
   }
 }
 
