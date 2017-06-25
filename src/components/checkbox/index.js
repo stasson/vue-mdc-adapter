@@ -1,9 +1,9 @@
-import VueMdcCheckbox from './mdc-checkbox'
+import VueMDCCheckbox from './mdc-checkbox'
 
-export {VueMdcCheckbox}
+export {VueMDCCheckbox}
 
 export default {
   install (vm) {
-    vm.component('mdc-checkbox', VueMdcCheckbox)
+    vm.component('mdc-checkbox', VueMDCCheckbox)
   }
 }

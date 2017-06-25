@@ -31,30 +31,42 @@
         <section id="buttons" class="doc-section">
           <mdc-headline>Buttons</mdc-headline>
           <div class="doc-center">
-            <div>
+            <p>
               <mdc-button>Flat</mdc-button>
               <mdc-button primary>Flat</mdc-button>
               <mdc-button accent>Flat</mdc-button>
               <mdc-button disabled>Flat</mdc-button>
-            </div>
-            <div>
+            </p>
+            <p>
               <mdc-button dense >Dense</mdc-button>
               <mdc-button dense primary>Dense</mdc-button>
               <mdc-button dense accent>Dense</mdc-button>
               <mdc-button dense disabled>Dense</mdc-button>
-            </div>
-            <div>
+            </p>
+            <p>
               <mdc-button compact >Compact</mdc-button>
               <mdc-button compact primary>Compact</mdc-button>
               <mdc-button compact accent>Compact</mdc-button>
               <mdc-button compact disabled>Compact</mdc-button>
-            </div>
-            <div>
+            </p>
+            <p>
               <mdc-button raised >Raised</mdc-button>
               <mdc-button raised primary>Raised</mdc-button>
               <mdc-button raised accent>Raised</mdc-button>
               <mdc-button raised disabled>Raised</mdc-button>
-            </div>
+            </p>
+            <p>
+              <mdc-button dense raised >Dense</mdc-button>
+              <mdc-button dense raised primary>Dense</mdc-button>
+              <mdc-button dense raised accent>Dense</mdc-button>
+              <mdc-button dense raised disabled>Dense</mdc-button>
+            </p>
+            <p>
+              <mdc-button compact raised >Compact</mdc-button>
+              <mdc-button compact raised primary>Compact</mdc-button>
+              <mdc-button compact raised accent>Compact</mdc-button>
+              <mdc-button compact raised disabled>Compact</mdc-button>
+            </p>
           </div>
         </section>
       
@@ -144,7 +156,8 @@
             <p><mdc-checkbox v-model="checked" :indeterminate.sync="indeterminate"
                 :label="checked?'checked':'unchecked'"
                 ></mdc-checkbox>
-              <mdc-button dense raised @click="makeIndeterminate">make indeterminate</mdc-button>
+              <br>
+              <mdc-button dense @click="makeIndeterminate">make indeterminate</mdc-button>
             </p>
             <p><mdc-checkbox disabled label="Disabled"></mdc-checkbox></p>
             <p><br></p>
@@ -156,31 +169,40 @@
             <p><mdc-switch disabled label="Disabled"></mdc-switch></p>
             <p><br></p>
           </div>
-        
-          <mdc-subheading>Textfield</mdc-subheading>
-          <div class="doc-center">
-            <p><mdc-textfield v-model="textField" label="Simple Textfield"></mdc-textfield></p>
-            <p v-if="textField">{{ textField }}</p>
-            <p><mdc-textfield label="Textfield with help text" helptext="Help text..."></mdc-textfield></p>
-            <p><mdc-textfield label="Disabled text field" disabled></mdc-textfield></p>
-            <p><mdc-textfield type="password" label="Password"
-            required minlength=8 maxlength=10
-            helptext="passord must be 8 to 10 characters"
-            helptext-persistent helptext-validation
-            v-model="password"></mdc-textfield></p>
-            <p><br></p>
-          </div>
-        
+
           <mdc-subheading>Radio</mdc-subheading>
           <div class="doc-center">
-            <mdc-radio label="Radio1" name="radios" value="radio1" v-model="picked" checked></mdc-radio>
-            <mdc-radio label="Radio2" name="radios" value="radio2" v-model="picked"></mdc-radio>
-            <p>{{ picked }}</p>
+            <mdc-radio label="Radio1" name="radios" v-model="picked" checked></mdc-radio>
+            <mdc-radio label="Radio2" name="radios" v-model="picked"></mdc-radio>
+            <br>
+            <mdc-button dense >{{ picked }}</mdc-button>
             <p><br></p>
           </div>
           
+          <mdc-subheading>Textfield</mdc-subheading>
+          <div class="doc-center">
+            <mdc-textfield v-model="textField" 
+              label="Simple textfield"></mdc-textfield>
+            <mdc-textfield v-model="textField" 
+              label="with help text" 
+              helptext="Help text..."></mdc-textfield>
+            <p><mdc-textfield 
+              label="disabled" disabled></mdc-textfield></p>
+            <p><mdc-textfield type="password" label="Password"
+                required minlength=8 maxlength=10
+                helptext="passord must be 8 to 10 characters"
+                helptext-persistent helptext-validation
+                v-model="password"></mdc-textfield></p>
+            <p><mdc-textfield v-model="textField" multiline 
+                label="multiline" ></mdc-textfield></p>
+            <p><mdc-textfield v-model="textField" fullwidth
+                label="fullwidth"
+                helptext="Help text..." ></mdc-textfield></p>
+          </div>
+        
         </section>
       
+
         <section id="layout-grid" class="doc-section" >
           <mdc-headline>Layout Grid</mdc-headline>
           <mdc-layout-grid class=grid>

@@ -1,9 +1,9 @@
-import VueMdcButton from './mdc-button'
+import VueMDCButton from './mdc-button'
 
-export {VueMdcButton}
+export {VueMDCButton}
 
 export default {
   install (vm) {
-    vm.component('mdc-button', VueMdcButton)
+    vm.component('mdc-button', VueMDCButton)
   }
 }

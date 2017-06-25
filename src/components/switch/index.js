@@ -1,9 +1,9 @@
-import VueMdcSwitch from './mdc-switch'
+import VueMDCSwitch from './mdc-switch'
 
-export {VueMdcSwitch}
+export {VueMDCSwitch}
 
 export default {
   install (vm) {
-    vm.component('mdc-switch', VueMdcSwitch)
+    vm.component('mdc-switch', VueMDCSwitch)
   }
 }
