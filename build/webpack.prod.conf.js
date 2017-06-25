@@ -13,12 +13,14 @@ var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
 
-var webpackConfig = merge(baseWebpackConfig, {
-  module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
-      extract: true
-    })
+var styleOptions = {
+  sourceMap: config.build.productionSourceMap,
+  extract: true
+}
+
+var webpackConfig = merge(baseWebpackConfig(styleOptions), {
+  entry: {
+    app: './src/main.js'
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
