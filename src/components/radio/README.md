@@ -18,7 +18,7 @@ var vm = new Vue({
 
 ### props
 
-| props | Type | binding | Description |
+| props | Type | Default | Description |
 |-------|------|---------|-------------|
 |`label`| String|static| radio label |
 |`align-end`| Boolean|| align the radio after the label |
@@ -26,7 +26,7 @@ var vm = new Vue({
 |`value`|String| `label`| radio value, defaults to label value if any |
 |`checked`|Boolean|| whether this radio is selected by default |
 |`:disabled`| Boolean|| whether the radio is disabled |
-|`v-model`| Boolean|| tracks selected radio's value |
+|`v-model`| String || tracks selected radio's value |
 
 ### Reference
 - https://material.io/components/web/catalog/input-controls/radio-buttons

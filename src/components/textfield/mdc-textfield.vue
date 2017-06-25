@@ -1,35 +1,47 @@
 <template>
-<div>
+  <div>
+    <!--multiline case-->
+    <div div ref="root" :class="rootClasses" v-if="multiline">
+      <textarea ref="input" :class="inputClasses"
+        :value="value" @input="updateValue($event.target.value)"
+        :rows="rows" :cols="cols" 
+        :minlength="minlength" :maxlength="maxlength"
+        :disabled="disabled" :aria-controls="'help-'+_uid"
+        ></textarea>
+      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
+        {{ label }}
+      </label>
+    </div>
 
-  <div ref="root" :class="rootClasses" v-if="fullwidth">
-    <input ref="input" :class="inputClasses" :type="type" 
-      :value="value" @input="updateValue($event.target.value)"
-      :required="required" 
-      :minlength="minlength" :maxlength="maxlength"
-      :disabled="disabled" :aria-controls="'help-'+_uid"
-      :placeholder="label"
-      :aria-label="label" >
+    <!--fullwidth case: no label -->
+    <div ref="root" :class="rootClasses" v-else-if="fullwidth">
+      <input ref="input" :class="inputClasses" :type="type" 
+        :value="value" @input="updateValue($event.target.value)"
+        :required="required" 
+        :minlength="minlength" :maxlength="maxlength"
+        :disabled="disabled" :aria-controls="'help-'+_uid"
+        :placeholder="label"
+        :aria-label="label" >
+    </div>
 
+    <!--default case -->
+    <div ref="root" :class="rootClasses" v-else>
+      <input ref="input" :class="inputClasses" :type="type" :id="_uid"
+        :value="value" @input="updateValue($event.target.value)"
+        :required="required" :size="size"
+        :minlength="minlength" :maxlength="maxlength"
+        :disabled="disabled" :aria-controls="'help-'+_uid">
+      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
+        {{ label }}
+      </label>
+    </div>
+  
+    <p ref="help" :id="'help-'+_uid" :class="helpClasses"
+      aria-hidden="true" v-if="helptext">
+      {{ helptext  }}
+    </p>
+  
   </div>
-  <div ref="root" :class="rootClasses" v-else>
-
-    <input ref="input" :class="inputClasses" :type="type" :id="_uid"
-      :value="value" @input="updateValue($event.target.value)"
-      :required="required" :size="size"
-      :minlength="minlength" :maxlength="maxlength"
-      :disabled="disabled" :aria-controls="'help-'+_uid">
-
-    <label ref="label" :class="labelClasses" :for="_uid"  v-if="label">
-      {{ label }}
-    </label>
-
-
-  </div>
-  <p ref="help" :id="'help-'+_uid" :class="helpClasses"
-    aria-hidden="true" v-if="helptext">
-    {{ helptext  }}
-  </p>
-</div>
 </template>
 
 <style lang="scss">
@@ -60,7 +72,10 @@ export default {
     'minlength': { type: [Number, String], default: 0 },
     'maxlength': { type: [Number, String], default: -1 },
     'size': { type: [Number, String], default: 20 },
-    'fullwidth': Boolean
+    'fullwidth': Boolean,
+    'multiline': Boolean,
+    'rows': { type: [Number, String], default: 8 },
+    'cols': { type: [Number, String], default: 40 }
   },
   data: function () {
     return {
@@ -68,10 +83,8 @@ export default {
       rootClasses: {
         'mdc-textfield': true,
         'mdc-textfield--upgraded': true,
-        'mdc-textfield__label--float-above': this.value,
-        // TODO: add support for multiline
-        // 'mdc-textfield--multiline': this.multiline,
-        'mdc-textfield--fullwidth': this.fullwidth
+        'mdc-textfield--fullwidth': this.fullwidth,
+        'mdc-textfield--multiline': this.multiline
       },
       inputClasses: {
         'mdc-textfield__input': true
@@ -89,6 +102,13 @@ export default {
   methods: {
     updateValue (value) {
       this.$emit('input', value)
+    }
+  },
+  computed: {
+    labelClassesUpgraded () {
+      return Object.assign(this.labelClasses, {
+        'mdc-textfield__label--float-above': this.value
+      })
     }
   },
   mounted () {
