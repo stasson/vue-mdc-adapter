@@ -1,12 +1,14 @@
 <template>
 <div :class="formFieldClasses">
-  <div ref="radio" :class="radioClasses">
-    <input ref="input" :class="inputClasses" type="radio" :id="_uid" :name="name"
-      @change="updateValue()" :value="tag">
+  <div ref="root" class="mdc-radio" :class="classes" :style="styles">
+    <input type="radio" ref="control" :id="_uid" :name="name" 
+      class="mdc-radio__native-control" @change="sync">
+  
     <div class="mdc-radio__background">
       <div class="mdc-radio__outer-circle"></div>
       <div class="mdc-radio__inner-circle"></div>
     </div>
+  
   </div>
   <label :for="_uid" v-if="label">{{ label }}</label>
 </div>
@@ -19,8 +21,10 @@
 
 <script lang="babel">
 import MDCRadioFoundation from '@material/radio/foundation'
+import {VueMDCAdapter, VueMDCRipple} from '../base'
 
 export default {
+  name: 'mdc-radio',
   model: {
     prop: 'picked',
     event: 'change'
@@ -30,55 +34,70 @@ export default {
     'value': String,
     'checked': Boolean,
     'label': String,
-    'alignEnd': Boolean,
+    'align-end': Boolean,
     'disabled': Boolean
   },
   data () {
     return {
-      tag: this.value ? this.value : this.label,
+      classes: {},
+      styles: {},
       formFieldClasses: {
         'mdc-form-field': this.label,
         'mdc-form-field--align-end': this.label && this.alignEnd
-      },
-      radioClasses: {
-        'mdc-radio': true
-      },
-      inputClasses: {
-        'mdc-radio__native-control': true
-      },
-      foundation: null,
-      ripple: null
-    }
-  },
-  methods: {
-    updateValue () {
-      this.$emit('change', this.tag)
+      }
     }
   },
   mounted () {
-    let vm = this
+    let adapter = new VueMDCAdapter(this)
+
+    // add foundation
     this.foundation = new MDCRadioFoundation({
-      addClass (className) {
-        vm.$set(vm.radioClasses, className, true)
-      },
-      removeClass (className) {
-        vm.$delete(vm.radioClasses, className)
-      },
-      getNativeControl () {
-        return vm.$refs.input
-      }
+      addClass: (className) => adapter.addClass(className),
+      removeClass: (className) => adapter.removeClass(className),
+      getNativeControl: () => adapter.control
     })
     this.foundation.init()
+    this.foundation.setValue(this.value ? this.value : this.label)
     this.foundation.setDisabled(this.disabled)
     this.foundation.setChecked(this.checked)
-    if (this.checked) this.updateValue()
+
+    // add ripple
+    this.ripple = new VueMDCRipple(this, {
+      isUnbounded: () => true,
+      isSurfaceActive: () => false,
+      computeBoundingRect: () => {
+        const {left, top} = adapter.root.getBoundingClientRect()
+        const DIM = 40
+        return {
+          top,
+          left,
+          right: left + DIM,
+          bottom: top + DIM,
+          width: DIM,
+          height: DIM
+        }
+      }
+    })
+    this.ripple.init()
+
+    // refresh model
+    this.checked && this.sync()
   },
   beforeDestroy () {
     this.foundation.destroy()
+    this.ripple.destroy()
   },
   watch: {
-    disabled () {
-      this.foundation.setDisabled(this.disabled)
+    'disabled' (value) {
+      this.foundation.setDisabled(value)
+    }
+  },
+  methods: {
+    isChecked () {
+      return this.foundation.isChecked()
+    },
+    sync () {
+      this.$emit('change', this.foundation.getValue())
     }
   }
 }

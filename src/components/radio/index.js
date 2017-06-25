@@ -1,5 +1,9 @@
+import VueMdcRadio from './mdc-radio'
+
+export {VueMdcRadio}
+
 export default {
   install (vm) {
-    vm.component('mdc-radio', require('./mdc-radio'))
+    vm.component('mdc-radio', VueMdcRadio)
   }
 }
