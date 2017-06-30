@@ -1,5 +1,6 @@
 <template>
-  <section class="mdc-card-media mdc-card__media" :style="styles">
+  <section class="mdc-card-media mdc-card__media" :style="styles"
+    :classes="{'mdc-theme--dark': dark}" >
     <slot>
     </slot>
   </section>
@@ -23,7 +24,8 @@ export default {
       type: String,
       required: true
     },
-    height: [String, Number]
+    height: [String, Number],
+    dark: Boolean
   },
   computed: {
     styles () {

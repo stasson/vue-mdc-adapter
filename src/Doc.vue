@@ -108,12 +108,8 @@
         <section id="cards" class="doc-section">
           <mdc-headline>Cards</mdc-headline>
           <mdc-card class="doc-center">
-            <mdc-card-media height=150 :src="image.card">
-            </mdc-card-media>
-              <mdc-card-header>
-                <mdc-card-title large>Title</mdc-card-title>
-                <mdc-card-subtitle>Subtitle</mdc-card-subtitle>
-              </mdc-card-header>
+            <mdc-card-media height=150 :src="image.card" ></mdc-card-media>
+            <mdc-card-header title="Title" subtitle="Subtitle"></mdc-card-header>
             <mdc-card-horizontal>
               <mdc-card-text>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -121,11 +117,11 @@
                 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                 commodo consequat.
               </mdc-card-text>
-                <mdc-card-img :src="image.tile" mult="1.5"></mdc-card-img>
+                <mdc-card-img :src="image.tile" ></mdc-card-img>
             </mdc-card-horizontal>
-            <mdc-card-actions>
-              <mdc-card-action @click="alert('action1')">Action1</mdc-card-action>
-              <mdc-card-action @click="alert('action2')">Action2</mdc-card-action>
+            <mdc-card-actions
+               :actions="['action1', {action:'action2', text:'action2'}]"
+               @action="alert" >
             </mdc-card-actions>
           </mdc-card>
         </section>
@@ -396,7 +392,9 @@ export default {
       console.log(value)
     },
     alert (value) {
-      window.alert(value)
+      this.$root.$emit('show-snackbar', {
+        message: value
+      })
     },
     scrollToTop () {
       window.scrollTo(0, 0)

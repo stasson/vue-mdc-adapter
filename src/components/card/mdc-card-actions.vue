@@ -1,27 +1,48 @@
 <template>
-  <section class="mdc-card-actions mdc-card__actions" 
-          :class="{ 'mdc-card__actions--vertical': vertical}">
+  <section class="mdc-card-actions" 
+          :class="classes">
     <slot>
-      <button class="mdc-button mdc-button--compact mdc-card__action"
-        v-for="(value, key) in actions"
-        @click="$emit(key)" ref="key">
-        {{ value }}
-      </button>
+      <mdc-card-action-button 
+        v-for="item of actions"
+        :key="item.action || item"
+        @click="onAction(item)" 
+        :disabled="disabled || item.disabled">
+        {{ item.text || item.action || item }}
+      </mdc-card-action-button>
     </slot>
   </section>
 </template>
 
 <style lang="scss">
   @import '@material/card/mdc-card';
-  @import '@material/button/mdc-button';
 </style>
 
 
 <script>
+import MDCCardActionButton from './mdc-card-action-button'
+
 export default {
+  name: 'mdc-card-actions',
   props: {
-    actions: Object,
+    actions: Array,
+    disabled: Boolean,
     vertical: Boolean
+  },
+  components: {
+    'mdc-card-action-button': MDCCardActionButton
+  },
+  data () {
+    return {
+      classes: {
+        'mdc-card__actions': true,
+        'mdc-card__actions--vertical': this.vertical
+      }
+    }
+  },
+  methods: {
+    onAction (item) {
+      this.$emit('action', item.action || item)
+    }
   }
 }
 </script>

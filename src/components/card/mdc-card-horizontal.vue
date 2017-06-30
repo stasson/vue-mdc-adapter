@@ -11,9 +11,6 @@
 
 <script>
 export default {
-  name: 'mdc-card-horizontal',
-  props: {
-    'large': Boolean
-  }
+  name: 'mdc-card-horizontal'
 }
 </script>
