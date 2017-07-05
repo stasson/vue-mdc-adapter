@@ -45,7 +45,7 @@ export default class VueMDCRipple extends MDCRippleFoundation {
         adapter.deregisterInteractionHandler(evtType, handler)
       },
       updateCssVariable: (varName, value) => {
-        adapter.updateCssVariable(varName, value)
+        adapter.setStyle(varName, value)
       }
     }, options))
   }

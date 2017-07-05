@@ -44,7 +44,7 @@ export default class VueMDCAdapter {
   }
 
   // assumes a data 'styles' property on the root element
-  updateCssVariable (varName, value) {
+  setStyle (varName, value) {
     this.vm.$set(this.vm.styles, varName, value)
   }
 
