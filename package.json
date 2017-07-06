@@ -56,7 +56,7 @@
     "@material/form-field": "^0.2.8",
     "@material/grid-list": "^0.2.5",
     "@material/icon-toggle": "^0.1.13",
-    "@material/layout-grid": "0.1.2",
+    "@material/layout-grid": "^0.3.0",
     "@material/list": "^0.2.11",
     "@material/menu": "^0.4.0",
     "@material/radio": "^0.2.6",

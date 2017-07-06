@@ -15,13 +15,14 @@ const spanOptions = {
   default: null,
   validator: function (value) {
     var num = Number(value)
-    return (value <= num) || (num > 0)
+    return isFinite(num) && (num <= 12) && (num > 0)
   }
 }
 
 export default {
   props: {
     span: spanOptions,
+    order: spanOptions,
     phone: spanOptions,
     tablet: spanOptions,
     desktop: spanOptions,
@@ -39,6 +40,10 @@ export default {
 
       if (vm.span) {
         classes.push(`mdc-layout-grid__cell--span-${vm.span}`)
+      }
+
+      if (vm.order) {
+        classes.push(`mdc-layout-grid__cell--order-${vm.order}`)
       }
 
       if (vm.phone) {

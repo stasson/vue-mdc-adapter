@@ -1,6 +1,8 @@
 <template>
-  <div class="mdc-layout-grid" :style=styles>
-    <slot></slot>
+  <div class="mdc-layout-grid" :class=classes>
+    <div class="mdc-layout-grid__inner">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -14,20 +16,13 @@
 
 export default {
   props: {
-    margin: String,
-    gutter: String
+    'fixed-column-width': Boolean
   },
-  computed: {
-    styles () {
-      let vm = this
-      let style = {}
-      if (vm.margin) {
-        style['--mdc-layout-grid-margin'] = `${vm.margin}px`
+  data () {
+    return {
+      classes: {
+        'mdc-layout-grid--fixed-column-width': this.fixedColumnWidth
       }
-      if (vm.gutter) {
-        style['--mdc-layout-grid-gutter'] = `${vm.gutter}px`
-      }
-      return style
     }
   }
 }
