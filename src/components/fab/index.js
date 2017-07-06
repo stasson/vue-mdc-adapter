@@ -1,5 +1,9 @@
+import VueMDCFAB from './mdc-fab'
+
+export {VueMDCFAB}
+
 export default {
   install (vm) {
-    vm.component('mdc-fab', require('./mdc-fab'))
+    vm.component('mdc-fab', VueMDCFAB)
   }
 }
