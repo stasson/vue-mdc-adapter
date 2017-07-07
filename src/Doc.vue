@@ -145,7 +145,7 @@
       
         <section id="grid-list" class="doc-section" >
           <mdc-headline>Grid List</mdc-headline>
-          <mdc-grid-list with-icon-start with-support-text width=150 class="doc-center">
+          <mdc-grid-list icon-align-start with-support-text width=150 class="doc-center">
             <mdc-grid-tile :src="image.tile"
               :title="'Title ' + (index + 1)"
               support-text="support text" cover icon="star_border"

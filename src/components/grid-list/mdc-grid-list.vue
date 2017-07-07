@@ -18,50 +18,42 @@ import MDCGridListFoundation from '@material/grid-list/foundation'
 
 export default {
   name: 'mdc-grid-list',
-  data () {
-    return {
-      foundation: null
-    }
-  },
   props: {
-    width: [String, Number],
-    ratio: String,
-    narrowGutter: Number,
-    headerCaption: Boolean,
-    withIconStart: Boolean,
-    withIconEnd: Boolean,
-    withSupportText: Boolean
+    'width': [String, Number],
+    'ratio': String,
+    'narrow-gutter': Boolean,
+    'header-caption': Boolean,
+    'icon-align-start': Boolean,
+    'icon-align-end': Boolean,
+    'with-support-text': Boolean
   },
-  computed: {
-    classes () {
-      var classes = []
-      if (this.narrowGutter) {
-        classes.push('mdc-grid-list--tile-gutter-1')
-      }
-      if (this.headerCaption) {
-        classes.push('mdc-grid-list--header-caption')
-      }
-      if (this.ratio) {
-        classes.push(`mdc-grid-list--tile-aspect-${this.ratio}`)
-      }
-      if (this.withIconStart) {
-        classes.push('mdc-grid-list--with-icon-align-start')
-      }
-      if (this.withIconEnd) {
-        classes.push('mdc-grid-list--with-icon-align-end')
-      }
-      if (this.withSupportText) {
-        classes.push('mdc-grid-list--twoline-caption')
-      }
-      return classes
-    },
-    styles () {
-      var styles = {}
-      if (this.width) {
-        styles['--mdc-grid-list-tile-width'] = `${this.width}px`
-      }
-      return styles
+  data () {
+    let classes = {}
+    if (this.narrowGutter) {
+      classes['mdc-grid-list--tile-gutter-1'] = true
     }
+    if (this.headerCaption) {
+      classes['mdc-grid-list--header-caption'] = true
+    }
+    if (this.ratio) {
+      classes[`mdc-grid-list--tile-aspect-${this.ratio}`] = true
+    }
+    if (this.iconAlignStart) {
+      classes['mdc-grid-list--with-icon-align-start'] = true
+    }
+    if (this.iconAlignEnd) {
+      classes['mdc-grid-list--with-icon-align-end'] = true
+    }
+    if (this.withSupportText) {
+      classes['mdc-grid-list--twoline-caption'] = true
+    }
+
+    let styles = {}
+    if (this.width) {
+      styles['--mdc-grid-list-tile-width'] = `${this.width}px`
+    }
+
+    return { classes, styles }
   },
   mounted () {
     let vm = this
@@ -89,6 +81,9 @@ export default {
       }
     })
     this.foundation.init()
+  },
+  beforeDestroy () {
+    this.foundation.destroy()
   }
 }
 </script>

@@ -2,7 +2,8 @@
   <li class="mdc-grid-tile">
     <div class="mdc-grid-tile__primary" v-if="cover">
       <div class="mdc-grid-tile__primary-content"
-        :style="{ backgroundImage: 'url(' + src + ')' }"></div>
+        :style="{ backgroundImage: 'url(' + src + ')' }">
+      </div>
     </div>
     <div class="mdc-grid-tile__primary" v-else>
         <img class="mdc-grid-tile__primary-content" :src="src" />
@@ -24,11 +25,11 @@
 export default {
   name: 'mdc-grid-tile',
   props: {
-    src: String,
-    cover: Boolean,
-    icon: String,
-    title: String,
-    supportText: String
+    'src': String,
+    'cover': Boolean,
+    'icon': String,
+    'title': String,
+    'support-text': String
   }
 }
 </script>
