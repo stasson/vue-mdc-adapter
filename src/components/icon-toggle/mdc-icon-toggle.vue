@@ -1,6 +1,6 @@
 <template>
 <i class="mdc-icon-toggle material-icons" 
-  role="button" aria-pressed="false" :disabled="disabled"
+  role="button" aria-pressed="false" 
   :class="classes" :style="styles"
   :tabindex="tabIndex"
   :data-toggle-on='toggleOnData'
@@ -9,15 +9,22 @@
 </i>
 </template>
 
+<style lang="scss">
+@import '@material/icon-toggle/mdc-icon-toggle';
+</style>
+
 <script lang="babel">
 import MDCIconToggleFoundation from '@material/icon-toggle/foundation'
-import MDCRippleFoundation from '@material/ripple/foundation'
-import {applyPassive, supportsCssVariables} from '@material/ripple/util'
+import {VueMDCAdapter, VueMDCRipple} from '../base'
 
 export default {
   props: {
-    'toggle-on': Object,
-    'toggle-off': Object,
+    'toggle-on': String,
+    'toggle-off': String,
+    'label-on': String,
+    'label-off': String,
+    'class-on': String,
+    'class-off': String,
     value: Boolean,
     disabled: Boolean,
     primary: Boolean,
@@ -31,18 +38,20 @@ export default {
       },
       styles: {},
       tabIndex: 0,
-      text: ''
+      text: '',
+      toggleOnData: JSON.stringify({
+        content: this.toggleOn,
+        label: this.labelOn,
+        cssClass: this.classOn
+      }),
+      toggleOffData: JSON.stringify({
+        content: this.toggleOff,
+        label: this.labelOff,
+        cssClass: this.classOff
+      })
     }
   },
   watch: {
-    'toggleOn': {
-      handler () { this.foundation.refreshToggleData() },
-      deep: true
-    },
-    'toggleOff': {
-      handler () { this.foundation.refreshToggleData() },
-      deep: true
-    },
     'value' (value) {
       this.foundation.toggle(value)
     },
@@ -50,88 +59,32 @@ export default {
       this.foundation.setDisabled(disabled)
     }
   },
-  computed: {
-    toggleOnData () {
-      return JSON.stringify(this.toggleOn)
-    },
-    toggleOffData () {
-      return JSON.stringify(this.toggleOff)
-    }
-  },
   mounted () {
-    // TODO: add the ripple
     let vm = this
+    let adapter = new VueMDCAdapter(vm)
     this.foundation = new MDCIconToggleFoundation({
-      addClass (className) {
-        vm.$set(vm.classes, className, true)
-      },
-      removeClass (className) {
-        vm.$delete(vm.classes, className)
-      },
-      registerInteractionHandler (type, handler) {
-        vm.$el.addEventListener(type, handler)
-      },
-      deregisterInteractionHandler (type, handler) {
-        vm.$el.removeEventListener(type, handler)
-      },
-      setText (text) {
-        vm.text = text
-      },
-      getTabIndex () {
-        return vm.tabIndex
-      },
-      setTabIndex (tabIndex) {
-        vm.tabIndex = tabIndex
-      },
-      getAttr (name) {
-        return vm.$el.getAttribute(name)
-      },
-      setAttr (name, value) {
-        vm.$el.setAttribute(name, value)
-      },
-      rmAttr (name) {
-        vm.$el.removeAttribute(name)
-      },
-      notifyChange (evtData) {
-        const evtType = 'MDCIconToggle:change'
-        let evt
-        /* global CustomEvent */
-        if (typeof CustomEvent === 'function') {
-          evt = new CustomEvent(evtType, {detail: evtData})
-        } else {
-          evt = document.createEvent('CustomEvent')
-          evt.initCustomEvent(evtType, false, false, evtData)
-        }
-        vm.$el.dispatchEvent(evt)
-        vm.$emit('input', evtData.isOn)
-      }
+      addClass: (className) => adapter.addClass(className),
+      removeClass: (className) => adapter.removeClass(className),
+      registerInteractionHandler: (evt, handler) =>
+        adapter.registerInteractionHandler(evt, handler),
+      deregisterInteractionHandler: (evt, handler) =>
+        adapter.deregisterInteractionHandler(evt, handler),
+      setText: (text) => { vm.text = text },
+      getTabIndex: () => vm.tabIndex,
+      setTabIndex: (tabIndex) => { vm.tabIndex = tabIndex },
+      getAttr: (name) => vm.$el.getAttribute(name),
+      setAttr: (name, value) => { vm.$el.setAttribute(name, value) },
+      rmAttr: (name) => { vm.$el.removeAttribute(name) },
+      notifyChange: (evtData) => { vm.$emit('input', evtData.isOn) }
     })
     this.foundation.init()
+    this.foundation.refreshToggleData()
     this.foundation.toggle(this.value)
     this.foundation.setDisabled(this.disabled)
 
-    this.ripple = new MDCRippleFoundation({
-      browserSupportsCssVars: () => supportsCssVariables(window),
+    this.ripple = new VueMDCRipple(vm, {
       isUnbounded: () => true,
       isSurfaceActive: () => vm.foundation.isKeyboardActivated(),
-      isSurfaceDisabled: () => vm.disabled,
-      addClass (className) {
-        vm.$set(vm.classes, className, true)
-      },
-      removeClass (className) {
-        vm.$delete(vm.classes, className)
-      },
-      registerInteractionHandler (type, handler) {
-        vm.$el.addEventListener(type, handler, applyPassive())
-      },
-      deregisterInteractionHandler (type, handler) {
-        vm.$el.removeEventListener(type, handler, applyPassive())
-      },
-      registerResizeHandler: (handler) => window.addEventListener('resize', handler),
-      deregisterResizeHandler: (handler) => window.removeEventListener('resize', handler),
-      updateCssVariable: (varName, value) => {
-        vm.styles[varName] = value
-      },
       computeBoundingRect: () => {
         const dim = 48
         const {left, top} = vm.$el.getBoundingClientRect()
@@ -143,8 +96,7 @@ export default {
           right: left + dim,
           bottom: left + dim
         }
-      },
-      getWindowPageOffset: () => ({x: window.pageXOffset, y: window.pageYOffset})
+      }
     })
     this.ripple.init()
   },
@@ -155,7 +107,3 @@ export default {
 }
 
 </script>
-
-<style lang="scss">
-@import '@material/icon-toggle/mdc-icon-toggle';
-</style>
