@@ -34,6 +34,7 @@
 export default {
   props: {
     'dense': Boolean,
+    'avatar-list': Boolean,
     'two-line': Boolean,
     'bordered': Boolean
   },
@@ -41,6 +42,7 @@ export default {
     return {
       classes: {
         'mdc-list--dense': this.dense,
+        'mdc-list--avatar-list': this.avatarList,
         'mdc-list--two-line': this.twoLine,
         'mdc-list--bordered': this.bordered
       }

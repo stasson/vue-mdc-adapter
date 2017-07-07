@@ -238,15 +238,15 @@
           <p><br></p>
           <mdc-list two-line bordered class="doc-center">
             <mdc-list-item>
-              <span slot="text">First line</span>
+              <span>First line</span>
               <span slot="secondary">Second line</span>
             </mdc-list-item>
             <mdc-list-item>
-              <span slot="text">First line</span>
+              <span>First line</span>
               <span slot="secondary">Second line</span>
             </mdc-list-item>
             <mdc-list-item>
-              <span slot="text">First line</span>
+              <span>First line</span>
               <span slot="secondary">Second line</span>
             </mdc-list-item>
           </mdc-list>
@@ -281,7 +281,7 @@
               <mdc-list-item>Single-line item</mdc-list-item>
             </mdc-list>
             <mdc-list-group-divider></mdc-list-group-divider>
-            <mdc-list-group-header>Group 1</mdc-list-group-header>
+            <mdc-list-group-header>Group 2</mdc-list-group-header>
             <mdc-list>
               <mdc-list-item>Single-line item</mdc-list-item>
               <mdc-list-item>Single-line item</mdc-list-item>
