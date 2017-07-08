@@ -1,11 +1,10 @@
 <template>
 <div>
-  <h3 class="mdc-typography--subheading2 mdc-typography--adjust-margin" 
-    v-if="Number(subheading)>1">
+  <h3 :class="classes" class="mdc-typography--adjust-margin"
+    v-if="classes['mdc-typography--subheading2']">
     <slot></slot>
   </h3>
-  <h4 class="mdc-typography--subheading1 mdc-typography--adjust-margin"
-    v-else>
+  <h4 :class="classes" v-else>
     <slot></slot>
   </h4>
 </div>
@@ -19,10 +18,18 @@
 export default {
   name: 'mdc-subheading',
   props: {
-    'subheading': {
-      type: [Number, String],
-      default: 2
+    'typo': {
+      type: String,
+      default: 'subheading2',
+      validator: function (value) {
+        return ['subheading2', 'subheading1'].includes(value)
+      }
     }
+  },
+  data () {
+    let classes = { }
+    classes[`mdc-typography--${this.typo}`] = true
+    return { classes }
   }
 }
 </script>

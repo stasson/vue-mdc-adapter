@@ -319,16 +319,16 @@
         <section id="typography" class="doc-section">
           <mdc-headline>Typography</mdc-headline>
           <div class="doc-center">
-            <mdc-display display=4>Display4</mdc-display>
-            <mdc-display display=3>Display3</mdc-display>
-            <mdc-display display=2>Display2</mdc-display>
-            <mdc-display display=1>Display1</mdc-display>
+            <mdc-display typo='display4'>Display4</mdc-display>
+            <mdc-display typo='display3'>Display3</mdc-display>
+            <mdc-display typo='display2'>Display2</mdc-display>
+            <mdc-display typo='display1'>Display1</mdc-display>
             <mdc-headline>Headline</mdc-headline>
             <mdc-title>Title <mdc-caption>Caption</mdc-caption></mdc-title>
-            <mdc-subheading subheading=2>Subheading2</mdc-subheading>
-            <mdc-subheading subheading=1>Subheading1</mdc-subheading>
-            <mdc-body body=1>Body1</mdc-body>
-            <mdc-body body=2>Body2</mdc-body>
+            <mdc-subheading typo='subheading2'>Subheading2</mdc-subheading>
+            <mdc-subheading typo='subheading1'>Subheading1</mdc-subheading>
+            <mdc-body typo='body1'>Body1</mdc-body>
+            <mdc-body typo='body2'>Body2</mdc-body>
           </div>
         </section>
         </div>

@@ -12,20 +12,18 @@
 export default {
   name: 'mdc-display',
   props: {
-    'display': {
-      type: [Number, String],
-      default: 1
+    'typo': {
+      type: String,
+      default: 'display1',
+      validator: function (value) {
+        return ['display1', 'display2', 'display3', 'display4'].includes(value)
+      }
     }
   },
   data () {
-    return {
-      classes: {
-        'mdc-typography--display1': Number(this.display) <= 1,
-        'mdc-typography--display2': Number(this.display) === 2,
-        'mdc-typography--display3': Number(this.display) === 3,
-        'mdc-typography--display4': Number(this.display) >= 4
-      }
-    }
+    let classes = {}
+    classes[`mdc-typography--${this.typo}`] = true
+    return { classes }
   }
 }
 </script>
