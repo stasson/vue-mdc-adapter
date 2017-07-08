@@ -12,7 +12,7 @@
 </template>
 
 <style lang="scss">
-  @import "@material/toolbar/mdc-toolbar";
+@import "@material/toolbar/mdc-toolbar";
 </style>
 
 
@@ -42,7 +42,10 @@
           'mdc-toolbar--flexible-default-behavior': this.flexible &&
                                                       this.flexibleDefault
         },
-        rootStyles: {},
+        rootStyles: {
+          // fix for toolbar fixed z-index
+          'z-index': 10
+        },
         adjustStyles: {
           height: '0.1px' // to avoid top margin collapse with :after el
                           // 0.1 px should be rounded to 0px
@@ -69,7 +72,6 @@
         deregisterScrollHandler (handler) {
           window.removeEventListener('scroll', handler, util.applyPassive())
         },
-        //
         registerResizeHandler (handler) {
           window.addEventListener('resize', handler)
         },
