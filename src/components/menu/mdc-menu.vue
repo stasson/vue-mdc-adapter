@@ -1,9 +1,10 @@
 <template>
   <div ref="root" :class="classes" tabindex="-1">
-  <ul ref="items" class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
-    <slot></slot>
-  </ul>
-</div>
+    <ul ref="items" class="mdc-simple-menu__items mdc-list" 
+      role="menu" :aria-hidden="isOpen()?'false':'true'">
+      <slot></slot>
+    </ul>
+  </div>
 </template>
 
 <style lang="scss">
@@ -16,7 +17,6 @@ import {getTransformPropertyName} from '@material/menu/util'
 
 export default {
   props: {
-    'open': Boolean,
     'open-from-top-left': Boolean,
     'open-from-top-right': Boolean,
     'open-from-bottom-left': Boolean,
@@ -30,9 +30,7 @@ export default {
         'mdc-simple-menu--open-from-top-right': this.openFromTopRight,
         'mdc-simple-menu--open-from-bottom-left': this.openFromBottomLeft,
         'mdc-simple-menu--open-from-bottom-right': this.openFromBottomRight
-      },
-      foundation: null,
-      previousFocus_: null
+      }
     }
   },
   computed: {
@@ -42,23 +40,27 @@ export default {
     }
   },
   methods: {
-    show () {
-      this.foundation.open()
+    show (options) {
+      this.foundation.open(options)
     },
     hide () {
       this.foundation.close()
     },
     isOpen () {
-      return this.foundation.isOpen()
+      return this.foundation ? this.foundation.isOpen() : false
     }
   },
   mounted () {
+    const transformPropertyName = getTransformPropertyName(window)
+    this.previousFocus_ = undefined
     let vm = this
+
     this.foundation = new MDCSimpleMenuFoundation({
       addClass: (className) => vm.$set(vm.classes, className, true),
       removeClass: (className) => vm.$delete(vm.classes, className),
       hasClass: (className) => Boolean(vm.classes[className]),
       hasNecessaryDom: () => Boolean(vm.$refs.items),
+      getAttributeForEventTarget: (target, attributeName) => target.getAttribute(attributeName),
       getInnerDimensions: () => {
         return {width: vm.$refs.items.offsetWidth, height: vm.$refs.items.offsetHeight}
       },
@@ -68,16 +70,16 @@ export default {
         return {width: window.innerWidth, height: window.innerHeight}
       },
       setScale: (x, y) => {
-        vm.$refs.root.style[getTransformPropertyName(window)] = `scale(${x}, ${y})`
+        vm.$refs.root.style[transformPropertyName] = `scale(${x}, ${y})`
       },
       setInnerScale: (x, y) => {
-        vm.$refs.items.style[getTransformPropertyName(window)] = `scale(${x}, ${y})`
+        vm.$refs.items.style[transformPropertyName] = `scale(${x}, ${y})`
       },
       getNumberOfItems: () => vm.items.length,
       registerInteractionHandler: (type, handler) => vm.$refs.root.addEventListener(type, handler),
       deregisterInteractionHandler: (type, handler) => vm.$refs.root.removeEventListener(type, handler),
-      registerDocumentClickHandler: (handler) => document.addEventListener('click', handler),
-      deregisterDocumentClickHandler: (handler) => document.removeEventListener('click', handler),
+      registerBodyClickHandler: (handler) => document.body.addEventListener('click', handler),
+      deregisterBodyClickHandler: (handler) => document.body.removeEventListener('click', handler),
       getYParamsForItemAtIndex: (index) => {
         const {offsetTop: top, offsetHeight: height} = vm.items[index]
         return {top, height}
@@ -85,7 +87,7 @@ export default {
       setTransitionDelayForItemAtIndex: (index, value) =>
         vm.items[index].style.setProperty('transition-delay', value),
       getIndexForEventTarget: (target) => vm.items.indexOf(target),
-      notifySelected: (evtData) => vm.$emit('selected', {
+      notifySelected: (evtData) => vm.$emit('select', {
         index: evtData.index,
         item: vm.items[evtData.index]
       }),
@@ -115,9 +117,9 @@ export default {
       getAccurateTime: () => window.performance.now()
     })
     this.foundation.init()
-    if (this.open) this.foundation.open()
   },
   beforeDestroy () {
+    this.previousFocus_ = null
     this.foundation.destroy()
   }
 }

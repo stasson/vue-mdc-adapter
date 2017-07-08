@@ -1,5 +1,8 @@
 <template>
-  <li class="mdc-list-item" role="role" tabindex="tabindex">
+  <li class="mdc-list-item" role="menuitem" 
+    :tabindex="disabled?'-1':'0'"
+    :aria-disabled="disabled"
+    >
     <slot></slot>
   </li>
 </template>
@@ -12,14 +15,7 @@
 export default {
   name: 'mdc-menu-item',
   props: {
-    tabindex: {
-      type: String,
-      default: '0'
-    },
-    role: {
-      type: String,
-      default: 'menuitem'
-    }
+    disabled: Boolean
   }
 }
 </script>

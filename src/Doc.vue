@@ -297,12 +297,12 @@
           <div class="doc-center">
             <mdc-menu-anchor class="myAnchor">
               <mdc-button raised @click="$refs.menu.show()">Open Menu</mdc-button>
-              <span>{{ menuMessage }}</span>
-              <mdc-menu ref="menu" @selected="menuSelect" @cancel="menuCancel">
-                <mdc-menu-item>A Menu Item</mdc-menu-item>
-                <mdc-menu-item>Another Menu Item</mdc-menu-item>
+              <mdc-menu ref="menu" @select="menuSelect" @cancel="menuCancel">
+                <mdc-menu-item >A Menu Item</mdc-menu-item>
+                <mdc-menu-item >Another Menu Item</mdc-menu-item>
+                <mdc-menu-item disabled >Disabled Menu Item</mdc-menu-item>
                 <mdc-menu-divider>Another Menu Item</mdc-menu-divider>
-                <mdc-menu-item>Parted Menu Item</mdc-menu-item>
+                <mdc-menu-item >Parted Menu Item</mdc-menu-item>
               </mdc-menu>
             </mdc-menu-anchor>
             </div>
@@ -357,7 +357,6 @@ export default {
       textField: '',
       password: '',
       picked: null,
-      menuMessage: '',
       drawerType: 'persistent',
       indeterminate: false
     }
@@ -395,10 +394,10 @@ export default {
       this.$refs.dialog.show()
     },
     menuSelect (selected) {
-      this.menuMessage = `${selected.index}: ${selected.item.textContent}`
+      this.alert(`${selected.index}: ${selected.item.textContent}`)
     },
     menuCancel () {
-      this.menuMessage = 'Menu Canceled'
+      this.alert('Menu Canceled')
     },
     log (value) {
       console.log(value)
