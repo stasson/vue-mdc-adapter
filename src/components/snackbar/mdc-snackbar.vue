@@ -28,7 +28,7 @@ export default {
     'event-source': {
       required: false,
       default () {
-        return this.$root
+        return this.$mdc
       }
     },
     'dismisses-on-action': {type: Boolean, default: true}

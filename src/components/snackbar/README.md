@@ -9,12 +9,12 @@
 By default, `mdc-snackbar` listens to `vm.$root` for the `'show-snackbar'` event.
 To show the snackbar, emit the event passing the _snackbar data object_
 ```javascript
-vm.$root.$emit('show-snackbar', { message: 'A message' })
+vm.$mdc.$emit('show-snackbar', { message: 'A message' })
 ```
 
 You can also specify an action handler:
 ```javascript
-vm.$root.$emit('show-snackbar', { 
+vm.$mdc.$emit('show-snackbar', { 
   message: 'A message with action',
   actionText: 'undo',
   actionHandler: function () {

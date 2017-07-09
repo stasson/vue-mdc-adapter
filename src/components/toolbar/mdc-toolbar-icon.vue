@@ -1,6 +1,6 @@
 <template>
   <a :href="href"  class="material-icons mdc-toolbar__icon"
-    @click="$emit('click')"
+    @click="onClick"
   >
     <slot></slot>
   </a>
@@ -14,7 +14,17 @@
 export default {
   name: 'mdc-toolbar-icon',
   props: {
-    'href': { type: String, default: '#' }
+    'href': { type: String, default: '#' },
+    'event': String
+  },
+  methods: {
+    onClick () {
+      if (this.event) {
+        this.$mdc.$emit(this.event)
+      } else {
+        this.$emit('click')
+      }
+    }
   }
 }
 </script>

@@ -2,6 +2,7 @@
 // vue PlugIn
 //
 
+import mdcBase from './base'
 import mdcButton from './button'
 import mdcCard from './card'
 import mdcCheckbox from './checkbox'
@@ -25,6 +26,7 @@ import mdcTypography from './typography'
 
 const plugin = {
   install (vm) {
+    vm.use(mdcBase)
     vm.use(mdcButton)
     vm.use(mdcCard)
     vm.use(mdcCheckbox)

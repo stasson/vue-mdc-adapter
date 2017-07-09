@@ -4,11 +4,11 @@
 <mdc-toolbar>
   <mdc-toolbar-row>
     <mdc-toolbar-section align-start >
-      <mdc-toolbar-icon-menu @click="toggleDrawer"></mdc-toolbar-icon-menu>
+      <mdc-toolbar-icon-menu event="toggle-drawer"></mdc-toolbar-icon-menu>
       <mdc-toolbar-title>Title</mdc-toolbar-title>
     </mdc-toolbar-section>
     <mdc-toolbar-section align-end>
-      <mdc-toolbar-icon @click="showHelp">help</mdc-toolbar-icon>
+      <mdc-toolbar-icon event="show-help">help</mdc-toolbar-icon>
     </mdc-toolbar-section>
   </mdc-toolbar-row>
 </mdc-toolbar>
@@ -85,6 +85,13 @@ the left of mdc-toolbar-title. It renders as material menu icon by default
 
 - `mdc-toolbar-icon` wraps any icons placed on the right side of an
 mdc-toolbar.
+
+| props | Type | Default | Description |
+|-------|------|---------|-------------|
+|`event`|String| null | event to emit on the vm.$mdc hub |
+
+> if the `event` property is not specified, use @click to cactch click events
+
 
 ### Fixed toolbars
 
