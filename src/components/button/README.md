@@ -32,6 +32,9 @@ var vm = new Vue({
 |`compact`| Boolean|| compact design |
 |`dense`| String|| dense design |
 |`raised`| Boolean|| raised design |
+|`event`|String| optional | optional event to emit on click  |
+|`event-target`|Object| vm.$root | optional event target, defaults to root bus |
+|`event-args`|Array| [] | optional event args |
 
 
 Add `primary` `accent` `dense` `compact` or `raised` attributes to change the 

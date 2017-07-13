@@ -21,15 +21,15 @@ import { getCorrectEventName } from '@material/animation'
 
 export default {
   props: {
-    event: {
+    'event': {
       type: String,
-      default: 'show-snackbar'
+      required: false,
+      default () { return 'show-snackbar' }
     },
     'event-source': {
+      type: Object,
       required: false,
-      default () {
-        return this.$mdc
-      }
+      default () { return this.$root }
     },
     'dismisses-on-action': {type: Boolean, default: true}
   },

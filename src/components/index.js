@@ -1,52 +1,49 @@
 //
 // vue PlugIn
 //
-
-import mdcBase from './base'
-import mdcButton from './button'
-import mdcCard from './card'
-import mdcCheckbox from './checkbox'
-import mdcDialog from './dialog'
-import mdcDrawer from './drawer'
-import mdcFab from './fab'
-import mdcGridList from './grid-list'
-import mdcIconToggle from './icon-toggle'
-import mdcLayoutGrid from './layout-grid'
-import mdcList from './list'
-import mdcMenu from './menu'
-import mdcRadio from './radio'
-import mdcRipple from './ripple'
-import mdcSelect from './select'
-import mdcSnackbar from './snackbar'
-import mdcSwitch from './switch'
-import mdcTabs from './tabs'
-import mdcTexfield from './textfield'
-import mdcToolbar from './toolbar'
-import mdcTypography from './typography'
+import VueMDCButton from './button'
+import VueMDCCard from './card'
+import VueMDCCheckbox from './checkbox'
+import VueMDCDialog from './dialog'
+import VueMDCDrawer from './drawer'
+import VueMDCFab from './fab'
+import VueMDCGridList from './grid-list'
+import VueMDCIconToggle from './icon-toggle'
+import VueMDCLayoutGrid from './layout-grid'
+import VueMDCList from './list'
+import VueMDCMenu from './menu'
+import VueMDCRadio from './radio'
+import VueMDCRipple from './ripple'
+import VueMDCSelect from './select'
+import VueMDCSnackbar from './snackbar'
+import VueMDCSwitch from './switch'
+import VueMDCTabs from './tabs'
+import VueMDCTexfield from './textfield'
+import VueMDCToolbar from './toolbar'
+import VueMDCTypography from './typography'
 
 const plugin = {
   install (vm) {
-    vm.use(mdcBase)
-    vm.use(mdcButton)
-    vm.use(mdcCard)
-    vm.use(mdcCheckbox)
-    vm.use(mdcDialog)
-    vm.use(mdcDrawer)
-    vm.use(mdcFab)
-    vm.use(mdcGridList)
-    vm.use(mdcIconToggle)
-    vm.use(mdcLayoutGrid)
-    vm.use(mdcList)
-    vm.use(mdcMenu)
-    vm.use(mdcRadio)
-    vm.use(mdcRipple)
-    vm.use(mdcSelect)
-    vm.use(mdcSnackbar)
-    vm.use(mdcSwitch)
-    vm.use(mdcTabs)
-    vm.use(mdcTexfield)
-    vm.use(mdcToolbar)
-    vm.use(mdcTypography)
+    vm.use(VueMDCButton)
+    vm.use(VueMDCCard)
+    vm.use(VueMDCCheckbox)
+    vm.use(VueMDCDialog)
+    vm.use(VueMDCDrawer)
+    vm.use(VueMDCFab)
+    vm.use(VueMDCGridList)
+    vm.use(VueMDCIconToggle)
+    vm.use(VueMDCLayoutGrid)
+    vm.use(VueMDCList)
+    vm.use(VueMDCMenu)
+    vm.use(VueMDCRadio)
+    vm.use(VueMDCRipple)
+    vm.use(VueMDCSelect)
+    vm.use(VueMDCSnackbar)
+    vm.use(VueMDCSwitch)
+    vm.use(VueMDCTabs)
+    vm.use(VueMDCTexfield)
+    vm.use(VueMDCToolbar)
+    vm.use(VueMDCTypography)
   }
 }
 

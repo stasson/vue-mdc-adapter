@@ -1,6 +1,6 @@
 <template>
   <a :href="href"  class="material-icons mdc-toolbar__icon"
-    @click="onClick"
+    @click="dispatchEvent"
   >
     <slot></slot>
   </a>
@@ -11,20 +11,13 @@
 </style>
 
 <script lang="babel">
+import {DispatchEventMixin} from '../util'
+
 export default {
   name: 'mdc-toolbar-icon',
   props: {
-    'href': { type: String, default: '#' },
-    'event': String
+    'href': { type: String, default: '#' }
   },
-  methods: {
-    onClick () {
-      if (this.event) {
-        this.$mdc.$emit(this.event)
-      } else {
-        this.$emit('click')
-      }
-    }
-  }
+  mixins: [DispatchEventMixin]
 }
 </script>

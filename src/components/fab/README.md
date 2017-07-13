@@ -27,6 +27,9 @@
 |`plain`|Boolean|| plain style (white background)|
 |`absolute`| Boolean|| set bottom right absolute position |
 |`fixed`| Boolean|| set bottom right fixed position |
+|`event`|String| optional | optional event to emit on click  |
+|`event-target`|Object| vm.$root | optional event target, defaults to root bus |
+|`event-args`|Array| [] | optional event args |
 
 
 ### Reference

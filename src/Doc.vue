@@ -37,7 +37,7 @@
           <mdc-headline>Buttons</mdc-headline>
           <div class="doc-center">
             <p>
-              <mdc-button>Flat</mdc-button>
+              <mdc-button event="show-snackbar" :event-args="[{message:'clic'}]">Flat</mdc-button>
               <mdc-button primary>Flat</mdc-button>
               <mdc-button accent>Flat</mdc-button>
               <mdc-button disabled>Flat</mdc-button>
@@ -220,8 +220,8 @@
           <mdc-headline>Layout Grid</mdc-headline>
           <mdc-layout-grid class=grid>
             <mdc-layout-cell class="cell" desktop=3 tablet=3 >
-              <p>mode: {{ $mdc.layout.mode }}</p>
-              <p>orientation: {{  $mdc.layout.orientation }}</p>
+              <!--<p>mode: {{ $mdc.layout.mode }}</p>-->
+              <!--<p>orientation: {{  $mdc.layout.orientation }}</p>-->
             </mdc-layout-cell>
             <mdc-layout-cell class="cell" desktop=3 tablet=5 align="top" >
               Top
@@ -381,7 +381,7 @@ export default {
       }
     })
 
-    vm.$mdc.$on('toggle-drawer', () => vm.toggleDrawer())
+    vm.$root.$on('toggle-drawer', () => vm.toggleDrawer())
   },
   methods: {
     toggleDrawer () {
@@ -394,7 +394,7 @@ export default {
       })
     },
     showSnackbar (event) {
-      this.$mdc.$emit('show-snackbar', {
+      this.$root.$emit('show-snackbar', {
         message: 'This is a snackbar',
         actionText: 'action',
         actionHandler () {
@@ -415,7 +415,7 @@ export default {
       console.log(value)
     },
     alert (value) {
-      this.$mdc.$emit('show-snackbar', {
+      this.$root.$emit('show-snackbar', {
         message: value
       })
     },

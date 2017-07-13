@@ -1,6 +1,6 @@
 <template>
   <button ref="root" :class="classes" :style="styles" :disabled="disabled" 
-    @click="$emit('click')">
+    @click="dispatchEvent">
     <slot />
   </button>
 </template>
@@ -11,9 +11,11 @@
 
 <script>
 import {VueMDCRipple} from '../base'
+import {DispatchEventMixin} from '../util'
 
 export default {
   name: 'mdc-button',
+  mixins: [DispatchEventMixin],
   props: {
     disabled: Boolean,
     primary: Boolean,

@@ -88,7 +88,8 @@ mdc-toolbar.
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`event`|String| null | event to emit on the vm.$mdc hub |
+|`event`|String| optional | optional event to emit on click  |
+|`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 
 > if the `event` property is not specified, use @click to cactch click events
 

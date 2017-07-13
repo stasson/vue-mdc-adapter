@@ -1,5 +1,5 @@
 <template>
-  <button class="mdc-fab material-icons" :class="classes"
+  <button class="mdc-fab material-icons" :class="classes" :style="styles"
     :disabled="disabled" @click="dispatchEvent" >
     <span class="mdc-fab__icon">
       <slot>
@@ -41,9 +41,12 @@
 
 
 <script>
-import {MDCRipple} from '@material/ripple'
+import {VueMDCRipple} from '../base'
+import {DispatchEventMixin} from '../util'
 
 export default {
+  name: 'mdc-fab',
+  mixins: [DispatchEventMixin],
   props: {
     disabled: Boolean,
     mini: Boolean,
@@ -58,19 +61,16 @@ export default {
         'mdc-fab--plain': this.plain,
         'mdc-fab--absolute': this.absolute,
         'mdc-fab--fixed': this.fixed
-      }
-    }
-  },
-  methods: {
-    dispatchEvent (event) {
-      this.$emit(event.type)
+      },
+      styles: {}
     }
   },
   mounted () {
-    this.mdc_ripple = MDCRipple.attachTo(this.$el)
+    this.ripple = new VueMDCRipple(this)
+    this.ripple.init()
   },
   beforeDestroy () {
-    this.mdc_ripple.destroy()
+    this.ripple.destroy()
   }
 }
 
