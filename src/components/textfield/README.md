@@ -22,7 +22,7 @@ var vm = new Vue({
 
 ### Full width
 ```html
-<mdc-textfield v-model="text" label="Hint text" />
+<mdc-textfield v-model="text" fullwidth label="Hint text" />
 ```
 
 ### Multiline
