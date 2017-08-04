@@ -1,4 +1,4 @@
-## Textfields
+## Textfield
 
 ### Single-line
 ```html
@@ -22,12 +22,12 @@ var vm = new Vue({
 
 ### Full width
 ```html
-<mdc-textfield v-model="text" label="Hint text" />
+<mdc-textfield v-model="text" fullwidth label="Hint text" />
 ```
-  
+
 ### Multiline
 ```html
-<mdc-textfield v-model="text" label="Hint text" multiline rows="8", cols="40" />
+<mdc-textfield v-model="text" label="Hint text" multiline rows="8" cols="40" />
 ```
 
 ### Validation
