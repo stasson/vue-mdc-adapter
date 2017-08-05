@@ -20,14 +20,15 @@ var vm = new Vue({
 <mdc-textfield v-model="text" label="Hint text"  helptext="Help text...">
 ```
 
-### Full width
-```html
-<mdc-textfield v-model="text" fullwidth label="Hint text" />
-```
-
 ### Multiline
 ```html
 <mdc-textfield v-model="text" label="Hint text" multiline rows="8" cols="40" />
+```
+
+### Full width
+```html
+<mdc-textfield v-model="text" fullwidth label="Hint text" />
+<mdc-textfield v-model="text" multiline fullwidth label="Hint text" rows="8/>
 ```
 
 ### Validation
