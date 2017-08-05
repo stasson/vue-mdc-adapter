@@ -1,10 +1,22 @@
 <template>
   <div>
-    <!--multiline case-->
-    <div div ref="root" :class="rootClasses" v-if="multiline">
+    <!--fullwidth multiline case-->
+    <div div ref="root" :class="rootClasses" v-if="multiline && fullwidth">
       <textarea ref="input" :class="inputClasses"
         :value="value" @input="updateValue($event.target.value)"
-        :rows="rows" :cols="cols" 
+        :rows="rows"
+        :minlength="minlength" :maxlength="maxlength"
+        :disabled="disabled" :aria-controls="'help-'+_uid"
+        :placeholder="label"
+        :aria-label="label" >
+        ></textarea>
+    </div>
+
+    <!--multiline case-->
+    <div div ref="root" :class="rootClasses" v-else-if="multiline">
+      <textarea ref="input" :class="inputClasses"
+        :value="value" @input="updateValue($event.target.value)"
+        :rows="rows" :cols="cols"
         :minlength="minlength" :maxlength="maxlength"
         :disabled="disabled" :aria-controls="'help-'+_uid"
         ></textarea>
@@ -15,9 +27,9 @@
 
     <!--fullwidth case: no label -->
     <div ref="root" :class="rootClasses" v-else-if="fullwidth">
-      <input ref="input" :class="inputClasses" :type="type" 
+      <input ref="input" :class="inputClasses" :type="type"
         :value="value" @input="updateValue($event.target.value)"
-        :required="required" 
+        :required="required"
         :minlength="minlength" :maxlength="maxlength"
         :disabled="disabled" :aria-controls="'help-'+_uid"
         :placeholder="label"
@@ -35,12 +47,12 @@
         {{ label }}
       </label>
     </div>
-  
+
     <p ref="help" :id="'help-'+_uid" :class="helpClasses"
       aria-hidden="true" v-if="helptext">
       {{ helptext  }}
     </p>
-  
+
   </div>
 </template>
 
