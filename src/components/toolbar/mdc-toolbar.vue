@@ -55,58 +55,57 @@
       }
     },
     mounted () {
-      let vm = this
       this.foundation = new MDCToolbarFoundation({
-        addClass (className) {
-          vm.$set(vm.rootClasses, className, true)
+        addClass: (className) => {
+          this.$set(this.rootClasses, className, true)
         },
-        removeClass (className) {
-          vm.$delete(vm.rootClasses, className)
+        removeClass: (className) => {
+          this.$delete(this.rootClasses, className)
         },
-        hasClass (className) {
-          return Boolean(vm.rootClasses[className])
+        hasClass: (className) => {
+          return Boolean(this.rootClasses[className])
         },
-        registerScrollHandler (handler) {
+        registerScrollHandler: (handler) => {
           window.addEventListener('scroll', handler, util.applyPassive())
         },
-        deregisterScrollHandler (handler) {
+        deregisterScrollHandler: (handler) => {
           window.removeEventListener('scroll', handler, util.applyPassive())
         },
-        registerResizeHandler (handler) {
+        registerResizeHandler: (handler) => {
           window.addEventListener('resize', handler)
         },
-        deregisterResizeHandler (handler) {
+        deregisterResizeHandler: (handler) => {
           window.removeEventListener('resize', handler)
         },
-        getViewportWidth () {
+        getViewportWidth: () => {
           return window.innerWidth
         },
-        getViewportScrollY () {
+        getViewportScrollY: () => {
           return window.pageYOffset
         },
-        getOffsetHeight () {
-          return vm.$refs.root.offsetHeight
+        getOffsetHeight: () => {
+          return this.$refs.root.offsetHeight
         },
-        getFlexibleRowElementOffsetHeight () {
-          let el = vm.$refs.root.querySelector(MDCToolbarFoundation.strings.FLEXIBLE_ROW_SELECTOR)
+        getFlexibleRowElementOffsetHeight: () => {
+          let el = this.$refs.root.querySelector(MDCToolbarFoundation.strings.FLEXIBLE_ROW_SELECTOR)
           return (el) ? el.offsetHeight : undefined
         },
-        notifyChange (evtData) {
-          vm.$emit('change', evtData)
+        notifyChange: (evtData) => {
+          this.$emit('change', evtData)
         },
-        setStyle (property, value) {
-          vm.$set(vm.rootStyles, property, value)
+        setStyle: (property, value) => {
+          this.$set(this.rootStyles, property, value)
         },
-        setStyleForTitleElement (property, value) {
-          let el = vm.$refs.root.querySelector(MDCToolbarFoundation.strings.TITLE_SELECTOR)
+        setStyleForTitleElement: (property, value) => {
+          let el = this.$refs.root.querySelector(MDCToolbarFoundation.strings.TITLE_SELECTOR)
           if (el) el.style.setProperty(property, value)
         },
-        setStyleForFlexibleRowElement (property, value) {
-          let el = vm.$refs.root.querySelector(MDCToolbarFoundation.strings.FLEXIBLE_ROW_SELECTOR)
+        setStyleForFlexibleRowElement: (property, value) => {
+          let el = this.$refs.root.querySelector(MDCToolbarFoundation.strings.FLEXIBLE_ROW_SELECTOR)
           if (el) el.style.setProperty(property, value)
         },
-        setStyleForFixedAdjustElement (property, value) {
-          vm.$set(vm.adjustStyles, property, value)
+        setStyleForFixedAdjustElement: (property, value) => {
+          this.$set(this.adjustStyles, property, value)
         }
       })
       this.foundation.init()

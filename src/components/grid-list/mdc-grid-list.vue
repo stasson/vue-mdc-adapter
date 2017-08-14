@@ -56,27 +56,26 @@ export default {
     return { classes, styles }
   },
   mounted () {
-    let vm = this
     this.foundation = new MDCGridListFoundation({
-      getOffsetWidth () {
-        return vm.$el.offsetWidth
+      getOffsetWidth: () => {
+        return this.$el.offsetWidth
       },
-      getNumberOfTiles () {
-        return vm.$el.querySelectorAll(
+      getNumberOfTiles: () => {
+        return this.$el.querySelectorAll(
           MDCGridListFoundation.strings.TILE_SELECTOR).length
       },
-      getOffsetWidthForTileAtIndex (index) {
-        return vm.$el.querySelectorAll(
+      getOffsetWidthForTileAtIndex: (index) => {
+        return this.$el.querySelectorAll(
           MDCGridListFoundation.strings.TILE_SELECTOR)[index].offsetWidth
       },
-      setStyleForTilesElement (property, value) {
-        vm.$el.querySelector(
+      setStyleForTilesElement: (property, value) => {
+        this.$el.querySelector(
           MDCGridListFoundation.strings.TILES_SELECTOR).style[property] = value
       },
-      registerResizeHandler (handler) {
+      registerResizeHandler: (handler) => {
         window.addEventListener('resize', handler)
       },
-      deregisterResizeHandler (handler) {
+      deregisterResizeHandler: (handler) => {
         window.removeEventListener('resize', handler)
       }
     })

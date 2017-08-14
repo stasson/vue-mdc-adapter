@@ -34,32 +34,31 @@ export default {
     }
   },
   computed: {
-    classes: function () {
-      let vm = this
+    classes () {
       let classes = []
 
-      if (vm.span) {
-        classes.push(`mdc-layout-grid__cell--span-${vm.span}`)
+      if (this.span) {
+        classes.push(`mdc-layout-grid__cell--span-${this.span}`)
       }
 
-      if (vm.order) {
-        classes.push(`mdc-layout-grid__cell--order-${vm.order}`)
+      if (this.order) {
+        classes.push(`mdc-layout-grid__cell--order-${this.order}`)
       }
 
-      if (vm.phone) {
-        classes.push(`mdc-layout-grid__cell--span-${vm.phone}-phone`)
+      if (this.phone) {
+        classes.push(`mdc-layout-grid__cell--span-${this.phone}-phone`)
       }
 
-      if (vm.tablet) {
-        classes.push(`mdc-layout-grid__cell--span-${vm.tablet}-tablet`)
+      if (this.tablet) {
+        classes.push(`mdc-layout-grid__cell--span-${this.tablet}-tablet`)
       }
 
-      if (vm.desktop) {
-        classes.push(`mdc-layout-grid__cell--span-${vm.desktop}-desktop`)
+      if (this.desktop) {
+        classes.push(`mdc-layout-grid__cell--span-${this.desktop}-desktop`)
       }
 
-      if (vm.align) {
-        classes.push(`mdc-layout-grid__cell--align-${vm.align}`)
+      if (this.align) {
+        classes.push(`mdc-layout-grid__cell--align-${this.align}`)
       }
 
       return classes

@@ -53,46 +53,45 @@ export default {
     }
   },
   mounted () {
-    let vm = this
     this.foundation = new MDCSnackbarFoundation({
-      addClass (className) {
-        vm.$set(vm.classes, className, true)
+      addClass: (className) => {
+        this.$set(this.classes, className, true)
       },
-      removeClass (className) {
-        vm.$delete(vm.classes, className)
+      removeClass: (className) => {
+        this.$delete(this.classes, className)
       },
-      setAriaHidden () {
-        vm.hidden = true
+      setAriaHidden: () => {
+        this.hidden = true
       },
-      unsetAriaHidden () {
-        vm.hidden = false
+      unsetAriaHidden: () => {
+        this.hidden = false
       },
-      setActionAriaHidden () {
-        vm.actionHidden = true
+      setActionAriaHidden: () => {
+        this.actionHidden = true
       },
-      unsetActionAriaHidden () {
-        vm.actionHidden = false
+      unsetActionAriaHidden: () => {
+        this.actionHidden = false
       },
-      setMessageText (message) {
-        vm.message = message
+      setMessageText: (message) => {
+        this.message = message
       },
-      setActionText (actionText) {
-        vm.actionText = actionText
+      setActionText: (actionText) => {
+        this.actionText = actionText
       },
-      registerActionClickHandler (handler) {
-        vm.actionClickHandlers.push(handler)
+      registerActionClickHandler: (handler) => {
+        this.actionClickHandlers.push(handler)
       },
-      deregisterChangeHandler (handler) {
-        let index = vm.actionClickHandlers.indexOf(handler)
+      deregisterChangeHandler: (handler) => {
+        let index = this.actionClickHandlers.indexOf(handler)
         if (index >= 0) {
-          vm.actionClickHandlers.splice(index, 1)
+          this.actionClickHandlers.splice(index, 1)
         }
       },
-      registerTransitionEndHandler (handler) {
-        vm.$refs.root.addEventListener(getCorrectEventName(window, 'transitionend'), handler)
+      registerTransitionEndHandler: (handler) => {
+        this.$refs.root.addEventListener(getCorrectEventName(window, 'transitionend'), handler)
       },
-      deregisterTransitionEndHandler (handler) {
-        vm.$refs.root.removeEventListener(getCorrectEventName(window, 'transitionend'), handler)
+      deregisterTransitionEndHandler: (handler) => {
+        this.$refs.root.removeEventListener(getCorrectEventName(window, 'transitionend'), handler)
       }
     })
     this.foundation.init()

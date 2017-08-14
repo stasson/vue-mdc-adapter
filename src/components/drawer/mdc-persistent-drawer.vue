@@ -44,77 +44,76 @@ export default {
   mounted () {
     const {FOCUSABLE_ELEMENTS} = MDCPersistentDrawerFoundation.strings
 
-    let vm = this
     this.foundation = new MDCPersistentDrawerFoundation({
-      addClass (className) {
-        vm.$set(vm.classes, className, true)
+      addClass: (className) => {
+        this.$set(this.classes, className, true)
       },
-      removeClass (className) {
-        vm.$delete(vm.classes, className)
+      removeClass: (className) => {
+        this.$delete(this.classes, className)
       },
-      hasClass (className) {
-        return Boolean(vm.classes[className]) || (vm.$el && vm.$el.classList.contains(className))
+      hasClass: (className) => {
+        return this.$el.classList.contains(className)
       },
-      hasNecessaryDom () {
-        return Boolean(vm.$refs.drawer)
+      hasNecessaryDom: () => {
+        return Boolean(this.$refs.drawer)
       },
-      registerInteractionHandler (evt, handler) {
-        vm.$el.addEventListener(evt, handler)
+      registerInteractionHandler: (evt, handler) => {
+        this.$el.addEventListener(evt, handler)
       },
-      deregisterInteractionHandler (evt, handler) {
-        vm.$el.removeEventListener(evt, handler)
+      deregisterInteractionHandler: (evt, handler) => {
+        this.$el.removeEventListener(evt, handler)
       },
-      registerDrawerInteractionHandler (evt, handler) {
-        vm.$refs.drawer.addEventListener(evt, handler)
+      registerDrawerInteractionHandler: (evt, handler) => {
+        this.$refs.drawer.addEventListener(evt, handler)
       },
-      deregisterDrawerInteractionHandler (evt, handler) {
-        vm.$refs.drawer.removeEventListener(evt, handler)
+      deregisterDrawerInteractionHandler: (evt, handler) => {
+        this.$refs.drawer.removeEventListener(evt, handler)
       },
-      registerTransitionEndHandler (handler) {
-        vm.$refs.drawer.addEventListener('transitionend', handler)
+      registerTransitionEndHandler: (handler) => {
+        this.$refs.drawer.addEventListener('transitionend', handler)
       },
-      deregisterTransitionEndHandler (handler) {
-        vm.$refs.drawer.removeEventListener('transitionend', handler)
+      deregisterTransitionEndHandler: (handler) => {
+        this.$refs.drawer.removeEventListener('transitionend', handler)
       },
-      registerDocumentKeydownHandler (handler) {
+      registerDocumentKeydownHandler: (handler) => {
         document.addEventListener('keydown', handler)
       },
-      deregisterDocumentKeydownHandler (handler) {
+      deregisterDocumentKeydownHandler: (handler) => {
         document.removeEventListener('keydown', handler)
       },
-      getDrawerWidth () {
-        return vm.$refs.drawer.clientWidth
+      getDrawerWidth: () => {
+        return this.$refs.drawer.clientWidth
       },
-      setTranslateX (value) {
-        vm.$refs.drawer.style.setProperty(
+      setTranslateX: (value) => {
+        this.$refs.drawer.style.setProperty(
           utils.getTransformPropertyName(),
           value === null ? null : `translateX(${value}px)`
         )
       },
-      getFocusableElements () {
-        return vm.$refs.drawer.querySelectorAll(FOCUSABLE_ELEMENTS)
+      getFocusableElements: () => {
+        return this.$refs.drawer.querySelectorAll(FOCUSABLE_ELEMENTS)
       },
-      saveElementTabState (el) {
+      saveElementTabState: (el) => {
         utils.saveElementTabState(el)
       },
-      restoreElementTabState (el) {
+      restoreElementTabState: (el) => {
         utils.restoreElementTabState(el)
       },
-      makeElementUntabbable (el) {
+      makeElementUntabbable: (el) => {
         el.setAttribute('tabindex', -1)
       },
-      notifyOpen () {
-        vm.$emit('open')
+      notifyOpen: () => {
+        this.$emit('open')
       },
-      notifyClose () {
-        vm.$emit('close')
+      notifyClose: () => {
+        this.$emit('close')
       },
-      isRtl () {
+      isRtl: () => {
         /* global getComputedStyle */
-        return getComputedStyle(vm.$el).getPropertyValue('direction') === 'rtl'
+        return getComputedStyle(this.$el).getPropertyValue('direction') === 'rtl'
       },
-      isDrawer (el) {
-        return el === vm.$refs.drawer
+      isDrawer: (el) => {
+        return el === this.$refs.drawer
       }
     })
     this.foundation.init()

@@ -52,74 +52,86 @@ export default {
   },
   mounted () {
     const transformPropertyName = getTransformPropertyName(window)
-    this.previousFocus_ = undefined
-    let vm = this
+    this._previousFocus = undefined
 
     this.foundation = new MDCSimpleMenuFoundation({
-      addClass: (className) => vm.$set(vm.classes, className, true),
-      removeClass: (className) => vm.$delete(vm.classes, className),
-      hasClass: (className) => Boolean(vm.classes[className]),
-      hasNecessaryDom: () => Boolean(vm.$refs.items),
-      getAttributeForEventTarget: (target, attributeName) => target.getAttribute(attributeName),
-      getInnerDimensions: () => {
-        return {width: vm.$refs.items.offsetWidth, height: vm.$refs.items.offsetHeight}
-      },
-      hasAnchor: () => vm.$refs.root.parentElement && vm.$refs.root.parentElement.classList.contains('mdc-menu-anchor'),
-      getAnchorDimensions: () => vm.$refs.root.parentElement.getBoundingClientRect(),
-      getWindowDimensions: () => {
-        return {width: window.innerWidth, height: window.innerHeight}
-      },
+      addClass: (className) => this.$set(this.classes, className, true),
+      removeClass: (className) => this.$delete(this.classes, className),
+      hasClass: (className) => this.$refs.root.classList.contains(className),
+      hasNecessaryDom: () => Boolean(this.$refs.items),
+      getAttributeForEventTarget: (target, attributeName) =>
+        target.getAttribute(attributeName),
+      getInnerDimensions: () => ({
+        width: this.$refs.items.offsetWidth,
+        height: this.$refs.items.offsetHeight
+      }),
+      hasAnchor: () => this.$refs.root.parentElement &&
+        this.$refs.root.parentElement.classList.contains('mdc-menu-anchor'),
+      getAnchorDimensions: () =>
+        this.$refs.root.parentElement.getBoundingClientRect(),
+      getWindowDimensions: () => ({
+        width: window.innerWidth,
+        height: window.innerHeight
+      }),
       setScale: (x, y) => {
-        vm.$refs.root.style[transformPropertyName] = `scale(${x}, ${y})`
+        this.$refs.root.style[transformPropertyName] = `scale(${x}, ${y})`
       },
       setInnerScale: (x, y) => {
-        vm.$refs.items.style[transformPropertyName] = `scale(${x}, ${y})`
+        this.$refs.items.style[transformPropertyName] = `scale(${x}, ${y})`
       },
-      getNumberOfItems: () => vm.items.length,
-      registerInteractionHandler: (type, handler) => vm.$refs.root.addEventListener(type, handler),
-      deregisterInteractionHandler: (type, handler) => vm.$refs.root.removeEventListener(type, handler),
-      registerBodyClickHandler: (handler) => document.body.addEventListener('click', handler),
-      deregisterBodyClickHandler: (handler) => document.body.removeEventListener('click', handler),
+      getNumberOfItems: () => this.items.length,
+      registerInteractionHandler: (type, handler) =>
+        this.$refs.root.addEventListener(type, handler),
+      deregisterInteractionHandler: (type, handler) =>
+        this.$refs.root.removeEventListener(type, handler),
+      registerBodyClickHandler: (handler) =>
+        document.body.addEventListener('click', handler),
+      deregisterBodyClickHandler: (handler) =>
+        document.body.removeEventListener('click', handler),
       getYParamsForItemAtIndex: (index) => {
-        const {offsetTop: top, offsetHeight: height} = vm.items[index]
+        const {offsetTop: top, offsetHeight: height} = this.items[index]
         return {top, height}
       },
       setTransitionDelayForItemAtIndex: (index, value) =>
-        vm.items[index].style.setProperty('transition-delay', value),
-      getIndexForEventTarget: (target) => vm.items.indexOf(target),
-      notifySelected: (evtData) => vm.$emit('select', {
+        this.items[index].style.setProperty('transition-delay', value),
+      getIndexForEventTarget: (target) => this.items.indexOf(target),
+      notifySelected: (evtData) => this.$emit('select', {
         index: evtData.index,
-        item: vm.items[evtData.index]
+        item: this.items[evtData.index]
       }),
-      notifyCancel: () => vm.$emit('cancel'),
-      saveFocus: () => {
-        vm.previousFocus_ = document.activeElement
-      },
+      notifyCancel: () => this.$emit('cancel'),
+      saveFocus: () => { this._previousFocus = document.activeElement },
       restoreFocus: () => {
-        if (vm.previousFocus_) {
-          vm.previousFocus_.focus()
+        if (this._previousFocus) {
+          this._previousFocus.focus()
         }
       },
-      isFocused: () => document.activeElement === vm.$refs.root,
-      focus: () => vm.$refs.root.focus(),
-      getFocusedItemIndex: () => vm.items.indexOf(document.activeElement),
-      focusItemAtIndex: (index) => vm.items[index].focus(),
-      isRtl: () => getComputedStyle(vm.$refs.root).getPropertyValue('direction') === 'rtl',
+      isFocused: () => document.activeElement === this.$refs.root,
+      focus: () => this.$refs.root.focus(),
+      getFocusedItemIndex: () => this.items.indexOf(document.activeElement),
+      focusItemAtIndex: (index) => this.items[index].focus(),
+      isRtl: () => getComputedStyle(this.$refs.root)
+        .getPropertyValue('direction') === 'rtl',
       setTransformOrigin: (origin) => {
-        vm.$refs.root.style[`${getTransformPropertyName(window)}-origin`] = origin
+        this.$refs.root.style[`${getTransformPropertyName(window)}-origin`] =
+          origin
       },
       setPosition: (position) => {
-        vm.$refs.root.style.left = 'left' in position ? position.left : null
-        vm.$refs.root.style.right = 'right' in position ? position.right : null
-        vm.$refs.root.style.top = 'top' in position ? position.top : null
-        vm.$refs.root.style.bottom = 'bottom' in position ? position.bottom : null
+        this.$refs.root.style.left =
+          'left' in position ? position.left : null
+        this.$refs.root.style.right =
+          'right' in position ? position.right : null
+        this.$refs.root.style.top =
+          'top' in position ? position.top : null
+        this.$refs.root.style.bottom =
+          'bottom' in position ? position.bottom : null
       },
       getAccurateTime: () => window.performance.now()
     })
     this.foundation.init()
   },
   beforeDestroy () {
-    this.previousFocus_ = null
+    this._previousFocus = null
     this.foundation.destroy()
   }
 }

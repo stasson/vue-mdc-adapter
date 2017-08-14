@@ -124,65 +124,64 @@ export default {
     }
   },
   mounted () {
-    let vm = this
     this.foundation = new MDCTextfieldFoundation({
-      addClass (className) {
-        vm.$set(vm.rootClasses, className, true)
+      addClass: (className) => {
+        this.$set(this.rootClasses, className, true)
       },
-      removeClass (className) {
-        vm.$delete(vm.rootClasses, className)
+      removeClass: (className) => {
+        this.$delete(this.rootClasses, className)
       },
-      addClassToLabel (className) {
-        vm.$set(vm.labelClasses, className, true)
+      addClassToLabel: (className) => {
+        this.$set(this.labelClasses, className, true)
       },
-      removeClassFromLabel (className) {
-        vm.$delete(vm.labelClasses, className)
+      removeClassFromLabel: (className) => {
+        this.$delete(this.labelClasses, className)
       },
-      addClassToHelptext (className) {
-        vm.$set(vm.helpClasses, className, true)
+      addClassToHelptext: (className) => {
+        this.$set(this.helpClasses, className, true)
       },
-      removeClassFromHelptext (className) {
-        vm.$delete(vm.helpClasses, className)
+      removeClassFromHelptext: (className) => {
+        this.$delete(this.helpClasses, className)
       },
-      helptextHasClass (className) {
-        return Boolean(vm.helpClasses[className])
+      helptextHasClass: (className) => {
+        return this.$refs.help.classList.comtains(className)
       },
-      registerInputFocusHandler (handler) {
-        vm.$refs.input.addEventListener('focus', handler)
+      registerInputFocusHandler: (handler) => {
+        this.$refs.input.addEventListener('focus', handler)
       },
-      deregisterInputFocusHandler (handler) {
-        vm.$refs.input.removeEventListener('focus', handler)
+      deregisterInputFocusHandler: (handler) => {
+        this.$refs.input.removeEventListener('focus', handler)
       },
-      registerInputBlurHandler (handler) {
-        vm.$refs.input.addEventListener('blur', handler)
+      registerInputBlurHandler: (handler) => {
+        this.$refs.input.addEventListener('blur', handler)
       },
-      deregisterInputBlurHandler (handler) {
-        vm.$refs.input.removeEventListener('blur', handler)
+      deregisterInputBlurHandler: (handler) => {
+        this.$refs.input.removeEventListener('blur', handler)
       },
-      registerInputInputHandler (handler) {
-        vm.$refs.input.addEventListener('input', handler)
+      registerInputInputHandler: (handler) => {
+        this.$refs.input.addEventListener('input', handler)
       },
-      deregisterInputInputHandler (handler) {
-        vm.$refs.input.removeEventListener('input', handler)
+      deregisterInputInputHandler: (handler) => {
+        this.$refs.input.removeEventListener('input', handler)
       },
-      registerInputKeydownHandler (handler) {
-        vm.$refs.input.addEventListener('keydown', handler)
+      registerInputKeydownHandler: (handler) => {
+        this.$refs.input.addEventListener('keydown', handler)
       },
-      deregisterInputKeydownHandler (handler) {
-        vm.$refs.input.removeEventListener('keydown', handler)
+      deregisterInputKeydownHandler: (handler) => {
+        this.$refs.input.removeEventListener('keydown', handler)
       },
-      setHelptextAttr (name, value) {
-        if (vm.$refs.help) {
-          vm.$refs.help.setAttribute(name, value)
+      setHelptextAttr: (name, value) => {
+        if (this.$refs.help) {
+          this.$refs.help.setAttribute(name, value)
         }
       },
-      removeHelptextAttr (name) {
-        if (vm.$refs.help) {
-          vm.$refs.help.removeAttribute(name)
+      removeHelptextAttr: (name) => {
+        if (this.$refs.help) {
+          this.$refs.help.removeAttribute(name)
         }
       },
-      getNativeInput () {
-        return vm.$refs.input
+      getNativeInput: () => {
+        return this.$refs.input
       }
     })
     this.foundation.init()

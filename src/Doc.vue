@@ -372,16 +372,15 @@ export default {
     }
   },
   mounted () {
-    let vm = this
-    vm.sections = []
-    document.querySelectorAll('.doc-section').forEach(function (el) {
+    this.sections = []
+    document.querySelectorAll('.doc-section').forEach((el) => {
       let headline = el.querySelector('.mdc-typography--headline')
       if (headline) {
-        vm.sections.push({id: el.id, text: headline.innerText})
+        this.sections.push({id: el.id, text: headline.innerText})
       }
     })
 
-    vm.$root.$on('toggle-drawer', () => vm.toggleDrawer())
+    this.$root.$on('toggle-drawer', () => this.toggleDrawer())
   },
   methods: {
     toggleDrawer () {
