@@ -9,10 +9,6 @@
 </i>
 </template>
 
-<style lang="scss">
-@import '@material/icon-toggle/mdc-icon-toggle';
-</style>
-
 <script lang="babel">
 import MDCIconToggleFoundation from '@material/icon-toggle/foundation'
 import {RippleBase} from '../util'

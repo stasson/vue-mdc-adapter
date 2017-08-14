@@ -29,10 +29,6 @@
   </aside>
 </template>
 
-<style lang="scss">
-  @import '@material/dialog/mdc-dialog';
-</style>
-
 <script>
 import MDCDialogFoundation from '@material/dialog/foundation'
 import { createFocusTrapInstance } from '@material/dialog/util'

@@ -11,15 +11,7 @@
   </header>
 </template>
 
-<style lang="scss">
-.mdc-simple-menu {
-  z-index:3;
-}
-</style>
-
-
 <script lang="babel">
-
   import MDCToolbarFoundation from '@material/toolbar/foundation'
   import * as util from '@material/toolbar/util'
 

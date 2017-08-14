@@ -6,12 +6,6 @@
   </button>
 </template>
 
-<style lang="scss">
-  @import '@material/card/mdc-card';
-  @import '@material/button/mdc-button';
-</style>
-
-
 <script lang="babel">
 import {RippleBase} from '../util'
 

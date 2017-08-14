@@ -13,11 +13,6 @@
   </section>
 </template>
 
-<style lang="scss">
-  @import '@material/card/mdc-card';
-</style>
-
-
 <script>
 import MDCCardActionButton from './mdc-card-action-button'
 

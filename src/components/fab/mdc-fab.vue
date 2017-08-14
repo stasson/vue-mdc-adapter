@@ -10,8 +10,6 @@
 
 
 <style lang="scss">
-@import '@material/fab/mdc-fab';
-  
 .mdc-fab--absolute {
   position: absolute;
   bottom: 1rem;

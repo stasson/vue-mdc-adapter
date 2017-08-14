@@ -1,3 +1,5 @@
+import '@material/textfield/dist/mdc.textfield.css'
+
 import VueMDCTextField from './mdc-textfield'
 
 export {VueMDCTextField}

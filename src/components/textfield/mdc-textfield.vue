@@ -56,11 +56,6 @@
   </div>
 </template>
 
-<style lang="scss">
-@import "@material/textfield/mdc-textfield";
-</style>
-
-
 <script lang="babel">
 import MDCTextfieldFoundation from '@material/textfield/foundation'
 

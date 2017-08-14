@@ -6,14 +6,7 @@
   </div>
 </template>
 
-
-<style lang="scss">
-  @import "@material/grid-list/mdc-grid-list";
-</style>
-
-
 <script>
-
 import MDCGridListFoundation from '@material/grid-list/foundation'
 
 export default {

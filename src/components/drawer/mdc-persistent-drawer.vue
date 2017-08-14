@@ -8,10 +8,6 @@
   </aside>
 </template>
 
-<style lang="scss">
-  @import "@material/drawer/persistent/mdc-persistent-drawer";
-</style>
-
 <script lang="babel">
 import MDCPersistentDrawerFoundation from '@material/drawer/persistent/foundation'
 import * as utils from '@material/drawer/util'

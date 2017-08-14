@@ -13,12 +13,6 @@
 </div>
 </template>
 
-<style lang="scss">
-@import "@material/form-field/mdc-form-field";
-@import "@material/switch/mdc-switch";
-</style>
-
-
 <script lang="babel">
 
 export default {

@@ -4,11 +4,6 @@
   </img>
 </template>
 
-<style lang="scss">
-  @import '@material/card/mdc-card';
-</style>
-
-
 <script>
 
 export default {

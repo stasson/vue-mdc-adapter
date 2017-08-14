@@ -5,12 +5,6 @@
   </h1>
 </template>
 
-
-<style lang="scss">
-  @import '@material/card/mdc-card';
-</style>
-
-
 <script>
 export default {
   name: 'mdc-card-title',

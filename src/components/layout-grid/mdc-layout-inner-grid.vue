@@ -3,8 +3,3 @@
     <slot></slot>
   </div>
 </template>
-
-
-<style lang="scss">
-  @import '@material/layout-grid/mdc-layout-grid';
-</style>

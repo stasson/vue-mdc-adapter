@@ -5,10 +5,6 @@
   </button>
 </template>
 
-<style lang="scss">
-  @import '@material/button/mdc-button';
-</style>
-
 <script>
 import {RippleBase, DispatchEventMixin} from '../util'
 

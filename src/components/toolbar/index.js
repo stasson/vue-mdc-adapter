@@ -1,3 +1,5 @@
+import '@material/toolbar/dist/mdc.toolbar.css'
+
 import VueMDCToolbar from './mdc-toolbar'
 import VueMDCToolbarRow from './mdc-toolbar-row'
 import VueMDCToolbarSection from './mdc-toolbar-section'

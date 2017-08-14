@@ -20,13 +20,6 @@
 </div>
 </template>
 
-<style lang="scss">
-@import "@material/form-field/mdc-form-field";
-@import "@material/checkbox/mdc-checkbox";
-
-</style>
-
-
 <script lang="babel">
 
 /* global HTMLElement */

@@ -6,10 +6,6 @@
   </a>
 </template>
 
-<style lang="scss">
-@import "@material/toolbar/mdc-toolbar";
-</style>
-
 <script lang="babel">
 import {DispatchEventMixin} from '../util'
 

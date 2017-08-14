@@ -1,4 +1,3 @@
-
 <template>
   <header :class="headerClasses">
     <div :class="contentClasses">

@@ -1,3 +1,5 @@
+import '@material/list/dist/mdc.list.css'
+
 import VueMDCList from './mdc-list'
 import VueMDCListItem from './mdc-list-item'
 import VueMDCListDivider from './mdc-list-divider'

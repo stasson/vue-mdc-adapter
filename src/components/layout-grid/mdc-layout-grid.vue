@@ -7,13 +7,7 @@
 </template>
 
 
-<style lang="scss">
-  @import '@material/layout-grid/mdc-layout-grid';
-</style>
-
-
 <script>
-
 export default {
   props: {
     'fixed-column-width': Boolean

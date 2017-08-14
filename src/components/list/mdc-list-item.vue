@@ -20,10 +20,6 @@
   </li>
 </template>
 
-<style lang="scss">
-  @import "@material/list/mdc-list";
-</style>
-
 <script lang="babel">
 export default {
   computed: {

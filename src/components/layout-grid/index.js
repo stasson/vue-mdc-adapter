@@ -1,3 +1,5 @@
+import '@material/layout-grid/dist/mdc.layout-grid.css'
+
 import VueMDCLayoutGrid from './mdc-layout-grid'
 import VueMDCLayoutCell from './mdc-layout-cell'
 import VueMDCLayoutInnerGrid from './mdc-layout-inner-grid'

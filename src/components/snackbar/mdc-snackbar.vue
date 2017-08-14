@@ -10,11 +10,6 @@
 </div>
 </template>
 
-<style lang="scss">
-@import '@material/button/mdc-button';
-@import '@material/snackbar/mdc-snackbar';
-</style>
-
 <script lang="babel">
 import MDCSnackbarFoundation from '@material/snackbar/foundation'
 import { getCorrectEventName } from '@material/animation'

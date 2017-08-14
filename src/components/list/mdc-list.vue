@@ -1,15 +1,11 @@
 <template>
 <div>
-  
+
   <ul class="mdc-list" :class="classes">
     <slot></slot>
   </ul>
 </div>
 </template>
-
-<style lang="scss">
-  @import "@material/list/mdc-list";
-</style>
 
 <style>
   .mdc-list--bordered {

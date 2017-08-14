@@ -14,11 +14,6 @@
 </div>
 </template>
 
-<style lang="scss">
-@import "@material/form-field/mdc-form-field";
-@import "@material/radio/mdc-radio";
-</style>
-
 <script lang="babel">
 import MDCRadioFoundation from '@material/radio/foundation'
 import {RippleBase} from '../util'

@@ -1,3 +1,4 @@
+import '@material/dialog/dist/mdc.dialog.css'
 import VueMDCDialog from './mdc-dialog'
 
 export {VueMDCDialog}

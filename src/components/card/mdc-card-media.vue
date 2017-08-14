@@ -6,13 +6,11 @@
   </section>
 </template>
 
-<style lang="scss">
-  @import '@material/card/mdc-card';
-  
-  .mdc-card-media {
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
+<style lang="css">
+.mdc-card-media {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 </style>
 
 <script>

@@ -1,4 +1,3 @@
-
 <template>
   <div :class="classes">
     <slot />

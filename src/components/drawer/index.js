@@ -1,3 +1,5 @@
+import '@material/drawer/dist/mdc.drawer.css'
+
 export default {
   install (vm) {
     vm.component('mdc-temporary-drawer', require('./mdc-temporary-drawer'))
