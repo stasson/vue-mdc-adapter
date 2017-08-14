@@ -1,6 +1,6 @@
 <template>
   <div id="doc" class="mdc-typography" style="height=100%">
-  
+
     <mdc-toolbar waterfall>
       <mdc-toolbar-row>
         <mdc-toolbar-section align-start >
@@ -10,7 +10,7 @@
           <mdc-toolbar-title>Vue MDC Adapter</mdc-toolbar-title>
         </mdc-toolbar-section>
         <mdc-toolbar-section align-end>
-          <mdc-toolbar-icon href="https://github.com/stasson/vue-mdc-adapter" 
+          <mdc-toolbar-icon href="https://github.com/stasson/vue-mdc-adapter"
             target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 1024 1024">
                 <path fill="#ffffff" d="M512 0C229.25 0 0 229.25 0 512c0 226.25 146.69 418.13 350.16 485.81 25.59 4.69 34.94-11.12 34.94-24.62 0-12.19-0.47-52.56-0.72-95.31C242 908.81 211.91 817.5 211.91 817.5c-23.31-59.12-56.84-74.87-56.84-74.87-46.53-31.75 3.53-31.12 3.53-31.12 51.41 3.56 78.47 52.75 78.47 52.75 45.69 78.25 119.88 55.63 149 42.5 4.65-33 17.9-55.62 32.5-68.37C304.91 725.44 185.34 681.5 185.34 485.31c0-55.94 19.97-101.56 52.66-137.41-5.22-13-22.84-65.09 5.06-135.56 0 0 42.94-13.75 140.81 52.5 40.81-11.41 84.59-17.03 128.13-17.22 43.5 0.19 87.31 5.88 128.19 17.28 97.69-66.31 140.69-52.5 140.69-52.5 28 70.53 10.38 122.56 5.13 135.5 32.81 35.84 52.63 81.47 52.63 137.41 0 196.69-119.75 240-233.81 252.69 18.44 15.88 34.75 47 34.75 94.75 0 68.44-0.69 123.63-0.69 140.5 0 13.63 9.31 29.56 35.25 24.56C877.44 930 1024 738.13 1024 512 1024 229.25 794.75 0 512 0z"></path>
@@ -19,7 +19,7 @@
         </mdc-toolbar-section>
       </mdc-toolbar-row>
     </mdc-toolbar>
-  
+
     <div class="drawer-layout">
       <div>
         <component :is="drawerComponent" ref="drawer" >
@@ -31,7 +31,7 @@
            </mdc-list>
            </component>
       </div>
-    
+
       <div>
         <section id="buttons" class="doc-section">
           <mdc-headline>Buttons</mdc-headline>
@@ -74,7 +74,7 @@
             </p>
           </div>
         </section>
-      
+
         <section id="fab" class="doc-section">
           <mdc-headline>Fab</mdc-headline>
           <div  class="doc-center">
@@ -86,7 +86,7 @@
             <mdc-fab plain fixed @click="scrollToTop">home</mdc-fab>
           </div>
         </section>
-      
+
         <section id="icon-toggle" class="doc-section" >
           <mdc-headline>Icon Toggle</mdc-headline>
           <div class="doc-center">
@@ -94,19 +94,19 @@
               toggle-on="favorite" label-on="Remove from favorites"
               toggle-off="favorite_border" label-off="Add to favorites"
               ></mdc-icon-toggle>
-            
+
             <mdc-icon-toggle primary v-model="toggle"
-              toggle-on="star" toggle-off="star_border" 
+              toggle-on="star" toggle-off="star_border"
             ></mdc-icon-toggle>
             <mdc-icon-toggle accent v-model="toggle"
-              toggle-on="cloud_done" toggle-off="cloud" 
+              toggle-on="cloud_done" toggle-off="cloud"
             ></mdc-icon-toggle>
             <mdc-icon-toggle disabled
               toggle-on="mood_bad" toggle-off="mood" ></mdc-icon-toggle>
           </div>
         </section>
-      
-      
+
+
         <section id="cards" class="doc-section">
           <mdc-headline>Cards</mdc-headline>
           <mdc-card class="doc-center">
@@ -139,7 +139,7 @@
             commodo consequat.
           </mdc-dialog>
         </section>
-        
+
         <section id="drawer" class="doc-section">
           <mdc-headline>Drawers</mdc-headline>
           <mdc-button raised @click="switchDrawer('temporary')">Temporary</mdc-button>
@@ -147,7 +147,7 @@
           <mdc-button raised @click="switchDrawer('permanent')">Permanent</mdc-button>
         </section>
 
-      
+
         <section id="grid-list" class="doc-section" >
           <mdc-headline>Grid List</mdc-headline>
           <mdc-grid-list icon-align-start with-support-text width=150 class="doc-center">
@@ -157,10 +157,10 @@
               v-for="(item, index) in 6" :key="index"></mdc-grid-tile>
           </mdc-grid-list>
         </section>
-      
+
         <section id="input-controls" class="doc-section" >
           <mdc-headline>Input and Controls</mdc-headline>
-      
+
           <mdc-subheading>Checkbox</mdc-subheading>
           <div class="doc-center">
             <p><mdc-checkbox v-model="checked" :indeterminate.sync="indeterminate"
@@ -172,7 +172,7 @@
             <p><mdc-checkbox disabled label="Disabled"></mdc-checkbox></p>
             <p><br></p>
           </div>
-        
+
           <mdc-subheading>Switch</mdc-subheading>
           <div class="doc-center">
             <p><mdc-switch v-model="checked" :label="checked?'switch on':'switch off'"></mdc-switch></p>
@@ -188,30 +188,33 @@
             <mdc-button dense >{{ picked }}</mdc-button>
             <p><br></p>
           </div>
-          
+
           <mdc-subheading>Textfield</mdc-subheading>
           <div class="doc-center">
-            <mdc-textfield v-model="textField" 
+            <mdc-textfield v-model="textField"
               label="Simple textfield"></mdc-textfield>
-            <mdc-textfield v-model="textField" 
-              label="with help text" 
+            <mdc-textfield v-model="textField"
+              label="with help text"
               helptext="Help text..."></mdc-textfield>
-            <p><mdc-textfield 
+            <p><mdc-textfield
               label="disabled" disabled></mdc-textfield></p>
             <p><mdc-textfield type="password" label="Password"
                 required minlength=8 maxlength=10
                 helptext="passord must be 8 to 10 characters"
                 helptext-persistent helptext-validation
                 v-model="password"></mdc-textfield></p>
-            <p><mdc-textfield v-model="textField" multiline 
+            <p><mdc-textfield v-model="textField" multiline
                 label="multiline" ></mdc-textfield></p>
             <p><mdc-textfield v-model="textField" fullwidth
                 label="fullwidth"
                 helptext="Help text..." ></mdc-textfield></p>
+            <p><mdc-textfield v-model="textField" fullwidth multiline
+                label="fullwidth multiline"
+                helptext="Help text..." ></mdc-textfield></p>
           </div>
-        
+
         </section>
-      
+
 
         <section id="layout-grid" class="doc-section" >
           <mdc-headline>Layout Grid</mdc-headline>
@@ -231,11 +234,11 @@
             </mdc-layout-cell>
           </mdc-layout-grid>
         </section>
-      
-      
+
+
         <section id="list" class="doc-section" >
           <mdc-headline>List</mdc-headline>
-      
+
           <mdc-list bordered class="doc-center">
             <mdc-list-item>Single-line item</mdc-list-item>
             <mdc-list-item>Single-line item</mdc-list-item>
@@ -295,9 +298,9 @@
             </mdc-list>
           </mdc-list-group>
           <p><br></p>
-      
+
         </section>
-      
+
         <section id="menu" class="doc-section">
           <mdc-headline >Menu</mdc-headline>
           <div class="doc-center">
@@ -313,7 +316,7 @@
             </mdc-menu-anchor>
             </div>
       </section>
-      
+
         <section id="snackbar" class="doc-section">
           <mdc-headline>Snackbar</mdc-headline>
           <div class="doc-center">
@@ -321,7 +324,7 @@
             <mdc-snackbar ref="snackbar"></mdc-snackbar>
           </div>
         </section>
-      
+
         <section id="typography" class="doc-section">
           <mdc-headline>Typography</mdc-headline>
           <div class="doc-center">
