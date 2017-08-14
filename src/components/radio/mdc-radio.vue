@@ -21,7 +21,6 @@
 
 <script lang="babel">
 import MDCRadioFoundation from '@material/radio/foundation'
-import {VueMDCAdapter} from '../base'
 import {RippleBase} from '../util'
 
 export default {
@@ -49,13 +48,11 @@ export default {
     }
   },
   mounted () {
-    let adapter = new VueMDCAdapter(this)
-
     // add foundation
     this.foundation = new MDCRadioFoundation({
-      addClass: (className) => adapter.addClass(className),
-      removeClass: (className) => adapter.removeClass(className),
-      getNativeControl: () => adapter.control
+      addClass: (className) => this.$set(this.classes, className, true),
+      removeClass: (className) => this.$delete(this.classes, className),
+      getNativeControl: () => this.$refs.control
     })
     this.foundation.init()
     this.foundation.setValue(this.value ? this.value : this.label)

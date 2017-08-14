@@ -33,7 +33,6 @@
 import MDCCheckboxFoundation from '@material/checkbox/foundation'
 import {getCorrectEventName} from '@material/animation'
 
-import {VueMDCAdapter} from '../base'
 import {RippleBase} from '../util'
 
 export default {
@@ -75,21 +74,18 @@ export default {
     }
   },
   mounted () {
-    let vm = this
-    let adapter = new VueMDCAdapter(vm)
-
     this.foundation = new MDCCheckboxFoundation({
-      addClass: (className) => adapter.addClass(className),
-      removeClass: (className) => adapter.removeClass(className),
-      registerAnimationEndHandler: (handler) => {
-        adapter.root.addEventListener(getCorrectEventName(window, 'animationend'), handler)
-      },
-      deregisterAnimationEndHandler: (handler) => {
-        adapter.root.removeEventListener(getCorrectEventName(window, 'animationend'), handler)
-      },
-      getNativeControl: () => adapter.control,
-      forceLayout: () => adapter.forceLayout(),
-      isAttachedToDOM: () => adapter.isAttachedToDOM()
+      addClass: (className) => this.$set(this.classes, className, true),
+      removeClass: (className) => this.$delete(this.classes, className),
+      registerAnimationEndHandler: (handler) =>
+        this.$refs.root.addEventListener(
+          getCorrectEventName(window, 'animationend'), handler),
+      deregisterAnimationEndHandler: (handler) =>
+        this.$refs.root.removeEventListener(
+          getCorrectEventName(window, 'animationend'), handler),
+      getNativeControl: () => this.$refs.control,
+      forceLayout: () => this.$forceUpdate(),
+      isAttachedToDOM: () => Boolean(this.$el.parentNode)
     })
 
     this.foundation.setChecked(this.checked)
@@ -97,7 +93,7 @@ export default {
     this.foundation.setIndeterminate(this.indeterminate)
     this.foundation.init()
 
-    this.ripple = new RippleBase(vm, {
+    this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => RippleBase.isSurfaceActive(this.$refs.control),
       registerInteractionHandler: (evt, handler) => {

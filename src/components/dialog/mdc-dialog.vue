@@ -34,7 +34,6 @@
 </style>
 
 <script>
-import { VueMDCAdapter } from '../base'
 import MDCDialogFoundation from '@material/dialog/foundation'
 import { createFocusTrapInstance } from '@material/dialog/util'
 
@@ -60,62 +59,37 @@ export default {
     }
   },
   mounted () {
-    let adapter = new VueMDCAdapter(this)
-
     this.focusTrap = createFocusTrapInstance(
-      adapter.vm.$refs.surface, adapter.vm.$refs.accept)
+      this.$refs.surface, this.$refs.accept)
 
     this.foundation = new MDCDialogFoundation({
-      addClass: (className) => adapter.addClass(className),
-      removeClass: (className) => adapter.removeClass(className),
-      addBodyClass: (className) => {
-        document.body.classList.add(className)
-      },
-      removeBodyClass: (className) => {
-        document.body.classList.remove(className)
-      },
-      eventTargetHasClass: (target, className) => {
-        return target.classList.contains(className)
-      },
-      registerInteractionHandler: (evt, handler) => {
-        adapter.vm.$refs.root.addEventListener(evt, handler)
-      },
-      deregisterInteractionHandler: (evt, handler) => {
-        adapter.vm.$refs.root.removeEventListener(evt, handler)
-      },
-      registerSurfaceInteractionHandler: (evt, handler) => {
-        adapter.vm.$refs.surface.addEventListener(evt, handler)
-      },
-      deregisterSurfaceInteractionHandler: (evt, handler) => {
-        adapter.vm.$refs.surface.removeEventListener(evt, handler)
-      },
-      registerDocumentKeydownHandler: (handler) => {
-        document.addEventListener('keydown', handler)
-      },
-      deregisterDocumentKeydownHandler: (handler) => {
-        document.removeEventListener('keydown', handler)
-      },
-      registerTransitionEndHandler: (handler) => {
-        adapter.vm.$refs.surface.addEventListener('transitionend', handler)
-      },
-      deregisterTransitionEndHandler: (handler) => {
-        adapter.vm.$refs.surface.removeEventListener('transitionend', handler)
-      },
-      notifyAccept: () => {
-        adapter.vm.$emit('accept')
-      },
-      notifyCancel: () => {
-        adapter.vm.$emit('cancel')
-      },
-      trapFocusOnSurface: () => {
-        adapter.vm.focusTrap.activate()
-      },
-      untrapFocusOnSurface: () => {
-        adapter.vm.focusTrap.deactivate()
-      },
-      isDialog: (el) => {
-        return adapter.vm.$refs.surface === el
-      }
+      addClass: (className) => this.$set(this.classes, className, true),
+      removeClass: (className) => this.$delete(this.classes, className),
+      addBodyClass: (className) => document.body.classList.add(className),
+      removeBodyClass: (className) => document.body.classList.remove(className),
+      eventTargetHasClass: (target, className) =>
+        target.classList.contains(className),
+      registerInteractionHandler: (evt, handler) =>
+        this.$refs.root.addEventListener(evt, handler),
+      deregisterInteractionHandler: (evt, handler) =>
+        this.$refs.root.removeEventListener(evt, handler),
+      registerSurfaceInteractionHandler: (evt, handler) =>
+        this.$refs.surface.addEventListener(evt, handler),
+      deregisterSurfaceInteractionHandler: (evt, handler) =>
+        this.$refs.surface.removeEventListener(evt, handler),
+      registerDocumentKeydownHandler: (handler) =>
+        document.addEventListener('keydown', handler),
+      deregisterDocumentKeydownHandler: (handler) =>
+        document.removeEventListener('keydown', handler),
+      registerTransitionEndHandler: (handler) =>
+        this.$refs.surface.addEventListener('transitionend', handler),
+      deregisterTransitionEndHandler: (handler) =>
+        this.$refs.surface.removeEventListener('transitionend', handler),
+      notifyAccept: () => this.$emit('accept'),
+      notifyCancel: () => this.$emit('cancel'),
+      trapFocusOnSurface: () => this.focusTrap.activate(),
+      untrapFocusOnSurface: () => this.focusTrap.deactivate(),
+      isDialog: (el) => (this.$refs.surface === el)
     })
 
     this.foundation.init()

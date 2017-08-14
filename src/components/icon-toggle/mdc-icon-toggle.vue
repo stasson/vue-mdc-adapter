@@ -16,7 +16,6 @@
 <script lang="babel">
 import MDCIconToggleFoundation from '@material/icon-toggle/foundation'
 import {RippleBase} from '../util'
-import {VueMDCAdapter} from '../base'
 
 export default {
   props: {
@@ -61,22 +60,20 @@ export default {
     }
   },
   mounted () {
-    let vm = this
-    let adapter = new VueMDCAdapter(vm)
     this.foundation = new MDCIconToggleFoundation({
-      addClass: (className) => adapter.addClass(className),
-      removeClass: (className) => adapter.removeClass(className),
+      addClass: (className) => this.$set(this.classes, className, true),
+      removeClass: (className) => this.$delete(this.classes, className),
       registerInteractionHandler: (evt, handler) =>
-        adapter.registerInteractionHandler(evt, handler),
+        this.$el.addEventListener(evt, handler),
       deregisterInteractionHandler: (evt, handler) =>
-        adapter.deregisterInteractionHandler(evt, handler),
-      setText: (text) => { vm.text = text },
-      getTabIndex: () => vm.tabIndex,
-      setTabIndex: (tabIndex) => { vm.tabIndex = tabIndex },
-      getAttr: (name) => vm.$el.getAttribute(name),
-      setAttr: (name, value) => { vm.$el.setAttribute(name, value) },
-      rmAttr: (name) => { vm.$el.removeAttribute(name) },
-      notifyChange: (evtData) => { vm.$emit('input', evtData.isOn) }
+        this.$el.removeEventListener(evt, handler),
+      setText: (text) => { this.text = text },
+      getTabIndex: () => this.tabIndex,
+      setTabIndex: (tabIndex) => { this.tabIndex = tabIndex },
+      getAttr: (name) => this.$el.getAttribute(name),
+      setAttr: (name, value) => { this.$el.setAttribute(name, value) },
+      rmAttr: (name) => { this.$el.removeAttribute(name) },
+      notifyChange: (evtData) => { this.$emit('input', evtData.isOn) }
     })
     this.foundation.init()
     this.foundation.refreshToggleData()
