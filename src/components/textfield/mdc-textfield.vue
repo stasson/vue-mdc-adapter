@@ -139,7 +139,8 @@ export default {
         this.$delete(this.helpClasses, className)
       },
       helptextHasClass: (className) => {
-        return this.$refs.help.classList.comtains(className)
+        return this.$refs.help &&
+          this.$refs.help.classList.contains(className)
       },
       registerInputFocusHandler: (handler) => {
         this.$refs.input.addEventListener('focus', handler)
