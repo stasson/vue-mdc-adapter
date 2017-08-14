@@ -12,7 +12,9 @@
 </template>
 
 <style lang="scss">
-@import "@material/toolbar/mdc-toolbar";
+.mdc-simple-menu {
+  z-index:3;
+}
 </style>
 
 
@@ -40,12 +42,9 @@
           'mdc-toolbar--fixed-lastrow-only': this.fixedLastrow,
           'mdc-toolbar--flexible': this.flexible,
           'mdc-toolbar--flexible-default-behavior': this.flexible &&
-                                                      this.flexibleDefault
+            this.flexibleDefault
         },
-        rootStyles: {
-          // fix for toolbar fixed z-index
-          'z-index': 10
-        },
+        rootStyles: {},
         adjustStyles: {
           height: '0.1px' // to avoid top margin collapse with :after el
                           // 0.1 px should be rounded to 0px
@@ -63,7 +62,7 @@
           this.$delete(this.rootClasses, className)
         },
         hasClass: (className) => {
-          return Boolean(this.rootClasses[className])
+          return this.$refs.root.classList.contains(className)
         },
         registerScrollHandler: (handler) => {
           window.addEventListener('scroll', handler, util.applyPassive())
@@ -86,8 +85,8 @@
         getOffsetHeight: () => {
           return this.$refs.root.offsetHeight
         },
-        getFlexibleRowElementOffsetHeight: () => {
-          let el = this.$refs.root.querySelector(MDCToolbarFoundation.strings.FLEXIBLE_ROW_SELECTOR)
+        getFirstRowElementOffsetHeight: () => {
+          let el = this.$refs.root.querySelector(MDCToolbarFoundation.strings.FIRST_ROW_SELECTOR)
           return (el) ? el.offsetHeight : undefined
         },
         notifyChange: (evtData) => {
@@ -101,7 +100,7 @@
           if (el) el.style.setProperty(property, value)
         },
         setStyleForFlexibleRowElement: (property, value) => {
-          let el = this.$refs.root.querySelector(MDCToolbarFoundation.strings.FLEXIBLE_ROW_SELECTOR)
+          let el = this.$refs.root.querySelector(MDCToolbarFoundation.strings.FIRST_ROW_SELECTOR)
           if (el) el.style.setProperty(property, value)
         },
         setStyleForFixedAdjustElement: (property, value) => {
