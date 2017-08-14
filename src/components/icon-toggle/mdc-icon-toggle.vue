@@ -15,7 +15,8 @@
 
 <script lang="babel">
 import MDCIconToggleFoundation from '@material/icon-toggle/foundation'
-import {VueMDCAdapter, VueMDCRipple} from '../base'
+import {RippleBase} from '../util'
+import {VueMDCAdapter} from '../base'
 
 export default {
   props: {
@@ -82,12 +83,12 @@ export default {
     this.foundation.toggle(this.value)
     this.foundation.setDisabled(this.disabled)
 
-    this.ripple = new VueMDCRipple(vm, {
+    this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
-      isSurfaceActive: () => vm.foundation.isKeyboardActivated(),
+      isSurfaceActive: () => this.foundation.isKeyboardActivated(),
       computeBoundingRect: () => {
         const dim = 48
-        const {left, top} = vm.$el.getBoundingClientRect()
+        const {left, top} = this.$el.getBoundingClientRect()
         return {
           left,
           top,

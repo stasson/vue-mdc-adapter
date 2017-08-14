@@ -1,19 +1,13 @@
 import '@material/ripple/mdc-ripple.scss'
 import { MDCRippleFoundation } from '@material/ripple'
 import { supportsCssVariables, getMatchesProperty } from '@material/ripple/util'
-import VueMDCAdapter from './adapter.js'
 
 /* global HTMLElement */
 const MATCHES = getMatchesProperty(HTMLElement.prototype)
 
-export default class VueMDCRipple extends MDCRippleFoundation {
+export class RippleBase extends MDCRippleFoundation {
   constructor (vm, options) {
-    let adapter = new VueMDCAdapter(vm)
     super(Object.assign({
-      isUnbounded: () => false,
-      computeBoundingRect: () => {
-        return vm.$el.getBoundingClientRect()
-      },
       browserSupportsCssVars: () => {
         return supportsCssVariables(window)
       },
@@ -26,26 +20,33 @@ export default class VueMDCRipple extends MDCRippleFoundation {
       getWindowPageOffset: () => {
         return ({x: window.pageXOffset, y: window.pageYOffset})
       },
+      isUnbounded: () => {
+        return false
+      },
+      computeBoundingRect: () => {
+        return vm.$el.getBoundingClientRect()
+      },
       isSurfaceActive: () => {
-        return adapter.vm.$el[MATCHES](':active')
+        return vm.$el[MATCHES](':active')
       },
       isSurfaceDisabled: () => {
-        return adapter.vm.disabled
+        return vm.disabled
       },
-      addClass: (className) => {
-        adapter.addClass(className)
+      addClass (className) {
+        vm.$set(vm.classes, className, true)
       },
-      removeClass: (className) => {
-        adapter.removeClass(className)
+      // assumes a data 'classes' property on the root element
+      removeClass (className) {
+        vm.$delete(vm.classes, className)
       },
-      registerInteractionHandler: (evtType, handler) => {
-        adapter.registerInteractionHandler(evtType, handler)
+      registerInteractionHandler: (evt, handler) => {
+        vm.$el.addEventListener(evt, handler)
       },
-      deregisterInteractionHandler: (evtType, handler) => {
-        adapter.deregisterInteractionHandler(evtType, handler)
+      deregisterInteractionHandler: (evt, handler) => {
+        vm.$el.removeEventListener(evt, handler)
       },
       updateCssVariable: (varName, value) => {
-        adapter.setStyle(varName, value)
+        vm.$set(vm.styles, varName, value)
       }
     }, options))
   }

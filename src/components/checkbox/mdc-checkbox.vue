@@ -16,7 +16,7 @@
       <div class="mdc-checkbox__mixedmark"></div>
     </div>
   </div>
-  <label :for="_uid" v-if="label">{{ label }}</label>
+  <label ref="label" :for="_uid" v-if="label">{{ label }}</label>
 </div>
 </template>
 
@@ -33,7 +33,8 @@
 import MDCCheckboxFoundation from '@material/checkbox/foundation'
 import {getCorrectEventName} from '@material/animation'
 
-import {VueMDCAdapter, VueMDCRipple} from '../base'
+import {VueMDCAdapter} from '../base'
+import {RippleBase} from '../util'
 
 export default {
   model: {
@@ -96,11 +97,19 @@ export default {
     this.foundation.setIndeterminate(this.indeterminate)
     this.foundation.init()
 
-    this.ripple = new VueMDCRipple(vm, {
+    this.ripple = new RippleBase(vm, {
       isUnbounded: () => true,
-      isSurfaceActive: () => VueMDCRipple.isSurfaceActive(adapter.control),
+      isSurfaceActive: () => RippleBase.isSurfaceActive(this.$refs.control),
+      registerInteractionHandler: (evt, handler) => {
+        this.$refs.root.addEventListener(evt, handler)
+        this.$refs.label.addEventListener(evt, handler)
+      },
+      deregisterInteractionHandler: (evt, handler) => {
+        this.$refs.root.removeEventListener(evt, handler)
+        this.$refs.label.removeEventListener(evt, handler)
+      },
       computeBoundingRect: () => {
-        const {left, top} = adapter.control.getBoundingClientRect()
+        const {left, top} = this.$refs.control.getBoundingClientRect()
         const DIM = 40
         return {
           top,

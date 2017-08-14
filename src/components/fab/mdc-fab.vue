@@ -35,14 +35,11 @@
     right: 5rem;
   }
 }
-
-
 </style>
 
 
 <script>
-import {VueMDCRipple} from '../base'
-import {DispatchEventMixin} from '../util'
+import {RippleBase, DispatchEventMixin} from '../util'
 
 export default {
   name: 'mdc-fab',
@@ -66,7 +63,7 @@ export default {
     }
   },
   mounted () {
-    this.ripple = new VueMDCRipple(this)
+    this.ripple = new RippleBase(this)
     this.ripple.init()
   },
   beforeDestroy () {

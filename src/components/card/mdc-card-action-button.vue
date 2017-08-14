@@ -13,7 +13,7 @@
 
 
 <script lang="babel">
-import {VueMDCRipple} from '../base'
+import {RippleBase} from '../util'
 
 export default {
   name: 'mdc-card-action-button',
@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted () {
-    this.ripple = new VueMDCRipple(this)
+    this.ripple = new RippleBase(this)
     this.ripple.init()
   },
   beforeDestroy () {

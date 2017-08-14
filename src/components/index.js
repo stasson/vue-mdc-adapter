@@ -13,7 +13,6 @@ import VueMDCLayoutGrid from './layout-grid'
 import VueMDCList from './list'
 import VueMDCMenu from './menu'
 import VueMDCRadio from './radio'
-import VueMDCRipple from './ripple'
 import VueMDCSelect from './select'
 import VueMDCSnackbar from './snackbar'
 import VueMDCSwitch from './switch'
@@ -36,7 +35,6 @@ const plugin = {
     vm.use(VueMDCList)
     vm.use(VueMDCMenu)
     vm.use(VueMDCRadio)
-    vm.use(VueMDCRipple)
     vm.use(VueMDCSelect)
     vm.use(VueMDCSnackbar)
     vm.use(VueMDCSwitch)

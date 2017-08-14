@@ -4,13 +4,13 @@
     <input type="radio" ref="control" :id="_uid" :name="name" 
       class="mdc-radio__native-control" @change="sync">
   
-    <div class="mdc-radio__background">
+    <div ref="label" class="mdc-radio__background">
       <div class="mdc-radio__outer-circle"></div>
       <div class="mdc-radio__inner-circle"></div>
     </div>
   
   </div>
-  <label :for="_uid" v-if="label">{{ label }}</label>
+  <label ref="label" :for="_uid" v-if="label">{{ label }}</label>
 </div>
 </template>
 
@@ -21,7 +21,8 @@
 
 <script lang="babel">
 import MDCRadioFoundation from '@material/radio/foundation'
-import {VueMDCAdapter, VueMDCRipple} from '../base'
+import {VueMDCAdapter} from '../base'
+import {RippleBase} from '../util'
 
 export default {
   name: 'mdc-radio',
@@ -62,11 +63,19 @@ export default {
     this.foundation.setChecked(this.checked)
 
     // add ripple
-    this.ripple = new VueMDCRipple(this, {
+    this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => false,
+      registerInteractionHandler: (evt, handler) => {
+        this.$refs.root.addEventListener(evt, handler)
+        this.$refs.label.addEventListener(evt, handler)
+      },
+      deregisterInteractionHandler: (evt, handler) => {
+        this.$refs.root.removeEventListener(evt, handler)
+        this.$refs.label.removeEventListener(evt, handler)
+      },
       computeBoundingRect: () => {
-        const {left, top} = adapter.root.getBoundingClientRect()
+        const {left, top} = this.$refs.root.getBoundingClientRect()
         const DIM = 40
         return {
           top,
