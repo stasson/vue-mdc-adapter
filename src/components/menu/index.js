@@ -1,3 +1,4 @@
+import '@material/menu/dist/mdc.menu.css'
 import VueMDCMenu from './mdc-menu'
 import VueMDCMenuItem from './mdc-menu-item'
 import VueMDCMenuDivider from './mdc-menu-divider'

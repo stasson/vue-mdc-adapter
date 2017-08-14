@@ -7,10 +7,6 @@
   </li>
 </template>
 
-<style lang="scss">
-  @import "@material/menu/mdc-menu";
-</style>
-
 <script lang="babel">
 export default {
   name: 'mdc-menu-item',

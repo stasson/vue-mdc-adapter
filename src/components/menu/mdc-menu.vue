@@ -7,8 +7,11 @@
   </div>
 </template>
 
-<style lang="scss">
-  @import "@material/menu/mdc-menu";
+<style lang="css">
+.mdc-simple-menu {
+  /*temporary toolbar fix*/
+  z-index:3;
+}
 </style>
 
 <script lang="babel">
