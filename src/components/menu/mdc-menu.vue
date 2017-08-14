@@ -95,10 +95,12 @@ export default {
       setTransitionDelayForItemAtIndex: (index, value) =>
         this.items[index].style.setProperty('transition-delay', value),
       getIndexForEventTarget: (target) => this.items.indexOf(target),
-      notifySelected: (evtData) => this.$emit('select', {
-        index: evtData.index,
-        item: this.items[evtData.index]
-      }),
+      notifySelected: (evtData) => {
+        this.$emit('select', {
+          index: evtData.index,
+          item: this.items[evtData.index]
+        })
+      },
       notifyCancel: () => this.$emit('cancel'),
       saveFocus: () => { this._previousFocus = document.activeElement },
       restoreFocus: () => {
@@ -128,6 +130,30 @@ export default {
       },
       getAccurateTime: () => window.performance.now()
     })
+
+    /** temporary fix for duplicate $emit */
+    this.foundation.clickHandler_ = (evt) => {
+      evt.stopPropagation()
+      this.foundation.handlePossibleSelected_(evt)
+    }
+
+    this.foundation.keydownHandler_ = (evt) => {
+      evt.stopPropagation()
+      this.foundation.handleKeyboardDown_(evt)
+    }
+
+    this.foundation.keyupHandler_ = (evt) => {
+      evt.stopPropagation()
+      this.foundation.handleKeyboardUp_(evt)
+    }
+
+    this.foundation.documentClickHandler_ = (evt) => {
+      evt.stopPropagation()
+      this.foundation.adapter_.notifyCancel()
+      this.foundation.close(evt)
+    }
+    /* temporary fix for duplicate $emit **/
+
     this.foundation.init()
   },
   beforeDestroy () {
