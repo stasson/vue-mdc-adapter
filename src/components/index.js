@@ -10,6 +10,7 @@ import VueMDCFab from './fab'
 import VueMDCGridList from './grid-list'
 import VueMDCIconToggle from './icon-toggle'
 import VueMDCLayoutGrid from './layout-grid'
+import VueMDCLinearProgress from './linear-progress'
 import VueMDCList from './list'
 import VueMDCMenu from './menu'
 import VueMDCRadio from './radio'
@@ -32,6 +33,7 @@ const plugin = {
     vm.use(VueMDCGridList)
     vm.use(VueMDCIconToggle)
     vm.use(VueMDCLayoutGrid)
+    vm.use(VueMDCLinearProgress)
     vm.use(VueMDCList)
     vm.use(VueMDCMenu)
     vm.use(VueMDCRadio)
