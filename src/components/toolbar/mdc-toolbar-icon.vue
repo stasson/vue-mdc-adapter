@@ -12,8 +12,14 @@ import {DispatchEventMixin} from '../util'
 export default {
   name: 'mdc-toolbar-icon',
   props: {
-    'href': { type: String, default: '#' }
+    'href': { type: String }
   },
   mixins: [DispatchEventMixin]
 }
 </script>
+
+<style lang="css">
+.mdc-toolbar__icon:hover {
+  cursor: pointer;
+}
+</style>

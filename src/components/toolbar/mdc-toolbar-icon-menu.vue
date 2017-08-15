@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="material-icons mdc-toolbar__icon--menu"
+  <a class="material-icons mdc-toolbar__icon--menu"
     @click="dispatchEvent"
   >
     <slot>menu</slot>
@@ -14,3 +14,9 @@ export default {
   mixins: [DispatchEventMixin]
 }
 </script>
+
+<style lang="css">
+.mdc-toolbar__icon--menu:hover {
+  cursor: pointer;
+}
+</style>
