@@ -54,6 +54,7 @@
     "@material/grid-list": "^0.2.8",
     "@material/icon-toggle": "^0.1.16",
     "@material/layout-grid": "^0.4.1",
+    "@material/linear-progress": "^0.1.6",
     "@material/list": "^0.2.14",
     "@material/menu": "^0.4.3",
     "@material/radio": "^0.2.9",
@@ -123,6 +124,7 @@
     "sinon": "^2.1.0",
     "sinon-chai": "^2.8.0",
     "url-loader": "^0.5.8",
+    "vue": "^2.2.6",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^12.2.1",
@@ -133,8 +135,7 @@
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-merge": "^4.1.0",
-    "vue": "^2.2.6"
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
     "node": ">= 4.0.0",
