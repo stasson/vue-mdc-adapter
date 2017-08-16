@@ -189,6 +189,12 @@
             <p><br></p>
           </div>
 
+          <mdc-subheading>Slider</mdc-subheading>
+          <div class="doc-center">
+            <mdc-slider step=1 v-model="sliderValue"></mdc-slider>
+            <p><br></p>
+          </div>
+
           <mdc-subheading>Textfield</mdc-subheading>
           <div class="doc-center">
             <mdc-textfield v-model="textField"
@@ -214,7 +220,6 @@
           </div>
 
         </section>
-
 
         <section id="layout-grid" class="doc-section" >
           <mdc-headline>Layout Grid</mdc-headline>
@@ -395,7 +400,8 @@ export default {
       password: '',
       picked: null,
       drawerType: 'persistent',
-      indeterminate: false
+      indeterminate: false,
+      sliderValue: 10
     }
   },
   mounted () {

@@ -15,6 +15,7 @@ import VueMDCList from './list'
 import VueMDCMenu from './menu'
 import VueMDCRadio from './radio'
 import VueMDCSelect from './select'
+import VueMDCSlider from './slider'
 import VueMDCSnackbar from './snackbar'
 import VueMDCSwitch from './switch'
 import VueMDCTabs from './tabs'
@@ -38,6 +39,7 @@ const plugin = {
     vm.use(VueMDCMenu)
     vm.use(VueMDCRadio)
     vm.use(VueMDCSelect)
+    vm.use(VueMDCSlider)
     vm.use(VueMDCSnackbar)
     vm.use(VueMDCSwitch)
     vm.use(VueMDCTabs)
