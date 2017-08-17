@@ -375,6 +375,37 @@
           </div>
         </section>
 
+        <section id="tabs" class="doc-section">
+          <mdc-headline>Tabs</mdc-headline>
+          <div class="doc-center">
+            <mdc-subheading>Basic Tabs</mdc-subheading>
+            <mdc-tab-bar indicator-accent>
+              <mdc-tab>item one</mdc-tab>              
+              <mdc-tab>item two</mdc-tab>              
+              <mdc-tab>item three</mdc-tab>              
+            </mdc-tab-bar>
+          </div>
+
+          <div class="doc-center">
+            <mdc-subheading>Icon Tabs</mdc-subheading>
+            <mdc-tab-bar indicator-accent>
+              <mdc-tab icon="phone"></mdc-tab>
+              <mdc-tab icon="favorite"></mdc-tab>
+              <mdc-tab icon="personal_pin"></mdc-tab>
+            </mdc-tab-bar>
+          </div>
+
+          <div class="doc-center">
+            <mdc-subheading>Icon & Text Tabs</mdc-subheading>
+            <mdc-tab-bar indicator-accent>
+              <mdc-tab icon="phone">Recents</mdc-tab>
+              <mdc-tab icon="favorite">Favorites</mdc-tab>
+              <mdc-tab icon="personal_pin">Nearby</mdc-tab>
+            </mdc-tab-bar>
+          </div>
+
+        </section>
+
         <section id="typography" class="doc-section">
           <mdc-headline>Typography</mdc-headline>
           <div class="doc-center">
@@ -526,7 +557,7 @@ body {
 }
 
 .doc-center {
-  margin: auto;
+  margin: 16px auto 48px auto;
   max-width: 600px;
 }
 
