@@ -36,7 +36,7 @@ export const SelectMixin = {
   }
 }
 
-export const SelectItemMixin = {
+export const SelectOptionMixin = {
   props: {
     value: String,
     disabled: Boolean

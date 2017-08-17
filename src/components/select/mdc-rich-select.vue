@@ -74,10 +74,10 @@ export default {
       getNumberOfOptions: () =>
         this.$refs.menu.items.length,
       getTextForOptionAtIndex: (index) =>
-        this.$refs.menu.items[index].textContent,
+        this.$refs.menu.items[index].textContent.trim(),
       getValueForOptionAtIndex: (index) =>
         this.$refs.menu.items[index].dataset.value ||
-          this.$refs.menu.items[index].textContent,
+          this.$refs.menu.items[index].textContent.trim(),
       setAttrForOptionAtIndex: (index, attr, value) =>
         this.$refs.menu.items[index].setAttribute(attr, value),
       rmAttrForOptionAtIndex: (index, attr) =>
@@ -95,7 +95,16 @@ export default {
         window.innerHeight
     })
     this.foundation.init()
-    this.foundation.setSelectedIndex(0)
+
+    let idx = 0
+    let options = this.$refs.menu.items
+    for (let i = 0; i < options.length; i++) {
+      let optionValue = options[i].dataset.value || options[i].textContent.trim()
+      if (this.value === optionValue) {
+        idx = i
+      }
+    }
+    this.foundation.setSelectedIndex(idx)
     this.foundation.setDisabled(this.disabled)
   },
   beforeDestroy () {

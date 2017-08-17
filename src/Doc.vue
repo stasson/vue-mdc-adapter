@@ -192,16 +192,16 @@
           <mdc-subheading>Select</mdc-subheading>
  
           <div class="doc-center">
-            <mdc-select v-model="selectValue" label="Pick up a food group">
-              <mdc-select-item>
+            <mdc-select v-model="selectValue" label="Pick up a food group" native="false">
+              <mdc-select-option>
                 Bread, Cereal, Rice, and Pasta
-              </mdc-select-item>
-              <mdc-select-item value="vegies">
+              </mdc-select-option>
+              <mdc-select-option value="vegies">
                 Vegetables
-              </mdc-select-item>
-              <mdc-select-item >
+              </mdc-select-option>
+              <mdc-select-option>
                  Meat, Poultry, Fish, Dry Beans, Eggs, and Nuts
-              </mdc-select-item>
+              </mdc-select-option>
             </mdc-select>
             <mdc-body><br>Selected: {{ selectValue }}</mdc-body>
           <p><br></p>

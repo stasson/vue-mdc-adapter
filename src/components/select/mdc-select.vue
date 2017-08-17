@@ -1,5 +1,5 @@
 <template>
-  <component :is="useNativeSelect ? 'nativeSelect' : 'richSelect'"
+  <component :is="selectComponent"
     :disabled="disabled" :label="label" :value="value" @change="onChange"
   >
     <slot></slot>
@@ -14,9 +14,18 @@ import MDCRichSelect from './mdc-rich-select'
 export default {
   name: 'mdc-select',
   mixins: [SelectMediaMixin, SelectMixin],
+  props: {
+    'multiple': Boolean
+  },
   components: {
     nativeSelect: MDCNativeSelect,
     richSelect: MDCRichSelect
+  },
+  computed: {
+    selectComponent () {
+      return (this.multiple || this.useNativeSelect)
+        ? 'nativeSelect' : 'richSelect'
+    }
   },
   methods: {
     onChange (value) {

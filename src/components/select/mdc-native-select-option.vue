@@ -8,9 +8,9 @@
 </template>
 
 <script lang="babel">
-import { SelectItemMixin } from './mdc-select-mixins'
+import { SelectOptionMixin } from './mdc-select-mixins'
 
 export default {
-  mixins: [SelectItemMixin]
+  mixins: [SelectOptionMixin]
 }
 </script>
