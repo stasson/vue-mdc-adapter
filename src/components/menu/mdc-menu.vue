@@ -17,6 +17,7 @@
 <script lang="babel">
 import MDCSimpleMenuFoundation from '@material/menu/simple/foundation'
 import {getTransformPropertyName} from '@material/menu/util'
+import {emitCustomEvent} from '../util'
 
 export default {
   props: {
@@ -99,12 +100,21 @@ export default {
         this.items[index].style.setProperty('transition-delay', value),
       getIndexForEventTarget: (target) => this.items.indexOf(target),
       notifySelected: (evtData) => {
-        this.$emit('select', {
+        const evt = {
           index: evtData.index,
           item: this.items[evtData.index]
-        })
+        }
+        this.$emit('select', evt)
+        emitCustomEvent(this.$el,
+          MDCSimpleMenuFoundation.strings.SELECTED_EVENT,
+          evt)
       },
-      notifyCancel: () => this.$emit('cancel'),
+      notifyCancel: () => {
+        this.$emit('cancel')
+        emitCustomEvent(this.$el,
+          MDCSimpleMenuFoundation.strings.CANCEL_EVENT,
+          {})
+      },
       saveFocus: () => { this._previousFocus = document.activeElement },
       restoreFocus: () => {
         if (this._previousFocus) {
