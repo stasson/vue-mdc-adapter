@@ -10,9 +10,6 @@
           <mdc-toolbar-title href="#">Vue MDC Adapter</mdc-toolbar-title>
         </mdc-toolbar-section>
         <mdc-toolbar-section align-end>
-          <mdc-toolbar-icon>
-            favorite
-          </mdc-toolbar-icon>
           <mdc-toolbar-icon href="https://github.com/stasson/vue-mdc-adapter"
             target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 1024 1024">
