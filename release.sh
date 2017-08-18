@@ -49,11 +49,14 @@ git commit -m "build $VERSION" || error "git commit failed"
 # rebase master
 git checkout master || error "can't checkout master"
 git rebase $BRANCH || error "rebase on $BRANCH failed"
-git tag -a $VERSION -m "$VERSION"
 
-echo "new version $VERSION created"
-echo "to publish, run:"
-echo "    git push && npm publish"
+# publish
+git tag -a $VERSION -m "$VERSION" || error "git tag failed"
+git push origin master || error "git push failed"
+git push origin $VERSION || error "git push tag failed"
+npm publish || error "npm publish failed"
 
+# exit
 cleanup
+echo $VERSION published
 exit 0
