@@ -14,9 +14,3 @@ export default {
   mixins: [DispatchEventMixin]
 }
 </script>
-
-<style lang="css">
-.mdc-toolbar__icon--menu:hover {
-  cursor: pointer;
-}
-</style>

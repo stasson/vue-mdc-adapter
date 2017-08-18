@@ -7,9 +7,12 @@
           <mdc-toolbar-icon-menu v-if="drawerType!=='permanent'"
            event="toggle-drawer">
           </mdc-toolbar-icon-menu>
-          <mdc-toolbar-title>Vue MDC Adapter</mdc-toolbar-title>
+          <mdc-toolbar-title href="#">Vue MDC Adapter</mdc-toolbar-title>
         </mdc-toolbar-section>
         <mdc-toolbar-section align-end>
+          <mdc-toolbar-icon>
+            favorite
+          </mdc-toolbar-icon>
           <mdc-toolbar-icon href="https://github.com/stasson/vue-mdc-adapter"
             target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 1024 1024">
@@ -456,13 +459,12 @@ export default {
   },
   mounted () {
     this.sections = []
-    document.querySelectorAll('.doc-section').forEach((el) => {
+    for (let el of document.querySelectorAll('.doc-section')) {
       let headline = el.querySelector('.mdc-typography--headline')
       if (headline) {
         this.sections.push({id: el.id, text: headline.innerText})
       }
-    })
-
+    }
     this.$root.$on('toggle-drawer', () => this.toggleDrawer())
   },
   methods: {
