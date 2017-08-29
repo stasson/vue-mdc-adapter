@@ -20,7 +20,7 @@ var styleOptions = {
 
 var webpackConfig = merge(baseWebpackConfig(styleOptions), {
   entry: {
-    'index': './src/components/index.js'
+    'index': './components/index.js'
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
@@ -48,7 +48,7 @@ var webpackConfig = merge(baseWebpackConfig(styleOptions), {
       compress: {
         warnings: false
       },
-      sourceMap: true
+      sourceMap: config.build.productionSourceMap
     }),
     // // extract css into its own file
     // new ExtractTextPlugin({

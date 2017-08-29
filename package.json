@@ -15,9 +15,11 @@
   "author": "Sebastien Tasson <sebastien.tasson@gmail.com>",
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "components/index.js",
   "unpkg": "dist/index.js",
   "files": [
     "dist",
+    "components",
     "LICENSE",
     "README.md"
   ],
@@ -41,8 +43,7 @@
   "peerDependencies": {
     "vue": "^2.2.6"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "@material/animation": "^0.3.1",
     "@material/button": "^0.5.0",
     "@material/card": "^0.2.7",
@@ -68,7 +69,9 @@
     "@material/textfield": "^0.3.6",
     "@material/theme": "^0.2.0",
     "@material/toolbar": "^0.4.7",
-    "@material/typography": "^0.3.0",
+    "@material/typography": "^0.3.0"
+  },
+  "devDependencies": {
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",

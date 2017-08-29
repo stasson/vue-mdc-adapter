@@ -20,7 +20,7 @@ var styleOptions = {
 
 var webpackConfig = merge(baseWebpackConfig(styleOptions), {
   entry: {
-    'vue-mdc-adapter': './src/components/index.js'
+    'vue-mdc-adapter': './components/index.js'
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
@@ -48,7 +48,7 @@ var webpackConfig = merge(baseWebpackConfig(styleOptions), {
       compress: {
         warnings: false
       },
-      sourceMap: true
+      sourceMap: config.build.productionSourceMap
     }),
     // extract css into its own file
     new ExtractTextPlugin({

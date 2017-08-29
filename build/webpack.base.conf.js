@@ -27,7 +27,11 @@ module.exports = function (styleOptions) {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
+        include: [
+          resolve('components'), 
+          resolve('src'), 
+          resolve('test')
+        ],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -39,6 +43,7 @@ module.exports = function (styleOptions) {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [
+          resolve('components'),
           resolve('src'),
           resolve('test'),
           resolve('node_modules/@material')
