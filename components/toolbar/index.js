@@ -1,11 +1,11 @@
 import '@material/toolbar/dist/mdc.toolbar.css'
 
-import VueMDCToolbar from './mdc-toolbar'
-import VueMDCToolbarRow from './mdc-toolbar-row'
-import VueMDCToolbarSection from './mdc-toolbar-section'
-import VueMDCToolbarTIconMenu from './mdc-toolbar-icon-menu'
-import VueMDCToolbarTitle from './mdc-toolbar-title'
-import VueMDCToolbarIcon from './mdc-toolbar-icon'
+import VueMDCToolbar from './mdc-toolbar.vue'
+import VueMDCToolbarRow from './mdc-toolbar-row.vue'
+import VueMDCToolbarSection from './mdc-toolbar-section.vue'
+import VueMDCToolbarTIconMenu from './mdc-toolbar-icon-menu.vue'
+import VueMDCToolbarTitle from './mdc-toolbar-title.vue'
+import VueMDCToolbarIcon from './mdc-toolbar-icon.vue'
 
 export {
   VueMDCToolbar,

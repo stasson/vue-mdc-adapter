@@ -1,11 +1,11 @@
 import '@material/list/dist/mdc.list.css'
 
-import VueMDCList from './mdc-list'
-import VueMDCListItem from './mdc-list-item'
-import VueMDCListDivider from './mdc-list-divider'
-import VueMDCListGroup from './mdc-list-group'
-import VueMDCListGroupHeader from './mdc-list-group-header'
-import VueMDCListGroupDivider from './mdc-list-group-divider'
+import VueMDCList from './mdc-list.vue'
+import VueMDCListItem from './mdc-list-item.vue'
+import VueMDCListDivider from './mdc-list-divider.vue'
+import VueMDCListGroup from './mdc-list-group.vue'
+import VueMDCListGroupHeader from './mdc-list-group-header.vue'
+import VueMDCListGroupDivider from './mdc-list-group-divider.vue'
 
 export {
   VueMDCList,

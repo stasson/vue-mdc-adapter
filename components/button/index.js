@@ -1,5 +1,5 @@
 import '@material/button/dist/mdc.button.css'
-import VueMDCButton from './mdc-button'
+import VueMDCButton from './mdc-button.vue'
 
 export {VueMDCButton}
 

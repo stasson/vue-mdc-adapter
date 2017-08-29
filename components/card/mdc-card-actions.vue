@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import MDCCardActionButton from './mdc-card-action-button'
+import MDCCardActionButton from './mdc-card-action-button.vue'
 
 export default {
   name: 'mdc-card-actions',

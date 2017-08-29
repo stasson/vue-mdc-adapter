@@ -12,7 +12,7 @@
 import MDCPersistentDrawerFoundation from '@material/drawer/persistent/foundation'
 import * as utils from '@material/drawer/util'
 
-import ToolbarSpacer from './mdc-drawer-toolbar-spacer'
+import ToolbarSpacer from './mdc-drawer-toolbar-spacer.vue'
 
 export default {
   name: 'mdc-persistent-drawer',

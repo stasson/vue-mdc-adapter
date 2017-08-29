@@ -13,7 +13,7 @@
 import MDCTemporaryDrawerFoundation from '@material/drawer/temporary/foundation'
 import * as utils from '@material/drawer/util'
 
-import ToolbarSpacer from './mdc-drawer-toolbar-spacer'
+import ToolbarSpacer from './mdc-drawer-toolbar-spacer.vue'
 
 export default {
   name: 'mdc-temporary-drawer',

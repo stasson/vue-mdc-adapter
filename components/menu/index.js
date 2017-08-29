@@ -1,8 +1,8 @@
 import '@material/menu/dist/mdc.menu.css'
-import VueMDCMenu from './mdc-menu'
-import VueMDCMenuItem from './mdc-menu-item'
-import VueMDCMenuDivider from './mdc-menu-divider'
-import VueMDCMenuAnchor from './mdc-menu-anchor'
+import VueMDCMenu from './mdc-menu.vue'
+import VueMDCMenuItem from './mdc-menu-item.vue'
+import VueMDCMenuDivider from './mdc-menu-divider.vue'
+import VueMDCMenuAnchor from './mdc-menu-anchor.vue'
 
 export {
   VueMDCMenu,

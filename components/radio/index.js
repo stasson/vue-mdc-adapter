@@ -1,7 +1,7 @@
 import '@material/form-field/dist/mdc.form-field.css'
 import '@material/radio/dist/mdc.radio.css'
 
-import VueMDCRadio from './mdc-radio'
+import VueMDCRadio from './mdc-radio.vue'
 
 export {VueMDCRadio}
 

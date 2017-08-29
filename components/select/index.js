@@ -1,11 +1,11 @@
 import '@material/select/dist/mdc.select.css'
 
-import VueMDCSelect from './mdc-select'
-import VueMDCSelectOption from './mdc-select-option'
-import VueMDCNativeSelect from './mdc-native-select'
-import VueMDCNativeSelectOption from './mdc-native-select-option'
-import VueMDCRichSelect from './mdc-rich-select'
-import VueMDCRichSelectOption from './mdc-rich-select-option'
+import VueMDCSelect from './mdc-select.vue'
+import VueMDCSelectOption from './mdc-select-option.vue'
+import VueMDCNativeSelect from './mdc-native-select.vue'
+import VueMDCNativeSelectOption from './mdc-native-select-option.vue'
+import VueMDCRichSelect from './mdc-rich-select.vue'
+import VueMDCRichSelectOption from './mdc-rich-select-option.vue'
 import VueMDCMenuPlugin from '../menu'
 
 export {VueMDCSelect, VueMDCSelectOption}

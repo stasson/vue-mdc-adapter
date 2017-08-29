@@ -6,9 +6,9 @@
 </template>
 
 <script lang="babel">
-import { SelectMediaMixin, SelectOptionMixin } from './mdc-select-mixins'
-import MDCNativeSelectOption from './mdc-native-select-option'
-import MDCRichSelectOption from './mdc-rich-select-option'
+import { SelectMediaMixin, SelectOptionMixin } from './mdc-select-mixins.js'
+import MDCNativeSelectOption from './mdc-native-select-option.vue'
+import MDCRichSelectOption from './mdc-rich-select-option.vue'
 
 export default {
   mixins: [SelectMediaMixin, SelectOptionMixin],

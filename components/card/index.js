@@ -1,16 +1,16 @@
 import '@material/button/dist/mdc.button.css'
 import '@material/card/dist/mdc.card.css'
 
-import VueMDCCard from './mdc-card'
-import VueMDCCardMedia from './mdc-card-media'
-import VueMDCCardHeader from './mdc-card-header'
-import VueMDCCardTitle from './mdc-card-title'
-import VueMDCCardSubtitle from './mdc-card-subtitle'
-import VueMDCCardText from './mdc-card-text'
-import VueMDCCardHorizontal from './mdc-card-horizontal'
-import VueMDCCardImg from './mdc-card-img'
-import VueMDCCardActions from './mdc-card-actions'
-import VueMDCCardActionButton from './mdc-card-action-button'
+import VueMDCCard from './mdc-card.vue'
+import VueMDCCardMedia from './mdc-card-media.vue'
+import VueMDCCardHeader from './mdc-card-header.vue'
+import VueMDCCardTitle from './mdc-card-title.vue'
+import VueMDCCardSubtitle from './mdc-card-subtitle.vue'
+import VueMDCCardText from './mdc-card-text.vue'
+import VueMDCCardHorizontal from './mdc-card-horizontal.vue'
+import VueMDCCardImg from './mdc-card-img.vue'
+import VueMDCCardActions from './mdc-card-actions.vue'
+import VueMDCCardActionButton from './mdc-card-action-button.vue'
 
 export {VueMDCCard}
 export {VueMDCCardMedia}

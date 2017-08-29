@@ -1,6 +1,6 @@
 import '@material/linear-progress/dist/mdc.linear-progress.css'
 
-import VueMDCLinearProgress from './mdc-linear-progress'
+import VueMDCLinearProgress from './mdc-linear-progress.vue'
 
 export {
   VueMDCLinearProgress

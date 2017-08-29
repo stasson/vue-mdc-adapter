@@ -1,7 +1,7 @@
 import '@material/form-field/dist/mdc.form-field.css'
 import '@material/switch/dist/mdc.switch.css'
 
-import VueMDCSwitch from './mdc-switch'
+import VueMDCSwitch from './mdc-switch.vue'
 
 export {VueMDCSwitch}
 

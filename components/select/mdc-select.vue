@@ -7,9 +7,9 @@
 </template>
 
 <script lang="babel">
-import { SelectMediaMixin, SelectMixin } from './mdc-select-mixins'
-import MDCNativeSelect from './mdc-native-select'
-import MDCRichSelect from './mdc-rich-select'
+import { SelectMediaMixin, SelectMixin } from './mdc-select-mixins.js'
+import MDCNativeSelect from './mdc-native-select.vue'
+import MDCRichSelect from './mdc-rich-select.vue'
 
 export default {
   name: 'mdc-select',

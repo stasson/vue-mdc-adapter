@@ -1,11 +1,11 @@
 import '@material/typography/dist/mdc.typography.css'
 
-import VueMDCBody from './mdc-body'
-import VueMDCCaption from './mdc-caption'
-import VueMDCDisplay from './mdc-display'
-import VueMDCHeadline from './mdc-headline'
-import VueMDCSubeading from './mdc-subheading'
-import VueMDCTitle from './mdc-title'
+import VueMDCBody from './mdc-body.vue'
+import VueMDCCaption from './mdc-caption.vue'
+import VueMDCDisplay from './mdc-display.vue'
+import VueMDCHeadline from './mdc-headline.vue'
+import VueMDCSubeading from './mdc-subheading.vue'
+import VueMDCTitle from './mdc-title.vue'
 
 export {
   VueMDCBody,

@@ -1,7 +1,7 @@
 import '@material/tabs/dist/mdc.tabs.css'
 
-import VueMDCTab from './mdc-tab'
-import VueMDCTabBar from './mdc-tab-bar'
+import VueMDCTab from './mdc-tab.vue'
+import VueMDCTabBar from './mdc-tab-bar.vue'
 
 export { VueMDCTab, VueMDCTabBar }
 

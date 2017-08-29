@@ -9,7 +9,7 @@
 </template>
 
 
-<style lang="scss">
+<style lang="css">
 .mdc-fab--absolute {
   position: absolute;
   bottom: 1rem;

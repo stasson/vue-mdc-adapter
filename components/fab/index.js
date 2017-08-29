@@ -1,6 +1,6 @@
 import '@material/fab/dist/mdc.fab.css'
 
-import VueMDCFAB from './mdc-fab'
+import VueMDCFAB from './mdc-fab.vue'
 
 export {VueMDCFAB}
 

@@ -9,7 +9,7 @@
 </template>
 
 <script lang="babel">
-import ToolbarSpacer from './mdc-drawer-toolbar-spacer'
+import ToolbarSpacer from './mdc-drawer-toolbar-spacer.vue'
 
 export default {
   name: 'mdc-permanent-drawer',
