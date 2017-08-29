@@ -65,7 +65,7 @@ export default {
       getMenuElOffsetHeight: () =>
         this.$refs.menu.$el.offsetHeight,
       openMenu: (focusIndex) =>
-          this.$refs.menu.show({focusIndex}),
+        this.$refs.menu.show({focusIndex}),
       isMenuOpen: () =>
         this.$refs.menu.isOpen(),
       setSelectedTextContent: (selectedTextContent) => {

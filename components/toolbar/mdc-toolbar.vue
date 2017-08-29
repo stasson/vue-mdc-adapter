@@ -38,9 +38,10 @@
         },
         rootStyles: {},
         adjustStyles: {
-          height: '0.1px' // to avoid top margin collapse with :after el
-                          // 0.1 px should be rounded to 0px
-                          // TODO: find a better trick
+          // to avoid top margin collapse with :after el
+          // 0.1 px should be rounded to 0px
+          // TODO: find a better trick
+          height: '0.1px'
         },
         foundation: null
       }

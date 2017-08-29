@@ -99,5 +99,4 @@ export default {
     this.ripple.destroy()
   }
 }
-
 </script>
