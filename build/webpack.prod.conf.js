@@ -20,7 +20,7 @@ var styleOptions = {
 
 var webpackConfig = merge(baseWebpackConfig(styleOptions), {
   entry: {
-    app: './src/main.js'
+    app: './src/prod.js'
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
