@@ -1,68 +1,75 @@
 # vue-mdc-adapter
 
 > [VueJS](https://vuejs.org) wrapper arround 
-Google's [Material Components](https://material.io/components/web/)
+Google's [Material Components for the Web](https://material.io/components/web/)
 
-*under development, check the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki) for more ...*
+*under development, check 
+the [preview](https://stasson.github.io/vue-mdc-adapter), 
+and the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki) for more
+...*
 
-## Installation
-
-- install vue-mdc-adapter
-
-`npm install --save vue-mdc-adapter`
-
-- Import google's Material font's and icons:
-
+## NPM Install
 ```
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+npm install --save vue
+npm install --save vue-mdc-adapter
 ```
 
-_OR_ - Import icons with webpack and ES6
 
-```
-npm install material-design-icons
-```
+## Quick Start
 
-```
-import 'material-design-icons/iconfont/material-icons.css'
-```
+### Build with webpack:
 
-- register the vue_mdc_adapter plugin
-
-```
+- ES6 Imports 
+```javascript
 import Vue from 'vue'
 import VueMdcAdapter from 'vue-mdc-adapter'
-
 Vue.use(VueMdcAdapter)
 ```
 
-_OR_
+- SCSS
+```scss
+$mdc-theme-primary: #212121;
+$mdc-theme-accent: #41B883;
+$mdc-theme-background: #fff;
 
+@import "vue-mdc-adapter/components/styles";
 ```
-import Vue from 'vue'
-import VueMdcButton from 'vue-mdc-adapter/button'
 
+### or cherry pick a component:
+
+- ES6 Imports 
+```javascript
+import Vue from 'vue'
+import VueMdcButton from 'vue-mdc-adapter/components/button'
 Vue.use(VueMdcButton)
 ```
 
- 
+- SCSS
+```scss
+@import "vue-mdc-adapter/components/button/mdc-button";
+```
+
+## CDN
+
+```html
+<head>
+  <!-- import reset material icons, fonts and vue-mdc-adapter stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">  
+  <link rel="stylesheet" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">  
+  
+  <!-- import vue and then vue-mdc-adapter -->
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.js"></script>
+</head>
+<body>
+  <!-- vue mdc markup -->
+<body>
+```
+
 ## Documentation
 
-Doc and Demo coming soon...
-
-In the meantime you can have a look at the [preview](https://stasson.github.io/vue-mdc-adapter)
-
-Or clone from [github](https://github.com/stasson/vue-mdc-adapter)
-
-```
-# get the repository
-git clone https://github.com/stasson/vue-mdc-adapter.git
-cd vue-mdc-adapter
-
-# install dependencies
-npm install
- 
-# serve at localhost:8080
-npm run dev
-```
+Please have a look to
+the [preview](https://stasson.github.io/vue-mdc-adapter), 
+and the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki)
