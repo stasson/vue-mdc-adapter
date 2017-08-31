@@ -1,5 +1,3 @@
-import '@material/grid-list/dist/mdc.grid-list.css'
-
 import VueMDCGridList from './mdc-grid-list.vue'
 import VueMDCGridTile from './mdc-grid-tile.vue'
 

@@ -3,17 +3,18 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import vue from 'rollup-plugin-vue2'
 import uglify from 'rollup-plugin-uglify'
-import { minify } from 'uglify-es'
+import sass from 'rollup-plugin-sass';
 import filesize from 'rollup-plugin-filesize'
 import autoprefixer from 'autoprefixer'
-import postcss from 'rollup-plugin-postcss'
+import postcss from 'postcss'
 import csso from 'postcss-csso';
+import { minify } from 'uglify-es'
 
 const isProduction = process.env.NODE_ENV === `production`
 const isDevelopment = process.env.NODE_ENV === `development`
 
 const config = {
-  input: 'components/index.js',
+  input: 'components/entry.js',
   output: {
     file: (isDevelopment 
       ? 'dist/vue-mdc-adapter.js' 
@@ -22,26 +23,25 @@ const config = {
     name: 'VueMDCAdapter'
   },
   external: ['vue'],
-  sourcemap: isDevelopment,
   plugins: [
     vue (),
     resolve({ jsnext: true, main: true, browser: true }),
-    postcss((isProduction 
-      ? {
-        plugins: [autoprefixer(), csso()],
-        extract: 'dist/vue-mdc-adapter.min.css',
-      } 
-      : {
-        plugins: [autoprefixer()],
-        extract: 'dist/vue-mdc-adapter.css',
-      })),
+    sass({
+      include: [ '**/*.css', '**/*.scss' ],
+      options: {includePaths: ['node_modules']},
+      output: (isDevelopment 
+      ? 'dist/vue-mdc-adapter.css' 
+      : 'dist/vue-mdc-adapter.min.css'),
+      processor: css => postcss((isDevelopment
+                          ? [autoprefixer()]
+                          : [autoprefixer(), csso()]))
+                        .process(css)
+                        .then(result => result.css)
+    }),
     commonjs (),
     ... ( isProduction
-      ? [ 
-        uglify({}, minify), 
-        filesize() 
-      ] 
-      : [] ),
+          ? [ uglify({}, minify), filesize() ] 
+          : [] ),
     babel({
       presets: [ 
         [
@@ -55,6 +55,7 @@ const config = {
       ]
     }),
   ],
+  sourcemap: isDevelopment,
   onwarn (warning) {
     // skip certain warnings
     if (warning.code == 'NON_EXISTENT_EXPORT' 

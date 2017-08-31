@@ -1,5 +1,3 @@
-import '@material/typography/dist/mdc.typography.css'
-
 import VueMDCBody from './mdc-body.vue'
 import VueMDCCaption from './mdc-caption.vue'
 import VueMDCDisplay from './mdc-display.vue'

@@ -1,5 +1,3 @@
-import '@material/slider/dist/mdc.slider.css'
-
 import VueMDCSlider from './mdc-slider.vue'
 
 export {VueMDCSlider}

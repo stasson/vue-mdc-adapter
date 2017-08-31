@@ -7,7 +7,7 @@
 </div>
 </template>
 
-<style>
+<style lang="css">
   .mdc-list--bordered {
     /* remove the side padding. we'll be placing it around the item instead. */
     padding-right: 0;

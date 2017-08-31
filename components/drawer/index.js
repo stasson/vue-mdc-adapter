@@ -1,5 +1,3 @@
-import '@material/drawer/dist/mdc.drawer.css'
-
 import VueMDCTemporaryDrawer from './mdc-temporary-drawer.vue'
 import VueMDCPersistentDrawer from './mdc-persistent-drawer.vue'
 import VueMDCPermanentDrawer from './mdc-permanent-drawer.vue'

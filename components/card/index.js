@@ -1,6 +1,3 @@
-import '@material/button/dist/mdc.button.css'
-import '@material/card/dist/mdc.card.css'
-
 import VueMDCCard from './mdc-card.vue'
 import VueMDCCardMedia from './mdc-card-media.vue'
 import VueMDCCardHeader from './mdc-card-header.vue'

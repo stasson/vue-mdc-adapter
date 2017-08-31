@@ -1,5 +1,3 @@
-import '@material/select/dist/mdc.select.css'
-
 import VueMDCSelect from './mdc-select.vue'
 import VueMDCSelectOption from './mdc-select-option.vue'
 import VueMDCNativeSelect from './mdc-native-select.vue'
