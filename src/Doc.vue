@@ -209,7 +209,8 @@
 
           <mdc-subheading>Slider</mdc-subheading>
           <div class="doc-center">
-            <mdc-slider step=1 v-model="sliderValue"></mdc-slider>
+            <mdc-slider step=1 max=10 v-model="sliderValue"></mdc-slider>
+            <mdc-slider step=1 max=10 display-markers v-model="sliderValue"></mdc-slider>
             <p><br></p>
           </div>
 
@@ -450,7 +451,7 @@ export default {
       picked: null,
       drawerType: 'persistent',
       indeterminate: false,
-      sliderValue: 10,
+      sliderValue: 3,
       selectValue: ''
     }
   },

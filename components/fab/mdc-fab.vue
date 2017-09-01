@@ -20,6 +20,7 @@
   position: fixed;
   bottom: 1rem;
   right: 1rem;
+  z-index: 10;
 }
 
 @media(min-width: 1024px) {
