@@ -100,9 +100,11 @@ export default {
       },
       notifyOpen: () => {
         this.$emit('open')
+        this.$root.$emit('mdc:layout')
       },
       notifyClose: () => {
         this.$emit('close')
+        this.$root.$emit('mdc:layout')
       },
       isRtl: () => {
         /* global getComputedStyle */
