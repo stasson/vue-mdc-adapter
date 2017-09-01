@@ -79,6 +79,11 @@ export default {
       this.foundation.setDisabled(this.disabled)
     }
   },
+  methods: {
+    layout () {
+      this.foundation && this.foundation.layout()
+    }
+  },
   mounted () {
     this.foundation = new MDCSliderFoundation({
       hasClass: (className) => this.$el.classList.contains(className),
@@ -143,6 +148,7 @@ export default {
       },
       isRTL: () => false
     })
+
     this.foundation.init()
     this.foundation.setDisabled(this.disabled)
     this.foundation.setMin(Number(this.min))
@@ -152,6 +158,11 @@ export default {
     if (this.hasMarkers) {
       this.foundation.setupTrackMarker()
     }
+    this.$root.$on('mdc:layout', () => {
+      this.$nextTick(() => {
+        this.foundation.layout()
+      })
+    })
   },
   beforeDestroy () {
     this.foundation.destroy()
