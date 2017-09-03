@@ -1,12 +1,18 @@
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-mdc-adapter">
+    <img src="https://img.shields.io/npm/v/vue-mdc-adapter.svg" alt="Version">
+  </a>
+  <a href="https://www.npmjs.com/package/vue-mdc-adapter">
+    <img src="https://img.shields.io/npm/l/vue-mdc-adapter.svg" alt="License">
+  </a>
+</p>
+
+
+
 # vue-mdc-adapter
 
 > [VueJS](https://vuejs.org) wrapper arround 
 Google's [Material Components for the Web](https://material.io/components/web/)
-
-*under development, check 
-the [preview](https://stasson.github.io/vue-mdc-adapter), 
-and the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki) for more
-...*
 
 ## NPM Install
 ```
@@ -70,6 +76,6 @@ Vue.use(VueMdcButton)
 
 ## Documentation
 
-Please have a look to
-the [preview](https://stasson.github.io/vue-mdc-adapter), 
-and the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki)
+Please check
+the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki)
+and the [preview](https://stasson.github.io/vue-mdc-adapter), 
