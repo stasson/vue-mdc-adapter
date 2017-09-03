@@ -1,9 +1,11 @@
 <template>
-  <button ref="root" class="mdc-card-action-button"
-    :class="classes" :style="styles" :disabled="disabled" 
-    @click="$emit('click')">
-    <slot />
-  </button>
+  <a :href="disabled?undefined:href" >
+    <button ref="root" class="mdc-card-action-button"
+      :class="classes" :style="styles" :disabled="disabled" 
+      @click="$emit('click')">
+      <slot />
+    </button>
+  </a>
 </template>
 
 <script lang="babel">
@@ -12,6 +14,7 @@ import {RippleBase} from '../util'
 export default {
   name: 'mdc-card-action-button',
   props: {
+    href: String,
     disabled: Boolean
   },
   data () {

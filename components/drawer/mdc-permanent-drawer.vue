@@ -1,7 +1,7 @@
-
 <template>
   <nav class="mdc-permanent-drawer mdc-typography">
-    <toolbar-spacer permanent v-if="spacer" />
+    <div class="mdc-permanent-drawer__toolbar-spacer" 
+      v-if="toolbarSpacer"></div>
     <nav class="mdc-permanent-drawer__content">
       <slot />
     </nav>
@@ -9,15 +9,21 @@
 </template>
 
 <script lang="babel">
-import ToolbarSpacer from './mdc-drawer-toolbar-spacer.vue'
-
 export default {
   name: 'mdc-permanent-drawer',
   props: {
-    spacer: Boolean
+    'toolbar-spacer': Boolean
   },
-  components: {
-    ToolbarSpacer
+  data () {
+    return {
+      type: 'toto'
+    }
+  },
+  methods: {
+    open () {},
+    close () {},
+    toggle () {},
+    isOpen () { return true }
   }
 }
 </script>

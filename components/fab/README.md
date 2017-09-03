@@ -22,14 +22,17 @@
 
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
-|`:disabled`|String|| disable the fab |
-|`mini`|Boolean|| mini style (40x40 pixels)|
-|`plain`|Boolean|| plain style (white background)|
-|`absolute`| Boolean|| set bottom right absolute position |
-|`fixed`| Boolean|| set bottom right fixed position |
+|`href`|String|| button link |
+|`disabled`|String|| disable the fab |
+|`mini`|Boolean|| mini style (40x40 pixels) (*)|
+|`plain`|Boolean|| plain style (white background) (*)|
+|`absolute`| Boolean|| set bottom right absolute position (*)|
+|`fixed`| Boolean|| set bottom right fixed position (*)|
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
+
+> (*) initializer attribute, not dynamic propertie
 
 
 ### Reference

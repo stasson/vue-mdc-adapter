@@ -26,32 +26,56 @@ var vm = new Vue({
 
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
-|`:disabled`|String|| disable the button |
-|`primary`|Boolean|| primary color |
-|`accent`|Boolean|| accent color |
-|`compact`| Boolean|| compact design |
-|`dense`| String|| dense design |
-|`raised`| Boolean|| raised design |
+|`href`|String|| button link |
+|`disabled`|String|| disable the button |
+|`primary`|Boolean|| primary color (*)|
+|`accent`|Boolean|| accent color (*)|
+|`compact`| Boolean|| compact design (*)|
+|`dense`| String|| dense design (*)|
+|`raised`| Boolean|| raised design (*)|
+|`unelevated`| Boolean|| unelevated design (*)|
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
 
+> (*) initializer attribute, not dynamic propertie
 
-Add `primary` `accent` `dense` `compact` or `raised` attributes to change the 
-design:
+### text buttons
 
 ```html
-<mdc-button dense>Dense Button</mdc-button>
-<mdc-button raised primary>Primary Raised Button </mdc-button>
-<mdc-button raised compact accent>Accent Compact Raised Button</mdc-button>
+<mdc-button>Baseline</mdc-button>
+<mdc-button compact>Compact</mdc-button>
+<mdc-button dense>Dense</mdc-button>
+<mdc-button primary>Primary</mdc-button>
+<mdc-button accent>Secondary</mdc-button>
 ```
 
-> note: those are initializer attributes, not dynamic properties
-
-### button link
+### Raised Button
 
 ```html
-<a href="#"><mdc-button dense>Link</mdc-button></a>
+<mdc-button raised>Baseline</mdc-button>
+<mdc-button raised compact>Compact</mdc-button>
+<mdc-button raised dense>Dense</mdc-button>
+<mdc-button raised primary>Primary</mdc-button>
+<mdc-button raised accent>Secondary</mdc-button>
+```
+
+### Uneleveted buttons
+
+```html
+<mdc-button unelevated>Baseline</mdc-button>
+<mdc-button unelevated compact>Compact</mdc-button>
+<mdc-button unelevated dense>Dense</mdc-button>
+<mdc-button unelevated primary>Primary</mdc-button>
+<mdc-button unelevated accent>Secondary</mdc-button>
+```
+
+### link buttons
+
+Set the href attribute to render a link button
+
+```html
+<mdc-button href="#">Home</mdc-button>
 ```
 
 ### Reference

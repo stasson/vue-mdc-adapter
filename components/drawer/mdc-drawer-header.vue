@@ -1,6 +1,6 @@
 <template>
-  <header :class="headerClasses">
-    <div :class="contentClasses">
+  <header class="mdc-drawer-header" :class="[headerClass]" v-if="show">
+    <div :class="[headerContentClass]">
       <slot />
     </div>
   </header>
@@ -10,24 +10,25 @@
 export default {
   name: 'mdc-drawer-header',
   props: {
-    permanent: Boolean,
-    persistent: Boolean,
-    temporary: Boolean,
-    type: String
+    'permanent': Boolean,
+    'persistent': Boolean,
+    'temporary': Boolean
   },
+  inject: ['mdcDrawer'],
   computed: {
-    headerClasses () {
-      return {
-        'mdc-persistent-drawer__header': this.persistent || this.type === 'persistent',
-        'mdc-permanent-drawer__header': this.permanent || this.type === 'permanent',
-        'mdc-temporary-drawer__header': this.temporary || this.type === 'temporary'
-      }
+    headerClass () {
+      return this.mdcDrawer.type + '__header'
     },
-    contentClasses () {
-      return {
-        'mdc-persistent-drawer__header-content': this.persistent || this.type === 'persistent',
-        'mdc-permanent-drawer__header-content': this.permanent || this.type === 'permanent',
-        'mdc-temporary-drawer__header-content': this.temporary || this.type === 'temporary'
+    headerContentClass () {
+      return this.mdcDrawer.type + '__header-content'
+    },
+    show () {
+      if (this.temporary || this.persistent || this.permanent) {
+        return (this.temporary && this.mdcDrawer.isTemporary) ||
+          (this.persistent && this.mdcDrawer.isPersistent) ||
+            (this.permanent && this.mdcDrawer.isPermanent)
+      } else {
+        return true
       }
     }
   }

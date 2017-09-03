@@ -1,15 +1,26 @@
-import VueMDCTemporaryDrawer from './mdc-temporary-drawer.vue'
-import VueMDCPersistentDrawer from './mdc-persistent-drawer.vue'
-import VueMDCPermanentDrawer from './mdc-permanent-drawer.vue'
+import VueMDCDrawer from './mdc-drawer.vue'
+import VueMDCDrawerLayout from './mdc-drawer-layout.vue'
 import VueMDCDrawerHeader from './mdc-drawer-header.vue'
-import VueMDCDrawerToolbarSpacer from './mdc-drawer-toolbar-spacer.vue'
+import VueMDCDrawerList from './mdc-drawer-list.vue'
+import VueMDCDrawerItem from './mdc-drawer-item.vue'
+import VueMDCDrawerDivider from './mdc-drawer-divider.vue'
+
+export {
+  VueMDCDrawer,
+  VueMDCDrawerLayout,
+  VueMDCDrawerHeader,
+  VueMDCDrawerList,
+  VueMDCDrawerItem,
+  VueMDCDrawerDivider
+}
 
 export default {
   install (vm) {
-    vm.component('mdc-temporary-drawer', VueMDCTemporaryDrawer)
-    vm.component('mdc-persistent-drawer', VueMDCPersistentDrawer)
-    vm.component('mdc-permanent-drawer', VueMDCPermanentDrawer)
+    vm.component('mdc-drawer', VueMDCDrawer)
+    vm.component('mdc-drawer-layout', VueMDCDrawerLayout)
     vm.component('mdc-drawer-header', VueMDCDrawerHeader)
-    vm.component('mdc-drawer-toolbar-spacer', VueMDCDrawerToolbarSpacer)
+    vm.component('mdc-drawer-list', VueMDCDrawerList)
+    vm.component('mdc-drawer-item', VueMDCDrawerItem)
+    vm.component('mdc-drawer-divider', VueMDCDrawerDivider)
   }
 }

@@ -4,8 +4,7 @@
     <mdc-toolbar waterfall>
       <mdc-toolbar-row>
         <mdc-toolbar-section align-start >
-          <mdc-toolbar-icon-menu v-if="drawerType!=='permanent'"
-           event="toggle-drawer">
+          <mdc-toolbar-icon-menu event="toggle-drawer">
           </mdc-toolbar-icon-menu>
           <mdc-toolbar-title href="#">Vue MDC Adapter</mdc-toolbar-title>
         </mdc-toolbar-section>
@@ -20,75 +19,68 @@
       </mdc-toolbar-row>
     </mdc-toolbar>
 
-    <div class="drawer-layout">
-      <div>
-        <component :is="drawerComponent" ref="drawer" >
-          <mdc-drawer-header :type="drawerType" class="drawer-header"></mdc-drawer-header>
-           <mdc-list>
-             <a class="mdc-list-item" v-for="item in sections" :key="item.id"
-             :href="'#'+item.id"
-               >{{item.text}}</a>
-           </mdc-list>
-           </component>
-      </div>
-
+    <mdc-drawer-layout>
+      <mdc-drawer ref="drawer" toggle-on="toggle-drawer"
+        :permanent="drawerType.permanent"
+        :persistent="drawerType.persistent"
+        :temporary="drawerType.temporary" >
+        <mdc-drawer-header temporary></mdc-drawer-header>
+        <mdc-drawer-list>
+          <mdc-drawer-item selected v-for="item in sections" :key="item.id"
+            :href="'#'+item.id">
+            {{item.text}}
+          </mdc-drawer-item>          
+        </mdc-drawer-list>
+      </mdc-drawer>
+    
       <div>
         <section id="buttons" class="doc-section">
           <mdc-headline>Buttons</mdc-headline>
+          <mdc-subheading>Text Buttons</mdc-subheading>
           <div class="doc-center">
-            <p>
-              <mdc-button event="show-snackbar" :event-args="[{message:'clic'}]">Flat</mdc-button>
-              <mdc-button primary>Flat</mdc-button>
-              <mdc-button accent>Flat</mdc-button>
-              <mdc-button disabled>Flat</mdc-button>
-            </p>
-            <p>
-              <mdc-button dense >Dense</mdc-button>
-              <mdc-button dense primary>Dense</mdc-button>
-              <mdc-button dense accent>Dense</mdc-button>
-              <mdc-button dense disabled>Dense</mdc-button>
-            </p>
-            <p>
-              <mdc-button compact >Compact</mdc-button>
-              <mdc-button compact primary>Compact</mdc-button>
-              <mdc-button compact accent>Compact</mdc-button>
-              <mdc-button compact disabled>Compact</mdc-button>
-            </p>
-            <p>
-              <mdc-button raised >Raised</mdc-button>
-              <mdc-button raised primary>Raised</mdc-button>
-              <mdc-button raised accent>Raised</mdc-button>
-              <mdc-button raised disabled>Raised</mdc-button>
-            </p>
-            <p>
-              <mdc-button dense raised >Dense</mdc-button>
-              <mdc-button dense raised primary>Dense</mdc-button>
-              <mdc-button dense raised accent>Dense</mdc-button>
-              <mdc-button dense raised disabled>Dense</mdc-button>
-            </p>
-            <p>
-              <mdc-button compact raised >Compact</mdc-button>
-              <mdc-button compact raised primary>Compact</mdc-button>
-              <mdc-button compact raised accent>Compact</mdc-button>
-              <mdc-button compact raised disabled>Compact</mdc-button>
-            </p>
+            <mdc-button >baseline</mdc-button>
+            <mdc-button compact>compact</mdc-button>
+            <mdc-button dense>dense</mdc-button>
           </div>
-        </section>
+          <div class="doc-center">
+            <mdc-button primary>primary</mdc-button>
+            <mdc-button accent>secondary</mdc-button>
+            <mdc-button disabled>disabled</mdc-button>
+          </div>
+          <mdc-subheading>Raised Buttons</mdc-subheading>
+          <div class="doc-center">
+            <mdc-button raised>baseline</mdc-button>
+            <mdc-button raised compact>compact</mdc-button>
+            <mdc-button raised dense>dense</mdc-button>
+          </div>
+          <div class="doc-center">
+            <mdc-button raised primary>primary</mdc-button>
+            <mdc-button raised accent>secondary</mdc-button>
+            <mdc-button raised disabled>disabled</mdc-button>
+          </div>
+          <mdc-subheading>Unelevated Buttons</mdc-subheading>
+          <div class="doc-center">
+            <mdc-button unelevated>baseline</mdc-button>
+            <mdc-button unelevated compact>compact</mdc-button>
+            <mdc-button unelevated dense>dense</mdc-button>
+          </div>
+          <div class="doc-center">
+            <mdc-button unelevated primary>primary</mdc-button>
+            <mdc-button unelevated accent>secondary</mdc-button>
+            <mdc-button unelevated disabled>disabled</mdc-button>
+          </div>
 
-        <section id="fab" class="doc-section">
-          <mdc-headline>Fab</mdc-headline>
+          <mdc-subheading>Floating Action Button</mdc-subheading>
           <div  class="doc-center">
             <mdc-fab>favorite</mdc-fab>
             <mdc-fab mini>favorite</mdc-fab>
             <mdc-fab plain>favorite</mdc-fab>
             <mdc-fab mini plain>favorite</mdc-fab>
             <mdc-fab mini disabled>favorite</mdc-fab>
-            <mdc-fab plain fixed @click="scrollToTop">home</mdc-fab>
+            <mdc-fab plain fixed href="#">home</mdc-fab>
           </div>
-        </section>
 
-        <section id="icon-toggle" class="doc-section" >
-          <mdc-headline>Icon Toggle</mdc-headline>
+          <mdc-subheading>Icon Toggle</mdc-subheading>
           <div class="doc-center">
             <mdc-icon-toggle v-model="toggle"
               toggle-on="favorite" label-on="Remove from favorites"
@@ -121,9 +113,9 @@
               </mdc-card-text>
                 <mdc-card-img :src="image.tile" ></mdc-card-img>
             </mdc-card-horizontal>
-            <mdc-card-actions
-               :actions="['action1', {action:'action2', text:'action2'}]"
-               @action="alert" >
+            <mdc-card-actions>
+              <mdc-card-action-button>Action 1</mdc-card-action-button>
+              <mdc-card-action-button disabled>Action 2</mdc-card-action-button>
             </mdc-card-actions>
           </mdc-card>
         </section>
@@ -142,6 +134,7 @@
 
         <section id="drawer" class="doc-section">
           <mdc-headline>Drawers</mdc-headline>
+          <mdc-button raised @click="switchDrawer('')">Responsive</mdc-button>
           <mdc-button raised @click="switchDrawer('temporary')">Temporary</mdc-button>
           <mdc-button raised @click="switchDrawer('persistent')">Persistent</mdc-button>
           <mdc-button raised @click="switchDrawer('permanent')">Permanent</mdc-button>
@@ -423,18 +416,13 @@
           </div>
         </section>
         </div>
-    </div>
+        
+    </mdc-drawer-layout>
   </div>
 </template>
 
 <script>
 export default {
-  // name: 'app',
-  computed: {
-    drawerComponent () {
-      return 'mdc-' + this.drawerType.toString() + '-drawer'
-    }
-  },
   data () {
     return {
       image: {
@@ -449,7 +437,7 @@ export default {
       textField: '',
       password: '',
       picked: null,
-      drawerType: 'persistent',
+      drawerType: {},
       indeterminate: false,
       sliderValue: 3,
       selectValue: ''
@@ -463,17 +451,24 @@ export default {
         this.sections.push({id: el.id, text: headline.innerText})
       }
     }
-    this.$root.$on('toggle-drawer', () => this.toggleDrawer())
   },
   methods: {
-    toggleDrawer () {
-      if (this.drawerType !== 'permanent') this.$refs.drawer.foundation.isOpen() ? this.$refs.drawer.close() : this.$refs.drawer.open()
-    },
-    switchDrawer (drawer) {
-      this.drawerType = drawer
-      this.$nextTick(function () { // vue updates DOM with async functions so this guarantees that the drawer is defined
-        if (this.drawerType !== 'permanent') this.$refs.drawer.open()
-      })
+    switchDrawer (type) {
+      switch (type) {
+        case 'permanent':
+          this.drawerType = { permanent: true }
+          break
+        case 'persistent':
+          this.drawerType = { persistent: true }
+          break
+        case 'temporary':
+          this.drawerType = { temporary: true }
+          break
+        default:
+          this.drawerType = {}
+          break
+      }
+      this.$refs.drawer.open()
     },
     showSnackbar (event) {
       this.$root.$emit('show-snackbar', {
@@ -527,12 +522,7 @@ body {
   padding:0;
 }
 
-.drawer-layout {
-  display: flex;
-  flex-direction: row;
-}
-
-.drawer-header {
+.mdc-drawer-header {
   background-image: url("./assets/logo.png");
   background-size: contain;
   background-repeat: no-repeat;

@@ -1,8 +1,8 @@
 <!-- thanks to petejohanson for this implementation -->
-
 <template>
   <aside class="mdc-temporary-drawer mdc-typography" :class="classes">
-    <toolbar-spacer temporary v-if="spacer" />
+    <div class="mdc-temporary-drawer__toolbar-spacer" 
+      v-if="toolbarSpacer"></div>
     <nav ref="drawer" class="mdc-temporary-drawer__drawer">
       <slot/>
     </nav>
@@ -13,15 +13,10 @@
 import MDCTemporaryDrawerFoundation from '@material/drawer/temporary/foundation'
 import * as utils from '@material/drawer/util'
 
-import ToolbarSpacer from './mdc-drawer-toolbar-spacer.vue'
-
 export default {
   name: 'mdc-temporary-drawer',
   props: {
-    spacer: Boolean
-  },
-  components: {
-    ToolbarSpacer
+    'toolbar-spacer': Boolean
   },
   methods: {
     open () {
@@ -29,6 +24,13 @@ export default {
     },
     close () {
       this.foundation.close()
+    },
+    toggle () {
+      this.foundation.isOpen() ? this.foundation.close()
+        : this.foundation.open()
+    },
+    isOpen () {
+      this.foundation.isOpen()
     }
   },
   data () {

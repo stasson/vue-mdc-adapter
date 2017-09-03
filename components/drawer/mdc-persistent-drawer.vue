@@ -1,7 +1,7 @@
-
 <template>
   <aside class="mdc-persistent-drawer mdc-typography" :class="classes">
-    <toolbar-spacer persistent v-if="spacer" />
+    <div class="mdc-persistent-drawer__toolbar-spacer" 
+      v-if="toolbarSpacer"></div>
     <nav ref="drawer" class="mdc-persistent-drawer__drawer">
       <slot />
     </nav>
@@ -12,15 +12,10 @@
 import MDCPersistentDrawerFoundation from '@material/drawer/persistent/foundation'
 import * as utils from '@material/drawer/util'
 
-import ToolbarSpacer from './mdc-drawer-toolbar-spacer.vue'
-
 export default {
   name: 'mdc-persistent-drawer',
   props: {
-    spacer: Boolean
-  },
-  components: {
-    ToolbarSpacer
+    'toolbar-spacer': Boolean
   },
   methods: {
     open () {
@@ -28,6 +23,13 @@ export default {
     },
     close () {
       this.foundation.close()
+    },
+    toggle () {
+      this.foundation.isOpen() ? this.foundation.close()
+        : this.foundation.open()
+    },
+    isOpen () {
+      this.foundation.isOpen()
     }
   },
   data () {

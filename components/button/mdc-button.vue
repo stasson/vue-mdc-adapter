@@ -1,8 +1,11 @@
 <template>
-  <button ref="root" :class="classes" :style="styles" :disabled="disabled" 
-    @click="dispatchEvent">
-    <slot />
-  </button>
+  <a :href="disabled?undefined:href" >
+    <button
+      ref="root" :class="classes" :style="styles" :disabled="disabled" 
+      @click="dispatchEvent">
+      <slot />
+    </button>
+  </a>
 </template>
 
 <script>
@@ -12,12 +15,14 @@ export default {
   name: 'mdc-button',
   mixins: [DispatchEventMixin],
   props: {
+    href: String,
     disabled: Boolean,
     primary: Boolean,
     accent: Boolean,
     dense: Boolean,
+    compact: Boolean,
     raised: Boolean,
-    compact: Boolean
+    unelevated: Boolean
   },
   data () {
     return {
@@ -26,8 +31,9 @@ export default {
         'mdc-button--primary': this.primary,
         'mdc-button--accent': this.accent,
         'mdc-button--dense': this.dense,
+        'mdc-button--compact': this.compact,
         'mdc-button--raised': this.raised,
-        'mdc-button--compact': this.compact
+        'mdc-button--unelevated': this.unelevated
       },
       styles: {}
     }
