@@ -16,14 +16,21 @@ Google's [Material Components for the Web](https://material.io/components/web/)
 
 ## NPM Install
 ```
-npm install --save vue
 npm install --save vue-mdc-adapter
 ```
 
+> requires vue 2.4.2 as peer dependency
 
-## Quick Start
 
-### Build with webpack:
+## Quick start with vue-cli
+```
+npm install -g vue-cli 
+vue init stasson/vue-mdc-adapter-simple my-project
+```
+
+## Build with webpack/rollup:
+
+> requires loaders for vue sass and resolve `node_modules`  
 
 - ES6 Imports 
 ```javascript
@@ -32,7 +39,7 @@ import VueMdcAdapter from 'vue-mdc-adapter'
 Vue.use(VueMdcAdapter)
 ```
 
-- SCSS
+- SCSS Theming
 ```scss
 $mdc-theme-primary: #212121;
 $mdc-theme-accent: #41B883;
@@ -41,7 +48,7 @@ $mdc-theme-background: #fff;
 @import "vue-mdc-adapter/components/styles";
 ```
 
-### or cherry pick a component:
+## or cherry pick a component:
 
 - ES6 Imports 
 ```javascript
