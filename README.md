@@ -17,9 +17,13 @@ src="https://github.com/stasson/vue-mdc-adapter/wiki/img/logo.png" alt="vue_mdc_
 
 ## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
 
+> __Update__:  
+> Requires vue 2.4.2 as peer dependency.  
+> Starting v0.0.35, most of the MDC component are supported.  
+> Focus is now on validation and keeping up with MDC updates.  
+
 
 ### Getting Started
-> requires vue 2.4.2 as peer dependency
 
 #### NPM
 
@@ -53,7 +57,7 @@ npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
-#### Full build with webpack/rollup:
+#### Webpack/Rollup
 
 > requires loaders for vue sass and resolve `node_modules`  
 
@@ -75,7 +79,7 @@ $mdc-theme-background: #fff;
 @import "vue-mdc-adapter/components/styles";
 ```
 
-#### or cherry pick components:
+__or cherry pick components__:
 
 - ES6 Imports 
 ```javascript
