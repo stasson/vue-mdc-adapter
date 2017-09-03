@@ -5,61 +5,26 @@
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/l/vue-mdc-adapter.svg" alt="License">
   </a>
+  <a href="https://www.npmjs.com/package/vue-mdc-adapter">
+    <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
+  </a>
 </p>
+<h1 align="center">
+  vue-mdc-adapter
+</h1>
 
-
-
-# vue-mdc-adapter
+# A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
 
 > [VueJS](https://vuejs.org) wrapper arround 
 Google's [Material Components for the Web](https://material.io/components/web/)
 
-## NPM Install
-```
-npm install --save vue-mdc-adapter
-```
-
+## Getting Started
 > requires vue 2.4.2 as peer dependency
 
+### NPM
 
-## Quick start with vue-cli
 ```
-npm install -g vue-cli 
-vue init stasson/vue-mdc-adapter-simple my-project
-```
-
-## Build with webpack/rollup:
-
-> requires loaders for vue sass and resolve `node_modules`  
-
-- ES6 Imports 
-```javascript
-import Vue from 'vue'
-import VueMdcAdapter from 'vue-mdc-adapter'
-Vue.use(VueMdcAdapter)
-```
-
-- SCSS Theming
-```scss
-$mdc-theme-primary: #212121;
-$mdc-theme-accent: #41B883;
-$mdc-theme-background: #fff;
-
-@import "vue-mdc-adapter/components/styles";
-```
-
-## or cherry pick a component:
-
-- ES6 Imports 
-```javascript
-import Vue from 'vue'
-import VueMdcButton from 'vue-mdc-adapter/components/button'
-Vue.use(VueMdcButton)
-```
-
-- SCSS
-```scss
-@import "vue-mdc-adapter/components/button/mdc-button";
+npm install --save vue-mdc-adapter
 ```
 
 ## CDN
@@ -80,6 +45,47 @@ Vue.use(VueMdcButton)
   <!-- vue mdc markup -->
 <body>
 ```
+
+> Quick start with vue-cli
+```
+npm install -g vue-cli 
+vue init stasson/vue-mdc-adapter-simple my-project
+```
+
+### Full build with webpack/rollup:
+
+> requires loaders for vue sass and resolve `node_modules`  
+
+- ES6 Imports 
+```javascript
+import Vue from 'vue'
+import VueMdcAdapter from 'vue-mdc-adapter'
+Vue.use(VueMdcAdapter)
+```
+
+- SCSS Theming
+```scss
+$mdc-theme-primary: #212121;
+$mdc-theme-accent: #41B883;
+$mdc-theme-background: #fff;
+
+@import "vue-mdc-adapter/components/styles";
+```
+
+### or cherry pick components:
+
+- ES6 Imports 
+```javascript
+import Vue from 'vue'
+import VueMdcButton from 'vue-mdc-adapter/components/button'
+Vue.use(VueMdcButton)
+```
+
+- SCSS
+```scss
+@import "vue-mdc-adapter/components/button/mdc-button";
+```
+
 
 ## Documentation
 
