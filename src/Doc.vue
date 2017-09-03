@@ -4,8 +4,7 @@
     <mdc-toolbar waterfall>
       <mdc-toolbar-row>
         <mdc-toolbar-section align-start >
-          <mdc-toolbar-icon-menu v-if="drawerType!=='permanent'"
-           event="toggle-drawer">
+          <mdc-toolbar-icon-menu event="toggle-drawer">
           </mdc-toolbar-icon-menu>
           <mdc-toolbar-title href="#">Vue MDC Adapter</mdc-toolbar-title>
         </mdc-toolbar-section>
@@ -20,18 +19,19 @@
       </mdc-toolbar-row>
     </mdc-toolbar>
 
-    <div class="drawer-layout">
-      <div>
-        <component :is="drawerComponent" ref="drawer" >
-          <mdc-drawer-header :type="drawerType" class="drawer-header"></mdc-drawer-header>
-           <mdc-list>
-             <a class="mdc-list-item" v-for="item in sections" :key="item.id"
-             :href="'#'+item.id"
-               >{{item.text}}</a>
-           </mdc-list>
-           </component>
-      </div>
-
+    <mdc-drawer-layout>
+      <mdc-drawer ref="drawer" toggle-on="toggle-drawer"
+        :permanent="drawerType.permanent"
+        :persistent="drawerType.persistent"
+        :temporary="drawerType.temporary" >
+        <mdc-drawer-header temporary></mdc-drawer-header>
+        <mdc-list>
+         <a class="mdc-list-item" v-for="item in sections" :key="item.id"
+         :href="'#'+item.id"
+           >{{item.text}}</a>
+        </mdc-list>
+      </mdc-drawer>
+    
       <div>
         <section id="buttons" class="doc-section">
           <mdc-headline>Buttons</mdc-headline>
@@ -133,6 +133,7 @@
 
         <section id="drawer" class="doc-section">
           <mdc-headline>Drawers</mdc-headline>
+          <mdc-button raised @click="switchDrawer('')">Responsive</mdc-button>
           <mdc-button raised @click="switchDrawer('temporary')">Temporary</mdc-button>
           <mdc-button raised @click="switchDrawer('persistent')">Persistent</mdc-button>
           <mdc-button raised @click="switchDrawer('permanent')">Permanent</mdc-button>
@@ -414,18 +415,13 @@
           </div>
         </section>
         </div>
-    </div>
+        
+    </mdc-drawer-layout>
   </div>
 </template>
 
 <script>
 export default {
-  // name: 'app',
-  computed: {
-    drawerComponent () {
-      return 'mdc-' + this.drawerType.toString() + '-drawer'
-    }
-  },
   data () {
     return {
       image: {
@@ -440,7 +436,7 @@ export default {
       textField: '',
       password: '',
       picked: null,
-      drawerType: 'persistent',
+      drawerType: {},
       indeterminate: false,
       sliderValue: 3,
       selectValue: ''
@@ -454,17 +450,24 @@ export default {
         this.sections.push({id: el.id, text: headline.innerText})
       }
     }
-    this.$root.$on('toggle-drawer', () => this.toggleDrawer())
   },
   methods: {
-    toggleDrawer () {
-      if (this.drawerType !== 'permanent') this.$refs.drawer.foundation.isOpen() ? this.$refs.drawer.close() : this.$refs.drawer.open()
-    },
-    switchDrawer (drawer) {
-      this.drawerType = drawer
-      this.$nextTick(function () { // vue updates DOM with async functions so this guarantees that the drawer is defined
-        if (this.drawerType !== 'permanent') this.$refs.drawer.open()
-      })
+    switchDrawer (type) {
+      switch (type) {
+        case 'permanent':
+          this.drawerType = { permanent: true }
+          break
+        case 'persistent':
+          this.drawerType = { persistent: true }
+          break
+        case 'temporary':
+          this.drawerType = { temporary: true }
+          break
+        default:
+          this.drawerType = {}
+          break
+      }
+      this.$refs.drawer.open()
     },
     showSnackbar (event) {
       this.$root.$emit('show-snackbar', {
@@ -518,12 +521,7 @@ body {
   padding:0;
 }
 
-.drawer-layout {
-  display: flex;
-  flex-direction: row;
-}
-
-.drawer-header {
+.mdc-drawer-header {
   background-image: url("./assets/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
