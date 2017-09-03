@@ -1,8 +1,11 @@
 <template>
-  <button ref="root" :class="classes" :style="styles" :disabled="disabled" 
-    @click="dispatchEvent">
-    <slot />
-  </button>
+  <a :href="disabled?undefined:href" >
+    <button
+      ref="root" :class="classes" :style="styles" :disabled="disabled" 
+      @click="dispatchEvent">
+      <slot />
+    </button>
+  </a>
 </template>
 
 <script>
@@ -12,6 +15,7 @@ export default {
   name: 'mdc-button',
   mixins: [DispatchEventMixin],
   props: {
+    href: String,
     disabled: Boolean,
     primary: Boolean,
     accent: Boolean,

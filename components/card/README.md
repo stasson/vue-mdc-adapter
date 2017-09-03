@@ -6,7 +6,9 @@ The card package provides the building blocks to compose your card components
 <mdc-card>
   <mdc-card-header :title="title" :subtitle="subtitle" />
   <mdc-card-text> {{ text }} </mdc-card-text> 
-  <mdc-card-actions :actions="actions" @action="onAction" />
+  <mdc-card-actions>
+    <mdc-card-action-button @click="onAction">Action</mdc-card-action-button>
+  </mdc-card-actions>
 </mdc-card>
 ```
 
@@ -16,7 +18,6 @@ var vm = new Vue({
     title: 'Title',
     subtitle: 'Subtitle',
     text: 'Lorem ipsum dolor sit amet, ...',
-    actions: ['action1', 'action2'],
   },
   methods: {
     onAction: function (action) {
@@ -81,36 +82,43 @@ container:
 
 ### Actions
 
-```html
-<mdc-card>
-  <mdc-card-actions :actions="actions" @action="onAction" />
-</mdc-card>
-```
-
-This area is used for showing different actions the user can take. The `actions`
-property is an array of { action, text } object litteral. The `action` member is 
-passed as parameter to the `action` event. The `text` member is action button 
-text:
+| props | Type | Default | Description |
+|-------|------|---------|-------------|
+|`vertical`| boolean |false| wether action layout is vertical |
 
 ```html
 <mdc-card>
-  <mdc-card-actions 
-  :actions="[{action: 'action1', text: 'Do something'}, ...]"  />
+  <mdc-card-actions vertical>
+    <mdc-card-action-button>Action 1</mdc-card-action-button>
+    <mdc-card-action-button>Action 2</mdc-card-action-button>
+  </mdc-card-actions>
 </mdc-card>
 ```
 
-The actions array items can also be Strings for shorthand:    
-
-```html
-<mdc-card>
-  <mdc-card-actions :actions="['action1', 'action2']"  />
-</mdc-card>
-```
+### Action Buttons
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`:actions`| String|| array of action Objects or action Strings |
-|`@action`| number|| binds action event |
+|`href`| String |optional| sets button's link |
+|`disabled`| boolean |false| wether the button is disabled |
+
+```html
+<mdc-card>
+  <mdc-card-actions>
+    <mdc-card-action-button @click="onAction">Action</mdc-card-action-button>
+  </mdc-card-actions>
+</mdc-card>
+```
+
+Actions Buttons can also be links specifying the href property
+
+```html
+<mdc-card>
+  <mdc-card-actions>
+    <mdc-card-action-button href="#">Link</mdc-card-action-button>
+  </mdc-card-actions>
+</mdc-card>
+```
 
 ### Horizontal block
 

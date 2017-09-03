@@ -26,7 +26,8 @@ var vm = new Vue({
 
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
-|`:disabled`|String|| disable the button |
+|`href`|String|| button link |
+|`disabled`|String|| disable the button |
 |`primary`|Boolean|| primary color (*)|
 |`accent`|Boolean|| accent color (*)|
 |`compact`| Boolean|| compact design (*)|
@@ -71,8 +72,10 @@ var vm = new Vue({
 
 ### link buttons
 
+Set the href attribute to render a link button
+
 ```html
-<a href="#"><mdc-button>Link</mdc-button></a>
+<mdc-button href="#">Home</mdc-button>
 ```
 
 ### Reference
