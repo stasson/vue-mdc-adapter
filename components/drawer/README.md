@@ -14,7 +14,14 @@
 
 <!-- Drawer layout-->
 <mdc-drawer-layout>
+
+  <!-- Drawer-->
   <mdc-drawer toggle-on="toggle-drawer">
+    <mdc-drawer-list>
+      <mdc-drawer-item start-icon="inbox">Inbox</mdc-drawer-item>
+      <mdc-drawer-item start-icon="send">Sent Mail</mdc-drawer-item>
+      <mdc-drawer-item start-icon="drafts">Drafts</mdc-drawer-item>
+    </mdc-drawer-list>
   </mdc-drawer>
   
   <!--Body markup here... -->
@@ -34,7 +41,7 @@
 |`toggle-on-source`|Object| vm.$root | optional event source, defaults to root bus |
 
 > (*) by default drawer is responsive and will switch from temporary to 
-> persistent design 
+> persistent design according to viewport width
 
 ### Drawer Layout
 
@@ -66,8 +73,39 @@ or drawer is above toolbar
 
 > (*) allows to filter whether header is shown for responsive drawer
 
-### Drawer Content
+### Drawer Items
 
+| prop | Type | Default | Description |
+|------|------|---------|-------------|
+|`'start-icon'`|Boolean| optional | material start icon |
+|`href`|String| optional | item link |
+|`event`|String| optional | optional event to emit on click  |
+|`event-target`|Object| vm.$root | optional event target, defaults to root bus |
+|`event-args`|Array| [] | optional event args |
+
+```html
+<mdc-drawer>
+  <mdc-drawer-list>
+    <mdc-drawer-item start-icon="inbox">Inbox</mdc-drawer-item>
+    <mdc-drawer-item start-icon="send">Sent Mail</mdc-drawer-item>
+    <mdc-drawer-item start-icon="drafts">Drafts</mdc-drawer-item>
+    <mdc-drawer-divider />
+    <mdc-drawer-item start-icon="email">All mail</mdc-drawer-item>
+    <mdc-drawer-item start-icon="delete">Trash</mdc-drawer-item>
+    <mdc-drawer-item start-icon="report">Spam</mdc-drawer-item>
+  </mdc-drawer-list>
+</mdc-drawer>
+```
+
+
+> to override start-icon detail, use `start-detail` named slot:
+
+```html
+<mdc-drawer-item>
+  <img slot='start-detail'>
+  {{ Text }}
+</mdc-drawer-item>
+```
 
 ### Reference
 - https://material.io/components/web/catalog/drawers

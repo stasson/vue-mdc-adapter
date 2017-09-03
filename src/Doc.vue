@@ -25,11 +25,12 @@
         :persistent="drawerType.persistent"
         :temporary="drawerType.temporary" >
         <mdc-drawer-header temporary></mdc-drawer-header>
-        <mdc-list>
-         <a class="mdc-list-item" v-for="item in sections" :key="item.id"
-         :href="'#'+item.id"
-           >{{item.text}}</a>
-        </mdc-list>
+        <mdc-drawer-list>
+          <mdc-drawer-item selected v-for="item in sections" :key="item.id"
+            :href="'#'+item.id">
+            {{item.text}}
+          </mdc-drawer-item>          
+        </mdc-drawer-list>
       </mdc-drawer>
     
       <div>
