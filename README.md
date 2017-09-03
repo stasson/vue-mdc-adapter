@@ -23,7 +23,7 @@ src="https://github.com/stasson/vue-mdc-adapter/wiki/img/logo.png" alt="vue_mdc_
 
 #### NPM
 
-```
+```console
 npm install --save vue-mdc-adapter
 ```
 
@@ -47,7 +47,8 @@ npm install --save vue-mdc-adapter
 ```
 
 > Quick start with vue-cli
-```
+
+```console
 npm install -g vue-cli 
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
@@ -57,6 +58,7 @@ vue init stasson/vue-mdc-adapter-simple my-project
 > requires loaders for vue sass and resolve `node_modules`  
 
 - ES6 Imports 
+
 ```javascript
 import Vue from 'vue'
 import VueMdcAdapter from 'vue-mdc-adapter'
@@ -64,6 +66,7 @@ Vue.use(VueMdcAdapter)
 ```
 
 - SCSS Theming
+
 ```scss
 $mdc-theme-primary: #212121;
 $mdc-theme-accent: #41B883;
