@@ -1,3 +1,8 @@
+<h3 align="center">
+<img width="150"
+src="https://github.com/stasson/vue-mdc-adapter/wiki/img/logo.png" alt="vue_mdc_adapter logo"> 
+<br>vue-mdc-adapter
+</h3>
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/v/vue-mdc-adapter.svg" alt="Version">
@@ -9,25 +14,20 @@
     <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
   </a>
 </p>
-<h1 align="center">
-  vue-mdc-adapter
-</h1>
 
-# A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
+## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
 
-> [VueJS](https://vuejs.org) wrapper arround 
-Google's [Material Components for the Web](https://material.io/components/web/)
 
-## Getting Started
+### Getting Started
 > requires vue 2.4.2 as peer dependency
 
-### NPM
+#### NPM
 
 ```
 npm install --save vue-mdc-adapter
 ```
 
-## CDN
+#### CDN
 
 ```html
 <head>
@@ -52,7 +52,7 @@ npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
-### Full build with webpack/rollup:
+#### Full build with webpack/rollup:
 
 > requires loaders for vue sass and resolve `node_modules`  
 
@@ -72,7 +72,7 @@ $mdc-theme-background: #fff;
 @import "vue-mdc-adapter/components/styles";
 ```
 
-### or cherry pick components:
+#### or cherry pick components:
 
 - ES6 Imports 
 ```javascript
@@ -87,7 +87,7 @@ Vue.use(VueMdcButton)
 ```
 
 
-## Documentation
+### Documentation
 
 Please check
 the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki)
