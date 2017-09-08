@@ -8,9 +8,10 @@
 </template>
 
 <script lang="babel">
-import { SelectOptionMixin } from './mdc-select-mixins'
-
 export default {
-  mixins: [SelectOptionMixin]
+  props: {
+    value: String,
+    disabled: Boolean
+  }
 }
 </script>

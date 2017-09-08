@@ -1,21 +1,32 @@
 <template>
-  <select class="mdc-select" :disabled="disabled" :value="value"
-    @change="onChange">
-    <option disabled value="" v-if="label">{{ label }}</option>
+  <select ref="root" class="mdc-select" v-model="selected" :disabled="disabled"
+    @change="onChange"
+  >
+    <option disabled value=""v-if="label">{{ label }}</option>
     <slot></slot>
   </select>
 </template>
 
 <script lang="babel">
-import { SelectMixin } from './mdc-select-mixins'
-
 export default {
-  mixins: [SelectMixin],
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
+  props: {
+    value: [String, Array],
+    disabled: Boolean,
+    label: String
+  },
+  data () {
+    return {
+      selected: this.value
+    }
+  },
   methods: {
     onChange (evt) {
-      let value = evt.target.value
-      this.$emit('change', value)
-      console.log('native change: ' + value)
+      this.$emit('change', this.selected)
+      console.log('native change: ' + this.selected)
     }
   }
 }

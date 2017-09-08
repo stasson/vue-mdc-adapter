@@ -13,10 +13,18 @@
 
 <script lang="babel">
 import MDCSelectFoundation from '@material/select/foundation'
-import { SelectMixin } from './mdc-select-mixins'
 
 export default {
-  mixins: [SelectMixin],
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
+  props: {
+    multiple: Boolean,
+    value: [String, Array],
+    disabled: Boolean,
+    label: String
+  },
   data () {
     return {
       classes: {},
