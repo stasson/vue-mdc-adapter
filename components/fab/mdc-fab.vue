@@ -11,33 +11,6 @@
 </template>
 
 
-<style lang="css">
-.mdc-fab--absolute {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-}
-
-.mdc-fab--fixed {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 10;
-}
-
-@media(min-width: 1024px) {
-  .mdc-fab--absolute {
-    bottom: 3rem;
-    right: 5rem;
-  }
-
-  .mdc-fab--fixed {
-    bottom: 3rem;
-    right: 5rem;
-  }
-}
-</style>
-
 
 <script>
 import {RippleBase, DispatchEventMixin} from '../util'

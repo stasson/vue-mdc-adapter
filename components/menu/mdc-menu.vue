@@ -7,13 +7,6 @@
   </div>
 </template>
 
-<style lang="css">
-.mdc-simple-menu {
-  /*temporary toolbar fix*/
-  z-index:3;
-}
-</style>
-
 <script lang="babel">
 import MDCSimpleMenuFoundation from '@material/menu/simple/foundation'
 import {getTransformPropertyName} from '@material/menu/util'
@@ -147,7 +140,8 @@ export default {
       getAccurateTime: () => window.performance.now()
     })
 
-    /** temporary fix for duplicate $emit */
+    /** -- temporary fix for duplicate $emit */
+    // TODO: MDCFIX
     this.foundation.clickHandler_ = (evt) => {
       evt.stopPropagation()
       this.foundation.handlePossibleSelected_(evt)
@@ -168,7 +162,7 @@ export default {
       this.foundation.adapter_.notifyCancel()
       this.foundation.close(evt)
     }
-    /* temporary fix for duplicate $emit **/
+    /* -- temporary fix for duplicate $emit **/
 
     this.foundation.init()
   },
