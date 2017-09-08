@@ -34,13 +34,8 @@ export default {
         'mdc-simple-menu--open-from-top-right': this.openFromTopRight,
         'mdc-simple-menu--open-from-bottom-left': this.openFromBottomLeft,
         'mdc-simple-menu--open-from-bottom-right': this.openFromBottomRight
-      }
-    }
-  },
-  computed: {
-    items () {
-      return [].slice.call(
-        this.$refs.items.querySelectorAll('.mdc-list-item[role]'))
+      },
+      items: []
     }
   },
   methods: {
@@ -55,6 +50,14 @@ export default {
     }
   },
   mounted () {
+    const refreshItems = () => {
+      this.items = [].slice.call(
+        this.$refs.items.querySelectorAll('.mdc-list-item[role]'))
+    }
+    refreshItems()
+    this.slotObserver = new MutationObserver(() => refreshItems())
+    this.slotObserver.observe(this.$el, { childList: true })
+
     const transformPropertyName = getTransformPropertyName(window)
     this._previousFocus = undefined
 
@@ -171,6 +174,7 @@ export default {
   },
   beforeDestroy () {
     this._previousFocus = null
+    this.slotObserver.disconnect()
     this.foundation.destroy()
   }
 }
