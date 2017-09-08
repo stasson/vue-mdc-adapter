@@ -1,5 +1,6 @@
 <template>
-  <component :is="selectComponent"
+  <component :is="type" :multiple="multiple" 
+    :max-size="multiple ? maxSize : undefined"
     :disabled="disabled" :label="label" :value="value" @change="onChange"
   >
     <slot></slot>
@@ -7,30 +8,70 @@
 </template>
 
 <script lang="babel">
-import { SelectMediaMixin, SelectMixin } from './mdc-select-mixins.js'
 import MDCNativeSelect from './mdc-native-select.vue'
-import MDCRichSelect from './mdc-rich-select.vue'
+import MDCMenuSelect from './mdc-menu-select.vue'
+import MDCMultiSelect from './mdc-multi-select.vue'
+
+const media = new class {
+  get mobile () {
+    return this._mobile || (this._mobile =
+      window.matchMedia('(max-width: 600px) and (pointer: coarse)'))
+  }
+}()
 
 export default {
   name: 'mdc-select',
-  mixins: [SelectMediaMixin, SelectMixin],
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   props: {
-    'multiple': Boolean
+    'multiple': Boolean,
+    'value': [String, Array],
+    'disabled': Boolean,
+    'label': String,
+    'max-size': {
+      type: [String, Number],
+      default: 8
+    }
+  },
+  provide () {
+    return {mdcSelect: this}
   },
   components: {
-    nativeSelect: MDCNativeSelect,
-    richSelect: MDCRichSelect
+    'mdc-native-select': MDCNativeSelect,
+    'mdc-menu-select': MDCMenuSelect,
+    'mdc-multi-select': MDCMultiSelect
+  },
+  data () {
+    return {
+      mobile: (window) ? media.mobile.matches : true
+    }
   },
   computed: {
-    selectComponent () {
-      return (this.multiple || this.useNativeSelect)
-        ? 'nativeSelect' : 'richSelect'
+    type () {
+      return this.multiple ? 'mdc-multi-select'
+        : this.native ? 'mdc-native-select'
+          : 'mdc-menu-select'
+    },
+    native () {
+      return this.multiple || this.mobile
     }
   },
   methods: {
     onChange (value) {
       this.$emit('change', value)
+    },
+    refreshMedia () {
+      this.mobile = media.mobile.matches
     }
+  },
+  beforeMount () {
+    media.mobile.addListener(this.refreshMedia)
+    this.refreshMedia()
+  },
+  beforeDestroy () {
+    media.mobile.removeListener(this.refreshMedia)
   }
 }
 </script>

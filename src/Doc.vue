@@ -186,19 +186,33 @@
  
           <div class="doc-center">
             <mdc-select v-model="selectValue" label="Pick up a food group" native="false">
-              <mdc-select-option>
+              <mdc-option>
                 Bread, Cereal, Rice, and Pasta
-              </mdc-select-option>
-              <mdc-select-option value="vegies">
+              </mdc-option>
+              <mdc-option value="vegies">
                 Vegetables
-              </mdc-select-option>
-              <mdc-select-option>
+              </mdc-option>
+              <mdc-option>
                  Meat, Poultry, Fish, Dry Beans, Eggs, and Nuts
-              </mdc-select-option>
+              </mdc-option>
             </mdc-select>
             <mdc-body><br>Selected: {{ selectValue }}</mdc-body>
-          <p><br></p>
+            <p><br></p>
+
+            <mdc-select multiple v-model="selectValues" label="Pick one or both">
+              <mdc-option>
+                Potato
+              </mdc-option>
+              <mdc-option>
+                Cereal
+              </mdc-option>
+            </mdc-select>
+            <mdc-body><br>Selected: {{ selectValues }}</mdc-body>
+            <p><br></p>
+
           </div>
+
+
 
           <mdc-subheading>Slider</mdc-subheading>
           <div class="doc-center">
@@ -440,7 +454,8 @@ export default {
       drawerType: {},
       indeterminate: false,
       sliderValue: 3,
-      selectValue: ''
+      selectValue: '',
+      selectValues: []
     }
   },
   mounted () {
