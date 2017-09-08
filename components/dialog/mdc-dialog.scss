@@ -1,1 +1,7 @@
 @import "@material/dialog/mdc-dialog";
+
+
+// TODO: MDCFIX
+.mdc-dialog.mdc-dialog--open {
+  z-index: 5;
+}

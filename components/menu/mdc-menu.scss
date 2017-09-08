@@ -1,1 +1,6 @@
 @import "@material/menu/mdc-menu";
+
+// TODO: MDCFIX
+.mdc-simple-menu {
+  z-index:5;
+}
