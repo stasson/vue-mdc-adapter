@@ -1,8 +1,6 @@
-<h3 align="center">
-<img width="150"
-src="https://github.com/stasson/vue-mdc-adapter/wiki/img/logo.png" alt="vue_mdc_adapter logo"> 
-<br>vue-mdc-adapter
-</h3>
+<h2 align="center">
+vue-mdc-adapter
+</h2>
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/v/vue-mdc-adapter.svg" alt="Version">
@@ -18,7 +16,7 @@ src="https://github.com/stasson/vue-mdc-adapter/wiki/img/logo.png" alt="vue_mdc_
 ## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
 
 > __Update__:  
-> Requires vue 2.4.2 as peer dependency.  
+> Requires vue ^2.4.2 as peer dependency.  
 > Starting v0.0.35, most of the MDC component are supported.  
 > Focus is now on validation and keeping up with MDC updates.  
 
@@ -42,7 +40,7 @@ npm install --save vue-mdc-adapter
   <link rel="stylesheet" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">  
   
   <!-- import vue and then vue-mdc-adapter -->
-  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
   <script src="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.js"></script>
 </head>
 <body>
