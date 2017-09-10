@@ -76,7 +76,6 @@
             <mdc-fab mini>favorite</mdc-fab>
             <mdc-fab plain>favorite</mdc-fab>
             <mdc-fab mini plain>favorite</mdc-fab>
-            <mdc-fab mini disabled>favorite</mdc-fab>
             <mdc-fab plain fixed href="#">home</mdc-fab>
           </div>
 

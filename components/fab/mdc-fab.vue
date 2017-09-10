@@ -1,7 +1,7 @@
 <template>
-  <a :href="disabled?undefined:href" >
+  <a>
     <button class="mdc-fab material-icons" :class="classes" :style="styles"
-      :disabled="disabled" @click="dispatchEvent" >
+      @click="dispatchEvent" >
       <span class="mdc-fab__icon">
         <slot>
         </slot>
@@ -19,8 +19,6 @@ export default {
   name: 'mdc-fab',
   mixins: [DispatchEventMixin],
   props: {
-    href: String,
-    disabled: Boolean,
     mini: Boolean,
     plain: Boolean,
     absolute: Boolean,

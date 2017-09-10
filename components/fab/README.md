@@ -10,6 +10,10 @@
 
 > refer to [Material Design Icon Font](https://material.io/icons/) for the list of icons 
 
+> FAB can't be disabled 
+
+> add an href attribute for link
+
 
 ### events
 
@@ -22,8 +26,6 @@
 
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
-|`href`|String|| button link |
-|`disabled`|String|| disable the fab |
 |`mini`|Boolean|| mini style (40x40 pixels) (*)|
 |`plain`|Boolean|| plain style (white background) (*)|
 |`absolute`| Boolean|| set bottom right absolute position (*)|
