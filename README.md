@@ -11,6 +11,9 @@ vue-mdc-adapter
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
   </a>
+  <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
+    <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=master" alt="builds">
+  </a>
 </p>
 
 ## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
