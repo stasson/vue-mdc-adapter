@@ -18,6 +18,8 @@ vue-mdc-adapter
 
 ## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d)](https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&utm_medium=referral&utm_content=stasson/vue-mdc-adapter&utm_campaign=badger)
+
 > __Update__:  
 > Requires vue ^2.4.2 as peer dependency.  
 > Starting v0.0.35, most of the MDC component are supported.  
