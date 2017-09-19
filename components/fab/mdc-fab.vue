@@ -20,7 +20,6 @@ export default {
   mixins: [DispatchEventMixin],
   props: {
     mini: Boolean,
-    plain: Boolean,
     absolute: Boolean,
     fixed: Boolean
   },
@@ -28,7 +27,6 @@ export default {
     return {
       classes: {
         'mdc-fab--mini': this.mini,
-        'mdc-fab--plain': this.plain,
         'mdc-fab--absolute': this.absolute,
         'mdc-fab--fixed': this.fixed
       },

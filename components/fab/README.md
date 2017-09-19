@@ -27,7 +27,6 @@
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
 |`mini`|Boolean|| mini style (40x40 pixels) (*)|
-|`plain`|Boolean|| plain style (white background) (*)|
 |`absolute`| Boolean|| set bottom right absolute position (*)|
 |`fixed`| Boolean|| set bottom right fixed position (*)|
 |`event`|String| optional | optional event to emit on click  |

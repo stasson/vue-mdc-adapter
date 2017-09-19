@@ -3,6 +3,7 @@
     <button
       ref="root" :class="classes" :style="styles" :disabled="disabled" 
       @click="dispatchEvent">
+      <i class="material-icons mdc-button__icon" v-if="!!icon">{{icon}}</i>
       <slot />
     </button>
   </a>
@@ -17,23 +18,22 @@ export default {
   props: {
     href: String,
     disabled: Boolean,
-    primary: Boolean,
-    accent: Boolean,
-    dense: Boolean,
-    compact: Boolean,
+    icon: String,
     raised: Boolean,
-    unelevated: Boolean
+    unelevated: Boolean,
+    stroked: Boolean,
+    dense: Boolean,
+    compact: Boolean
   },
   data () {
     return {
       classes: {
         'mdc-button': true,
-        'mdc-button--primary': this.primary,
-        'mdc-button--accent': this.accent,
-        'mdc-button--dense': this.dense,
-        'mdc-button--compact': this.compact,
         'mdc-button--raised': this.raised,
-        'mdc-button--unelevated': this.unelevated
+        'mdc-button--unelevated': this.unelevated,
+        'mdc-button--stroked': this.stroked,
+        'mdc-button--dense': this.dense,
+        'mdc-button--compact': this.compact
       },
       styles: {}
     }

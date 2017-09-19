@@ -28,12 +28,12 @@ var vm = new Vue({
 |-------|------|---------|-------------|
 |`href`|String|| button link |
 |`disabled`|String|| disable the button |
-|`primary`|Boolean|| primary color (*)|
-|`accent`|Boolean|| accent color (*)|
-|`compact`| Boolean|| compact design (*)|
-|`dense`| String|| dense design (*)|
-|`raised`| Boolean|| raised design (*)|
-|`unelevated`| Boolean|| unelevated design (*)|
+|`icon`|String|| optional icon button |
+|`raised`| Boolean|| a contained button that is elevated upon the surface  (*)|
+|`unelevated`| Boolean|| a contained button that is flush with the surface (*)|
+|`stroked`| Boolean|| a contained button that is flush with the surface and has a visible border(*)|
+|`dense`| String||  compresses the button text to make it slightly smaller (*)|
+|`compact`| Boolean|| reduces the amount of horizontal padding in the button (*)|
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
