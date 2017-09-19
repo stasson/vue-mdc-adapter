@@ -41,10 +41,6 @@
             <mdc-button >baseline</mdc-button>
             <mdc-button compact>compact</mdc-button>
             <mdc-button dense>dense</mdc-button>
-          </div>
-          <div class="doc-center">
-            <mdc-button primary>primary</mdc-button>
-            <mdc-button accent>secondary</mdc-button>
             <mdc-button disabled>disabled</mdc-button>
           </div>
           <mdc-subheading>Raised Buttons</mdc-subheading>
@@ -52,31 +48,30 @@
             <mdc-button raised>baseline</mdc-button>
             <mdc-button raised compact>compact</mdc-button>
             <mdc-button raised dense>dense</mdc-button>
-          </div>
-          <div class="doc-center">
-            <mdc-button raised primary>primary</mdc-button>
-            <mdc-button raised accent>secondary</mdc-button>
             <mdc-button raised disabled>disabled</mdc-button>
           </div>
+
           <mdc-subheading>Unelevated Buttons</mdc-subheading>
           <div class="doc-center">
             <mdc-button unelevated>baseline</mdc-button>
             <mdc-button unelevated compact>compact</mdc-button>
             <mdc-button unelevated dense>dense</mdc-button>
-          </div>
-          <div class="doc-center">
-            <mdc-button unelevated primary>primary</mdc-button>
-            <mdc-button unelevated accent>secondary</mdc-button>
             <mdc-button unelevated disabled>disabled</mdc-button>
+          </div>
+
+          <mdc-subheading>Stroked Buttons</mdc-subheading>
+          <div class="doc-center">
+            <mdc-button stroked>baseline</mdc-button>
+            <mdc-button stroked compact>compact</mdc-button>
+            <mdc-button stroked dense>dense</mdc-button>
+            <mdc-button stroked disabled>disabled</mdc-button>
           </div>
 
           <mdc-subheading>Floating Action Button</mdc-subheading>
           <div  class="doc-center">
             <mdc-fab>favorite</mdc-fab>
             <mdc-fab mini>favorite</mdc-fab>
-            <mdc-fab plain>favorite</mdc-fab>
-            <mdc-fab mini plain>favorite</mdc-fab>
-            <mdc-fab plain fixed href="#">home</mdc-fab>
+            <mdc-fab fixed href="#">home</mdc-fab>
           </div>
 
           <mdc-subheading>Icon Toggle</mdc-subheading>
