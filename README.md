@@ -14,6 +14,9 @@ vue-mdc-adapter
   <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
     <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=master" alt="builds">
   </a>
+  <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade">
+    <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d"/>
+  </a>
 </p>
 
 ## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
