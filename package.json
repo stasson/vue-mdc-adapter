@@ -43,7 +43,7 @@
     "rollup-prod": "cross-env NODE_ENV=production rollup -c",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue components"
   },
   "peerDependencies": {
     "vue": "^2.4.4"
@@ -69,7 +69,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.0",
-    "eslint": "^4.7.0",
+    "eslint": "^4.7.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",

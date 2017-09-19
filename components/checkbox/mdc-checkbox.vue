@@ -117,7 +117,7 @@ export default {
     this.foundation.destroy()
   },
   methods: {
-    onChange (event) {
+    onChange () {
       this.$emit('update:indeterminate', this.foundation.isIndeterminate())
       this.$emit('change', this.foundation.isChecked())
     }

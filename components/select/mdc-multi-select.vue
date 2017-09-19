@@ -31,7 +31,7 @@ export default {
     }
   },
   methods: {
-    onChange (evt) {
+    onChange () {
       this.$emit('change', this.selected)
     }
   },
