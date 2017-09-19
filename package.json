@@ -51,7 +51,7 @@
     "vue": "^2.4.4"
   },
   "dependencies": {
-    "material-components-web": "0.20.0"
+    "material-components-web": "0.21.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.3",
@@ -117,8 +117,6 @@
     "sass-loader": "^6.0.5",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
-    "sinon": "^3.2.1",
-    "sinon-chai": "^2.8.0",
     "stylelint": "^8.1.1",
     "stylelint-config-recommended": "^1.0.0",
     "stylelint-processor-html": "^1.0.0",
@@ -127,7 +125,7 @@
     "vue": "^2.4.2",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
-    "vue-loader": "^13.0.4",
+    "vue-loader": "^13.0.5",
     "vue-router": "^2.5.3",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.2.6",
