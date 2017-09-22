@@ -21,6 +21,8 @@ vue-mdc-adapter
 
 ## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
 
+[![Join the chat at https://gitter.im/vue-mdc-adapter/Lobby](https://badges.gitter.im/vue-mdc-adapter/Lobby.svg)](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > __Update__:  
 > Requires vue ^2.4.2 as peer dependency.  
 > Starting v0.0.35, most of the MDC component are supported.  
