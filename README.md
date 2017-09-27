@@ -17,9 +17,8 @@ vue-mdc-adapter
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
   </a>
-  <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
-     alt="Join the chat on gitter @https://gitter.im/vue-mdc-adapter/Lobby">
-    <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg"/>
+  <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+    <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" />
   </a>
 </p>
 
