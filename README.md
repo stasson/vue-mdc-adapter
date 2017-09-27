@@ -8,20 +8,23 @@ vue-mdc-adapter
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/l/vue-mdc-adapter.svg" alt="License">
   </a>
-  <a href="https://www.npmjs.com/package/vue-mdc-adapter">
-    <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
-  </a>
   <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
     <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=master" alt="builds">
   </a>
-  <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade">
+  <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade" alt="Codacy">
     <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d"/>
+  </a>
+  <a href="https://www.npmjs.com/package/vue-mdc-adapter">
+    <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
+  </a>
+  <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
+     alt="Join the chat on gitter @https://gitter.im/vue-mdc-adapter/Lobby">
+    <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg"/>
   </a>
 </p>
 
 ## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
 
-[![Join the chat at https://gitter.im/vue-mdc-adapter/Lobby](https://badges.gitter.im/vue-mdc-adapter/Lobby.svg)](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > __Update__:  
 > Requires vue ^2.4.2 as peer dependency.  
