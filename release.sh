@@ -38,6 +38,9 @@ echo "build branch:  $BRANCH"
 # patch version number
 VERSION=`npm version patch --no-git-tag-version`  || error "npm version patch failed"
 
+# changelog
+npm run changelog
+
 # build 
 npm run build || error "build failed"
 
@@ -45,6 +48,11 @@ npm run build || error "build failed"
 git add --all || error "git add --all failed"
 git add -u || error "git add -u failed"
 git commit -m "build $VERSION" || error "git commit failed"
+
+# skip publish if dry run
+if [ -z "$1" ];then
+exit 1
+fi
 
 # rebase master
 git checkout master || error "can't checkout master"
