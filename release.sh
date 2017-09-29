@@ -47,12 +47,7 @@ npm run build || error "build failed"
 # ammend
 git add --all || error "git add --all failed"
 git add -u || error "git add -u failed"
-git commit -m "build $VERSION" || error "git commit failed"
-
-# skip publish if dry run
-if [ -z "$1" ];then
-exit 1
-fi
+git commit -m "build: $VERSION" || error "git commit failed"
 
 # rebase master
 git checkout master || error "can't checkout master"
