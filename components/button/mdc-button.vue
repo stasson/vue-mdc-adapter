@@ -1,12 +1,8 @@
 <template>
-  <a :href="disabled?undefined:href" >
-    <button
-      ref="root" :class="classes" :style="styles" :disabled="disabled" 
-      @click="dispatchEvent">
-      <i class="material-icons mdc-button__icon" v-if="!!icon">{{icon}}</i>
-      <slot />
-    </button>
-  </a>
+  <button ref="root" :class="classes" :style="styles" :disabled="disabled" 
+    @click="dispatchEvent">
+    <slot />
+  </button>
 </template>
 
 <script>
@@ -16,9 +12,7 @@ export default {
   name: 'mdc-button',
   mixins: [DispatchEventMixin],
   props: {
-    href: String,
     disabled: Boolean,
-    icon: String,
     raised: Boolean,
     unelevated: Boolean,
     stroked: Boolean,
