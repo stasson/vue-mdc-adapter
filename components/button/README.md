@@ -26,9 +26,7 @@ var vm = new Vue({
 
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
-|`href`|String|| button link |
 |`disabled`|String|| disable the button |
-|`icon`|String|| optional icon button |
 |`raised`| Boolean|| a contained button that is elevated upon the surface  (*)|
 |`unelevated`| Boolean|| a contained button that is flush with the surface (*)|
 |`stroked`| Boolean|| a contained button that is flush with the surface and has a visible border(*)|
@@ -70,15 +68,6 @@ var vm = new Vue({
 <mdc-button unelevated accent>Secondary</mdc-button>
 ```
 
-### link buttons
-
-Set the href attribute to render a link button
-
-```html
-<mdc-button href="#">Home</mdc-button>
-```
-
 ### Reference
-- https://material-components-web.appspot.com/button.html
 - https://material.io/guidelines/components/buttons.html
 
