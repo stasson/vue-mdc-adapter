@@ -99,23 +99,12 @@ container:
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`href`| String |optional| sets button's link |
 |`disabled`| boolean |false| wether the button is disabled |
 
 ```html
 <mdc-card>
   <mdc-card-actions>
     <mdc-card-action-button @click="onAction">Action</mdc-card-action-button>
-  </mdc-card-actions>
-</mdc-card>
-```
-
-Actions Buttons can also be links specifying the href property
-
-```html
-<mdc-card>
-  <mdc-card-actions>
-    <mdc-card-action-button href="#">Link</mdc-card-action-button>
   </mdc-card-actions>
 </mdc-card>
 ```
