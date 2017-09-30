@@ -44,8 +44,6 @@ var vm = new Vue({
 <mdc-button>Baseline</mdc-button>
 <mdc-button compact>Compact</mdc-button>
 <mdc-button dense>Dense</mdc-button>
-<mdc-button primary>Primary</mdc-button>
-<mdc-button accent>Secondary</mdc-button>
 ```
 
 ### Raised Button
@@ -54,8 +52,6 @@ var vm = new Vue({
 <mdc-button raised>Baseline</mdc-button>
 <mdc-button raised compact>Compact</mdc-button>
 <mdc-button raised dense>Dense</mdc-button>
-<mdc-button raised primary>Primary</mdc-button>
-<mdc-button raised accent>Secondary</mdc-button>
 ```
 
 ### Uneleveted buttons
@@ -64,8 +60,12 @@ var vm = new Vue({
 <mdc-button unelevated>Baseline</mdc-button>
 <mdc-button unelevated compact>Compact</mdc-button>
 <mdc-button unelevated dense>Dense</mdc-button>
-<mdc-button unelevated primary>Primary</mdc-button>
-<mdc-button unelevated accent>Secondary</mdc-button>
+```
+
+### Icon buttons
+
+```html
+<mdc-button ><mdc-icon icon="favorite"></mdc-icon>like</mdc-button>
 ```
 
 ### Reference
