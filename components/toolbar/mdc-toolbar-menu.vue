@@ -1,5 +1,5 @@
 <template>
-  <a class="mdc-toolbar__icon" 
+  <a class="mdc-toolbar__icon--menu"
     :class="{'material-icons':!!icon}"
     @click="dispatchEvent">
     <slot>{{icon}}</slot>
@@ -10,10 +10,10 @@
 import {DispatchEventMixin} from '../util'
 
 export default {
-  name: 'mdc-toolbar-icon',
+  name: 'mdc-toolbar-menu',
   mixins: [DispatchEventMixin],
   props: {
-    icon: String
+    icon: {type: String, 'default': "menu"}
   }
 }
 </script>

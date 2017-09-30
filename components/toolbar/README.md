@@ -8,7 +8,7 @@
       <mdc-toolbar-title>Title</mdc-toolbar-title>
     </mdc-toolbar-section>
     <mdc-toolbar-section align-end>
-      <mdc-toolbar-icon event="show-help">help</mdc-toolbar-icon>
+      <mdc-toolbar-icon event="show-help" icon="help"></mdc-toolbar-icon>
     </mdc-toolbar-section>
   </mdc-toolbar-row>
 </mdc-toolbar>
@@ -88,11 +88,27 @@ mdc-toolbar.
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
+|`icon`|String|          | the material icon name. |
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 
 > if the `event` property is not specified, use @click to cactch click events
 
+> do not set the icon prop to render your custom icons 
+
+**Font Awsome**
+
+```html
+  <mdc-icon class="fa fa-star"></mdc-icon>
+```
+
+**SVG Icons**
+
+```html
+  <mdc-icon> 
+    <svg ...> 
+  </mdc-icon>
+```
 
 ### Fixed toolbars
 
