@@ -9,11 +9,3 @@ export default {
   name: 'mdc-toolbar-title'
 }
 </script>
-
-<style lang="css">
-.mdc-toolbar__title {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-</style>

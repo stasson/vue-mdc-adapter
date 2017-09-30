@@ -6,15 +6,7 @@
   </section>
 </template>
 
-<style lang="css">
-.mdc-card-media {
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-</style>
-
 <script>
-
 export default {
   name: 'mdc-card-media',
   props: {

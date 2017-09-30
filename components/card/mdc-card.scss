@@ -1,2 +1,8 @@
 @import "@material/button/mdc-button";
 @import "@material/card/mdc-card";
+
+.mdc-card-media {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
