@@ -58,7 +58,7 @@
     "vue": "^2.4.4"
   },
   "dependencies": {
-    "material-components-web": "0.21.0"
+    "material-components-web": "0.21.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.3",
