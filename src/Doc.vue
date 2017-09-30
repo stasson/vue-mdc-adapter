@@ -73,9 +73,9 @@
 
           <mdc-subheading>Floating Action Button</mdc-subheading>
           <div  class="doc-center">
-            <mdc-fab>favorite</mdc-fab>
-            <mdc-fab mini>favorite</mdc-fab>
-            <mdc-fab fixed href="#">home</mdc-fab>
+            <mdc-fab icon="favorite"></mdc-fab>
+            <mdc-fab mini icon="favorite"></mdc-fab>
+            <mdc-fab fixed icon="home" @click="scrollToTop"></mdc-fab>
           </div>
 
           <mdc-subheading>Icon Toggle</mdc-subheading>

@@ -1,11 +1,9 @@
 ## Floating Action Buttons
 
 ```html
-  <mdc-fab>favorite</mdc-fab>
-  <mdc-fab mini>favorite</mdc-fab>
-  <mdc-fab plain>favorite</mdc-fab>
-  <mdc-fab mini plain>favorite</mdc-fab>
-  <mdc-fab plain fixed @click="scrollToTop">home</mdc-fab>
+  <mdc-fab icon="favorite"></mdc-fab>
+  <mdc-fab mini icon="favorite"></mdc-fab>
+  <mdc-fab fixed icon="favorite" @click="scrollToTop">home</mdc-fab>
 ```
 
 > refer to [Material Design Icon Font](https://material.io/icons/) for the list of icons 
@@ -26,6 +24,7 @@
 
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
+|`icon`|String || material-icon content (*)|
 |`mini`|Boolean|| mini style (40x40 pixels) (*)|
 |`absolute`| Boolean|| set bottom right absolute position (*)|
 |`fixed`| Boolean|| set bottom right fixed position (*)|
@@ -34,6 +33,26 @@
 |`event-args`|Array| [] | optional event args |
 
 > (*) initializer attribute, not dynamic propertie
+
+
+### Custom Icons
+
+> You can ommit the icon prop to render your custom icons 
+
+**Font Awsome**
+
+```html
+  <mdc-fab class="fa fa-star"></mdc-fab>
+```
+
+
+**SVG Icons**
+
+```html
+  <mdc-fab> 
+    <svg ...> 
+  </mdc-fab>
+```
 
 
 ### Reference
