@@ -1,1 +1,8 @@
 @import "@material/button/mdc-button";
+
+
+.mdc-button {
+  .mdc-icon {
+    @extend .mdc-button__icon;
+  }
+}
