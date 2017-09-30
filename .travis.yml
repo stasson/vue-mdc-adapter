@@ -7,4 +7,5 @@ cache:
 branches:
   only:
   - master
+  - dev
 script: npm run build
