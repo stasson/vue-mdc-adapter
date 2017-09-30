@@ -6,25 +6,6 @@
 </div>
 </template>
 
-<style lang="css">
-  .mdc-list--bordered {
-    /* remove the side padding. we'll be placing it around the item instead. */
-    padding-right: 0;
-    padding-left: 0;
-  }
-  .mdc-list--bordered .mdc-list-item {
-    /* Add the list side padding padding to the list item. */
-    padding: 0 16px;
-    /* Add a border around each element. */
-    border: 1px solid rgba(0, 0, 0, .12);
-  }
-  /* Ensure adjacent borders don't collide with one another. */
-  .mdc-list--bordered .mdc-list-item:not(:first-child) {
-    border-top: none;
-  }
-</style>
-
-
 <script lang="babel">
 export default {
   props: {
