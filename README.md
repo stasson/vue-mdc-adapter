@@ -67,7 +67,9 @@ vue init stasson/vue-mdc-adapter-simple my-project
 
 #### Webpack/Rollup
 
-> requires loaders for vue sass and resolve `node_modules`  
+> vue-mdc-adapter and material components uses es6 for code and sass for styles
+> make sure your webpack/rollup config resolves node_modules for transpiling 
+> and sass imports
 
 - ES6 Imports 
 
