@@ -49,7 +49,7 @@
             <mdc-button raised>baseline</mdc-button>
             <mdc-button raised compact>compact</mdc-button>
             <mdc-button raised dense>dense</mdc-button>
-            <mdc-button raised><mdc-icon icon="favorite"></mdc-icon>icon</mdc-button>
+            <mdc-button raised><mdc-icon class="material-icons">favorite</mdc-icon>icon</mdc-button>
             <mdc-button raised disabled>disabled</mdc-button>
           </div>
 
