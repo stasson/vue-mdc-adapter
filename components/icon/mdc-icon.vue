@@ -1,9 +1,6 @@
 <template>
-  <span class="mdc-icon material-icons" v-if="icon">
-    {{ icon }}
-  </span>
-  <span class="mdc-icon" v-else>
-    <slot />
+  <span class="mdc-icon" :class="{'material-icons':!!icon}">
+    <slot>{{ icon }}</slot>
   </span>
 </template>
 
@@ -12,6 +9,6 @@ export default {
   name: 'mdc-icon',
   props: {
     icon: String
-  }
+  },
 }
 </script>
