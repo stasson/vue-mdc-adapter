@@ -4,8 +4,7 @@
     <mdc-toolbar waterfall>
       <mdc-toolbar-row>
         <mdc-toolbar-section align-start >
-          <mdc-toolbar-icon-menu event="toggle-drawer">
-          </mdc-toolbar-icon-menu>
+          <mdc-toolbar-menu event="toggle-drawer"></mdc-toolbar-menu>
           <mdc-toolbar-title href="#">Vue MDC Adapter</mdc-toolbar-title>
         </mdc-toolbar-section>
         <mdc-toolbar-section align-end>

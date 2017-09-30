@@ -14,7 +14,7 @@
 
 ### Custom Icons
 
-> You can ommit the icon prop to render your custom icons 
+> do not set the icon prop to render your custom icons 
 
 **Font Awsome**
 

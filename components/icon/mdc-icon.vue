@@ -9,6 +9,6 @@ export default {
   name: 'mdc-icon',
   props: {
     icon: String
-  },
+  }
 }
 </script>
