@@ -8,6 +8,7 @@ import VueMDCDialog from './dialog'
 import VueMDCDrawer from './drawer'
 import VueMDCFab from './fab'
 import VueMDCGridList from './grid-list'
+import VueMDCIcon from './icon'
 import VueMDCIconToggle from './icon-toggle'
 import VueMDCLayoutGrid from './layout-grid'
 import VueMDCLinearProgress from './linear-progress'
@@ -32,6 +33,7 @@ const plugin = {
     vm.use(VueMDCDrawer)
     vm.use(VueMDCFab)
     vm.use(VueMDCGridList)
+    vm.use(VueMDCIcon)
     vm.use(VueMDCIconToggle)
     vm.use(VueMDCLayoutGrid)
     vm.use(VueMDCLinearProgress)
