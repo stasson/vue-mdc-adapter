@@ -16,9 +16,8 @@
   "license": "MIT",
   "main": "dist/vue-mdc-adapter.js",
   "module": "components/index.js",
-  "unpkg": "unpkg.html",
+  "unpkg": "dist/vue-mdc-adapter.js",
   "files": [
-    "unpkg.html",
     "dist",
     "static",
     "components",
