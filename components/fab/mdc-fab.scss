@@ -1,5 +1,15 @@
 @import "@material/fab/mdc-fab";
 
+// support anchors as style
+a.mdc-fab, 
+a:link.mdc-fab, 
+a:visited.mdc-fab, 
+a:hover.mdc-fab, 
+a:active.mdc-fab {
+  text-decoration: inherit;
+  font-weight: inherit;
+}
+
 .mdc-fab--absolute {
   position: absolute;
   bottom: 1rem;

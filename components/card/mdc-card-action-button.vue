@@ -1,17 +1,23 @@
 <template>
-  <button ref="root" class="mdc-card-action-button"
+  <custom-element 
+    :tag="isLink ? 'a': 'button'" 
+    :href="isLink && href"
+    :role="isLink ? 'button' : undefined"
+    ref="root" class="mdc-card-action-button"
     :class="classes" :style="styles" :disabled="disabled" 
-    @click="$emit('click')">
+    @click="dispatchEvent">
     <slot />
-  </button>
+  </custom-element>
 </template>
 
 <script lang="babel">
-import {RippleBase} from '../util'
+import {RippleBase, DispatchEventMixin, CustomElementMixin} from '../util'
 
 export default {
   name: 'mdc-card-action-button',
+  mixins: [DispatchEventMixin, CustomElementMixin],
   props: {
+    href: String,
     disabled: Boolean
   },
   data () {
@@ -22,6 +28,11 @@ export default {
         'mdc-card__action': true
       },
       styles: {}
+    }
+  },
+  computed: {
+    isLink () {
+      return this.href && !this.disabled
     }
   },
   mounted () {

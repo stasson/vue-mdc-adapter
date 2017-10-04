@@ -70,11 +70,20 @@
             <mdc-button stroked disabled>disabled</mdc-button>
           </div>
 
+          <mdc-subheading>Link Buttons</mdc-subheading>
+          <div class="doc-center">
+            <mdc-button href="#">baseline</mdc-button>
+            <mdc-button href="#" compact>compact</mdc-button>
+            <mdc-button href="#" dense>dense</mdc-button>
+            <mdc-button href="#"><mdc-icon icon="favorite"></mdc-icon>icon</mdc-button>
+            <mdc-button href="#" disabled>disabled</mdc-button>
+          </div>
+
           <mdc-subheading>Floating Action Button</mdc-subheading>
           <div  class="doc-center">
             <mdc-fab icon="favorite"></mdc-fab>
-            <mdc-fab mini icon="favorite"></mdc-fab>
-            <mdc-fab fixed icon="home" @click="scrollToTop"></mdc-fab>
+            <mdc-fab mini icon="favorite"  href="#"></mdc-fab>
+            <mdc-fab fixed icon="home" href="#"></mdc-fab>
           </div>
 
           <mdc-subheading>Icon Toggle</mdc-subheading>
@@ -111,8 +120,9 @@
                 <mdc-card-img :src="image.tile" ></mdc-card-img>
             </mdc-card-horizontal>
             <mdc-card-actions>
-              <mdc-card-action-button>Action 1</mdc-card-action-button>
-              <mdc-card-action-button disabled>Action 2</mdc-card-action-button>
+              <mdc-card-action-button >Action button</mdc-card-action-button>
+              <mdc-card-action-button href="#">Action link</mdc-card-action-button>
+              <mdc-card-action-button disabled>Action disabled</mdc-card-action-button>
             </mdc-card-actions>
           </mdc-card>
         </section>

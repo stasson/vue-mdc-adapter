@@ -3,7 +3,7 @@
 ```html
   <mdc-fab icon="favorite"></mdc-fab>
   <mdc-fab mini icon="favorite"></mdc-fab>
-  <mdc-fab fixed icon="favorite" @click="scrollToTop">home</mdc-fab>
+  <mdc-fab fixed icon="home" @click="scrollToTop"></mdc-fab>
 ```
 
 > refer to [Material Design Icon Font](https://material.io/icons/) for the list of icons 
@@ -31,6 +31,8 @@
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
+|`href`|String|| link's href, renders anchor (see notes below) | 
+
 
 > (*) initializer attribute, not dynamic propertie
 
@@ -53,6 +55,27 @@
     <svg ...> 
   </mdc-fab>
 ```
+
+### Link FAB
+
+```html
+<mdc-fab icon="home" href="#">Home</mdc-fab>
+```
+
+Using the href attribute will render `<a role="button">`
+
+> Accessibility Warning:  
+> Buttons are expected to be triggered using the Space or Enter key, 
+> while links are expected to be triggered using the Enter key. 
+> Also button and links have different behaviour on right click.
+> see this MDN [note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
+
+You may want to keep button behavior and do the navigation programatically:
+
+```html
+<mdc-button @click="location.href='#'">Home</mdc-button>
+``` 
+
 
 
 ### Reference

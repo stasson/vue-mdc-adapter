@@ -97,10 +97,6 @@ container:
 
 ### Action Buttons
 
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`disabled`| boolean |false| wether the button is disabled |
-
 ```html
 <mdc-card>
   <mdc-card-actions>
@@ -108,6 +104,26 @@ container:
   </mdc-card-actions>
 </mdc-card>
 ```
+
+
+| props | Type | Default | Description |
+|-------|------|---------|-------------|
+|`disabled`| boolean |false| wether the button is disabled |
+|`event`|String| optional | optional event to emit on click  |
+|`event-target`|Object| vm.$root | optional event target, defaults to root bus |
+|`event-args`|Array| [] | optional event args |
+|`href`|String|| link's href, renders anchor (see notes below) | 
+
+
+
+Using the href attribute will render `<a role="button">`
+
+> Accessibility Warning:  
+> Buttons are expected to be triggered using the Space or Enter key, 
+> while links are expected to be triggered using the Enter key. 
+> Also button and links have different behaviour on right click.
+> see this MDN [note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
+
 
 ### Horizontal block
 

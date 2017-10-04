@@ -35,6 +35,7 @@ var vm = new Vue({
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
+|`href`|String|| link's href, renders anchor (see notes below) | 
 
 > (*) initializer attribute, not dynamic propertie
 
@@ -67,6 +68,26 @@ var vm = new Vue({
 ```html
 <mdc-button ><mdc-icon icon="favorite"></mdc-icon>like</mdc-button>
 ```
+
+### Link buttons
+
+```html
+<mdc-button href="#">Home</mdc-button>
+```
+
+Using the href attribute will render `<a role="button" href="...">`
+
+> Accessibility Warning:  
+> Buttons are expected to be triggered using the Space or Enter key, 
+> while links are expected to be triggered using the Enter key. 
+> Also button and links have different behaviour on right click.
+> see this MDN [note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
+
+You may want to keep button behavior and do the navigation programatically:
+
+```html
+<mdc-button @click="location.href='#'">Home</mdc-button>
+``` 
 
 ### Reference
 - https://material.io/guidelines/components/buttons.html

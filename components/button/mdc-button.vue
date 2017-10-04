@@ -1,23 +1,34 @@
 <template>
-  <button ref="root" :class="classes" :style="styles" :disabled="disabled" 
+  <custom-element 
+    :tag="isLink ? 'a': 'button'" 
+    :href="isLink && href"
+    :role="isLink ? 'button' : undefined"
+    ref="root" :disabled="disabled" 
+    :class="classes" :style="styles" 
     @click="dispatchEvent">
     <slot />
-  </button>
+  </custom-element>
 </template>
 
 <script>
-import {RippleBase, DispatchEventMixin} from '../util'
+import {RippleBase, DispatchEventMixin, CustomElementMixin} from '../util'
 
 export default {
   name: 'mdc-button',
-  mixins: [DispatchEventMixin],
+  mixins: [DispatchEventMixin, CustomElementMixin],
   props: {
+    href: String,
     disabled: Boolean,
     raised: Boolean,
     unelevated: Boolean,
     stroked: Boolean,
     dense: Boolean,
     compact: Boolean
+  },
+  computed: {
+    isLink () {
+      return this.href && !this.disabled
+    }
   },
   data () {
     return {
