@@ -2,10 +2,11 @@ import { MDCRippleFoundation } from '@material/ripple'
 import { supportsCssVariables, getMatchesProperty } from '@material/ripple/util'
 
 /* global HTMLElement */
-const MATCHES = getMatchesProperty(HTMLElement.prototype)
+const MATCHES = HTMLElement && getMatchesProperty(HTMLElement.prototype)
 
 export class RippleBase extends MDCRippleFoundation {
   constructor (vm, options) {
+
     super(Object.assign({
       browserSupportsCssVars: () => {
         return supportsCssVariables(window)
