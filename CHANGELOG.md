@@ -1,3 +1,13 @@
+<a name="0.0.44"></a>
+## [0.0.44](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.43...v0.0.44) (2017-10-06)
+
+
+### Bug Fixes
+
+* **button:** button click event is not being dispatched ([8d90920](https://github.com/stasson/vue-mdc-adapter/commit/8d90920))
+
+
+
 <a name="0.0.43"></a>
 ## [0.0.43](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.42...v0.0.43) (2017-10-06)
 
