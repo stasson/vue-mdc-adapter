@@ -1,3 +1,13 @@
+<a name="0.0.43"></a>
+## [0.0.43](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.42...v0.0.43) (2017-10-06)
+
+
+### Features
+
+* **textfield:** align textfield on mdc 0.22 ([05a93bc](https://github.com/stasson/vue-mdc-adapter/commit/05a93bc))
+
+
+
 <a name="0.0.42"></a>
 ## [0.0.42](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.41...v0.0.42) (2017-10-04)
 
