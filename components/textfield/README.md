@@ -44,6 +44,7 @@ var vm = new Vue({
 | props | Type | default | Description |
 |-------|------|---------|-------------|
 |`v-model`| String || binds textfield value |
+|`dense`| Boolean | | compresses the textfield to make it slightly smaller |
 |`label`| String | | hint text |
 |`helptext`| String | |  help text |
 |`helptext-persistent`| Boolean | | whether help text is persistent |

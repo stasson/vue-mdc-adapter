@@ -13,14 +13,14 @@
     </div>
 
     <!--multiline case-->
-    <div div ref="root" :class="rootClasses" v-else-if="multiline">
-      <textarea ref="input" :class="inputClasses"
+    <div ref="root" :class="rootClasses" v-else-if="multiline">
+      <textarea ref="input" :class="inputClasses" :id="_uid"
         :value="value" @input="updateValue($event.target.value)"
         :rows="rows" :cols="cols"
         :minlength="minlength" :maxlength="maxlength"
         :disabled="disabled" :aria-controls="'help-'+_uid"
         ></textarea>
-      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
+      <label ref="label" :class="labelClasses" :for="_uid"  v-if="label">
         {{ label }}
       </label>
     </div>
@@ -43,11 +43,13 @@
         :required="required" :size="size"
         :minlength="minlength" :maxlength="maxlength"
         :disabled="disabled" :aria-controls="'help-'+_uid">
-      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
+      <label ref="label" :class="labelClasses" :for="_uid"  v-if="label">
         {{ label }}
       </label>
+      <div ref="bottom" :class="bottomClasses"></div>
     </div>
 
+    <!--help text -->
     <p ref="help" :id="'help-'+_uid" :class="helpClasses"
       aria-hidden="true" v-if="helptext">
       {{ helptext  }}
@@ -58,6 +60,7 @@
 
 <script lang="babel">
 import MDCTextfieldFoundation from '@material/textfield/foundation'
+import {RippleBase} from '../util'
 
 export default {
   props: {
@@ -70,6 +73,7 @@ export default {
           .includes(value)
       }
     },
+    'dense': Boolean,
     'label': String,
     'helptext': String,
     'helptext-persistent': Boolean,
@@ -90,14 +94,19 @@ export default {
       rootClasses: {
         'mdc-textfield': true,
         'mdc-textfield--upgraded': true,
+        'mdc-textfield--disabled': this.disabled,
+        'mdc-textfield--dense': this.dense,
         'mdc-textfield--fullwidth': this.fullwidth,
-        'mdc-textfield--multiline': this.multiline
+        'mdc-textfield--textarea': this.multiline
       },
       inputClasses: {
         'mdc-textfield__input': true
       },
       labelClasses: {
         'mdc-textfield__label': true
+      },
+      bottomClasses: {
+        'mdc-textfield__bottom-line': true
       },
       helpClasses: {
         'mdc-textfield-helptext': true,
@@ -132,6 +141,21 @@ export default {
       removeClassFromLabel: (className) => {
         this.$delete(this.labelClasses, className)
       },
+      setIconAttr: (/* name: string, value: string */) => {},
+      eventTargetHasClass: (target, className) =>  target.classList.contains(className),
+      registerTextFieldInteractionHandler: (evtType, handler) => {
+        this.$refs.root.addEventListener(evtType, handler)
+      },
+      deregisterTextFieldInteractionHandler: (evtType, handler) => {
+        this.$refs.root.removeEventListener(evtType, handler)
+      },
+      notifyIconAction: () => {},
+      addClassToBottomLine: (className) => {
+        this.$set(this.bottomClasses, className, true)
+      },
+      removeClassFromBottomLine: (className) => {
+        this.$delete(this.bottomClasses, className)
+      },
       addClassToHelptext: (className) => {
         this.$set(this.helpClasses, className, true)
       },
@@ -142,29 +166,32 @@ export default {
         return this.$refs.help &&
           this.$refs.help.classList.contains(className)
       },
+      registerInputInteractionHandler: (evtType, handler) => {
+        this.$refs.input.addEventListener(evtType, handler)
+      },
+      deregisterInputInteractionHandler: (evtType, handler) => {
+        this.$refs.input.removeEventListener(evtType, handler)
+      },
       registerInputFocusHandler: (handler) => {
         this.$refs.input.addEventListener('focus', handler)
       },
       deregisterInputFocusHandler: (handler) => {
         this.$refs.input.removeEventListener('focus', handler)
       },
-      registerInputBlurHandler: (handler) => {
-        this.$refs.input.addEventListener('blur', handler)
+      registerTransitionEndHandler: (handler) => {
+        if (this.$refs.bottom) {
+          this.$refs.bottom.addEventListener('transitionend', handler)
+        }
       },
-      deregisterInputBlurHandler: (handler) => {
-        this.$refs.input.removeEventListener('blur', handler)
+      deregisterTransitionEndHandler: (handler) => {
+        if (this.$refs.bottom) {
+          this.$refs.bottom.removeEventListener('transitionend', handler)
+        }
       },
-      registerInputInputHandler: (handler) => {
-        this.$refs.input.addEventListener('input', handler)
-      },
-      deregisterInputInputHandler: (handler) => {
-        this.$refs.input.removeEventListener('input', handler)
-      },
-      registerInputKeydownHandler: (handler) => {
-        this.$refs.input.addEventListener('keydown', handler)
-      },
-      deregisterInputKeydownHandler: (handler) => {
-        this.$refs.input.removeEventListener('keydown', handler)
+      setBottomLineAttr: (name, value) => {
+        if (this.$refs.bottom) {
+          this.$refs.bottom.setAttribute(name, value)
+        }
       },
       setHelptextAttr: (name, value) => {
         if (this.$refs.help) {
@@ -178,12 +205,22 @@ export default {
       },
       getNativeInput: () => {
         return this.$refs.input
-      }
+      },
     })
     this.foundation.init()
+
+    if (this.textbox) {
+      this.ripple = new RippleBase(this)
+      this.ripple.init()
+    }
+
+    
   },
   beforeDestroy () {
     this.foundation.destroy()
+    if (this.ripple) {
+      this.ripple.destroy()
+    }
   }
 }
 </script>
