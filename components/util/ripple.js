@@ -1,12 +1,19 @@
 import { MDCRippleFoundation } from '@material/ripple'
 import { supportsCssVariables, getMatchesProperty } from '@material/ripple/util'
 
-/* global HTMLElement */
-const MATCHES = HTMLElement && getMatchesProperty(HTMLElement.prototype)
-
 export class RippleBase extends MDCRippleFoundation {
-  constructor (vm, options) {
 
+  static get MATCHES () {
+    /* global HTMLElement */
+    return RippleBase._matches || 
+      ( RippleBase._matches = getMatchesProperty(HTMLElement.prototype))
+  }
+
+  static isSurfaceActive (ref) {
+    return ref[RippleBase.MATCHES](':active')
+  }
+
+  constructor (vm, options) {
     super(Object.assign({
       browserSupportsCssVars: () => {
         return supportsCssVariables(window)
@@ -27,7 +34,7 @@ export class RippleBase extends MDCRippleFoundation {
         return vm.$el.getBoundingClientRect()
       },
       isSurfaceActive: () => {
-        return vm.$el[MATCHES](':active')
+        return vm.$el[RippleBase.MATCHES](':active')
       },
       isSurfaceDisabled: () => {
         return vm.disabled
@@ -49,9 +56,5 @@ export class RippleBase extends MDCRippleFoundation {
         vm.$set(vm.styles, varName, value)
       }
     }, options))
-  }
-
-  static isSurfaceActive (ref) {
-    return ref[MATCHES](':active')
   }
 }
