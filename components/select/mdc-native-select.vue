@@ -9,6 +9,7 @@
 
 <script lang="babel">
 export default {
+  name: 'mdc-native-select',
   model: {
     prop: 'value',
     event: 'change'

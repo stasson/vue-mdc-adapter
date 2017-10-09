@@ -15,6 +15,7 @@
 import MDCSelectFoundation from '@material/select/foundation'
 
 export default {
+  name: 'mdc-menu-select',
   model: {
     prop: 'value',
     event: 'change'

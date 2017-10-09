@@ -13,6 +13,7 @@
 
 <script lang="babel">
 export default {
+  name: 'mdc-multi-select',
   model: {
     prop: 'value',
     event: 'change'

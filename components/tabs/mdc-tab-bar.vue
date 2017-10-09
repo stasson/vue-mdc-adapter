@@ -11,6 +11,7 @@ import MDCTabBarFoundation from '@material/tabs/tab-bar/foundation'
 import MDCTabFoundation from '@material/tabs/tab/foundation'
 
 export default {
+  name: 'mdc-tab-bar',
   props: {
     'indicator-primary': Boolean,
     'indicator-accent': Boolean
