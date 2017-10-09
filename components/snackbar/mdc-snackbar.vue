@@ -15,6 +15,7 @@ import MDCSnackbarFoundation from '@material/snackbar/foundation'
 import { getCorrectEventName } from '@material/animation'
 
 export default {
+  name: 'mdc-snackbar',
   props: {
     'event': {
       type: String,

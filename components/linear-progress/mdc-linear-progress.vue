@@ -23,6 +23,7 @@ const ProgressPropType = {
 }
 
 export default {
+  name: 'mdc-linear-progress',
   props: {
     'open': { type: Boolean, default: true },
     'indeterminate': Boolean,

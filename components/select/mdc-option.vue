@@ -10,6 +10,7 @@ import MDCMenuOption from './mdc-menu-option.vue'
 import MDCMultiOption from './mdc-multi-option.vue'
 
 export default {
+  name: 'mdc-option',
   props: {
     value: String,
     disabled: Boolean

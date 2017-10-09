@@ -4,6 +4,7 @@
 
 <script lang="babel">
 export default {
+  name: 'mdc-list-divider',
   props: {
     'inset': Boolean
   },

@@ -63,6 +63,7 @@ import MDCTextfieldFoundation from '@material/textfield/foundation'
 import {RippleBase} from '../util'
 
 export default {
+  name: 'mdc-textfield',
   props: {
     'value': String,
     'type': {

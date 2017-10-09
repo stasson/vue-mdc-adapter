@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name: 'mdc-layout-grid',
   props: {
     'fixed-column-width': Boolean
   },

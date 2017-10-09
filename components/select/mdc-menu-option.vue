@@ -9,6 +9,7 @@
 
 <script lang="babel">
 export default {
+  name: 'mdc-menu-option',
   props: {
     value: String,
     disabled: Boolean

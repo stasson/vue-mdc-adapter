@@ -8,6 +8,7 @@
 
 <script lang="babel">
 export default {
+  name: 'mdc-list',
   props: {
     'dense': Boolean,
     'avatar-list': Boolean,

@@ -29,6 +29,7 @@ import {getCorrectEventName} from '@material/animation'
 import {RippleBase} from '../util'
 
 export default {
+  name: 'mdc-checkbox',
   model: {
     prop: 'checked',
     event: 'change'
