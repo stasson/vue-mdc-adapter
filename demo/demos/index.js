@@ -1,0 +1,25 @@
+export default {
+  // 'card-demo': () => import('./card.vue'),
+  'dialog-demo': () => import('./dialog.vue'),
+  // 'grid-list',
+  // 'icon-toggle',
+  // 'layout-grid',
+  // 'list',
+  // 'radio',
+  // 'slider',
+  // 'tabs',
+  // 'typography',
+  // 'button',
+  // 'checkbox',
+  // 'drawer',
+  // 'fab',
+  // 'icon',
+  // 'linear-progress',
+  // 'menu',
+  // 'select',
+  // 'snackbar',
+  // 'switch',
+  // 'textfield',
+  // 'toolbar'
+}
+

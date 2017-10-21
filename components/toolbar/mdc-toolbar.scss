@@ -1,5 +1,14 @@
 @import "@material/toolbar/mdc-toolbar";
 
+.mdc-toolbar--container{
+  display:flex;
+  width:100%;
+  
+  .mdc-toolbar-fixed-adjust {
+    width:100%;
+  }
+}
+
 .mdc-toolbar__title {
   color: inherit;
   text-decoration: none;
