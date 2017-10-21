@@ -1,0 +1,36 @@
+.mdc-layout-app {
+
+  min-height:100vh;  
+  width:100%;
+  display:flex;
+  flex-flow: column;
+  align-content:flex-start;
+  align-items:stretch;
+
+  .mdc-layout-app--toolbar-wrapper {
+    width:100%;
+    align-self: flex-start;
+    order: -1;
+  }
+  
+  .mdc-layout-app--main-container {
+    flex: 1;
+    display:flex;
+    flex-flow: row;
+    align-content:stretch;
+    align-items:stretch;
+  }
+  
+  .mdc-layout-app--drawer-wrapper {
+    order: -1;
+    
+    .mdc-drawer {
+      height:100%;
+    }
+  } 
+  
+  .mdc-layout-app--content-wrapper {
+    flex: 1;
+  } 
+  
+}

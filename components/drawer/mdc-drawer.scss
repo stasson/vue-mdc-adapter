@@ -3,8 +3,9 @@
 .mdc-drawer-layout {
   display: flex;
   flex-direction: row;
+
+  .mdc-drawer {
+    order: -1;
+  }
 }
 
-.mdc-drawer {
-  order: -1;
-}

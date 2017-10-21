@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="mdc-toolbar--container">
     <!--Toolbar-->
     <div ref="root" :class="rootClasses" :style="rootStyles">
         <slot></slot>
@@ -41,7 +41,7 @@
           // to avoid top margin collapse with :after el
           // 0.1 px should be rounded to 0px
           // TODO: find a better trick
-          height: '0.1px'
+          // height: '0.1px'
         },
         foundation: null
       }

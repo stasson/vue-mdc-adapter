@@ -1,5 +1,6 @@
 <template>
-  <component ref="drawer" :is="type" :toolbar-spacer="toolbarSpacer">
+  <component ref="drawer" class="mdc-drawer"
+    :is="type" :toolbar-spacer="toolbarSpacer">
     <slot />
   </component>
 </template>
