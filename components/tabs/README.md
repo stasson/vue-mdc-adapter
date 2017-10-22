@@ -1,4 +1,4 @@
-## Tabs
+## Usage
 
 ```html
 <mdc-tab-bar>
@@ -54,4 +54,4 @@
 ```
 
 ### reference
-- https://material.io/components/web/catalog/tabs
+- <https://material.io/components/web/catalog/tabs>

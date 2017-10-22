@@ -1,4 +1,4 @@
-## Slider
+## Usage
 
 ```html
 <mdc-radio min=0 max=10 step=1 v-model="sliderValue" />
@@ -57,6 +57,6 @@ The v-model directive is `lazy`,  update happens on the `change` event.
 ```
 
 ### Reference
-- https://material.io/components/web/catalog/input-controls/sliders
+- <https://material.io/components/web/catalog/input-controls/sliders>
 
 

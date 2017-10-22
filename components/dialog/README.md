@@ -1,11 +1,10 @@
-
-## Dialog
+## Usage
 
 ```html
-  <mdc-dialog ref="dialog" title="Title" accept="Accept" cancel="Decline"
-    @accept="onAccept" @cancel="onDecline">
-    {{ dialogText }}  
-  </mdc-dialog>
+<mdc-dialog ref="dialog" title="Title" accept="Accept" cancel="Decline"
+  @accept="onAccept" @cancel="onDecline">
+  {{ dialogText }}  
+</mdc-dialog>
 ```
 
 ```javascript
@@ -41,5 +40,5 @@ var vm = new Vue({
 
 
 ### Reference
-- https://material.io/components/web/catalog/dialogs/
+- <https://material.io/components/web/catalog/dialogs>
 

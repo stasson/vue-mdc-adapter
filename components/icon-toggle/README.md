@@ -1,4 +1,4 @@
-## Icon Toggle
+## Usage
 
 ```html
   <mdc-icon-toggle v-model="toggle"
@@ -35,4 +35,4 @@ var vm = new Vue({
 
 
 ### Reference
-- https://material.io/components/web/catalog/buttons/icon-toggle-buttons
+- <https://material.io/components/web/catalog/buttons/icon-toggle-buttons>
