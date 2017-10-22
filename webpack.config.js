@@ -154,7 +154,7 @@ const config = {
   output: {
     filename:  isProduction ? '[name].[chunkhash].js' : '[name].js',
     chunkFilename: isProduction ? '[name].[chunkhash].js' : '[name].js',
-    path: path.resolve(__dirname, isProduction ? 'public' : 'dev'),
+    path: path.resolve(__dirname, isProduction ? 'docs' : 'dev'),
   },
   resolve: {
     alias: {
@@ -170,6 +170,8 @@ const config = {
 
 // Optimize for prod
 if (isProduction) {
+
+  config.output.publicPath = '/vue-mdc-adapter/'
 
   // extract css rule
   config.module.rules.push({
