@@ -1,5 +1,5 @@
 
-## Checkbox
+## Usage
 
 ```html
 <mdc-checkbox  :label="label" v-model="checked"/>
@@ -44,5 +44,4 @@ var vm = new Vue({
 
 
 ### Reference
-- https://material.io/components/web/catalog/input-controls/checkboxes/
-- https://material.io/guidelines/components/selection-controls.html#selection-controls-checkbox
+- <https://material.io/components/web/catalog/input-controls/checkboxes>

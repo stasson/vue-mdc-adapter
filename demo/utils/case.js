@@ -1,4 +1,13 @@
 export const capitalize = (str) => {
-  str = str.trim().replace('-','')
-  return str.charAt(0).toUpperCase() + str.slice(1);  
+  return str
+    .replace(/[_.-]/g,' ')
+    .replace(/\b(\w)/g, function (_,x) {
+          return x.toUpperCase();
+  });
+}
+
+export const camelize = (str) => {
+  return str.replace(/[_.-](\w|$)/g, function (_,x) {
+          return x.toUpperCase();
+  });
 }

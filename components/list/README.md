@@ -1,4 +1,4 @@
-## Lists
+## Usage
 
 ### Basic List
 
@@ -142,4 +142,4 @@ To insert a detail, set the slot attribute to `start-detail` or `end-detail`
 ```
 
 ### Reference
-- https://material.io/components/web/catalog/lists
+- <https://material.io/components/web/catalog/lists>

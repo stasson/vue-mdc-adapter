@@ -32,7 +32,8 @@
     "url": "https://github.com/stasson/vue-mdc-adapter/issues"
   },
   "scripts": {
-    "dev": "webpack-dashboard -m -- cross-env NODE_ENV=development webpack-dev-server --host $IP --port $PORT --disable-host-check",
+    "devboard": "webpack-dashboard -m -- npm run dev",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --host $IP --port $PORT --disable-host-check",
     "build": "run-s build:**",
     "build:demo": "cross-env NODE_ENV=production webpack --progress",
     "build:dist": "run-s rollup:**",
@@ -83,6 +84,7 @@
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
+    "markdown-it-highlightjs": "^3.0.0",
     "npm-run-all": "^4.1.1",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "postcss": "^6.0.13",
@@ -108,6 +110,7 @@
     "validate-commit-msg": "^2.14.0",
     "vue": "^2.4.4",
     "vue-loader": "^13.0.5",
+    "vue-markdown-loader": "^2.2.2",
     "vue-router": "^2.7.0",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",

@@ -1,5 +1,4 @@
-## Layout Grid
-
+## Usage
 
 ### Grid
 
@@ -129,7 +128,7 @@ or sass mixins :
 ```
 
 see MDC reference documentation for more: 
-https://material.io/components/web/catalog/layout-grids
+<https://material.io/components/web/catalog/layout-grids>
 
 
 

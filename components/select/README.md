@@ -1,4 +1,4 @@
-## Select
+## Usage
 
 ```html
 <mdc-select v-model="selected" label=">Please select one">
@@ -79,4 +79,4 @@ var vm = new Vue({
 ```
 
 ### Reference
-- https://material.io/components/web/catalog/input-controls/select-menus
+- <https://material.io/components/web/catalog/input-controls/select-menus>

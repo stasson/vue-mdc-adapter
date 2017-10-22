@@ -35,6 +35,11 @@ const cssLoaders = [
   },
 ];
 
+const markdown = require('markdown-it')({
+  html: true,
+  breaks: false,
+}).use(require('markdown-it-highlightjs'))  
+
 const rules = [
   {
     test: /\.(js|vue)$/,
@@ -64,6 +69,15 @@ const rules = [
       path.resolve(__dirname, 'node_modules/@material')
     ]
   }, 
+  {
+    test: /\.md$/,
+    loader: 'vue-markdown-loader',
+    options: {
+      preventExtract: true,
+      wrapper: 'article',
+      markdown
+    }
+  },
   {
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
     loader: 'url-loader',
@@ -142,7 +156,8 @@ const config = {
   },
   resolve: {
     alias: {
-      'vue-mdc-adapter': path.resolve(__dirname,'components/entry.js')
+      'vue-mdc-adapter': path.resolve(__dirname,'components/entry.js'),
+      'demo': path.resolve(__dirname,'demo/')
     }
   },
   externals: {},

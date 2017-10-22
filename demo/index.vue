@@ -9,16 +9,16 @@
       <router-view></router-view>
     </main>
 
-    <mdc-snackbar />
-
   </mdc-layout-app>
 </template>
 
 
 <style>
 .content {
-  padding-top: 8px;
-  margin:16px;
+  padding: 8px 16px;
+  margin:16px auto 16px auto;
+  max-width : 800px;
+  min-width : 600px;
 }
 
 </style>

@@ -1,5 +1,4 @@
-## Layout App
-
+## Usage
 `mdc-layout-app` provide a flex layot for proper positioning of the toobar,
 drawer and main content.
 

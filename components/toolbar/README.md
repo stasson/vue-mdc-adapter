@@ -1,4 +1,4 @@
-## Toolbar
+## Usage
 
 ```html
 <mdc-toolbar>
@@ -173,4 +173,4 @@ refer to [MDC Documentation](https://material.io/components/web/catalog/toolbar/
 
 
 ### Reference
-- https://material.io/components/web/catalog/toolbar
+- <https://material.io/components/web/catalog/toolbar>
