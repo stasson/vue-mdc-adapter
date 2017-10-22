@@ -1,6 +1,6 @@
 <template>
   <a :href="href" class="mdc-drawer-item mdc-list-item" 
-    :class="classes" :style="styles"
+    :class="[classes, selectedClass]" :style="styles"
     @click="dispatchEvent">
     <span class="mdc-list-item__start-detail" v-if="hasStartDetail">
       <slot name="start-detail">
@@ -16,10 +16,12 @@ import {RippleBase, DispatchEventMixin} from '../util'
 
 export default {
   name: 'mdc-drawer-item',
+  inject: ['mdcDrawer'],
   mixins: [DispatchEventMixin],
   props: {
     'start-icon': String,
-    'href': String
+    'href': String,
+    'selected': Boolean
   },
   data () {
     return {
@@ -33,7 +35,8 @@ export default {
     },
     selectedClass () {
       return {
-        'mdc-temporary-drawer--selected': this.selected
+        'mdc-drawer-item-selected': this.selected,
+        [this.mdcDrawer.type+'--selected']: this.selected
       }
     }
   },
