@@ -1,5 +1,5 @@
 <template>
-  <a class="mdc-toolbar__icon--menu"
+  <a class="mdc-toolbar__menu-icon"
     :class="{'material-icons':!!icon}"
     @click="dispatchEvent">
     <slot>{{icon}}</slot>
