@@ -124,7 +124,9 @@ const plugins = [
   // explicit entry chunks    
   new webpack.optimize.CommonsChunkPlugin({
     names: ['plugin','styles'],
-    minChunks: Infinity
+    minChunks: Infinity,
+    children: true,
+    async:true
   }),
   
   // vendor chunk
@@ -184,6 +186,11 @@ if (isProduction) {
     
     // optimize module, rollup way
     new webpack.optimize.ModuleConcatenationPlugin(),
+    
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 5, // Must be greater than or equal to one
+      minChunkSize: 1000
+    }),
     
     // split css
     new ExtractTextPlugin({

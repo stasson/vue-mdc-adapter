@@ -1,6 +1,10 @@
 @import "@material/typography/mdc-typography";
 @import "highlight.js/styles/googlecode";
 
+.mdc-drawer .mdc-drawer-item.mdc-drawer-item-selected {
+  font-size:1rem;  
+}
+
 .demo-article {
   display:flex;
   justify-content: flex-start;

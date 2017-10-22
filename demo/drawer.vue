@@ -2,9 +2,10 @@
   <mdc-drawer toggle-on="toggle-drawer">
     <mdc-drawer-header temporary></mdc-drawer-header>
     <mdc-list dense>
-      <router-link tag="div"  v-for="link of links" :key="link.name"
+      <router-link tag="div"  v-for="link of links" :key="link.id"
         :to="link.to" >
-        <mdc-drawer-item>{{link.name}}</mdc-drawer-item>
+        <mdc-drawer-item :selected="$route.params.id === link.id"
+        >{{link.name}}</mdc-drawer-item>
       </router-link>
     </mdc-list>
   </mdc-drawer>
