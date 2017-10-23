@@ -15,28 +15,30 @@ import * as utils from '@material/drawer/util'
 export default {
   name: 'mdc-persistent-drawer',
   props: {
-    'toolbar-spacer': Boolean
-  },
-  methods: {
-    open () {
-      this.foundation.open()
-    },
-    close () {
-      this.foundation.close()
-    },
-    toggle () {
-      this.foundation.isOpen() ? this.foundation.close()
-        : this.foundation.open()
-    },
-    isOpen () {
-      this.foundation.isOpen()
-    }
+    'toolbar-spacer': Boolean,
+    'open': Boolean
   },
   data () {
     return {
       classes: {},
       changeHandlers: [],
-      foundation: null
+    }
+  },
+  watch: {
+    open() {
+      this._refresh()
+    }
+  },
+  methods: {
+    _refresh() {
+      if (this.foundation) {
+        if (this.open) {
+          this.foundation.open()          
+        }
+        else {
+          this.foundation.close()          
+        }
+      }
     }
   },
   mounted () {
@@ -117,9 +119,11 @@ export default {
       }
     })
     this.foundation.init()
+    this._refresh()
   },
   beforeDestroy () {
-    this.foundation.destroy()
+    this.foundation && this.foundation.destroy()
+    this.foundation = null
   }
 }
 </script>

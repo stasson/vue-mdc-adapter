@@ -45,7 +45,8 @@ export default {
     this.ripple.init()
   },
   beforeDestroy () {
-    this.ripple.destroy()
+    this.ripple && this.ripple.destroy()
+    this.ripple = null
   }
 }
 </script>
