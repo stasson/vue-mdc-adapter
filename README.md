@@ -22,22 +22,16 @@ vue-mdc-adapter
   </a>
 </p>
 
-## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
+## [Material Components](https://material.io/components/web/) for [Vue.JS](https://vuejs.org).
 
 
 > __Update__:  
-> Requires vue ^2.4.2 as peer dependency.  
-> Starting v0.0.35, most of the MDC component are supported.  
-> Focus is now on validation and keeping up with MDC updates.  
+> new [documentation](https://stasson.github.io/vue-mdc-adapter) site preview.   
+> new build env (on going work...)   
+> Focus is on known issues, validation and keeping up with MDC updates.  
 
 
 ### Getting Started
-
-#### NPM
-
-```console
-npm install --save vue-mdc-adapter
-```
 
 #### CDN
 
@@ -46,7 +40,7 @@ npm install --save vue-mdc-adapter
   <!-- import reset material icons, fonts and vue-mdc-adapter stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" type="text/css">  
   <link rel="stylesheet" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">  
   
   <!-- import vue and then vue-mdc-adapter -->
@@ -66,6 +60,10 @@ vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
 #### Webpack/Rollup
+
+```console
+npm install --save vue-mdc-adapter
+```
 
 > vue-mdc-adapter and material components uses es6 for code and sass for styles
 > make sure your webpack/rollup config resolves node_modules for transpiling 
@@ -106,6 +104,4 @@ Vue.use(VueMdcButton)
 
 ### Documentation
 
-Please check
-the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki)
-and the [preview](https://stasson.github.io/vue-mdc-adapter), 
+[preview](https://stasson.github.io/vue-mdc-adapter), 
