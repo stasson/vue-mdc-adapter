@@ -20,7 +20,7 @@
         :minlength="minlength" :maxlength="maxlength"
         :disabled="disabled" :aria-controls="'help-'+_uid"
         ></textarea>
-      <label ref="label" :class="labelClasses" :for="_uid"  v-if="label">
+      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
     </div>
@@ -43,7 +43,7 @@
         :required="required" :size="size"
         :minlength="minlength" :maxlength="maxlength"
         :disabled="disabled" :aria-controls="'help-'+_uid">
-      <label ref="label" :class="labelClasses" :for="_uid"  v-if="label">
+      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
       <div ref="bottom" :class="bottomClasses"></div>
