@@ -23,6 +23,7 @@
   
   .mdc-layout-app--drawer-wrapper {
     order: -1;
+    flex: 0 1 auto;
     
     .mdc-drawer {
       height:100%;
@@ -30,7 +31,7 @@
   } 
   
   .mdc-layout-app--content-wrapper {
-    flex: 1;
+    flex: 1 1 auto;
   } 
   
 }

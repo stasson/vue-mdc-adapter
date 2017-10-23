@@ -5,14 +5,24 @@
   font-size:1rem;  
 }
 
+.content {
+  padding: 8px 16px;
+  margin:16px auto 16px auto;
+  max-width : 800px;
+  min-width : 250px;
+}
+
 .demo-article {
   display:flex;
   justify-content: flex-start;
   align-items: flex-start;
   align-content: stretch;
-  // background-color: #f7f7f7;
   min-height: 50px;
   padding: 8px;
+
+  .mdc-demo {
+    flex: 1 1 auto;
+  }
 }
 
 .doc-article {
@@ -37,39 +47,32 @@
   h1 {
     @include mdc-typography(display1) 
     margin-top: 32px;
-    // @include mdc-typography-adjust-margin(display1) 
   }
 
 
   h2 {
     margin-top: 24px;
     @include mdc-typography(headline) 
-    // @include mdc-typography-adjust-margin(headline) 
   }
 
   h3 {
     margin-top: 16px;
     @include mdc-typography(title) 
-    // @include mdc-typography-adjust-margin(title) 
   }
 
   h4 {
     @include mdc-typography(subheading2) 
-    // @include mdc-typography-adjust-margin(subheading2) 
   }
 
   h5, h6 {
     @include mdc-typography(subheading1) 
-    // @include mdc-typography-adjust-margin(subheading1) 
   }
 
   p {
     @include mdc-typography(body1) 
-    // @include mdc-typography-adjust-margin(body1) 
   }
 
   blockquote {
-    // @include mdc-typography-adjust-margin(body2) 
 
     margin: 24px 0px;
     padding: 0 1em;
