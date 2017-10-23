@@ -1,3 +1,8 @@
+<a name="0.0.47"></a>
+## [0.0.47](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.46...v0.0.47) (2017-10-23)
+
+
+
 <a name="0.0.46"></a>
 ## [0.0.46](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.45...v0.0.46) (2017-10-23)
 
