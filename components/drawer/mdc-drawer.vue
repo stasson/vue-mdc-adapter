@@ -88,7 +88,8 @@ export default {
     refreshMedia () {
       this.mobile = media.mobile.matches
       this.xlarge = media.xlarge.matches
-      if (this.xlarge && this.isPersistent) this.open()
+      this.xlarge && this.isPersistent && this.open()
+      this.mobile && this.close()
     }
   },
   created () {
