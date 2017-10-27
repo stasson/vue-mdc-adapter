@@ -5,7 +5,7 @@ import './styles.scss'
 import index from './index.vue'
 import routes from './routes.js'
 
-Vue.config.prodtionTip = true
+Vue.config.productionTip = true
 Vue.use(VueRouter)
 Vue.use(VueMDCAdapter)
 

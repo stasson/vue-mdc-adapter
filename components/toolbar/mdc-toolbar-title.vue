@@ -1,11 +1,14 @@
 <template>
-    <a class="mdc-toolbar__title">
+    <a class="mdc-toolbar__title" @click="dispatchEvent">
         <slot></slot>
     </a>
 </template>
 
-<script lang="babel">
+<script>
+import {DispatchEventMixin} from '../util'
+
 export default {
-  name: 'mdc-toolbar-title'
+  name: 'mdc-toolbar-title',
+  mixins: [DispatchEventMixin]
 }
 </script>

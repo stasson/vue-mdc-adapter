@@ -3,5 +3,6 @@ import Component from './component.vue'
 
 export default [
   { path: '/component/:id', component: Component, name:'component'},
-  { path: '*', component: Home },
+  { path: '/', component: Home, name:'home' },
+  { path: '*', redirect: '/' },
 ]

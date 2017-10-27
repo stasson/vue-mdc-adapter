@@ -3,7 +3,7 @@
     <mdc-toolbar-row>
       <mdc-toolbar-section align-start >
         <mdc-toolbar-menu event="toggle-drawer"></mdc-toolbar-menu>
-        <mdc-toolbar-title href="#">vue-mdc-adapter</mdc-toolbar-title>
+        <mdc-toolbar-title @click="$router.push('/')">vue-mdc-adapter</mdc-toolbar-title>
       </mdc-toolbar-section>
       <mdc-toolbar-section align-end >
         <mdc-toolbar-icon href="https://github.com/stasson/vue-mdc-adapter"
