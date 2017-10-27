@@ -1,11 +1,10 @@
 <template>
-  <mdc-drawer toggle-on="toggle-drawer">
+  <mdc-drawer ref="drawer" toggle-on="toggle-drawer">
     <mdc-drawer-header temporary></mdc-drawer-header>
     <mdc-drawer-list dense>
-      <router-link tag="div"  v-for="link in links" :key="link.id"
-        :to="link.to" >
-        <mdc-drawer-item>{{link.name}}</mdc-drawer-item>
-      </router-link>
+      <mdc-drawer-item v-for="link in links" :key="link.id"
+        @click="$router.push(link.to)"
+      >{{link.name}}</mdc-drawer-item>
     </mdc-drawer-list>
   </mdc-drawer>
 </template>
@@ -18,6 +17,6 @@ export default {
     return {
       links
     }
-  },
+  }
 }  
 </script>

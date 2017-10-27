@@ -1,6 +1,6 @@
 <template>
   <component ref="drawer" class="mdc-drawer"
-    :is="type" :open="open_" 
+    :is="type" v-model="open_" 
     :toolbar-spacer="toolbarSpacer">
     <slot />
   </component>
@@ -77,13 +77,13 @@ export default {
       this.open_ = true
     },
     close () {
-      this.open_ = false
+      this.isPermanent || (this.open_ = false)
     },
     toggle () {
-      this.open_ ? this.close() : this.open()
+      this.isPermanent || (this.isOpen() ? this.close() : this.open())
     },
     isOpen () {
-      return this.open_
+      return this.isPermanent|| ( this.open_ )
     },
     refreshMedia () {
       this.mobile = media.mobile.matches
@@ -91,9 +91,11 @@ export default {
       if (this.xlarge && this.isPersistent) this.open()
     }
   },
-  beforeMount () {
-    this.mobile = media.mobile.matches
-    this.xlarge = media.xlarge.matches
+  created () {
+    if (window && window.matchMedia) {
+      this.mobile = media.mobile.matches
+      this.xlarge = media.xlarge.matches
+    }    
   },
   mounted () {
     if (this.toggleOn) {
@@ -102,7 +104,7 @@ export default {
     }
     media.mobile.addListener(this.refreshMedia)
     media.xlarge.addListener(this.refreshMedia)
-    this.refreshMedia()
+    this.$nextTick(() => this.refreshMedia())
   },
   beforeDestroy () {
     media.mobile.removeListener(this.refreshMedia)

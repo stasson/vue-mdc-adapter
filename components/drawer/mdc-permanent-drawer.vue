@@ -12,7 +12,7 @@
 export default {
   name: 'mdc-permanent-drawer',
   props: {
-    'toolbar-spacer': Boolean
+    'toolbar-spacer': Boolean,
   }
 }
 </script>

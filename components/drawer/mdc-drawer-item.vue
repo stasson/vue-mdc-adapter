@@ -1,7 +1,7 @@
 <template>
   <a :href="href" class="mdc-drawer-item mdc-list-item" 
     :class="classes" :style="styles"
-    @click="dispatchEvent">
+    @click="onClick">
     <span class="mdc-list-item__start-detail" v-if="hasStartDetail">
       <slot name="start-detail">
         <i class="material-icons" aria-hidden="true">{{startIcon}}</i>
@@ -20,7 +20,8 @@ export default {
   mixins: [DispatchEventMixin],
   props: {
     'start-icon': String,
-    'href': String
+    'href': String,
+    'temporary-close': {type: Boolean, default: true}
   },
   data () {
     return {
@@ -31,6 +32,13 @@ export default {
   computed: {
     hasStartDetail () {
       return this.startIcon || this.$slots['start-detail']
+    }
+  },
+  methods: {
+    onClick (evt) {
+      this.mdcDrawer.isTemporary && this.temporaryClose 
+        && this.mdcDrawer.close()
+      this.dispatchEvent(evt)
     }
   },
   mounted () {
