@@ -1,6 +1,6 @@
 <template>
   <a :href="href" class="mdc-drawer-item mdc-list-item" 
-    :class="[classes, selectedClass]" :style="styles"
+    :class="classes" :style="styles"
     @click="dispatchEvent">
     <span class="mdc-list-item__start-detail" v-if="hasStartDetail">
       <slot name="start-detail">
@@ -20,8 +20,7 @@ export default {
   mixins: [DispatchEventMixin],
   props: {
     'start-icon': String,
-    'href': String,
-    'selected': Boolean
+    'href': String
   },
   data () {
     return {
@@ -32,12 +31,6 @@ export default {
   computed: {
     hasStartDetail () {
       return this.startIcon || this.$slots['start-detail']
-    },
-    selectedClass () {
-      return {
-        'mdc-drawer-item-selected': this.selected,
-        [this.mdcDrawer.type+'--selected']: this.selected
-      }
     }
   },
   mounted () {

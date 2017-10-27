@@ -1,8 +1,15 @@
 @import "@material/typography/mdc-typography";
 @import "highlight.js/styles/googlecode";
 
-.mdc-drawer .mdc-drawer-item.mdc-drawer-item-selected {
-  font-size:1rem;  
+.mdc-drawer-header {
+  background-image: url("./assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.router-link-exact-active .mdc-drawer-item {
+  font-size: 1.1rem;  
 }
 
 .content {
