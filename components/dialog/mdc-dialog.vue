@@ -15,14 +15,14 @@
         <slot />
       </section>
       <footer class="mdc-dialog__footer">
-        <button ref="cancel" type="button" v-if="cancel"
-          class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">
+        <mdcButton ref="cancel" v-if="cancel"
+          class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel">
           {{ cancel }}
-        </button>
-        <button  ref="accept" type="button" 
-        class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">
+        </mdcButton>
+        <mdcButton  ref="accept"
+        class="mdc-dialog__footer__button mdc-dialog__footer__button--accept">
           {{ accept }}
-        </button>
+        </mdcButton>
       </footer>
     </div>
     <div class="mdc-dialog__backdrop"></div>
@@ -32,6 +32,7 @@
 <script>
 import MDCDialogFoundation from '@material/dialog/foundation'
 import { createFocusTrapInstance } from '@material/dialog/util'
+import {VueMDCButton} from '../button'
 
 export default {
   name: 'mdc-dialog',
@@ -41,6 +42,9 @@ export default {
     'cancel': { type: String, default: 'Cancel' },
     'scrollable': Boolean,
     'dark': Boolean
+  },
+  components: {
+    mdcButton : VueMDCButton
   },
   data () {
     return {
@@ -85,7 +89,11 @@ export default {
       notifyCancel: () => this.$emit('cancel'),
       trapFocusOnSurface: () => this.focusTrap.activate(),
       untrapFocusOnSurface: () => this.focusTrap.deactivate(),
-      isDialog: (el) => (this.$refs.surface === el)
+      isDialog: (el) => (this.$refs.surface === el),
+      layoutFooterRipples: () => {
+        this.$refs.accept.ripple.layout()
+        this.cancel && this.$refs.cancel.ripple.layout()
+      }
     })
 
     this.foundation.init()
