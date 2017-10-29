@@ -8,4 +8,6 @@ branches:
   only:
   - master
   - dev
-script: npm run build
+script:
+  - npm test
+  - npm run build
