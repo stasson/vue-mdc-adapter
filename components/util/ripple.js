@@ -1,11 +1,11 @@
-import { MDCRippleFoundation } from '@material/ripple'
+import MDCRippleFoundation from '@material/ripple/foundation.js'
 import { supportsCssVariables, getMatchesProperty } from '@material/ripple/util'
 
 export class RippleBase extends MDCRippleFoundation {
 
   static get MATCHES () {
     /* global HTMLElement */
-    return RippleBase._matches || 
+    return RippleBase._matches ||
       ( RippleBase._matches = getMatchesProperty(HTMLElement.prototype))
   }
 
