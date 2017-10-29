@@ -1,9 +1,9 @@
 <template>
 <div :class=formFieldClasses>
-  <div ref="root" class="mdc-checkbox" 
+  <div ref="root" class="mdc-checkbox"
    :class="classes" :style="styles">
     <input ref="control" :id="_uid" type="checkbox"
-       class="mdc-checkbox__native-control" :value="value" 
+       class="mdc-checkbox__native-control" :value="value"
        @change="onChange"/>
     <div class="mdc-checkbox__background">
       <svg class="mdc-checkbox__checkmark"
@@ -77,6 +77,8 @@ export default {
       deregisterAnimationEndHandler: (handler) =>
         this.$refs.root.removeEventListener(
           getCorrectEventName(window, 'animationend'), handler),
+      registerChangeHandler: (handler) => this.$refs.control.addEventListener('change', handler),
+      deregisterChangeHandler: (handler) => this.$refs.control.removeEventListener('change', handler),
       getNativeControl: () => this.$refs.control,
       forceLayout: () => this.$forceUpdate(),
       isAttachedToDOM: () => Boolean(this.$el.parentNode)
