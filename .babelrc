@@ -9,8 +9,13 @@
   ],
   "env": {
     "test": {
+      "plugins": [
+        "transform-object-rest-spread",
+        "syntax-dynamic-import",
+        "transform-remove-strict-mode"
+      ],
       "presets": [
-        ["env", { 
+        ["env", {
           "targets": { "node": "current" },
         }]
       ]
