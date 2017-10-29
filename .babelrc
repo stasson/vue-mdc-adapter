@@ -1,10 +1,19 @@
 {
-  "presets": [
-    ["env", { "modules": false }],
-  ],
-  "comments": false,
+  "comments": true,
   "plugins": [
-    "syntax-dynamic-import",
-    "transform-object-rest-spread"
-  ]
+    "transform-object-rest-spread",
+    "syntax-dynamic-import"
+  ],
+  "presets": [
+    ["env", { "modules": false }]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["env", { 
+          "targets": { "node": "current" },
+        }]
+      ]
+    }
+  }
 }

@@ -8,6 +8,7 @@ module.exports = {
   },
   env: {
     browser: true,
+    jest: true,
   },
   "extends": "eslint:recommended",
   // required to lint *.vue files
@@ -24,5 +25,6 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 1,
     // allow debugger during development
     'no-console': process.env.NODE_ENV === 'production' ? 2 : 1
-  }
+  },
+  
 }
