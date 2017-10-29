@@ -150,7 +150,6 @@ export default {
       deregisterTextFieldInteractionHandler: (evtType, handler) => {
         this.$refs.root.removeEventListener(evtType, handler)
       },
-      notifyIconAction: () => {},
       addClassToBottomLine: (className) => {
         this.$set(this.bottomClasses, className, true)
       },
@@ -172,12 +171,6 @@ export default {
       },
       deregisterInputInteractionHandler: (evtType, handler) => {
         this.$refs.input.removeEventListener(evtType, handler)
-      },
-      registerInputFocusHandler: (handler) => {
-        this.$refs.input.addEventListener('focus', handler)
-      },
-      deregisterInputFocusHandler: (handler) => {
-        this.$refs.input.removeEventListener('focus', handler)
       },
       registerTransitionEndHandler: (handler) => {
         if (this.$refs.bottom) {
@@ -207,6 +200,9 @@ export default {
       getNativeInput: () => {
         return this.$refs.input
       },
+      notifyIconAction: () => {
+        this.$emit('icon')
+      }
     })
     this.foundation.init()
 
@@ -215,7 +211,7 @@ export default {
       this.ripple.init()
     }
 
-    
+
   },
   beforeDestroy () {
     this.foundation.destroy()

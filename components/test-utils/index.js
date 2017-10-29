@@ -2,11 +2,12 @@ import {mount} from 'vue-test-utils'
 
 export * from 'vue-test-utils'
 
-export function pluginSanityCheck(name, plugin) {
+export function pluginSanityCheck(name, plugin, options) {
   describe(name, () => {
     for (let property in plugin) {
       if (property.startsWith('VueMDC')) {
-        const component = mount(plugin[property])
+        const componentOptions = (options && options[property]) || undefined
+        const component = mount(plugin[property], componentOptions)
         describe(property, () => {
           isValidVueComponent(component)
           isValidMdcAdapter(component)
@@ -15,7 +16,6 @@ export function pluginSanityCheck(name, plugin) {
     }
   })
 }
-
 
 export function isValidVueComponent(wrapper) {
   describe('is a valid Vue Component', () => {
@@ -65,11 +65,6 @@ export function checkFoundationIsValid(foundation) {
       expect(defaults).toBeDefined()
     })
 
-    test('has a valid adapter', () => {
-      expect(Object.keys(adapter).length)
-        .toEqual(Object.keys(defaults).length)
-    })
-
     for (let method in defaults) {
       let api = defaults[method]
       let instance = adapter[method]
@@ -84,6 +79,14 @@ export function checkFoundationIsValid(foundation) {
       })
 
     }
-  })
 
+    for (let method in adapter) {
+      let api = defaults[method]
+
+      test(`.${method} is required`, () => {
+        expect(api).toBeDefined()
+      })
+    }
+
+  })
 }
