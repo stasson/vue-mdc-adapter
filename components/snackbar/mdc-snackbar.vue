@@ -3,7 +3,7 @@
     aria-live="assertive" aria-atomic="true" :aria-hidden="hidden">
   <div class="mdc-snackbar__text">{{message}}</div>
   <div class="mdc-snackbar__action-wrapper">
-    <button ref="actionButton" type="button"
+    <button ref="button" type="button"
         class="mdc-snackbar__action-button"
         :aria-hidden="actionHidden">{{actionText}}</button>
   </div>
@@ -39,7 +39,6 @@ export default {
       actionText: '',
       hidden: false,
       actionHidden: false,
-      animHandlers: [],
     }
   },
   methods: {
@@ -57,18 +56,18 @@ export default {
       unsetActionAriaHidden: () => this.actionHidden = false,
       setActionText: (text) => { this.actionText = text },
       setMessageText: (text) => { this.message = text  },
-      setFocus: () => this.$refs.actionButton.focus(),
+      setFocus: () => this.$refs.button.focus(),
       visibilityIsHidden: () => document.hidden,
-      registerCapturedBlurHandler: (handler) => this.$refs.actionButton.addEventListener('blur', handler, true),
-      deregisterCapturedBlurHandler: (handler) => this.$refs.actionButton.removeEventListener('blur', handler, true),
+      registerCapturedBlurHandler: (handler) => this.$refs.button.addEventListener('blur', handler, true),
+      deregisterCapturedBlurHandler: (handler) => this.$refs.button.removeEventListener('blur', handler, true),
       registerVisibilityChangeHandler: (handler) => document.addEventListener('visibilitychange', handler),
       deregisterVisibilityChangeHandler: (handler) => document.removeEventListener('visibilitychange', handler),
       registerCapturedInteractionHandler: (evt, handler) =>
         document.body.addEventListener(evt, handler, true),
       deregisterCapturedInteractionHandler: (evt, handler) =>
         document.body.removeEventListener(evt, handler, true),
-      registerActionClickHandler: (handler) => this.$refs.actionButton.addEventListener('click', handler),
-      deregisterActionClickHandler: (handler) => this.$refs.actionButton.removeEventListener('click', handler),
+      registerActionClickHandler: (handler) => this.$refs.button.addEventListener('click', handler),
+      deregisterActionClickHandler: (handler) => this.$refs.button.removeEventListener('click', handler),
       registerTransitionEndHandler: (handler) => {
         this.$refs.root.addEventListener(getCorrectEventName(window, 'transitionend'), handler)
       },
