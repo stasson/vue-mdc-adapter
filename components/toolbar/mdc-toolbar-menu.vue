@@ -6,7 +6,7 @@
   </a>
 </template>
 
-<script lang="babel">
+<script>
 import {DispatchEventMixin} from '../util'
 
 export default {

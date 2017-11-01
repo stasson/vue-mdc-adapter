@@ -10,7 +10,7 @@
   </custom-element>
 </template>
 
-<script lang="babel">
+<script>
 import {RippleBase, DispatchEventMixin, CustomElementMixin} from '../util'
 
 export default {

@@ -4,7 +4,7 @@
   </p>
 </template>
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-body',
   props: {

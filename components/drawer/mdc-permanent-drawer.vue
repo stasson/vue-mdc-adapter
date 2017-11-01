@@ -8,7 +8,7 @@
   </nav>
 </template>
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-permanent-drawer',
   props: {

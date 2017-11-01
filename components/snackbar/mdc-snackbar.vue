@@ -10,7 +10,7 @@
 </div>
 </template>
 
-<script lang="babel">
+<script>
 import MDCSnackbarFoundation from '@material/snackbar/foundation'
 import { getCorrectEventName } from '@material/animation'
 

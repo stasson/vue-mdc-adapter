@@ -9,7 +9,7 @@
 </i>
 </template>
 
-<script lang="babel">
+<script>
 import MDCIconToggleFoundation from '@material/icon-toggle/foundation'
 import {RippleBase} from '../util'
 

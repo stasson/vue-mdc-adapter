@@ -4,7 +4,7 @@
   </component>
 </template>
 
-<script lang="babel">
+<script>
 import MDCNativeOption from './mdc-native-option.vue'
 import MDCMenuOption from './mdc-menu-option.vue'
 import MDCMultiOption from './mdc-multi-option.vue'

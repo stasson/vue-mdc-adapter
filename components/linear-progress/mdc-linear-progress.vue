@@ -12,7 +12,7 @@
   </div>  
 </template>
 
-<script lang="babel">
+<script>
 import MDCLinearProgressFoundation from '@material/linear-progress/foundation'
 
 const ProgressPropType = {

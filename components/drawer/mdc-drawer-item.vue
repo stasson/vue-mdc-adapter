@@ -11,7 +11,7 @@
   </a>
 </template>
 
-<script lang="babel">
+<script>
 import {RippleBase, DispatchEventMixin} from '../util'
 
 export default {

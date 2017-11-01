@@ -11,7 +11,7 @@
   </header>
 </template>
 
-<script lang="babel">
+<script>
   import MDCToolbarFoundation from '@material/toolbar/foundation'
   import * as util from '@material/toolbar/util'
 

@@ -8,7 +8,7 @@
   </aside>
 </template>
 
-<script lang="babel">
+<script>
 import MDCPersistentDrawerFoundation from '@material/drawer/persistent/foundation'
 import * as util from '@material/drawer/util'
 

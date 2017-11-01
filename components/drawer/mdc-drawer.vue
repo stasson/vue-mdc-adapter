@@ -1,15 +1,15 @@
 <template>
   <component ref="drawer" class="mdc-drawer"
-    :is="type" v-model="open_" 
+    :is="type" v-model="open_"
     :toolbar-spacer="toolbarSpacer">
     <slot />
   </component>
 </template>
 
-<script lang="babel">
-import MDCPermanentDrawer from './mdc-permanent-drawer.vue'
-import MDCPersistentDrawer from './mdc-persistent-drawer.vue'
-import MDCTemporaryDrawer from './mdc-temporary-drawer.vue'
+<script>
+import VueMDCPermanentDrawer from './mdc-permanent-drawer.vue'
+import VueMDCPersistentDrawer from './mdc-persistent-drawer.vue'
+import VueMDCTemporaryDrawer from './mdc-temporary-drawer.vue'
 
 const media = new class {
   get mobile () {
@@ -44,9 +44,9 @@ export default {
     }
   },
   components: {
-    'mdc-permanent-drawer': MDCPermanentDrawer,
-    'mdc-persistent-drawer': MDCPersistentDrawer,
-    'mdc-temporary-drawer': MDCTemporaryDrawer
+    'mdc-permanent-drawer': VueMDCPermanentDrawer,
+    'mdc-persistent-drawer': VueMDCPersistentDrawer,
+    'mdc-temporary-drawer': VueMDCTemporaryDrawer
   },
   computed: {
     type () {
@@ -96,7 +96,7 @@ export default {
     if (window && window.matchMedia) {
       this.mobile = media.mobile.matches
       this.xlarge = media.xlarge.matches
-    }    
+    }
   },
   mounted () {
     if (this.toggleOn) {

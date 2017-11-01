@@ -4,7 +4,7 @@
   </span>
 </template>
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-caption'
 }

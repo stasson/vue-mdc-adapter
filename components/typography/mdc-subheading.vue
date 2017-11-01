@@ -11,7 +11,7 @@
 </template>
 
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-subheading',
   props: {

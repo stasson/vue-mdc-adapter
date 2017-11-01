@@ -58,7 +58,7 @@
   </div>
 </template>
 
-<script lang="babel">
+<script>
 import MDCTextfieldFoundation from '@material/textfield/foundation'
 import {RippleBase} from '../util'
 

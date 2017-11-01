@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-select mdc-menu-anchor" role="listbox" :tabindex="tabIndex" 
+  <div class="mdc-select mdc-menu-anchor" role="listbox" :tabindex="tabIndex"
     :class="classes" :style="styles">
     <span class="mdc-select__selected-text">{{ selectedTextContent }}</span>
     <mdc-menu ref="menu" :style="menuStyles">
@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script lang="babel">
+<script>
 import MDCSelectFoundation from '@material/select/foundation'
 
 export default {
@@ -85,7 +85,7 @@ export default {
       getTextForOptionAtIndex: (index) =>
         this.$refs.menu.items[index].textContent.trim(),
       getValueForOptionAtIndex: (index) =>
-        this.$refs.menu.items[index].dataset.value ||
+        this.$refs.menu.items[index].getAttribute('data-value') ||
           this.$refs.menu.items[index].textContent.trim(),
       setAttrForOptionAtIndex: (index, attr, value) =>
         this.$refs.menu.items[index].setAttribute(attr, value),
@@ -108,7 +108,7 @@ export default {
     let idx = 0
     let options = this.$refs.menu.items
     for (let i = 0; i < options.length; i++) {
-      let optionValue = options[i].dataset.value || options[i].textContent.trim()
+      let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
       if (this.value === optionValue) {
         idx = i
       }

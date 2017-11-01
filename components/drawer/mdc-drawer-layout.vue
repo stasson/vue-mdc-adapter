@@ -1,5 +1,12 @@
 <template>
   <div class="mdc-drawer-layout">
       <slot />
-  </div> 
+  </div>
 </template>
+
+<script>
+export default {
+  name: 'mdc-drawer-layout',
+  functional: true
+}
+</script>

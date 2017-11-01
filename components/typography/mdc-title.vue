@@ -4,7 +4,7 @@
   </h2>
 </template>
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-title'
 }

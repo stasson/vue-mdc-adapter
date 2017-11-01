@@ -14,7 +14,7 @@
 </div>
 </template>
 
-<script lang="babel">
+<script>
 import MDCRadioFoundation from '@material/radio/foundation'
 import {RippleBase} from '../util'
 

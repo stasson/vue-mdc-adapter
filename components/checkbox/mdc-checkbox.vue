@@ -20,7 +20,7 @@
 </div>
 </template>
 
-<script lang="babel">
+<script>
 
 /* global HTMLElement */
 import MDCCheckboxFoundation from '@material/checkbox/foundation'

@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script lang="babel">
+<script>
 import MDCSimpleMenuFoundation from '@material/menu/simple/foundation'
 import {getTransformPropertyName} from '@material/menu/util'
 import {emitCustomEvent} from '../util'

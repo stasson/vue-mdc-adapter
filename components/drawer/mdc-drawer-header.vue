@@ -6,7 +6,7 @@
   </header>
 </template>
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-drawer-header',
   props: {

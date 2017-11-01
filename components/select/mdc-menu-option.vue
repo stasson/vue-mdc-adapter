@@ -7,7 +7,7 @@
    </li>
 </template>
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-menu-option',
   props: {

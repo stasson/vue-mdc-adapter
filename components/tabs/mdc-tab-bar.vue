@@ -6,7 +6,7 @@
   </nav>  
 </template>
 
-<script lang="babel">
+<script>
 import MDCTabBarFoundation from '@material/tabs/tab-bar/foundation'
 import MDCTabFoundation from '@material/tabs/tab/foundation'
 

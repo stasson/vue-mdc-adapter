@@ -11,7 +11,7 @@
   </select>
 </template>
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-multi-select',
   model: {

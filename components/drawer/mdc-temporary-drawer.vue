@@ -7,7 +7,7 @@
   </aside>
 </template>
 
-<script lang="babel">
+<script>
 import MDCTemporaryDrawerFoundation from '@material/drawer/temporary/foundation'
 import * as util from '@material/drawer/util'
 
