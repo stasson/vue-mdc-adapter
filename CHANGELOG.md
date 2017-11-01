@@ -1,3 +1,18 @@
+<a name="0.0.49"></a>
+## [0.0.49](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.48...v0.0.49) (2017-11-01)
+
+
+### Bug Fixes
+
+* **checkbox:** fix missing adapter methods ([46fa83c](https://github.com/stasson/vue-mdc-adapter/commit/46fa83c))
+* **dialog:** footer ripple missing ([46ac43a](https://github.com/stasson/vue-mdc-adapter/commit/46ac43a))
+* **snackbar:** build failure ([359a609](https://github.com/stasson/vue-mdc-adapter/commit/359a609))
+* **snackbar:** fix missing adapter api ([c6fb19e](https://github.com/stasson/vue-mdc-adapter/commit/c6fb19e))
+* **test:** fix crashing test.spec ([e9e3594](https://github.com/stasson/vue-mdc-adapter/commit/e9e3594))
+* **textfield:** adapter api mismatch ([d7311e5](https://github.com/stasson/vue-mdc-adapter/commit/d7311e5))
+
+
+
 <a name="0.0.48"></a>
 ## [0.0.48](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.47...v0.0.48) (2017-10-27)
 
