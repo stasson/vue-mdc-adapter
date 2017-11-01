@@ -13,17 +13,17 @@ vm.$root.$emit('show-snackbar', { message: 'A message' })
 
 You can also specify an action handler:
 ```javascript
-vm.$root.$emit('show-snackbar', { 
+vm.$root.$emit('show-snackbar', {
   message: 'A message with action',
   actionText: 'undo',
   actionHandler: function () {
-    //... 
+    //...
   }
 })
 
 ```
 
-Alternatively, you can also use the `show` method to trigger the display of the 
+Alternatively, you can also use the `show` method to trigger the display of the
 snackbar
 
 ```html
@@ -55,16 +55,17 @@ properties and their usage.
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-| `event` | String | default `show-snackbar` | specifies the name of the event the snackbar listens to.| 
+| `event` | String | default `show-snackbar` | specifies the name of the event the snackbar listens to.|
 | `event-source`|Vue| `vm.$root` | specifies the source of the event. must be a vue instance or component ref|
 | `dismisses-on-action` |Boolean| true| Whether the snackbar will be dimissed when the user presses the action button.  |
+| `align-start` |Boolean| false| Whether the snackbar is start aligned. |
 
 
 ### methods
 
 | method | Description |
 |--------|-------------|
-| `show(data)` |  trigger the display of a message with optional action.| 
+| `show(data)` |  trigger the display of a message with optional action.|
 
 ### Reference
 - <https://material.io/components/web/catalog/snackbars
