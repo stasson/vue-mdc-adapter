@@ -5,6 +5,5 @@
 <script>
 export default {
   name: 'mdc-drawer-divider',
-  functional: true
 }
 </script>

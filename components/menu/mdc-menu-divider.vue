@@ -5,6 +5,5 @@
 <script>
 export default {
   name: 'mdc-menu-divider',
-  functional: true
 }
 </script>

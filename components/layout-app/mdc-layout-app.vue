@@ -22,6 +22,5 @@
 <script>
 export default {
   name: 'mdc-layout-app',
-  functional: true
 }
 </script>

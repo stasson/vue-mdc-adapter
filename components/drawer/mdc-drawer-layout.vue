@@ -7,6 +7,5 @@
 <script>
 export default {
   name: 'mdc-drawer-layout',
-  functional: true
 }
 </script>

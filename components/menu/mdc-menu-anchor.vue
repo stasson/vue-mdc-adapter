@@ -8,6 +8,5 @@
 <script>
 export default {
   name: 'mdc-menu-anchor',
-  functional: true
 }
 </script>
