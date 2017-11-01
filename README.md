@@ -20,15 +20,20 @@ vue-mdc-adapter
   <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
     <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" />
   </a>
+  <a href="https://github.com/facebook/jest">
+    <img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" />
+  </a>
 </p>
+
+
 
 ## [Material Components](https://material.io/components/web/) for [Vue.JS](https://vuejs.org).
 
 
-> __Update__:  
-> new [documentation](https://stasson.github.io/vue-mdc-adapter) site preview.   
-> new build env (on going work...)   
-> Focus is on known issues, validation and keeping up with MDC updates.  
+> __Update__:
+> new [documentation](https://stasson.github.io/vue-mdc-adapter) site preview.
+> Focus is on known issues, validation and keeping up with MDC updates.
+> using jest for adapter implementation sanity checks
 
 
 ### Getting Started
@@ -40,9 +45,9 @@ vue-mdc-adapter
   <!-- import reset material icons, fonts and vue-mdc-adapter stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" type="text/css">  
-  <link rel="stylesheet" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">  
-  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" type="text/css">
+  <link rel="stylesheet" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">
+
   <!-- import vue and then vue-mdc-adapter -->
   <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
   <script src="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.js"></script>
@@ -55,7 +60,7 @@ vue-mdc-adapter
 > Quick start with vue-cli
 
 ```console
-npm install -g vue-cli 
+npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
@@ -66,10 +71,10 @@ npm install --save vue-mdc-adapter
 ```
 
 > vue-mdc-adapter and material components uses es6 for code and sass for styles
-> make sure your webpack/rollup config resolves node_modules for transpiling 
+> make sure your webpack/rollup config resolves node_modules for transpiling
 > and sass imports
 
-- ES6 Imports 
+- ES6 Imports
 
 ```javascript
 import Vue from 'vue'
@@ -89,7 +94,7 @@ $mdc-theme-background: #fff;
 
 __or cherry pick components__:
 
-- ES6 Imports 
+- ES6 Imports
 ```javascript
 import Vue from 'vue'
 import VueMdcButton from 'vue-mdc-adapter/components/button'
@@ -104,4 +109,4 @@ Vue.use(VueMdcButton)
 
 ### Documentation
 
-[preview](https://stasson.github.io/vue-mdc-adapter), 
+[preview](https://stasson.github.io/vue-mdc-adapter)
