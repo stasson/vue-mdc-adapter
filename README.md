@@ -30,10 +30,9 @@ vue-mdc-adapter
 ## [Material Components](https://material.io/components/web/) for [Vue.JS](https://vuejs.org).
 
 
-> __Update__:
-> new [documentation](https://stasson.github.io/vue-mdc-adapter) site preview.
-> Focus is on known issues, validation and keeping up with MDC updates.
-> using jest for adapter implementation sanity checks
+> Focus is on known issues, validation and keeping up with MDC updates.  
+> new documentation: [preview](https://stasson.github.io/vue-mdc-adapter).  
+> new jest sanity checks.  
 
 
 ### Getting Started
@@ -107,6 +106,7 @@ Vue.use(VueMdcButton)
 ```
 
 
-### Documentation
+#### More
 
-[preview](https://stasson.github.io/vue-mdc-adapter)
+- [documentation](https://stasson.github.io/vue-mdc-adapter)
+- [wiki](https://github.com/stasson/vue-mdc-adapter/wiki)
