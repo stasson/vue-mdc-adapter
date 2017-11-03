@@ -13,70 +13,99 @@ import { minify } from 'uglify-es'
 const isProduction = process.env.NODE_ENV === `production`
 const isDevelopment = process.env.NODE_ENV === `development`
 
-const libPath = (isDevelopment 
-      ? 'dist/vue-mdc-adapter.js' 
-      : 'dist/vue-mdc-adapter.min.js')
+function createConfig(entry, output, name) {
 
-const babelConfig = {
-  'compact': false,
-  'babelrc': false,
-  'presets': [ 
-    [
-      // env preset https://github.com/babel/babel-preset-env
-      'env', 
-      // let rollup take care of modules 
-      { 'modules': false } 
+  const libPath = (isDevelopment 
+        ? `dist/${output}.js` 
+        : `dist/${output}.min.js`)
+
+  const babelConfig = {
+    'compact': false,
+    'babelrc': false,
+    'presets': [ 
+      [
+        // env preset https://github.com/babel/babel-preset-env
+        'env', 
+        // let rollup take care of modules 
+        { 'modules': false } 
+      ]
+    ],
+    'plugins': [
+      // let rollup bundle helpers once
+      // see https://github.com/rollup/rollup-plugin-babel#helpers
+      'external-helpers'  
     ]
-  ],
-  'plugins': [
-    // let rollup bundle helpers once
-    // see https://github.com/rollup/rollup-plugin-babel#helpers
-    'external-helpers'  
-  ]
-}
-
+  }
   
-const sassConfig = {
-  include: [ '**/*.css', '**/*.scss' ],
-  options: {includePaths: ['node_modules']},
-  processor: css => postcss((isDevelopment
-                      ? [autoprefixer()]
-                      : [autoprefixer(), csso()]))
-                    .process(css)
-                    .then(result => result.css)
+    
+  const sassConfig = {
+    include: [ '**/*.css', '**/*.scss' ],
+    options: {includePaths: ['node_modules']},
+    processor: css => postcss((isDevelopment
+                        ? [autoprefixer()]
+                        : [autoprefixer(), csso()]))
+                      .process(css)
+                      .then(result => result.css)
+  }
+  
+  if (isProduction) {
+    sassConfig.output = `dist/${output}.min.css`
+  } else {
+    sassConfig.insert = true
+  }
+
+  const config = {
+    input: entry,
+    output: {
+      file: libPath,
+      format: 'umd',
+      name: name
+    },
+    external: ['vue'],
+    plugins: [
+      vue ({ autoStyles: false, styleToImports: true }),
+      resolve({ jsnext: true, main: true, browser: true }),
+      sass(sassConfig),
+      babel(babelConfig),
+      commonjs (),
+    ],
+    sourcemap: isDevelopment ? 'inline' : true,
+    onwarn
+  }
+
+  if (isProduction) {
+    config.plugins.push(uglify({}, minify))
+    config.plugins.push(filesize())
+  }
+  return config
 }
 
-if (isProduction) {
-  sassConfig.output = `dist/vue-mdc-adapter.min.css`
-} else {
-  sassConfig.insert = true
-}
 
-const config = {
-  input: 'components/entry.js',
-  output: {
-    file: libPath,
-    format: 'umd',
-    name: 'VueMDCAdapter'
-  },
-  external: ['vue'],
-  plugins: [
-    vue ({ autoStyles: false, styleToImports: true }),
-    resolve({ jsnext: true, main: true, browser: true }),
-    sass(sassConfig),
-    babel(babelConfig),
-    commonjs (),
-  ],
-  sourcemap: isDevelopment ? 'inline' : true,
-  onwarn
-}
-
-if (isProduction) {
-  config.plugins.push(uglify({}, minify))
-  config.plugins.push(filesize())
-}
-
-export default config
+export default [
+  createConfig('components/entry.js', 'vue-mdc-adapter', 'VueMDCAdapter'),
+  createConfig('components/button/entry.js', 'vue-mdc-button', 'VueMDCButton'),
+  createConfig('components/card/entry.js', 'vue-mdc-card', 'VueMDCCard'),
+  createConfig('components/checkbox/entry.js', 'vue-mdc-checkbox', 'VueMDCCheckbox'),
+  createConfig('components/dialog/entry.js', 'vue-mdc-dialog', 'VueMDCDialog'),
+  createConfig('components/drawer/entry.js', 'vue-mdc-drawer', 'VueMDCDrawer'),
+  createConfig('components/fab/entry.js', 'vue-mdc-fab', 'VueMDCFab'),
+  createConfig('components/grid-list/entry.js', 'vue-mdc-grid-list', 'VueMDCGridList'),
+  createConfig('components/icon-toggle/entry.js', 'vue-mdc-icon-toggle', 'VueMDCIconToggle'),
+  createConfig('components/icon/entry.js', 'vue-mdc-icon', 'VueMDCIcon'),
+  createConfig('components/layout-app/entry.js', 'vue-mdc-layout-app', 'VueMDCLayoutApp'),
+  createConfig('components/layout-grid/entry.js', 'vue-mdc-layout-grid', 'VueMDCLayoutGrid'),
+  createConfig('components/linear-progress/entry.js', 'vue-mdc-linear-progress', 'VueMDCLinearProgress'),
+  createConfig('components/list/entry.js', 'vue-mdc-list', 'VueMDCList'),
+  createConfig('components/menu/entry.js', 'vue-mdc-menu', 'VueMDCMenu'),
+  createConfig('components/radio/entry.js', 'vue-mdc-radio', 'VueMDCRadio'),
+  createConfig('components/select/entry.js', 'vue-mdc-select', 'VueMDCSelect'),
+  createConfig('components/slider/entry.js', 'vue-mdc-slider', 'VueMDCSlider'),
+  createConfig('components/snackbar/entry.js', 'vue-mdc-snackbar', 'VueMDCSnackbar'),
+  createConfig('components/switch/entry.js', 'vue-mdc-switch', 'VueMDCSwitch'),
+  createConfig('components/tabs/entry.js', 'vue-mdc-tabs', 'VueMDCTabs'),
+  createConfig('components/textfield/entry.js', 'vue-mdc-texfield', 'VueMDCTextfield'),
+  createConfig('components/typography/entry.js', 'vue-mdc-typography', 'VueMDCTypography'),
+]
 
 
 function onwarn (warning) {
