@@ -75,7 +75,6 @@ function createConfig(entry, output, name) {
 
   if (isProduction) {
     config.plugins.push(uglify({}, minify))
-    config.plugins.push(filesize())
   }
   return config
 }
