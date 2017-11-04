@@ -9,7 +9,7 @@ vue-mdc-adapter
     <img src="https://img.shields.io/npm/l/vue-mdc-adapter.svg" alt="License">
   </a>
   <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
-    <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=master" alt="builds">
+    <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=staging" alt="builds">
   </a>
   <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade" alt="Codacy">
     <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d"/>
