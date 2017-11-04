@@ -59,7 +59,7 @@
     "material-components-web": "0.24.0"
   },
   "peerDependencies": {
-    "vue": "^2.5.2"
+    "vue": "^2.5.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -93,7 +93,7 @@
     "markdown-it-highlightjs": "^3.0.0",
     "npm-run-all": "^4.1.1",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
-    "postcss": "^6.0.13",
+    "postcss": "^6.0.14",
     "postcss-csso": "^3.0.0",
     "postcss-loader": "^2.0.6",
     "regenerator-runtime": "^0.11.0",
@@ -117,17 +117,17 @@
     "uglify-es": "^3.1.6",
     "url-loader": "^0.6.2",
     "validate-commit-msg": "^2.14.0",
-    "vue": "^2.5.2",
-    "vue-jest": "^1.0.0",
-    "vue-loader": "^13.0.5",
-    "vue-markdown-loader": "^2.2.2",
+    "vue": "^2.5.3",
+    "vue-jest": "^1.0.1",
+    "vue-loader": "^13.4.0",
+    "vue-markdown-loader": "^2.2.3",
     "vue-router": "^3.0.1",
-    "vue-template-compiler": "^2.5.2",
+    "vue-template-compiler": "^2.5.3",
     "vue-test-utils": "^1.0.0-beta.4",
     "webpack": "^3.6.0",
     "webpack-cdn-plugin": "^1.6.5",
     "webpack-dashboard": "^1.0.0-5",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^2.9.4"
   },
   "engines": {
     "node": ">= 4.0.0",
