@@ -9,6 +9,7 @@ cache:
 branches:
   only:
   - master
+  - staging
   - dev
 script:
   - npm test
