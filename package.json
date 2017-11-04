@@ -36,7 +36,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --host $IP --port $PORT --disable-host-check",
     "test": "jest",
     "build": "run-s build:**",
-    "build:demo": "cross-env NODE_ENV=production webpack",
+    "build:demo": "cross-env NODE_ENV=production webpackgit ",
     "build:dist": "run-s rollup:**",
     "rollup:dev": "cross-env NODE_ENV=development rollup -c",
     "rollup:prod": "cross-env NODE_ENV=production rollup -c",

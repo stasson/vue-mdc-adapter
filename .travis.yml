@@ -18,7 +18,7 @@ script:
 before_deploy:
 - npm run release
 deploy:
-  skip_cleanup: true  
+  skip_cleanup: true
   provider: npm
   email: sebastien.tasson@gmail.com
   api_key:
@@ -27,5 +27,8 @@ deploy:
     repo: stasson/vue-mdc-adapter
     branch: staging
 after_deploy:
-- git push --follow-tags origin staging 
-- git push origin master
+- git push --follow-tags https://$GH_TOKEN@github.com/stasson/vue-mdc-adapter.git staging:staging
+- git push --follow-tags https://$GH_TOKEN@github.com/stasson/vue-mdc-adapter.git staging:master
+env:
+  global:
+    secure: ONJLXVJXS5wD1Xs3AiEutRPzBgAiY524E1EDVheutcTC5lVM9rEBDMgBy/WhvoEinI14sZ6x/+TV9wpW0iyk5BBnjHKAUgPsLS15o5TzLr053c66RYGO1HPKeojJAB0tBdtkeMGStA07jNGko8trm+jNUrGJs/HwvzZfPqjymynahEo4rL+l8ujOU/iUkG5FMtL2TbAZpPoF/V/i6kyST4CPBO8FOWJzZnJEtU7E8CFVnJtW9WReyCTlX27o+MXEz4KYr8OvUfzTNEQSpik5Ag5GoFzMeHWO76iDT/YzJ5EGrhybmVfYRClTuh4uw/52v0HBLQFO1biQQvltvjfWZ8uBMnwX6pL7Bl23ej+7/pvrEssRoeNdwUWkM46T52U/DZpjDREZVRuNcJgE83kpvYzR0sWrajWlAb+MTEaSEyxTFYqMWVPKXhIyJMQ2B6qDjNlDtygHS2gdn8LZcJMgmQgvUe+BFfilqaT7iy8SFUC6thf2a/t0Hc8dJThKhh6MjeyDAjVtuuRwmYXbW4baR7Bua3h9bGTTDBcMCYAMHYKnhmWIB6S/x1u47lgfixBrNo04IpM2dR454oWu429EBdtwdB4aXxBvWt6oKz9tvWhfkGzw1hcge9XEtLSjfbOkOOxHk/SZtpnF0GT5Skls/Y2khYmcjyYMm2cbx4SGIlU=
