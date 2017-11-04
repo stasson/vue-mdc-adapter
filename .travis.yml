@@ -12,10 +12,7 @@ branches:
   - staging
   - dev
 script:
-- BRANCH="build-`git describe --tags`"
-- git checkout -b $BRANCH
-- git log --onleine --decorate -n 10
-- git status
+- BRANCH="build-`git describe --tags`" && git checkout -b $BRANCH 
 - npm run lint
 - npm run test
 - npm run build
