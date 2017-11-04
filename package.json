@@ -48,7 +48,7 @@
     "reset:modules": "rimraf node_modules/* && npm install",
     "changelog": "standard-changelog -i CHANGELOG.md -k package.json -w",
     "commitmsg": "validate-commit-msg",
-    "release": "standard-version"
+    "release": "git add -A && standard-version -a -m 'chore(release): %s \r\n\r\n[skip ci]'"
   },
   "config": {
     "commitizen": {
