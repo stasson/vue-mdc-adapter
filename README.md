@@ -29,10 +29,9 @@ vue-mdc-adapter
 
 ## [Material Components](https://material.io/components/web/) for [Vue.JS](https://vuejs.org).
 
-
+> __Requires `vue: ^2.5.3`__  
 > Focus is on known issues, validation and keeping up with MDC updates.  
-> new documentation: [preview](https://stasson.github.io/vue-mdc-adapter).  
-> new jest sanity checks.  
+> New jest sanity checks.  
 
 
 ### Getting Started
