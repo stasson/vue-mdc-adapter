@@ -1,3 +1,12 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="0.0.50"></a>
+## [0.0.50](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.49...v0.0.50) (2017-11-04)
+
+
+
 <a name="0.0.49"></a>
 ## [0.0.49](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.48...v0.0.49) (2017-11-01)
 
@@ -145,6 +154,3 @@
 ### BREAKING CHANGES
 
 * **fab:** fab can not be disabled mdc@^0.20.0
-
-
-
