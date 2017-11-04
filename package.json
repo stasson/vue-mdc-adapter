@@ -1,6 +1,6 @@
 {
   "name": "vue-mdc-adapter",
-  "version": "0.0.49",
+  "version": "0.1.1",
   "description": "Vue wrapper arround Material Components for the Web",
   "keywords": [
     "vue",
@@ -36,7 +36,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --host $IP --port $PORT --disable-host-check",
     "test": "jest",
     "build": "run-s build:**",
-    "build:demo": "cross-env NODE_ENV=production webpack --progress",
+    "build:demo": "cross-env NODE_ENV=production webpack",
     "build:dist": "run-s rollup:**",
     "rollup:dev": "cross-env NODE_ENV=development rollup -c",
     "rollup:prod": "cross-env NODE_ENV=production rollup -c",
