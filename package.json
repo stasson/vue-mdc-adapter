@@ -118,7 +118,7 @@
     "url-loader": "^0.6.2",
     "validate-commit-msg": "^2.14.0",
     "vue": "^2.5.3",
-    "vue-jest": "^1.0.1",
+    "vue-jest": "^1.0.2",
     "vue-loader": "^13.4.0",
     "vue-markdown-loader": "^2.2.3",
     "vue-router": "^3.0.1",
