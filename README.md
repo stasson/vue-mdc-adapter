@@ -29,6 +29,8 @@ vue-mdc-adapter
 
 ## [Material Components](https://material.io/components/web/) for [Vue.JS](https://vuejs.org).
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/stasson/vue-mdc-adapter.svg)](https://greenkeeper.io/)
+
 > __Requires `vue: ^2.5.3`__  
 > Focus is on known issues, validation and keeping up with MDC updates.  
 > New jest sanity checks.  
