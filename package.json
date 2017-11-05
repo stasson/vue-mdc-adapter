@@ -37,7 +37,7 @@
     "test": "jest",
     "build": "run-s build:**",
     "build:demo": "cross-env NODE_ENV=production webpack",
-    "build:dist": "run-s rollup:**",
+    "build:dist": "run-s clean:dist rollup:**",
     "rollup:dev": "cross-env NODE_ENV=development rollup -c",
     "rollup:prod": "cross-env NODE_ENV=production rollup -c",
     "lint": "run-s lint:**",
@@ -47,8 +47,12 @@
     "clean:dist": "rimraf dist/*",
     "reset:modules": "rimraf node_modules/* && npm install",
     "changelog": "standard-changelog -i CHANGELOG.md -k package.json -w",
-    "commitmsg": "validate-commit-msg",
-    "release": "git add -A && standard-version -a -m 'chore(release): %s \r\n\r\n[skip ci]'"
+    "commitmsg": "validate-commit-msg --no-verify",
+    "release": "standard-version",
+    "ci:script": "run-s ci:script:*",
+    "ci:script:branch": "BRANCH=\"build-`git describe --tags`\" && echo git checkout -b $BRANCH",
+    "ci:script:test": "jest  --silent --ci",
+    "ci:script:build": "run-s build:**"
   },
   "config": {
     "commitizen": {

@@ -4,7 +4,6 @@ import commonjs from 'rollup-plugin-commonjs'
 import vue from 'rollup-plugin-vue'
 import uglify from 'rollup-plugin-uglify'
 import sass from 'rollup-plugin-sass';
-import filesize from 'rollup-plugin-filesize'
 import autoprefixer from 'autoprefixer'
 import postcss from 'postcss'
 import csso from 'postcss-csso';
