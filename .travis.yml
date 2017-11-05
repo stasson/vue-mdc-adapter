@@ -20,16 +20,14 @@ deploy:
       secure: Vgwn5a5bM9qcBkQnEcmFXfCe3Yeckl+slJ2Bmj2ogsDrchPkUqf92rODgAnjV6Z/1SgMMHqak9MEhPXlDipmLXf1F9wCH/j3OCWhISNrh39CScFHI7FUwVWFEMj+laYMf+Xr7oPG8a6z+XLPCoPpX7Muw5L08pl1Dmc61IQ38L29Jmsfqy4Iizv/SRnCwoP7shklw0LeGbnoLiADFbVt7v497Nzx3ZdAx9nuKZMRigrLzctoJHQo6Xptk5Ut8Rp/S/X37ha6Hj8bLCpdw5pO3Q7VY0TjDyyNixZQKGr+BS1b6xnPksvD0sGig0YXn+vPv/F65GoHa6DH75QMsHCG3dGyFzWxaeiPCCKlVJFiLkrTfR1yWvmw5KLXrLdm4Wv92LrPgL2YPK3pfR4Miqj/dFcE+KkatKB/bBXj5Mv1Aid2wyLkSJUqg05u3GFxRlFq2+w6SH9ORzPzYPDTFpSWDH8qVtPEnypeiCU/jJjsaBrRg/vErsg3xVVQ+4F9WWPbAju/MU2yZ1RzcINvA6FojJCPin86wxS8nWNIE9I1TC62Pp3Xj6YmSH/qiFB2J1rPeJ9jpivI3uN1UrucoPBSQaNWKgsRPc+Y9lULeAMkcCIX8DdCVf9fWjyxy7P/s/f02kAC8MgBaeZIridl1qf7+tI2IUKgmAR9UJw/38YnhpQ=
     on:
       repo: stasson/vue-mdc-adapter
-      tags: true
-      all_branches: true
+      branch: master
   - provider: pages
     skip_cleanup: true
     github_token: $GH_TOKEN
     local_dir: public
     on:
       repo: stasson/vue-mdc-adapter
-      tags: true
-      all_branches: true
+      branch: master
 env:
   global:
     secure: ONJLXVJXS5wD1Xs3AiEutRPzBgAiY524E1EDVheutcTC5lVM9rEBDMgBy/WhvoEinI14sZ6x/+TV9wpW0iyk5BBnjHKAUgPsLS15o5TzLr053c66RYGO1HPKeojJAB0tBdtkeMGStA07jNGko8trm+jNUrGJs/HwvzZfPqjymynahEo4rL+l8ujOU/iUkG5FMtL2TbAZpPoF/V/i6kyST4CPBO8FOWJzZnJEtU7E8CFVnJtW9WReyCTlX27o+MXEz4KYr8OvUfzTNEQSpik5Ag5GoFzMeHWO76iDT/YzJ5EGrhybmVfYRClTuh4uw/52v0HBLQFO1biQQvltvjfWZ8uBMnwX6pL7Bl23ej+7/pvrEssRoeNdwUWkM46T52U/DZpjDREZVRuNcJgE83kpvYzR0sWrajWlAb+MTEaSEyxTFYqMWVPKXhIyJMQ2B6qDjNlDtygHS2gdn8LZcJMgmQgvUe+BFfilqaT7iy8SFUC6thf2a/t0Hc8dJThKhh6MjeyDAjVtuuRwmYXbW4baR7Bua3h9bGTTDBcMCYAMHYKnhmWIB6S/x1u47lgfixBrNo04IpM2dR454oWu429EBdtwdB4aXxBvWt6oKz9tvWhfkGzw1hcge9XEtLSjfbOkOOxHk/SZtpnF0GT5Skls/Y2khYmcjyYMm2cbx4SGIlU=
