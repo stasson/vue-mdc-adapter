@@ -154,7 +154,7 @@ const config = {
   output: {
     filename:  isProduction ? '[name].[chunkhash].js' : '[name].js',
     chunkFilename: isProduction ? '[name].[chunkhash].js' : '[name].js',
-    path: path.resolve(__dirname, isProduction ? 'docs' : 'dev'),
+    path: path.resolve(__dirname, isProduction ? 'public' : 'dev'),
   },
   resolve: {
     alias: {

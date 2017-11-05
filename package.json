@@ -48,11 +48,10 @@
     "reset:modules": "rimraf node_modules/* && npm install",
     "changelog": "standard-changelog -i CHANGELOG.md -k package.json -w",
     "commitmsg": "validate-commit-msg --no-verify",
-    "release": "standard-version",
-    "ci:script": "run-s ci:script:*",
-    "ci:script:branch": "BRANCH=\"build-`git describe --tags`\" && echo git checkout -b $BRANCH",
-    "ci:script:test": "jest  --silent --ci",
-    "ci:script:build": "run-s build:**"
+    "release": "standard-version --no-verify",
+    "ci": "run-s ci:*",
+    "ci:test": "jest  --silent --ci",
+    "ci:build": "run-s build:**"
   },
   "config": {
     "commitizen": {
