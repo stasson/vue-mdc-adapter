@@ -9,6 +9,7 @@ cache:
 branches:
   only:
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+  - /^greenkeeper/.*$/
   - master
   - dev
 script: npm run ci 
