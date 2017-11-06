@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--fullwidth multiline case-->
-    <div div ref="root" :class="rootClasses" v-if="multiline && fullwidth">
+    <div ref="root" :class="rootClasses" v-if="multiline && fullwidth">
       <textarea ref="input" :class="inputClasses"
         :value="value" @input="updateValue($event.target.value)"
         :rows="rows"
