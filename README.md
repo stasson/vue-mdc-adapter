@@ -42,7 +42,6 @@ New per components distribution.<br>
 __Requires `vue: ^2.5.3`__<br>
 </blockquote>
 
-
 ### Getting Started
 
 #### CDN
