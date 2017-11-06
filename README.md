@@ -39,7 +39,7 @@ vue-mdc-adapter
 Focus is on known issues, validation and keeping up with MDC updates.  <br>
 New ci with jest sanity checks.<br>
 New per components distribution.<br>
-__Requires `vue: ^2.5.3`__<br>
+<strong>Requires `vue: ^2.5.3`<strong><br>
 </blockquote>
 
 ### Getting Started
