@@ -1,6 +1,7 @@
 <h2 align="center">
 vue-mdc-adapter
 </h2>
+
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/v/vue-mdc-adapter.svg" alt="Version">
@@ -8,32 +9,38 @@ vue-mdc-adapter
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/l/vue-mdc-adapter.svg" alt="License">
   </a>
-  <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
-    <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=staging" alt="builds">
-  </a>
-  <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade" alt="Codacy">
-    <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d"/>
-  </a>
-  <a href="https://www.npmjs.com/package/vue-mdc-adapter">
-    <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
+  <a href="https://github.com/facebook/jest">
+    <img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" />
   </a>
   <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
     <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" />
   </a>
-  <a href="https://github.com/facebook/jest">
-    <img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" />
+</p>
+
+<p align="center">
+  <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
+    <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=master" alt="builds">
+  </a>
+  <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade" alt="Codacy">
+    <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d"/>
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/stasson/vue-mdc-adapter.svg" />
+  </a>
+  <a href="https://www.npmjs.com/package/vue-mdc-adapter">
+    <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
   </a>
 </p>
 
 
-
 ## [Material Components](https://material.io/components/web/) for [Vue.JS](https://vuejs.org).
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/stasson/vue-mdc-adapter.svg)](https://greenkeeper.io/)
-
-> __Requires `vue: ^2.5.3`__  
-> Focus is on known issues, validation and keeping up with MDC updates.  
-> New jest sanity checks.  
+<blockquote class="news">
+Focus is on known issues, validation and keeping up with MDC updates.  <br>
+New ci with jest sanity checks.<br>
+New per components distribution.<br>
+__Requires `vue: ^2.5.3`__<br>
+</blockquote>
 
 
 ### Getting Started
