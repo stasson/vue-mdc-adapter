@@ -1,4 +1,4 @@
-## Typography
+## Usage
 
 The mdc-typography components defines basic properties for text, such as the 
 typeface and antialiasing settings.
@@ -84,4 +84,4 @@ property on UI elements such as buttons may cause them to be positioned incorrec
 
 ### Reference
 
-- https://material.io/components/web/catalog/typography/
+- <https://material.io/components/web/catalog/typography>

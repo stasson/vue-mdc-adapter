@@ -1,4 +1,4 @@
-## Button
+## Usage
 
 ```html
   <mdc-button @click="onClick" :disabled="buttonDisabled">click me</mdc-button>
@@ -77,11 +77,11 @@ var vm = new Vue({
 
 Using the href attribute will render `<a role="button" href="...">`
 
-> Accessibility Warning:  
+> Accessibility Warning:
 > Buttons are expected to be triggered using the Space or Enter key, 
 > while links are expected to be triggered using the Enter key. 
 > Also button and links have different behaviour on right click.
-> see this MDN [note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
+> see this [MDN note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
 
 You may want to keep button behavior and do the navigation programatically:
 
@@ -90,5 +90,5 @@ You may want to keep button behavior and do the navigation programatically:
 ``` 
 
 ### Reference
-- https://material.io/guidelines/components/buttons.html
+- <https://material.io/guidelines/components/buttons.html>
 

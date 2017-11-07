@@ -20,8 +20,9 @@
   </li>
 </template>
 
-<script lang="babel">
+<script>
 export default {
+  name: 'mdc-list-item',
   computed: {
     hasSecondary () {
       return !!this.$slots['secondary']

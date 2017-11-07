@@ -15,6 +15,7 @@ const spanOptions = {
 }
 
 export default {
+  name: 'mdc-layout-cell',
   props: {
     span: spanOptions,
     order: spanOptions,

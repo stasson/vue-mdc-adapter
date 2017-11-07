@@ -1,4 +1,4 @@
-## Radio
+## Usage
 
 ```html
 <mdc-radio v-model="answer" label="Yes for sure"  />
@@ -29,5 +29,5 @@ var vm = new Vue({
 |`v-model`| String || tracks selected radio's value |
 
 ### Reference
-- https://material.io/components/web/catalog/input-controls/radio-buttons
+- <https://material.io/components/web/catalog/input-controls/radio-buttons>
 

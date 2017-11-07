@@ -1,4 +1,4 @@
-## Icon
+## Usage
 
 ```html
   <mdc-icon icon="favorite"></mdc-icon>

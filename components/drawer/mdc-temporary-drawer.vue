@@ -1,48 +1,50 @@
-<!-- thanks to petejohanson for this implementation -->
 <template>
   <aside class="mdc-temporary-drawer mdc-typography" :class="classes">
-    <div class="mdc-temporary-drawer__toolbar-spacer" 
-      v-if="toolbarSpacer"></div>
+    <div class="mdc-temporary-drawer__toolbar-spacer"v-if="toolbarSpacer"></div>
     <nav ref="drawer" class="mdc-temporary-drawer__drawer">
-      <slot/>
+      <slot />
     </nav>
   </aside>
 </template>
 
-<script lang="babel">
+<script>
 import MDCTemporaryDrawerFoundation from '@material/drawer/temporary/foundation'
-import * as utils from '@material/drawer/util'
+import * as util from '@material/drawer/util'
 
 export default {
   name: 'mdc-temporary-drawer',
-  props: {
-    'toolbar-spacer': Boolean
+  model: {
+    prop: 'open',
+    event: 'change'
   },
-  methods: {
-    open () {
-      this.foundation.open()
-    },
-    close () {
-      this.foundation.close()
-    },
-    toggle () {
-      this.foundation.isOpen() ? this.foundation.close()
-        : this.foundation.open()
-    },
-    isOpen () {
-      this.foundation.isOpen()
-    }
+  props: {
+    'open': Boolean,
+    'toolbar-spacer': Boolean,
   },
   data () {
     return {
       classes: {},
-      changeHandlers: [],
-      foundation: null
+    }
+  },
+  watch: {
+    open() {
+      this._refresh()
+    }
+  },
+  methods: {
+    _refresh() {
+      if (this.open) {
+        this.foundation && this.foundation.open()          
+      }
+      else {
+        this.foundation && this.foundation.close()          
+      }
     }
   },
   mounted () {
-    const {FOCUSABLE_ELEMENTS, OPACITY_VAR_NAME} = MDCTemporaryDrawerFoundation.strings
-
+    const {FOCUSABLE_ELEMENTS, OPACITY_VAR_NAME} = 
+      MDCTemporaryDrawerFoundation.strings
+    
     this.foundation = new MDCTemporaryDrawerFoundation({
       addClass: (className) => {
         this.$set(this.classes, className, true)
@@ -53,20 +55,22 @@ export default {
       hasClass: (className) => {
         return this.$el.classList.contains(className)
       },
+      addBodyClass: (className) => document.body.classList.add(className),
+      removeBodyClass: (className) => document.body.classList.remove(className),
       hasNecessaryDom: () => {
-        return Boolean(this.$refs.drawer)
+        return !!this.$refs.drawer
       },
       registerInteractionHandler: (evt, handler) => {
-        this.$el.addEventListener(evt, handler)
+        this.$el.addEventListener(util.remapEvent(evt), handler, util.applyPassive())
       },
       deregisterInteractionHandler: (evt, handler) => {
-        this.$el.removeEventListener(evt, handler)
+        this.$el.removeEventListener(util.remapEvent(evt), handler, util.applyPassive())
       },
       registerDrawerInteractionHandler: (evt, handler) => {
-        this.$refs.drawer.addEventListener(evt, handler)
+        this.$refs.drawer.addEventListener(util.remapEvent(evt), handler)
       },
       deregisterDrawerInteractionHandler: (evt, handler) => {
-        this.$refs.drawer.removeEventListener(evt, handler)
+        this.$refs.drawer.removeEventListener(util.remapEvent(evt), handler)
       },
       registerTransitionEndHandler: (handler) => {
         this.$refs.drawer.addEventListener('transitionend', handler)
@@ -81,38 +85,51 @@ export default {
         document.removeEventListener('keydown', handler)
       },
       getDrawerWidth: () => {
-        return this.$refs.drawer.clientWidth
+        return this.$refs.drawer.offsetWidth
       },
       setTranslateX: (value) => {
         this.$refs.drawer.style.setProperty(
-          utils.getTransformPropertyName(),
+          util.getTransformPropertyName(),
           value === null ? null : `translateX(${value}px)`
         )
       },
       updateCssVariable: (value) => {
-        this.$el.style.setProperty(OPACITY_VAR_NAME, value)
+        if (util.supportsCssCustomProperties()) {
+          this.$el.style.setProperty(OPACITY_VAR_NAME, value)
+        }
       },
       getFocusableElements: () => {
         return this.$refs.drawer.querySelectorAll(FOCUSABLE_ELEMENTS)
       },
       saveElementTabState: (el) => {
-        utils.saveElementTabState(el)
+        util.saveElementTabState(el)
       },
       restoreElementTabState: (el) => {
-        utils.restoreElementTabState(el)
+        util.restoreElementTabState(el)
       },
       makeElementUntabbable: (el) => {
         el.setAttribute('tabindex', -1)
       },
+      notifyOpen: () => {
+        this.$emit('change',true)
+        this.$emit('open')
+      },
+      notifyClose: () => {
+        this.$emit('change',false)
+        this.$emit('close')
+      },
       isRtl: () => {
         /* global getComputedStyle */
         return getComputedStyle(this.$el).getPropertyValue('direction') === 'rtl'
-      }
+      },
+      isDrawer: (el) => el === this.$refs.drawer,
     })
-    this.foundation.init()
+    this.foundation && this.foundation.init()  
+    this._refresh()
   },
   beforeDestroy () {
-    this.foundation.destroy()
+    this.foundation && this.foundation.destroy()
+    this.foundation = null
   }
 }
 </script>

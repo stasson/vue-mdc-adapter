@@ -1,4 +1,4 @@
-## Floating Action Buttons
+## Usage
 
 ```html
   <mdc-fab icon="favorite"></mdc-fab>
@@ -79,4 +79,4 @@ You may want to keep button behavior and do the navigation programatically:
 
 
 ### Reference
-- https://material.io/components/web/catalog/buttons/floating-action-buttons/
+- <https://material.io/components/web/catalog/buttons/floating-action-buttons>

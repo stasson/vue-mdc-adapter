@@ -1,3 +1,99 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="0.1.8"></a>
+## [0.1.8](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.6...v0.1.8) (2017-11-05)
+
+
+
+<a name="0.1.7"></a>
+## [0.1.7](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.6...v0.1.7) (2017-11-05)
+
+
+
+<a name="0.1.6"></a>
+## [0.1.6](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.5...v0.1.6) (2017-11-05)
+
+
+
+<a name="0.1.5"></a>
+## [0.1.5](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.4...v0.1.5) (2017-11-05)
+
+
+
+<a name="0.1.4"></a>
+## [0.1.4](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.3...v0.1.4) (2017-11-05)
+
+
+
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.1...v0.1.3) (2017-11-04)
+
+
+
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.1...v0.1.2) (2017-11-04)
+
+
+<a name="0.0.49"></a>
+## [0.0.49](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.48...v0.0.49) (2017-11-01)
+
+
+### Bug Fixes
+
+* **checkbox:** fix missing adapter methods ([46fa83c](https://github.com/stasson/vue-mdc-adapter/commit/46fa83c))
+* **dialog:** footer ripple missing ([46ac43a](https://github.com/stasson/vue-mdc-adapter/commit/46ac43a))
+* **snackbar:** build failure ([359a609](https://github.com/stasson/vue-mdc-adapter/commit/359a609))
+* **snackbar:** fix missing adapter api ([c6fb19e](https://github.com/stasson/vue-mdc-adapter/commit/c6fb19e))
+* **test:** fix crashing test.spec ([e9e3594](https://github.com/stasson/vue-mdc-adapter/commit/e9e3594))
+* **textfield:** adapter api mismatch ([d7311e5](https://github.com/stasson/vue-mdc-adapter/commit/d7311e5))
+
+
+
+<a name="0.0.48"></a>
+## [0.0.48](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.47...v0.0.48) (2017-10-27)
+
+
+### Bug Fixes
+
+* **demo:** fix router home links ([58ce57d](https://github.com/stasson/vue-mdc-adapter/commit/58ce57d))
+* **drawer:** drawer has no --selected item style ([16cd196](https://github.com/stasson/vue-mdc-adapter/commit/16cd196))
+* **drawer:** fix drawer behavior ([f446a11](https://github.com/stasson/vue-mdc-adapter/commit/f446a11)), closes [#92](https://github.com/stasson/vue-mdc-adapter/issues/92)
+* **drawer:** fix responsive behavior of the drawer [#76](https://github.com/stasson/vue-mdc-adapter/issues/76) ([aff0a97](https://github.com/stasson/vue-mdc-adapter/commit/aff0a97))
+
+
+
+<a name="0.0.47"></a>
+## [0.0.47](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.46...v0.0.47) (2017-10-23)
+
+
+
+<a name="0.0.46"></a>
+## [0.0.46](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.45...v0.0.46) (2017-10-23)
+
+
+
+<a name="0.0.45"></a>
+## [0.0.45](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.44...v0.0.45) (2017-10-23)
+
+
+### Bug Fixes
+
+* **components:** fix missing 'name' option in the Vue components ([b31e66d](https://github.com/stasson/vue-mdc-adapter/commit/b31e66d))
+* **layout-app:** allow main content to shrink ([ba21537](https://github.com/stasson/vue-mdc-adapter/commit/ba21537))
+* **textfield:** label overlaps with content ([#86](https://github.com/stasson/vue-mdc-adapter/issues/86)) ([4964b91](https://github.com/stasson/vue-mdc-adapter/commit/4964b91))
+* **util:** fix ripple for ssr ([809e3dd](https://github.com/stasson/vue-mdc-adapter/commit/809e3dd))
+
+
+### Features
+
+* **demo:** add readme and demos ([9334fa8](https://github.com/stasson/vue-mdc-adapter/commit/9334fa8))
+* **demo:** publish new site ([45493a9](https://github.com/stasson/vue-mdc-adapter/commit/45493a9))
+* **mdc-layout-app:** add new mdc-layout-app component ([e9fd92d](https://github.com/stasson/vue-mdc-adapter/commit/e9fd92d))
+
+
+
 <a name="0.0.44"></a>
 ## [0.0.44](https://github.com/stasson/vue-mdc-adapter/compare/v0.0.43...v0.0.44) (2017-10-06)
 
@@ -87,6 +183,3 @@
 ### BREAKING CHANGES
 
 * **fab:** fab can not be disabled mdc@^0.20.0
-
-
-

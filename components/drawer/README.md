@@ -1,4 +1,4 @@
-## Drawers
+## Usage
 
 ```html
 <!--Toolbar with icon menu-->
@@ -43,26 +43,6 @@
 > (*) by default drawer is responsive and will switch from temporary to 
 > persistent design according to viewport width
 
-### Drawer Layout
-
-```html
-<mdc-toolbar />
-<mdc-drawer-layout>
-  <mdc-drawer />
-  <!--Body markup here... -->
-</mdc-drawer-layout>
-```
-
-or drawer is above toolbar
-
-```html
-<mdc-drawer-layout>
-  <mdc-drawer toolbar-spacer />
-  <mdc-toolbar />
-  <!--Body markup here... -->
-</mdc-drawer-layout>
-```
-
 ### Drawer Header
 
 | prop | Type | Default | Description |
@@ -82,6 +62,7 @@ or drawer is above toolbar
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
+|`temporary-close`|Boolean| true | whether temporary drawer closes on click |
 
 ```html
 <mdc-drawer>
@@ -108,4 +89,4 @@ or drawer is above toolbar
 ```
 
 ### Reference
-- https://material.io/components/web/catalog/drawers
+- <https://material.io/components/web/catalog/drawers>

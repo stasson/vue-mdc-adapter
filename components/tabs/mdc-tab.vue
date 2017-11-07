@@ -8,7 +8,7 @@
   </a>
 </template>
 
-<script lang="babel">
+<script>
 import MDCTabFoundation from '@material/tabs/tab/foundation'
 import { RippleBase, emitCustomEvent, DispatchEventMixin } from '../util'
 

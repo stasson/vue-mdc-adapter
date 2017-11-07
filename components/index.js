@@ -10,6 +10,7 @@ import VueMDCFab from './fab'
 import VueMDCGridList from './grid-list'
 import VueMDCIcon from './icon'
 import VueMDCIconToggle from './icon-toggle'
+import VueMDCLayoutApp from './layout-app'
 import VueMDCLayoutGrid from './layout-grid'
 import VueMDCLinearProgress from './linear-progress'
 import VueMDCList from './list'
@@ -35,6 +36,7 @@ const plugin = {
     vm.use(VueMDCGridList)
     vm.use(VueMDCIcon)
     vm.use(VueMDCIconToggle)
+    vm.use(VueMDCLayoutApp)
     vm.use(VueMDCLayoutGrid)
     vm.use(VueMDCLinearProgress)
     vm.use(VueMDCList)
@@ -52,18 +54,3 @@ const plugin = {
 }
 
 export default plugin
-
-
-// Auto-install
-let _Vue = null
-if (typeof window !== 'undefined') {
-  _Vue = window.Vue
-} else if (typeof global !== 'undefined') {
-  /*global global*/
-  _Vue = global.Vue
-}
-if (_Vue) {
-  _Vue.use(plugin)
-}
-
-

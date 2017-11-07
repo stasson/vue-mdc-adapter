@@ -1,4 +1,4 @@
-## Linear Progress
+## Usage
 
 The MDC Linear Progress component is a spec-aligned linear progress indicator 
 component 
@@ -58,5 +58,5 @@ var vm = new Vue({
 ```
 
 ### Reference
-- https://material.io/components/web/catalog/linear-progress
+- <https://material.io/components/web/catalog/linear-progress>
 

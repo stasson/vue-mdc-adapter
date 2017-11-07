@@ -1,13 +1,15 @@
 <template>
-  <component ref="drawer" :is="type" :toolbar-spacer="toolbarSpacer">
+  <component ref="drawer" class="mdc-drawer"
+    :is="type" v-model="open_"
+    :toolbar-spacer="toolbarSpacer">
     <slot />
   </component>
 </template>
 
-<script lang="babel">
-import MDCPermanentDrawer from './mdc-permanent-drawer.vue'
-import MDCPersistentDrawer from './mdc-persistent-drawer.vue'
-import MDCTemporaryDrawer from './mdc-temporary-drawer.vue'
+<script>
+import VueMDCPermanentDrawer from './mdc-permanent-drawer.vue'
+import VueMDCPersistentDrawer from './mdc-persistent-drawer.vue'
+import VueMDCTemporaryDrawer from './mdc-temporary-drawer.vue'
 
 const media = new class {
   get mobile () {
@@ -37,13 +39,14 @@ export default {
   data () {
     return {
       mobile: false,
-      xlarge: false
+      xlarge: false,
+      open_: false,
     }
   },
   components: {
-    'mdc-permanent-drawer': MDCPermanentDrawer,
-    'mdc-persistent-drawer': MDCPersistentDrawer,
-    'mdc-temporary-drawer': MDCTemporaryDrawer
+    'mdc-permanent-drawer': VueMDCPermanentDrawer,
+    'mdc-persistent-drawer': VueMDCPersistentDrawer,
+    'mdc-temporary-drawer': VueMDCTemporaryDrawer
   },
   computed: {
     type () {
@@ -59,18 +62,6 @@ export default {
         return 'mdc-persistent-drawer'
       }
     },
-    headerClass () {
-      return this.type + '__header'
-    },
-    headerContentClass () {
-      return this.type + '__header-content'
-    },
-    hasHeader () {
-      return this.$slots['drawer-header'] ||
-        (this.isTemporary && this.$slots['drawer-header-temporary']) ||
-        (this.permanent && this.$slots['drawer-header-permanent']) ||
-        (this.persistent && this.$slots['drawer-header-persistent'])
-    },
     isPermanent () {
       return this.permamnent || this.type === 'mdc-permanent-drawer'
     },
@@ -83,34 +74,38 @@ export default {
   },
   methods: {
     open () {
-      this.$nextTick(() => this.$refs.drawer.open())
+      this.open_ = true
     },
     close () {
-      this.$nextTick(() => this.$refs.drawer.close())
+      this.isPermanent || (this.open_ = false)
     },
     toggle () {
-      this.$nextTick(() => this.$refs.drawer.toggle())
+      this.isPermanent || (this.isOpen() ? this.close() : this.open())
     },
     isOpen () {
-      return this.$refs.drawer.isOpen()
+      return this.isPermanent|| ( this.open_ )
     },
     refreshMedia () {
       this.mobile = media.mobile.matches
       this.xlarge = media.xlarge.matches
-      if (this.xlarge) this.open()
+      this.xlarge && this.isPersistent && this.open()
+      this.mobile && this.close()
     }
   },
-  beforeMount () {
-    media.mobile.addListener(this.refreshMedia)
-    media.xlarge.addListener(this.refreshMedia)
-    this.refreshMedia()
+  created () {
+    if (window && window.matchMedia) {
+      this.mobile = media.mobile.matches
+      this.xlarge = media.xlarge.matches
+    }
   },
   mounted () {
-    if (this.xlarge) this.open()
     if (this.toggleOn) {
       let source = this.toggleOnSource || this.$root
       source.$on(this.toggleOn, () => this.toggle())
     }
+    media.mobile.addListener(this.refreshMedia)
+    media.xlarge.addListener(this.refreshMedia)
+    this.$nextTick(() => this.refreshMedia())
   },
   beforeDestroy () {
     media.mobile.removeListener(this.refreshMedia)

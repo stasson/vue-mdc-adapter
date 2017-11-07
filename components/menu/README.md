@@ -1,5 +1,4 @@
-## Menus
-
+## Usage
 
 ```html
 <mdc-menu-anchor>
@@ -86,4 +85,4 @@ If the options object or focusIndex is omitted, no menu item will be focused.
 Closes the menu.
 
 ### Reference
-- https://material.io/components/web/catalog/menus
+- <https://material.io/components/web/catalog/menus>

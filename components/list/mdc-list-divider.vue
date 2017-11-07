@@ -2,8 +2,9 @@
   <li role="separator" class="mdc-list-divider" :class="classes"></li>
 </template>
 
-<script lang="babel">
+<script>
 export default {
+  name: 'mdc-list-divider',
   props: {
     'inset': Boolean
   },

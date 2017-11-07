@@ -8,35 +8,38 @@
   </aside>
 </template>
 
-<script lang="babel">
+<script>
 import MDCPersistentDrawerFoundation from '@material/drawer/persistent/foundation'
-import * as utils from '@material/drawer/util'
+import * as util from '@material/drawer/util'
 
 export default {
   name: 'mdc-persistent-drawer',
-  props: {
-    'toolbar-spacer': Boolean
+  model: {
+    prop: 'open',
+    event: 'change'
   },
-  methods: {
-    open () {
-      this.foundation.open()
-    },
-    close () {
-      this.foundation.close()
-    },
-    toggle () {
-      this.foundation.isOpen() ? this.foundation.close()
-        : this.foundation.open()
-    },
-    isOpen () {
-      this.foundation.isOpen()
-    }
+  props: {
+    'toolbar-spacer': Boolean,
+    'open':Boolean
   },
   data () {
     return {
       classes: {},
-      changeHandlers: [],
-      foundation: null
+    }
+  },
+  watch: {
+    open() {
+      this._refresh()
+    }
+  },
+  methods: {
+    _refresh() {
+      if (this.open) {
+        this.foundation && this.foundation.open()          
+      }
+      else {
+        this.foundation && this.foundation.close()          
+      }
     }
   },
   mounted () {
@@ -53,19 +56,19 @@ export default {
         return this.$el.classList.contains(className)
       },
       hasNecessaryDom: () => {
-        return Boolean(this.$refs.drawer)
+        return !!this.$refs.drawer
       },
       registerInteractionHandler: (evt, handler) => {
-        this.$el.addEventListener(evt, handler)
+        this.$el.addEventListener(util.remapEvent(evt), handler, util.applyPassive())
       },
       deregisterInteractionHandler: (evt, handler) => {
-        this.$el.removeEventListener(evt, handler)
+        this.$el.removeEventListener(util.remapEvent(evt), handler, util.applyPassive())
       },
       registerDrawerInteractionHandler: (evt, handler) => {
-        this.$refs.drawer.addEventListener(evt, handler)
+        this.$refs.drawer.addEventListener(util.remapEvent(evt), handler)
       },
       deregisterDrawerInteractionHandler: (evt, handler) => {
-        this.$refs.drawer.removeEventListener(evt, handler)
+        this.$refs.drawer.removeEventListener(util.remapEvent(evt), handler)
       },
       registerTransitionEndHandler: (handler) => {
         this.$refs.drawer.addEventListener('transitionend', handler)
@@ -80,11 +83,11 @@ export default {
         document.removeEventListener('keydown', handler)
       },
       getDrawerWidth: () => {
-        return this.$refs.drawer.clientWidth
+        return this.$refs.drawer.offsetWidth
       },
       setTranslateX: (value) => {
         this.$refs.drawer.style.setProperty(
-          utils.getTransformPropertyName(),
+          util.getTransformPropertyName(),
           value === null ? null : `translateX(${value}px)`
         )
       },
@@ -92,21 +95,21 @@ export default {
         return this.$refs.drawer.querySelectorAll(FOCUSABLE_ELEMENTS)
       },
       saveElementTabState: (el) => {
-        utils.saveElementTabState(el)
+        util.saveElementTabState(el)
       },
       restoreElementTabState: (el) => {
-        utils.restoreElementTabState(el)
+        util.restoreElementTabState(el)
       },
       makeElementUntabbable: (el) => {
         el.setAttribute('tabindex', -1)
       },
       notifyOpen: () => {
+        this.$emit('change',true)
         this.$emit('open')
-        this.$root.$emit('mdc:layout')
       },
       notifyClose: () => {
+        this.$emit('change',false)
         this.$emit('close')
-        this.$root.$emit('mdc:layout')
       },
       isRtl: () => {
         /* global getComputedStyle */
@@ -116,10 +119,12 @@ export default {
         return el === this.$refs.drawer
       }
     })
-    this.foundation.init()
+    this.foundation && this.foundation.init()  
+    this._refresh()
   },
   beforeDestroy () {
-    this.foundation.destroy()
+    this.foundation && this.foundation.destroy()
+    this.foundation = null
   }
 }
 </script>

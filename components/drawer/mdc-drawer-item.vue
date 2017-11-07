@@ -1,7 +1,7 @@
 <template>
   <a :href="href" class="mdc-drawer-item mdc-list-item" 
     :class="classes" :style="styles"
-    @click="dispatchEvent">
+    @click="onClick">
     <span class="mdc-list-item__start-detail" v-if="hasStartDetail">
       <slot name="start-detail">
         <i class="material-icons" aria-hidden="true">{{startIcon}}</i>
@@ -11,15 +11,17 @@
   </a>
 </template>
 
-<script lang="babel">
+<script>
 import {RippleBase, DispatchEventMixin} from '../util'
 
 export default {
   name: 'mdc-drawer-item',
+  inject: ['mdcDrawer'],
   mixins: [DispatchEventMixin],
   props: {
     'start-icon': String,
-    'href': String
+    'href': String,
+    'temporary-close': {type: Boolean, default: true}
   },
   data () {
     return {
@@ -30,11 +32,13 @@ export default {
   computed: {
     hasStartDetail () {
       return this.startIcon || this.$slots['start-detail']
-    },
-    selectedClass () {
-      return {
-        'mdc-temporary-drawer--selected': this.selected
-      }
+    }
+  },
+  methods: {
+    onClick (evt) {
+      this.mdcDrawer.isTemporary && this.temporaryClose 
+        && this.mdcDrawer.close()
+      this.dispatchEvent(evt)
     }
   },
   mounted () {
@@ -42,7 +46,8 @@ export default {
     this.ripple.init()
   },
   beforeDestroy () {
-    this.ripple.destroy()
+    this.ripple && this.ripple.destroy()
+    this.ripple = null
   }
 }
 </script>

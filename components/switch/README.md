@@ -1,4 +1,4 @@
-## Switch
+## Usage
 
 the switch component is rendered as an input with checkbox type
 
@@ -28,5 +28,4 @@ var vm = new Vue({
 
 
 ### Reference
-- https://material.io/components/web/catalog/input-controls/switches/
-- https://material.io/guidelines/components/selection-controls.html#selection-controls-switch
+- <https://material.io/components/web/catalog/input-controls/switches>

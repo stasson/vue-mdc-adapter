@@ -20,7 +20,7 @@
         :minlength="minlength" :maxlength="maxlength"
         :disabled="disabled" :aria-controls="'help-'+_uid"
         ></textarea>
-      <label ref="label" :class="labelClasses" :for="_uid"  v-if="label">
+      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
     </div>
@@ -43,7 +43,7 @@
         :required="required" :size="size"
         :minlength="minlength" :maxlength="maxlength"
         :disabled="disabled" :aria-controls="'help-'+_uid">
-      <label ref="label" :class="labelClasses" :for="_uid"  v-if="label">
+      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
       <div ref="bottom" :class="bottomClasses"></div>
@@ -58,11 +58,12 @@
   </div>
 </template>
 
-<script lang="babel">
+<script>
 import MDCTextfieldFoundation from '@material/textfield/foundation'
 import {RippleBase} from '../util'
 
 export default {
+  name: 'mdc-textfield',
   props: {
     'value': String,
     'type': {
@@ -149,7 +150,6 @@ export default {
       deregisterTextFieldInteractionHandler: (evtType, handler) => {
         this.$refs.root.removeEventListener(evtType, handler)
       },
-      notifyIconAction: () => {},
       addClassToBottomLine: (className) => {
         this.$set(this.bottomClasses, className, true)
       },
@@ -171,12 +171,6 @@ export default {
       },
       deregisterInputInteractionHandler: (evtType, handler) => {
         this.$refs.input.removeEventListener(evtType, handler)
-      },
-      registerInputFocusHandler: (handler) => {
-        this.$refs.input.addEventListener('focus', handler)
-      },
-      deregisterInputFocusHandler: (handler) => {
-        this.$refs.input.removeEventListener('focus', handler)
       },
       registerTransitionEndHandler: (handler) => {
         if (this.$refs.bottom) {
@@ -206,6 +200,9 @@ export default {
       getNativeInput: () => {
         return this.$refs.input
       },
+      notifyIconAction: () => {
+        this.$emit('icon')
+      }
     })
     this.foundation.init()
 
@@ -214,7 +211,7 @@ export default {
       this.ripple.init()
     }
 
-    
+
   },
   beforeDestroy () {
     this.foundation.destroy()

@@ -7,8 +7,9 @@
   </select>
 </template>
 
-<script lang="babel">
+<script>
 export default {
+  name: 'mdc-native-select',
   model: {
     prop: 'value',
     event: 'change'

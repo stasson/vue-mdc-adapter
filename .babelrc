@@ -1,13 +1,24 @@
 {
-  "presets": [
-    ["env", { "modules": false }],
+  "comments": true,
+  "plugins": [
+    "transform-object-rest-spread",
+    "syntax-dynamic-import"
   ],
-  "plugins": ["transform-runtime"],
-  "comments": false,
+  "presets": [
+    ["env", { "modules": false }]
+  ],
   "env": {
     "test": {
-      "presets": ["env"],
-      "plugins": [ "istanbul" ]
+      "plugins": [
+        "transform-object-rest-spread",
+        "syntax-dynamic-import",
+        "transform-remove-strict-mode"
+      ],
+      "presets": [
+        ["env", {
+          "targets": { "node": "current" },
+        }]
+      ]
     }
   }
 }

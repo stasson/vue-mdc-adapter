@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" :multiple="multiple" 
+  <component :is="type" :multiple="multiple"
     :max-size="multiple ? maxSize : undefined"
     :disabled="disabled" :label="label" :value="value" @change="onChange"
   >
@@ -7,7 +7,7 @@
   </component>
 </template>
 
-<script lang="babel">
+<script>
 import MDCNativeSelect from './mdc-native-select.vue'
 import MDCMenuSelect from './mdc-menu-select.vue'
 import MDCMultiSelect from './mdc-multi-select.vue'
@@ -51,6 +51,7 @@ export default {
   computed: {
     type () {
       return this.multiple ? 'mdc-multi-select'
+        : this.menu ? 'mdc-menu-select'
         : this.native ? 'mdc-native-select'
           : 'mdc-menu-select'
     },

@@ -1,0 +1,157 @@
+@import "@material/typography/mdc-typography";
+@import "highlight.js/styles/googlecode";
+
+.mdc-drawer-header {
+  background-image: url("./assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.router-link-exact-active .mdc-drawer-item {
+  font-size: 1.1rem;  
+}
+
+.content {
+  padding: 8px 16px;
+  margin:16px auto 16px auto;
+  max-width : 800px;
+  min-width : 250px;
+}
+
+.demo-article {
+  display:flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+  min-height: 50px;
+  padding: 8px;
+
+  .mdc-demo {
+    flex: 1 1 auto;
+  }
+}
+
+.doc-article {
+  margin-top: 40px;
+}
+
+.markdown {
+
+  @include mdc-typography-base
+
+  a, a:active, a:hover, a:link, a:visited {
+      font-family: Roboto,sans-serif;
+      font-size: .875rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      line-height: 1.25rem;
+      color: rgba(0,0,0,.87);
+      font-family: Roboto Mono;
+  }
+  
+
+  h1 {
+    @include mdc-typography(display1) 
+    margin-top: 32px;
+  }
+
+
+  h2 {
+    margin-top: 24px;
+    @include mdc-typography(headline) 
+  }
+
+  h3 {
+    margin-top: 16px;
+    @include mdc-typography(title) 
+  }
+
+  h4 {
+    @include mdc-typography(subheading2) 
+  }
+
+  h5, h6 {
+    @include mdc-typography(subheading1) 
+  }
+
+  p {
+    @include mdc-typography(body1) 
+  }
+
+  blockquote {
+
+    margin: 24px 0px;
+    padding: 0 1em;
+    border-left: 0.25em solid #dfe2e5;    
+    
+    p {
+      @include mdc-typography(body2) 
+      // @include mdc-typography-adjust-margin(body2) 
+    }
+  }
+
+  pre > code {
+    display: block;
+    overflow-x: auto;
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: black;
+    background: #f7f7f7;
+
+    padding: 16px;
+    margin-top: -8px;
+    margin-bottom: 24px;
+  }
+
+  table {
+    padding: 0; 
+    margin-top: -8px;
+    margin-bottom: 24px;
+
+    tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0; 
+    
+
+      th {
+        @include mdc-typography(caption) 
+        border: 1px solid #cccccc;
+        text-align: left;
+        margin: 0;
+        padding: 6px 13px; 
+        background-color: #f8f8f8; 
+        font-weight: 500;
+        text-transform: lowercase;
+      }
+  
+      td {
+        border: 1px solid #cccccc;
+        text-align: left;
+        margin: 0;
+        font-size:.87em;
+        padding: 6px 13px; 
+        
+      }
+    }
+      
+  }
+
+  table tr th :first-child, table tr td :first-child {
+    margin-top: 0; 
+  }
+  
+  table tr:nth-child(2n) {
+    background-color: #f8f8f8; 
+  }
+
+  table tr th :last-child, table tr td :last-child {
+    margin-bottom: 0; 
+  }
+
+}

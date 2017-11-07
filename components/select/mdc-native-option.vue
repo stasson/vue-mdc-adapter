@@ -7,8 +7,9 @@
    </option>
 </template>
 
-<script lang="babel">
+<script>
 export default {
+  name: 'mdc-native-option',
   props: {
     value: String,
     disabled: Boolean

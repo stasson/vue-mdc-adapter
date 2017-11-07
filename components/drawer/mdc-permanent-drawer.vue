@@ -8,22 +8,11 @@
   </nav>
 </template>
 
-<script lang="babel">
+<script>
 export default {
   name: 'mdc-permanent-drawer',
   props: {
-    'toolbar-spacer': Boolean
-  },
-  data () {
-    return {
-      type: 'toto'
-    }
-  },
-  methods: {
-    open () {},
-    close () {},
-    toggle () {},
-    isOpen () { return true }
+    'toolbar-spacer': Boolean,
   }
 }
 </script>

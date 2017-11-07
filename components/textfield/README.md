@@ -1,4 +1,4 @@
-## Textfield
+## Usage
 
 ### Single-line
 ```html
@@ -32,12 +32,13 @@ var vm = new Vue({
 ```
 
 ### Validation
-
+```html
 <mdc-textfield type="password" label="Password"
   required minlength=8 maxlength=10
   helptext="passord must be 8 to 10 characters"
   helptext-persistent helptext-validation
   v-model="password" />
+```
 
 ### props
 
@@ -61,5 +62,5 @@ var vm = new Vue({
 
 
 ### Reference
-- https://material.io/components/web/catalog/input-controls/text-fields/
+- <https://material.io/components/web/catalog/input-controls/text-fields>
 

@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script lang="babel">
+<script>
 import MDCSliderFoundation from '@material/slider/foundation'
 
 export default {

@@ -1,43 +1,57 @@
 <h2 align="center">
 vue-mdc-adapter
 </h2>
+
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/v/vue-mdc-adapter.svg" alt="Version">
   </a>
+  <a href="https://www.npmjs.com/package/vue">
+    <img src="https://img.shields.io/badge/vue-%5E2.5.3-green.svg" alt="Vue">
+  </a>
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
     <img src="https://img.shields.io/npm/l/vue-mdc-adapter.svg" alt="License">
   </a>
-  <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
-    <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=master" alt="builds">
-  </a>
-  <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade" alt="Codacy">
-    <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d"/>
-  </a>
   <a href="https://www.npmjs.com/package/vue-mdc-adapter">
-    <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="downloads">
-  </a>
-  <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
-    <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" />
+    <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="Downloads">
   </a>
 </p>
 
-## A [Vue.JS](https://vuejs.org) wrapper around Google's [Material Component for the Web](https://material.io/components/web/).
+<p align="center">
+  <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
+    <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=master" alt="Build">
+  </a>
+  <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade">
+    <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d" alt="Codacy"/>
+  </a>
+  <a href="https://david-dm.org/stasson/vue-mdc-adapter" >
+    <img src="https://img.shields.io/david/stasson/vue-mdc-adapter.svg" alt="Dependencies"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/stasson/vue-mdc-adapter.svg" alt="Greenkeeper"/>
+  </a>
+  <a href="https://github.com/facebook/jest">
+    <img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" alt="Jest"/>
+  </a>
+  <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+    <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" alt="Chat"/>
+  </a>
+</p>
 
 
-> __Update__:  
-> Requires vue ^2.4.2 as peer dependency.  
-> Starting v0.0.35, most of the MDC component are supported.  
-> Focus is now on validation and keeping up with MDC updates.  
+## [Material Components](https://material.io/components/web/) for [Vue.JS](https://vuejs.org).
 
+<blockquote class="news">
+Focus is on known issues, validation and keeping up with MDC updates.  <br>
+New ci with jest sanity checks.<br>
+New per components distribution.<br>
+<strong>Requires vue: ^2.5.3</strong><br>
+</blockquote>
 
 ### Getting Started
-
-#### NPM
-
-```console
-npm install --save vue-mdc-adapter
-```
 
 #### CDN
 
@@ -46,9 +60,9 @@ npm install --save vue-mdc-adapter
   <!-- import reset material icons, fonts and vue-mdc-adapter stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">  
-  <link rel="stylesheet" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">  
-  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" type="text/css">
+  <link rel="stylesheet" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">
+
   <!-- import vue and then vue-mdc-adapter -->
   <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
   <script src="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.js"></script>
@@ -61,17 +75,21 @@ npm install --save vue-mdc-adapter
 > Quick start with vue-cli
 
 ```console
-npm install -g vue-cli 
+npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
 #### Webpack/Rollup
 
+```console
+npm install --save vue-mdc-adapter
+```
+
 > vue-mdc-adapter and material components uses es6 for code and sass for styles
-> make sure your webpack/rollup config resolves node_modules for transpiling 
+> make sure your webpack/rollup config resolves node_modules for transpiling
 > and sass imports
 
-- ES6 Imports 
+- ES6 Imports
 
 ```javascript
 import Vue from 'vue'
@@ -91,7 +109,7 @@ $mdc-theme-background: #fff;
 
 __or cherry pick components__:
 
-- ES6 Imports 
+- ES6 Imports
 ```javascript
 import Vue from 'vue'
 import VueMdcButton from 'vue-mdc-adapter/components/button'
@@ -104,8 +122,7 @@ Vue.use(VueMdcButton)
 ```
 
 
-### Documentation
+#### More
 
-Please check
-the [wiki](https://github.com/stasson/vue-mdc-adapter/wiki)
-and the [preview](https://stasson.github.io/vue-mdc-adapter), 
+- [documentation](https://stasson.github.io/vue-mdc-adapter)
+- [wiki](https://github.com/stasson/vue-mdc-adapter/wiki)

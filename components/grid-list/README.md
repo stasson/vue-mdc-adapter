@@ -1,4 +1,4 @@
-## Grid List
+## Usage
 
 Grid Lists are best suited for presenting homogeneous data, typically images.
 Each item in a grid list is called a tile. Tiles maintain consistent width,
@@ -100,6 +100,6 @@ var vm = new Vue({
 ```
 
 ### Reference
-- https://material.io/components/web/catalog/grid-lists
+- <https://material.io/components/web/catalog/grid-lists>
 
 
