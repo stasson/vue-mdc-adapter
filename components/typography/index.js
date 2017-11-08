@@ -1,11 +1,17 @@
-import VueMDCBody from './mdc-body.vue'
-import VueMDCCaption from './mdc-caption.vue'
-import VueMDCDisplay from './mdc-display.vue'
-import VueMDCHeadline from './mdc-headline.vue'
-import VueMDCSubeading from './mdc-subheading.vue'
-import VueMDCTitle from './mdc-title.vue'
+import {  
+  VueMDCTextSection,
+  VueMDCText,
+  VueMDCBody,
+  VueMDCCaption,
+  VueMDCDisplay,
+  VueMDCHeadline,
+  VueMDCSubeading,
+  VueMDCTitle
+} from './mdc-typography.js'
 
-export {
+export const components = {
+  VueMDCTextSection,
+  VueMDCText,
   VueMDCBody,
   VueMDCCaption,
   VueMDCDisplay,
@@ -14,13 +20,12 @@ export {
   VueMDCTitle
 }
 
-export default {
-  install (vm) {
-    vm.component('mdc-body', VueMDCBody)
-    vm.component('mdc-caption', VueMDCCaption)
-    vm.component('mdc-display', VueMDCDisplay)
-    vm.component('mdc-headline', VueMDCHeadline)
-    vm.component('mdc-subheading', VueMDCSubeading)
-    vm.component('mdc-title', VueMDCTitle)
+function install (vm) {
+  for (let key in components) {
+    let component  = components[key]
+    let name = component.name
+    vm.component(name, component)
   }
 }
+
+export default { install, components }
