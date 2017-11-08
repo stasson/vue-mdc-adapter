@@ -47,7 +47,7 @@ export default {
     }
 
     this.slotObserver = new MutationObserver(() => refreshSize())
-    this.slotObserver.observe(this.$el, { childList: true })
+    this.slotObserver.observe(this.$el, { childList: true, subtree: true })
 
     refreshSize()
   },

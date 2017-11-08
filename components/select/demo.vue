@@ -1,28 +1,32 @@
 <template>
   <div class="mdc-demo">
-    <mdc-select v-model="selectValue" label="Pick up a food group" native="false">
-      <mdc-option>
-        Bread, Cereal, Rice, and Pasta
-      </mdc-option>
-      <mdc-option value="vegies">
-        Vegetables
-      </mdc-option>
-      <mdc-option>
-         Meat, Poultry, Fish, Dry Beans, Eggs, and Nuts
+    <mdc-select v-model="selectedType" label="Pick up a food type">
+      <mdc-option v-for="type in types" :key="type">
+        {{type}}
       </mdc-option>
     </mdc-select>
-    <mdc-body><br>Selected: {{ selectValue }}</mdc-body>
-    <p><br></p>
 
-    <mdc-select multiple v-model="selectValues" label="Pick one or both">
-      <mdc-option>
-        Potato
-      </mdc-option>
-      <mdc-option>
-        Cereal
+    <mdc-select v-model="selectedValue" label="Pick up a food" 
+      v-if="selectedType">
+      <mdc-option v-for="option of options" :key="option" 
+      :value="option.toLowerCase()">
+        {{option}}
       </mdc-option>
     </mdc-select>
-    <mdc-body><br>Selected: {{ selectValues }}</mdc-body>
+    <mdc-caption tag="p" v-if="selectedType">
+      Selected Value: {{ selectedValue }}</mdc-caption>
+    <br>
+    <br>
+
+    <mdc-select multiple v-model="selectedValues" label="Pick one or more" 
+      v-if="selectedType">
+      <mdc-option v-for="option of options" :key="option"
+        :value="option.toLowerCase()">
+        {{option}}
+      </mdc-option>
+    </mdc-select>
+    <mdc-caption tag="p" 
+      v-if="selectedType">Multi Select: {{ selectedValues }}</mdc-caption>
   </div>
 </template>
 
@@ -30,9 +34,23 @@
   export default {
     data () {
       return {
-        selectValue: undefined,
-        selectValues: [],
+        selectedType: undefined,
+        selectedValue: undefined,
+        selectedValues: [],
+        food: {
+          'Vegetables' : ['Spinach', 'Carrots', 'Onions', 'Broccoli'], 
+          'Meat' : [ 'Eggs', 'Chicken', 'Fish', 'Turkey', 'Pork' , 'Beef'], 
+          'Fruits' : ['Apples', 'Oranges', 'Bananas', 'Berries', 'Lemons'], 
+        }
       }
+    },
+    computed: {
+      types () {
+        return Object.keys(this.food)
+      }, 
+      options () {
+        return this.selectedType ? this.food[this.selectedType] : []
+      } 
     }
   }
 </script>

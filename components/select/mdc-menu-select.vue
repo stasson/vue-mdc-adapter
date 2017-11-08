@@ -2,7 +2,7 @@
   <div class="mdc-select mdc-menu-anchor" role="listbox" :tabindex="tabIndex"
     :class="classes" :style="styles">
     <span class="mdc-select__selected-text">{{ selectedTextContent }}</span>
-    <mdc-menu ref="menu" :style="menuStyles">
+    <mdc-menu ref="menu" :style="menuStyles" @update="resetIndex">
         <li class="mdc-list-item" role="option" aria-disabled="true" data-value="">
         {{label}}
         </li>
@@ -35,8 +35,16 @@ export default {
       selectedTextContent: ''
     }
   },
+  methods: {
+    resetIndex () {
+      if (this.foundation) {
+        this.foundation.setSelectedIndex(this.label ? 0 : -1)
+        this.$emit('change', this.foundation.getValue())
+      }
+    }
+  },
   mounted () {
-    this.foundation = new MDCSelectFoundation({
+    let foundation = new MDCSelectFoundation({
       addClass: (className) =>
         this.$set(this.classes, className, true),
       removeClass: (className) =>
@@ -84,9 +92,15 @@ export default {
         this.$refs.menu.items.length,
       getTextForOptionAtIndex: (index) =>
         this.$refs.menu.items[index].textContent.trim(),
-      getValueForOptionAtIndex: (index) =>
-        this.$refs.menu.items[index].getAttribute('data-value') ||
-          this.$refs.menu.items[index].textContent.trim(),
+      getValueForOptionAtIndex: (index) => {
+        if ( (index == 0 && this.label) 
+          || !this.$refs.menu.items[index]) 
+            return undefined
+        else {
+          return this.$refs.menu.items[index].getAttribute('data-value') 
+            || this.$refs.menu.items[index].textContent.trim()
+        }
+      },
       setAttrForOptionAtIndex: (index, attr, value) =>
         this.$refs.menu.items[index].setAttribute(attr, value),
       rmAttrForOptionAtIndex: (index, attr) =>
@@ -103,21 +117,30 @@ export default {
       getWindowInnerHeight: () =>
         window.innerHeight
     })
-    this.foundation.init()
+    
+    foundation.init()
 
-    let idx = 0
-    let options = this.$refs.menu.items
-    for (let i = 0; i < options.length; i++) {
-      let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
-      if (this.value === optionValue) {
-        idx = i
+    if (!this.disabled) {
+      let idx = 0
+      let options = this.$refs.menu.items
+      for (let i = 0; i < options.length; i++) {
+        let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
+        if (this.value === optionValue) {
+          idx = i
+        }
       }
+      foundation.setSelectedIndex(idx)
     }
-    this.foundation.setSelectedIndex(idx)
-    this.foundation.setDisabled(this.disabled)
+    foundation.setDisabled(this.disabled)
+    this.foundation = foundation
+    if (this.value !== this.foundation.getValue()) {
+      this.$emit('change', this.foundation.getValue())
+    }
   },
   beforeDestroy () {
-    this.foundation.destroy()
+    let foundation = this.foundation
+    this.foundation = null
+    foundation.destroy()
   }
 }
 </script>

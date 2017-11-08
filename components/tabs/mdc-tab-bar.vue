@@ -122,7 +122,7 @@ export default {
     resetTabs()
 
     this.slotObserver = new MutationObserver(() => resetTabs())
-    this.slotObserver.observe(this.$el, { childList: true })
+    this.slotObserver.observe(this.$el, { childList: true, subtree: true })
 
     this.foundation.init()
   },

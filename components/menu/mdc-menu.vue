@@ -47,10 +47,10 @@ export default {
     const refreshItems = () => {
       this.items = [].slice.call(
         this.$refs.items.querySelectorAll('.mdc-list-item[role]'))
+      this.$emit('update')
     }
-    refreshItems()
     this.slotObserver = new MutationObserver(() => refreshItems())
-    this.slotObserver.observe(this.$el, { childList: true })
+    this.slotObserver.observe(this.$el, { childList: true, subtree: true })
 
     const transformPropertyName = getTransformPropertyName(window)
     this._previousFocus = undefined
@@ -141,8 +141,7 @@ export default {
       getAccurateTime: () => window.performance.now()
     })
 
-    /** -- temporary fix for duplicate $emit */
-    // TODO: MDCFIX
+    /** TODO: MDCFIX -- temporary fix for duplicate $emit */
     this.foundation.clickHandler_ = (evt) => {
       evt.stopPropagation()
       this.foundation.handlePossibleSelected_(evt)
@@ -165,6 +164,7 @@ export default {
     }
     /* -- temporary fix for duplicate $emit **/
 
+    refreshItems()
     this.foundation.init()
   },
   beforeDestroy () {

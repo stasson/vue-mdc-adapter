@@ -2,7 +2,7 @@
   <select ref="root" class="mdc-select" v-model="selected" :disabled="disabled"
     @change="onChange"
   >
-    <option disabled value=""v-if="label">{{ label }}</option>
+    <option disabled value="" v-if="label">{{ label }}</option>
     <slot></slot>
   </select>
 </template>
