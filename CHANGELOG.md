@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.8...v0.2.0) (2017-11-08)
+
+
+### Bug Fixes
+
+* **select:** option can not be selected once children slots have changed [#97](https://github.com/stasson/vue-mdc-adapter/issues/97) ([6742194](https://github.com/stasson/vue-mdc-adapter/commit/6742194))
+* **typography:** component should not force adjust-margin [#101](https://github.com/stasson/vue-mdc-adapter/issues/101) ([ceaa6c1](https://github.com/stasson/vue-mdc-adapter/commit/ceaa6c1))
+* **typography:** fix typography test.spec ([f91e121](https://github.com/stasson/vue-mdc-adapter/commit/f91e121))
+
+
+### BREAKING CHANGES
+
+* **typography:** typography components no longer force margin-adjust, it must be explicitly set.
+
+
+
 <a name="0.1.8"></a>
 ## [0.1.8](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.6...v0.1.8) (2017-11-05)
 
