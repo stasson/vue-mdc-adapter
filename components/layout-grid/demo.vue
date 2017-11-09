@@ -1,18 +1,21 @@
 <template>
   <div class="mdc-demo">
     <mdc-layout-grid class=grid>
-      <mdc-layout-cell class="cell" desktop=3 tablet=3 >
-        <!--<p>mode: {{ $mdc.layout.mode }}</p>-->
-        <!--<p>orientation: {{  $mdc.layout.orientation }}</p>-->
+      <mdc-layout-cell class="cell cell1" desktop=3 tablet=3 ></mdc-layout-cell>
+      <mdc-layout-cell class="cell cell2" desktop=3 tablet=5 align="top" >
+        <mdc-body>
+          align="top"
+        </mdc-body>
       </mdc-layout-cell>
-      <mdc-layout-cell class="cell" desktop=3 tablet=5 align="top" >
-        Top
+      <mdc-layout-cell class="cell cell3" desktop=3 tablet=5 align="middle">
+        <mdc-body>
+          align="middle"
+        </mdc-body>
       </mdc-layout-cell>
-      <mdc-layout-cell class="cell" desktop=3 tablet=5 align="middle">
-        Middle
-      </mdc-layout-cell>
-      <mdc-layout-cell class="cell" desktop=3 tablet=3 align="bottom">
-        Bottom
+      <mdc-layout-cell class="cell cell4" desktop=3 tablet=3 align="bottom">
+        <mdc-body>
+          align="bottom"
+        </mdc-body>
       </mdc-layout-cell>
     </mdc-layout-grid>
   </div>
@@ -20,13 +23,22 @@
 
 <style>
 .mdc-demo .grid {
-  min-height: 80px;
-  min-width: 350px;
   border: 1px solid;
 }
 
 .mdc-demo .cell {
   border: 1px dashed;
+  min-height: 50px;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.mdc-demo .cell.cell1 {
+  min-height: 100px;
+}
+
+.mdc-demo .cell.cell4 {
+  min-height: 80px;
 }
   
 </style>
