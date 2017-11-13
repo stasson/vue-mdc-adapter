@@ -1,6 +1,6 @@
 ## Usage
-`mdc-layout-app` provide a flex layot for proper positioning of the toobar,
-drawer and main content.
+`mdc-layout-app` is a flex layout component for proper positioning of the toobar,
+drawer and main content. 
 
 ```html
 <mdc-layout-app>
@@ -19,3 +19,6 @@ drawer and main content.
   
 </mdc-layout-app>
 ```
+
+Toolbar and Drawer markup goes to dedicated `slot="toolbar"` and
+`slot="drawer"` slots. Main content goes to default slot.
