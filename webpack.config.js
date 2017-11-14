@@ -244,8 +244,13 @@ if (isDevelopment) {
 
   config.devServer = {
     contentBase: path.resolve(__dirname, 'static'),
+    disableHostCheck: true,
     hot: true
   }
+  
+  // cloud9 support
+  process.env.IP && (config.devServer.host = process.env.IP)
+  process.env.PORT && (config.devServer.port = process.env.PORT)
 
 }
 

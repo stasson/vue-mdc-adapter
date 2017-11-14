@@ -33,8 +33,8 @@
   },
   "scripts": {
     "devboard": "webpack-dashboard -m -- npm run dev",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --host $IP --port $PORT --disable-host-check",
-    "test": "jest",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "test": "jest --runInBand",
     "build": "run-s build:**",
     "build:demo": "cross-env NODE_ENV=production webpack",
     "build:dist": "run-s clean:dist rollup:**",
@@ -50,7 +50,8 @@
     "commitmsg": "validate-commit-msg --no-verify",
     "release": "standard-version --no-verify",
     "ci": "run-s ci:*",
-    "ci:test": "jest  --silent --ci",
+    "ci:lint": "run-s lint:**",
+    "ci:test": "jest --runInBand --silent --ci",
     "ci:build": "run-s build:**"
   },
   "config": {
