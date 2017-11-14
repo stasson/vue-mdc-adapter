@@ -47,7 +47,7 @@
     "clean:dist": "rimraf dist/*",
     "reset:modules": "rimraf node_modules/* && npm install",
     "changelog": "standard-changelog -i CHANGELOG.md -k package.json -w",
-    "commitmsg": "validate-commit-msg --no-verify",
+    "commitmsg": "validate-commit-msg",
     "release": "standard-version --no-verify",
     "ci": "run-s ci:*",
     "ci:lint": "run-s lint:**",
