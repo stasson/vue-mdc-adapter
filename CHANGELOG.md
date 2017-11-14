@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.2.0...v0.2.1) (2017-11-14)
+
+
+### Bug Fixes
+
+* **package:** update material-components-web to version 0.25.0 ([1ed7f64](https://github.com/stasson/vue-mdc-adapter/commit/1ed7f64))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.1.8...v0.2.0) (2017-11-08)
 
