@@ -93,26 +93,26 @@ export default {
     return {
       text: this.value,
       rootClasses: {
-        'mdc-textfield': true,
-        'mdc-textfield--upgraded': true,
-        'mdc-textfield--disabled': this.disabled,
-        'mdc-textfield--dense': this.dense,
-        'mdc-textfield--fullwidth': this.fullwidth,
-        'mdc-textfield--textarea': this.multiline
+        'mdc-text-field': true,
+        'mdc-text-field--upgraded': true,
+        'mdc-text-field--disabled': this.disabled,
+        'mdc-text-field--dense': this.dense,
+        'mdc-text-field--fullwidth': this.fullwidth,
+        'mdc-text-field--textarea': this.multiline
       },
       inputClasses: {
-        'mdc-textfield__input': true
+        'mdc-text-field__input': true
       },
       labelClasses: {
-        'mdc-textfield__label': true
+        'mdc-text-field__label': true
       },
       bottomClasses: {
-        'mdc-textfield__bottom-line': true
+        'mdc-text-field__bottom-line': true
       },
       helpClasses: {
-        'mdc-textfield-helptext': true,
-        'mdc-textfield-helptext--persistent': this.helptextPersistent,
-        'mdc-textfield-helptext--validation-msg': this.helptextValidation
+        'mdc-text-field-helptext': true,
+        'mdc-text-field-helptext--persistent': this.helptextPersistent,
+        'mdc-text-field-helptext--validation-msg': this.helptextValidation
       }
     }
   },
@@ -124,7 +124,7 @@ export default {
   computed: {
     labelClassesUpgraded () {
       return Object.assign(this.labelClasses, {
-        'mdc-textfield__label--float-above': this.value
+        'mdc-text-field__label--float-above': this.value
       })
     }
   },
