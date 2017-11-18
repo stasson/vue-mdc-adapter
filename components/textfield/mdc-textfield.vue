@@ -6,7 +6,7 @@
         :value="value" @input="updateValue($event.target.value)"
         :rows="rows"
         :minlength="minlength" :maxlength="maxlength"
-        :disabled="disabled" :aria-controls="'help-'+_uid"
+        :aria-controls="'help-'+_uid"
         :placeholder="label"
         :aria-label="label" >
         ></textarea>
@@ -18,7 +18,7 @@
         :value="value" @input="updateValue($event.target.value)"
         :rows="rows" :cols="cols"
         :minlength="minlength" :maxlength="maxlength"
-        :disabled="disabled" :aria-controls="'help-'+_uid"
+        :aria-controls="'help-'+_uid"
         ></textarea>
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
@@ -31,7 +31,7 @@
         :value="value" @input="updateValue($event.target.value)"
         :required="required"
         :minlength="minlength" :maxlength="maxlength"
-        :disabled="disabled" :aria-controls="'help-'+_uid"
+        :aria-controls="'help-'+_uid"
         :placeholder="label"
         :aria-label="label" >
     </div>
@@ -42,7 +42,7 @@
         :value="value" @input="updateValue($event.target.value)"
         :required="required" :size="size"
         :minlength="minlength" :maxlength="maxlength"
-        :disabled="disabled" :aria-controls="'help-'+_uid">
+        :aria-controls="'help-'+_uid">
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
@@ -81,8 +81,8 @@ export default {
     'helptext-validation': Boolean,
     'disabled': Boolean,
     'required': Boolean,
-    'minlength': { type: [Number, String], default: 0 },
-    'maxlength': { type: [Number, String], default: -1 },
+    'minlength': { type: [Number, String], default: undefined },
+    'maxlength': { type: [Number, String], default: undefined },
     'size': { type: [Number, String], default: 20 },
     'fullwidth': Boolean,
     'multiline': Boolean,
@@ -114,6 +114,11 @@ export default {
         'mdc-text-field-helptext--persistent': this.helptextPersistent,
         'mdc-text-field-helptext--validation-msg': this.helptextValidation
       }
+    }
+  },
+  watch:  {
+    disabled () {
+      this.foundation && this.foundation.setDisabled(this.disabled)
     }
   },
   methods: {
@@ -205,6 +210,7 @@ export default {
       }
     })
     this.foundation.init()
+    this.foundation.setDisabled(this.disabled)
 
     if (this.textbox) {
       this.ripple = new RippleBase(this)
