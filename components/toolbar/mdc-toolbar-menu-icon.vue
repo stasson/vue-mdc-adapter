@@ -10,7 +10,7 @@
 import {DispatchEventMixin} from '../util'
 
 export default {
-  name: 'mdc-toolbar-menu',
+  name: 'mdc-toolbar-menu-icon',
   mixins: [DispatchEventMixin],
   props: {
     icon: {type: String, 'default': "menu"}

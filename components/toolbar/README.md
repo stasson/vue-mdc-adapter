@@ -4,7 +4,7 @@
 <mdc-toolbar>
   <mdc-toolbar-row>
     <mdc-toolbar-section align-start >
-      <mdc-toolbar-icon-menu event="toggle-drawer"></mdc-toolbar-icon-menu>
+      <mdc-toolbar-menu-icon event="toggle-drawer"></mdc-toolbar-menu-icon>
       <mdc-toolbar-title>Title</mdc-toolbar-title>
     </mdc-toolbar-section>
     <mdc-toolbar-section align-end>

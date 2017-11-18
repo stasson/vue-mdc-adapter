@@ -2,7 +2,7 @@
   <mdc-toolbar waterfall>
     <mdc-toolbar-row>
       <mdc-toolbar-section align-start >
-        <mdc-toolbar-menu event="toggle-drawer"></mdc-toolbar-menu>
+        <mdc-toolbar-menu-icon event="toggle-drawer"></mdc-toolbar-menu-icon>
         <mdc-toolbar-title @click="$router.push('/')">vue-mdc-adapter</mdc-toolbar-title>
       </mdc-toolbar-section>
       <mdc-toolbar-section align-end >
