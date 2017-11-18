@@ -130,7 +130,6 @@
     "vue-test-utils": "1.0.0-beta.4",
     "webpack": "^3.6.0",
     "webpack-cdn-plugin": "^1.6.5",
-    "webpack-dashboard": "^1.0.0-5",
     "webpack-dev-server": "^2.9.4"
   },
   "engines": {

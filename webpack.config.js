@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackCdnPlugin = require('webpack-cdn-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
@@ -236,8 +235,6 @@ if (isDevelopment) {
   })
 
   config.plugins.push( 
-    // conveniency dashboard
-    new DashboardPlugin(),
     // HMR
     new webpack.HotModuleReplacementPlugin()
   )  
