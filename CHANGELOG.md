@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.2.1...v0.3.0) (2017-11-18)
+
+
+### Bug Fixes
+
+* **textfield:** disable property is not reactive ([575f526](https://github.com/stasson/vue-mdc-adapter/commit/575f526)), closes [#111](https://github.com/stasson/vue-mdc-adapter/issues/111)
+* **toolbar:** mdc-toolbar-menu name is confusing ([395a431](https://github.com/stasson/vue-mdc-adapter/commit/395a431)), closes [#113](https://github.com/stasson/vue-mdc-adapter/issues/113)
+* **toolbar:** should be built as a single plugin [#114](https://github.com/stasson/vue-mdc-adapter/issues/114) ([b68b75d](https://github.com/stasson/vue-mdc-adapter/commit/b68b75d))
+
+
+### BREAKING CHANGES
+
+* **toolbar:** rename mdc-toolbar-menu to mdc-tollbar-menu-icon
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.2.0...v0.2.1) (2017-11-14)
 
