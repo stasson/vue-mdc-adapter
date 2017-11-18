@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  name: 'mdc-text'
+  name: 'mdc-card-text'
 }
 </script>

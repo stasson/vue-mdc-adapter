@@ -1,3 +1,4 @@
+import plugin from '../plugin.js'
 import {  
   VueMDCTextSection,
   VueMDCText,
@@ -9,7 +10,7 @@ import {
   VueMDCTitle
 } from './mdc-typography.js'
 
-export const components = {
+export {
   VueMDCTextSection,
   VueMDCText,
   VueMDCBody,
@@ -20,12 +21,13 @@ export const components = {
   VueMDCTitle
 }
 
-function install (vm) {
-  for (let key in components) {
-    let component  = components[key]
-    let name = component.name
-    vm.component(name, component)
-  }
-}
-
-export default { install, components }
+export default plugin({
+  VueMDCTextSection,
+  VueMDCText,
+  VueMDCBody,
+  VueMDCCaption,
+  VueMDCDisplay,
+  VueMDCHeadline,
+  VueMDCSubeading,
+  VueMDCTitle
+})

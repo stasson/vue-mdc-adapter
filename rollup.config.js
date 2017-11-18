@@ -102,6 +102,7 @@ export default [
   createConfig('components/switch/entry.js', 'vue-mdc-switch', 'VueMDCSwitch'),
   createConfig('components/tabs/entry.js', 'vue-mdc-tabs', 'VueMDCTabs'),
   createConfig('components/textfield/entry.js', 'vue-mdc-texfield', 'VueMDCTextfield'),
+  createConfig('components/toolbar/entry.js', 'vue-mdc-toolbar', 'VueMDCToolbar'),
   createConfig('components/typography/entry.js', 'vue-mdc-typography', 'VueMDCTypography'),
 ]
 

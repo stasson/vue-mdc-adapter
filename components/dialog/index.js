@@ -1,9 +1,10 @@
+import plugin from '../plugin.js'
 import VueMDCDialog from './mdc-dialog.vue'
 
-export {VueMDCDialog}
-
-export default {
-  install (vm) {
-    vm.component('mdc-dialog', VueMDCDialog)
-  }
+export {
+  VueMDCDialog
 }
+
+export default plugin ({
+  VueMDCDialog
+})

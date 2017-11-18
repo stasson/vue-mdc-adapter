@@ -1,11 +1,10 @@
+import plugin from '../plugin.js'
 import VueMDCLinearProgress from './mdc-linear-progress.vue'
 
 export {
   VueMDCLinearProgress
 }
 
-export default {
-  install (vm) {
-    vm.component('mdc-linear-progress', VueMDCLinearProgress)
-  }
-}
+export default plugin ({
+  VueMDCLinearProgress
+})

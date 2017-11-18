@@ -1,22 +1,17 @@
 import { mount, createLocalVue, checkValidMdcAdapter } from '../test-utils'
-import  plugin from './index.js';
-import {
-  VueMDCMenuSelect,
-  VueMDCMenuOption,
-  VueMDCMultiSelect,
-  VueMDCMultiOption,
-  VueMDCNativeSelect,
-  VueMDCNativeOption,
-} from './index.js';
+
+import VueMDCMenuSelect from './mdc-menu-select.vue'
+import VueMDCMenuOption from './mdc-menu-option.vue'
+import VueMDCNativeSelect from './mdc-native-select.vue'
+import VueMDCNativeOption from './mdc-native-option.vue'
+import VueMDCMultiSelect from './mdc-multi-select.vue'
+import VueMDCMultiOption from './mdc-multi-option.vue'
 
 import Spec from './test.spec.vue';
-
-
 
 describe(__dirname, () => {
 
   const localVue = createLocalVue()
-  localVue.use(plugin)
 
   describe('VueMDCSelect', () => {
     const spec = mount(Spec, localVue)

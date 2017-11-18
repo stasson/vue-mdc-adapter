@@ -1,9 +1,10 @@
+import plugin from '../plugin.js'
 import VueMDCFAB from './mdc-fab.vue'
 
-export {VueMDCFAB}
-
-export default {
-  install (vm) {
-    vm.component('mdc-fab', VueMDCFAB)
-  }
+export {
+  VueMDCFAB
 }
+
+export default plugin ({
+  VueMDCFAB
+})
