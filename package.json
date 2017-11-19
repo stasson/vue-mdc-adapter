@@ -32,7 +32,6 @@
     "url": "https://github.com/stasson/vue-mdc-adapter/issues"
   },
   "scripts": {
-    "devboard": "webpack-dashboard -m -- npm run dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "test": "jest --runInBand",
     "build": "run-s build:**",
