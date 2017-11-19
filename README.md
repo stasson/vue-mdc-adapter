@@ -1,5 +1,6 @@
 <div class="readme-header">
   <p>
+    <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade">
     <a href="https://www.npmjs.com/package/vue-mdc-adapter">
       <img src="https://badge.fury.io/js/vue-mdc-adapter.svg" alt="Version">
     </a>
@@ -9,8 +10,10 @@
     <a href="https://www.npmjs.com/package/vue-mdc-adapter">
       <img src="https://img.shields.io/npm/l/vue-mdc-adapter.svg" alt="License">
     </a>
-    <a href="https://www.npmjs.com/package/vue-mdc-adapter">
-      <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="Downloads">
+      <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d" alt="Codacy"/>
+    </a>
+    <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+      <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" alt="Chat"/>
     </a>
   </p>
   
@@ -18,14 +21,11 @@
     <a href="https://travis-ci.org/stasson/vue-mdc-adapter">
       <img src="https://travis-ci.org/stasson/vue-mdc-adapter.svg?branch=master" alt="Build">
     </a>
-    <a href="https://www.codacy.com/app/stasson/vue-mdc-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stasson/vue-mdc-adapter&amp;utm_campaign=Badge_Grade">
-      <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d" alt="Codacy"/>
+    <a href="https://greenkeeper.io/" >
+      <img src="https://badges.greenkeeper.io/stasson/vue-mdc-adapter.svg" alt="Dependencies"/>
     </a>
     <a href="https://david-dm.org/stasson/vue-mdc-adapter" >
       <img src="https://img.shields.io/david/stasson/vue-mdc-adapter.svg" alt="Dependencies"/>
-    </a>
-    <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
-      <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" alt="Chat"/>
     </a>
   </p>
 
@@ -37,7 +37,7 @@
 [Material Components](https://material.io/components/web/)
 for [Vue.js](https://vuejs.org) which follows best practices 
 recommended by Google:
-[Using Foundation and adapters](https://github.com/material-components/material-components-web/blob/master/docs/integrating-into-frameworks.md#the-advanced-approach-using-foundations-and-adapters)
+[Using Foundations and Adapters](https://github.com/material-components/material-components-web/blob/master/docs/integrating-into-frameworks.md#the-advanced-approach-using-foundations-and-adapters)
 
 The project aims at trying to find the right balance between ease of use vs
 customization, while sticking to the _Vue Spirit_ (approachable, versatile, performant,)
