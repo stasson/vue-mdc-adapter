@@ -51,7 +51,7 @@ export default {
       // 'drawer-demo': () => import('../components/drawer/demo.vue'),
       'fab-demo': () => import('../components/fab/demo.vue'),
       'grid-list-demo': () => import('../components/grid-list/demo.vue'),
-      // 'icon-demo': () => import('../components/icon/demo.vue'),
+      'icon-demo': () => import('../components/icon/demo.vue'),
       'icon-toggle-demo': () => import('../components/icon-toggle/demo.vue'),
       // 'layout-app-demo': () => import('../components/layout-app/demo.vue'),
       'layout-grid-demo': () => import('../components/layout-grid/demo.vue'),
