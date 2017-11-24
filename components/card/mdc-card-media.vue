@@ -10,17 +10,18 @@
 export default {
   name: 'mdc-card-media',
   props: {
-    src: {
-      type: String,
-      required: true
-    },
+    src: String,
+    size:String,
+    position:String,
     height: [String, Number],
     dark: Boolean
   },
   computed: {
     styles () {
       var styles = {
-        backgroundImage: `url(${this.src})`
+        backgroundImage: `url(${this.src})`,
+        backgroundSize: this.size,
+        backgroundPosition: this.position
       }
 
       if (this.height) {

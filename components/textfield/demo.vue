@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-demo">
+  <div class="mdc-demo mdc-demo--container">
     <mdc-layout-grid>
       <mdc-layout-cell span=8>
         <mdc-textfield :disabled="!enabled" v-model="textField"

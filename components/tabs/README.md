@@ -28,7 +28,7 @@
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
 |`indicator-primary`|Boolean| false | whether the indicator has the primary color |
-|`indicator-accent`|String| optional | whether the indicator has the accent color  |
+|`indicator-accent`|Boolean| false | whether the indicator has the accent color  |
 
 > emits `change` event with the active index as parameter
 

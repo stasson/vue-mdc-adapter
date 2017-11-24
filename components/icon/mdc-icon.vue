@@ -1,5 +1,5 @@
 <template>
-  <span class="mdc-icon" :class="{'material-icons':!!icon}">
+  <span class="mdc-icon mdc-icon--material" :class="{'material-icons':!!icon}">
     <slot>{{ icon }}</slot>
   </span>
 </template>

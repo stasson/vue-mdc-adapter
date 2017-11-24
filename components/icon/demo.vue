@@ -1,15 +1,21 @@
 <template>
-  <div class="mdc-demo">
-    <mdc-body><mdc-icon icon="home"></mdc-icon> Material Icon</mdc-body>
-    <mdc-body><mdc-icon class="fa fa-home"></mdc-icon>Font Awsome</mdc-body>
+  <div class="mdc-demo mdc-demo--container">
+      <mdc-list class="icon-demo">
+        <mdc-list-item>
+          Material Icon <mdc-icon slot="end-detail" icon="home"></mdc-icon>
+        </mdc-list-item>
+        <mdc-list-item>
+          Awesome Font<mdc-icon slot="end-detail" class="fa fa-home"></mdc-icon>
+        </mdc-list-item>
+      </mdc-list>
   </div>
 </template>
 
-<<style>
+<style>
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-.mdc-icon {
-  font-size: 64px;
+.icon-demo .mdc-list-item {
+  min-width: 150px;
 }
 
 </style>

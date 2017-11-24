@@ -1,0 +1,78 @@
+<html lang="en">
+    <head>
+        <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+        <link rel="stylesheet prefetch" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script src="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.js"></script>
+        <style>
+            html, body {
+                height: 100%;
+                width:100%;
+            }
+
+            .content {
+                padding: 48px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="layout-app-demo">
+            <mdc-layout-app>
+                <mdc-toolbar slot="toolbar" fixed>
+                <mdc-toolbar-row>
+                    <mdc-toolbar-section align-start >
+                    <mdc-toolbar-menu-icon event="toggle-drawer">
+                    </mdc-toolbar-menu-icon>
+                    <mdc-toolbar-title>Drawer</mdc-toolbar-title>
+                    </mdc-toolbar-section>
+                </mdc-toolbar-row>
+                </mdc-toolbar>
+                
+                <mdc-drawer ref="drawer" slot="drawer" toggle-on="toggle-drawer" 
+                    :temporary="drawerType == 'temporary'"
+                    :persistent="drawerType =='persistent'"
+                    :permanent="drawerType == 'permanent'"
+                >
+                <mdc-drawer-list>
+                    <mdc-drawer-item start-icon="inbox">Inbox</mdc-drawer-item>
+                    <mdc-drawer-item start-icon="send">Sent Mail</mdc-drawer-item>
+                    <mdc-drawer-item start-icon="drafts">Drafts</mdc-drawer-item>
+                </mdc-drawer-list>
+                </mdc-drawer>
+                
+                <main class="content"  style="display:flex;justify-content:center">
+                    <div>
+                        <mdc-radio name="drawer" v-model="drawerType" label="temporary" checked></mdc-radio>
+                        <mdc-radio name="drawer" v-model="drawerType" label="persistent"></mdc-radio>
+                        <mdc-radio name="drawer" v-model="drawerType" label="permanent"></mdc-radio>
+                    </div>
+                </main>
+                
+            </mdc-layout-app>
+        </div>
+                    
+        <script>
+            var app = new Vue({
+                el: '#layout-app-demo',
+                data: function () {
+                    return {
+                        drawerType: "temporary"
+                    }
+                },
+                watch: {
+                    drawerType: function () {
+                        this.$refs.drawer.open()
+                    }
+                },
+                mounted:  function () {
+                    var vm = this
+                    vm.$nextTick( function () {
+                        vm.$refs.drawer.open()
+                    })
+                }
+            })
+        </script>
+    </body>
+</html>

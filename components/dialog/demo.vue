@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-demo">
+  <div class="mdc-demo mdc-demo--container">
 
     <mdc-dialog ref="dialog" title="Dialog" accept="Accept" cancel="Decline">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

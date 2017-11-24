@@ -1,0 +1,106 @@
+.markdown {
+    
+      margin-top: 64px;
+    
+      @include mdc-typography-base
+    
+      a, a:active, a:hover, a:link, a:visited {
+          font-family: Roboto,sans-serif;
+          font-size: .875rem;
+          font-weight: 400;
+          letter-spacing: .04em;
+          line-height: 1.25rem;
+          color: rgba(0,0,0,.87);
+          font-family: Roboto Mono;
+      }
+      
+    
+      h1 {
+        @include mdc-typography(display1) 
+        margin-top: 32px;
+      }
+    
+    
+      h2 {
+        margin-top: 24px;
+        @include mdc-typography(headline) 
+      }
+    
+      h3 {
+        margin-top: 16px;
+        @include mdc-typography(title) 
+      }
+    
+      h4 {
+        @include mdc-typography(subheading2) 
+      }
+    
+      h5, h6 {
+        @include mdc-typography(subheading1) 
+      }
+    
+      p {
+        @include mdc-typography(body1) 
+      }
+    
+      blockquote {
+    
+        margin: 24px 0px;
+        padding: 0 1em;
+        border-left: 0.25em solid #dfe2e5;    
+        
+        p {
+          @include mdc-typography(body2) 
+          // @include mdc-typography-adjust-margin(body2) 
+        }
+      }
+    
+      table {
+        padding: 0; 
+        margin-top: -8px;
+        margin-bottom: 24px;
+    
+        tr {
+          border-top: 1px solid #cccccc;
+          background-color: white;
+          margin: 0;
+          padding: 0; 
+        
+    
+          th {
+            @include mdc-typography(caption) 
+            border: 1px solid #cccccc;
+            text-align: left;
+            margin: 0;
+            padding: 6px 13px; 
+            background-color: #f8f8f8; 
+            font-weight: 500;
+            text-transform: lowercase;
+          }
+      
+          td {
+            border: 1px solid #cccccc;
+            text-align: left;
+            margin: 0;
+            font-size:.87em;
+            padding: 6px 13px; 
+            
+          }
+        }
+          
+      }
+    
+      table tr th :first-child, table tr td :first-child {
+        margin-top: 0; 
+      }
+      
+      table tr:nth-child(2n) {
+        background-color: #f8f8f8; 
+      }
+    
+      table tr th :last-child, table tr td :last-child {
+        margin-bottom: 0; 
+      }
+    
+    }
+    

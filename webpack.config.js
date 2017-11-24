@@ -56,7 +56,7 @@ const rules = [
     test: /\.vue$/,
     loader: 'vue-loader',
     options: { 
-      loaders:  ['vue-style-loader'].concat(cssLoaders) 
+      loaders:  ['vue-style-loader'].concat(cssLoaders), 
     }
   }, 
   {

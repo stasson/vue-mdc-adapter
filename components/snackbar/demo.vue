@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-demo">
+  <div class="mdc-demo mdc-demo--container">
     <mdc-button raised @click="showSnackbar">Show Snackbar</mdc-button>
     <mdc-snackbar ref="snackbar"></mdc-snackbar>
   </div>

@@ -1,18 +1,18 @@
 <template>
   <div>
-    <mdc-display typo="display3">
-      Material Components for Vue
+    <mdc-display typo="display2">
+      Material Components for Vue.js
     </mdc-display>
-    <readme class="markdown" />
+    <about class="markdown" />
   </div>
 </template>
 
 <script>
-const Readme = () => import('../components/README.md')
 
 export default {
   components: {
-    readme: Readme
+    about: () => import('../docs/about.md')
   }
 }
 </script>
+

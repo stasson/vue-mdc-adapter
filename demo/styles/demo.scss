@@ -1,0 +1,55 @@
+@import "@material/typography/mdc-typography";
+@import "@material/elevation/mdc-elevation";
+@import "./markdown";
+@import "./highlight";
+
+.mdc-drawer-header {
+  background-image: url("../assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.router-link-exact-active .mdc-drawer-item {
+  font-size: 1.1rem;  
+}
+
+.content {
+  padding: 8px 16px;
+  margin:16px auto 16px auto;
+  max-width : 800px;
+  min-width : 250px;
+}
+
+.demo-article {
+  display:flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+  min-height: 50px;
+  padding: 8px;
+
+  .mdc-demo {
+    flex: 1 1 auto;
+  }
+
+  .mdc-demo--container {
+    @include mdc-elevation(4);
+    min-height: 100px;
+    min-width: 200px;
+    padding: 48px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+  .mdc-demo--fluid {
+    @include mdc-elevation(4);
+  }
+
+}
+
+.doc-article {
+  margin-top: 40px;
+}
+

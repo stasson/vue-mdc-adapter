@@ -10,7 +10,6 @@
   </section>
 </template>
 
-
 <script>
 import links from './links.js'
 
@@ -48,12 +47,12 @@ export default {
       'card-demo': () => import('../components/card/demo.vue'),
       'checkbox-demo': () => import('../components/checkbox/demo.vue'),
       'dialog-demo': () => import('../components/dialog/demo.vue'),
-      // 'drawer-demo': () => import('../components/drawer/demo.vue'),
+      'drawer-demo': () => import('../components/drawer/demo.vue'),
       'fab-demo': () => import('../components/fab/demo.vue'),
       'grid-list-demo': () => import('../components/grid-list/demo.vue'),
       'icon-demo': () => import('../components/icon/demo.vue'),
       'icon-toggle-demo': () => import('../components/icon-toggle/demo.vue'),
-      // 'layout-app-demo': () => import('../components/layout-app/demo.vue'),
+      'layout-app-demo': () => import('../components/layout-app/demo.vue'),
       'layout-grid-demo': () => import('../components/layout-grid/demo.vue'),
       'linear-progress-demo': () => import('../components/linear-progress/demo.vue'),
       'list-demo': () => import('../components/list/demo.vue'),
@@ -65,7 +64,7 @@ export default {
       'switch-demo': () => import('../components/switch/demo.vue'),
       'tabs-demo': () => import('../components/tabs/demo.vue'),
       'textfield-demo': () => import('../components/textfield/demo.vue'),
-      // 'toolbar-demo': () => import('../components/toolbar/demo.vue'),
+      'toolbar-demo': () => import('../components/toolbar/demo.vue'),
       'typography-demo': () => import('../components/typography/demo.vue'),
 
   },

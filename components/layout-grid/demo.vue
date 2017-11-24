@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-demo">
+  <div class="mdc-demo mdc-demo--fluid">
     <mdc-layout-grid class=grid>
       <mdc-layout-cell class="cell cell1" desktop=3 tablet=3 ></mdc-layout-cell>
       <mdc-layout-cell class="cell cell2" desktop=3 tablet=5 align="top" >
@@ -22,9 +22,6 @@
 </template>
 
 <style>
-.mdc-demo .grid {
-  border: 1px solid;
-}
 
 .mdc-demo .cell {
   border: 1px dashed;

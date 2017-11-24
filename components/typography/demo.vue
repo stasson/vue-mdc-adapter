@@ -1,6 +1,7 @@
 <template>
-    <div class="mdc-demo">
-      <mdc-text-section>
+    <div class="mdc-demo mdc-demo--fluid">
+      <mdc-text-section class="typo-demo">
+        <mdc-display >Display</mdc-display>
         <mdc-headline>Headline</mdc-headline>
         <mdc-title>Title <mdc-caption>Caption</mdc-caption></mdc-title>
         <mdc-subheading >Subheading</mdc-subheading>
@@ -9,3 +10,9 @@
       </mdc-text-section>
     </div>
 </template>
+
+<style>
+.typo-demo {
+  margin: 48px 24px;
+}
+</style>

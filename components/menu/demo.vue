@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-demo">
+  <div class="mdc-demo mdc-demo--container">
     <mdc-menu-anchor class="myAnchor">
       <mdc-button raised @click="$refs.menu.show()">Open Menu</mdc-button>
       <mdc-menu ref="menu">

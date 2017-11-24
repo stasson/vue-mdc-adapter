@@ -1,0 +1,46 @@
+<html lang="en">
+    <head>
+        <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+        <link rel="stylesheet prefetch" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script src="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.js"></script>
+        <style>
+            html, body {
+                height: 100%;
+                width:100%;
+            }
+
+            .card-demo {
+                max-width: 80%;
+                margin: 48px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="layout-app-demo">
+            <mdc-layout-app>
+                <mdc-toolbar slot="toolbar" fixed>
+                <mdc-toolbar-row>
+                    <mdc-toolbar-section align-start >
+                    <mdc-toolbar-menu-icon event="toggle-drawer">
+                    </mdc-toolbar-menu-icon>
+                    <mdc-toolbar-title>Title</mdc-toolbar-title>
+                    </mdc-toolbar-section>
+                    <mdc-toolbar-section align-end>
+                    <mdc-toolbar-icon event="show-help" icon="help">
+                    </mdc-toolbar-icon>
+                    </mdc-toolbar-section>
+                </mdc-toolbar-row>
+                </mdc-toolbar>
+            </mdc-layout-app>
+        </div>
+                    
+        <script>
+            var app = new Vue({
+                el: '#layout-app-demo'
+            })
+        </script>
+    </body>
+</html>

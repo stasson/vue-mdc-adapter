@@ -24,7 +24,7 @@ export default {
     'cover': Boolean,
     'icon': String,
     'title': String,
-    'support-text': String
+    'support-text': String,
   }
 }
 </script>

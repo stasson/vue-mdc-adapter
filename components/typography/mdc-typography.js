@@ -13,18 +13,21 @@ const typos = [
   'button'
 ]
 
-export const VueMDCTypoMixin = {
-  render (createElement) {
-    return createElement(this.tag, {
-      'class': {
-        'mdc-typo': true,
-        [`mdc-typography--${this.typo}`]: true,
-        'mdc-typography--adjust-margin': this.adjustMargin
+export const VueMDCTypoMixin = (name) => {
+  return {
+    render (createElement) {
+      return createElement(this.tag, {
+        'class': {
+          'mdc-typo': true,
+          [name]: true,
+          [`mdc-typography--${this.typo}`]: true,
+          'mdc-typography--adjust-margin': this.adjustMargin
+        },
+        'attrs': this.$attrs,
+        'on': this.$listeners
       },
-      'attrs': this.$attrs,
-      'on': this.$listeners
-    },
-    this.$slots.default )
+      this.$slots.default )
+    }
   }
 }
 
@@ -71,7 +74,7 @@ export const VueMDCTextSection = {
 export const VueMDCText = {
   name: 'mdc-text',
   mixins: [
-    VueMDCTypoMixin, 
+    VueMDCTypoMixin('mdc-text'), 
     VueMDCTypoPropMixin('p', 'body1', typos)
   ],
 }
@@ -79,41 +82,41 @@ export const VueMDCText = {
 export const VueMDCDisplay = {
   name: 'mdc-display',
   mixins: [ 
-    VueMDCTypoMixin, 
+    VueMDCTypoMixin('mdc-display'), 
     VueMDCTypoPropMixin('h1', 'display1', ['display4', 'display3', 'display2', 'display1'])],
 }
 
 export const VueMDCHeadline = {
   name: 'mdc-headline',
   mixins: [ 
-    VueMDCTypoMixin, 
+    VueMDCTypoMixin('mdc-headline'), 
     VueMDCTypoPropMixin('h2', 'headline', ['headline'])],
 }
 
 export const VueMDCTitle = {
   name: 'mdc-title',
   mixins: [ 
-    VueMDCTypoMixin, 
+    VueMDCTypoMixin('mdc-title'), 
     VueMDCTypoPropMixin('h3', 'title', ['title'])],
 }
 
 export const VueMDCSubeading = {
   name: 'mdc-subheading',
   mixins: [ 
-    VueMDCTypoMixin, 
+    VueMDCTypoMixin('mdc-subheading'), 
     VueMDCTypoPropMixin('h4', 'subheading2', ['subheading1', 'subheading2'])],
 }
 
 export const  VueMDCBody = {
   name: 'mdc-body',
   mixins: [
-    VueMDCTypoMixin, 
+    VueMDCTypoMixin('mdc-body'), 
     VueMDCTypoPropMixin('p', 'body1', ['body1', 'body2'])],
 }
 
 export const VueMDCCaption = {
   name: 'mdc-caption',
   mixins: [
-    VueMDCTypoMixin, 
+    VueMDCTypoMixin('mdc-caption'), 
     VueMDCTypoPropMixin('span', 'caption', ['caption'])],
 }
