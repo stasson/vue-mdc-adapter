@@ -12,9 +12,9 @@
     </a>
       <img src="https://api.codacy.com/project/badge/Grade/d854cc6c83ac4985bdd2d2cdb272be5d" alt="Codacy"/>
     </a>
-    <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
-      <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" alt="Chat"/>
-    </a>
+    <a href="https://www.npmjs.com/package/vue-mdc-adapter">
+      <img src="https://img.shields.io/npm/dt/vue-mdc-adapter.svg" alt="Downloads">
+    </a>    
   </p>
   
   <p>
@@ -26,6 +26,9 @@
     </a>
     <a href="https://david-dm.org/stasson/vue-mdc-adapter" >
       <img src="https://img.shields.io/david/stasson/vue-mdc-adapter.svg" alt="Dependencies"/>
+    </a>
+    <a href="https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+      <img src="https://badges.gitter.im/vue-mdc-adapter/Lobby.svg" alt="Chat"/>
     </a>
   </p>
 
@@ -51,10 +54,11 @@ customization, while sticking to the _Vue Spirit_ (approachable, versatile, perf
 
 ## Project Status
 
-The project is under active development.  
-Focus is on known issues, validation and keeping up with MDC updates. 
+The project is under active development.
+Focus is on known issues, validation and keeping up with MDC updates.  
+Do not hesitate to open an issues on [GitHub](https://github.com/stasson/vue-mdc-adapter/issues)
+or contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge).
 
-## Plugins Status
 
 > Each MDCWeb component is mapped to one vue plugin 
 
@@ -88,32 +92,12 @@ Focus is on known issues, validation and keeping up with MDC updates.
 
 ## Quick Start
 
-- vue-cli 
-```console
-npm install -g vue-cli
-vue init stasson/vue-mdc-adapter-simple my-project
-```
+#### Playground
 
+Fork the [reference template](https://codepen.io/stasson/pen/XzmMKp)
+or one of the [vue-mdc-adapter collection](https://codepen.io/collection/XBpwxq/) 
 
-- npm install
-
-```console
-npm install --save vue-mdc-adapter
-```
-
-> vue-mdc-adapter and material components uses es6 for code and sass for styles
-> make sure your webpack/rollup config resolves node_modules for transpiling
-> and sass imports
-
-- ES6 Imports
-
-```javascript
-import Vue from 'vue'
-import VueMdcAdapter from 'vue-mdc-adapter'
-Vue.use(VueMdcAdapter)
-```
-
-- CDN 
+#### CDN
 
 ```html
 <head>
@@ -131,4 +115,11 @@ Vue.use(VueMdcAdapter)
 <body>
 ```
 
-> Check the [Documentation](https://stasson.github.io/vue-mdc-adapter) for more.
+#### Vue CLI
+
+```console
+npm install -g vue-cli
+vue init stasson/vue-mdc-adapter-simple my-project
+```
+
+> Check the [Getting Started](https://stasson.github.io/vue-mdc-adapter/#/docs/getting-started) guide for more.
