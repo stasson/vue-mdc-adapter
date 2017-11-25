@@ -1,8 +1,8 @@
 import plugin from '../plugin.js'
-import VueMDCButton from './mdc-button.vue'
+import mdcButton from './mdc-button.vue'
 
-export {VueMDCButton}
+export {mdcButton}
 
 export default plugin ({
-  VueMDCButton
+  mdcButton
 })

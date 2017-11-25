@@ -1,13 +1,13 @@
 import plugin from '../plugin.js'
-import VueMDCTab from './mdc-tab.vue'
-import VueMDCTabBar from './mdc-tab-bar.vue'
+import mdcTab from './mdc-tab.vue'
+import mdcTabBar from './mdc-tab-bar.vue'
 
 export { 
-  VueMDCTab, 
-  VueMDCTabBar 
+  mdcTab, 
+  mdcTabBar 
 }
 
 export default plugin ({
-  VueMDCTab, 
-  VueMDCTabBar 
+  mdcTab, 
+  mdcTabBar 
 })

@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import VueMDCFAB from './mdc-fab.vue'
+import mdcFAB from './mdc-fab.vue'
 
 export {
-  VueMDCFAB
+  mdcFAB
 }
 
 export default plugin ({
-  VueMDCFAB
+  mdcFAB
 })

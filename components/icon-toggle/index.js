@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import VueMDCIConToggle from './mdc-icon-toggle.vue'
+import mdcIConToggle from './mdc-icon-toggle.vue'
 
 export {
-  VueMDCIConToggle
+  mdcIConToggle
 }
 
 export default plugin ({
-  VueMDCIConToggle
+  mdcIConToggle
 })

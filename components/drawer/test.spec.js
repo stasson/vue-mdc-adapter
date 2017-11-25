@@ -1,13 +1,13 @@
 import { mount, createLocalVue, checkValidMdcAdapter } from '../test-utils'
 import plugin from './index.js';
 import Spec from './test.spec.vue';
-import VueMDCDrawer from './mdc-drawer.vue'
-import VueMDCDrawerHeader from './mdc-drawer-header.vue'
-import VueMDCDrawerList from './mdc-drawer-list.vue'
-import VueMDCDrawerItem from './mdc-drawer-item.vue'
-import VueMDCPermanentDrawer from './mdc-permanent-drawer.vue'
-import VueMDCPersistentDrawer from './mdc-persistent-drawer.vue'
-import VueMDCTemporaryDrawer from './mdc-temporary-drawer.vue'
+import mdcDrawer from './mdc-drawer.vue'
+import mdcDrawerHeader from './mdc-drawer-header.vue'
+import mdcDrawerList from './mdc-drawer-list.vue'
+import mdcDrawerItem from './mdc-drawer-item.vue'
+import mdcPermanentDrawer from './mdc-permanent-drawer.vue'
+import mdcPersistentDrawer from './mdc-persistent-drawer.vue'
+import mdcTemporaryDrawer from './mdc-temporary-drawer.vue'
 
 
 describe(__dirname, () => {
@@ -15,69 +15,69 @@ describe(__dirname, () => {
   localVue.use(plugin)
   const spec = mount(Spec, localVue)
 
-  describe('VueMDCDrawer', () => {
-    const drawer = spec.find(VueMDCDrawer)
+  describe('mdcDrawer', () => {
+    const drawer = spec.find(mdcDrawer)
     checkValidMdcAdapter(drawer.vm)
   })
 
-  describe('VueMDCPermanentDrawer', () => {
-    const drawer = spec.find(VueMDCPermanentDrawer)
+  describe('mdcPermanentDrawer', () => {
+    const drawer = spec.find(mdcPermanentDrawer)
     checkValidMdcAdapter(drawer.vm)
 
-    describe('VueMDCDrawerHeader', () => {
-      const header = drawer.find(VueMDCDrawerHeader)
+    describe('mdcDrawerHeader', () => {
+      const header = drawer.find(mdcDrawerHeader)
       checkValidMdcAdapter(header.vm)
     })
 
-    describe('VueMDCDrawerList', () => {
-      const header = drawer.find(VueMDCDrawerList)
+    describe('mdcDrawerList', () => {
+      const header = drawer.find(mdcDrawerList)
       checkValidMdcAdapter(header.vm)
     })
 
-    describe('VueMDCDrawerItem', () => {
-      const header = drawer.find(VueMDCDrawerItem)
-      checkValidMdcAdapter(header.vm)
-    })
-
-  })
-
-  describe('VueMDCPersistentDrawer', () => {
-    const drawer = spec.find(VueMDCPersistentDrawer)
-    checkValidMdcAdapter(drawer.vm)
-
-    describe('VueMDCDrawerHeader', () => {
-      const header = drawer.find(VueMDCDrawerHeader)
-      checkValidMdcAdapter(header.vm)
-    })
-
-    describe('VueMDCDrawerList', () => {
-      const header = drawer.find(VueMDCDrawerList)
-      checkValidMdcAdapter(header.vm)
-    })
-
-    describe('VueMDCDrawerItem', () => {
-      const header = drawer.find(VueMDCDrawerItem)
+    describe('mdcDrawerItem', () => {
+      const header = drawer.find(mdcDrawerItem)
       checkValidMdcAdapter(header.vm)
     })
 
   })
 
-  describe('VueMDCTemporaryDrawer', () => {
-    const drawer = spec.find(VueMDCTemporaryDrawer)
+  describe('mdcPersistentDrawer', () => {
+    const drawer = spec.find(mdcPersistentDrawer)
     checkValidMdcAdapter(drawer.vm)
 
-    describe('VueMDCDrawerHeader', () => {
-      const header = drawer.find(VueMDCDrawerHeader)
+    describe('mdcDrawerHeader', () => {
+      const header = drawer.find(mdcDrawerHeader)
       checkValidMdcAdapter(header.vm)
     })
 
-    describe('VueMDCDrawerList', () => {
-      const header = drawer.find(VueMDCDrawerList)
+    describe('mdcDrawerList', () => {
+      const header = drawer.find(mdcDrawerList)
       checkValidMdcAdapter(header.vm)
     })
 
-    describe('VueMDCDrawerItem', () => {
-      const header = drawer.find(VueMDCDrawerItem)
+    describe('mdcDrawerItem', () => {
+      const header = drawer.find(mdcDrawerItem)
+      checkValidMdcAdapter(header.vm)
+    })
+
+  })
+
+  describe('mdcTemporaryDrawer', () => {
+    const drawer = spec.find(mdcTemporaryDrawer)
+    checkValidMdcAdapter(drawer.vm)
+
+    describe('mdcDrawerHeader', () => {
+      const header = drawer.find(mdcDrawerHeader)
+      checkValidMdcAdapter(header.vm)
+    })
+
+    describe('mdcDrawerList', () => {
+      const header = drawer.find(mdcDrawerList)
+      checkValidMdcAdapter(header.vm)
+    })
+
+    describe('mdcDrawerItem', () => {
+      const header = drawer.find(mdcDrawerItem)
       checkValidMdcAdapter(header.vm)
     })
 

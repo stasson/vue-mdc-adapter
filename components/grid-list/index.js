@@ -1,13 +1,13 @@
 import plugin from '../plugin.js'
-import VueMDCGridList from './mdc-grid-list.vue'
-import VueMDCGridTile from './mdc-grid-tile.vue'
+import mdcGridList from './mdc-grid-list.vue'
+import mdcGridTile from './mdc-grid-tile.vue'
 
 export {
-  VueMDCGridList,
-  VueMDCGridTile
+  mdcGridList,
+  mdcGridTile
 }
 
 export default plugin ({
-  VueMDCGridList,
-  VueMDCGridTile
+  mdcGridList,
+  mdcGridTile
 })

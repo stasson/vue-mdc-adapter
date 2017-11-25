@@ -1,11 +1,11 @@
 import { mount, createLocalVue, checkValidMdcAdapter } from '../test-utils'
 
-import VueMDCMenuSelect from './mdc-menu-select.vue'
-import VueMDCMenuOption from './mdc-menu-option.vue'
-import VueMDCNativeSelect from './mdc-native-select.vue'
-import VueMDCNativeOption from './mdc-native-option.vue'
-import VueMDCMultiSelect from './mdc-multi-select.vue'
-import VueMDCMultiOption from './mdc-multi-option.vue'
+import mdcMenuSelect from './mdc-menu-select.vue'
+import mdcMenuOption from './mdc-menu-option.vue'
+import mdcNativeSelect from './mdc-native-select.vue'
+import mdcNativeOption from './mdc-native-option.vue'
+import mdcMultiSelect from './mdc-multi-select.vue'
+import mdcMultiOption from './mdc-multi-option.vue'
 
 import Spec from './test.spec.vue';
 
@@ -13,31 +13,31 @@ describe(__dirname, () => {
 
   const localVue = createLocalVue()
 
-  describe('VueMDCSelect', () => {
+  describe('mdcSelect', () => {
     const spec = mount(Spec, localVue)
     test('is a Vue instance', () => {
       expect(spec.isVueInstance()).toBeTruthy()
     })
 
-    describe('VueMDCMenuSelect', () => {
-      checkValidMdcAdapter(spec.find(VueMDCMenuSelect).vm)
+    describe('mdcMenuSelect', () => {
+      checkValidMdcAdapter(spec.find(mdcMenuSelect).vm)
     })
-    describe('VueMDCMenuOption', () => {
-      checkValidMdcAdapter(spec.find(VueMDCMenuOption).vm)
-    })
-
-    describe('VueMDCNativeSelect', () => {
-      checkValidMdcAdapter(spec.find(VueMDCNativeSelect).vm)
-    })
-    describe('VueMDCNativeOption', () => {
-      checkValidMdcAdapter(spec.find(VueMDCNativeOption).vm)
+    describe('mdcMenuOption', () => {
+      checkValidMdcAdapter(spec.find(mdcMenuOption).vm)
     })
 
-    describe('VueMDCMultiSelect', () => {
-      checkValidMdcAdapter(spec.find(VueMDCMultiSelect).vm)
+    describe('mdcNativeSelect', () => {
+      checkValidMdcAdapter(spec.find(mdcNativeSelect).vm)
     })
-    describe('VueMDCMultiOption', () => {
-      checkValidMdcAdapter(spec.find(VueMDCMultiOption).vm)
+    describe('mdcNativeOption', () => {
+      checkValidMdcAdapter(spec.find(mdcNativeOption).vm)
+    })
+
+    describe('mdcMultiSelect', () => {
+      checkValidMdcAdapter(spec.find(mdcMultiSelect).vm)
+    })
+    describe('mdcMultiOption', () => {
+      checkValidMdcAdapter(spec.find(mdcMultiOption).vm)
     })
 
   })

@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import VueMDCICon from './mdc-icon.vue'
+import mdcICon from './mdc-icon.vue'
 
 export {
-  VueMDCICon
+  mdcICon
 }
 
 export default plugin({
-  VueMDCICon
+  mdcICon
 })

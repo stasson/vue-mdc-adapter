@@ -54,7 +54,9 @@ customization, while sticking to the _Vue Spirit_ (approachable, versatile, perf
 The project is under active development.  
 Focus is on known issues, validation and keeping up with MDC updates. 
 
-## Component Status
+## Plugins Status
+
+> Each MDCWeb component is mapped to one vue plugin 
 
 - [x] button 
 - [x] card 
@@ -63,9 +65,7 @@ Focus is on known issues, validation and keeping up with MDC updates.
 - [x] drawer 
 - [x] fab 
 - [x] grid-list 
-- [x] icon 
 - [x] icon-toggle 
-- [x] layout-app 
 - [x] layout-grid 
 - [x] linear-progress 
 - [x] list 
@@ -79,6 +79,11 @@ Focus is on known issues, validation and keeping up with MDC updates.
 - [x] textfield 
 - [x] toolbar 
 - [x] typography 
+
+> Extra plugins
+
+- [x] layout-app: provide a flex layout to simplify toolbar vs drawer positioning
+- [x] icon : provide a material icon wrapper with support for font-awesome, svg, etc.
 
 
 ## Quick Start

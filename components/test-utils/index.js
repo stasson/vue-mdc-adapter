@@ -6,7 +6,7 @@ export * from 'vue-test-utils'
 export function pluginSanityCheck(name, plugin, options) {
   describe(name, () => {
     for (let property in plugin) {
-      if (property.startsWith('VueMDC')) {
+      if (property.startsWith('mdc')) {
 
         const wrapper = mount(plugin[property],
           ((options && options[property]) || undefined) )

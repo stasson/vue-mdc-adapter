@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import VueMDCSwitch from './mdc-switch.vue'
+import mdcSwitch from './mdc-switch.vue'
 
 export {
-  VueMDCSwitch
+  mdcSwitch
 }
 
 export default plugin ({
-  VueMDCSwitch
+  mdcSwitch
 })

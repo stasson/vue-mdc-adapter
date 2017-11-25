@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import VueMDCRadio from './mdc-radio.vue'
+import mdcRadio from './mdc-radio.vue'
 
 export {
-  VueMDCRadio
+  mdcRadio
 }
 
 export default plugin ({
-  VueMDCRadio
+  mdcRadio
 })

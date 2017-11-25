@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import VueMDCPermanentDrawer from './mdc-permanent-drawer.vue'
-import VueMDCPersistentDrawer from './mdc-persistent-drawer.vue'
-import VueMDCTemporaryDrawer from './mdc-temporary-drawer.vue'
+import mdcPermanentDrawer from './mdc-permanent-drawer.vue'
+import mdcPersistentDrawer from './mdc-persistent-drawer.vue'
+import mdcTemporaryDrawer from './mdc-temporary-drawer.vue'
 
 const media = new class {
   get mobile () {
@@ -44,9 +44,9 @@ export default {
     }
   },
   components: {
-    'mdc-permanent-drawer': VueMDCPermanentDrawer,
-    'mdc-persistent-drawer': VueMDCPersistentDrawer,
-    'mdc-temporary-drawer': VueMDCTemporaryDrawer
+    'mdc-permanent-drawer': mdcPermanentDrawer,
+    'mdc-persistent-drawer': mdcPersistentDrawer,
+    'mdc-temporary-drawer': mdcTemporaryDrawer
   },
   computed: {
     type () {

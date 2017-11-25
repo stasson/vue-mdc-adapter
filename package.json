@@ -14,7 +14,7 @@
   ],
   "author": "Sebastien Tasson <sebastien.tasson@gmail.com>",
   "license": "MIT",
-  "main": "dist/vue-mdc-adapter.js",
+  "main": "dist/index.js",
   "module": "components/index.js",
   "unpkg": "dist/vue-mdc-adapter.js",
   "files": [

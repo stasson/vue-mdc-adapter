@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import VueMDCSlider from './mdc-slider.vue'
+import mdcSlider from './mdc-slider.vue'
 
 export {
-  VueMDCSlider
+  mdcSlider
 }
 
 export default plugin({
-  VueMDCSlider
+  mdcSlider
 })

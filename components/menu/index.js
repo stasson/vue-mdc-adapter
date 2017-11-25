@@ -1,19 +1,19 @@
 import plugin from '../plugin.js'
-import VueMDCMenu from './mdc-menu.vue'
-import VueMDCMenuItem from './mdc-menu-item.vue'
-import VueMDCMenuDivider from './mdc-menu-divider.vue'
-import VueMDCMenuAnchor from './mdc-menu-anchor.vue'
+import mdcMenu from './mdc-menu.vue'
+import mdcMenuItem from './mdc-menu-item.vue'
+import mdcMenuDivider from './mdc-menu-divider.vue'
+import mdcMenuAnchor from './mdc-menu-anchor.vue'
 
 export {
-  VueMDCMenu,
-  VueMDCMenuItem,
-  VueMDCMenuDivider,
-  VueMDCMenuAnchor
+  mdcMenu,
+  mdcMenuItem,
+  mdcMenuDivider,
+  mdcMenuAnchor
 }
 
 export default plugin ({
-  VueMDCMenu,
-  VueMDCMenuItem,
-  VueMDCMenuDivider,
-  VueMDCMenuAnchor
+  mdcMenu,
+  mdcMenuItem,
+  mdcMenuDivider,
+  mdcMenuAnchor
 })

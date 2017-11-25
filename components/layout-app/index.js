@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import VueMDCLayoutApp from './mdc-layout-app.vue'
+import mdcLayoutApp from './mdc-layout-app.vue'
 
 export {
-  VueMDCLayoutApp
+  mdcLayoutApp
 }
 
 export default plugin({
-  VueMDCLayoutApp
+  mdcLayoutApp
 })

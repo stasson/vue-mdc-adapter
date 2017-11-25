@@ -1,26 +1,26 @@
 import plugin from '../plugin.js'
-import VueMDCToolbar from './mdc-toolbar.vue'
-import VueMDCToolbarRow from './mdc-toolbar-row.vue'
-import VueMDCToolbarSection from './mdc-toolbar-section.vue'
-import VueMDCToolbarMenu from './mdc-toolbar-menu-icon.vue'
-import VueMDCToolbarTitle from './mdc-toolbar-title.vue'
-import VueMDCToolbarIcon from './mdc-toolbar-icon.vue'
+import mdcToolbar from './mdc-toolbar.vue'
+import mdcToolbarRow from './mdc-toolbar-row.vue'
+import mdcToolbarSection from './mdc-toolbar-section.vue'
+import mdcToolbarMenu from './mdc-toolbar-menu-icon.vue'
+import mdcToolbarTitle from './mdc-toolbar-title.vue'
+import mdcToolbarIcon from './mdc-toolbar-icon.vue'
 
 export {
-  VueMDCToolbar,
-  VueMDCToolbarRow,
-  VueMDCToolbarSection,
-  VueMDCToolbarMenu,
-  VueMDCToolbarTitle,
-  VueMDCToolbarIcon
+  mdcToolbar,
+  mdcToolbarRow,
+  mdcToolbarSection,
+  mdcToolbarMenu,
+  mdcToolbarTitle,
+  mdcToolbarIcon
 }
 
 export default plugin({
-  VueMDCToolbar,
-  VueMDCToolbarRow,
-  VueMDCToolbarSection,
-  VueMDCToolbarMenu,
-  VueMDCToolbarTitle,
-  VueMDCToolbarIcon
+  mdcToolbar,
+  mdcToolbarRow,
+  mdcToolbarSection,
+  mdcToolbarMenu,
+  mdcToolbarTitle,
+  mdcToolbarIcon
 })
 

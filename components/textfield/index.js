@@ -1,8 +1,8 @@
 import plugin from '../plugin.js'
-import VueMDCTextField from './mdc-textfield.vue'
+import mdcTextField from './mdc-textfield.vue'
 
-export {VueMDCTextField}
+export {mdcTextField}
 
 export default plugin({
-  VueMDCTextField
+  mdcTextField
 })

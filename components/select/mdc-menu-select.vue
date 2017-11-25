@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { VueMDCMenu } from '../menu'
+import { mdcMenu } from '../menu'
 import MDCSelectFoundation from '@material/select/foundation'
 
 export default {
@@ -37,7 +37,7 @@ export default {
     }
   },
   components: {
-    'mdc-menu': VueMDCMenu 
+    'mdc-menu': mdcMenu 
   },
   methods: {
     resetIndex () {

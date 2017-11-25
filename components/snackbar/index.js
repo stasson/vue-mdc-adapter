@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import VueMDCSnackbar from './mdc-snackbar.vue'
+import mdcSnackbar from './mdc-snackbar.vue'
 
 export {
-  VueMDCSnackbar
+  mdcSnackbar
 }
 
 export default plugin ({
-  VueMDCSnackbar
+  mdcSnackbar
 })

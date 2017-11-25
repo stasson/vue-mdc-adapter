@@ -1,14 +1,14 @@
 import plugin from '../plugin.js'
-import VueMDCSelect from './mdc-select.vue'
-import VueMDCOption from './mdc-option.vue'
+import mdcSelect from './mdc-select.vue'
+import mdcOption from './mdc-option.vue'
 
 
 export {
-  VueMDCSelect,
-  VueMDCOption,
+  mdcSelect,
+  mdcOption,
 }
 
 export default plugin ({
-  VueMDCSelect,
-  VueMDCOption,
+  mdcSelect,
+  mdcOption,
 })

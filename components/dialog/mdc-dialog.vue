@@ -32,7 +32,7 @@
 <script>
 import MDCDialogFoundation from '@material/dialog/foundation'
 import { createFocusTrapInstance } from '@material/dialog/util'
-import {VueMDCButton} from '../button'
+import {mdcButton} from '../button'
 
 export default {
   name: 'mdc-dialog',
@@ -44,7 +44,7 @@ export default {
     'dark': Boolean
   },
   components: {
-    mdcButton : VueMDCButton
+    mdcButton : mdcButton
   },
   data () {
     return {

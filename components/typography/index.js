@@ -1,33 +1,33 @@
 import plugin from '../plugin.js'
 import {  
-  VueMDCTextSection,
-  VueMDCText,
-  VueMDCBody,
-  VueMDCCaption,
-  VueMDCDisplay,
-  VueMDCHeadline,
-  VueMDCSubeading,
-  VueMDCTitle
+  mdcTextSection,
+  mdcText,
+  mdcBody,
+  mdcaption,
+  mdcDisplay,
+  mdcHeadline,
+  mdcSubeading,
+  mdcTitle
 } from './mdc-typography.js'
 
 export {
-  VueMDCTextSection,
-  VueMDCText,
-  VueMDCBody,
-  VueMDCCaption,
-  VueMDCDisplay,
-  VueMDCHeadline,
-  VueMDCSubeading,
-  VueMDCTitle
+  mdcTextSection,
+  mdcText,
+  mdcBody,
+  mdcaption,
+  mdcDisplay,
+  mdcHeadline,
+  mdcSubeading,
+  mdcTitle
 }
 
 export default plugin({
-  VueMDCTextSection,
-  VueMDCText,
-  VueMDCBody,
-  VueMDCCaption,
-  VueMDCDisplay,
-  VueMDCHeadline,
-  VueMDCSubeading,
-  VueMDCTitle
+  mdcTextSection,
+  mdcText,
+  mdcBody,
+  mdcaption,
+  mdcDisplay,
+  mdcHeadline,
+  mdcSubeading,
+  mdcTitle
 })
