@@ -1,9 +1,8 @@
-## Getting Started
 
 > This Guide assumes you are familiar with [Vue.js](https://vuejs.org/v2/guide/index.html)
 components and plugin system.
 
-### Quick Start
+## Quick Start
 
 #### Playground
 
@@ -28,18 +27,20 @@ or one of the [vue-mdc-adapter collection](https://codepen.io/collection/XBpwxq/
 <body>
 ```
 
-#### vue-cli
+#### Vue CLI
 
 ```console
 npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
-### Distribution
+## Getting Serious
 
-> Vue.js version `^2.5.3` is required as a peer dependency.
-> material component is bundled and does need to be installed
-> material icons and fonts are not bundled and need to be added as well
+> Vue.js version `^2.5.3` is required as a peer dependency.  
+> Material Components are bundled and do need to be installed.  
+> Material Icons and Fonts are not bundled and need to be fetched.
+
+### UMD Distribution
 
 The  ES5 distribution is available at
 [unpkg.com/vue-mdc-adapter/dist](https://unpkg.com/vue-mdc-adapter/dist/) or via npm.
@@ -50,7 +51,7 @@ npm install --save vue-mdc-adapter
 
 The distribution comes in two flavors:
 
-- standalone plugin
+#### standalone plugin
 
 | distribution | env   | description |
 | ------------ | ----- | ----------- |
@@ -58,7 +59,7 @@ The distribution comes in two flavors:
 | dist/index.min.js | production | minified plugin (ES5)  |
 | dist/index.min.css | production | minified stylecheet (CSS)|
 
-- _a la carte_  plugins
+#### _a la carte_  plugins
 
 | distribution | env   | description |
 | ------------ | ----- | ----------- |
@@ -66,12 +67,14 @@ The distribution comes in two flavors:
 | dist/[plugin].min.js | production | minified plugin (ES5)  |
 | dist/[plugin].min.css | production | minified stylesheet (CCS) |
 
+### Source Distribution
+
 > Advanced users may want to leverage the ES6 / SASS source distribution.
 material components modules are required so you need to make sure your
 webpack/rollup config resolves node_modules for transpiling and sass imports
 (see _Building from ES6 Sources_ below.)
 
-- standalone plugin
+#### standalone plugin
 
 | distribution | description |
 | ------------ | ----------- |
@@ -79,7 +82,7 @@ webpack/rollup config resolves node_modules for transpiling and sass imports
 | components/styles.sass |  SASS module |
 | components/entry.js |  Bundler entry |
 
-- _a la carte_  plugins
+#### _a la carte_  plugins
 
 | distribution | description |
 | ------------ | ----------- |
@@ -87,9 +90,11 @@ webpack/rollup config resolves node_modules for transpiling and sass imports
 | components/[plugin]/styles.sass | SASS module |
 | components/[plugin]/entry.js | Bundler entry |
 
-### Webpack Config
+## Webpack Config
 
-> From now on, we assume you are familiar with [Webpack](https://webpack.js.org/).
+> The following guide assumes you are familiar with [Webpack](https://webpack.js.org/).
+
+### Using the UMD Distribution
 
 #### Add dependencies to html template
 

@@ -2,7 +2,7 @@
     
       margin-top: 64px;
     
-      @include mdc-typography-base
+      @include mdc-typography-base;
     
       a, a:active, a:hover, a:link, a:visited {
           font-family: Roboto,sans-serif;
@@ -16,7 +16,7 @@
       
     
       h1 {
-        @include mdc-typography(display1) 
+        @include mdc-typography(display1);
         margin-top: 32px;
       }
     
@@ -68,7 +68,7 @@
         
     
           th {
-            @include mdc-typography(caption) 
+            @include mdc-typography(caption); 
             border: 1px solid #cccccc;
             text-align: left;
             margin: 0;

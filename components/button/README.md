@@ -1,7 +1,7 @@
 ## Usage
 
 ```html
-  <mdc-button @click="onClick" :disabled="buttonDisabled">click me</mdc-button>
+<mdc-button @click="onClick" :disabled="buttonDisabled">click me</mdc-button>
 ```
 
 ```javascript

@@ -7,4 +7,3 @@ The project aims at finding the right balance between ease of use and customizat
 
 > The project is under active development, do not hesitate to raise issues on [GitHub](https://github.com/stasson/vue-mdc-adapter)
 or contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge).
-

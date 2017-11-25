@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import tile from 'demo/assets/vue-awsome.png'
+import tile from 'demo/assets/vue-awesome.png'
 
 export default {
   data () {

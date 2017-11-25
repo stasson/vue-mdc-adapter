@@ -31,6 +31,7 @@
 
   .mdc-demo {
     flex: 1 1 auto;
+    background-color: #FAFAFA
   }
 
   .mdc-demo--container {
@@ -53,3 +54,9 @@
   margin-top: 40px;
 }
 
+.demo-home .markdown {
+  a, a:active, a:hover, a:link, a:visited, p {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+}
