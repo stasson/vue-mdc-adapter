@@ -6,8 +6,10 @@ components and plugin system.
 
 #### Playground
 
-Fork the [reference template](https://codepen.io/stasson/pen/XzmMKp)
-or one of the [vue-mdc-adapter collection](https://codepen.io/collection/XBpwxq/) 
+Fork the [reference codepen template](https://codepen.io/stasson/pen/XzmMKp)
+one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
+or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
+
 
 #### CDN
 
