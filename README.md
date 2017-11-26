@@ -48,7 +48,8 @@ customization, while sticking to the _Vue Spirit_ (approachable, versatile, perf
 ## Quick Links
 
 - [Documentation & Demo](https://stasson.github.io/vue-mdc-adapter)
-- [Playground](https://codepen.io/stasson/pen/oojWjV)
+- [CodePen](https://codepen.io/collection/XBpwxq/) & [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
+- [Webpack Boilerplate](https://github.com/stasson/vue-mdc-adapter-template)
 - [Changelog](https://github.com/stasson/vue-mdc-adapter/blob/master/CHANGELOG.md)
 - [Contributing](https://github.com/stasson/vue-mdc-adapter/blob/master/CONTRIBUTING.md)
 
@@ -94,8 +95,9 @@ or contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=bad
 
 #### Playground
 
-Fork the [reference template](https://codepen.io/stasson/pen/XzmMKp)
-or one of the [vue-mdc-adapter collection](https://codepen.io/collection/XBpwxq/) 
+Fork the [reference codepen template](https://codepen.io/stasson/pen/XzmMKp)
+one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
+or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
 
 #### CDN
 
