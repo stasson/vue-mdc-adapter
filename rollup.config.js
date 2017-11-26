@@ -8,11 +8,33 @@ import autoprefixer from 'autoprefixer'
 import postcss from 'postcss'
 import csso from 'postcss-csso';
 import { minify } from 'uglify-es'
+import pkg from './package.json';
+
+
+
 
 const isProduction = process.env.NODE_ENV === `production`
 const isDevelopment = process.env.NODE_ENV === `development`
 
-function createConfig(entry, output, name) {
+
+function createConfig(entry, module, name) {
+
+  const output = module ? module +'/index' : 'index' 
+  const banner = `/**
+  * @module vue-mdc-adapter{{module}} {{version}}
+  * @exports {{name}}
+  * @copyright (c) 2017-present, Sebastien Tasson
+  * @license https://opensource.org/licenses/MIT
+  * @implements {{dependencies}}
+  * @requires {{peerDependencies}}
+  * @see https://github.com/stasson/vue-mdc-adapter
+  */`
+  .replace('{{module}}', module || '')
+  .replace('{{name}}', name)
+  .replace('{{version}}', pkg.version)
+  .replace('{{dependencies}}', JSON.stringify(pkg.dependencies))
+  .replace('{{peerDependencies}}', JSON.stringify(pkg.peerDependencies))
+  
 
   const libPath = (isDevelopment 
         ? `dist/${output}.js` 
@@ -66,44 +88,56 @@ function createConfig(entry, output, name) {
       resolve({ jsnext: true, main: true, browser: true }),
       sass(sassConfig),
       babel(babelConfig),
-      commonjs (),
+      commonjs(),
     ],
+    banner,
     sourcemap: isDevelopment ? 'inline' : true,
     onwarn
   }
 
   if (isProduction) {
-    config.plugins.push(uglify({}, minify))
+    config.plugins.push(uglify({
+      output: {
+        comments: function(node, comment) {
+            var text = comment.value;
+            var type = comment.type;
+            if (type == "comment2") {
+                // multiline comment
+                return /@preserve|@license|@cc_on/i.test(text);
+            }
+        }
+      }
+    }, minify))
   }
   return config
 }
 
 
 export default [
-  createConfig('components/entry.js', 'index', 'VueMDCAdapter'),
-  createConfig('components/button/entry.js', 'button/index', 'VueMDCButton'),
-  createConfig('components/card/entry.js', 'card/index', 'VueMDCCard'),
-  createConfig('components/checkbox/entry.js', 'checkbox/index', 'VueMDCCheckbox'),
-  createConfig('components/dialog/entry.js', 'dialog/index', 'VueMDCDialog'),
-  createConfig('components/drawer/entry.js', 'drawer/index', 'VueMDCDrawer'),
-  createConfig('components/fab/entry.js', 'fab/index', 'VueMDCFab'),
-  createConfig('components/grid-list/entry.js', 'grid-list/index', 'VueMDCGridList'),
-  createConfig('components/icon-toggle/entry.js', 'icon-toggle/index', 'VueMDCIconToggle'),
-  createConfig('components/icon/entry.js', 'icon/index', 'VueMDCIcon'),
-  createConfig('components/layout-app/entry.js', 'layout-app/index', 'VueMDCLayoutApp'),
-  createConfig('components/layout-grid/entry.js', 'layout-grid/index', 'VueMDCLayoutGrid'),
-  createConfig('components/linear-progress/entry.js', 'linear-progress/index', 'VueMDCLinearProgress'),
-  createConfig('components/list/entry.js', 'list/index', 'VueMDCList'),
-  createConfig('components/menu/entry.js', 'menu/index', 'VueMDCMenu'),
-  createConfig('components/radio/entry.js', 'radio/index', 'VueMDCRadio'),
-  createConfig('components/select/entry.js', 'select/index', 'VueMDCSelect'),
-  createConfig('components/slider/entry.js', 'slider/index', 'VueMDCSlider'),
-  createConfig('components/snackbar/entry.js', 'snackbar/index', 'VueMDCSnackbar'),
-  createConfig('components/switch/entry.js', 'switch/index', 'VueMDCSwitch'),
-  createConfig('components/tabs/entry.js', 'tabs/index', 'VueMDCTabs'),
-  createConfig('components/textfield/entry.js', 'texfield/index', 'VueMDCTextfield'),
-  createConfig('components/toolbar/entry.js', 'toolbar/index', 'VueMDCToolbar'),
-  createConfig('components/typography/entry.js', 'typography/index', 'VueMDCTypography'),
+  createConfig('components/entry.js', undefined, 'VueMDCAdapter'),
+  createConfig('components/button/entry.js', 'button', 'VueMDCButton'),
+  createConfig('components/card/entry.js', 'card', 'VueMDCCard'),
+  createConfig('components/checkbox/entry.js', 'checkbox', 'VueMDCCheckbox'),
+  createConfig('components/dialog/entry.js', 'dialog', 'VueMDCDialog'),
+  createConfig('components/drawer/entry.js', 'drawer', 'VueMDCDrawer'),
+  createConfig('components/fab/entry.js', 'fab', 'VueMDCFab'),
+  createConfig('components/grid-list/entry.js', 'grid-list', 'VueMDCGridList'),
+  createConfig('components/icon-toggle/entry.js', 'icon-toggle', 'VueMDCIconToggle'),
+  createConfig('components/icon/entry.js', 'icon', 'VueMDCIcon'),
+  createConfig('components/layout-app/entry.js', 'layout-app', 'VueMDCLayoutApp'),
+  createConfig('components/layout-grid/entry.js', 'layout-grid', 'VueMDCLayoutGrid'),
+  createConfig('components/linear-progress/entry.js', 'linear-progress', 'VueMDCLinearProgress'),
+  createConfig('components/list/entry.js', 'list', 'VueMDCList'),
+  createConfig('components/menu/entry.js', 'menu', 'VueMDCMenu'),
+  createConfig('components/radio/entry.js', 'radio', 'VueMDCRadio'),
+  createConfig('components/select/entry.js', 'select', 'VueMDCSelect'),
+  createConfig('components/slider/entry.js', 'slider', 'VueMDCSlider'),
+  createConfig('components/snackbar/entry.js', 'snackbar', 'VueMDCSnackbar'),
+  createConfig('components/switch/entry.js', 'switch', 'VueMDCSwitch'),
+  createConfig('components/tabs/entry.js', 'tabs', 'VueMDCTabs'),
+  createConfig('components/textfield/entry.js', 'texfield', 'VueMDCTextfield'),
+  createConfig('components/toolbar/entry.js', 'toolbar', 'VueMDCToolbar'),
+  createConfig('components/typography/entry.js', 'typography', 'VueMDCTypography'),
 ]
 
 
