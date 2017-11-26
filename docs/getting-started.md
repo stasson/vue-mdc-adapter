@@ -65,9 +65,9 @@ The distribution comes in two flavors:
 
 | distribution | env   | description |
 | ------------ | ----- | ----------- |
-| dist/[plugin].js | development | plugin (styles are injected) |
-| dist/[plugin].min.js | production | minified plugin (ES5)  |
-| dist/[plugin].min.css | production | minified stylesheet (CCS) |
+| dist/[plugin]/index.js | development | plugin (styles are injected) |
+| dist/[plugin]/index.min.js | production | minified plugin (ES5)  |
+| dist/[plugin]/index.min.css | production | minified stylesheet (CCS) |
 
 ### Source Distribution
 
@@ -121,7 +121,7 @@ webpack/rollup config resolves node_modules for transpiling and sass imports
   resolve: {
     alias: {
       'vue': 'vue/dist/vue.runtime.esm.js',
-      'vue-mdc-adapter': 'vue-mdc-adapter/dist/index.js',
+      'vue-mdc-adapter': 'vue-mdc-adapter/dist',
     }
   }
 ```
@@ -138,7 +138,7 @@ Vue.use(VueMdcAdapter)
 
 ```javascript
 import Vue from 'vue'
-import VueMDCButton from 'vue-mdc-adapter/dist/vue-mdc-button.js'
+import VueMDCButton from 'vue-mdc-adapter/button'
 Vue.use(VueMDCButton)
 ```
 
@@ -179,7 +179,7 @@ externals: {
   // webpack.config.js
   resolve: {
     alias: {
-      'vue-mdc-adapter$': 'vue-mdc-adapter/components',
+      'vue-mdc-adapter': 'vue-mdc-adapter/components',
     }
   }
 ```
