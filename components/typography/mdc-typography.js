@@ -100,7 +100,7 @@ export const mdcTitle = {
     mdcTypoPropMixin('h3', 'title', ['title'])],
 }
 
-export const mdcSubeading = {
+export const mdcSubHeading = {
   name: 'mdc-subheading',
   mixins: [ 
     mdcTypoMixin('mdc-subheading'), 
@@ -114,7 +114,7 @@ export const  mdcBody = {
     mdcTypoPropMixin('p', 'body1', ['body1', 'body2'])],
 }
 
-export const mdcaption = {
+export const mdcCaption = {
   name: 'mdc-caption',
   mixins: [
     mdcTypoMixin('mdc-caption'), 

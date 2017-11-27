@@ -5,21 +5,34 @@ export * from 'vue-test-utils'
 
 export function pluginSanityCheck(name, plugin, options) {
   describe(name, () => {
-    for (let property in plugin) {
-      if (property.startsWith('mdc')) {
 
-        const wrapper = mount(plugin[property],
-          ((options && options[property]) || undefined) )
+    let components = plugin.components 
+    test('is a valid adapter plugin', () => {
+      expect(plugin.install).toBeInstanceOf(Function);
+      expect(components).toBeInstanceOf(Object);
+    })
 
-        describe(property, () => {
+    for (let key in components) {
 
-          test('is a Vue instance', () => {
-            expect(wrapper.isVueInstance()).toBeTruthy()
-          })
+      describe(key, () => {
 
-          checkValidMdcAdapter(wrapper.vm)
+        let component = components[key]
+        let name = component.name
+
+        test('has a valid name', () =>{
+          expect(name).not.toBe(key)
+          expect(name.toLowerCase().replace(/-/g,'')).toBe(key.toLocaleLowerCase())
         })
-      }
+
+        const wrapper = mount(component,
+          ((options && options[key]) || undefined) )
+
+        test('is a Vue instance', () => {
+          expect(wrapper.isVueInstance()).toBeTruthy()
+        })
+
+        checkValidMdcAdapter(wrapper.vm)
+      })
     }
   })
 }
@@ -35,8 +48,8 @@ export function checkValidMdcAdapter(vm) {
 
 export function checkValidOptions(options) {
 
-    test('has a valid name property', () => {
-      expect(options.name).toMatch(/^mdc-/);
+    test('name follows convention', () => {
+      expect(options.name).toMatch(/^mdc-[a-z-]+$/);
     })
 
     options.data &&

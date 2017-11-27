@@ -13,7 +13,7 @@ import mdcTemporaryDrawer from './mdc-temporary-drawer.vue'
 describe(__dirname, () => {
   const localVue = createLocalVue()
   localVue.use(plugin)
-  const spec = mount(Spec, localVue)
+  const spec = mount(Spec, {localVue})
 
   describe('mdcDrawer', () => {
     const drawer = spec.find(mdcDrawer)

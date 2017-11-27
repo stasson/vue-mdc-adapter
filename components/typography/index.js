@@ -3,10 +3,10 @@ import {
   mdcTextSection,
   mdcText,
   mdcBody,
-  mdcaption,
+  mdcCaption,
   mdcDisplay,
   mdcHeadline,
-  mdcSubeading,
+  mdcSubHeading,
   mdcTitle
 } from './mdc-typography.js'
 
@@ -14,10 +14,10 @@ export {
   mdcTextSection,
   mdcText,
   mdcBody,
-  mdcaption,
+  mdcCaption,
   mdcDisplay,
   mdcHeadline,
-  mdcSubeading,
+  mdcSubHeading,
   mdcTitle
 }
 
@@ -25,9 +25,9 @@ export default plugin({
   mdcTextSection,
   mdcText,
   mdcBody,
-  mdcaption,
+  mdcCaption,
   mdcDisplay,
   mdcHeadline,
-  mdcSubeading,
+  mdcSubHeading,
   mdcTitle
 })

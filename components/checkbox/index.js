@@ -1,10 +1,10 @@
 import plugin from '../plugin.js'
-import mdcheckbox from './mdc-checkbox.vue'
+import mdcCheckbox from './mdc-checkbox.vue'
 
 export {
-  mdcheckbox
+  mdcCheckbox
 }
 
 export default plugin ({
-  mdcheckbox
+  mdcCheckbox
 })
