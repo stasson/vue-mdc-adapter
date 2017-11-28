@@ -1,6 +1,6 @@
 ## Usage
 
-the switch component is rendered as an input with checkbox type
+The switch component is rendered as an input with checkbox type
 
 ```html
 <mdc-switch  :label="label" v-model="checked" />
@@ -19,7 +19,7 @@ var vm = new Vue({
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`checked`|Boolean|| whether the checkbox is checkecked, bind with `v-model` |
+|`checked`|Boolean|| whether the checkbox is checked, bind with `v-model` |
 |`disabled`| Boolean|| whether the checkbox is disabled |
 |`label`| String|| checkbox label |
 |`align-end`| Boolean|| align the checkbox after the label |

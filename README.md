@@ -38,12 +38,12 @@
 
 `vue-mdc-adapter` is an integration of
 [Material Components](https://material.io/components/web/)
-for [Vue.js](https://vuejs.org) which follows best practices 
+for [Vue.js](https://vuejs.org) which follows the best practices 
 recommended by Google:
 [Using Foundations and Adapters](https://github.com/material-components/material-components-web/blob/master/docs/integrating-into-frameworks.md#the-advanced-approach-using-foundations-and-adapters)
 
-The project aims at trying to find the right balance between ease of use vs
-customization, while sticking to the _Vue Spirit_ (approachable, versatile, performant,)
+This project aims to find the right balance between ease of use and
+customization while sticking to the _Vue Spirit_ (approachable, versatile, and performant)
 
 ## Quick Links
 
@@ -55,13 +55,13 @@ customization, while sticking to the _Vue Spirit_ (approachable, versatile, perf
 
 ## Project Status
 
-The project is under active development.
-Focus is on known issues, validation and keeping up with MDC updates.  
-Do not hesitate to open an issues on [GitHub](https://github.com/stasson/vue-mdc-adapter/issues)
+This project is under active development.
+The focus is on known issues, validation, and keeping up with MDC updates.  
+Do not hesitate to open an issue on [GitHub](https://github.com/stasson/vue-mdc-adapter/issues)
 or contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge).
 
 
-> Each MDCWeb component is mapped to one vue plugin 
+> Each MDCWeb component is mapped to a single vue plugin 
 
 - [x] button 
 - [x] card 
@@ -87,8 +87,8 @@ or contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=bad
 
 > Extra plugins
 
-- [x] layout-app: provide a flex layout to simplify toolbar vs drawer positioning
-- [x] icon : provide a material icon wrapper with support for font-awesome, svg, etc.
+- [x] layout-app: provides a flexible layout to simplify toolbar vs drawer positioning
+- [x] icon : provides a material icon wrapper with support for font-awesome, svg, etc.
 
 
 ## Quick Start
@@ -96,7 +96,7 @@ or contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=bad
 #### Playground
 
 Fork the [reference codepen template](https://codepen.io/stasson/pen/XzmMKp)
-one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
+or one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
 or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
 
 #### CDN
@@ -124,4 +124,4 @@ npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
-> Check the [Getting Started](https://stasson.github.io/vue-mdc-adapter/#/docs/getting-started) guide for more.
+> Check out the [Getting Started](https://stasson.github.io/vue-mdc-adapter/#/docs/getting-started) guide for more.

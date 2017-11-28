@@ -58,7 +58,7 @@ var vm = new Vue({
 |`multiline`| Boolean | | whether the textfield is multiline  |
 |`rows`| [Number, String] | 8 | multiline: number of rows |
 |`cols`| [Number, String] | 40 |multiline: number of columns  |
-|`:disabled`| [Number, String] | | binds to disabled state  |
+|`disabled`| [Number, String] | | binds to disabled state  |
 
 
 ### Reference

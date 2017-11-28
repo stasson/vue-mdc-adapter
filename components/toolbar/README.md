@@ -24,10 +24,10 @@ Toolbars scroll with content by default, but support fixed behavior as well.
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`fixed`|Boolean|| wether the toolbar is fixed |
-|`waterfall`| String|false| wether the toolbar is waterfal |
-|`fixed-lastrow`| Boolean|false| wether the toolbar is fixed for lastrow |
-|`flexible`|Boolean|false| wether the toolbar is flexible |
+|`fixed`|Boolean|| whether the toolbar is fixed |
+|`waterfall`| String|false| whether the toolbar is waterfal |
+|`fixed-lastrow`| Boolean|false| whether the toolbar is fixed for lastrow |
+|`flexible`|Boolean|false| whether the toolbar is flexible |
 |`flexible-default`|Boolean| true | if flexible, apply default material design behaviour |
 
 When using the fixed pattern, a persistent elevation is added to toolbar.
@@ -35,7 +35,7 @@ When using the waterfall pattern, a toolbar will have no elevation when the page
 is scrolled to the top, and gain elevation when a user begins to scroll down the
 page. Toolbars also support anchored only last row at the top behavior.
 For toolbars with this modifier, only the last row will be anchored at the top,
-while the rest of toolbar scrolls off.
+while the rest of the toolbar scrolls off.
 
 Flexible behavior can be added to mdc-toolbar, where the height of the toolbar
 changes as the user scrolls. Flexible is defined as a modifier class of toolbar
@@ -48,9 +48,9 @@ MDC Toolbars can accommodate multiple sections using the wrapper `mdc-toolbar-se
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`align-start`|Boolean|false| wether the section aligns to start |
-|`align-end`|Boolean|false| wether the section aligns to end |
-|`shrink-to-fit`|Boolean|false| wether the section shrinks to fit |
+|`align-start`|Boolean|false| whether the section aligns to start |
+|`align-end`|Boolean|false| whether the section aligns to end |
+|`shrink-to-fit`|Boolean|false| whether the section shrinks to fit |
 
 Toolbar sections are aligned to the toolbar’s center. You can change this 
 behavior by applying `align-start` or `align-end` to align the sections to the 
@@ -80,19 +80,19 @@ a page’s title, or an application name.
 
 ### Icons
 
-- `mdc-toolbar-icon-menu` wraps the left most icon in mdc-toolbar usually to 
-the left of mdc-toolbar-title. It renders as material menu icon by default
+- `mdc-toolbar-icon-menu` wraps the left most icon in `mdc-toolbar` usually to 
+the left of `mdc-toolbar-title`. It renders as material menu icon by default
 
 - `mdc-toolbar-icon` wraps any icons placed on the right side of an
 mdc-toolbar.
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`icon`|String|          | the material icon name. |
+|`icon`|String|          | the material icon name |
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 
-> if the `event` property is not specified, use @click to cactch click events
+> if the `event` property is not specified, use @click to catch click events
 
 > do not set the icon prop to render your custom icons 
 
@@ -166,10 +166,10 @@ With flexible behavior the toolbar height changes as the user scrolls.
 For the most common use case of flexible headers, the default behavior is as
 follow :
 
-- Flexible has a fixed initial height 4 times the default size of mdc-toolbar-row.
+- Flexible has a fixed initial height 4 times the default size of `mdc-toolbar-row`.
 - When it has `flexible-default` behavior, it further defines the background and title movement behavior.
 
-refer to [MDC Documentation](https://material.io/components/web/catalog/toolbar/#flexible-toolbar-requires-javascript) to customize.
+refer to the [MDC Documentation](https://material.io/components/web/catalog/toolbar/#flexible-toolbar-requires-javascript) to learn about customization options.
 
 
 ### Reference
