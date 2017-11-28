@@ -19,7 +19,7 @@ var vm = new Vue({
 
 | event | args | Description |
 |-------|------|-------------|
-|`@click`||emited on click |
+|`@click`||emitted on click |
 
 
 ### props
@@ -37,7 +37,7 @@ var vm = new Vue({
 |`event-args`|Array| [] | optional event args |
 |`href`|String|| link's href, renders anchor (see notes below) | 
 
-> (*) initializer attribute, not dynamic propertie
+> (*) initializer attribute, not dynamic property
 
 ### text buttons
 
@@ -80,10 +80,10 @@ Using the href attribute will render `<a role="button" href="...">`
 > Accessibility Warning:
 > Buttons are expected to be triggered using the Space or Enter key, 
 > while links are expected to be triggered using the Enter key. 
-> Also button and links have different behaviour on right click.
+> Additionally, button and links have different behaviors on right click.
 > see this [MDN note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
 
-You may want to keep button behavior and do the navigation programatically:
+You might want to keep button behavior and do the navigation programatically:
 
 ```html
 <mdc-button @click="location.href='#'">Home</mdc-button>

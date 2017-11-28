@@ -51,13 +51,13 @@
 |`persistent`|Boolean| optional | show only if drawer is persistent (*) |
 |`temporary`|Boolean| optional | show only if drawer is temporary (*) |
 
-> (*) allows to filter whether header is shown for responsive drawer
+> (*) specifies whether or not the header is shown for responsive drawer
 
 ### Drawer Items
 
 | prop | Type | Default | Description |
 |------|------|---------|-------------|
-|`'start-icon'`|Boolean| optional | material start icon |
+|`start-icon`|Boolean| optional | material start icon |
 |`href`|String| optional | item link |
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |

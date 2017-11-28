@@ -23,7 +23,7 @@ var vm = new Vue({
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
 |`v-model`|Boolean|| togggle state binding |
-|`:disabled`|Boolean|| wether component is disabled |
+|`disabled`|Boolean|| whether component is disabled |
 |`primary`|Boolean|| set primary theme |
 |`accent`|Boolean|| set accent theme |
 |`toggle-on`|String|| toggled on icon name |

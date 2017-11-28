@@ -1,6 +1,6 @@
 ## Usage
 
-The card package provides the building blocks to compose your card components
+The card package provides the building blocks for composing your card components
 
 ```html
 <mdc-card>
@@ -29,7 +29,7 @@ var vm = new Vue({
 
 ## Content blocks
 
-Cards are composed of different content blocks, which are typically laid out in 
+Cards are composed of different content blocks which are typically laid out in 
 vertical succession.
 
 ### Rich Media
@@ -40,7 +40,7 @@ vertical succession.
 </mdc-card>
 ```
 
-`mdc-card-media` is used for showing rich media in cards, and optionally as a 
+`mdc-card-media` is used for showing rich media in cards and optionally as a 
 container:
 
 ```html
@@ -55,7 +55,7 @@ container:
 |-------|------|---------|-------------|
 |`src`| String|required| the backgound image source |
 |`height`|number|| height of the rich media in px |
-|`dark`|String|| wether the image is dark, applies dark-theme |
+|`dark`|String|| whether the image is dark, applies dark-theme |
 
 
 ### Primary  (Title/Subtitle)
@@ -70,7 +70,7 @@ container:
 |-------|------|---------|-------------|
 |`title`      | String  || the title |
 |`subtitle`   | String  || the subtitle |
-|`large-title`| Boolean || wether the title should be large |
+|`large-title`| Boolean || whether the title should be large |
 
 ### Supporting Text
 
@@ -84,7 +84,7 @@ container:
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`vertical`| boolean |false| wether action layout is vertical |
+|`vertical`| boolean |false| whether action layout is vertical |
 
 ```html
 <mdc-card>
@@ -108,7 +108,7 @@ container:
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`disabled`| boolean |false| wether the button is disabled |
+|`disabled`| boolean |false| whether the button is disabled |
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
@@ -116,18 +116,18 @@ container:
 
 
 
-Using the href attribute will render `<a role="button">`
+Using the `href` attribute will render `<a role="button">`
 
 > Accessibility Warning:  
 > Buttons are expected to be triggered using the Space or Enter key, 
 > while links are expected to be triggered using the Enter key. 
-> Also button and links have different behaviour on right click.
-> see this MDN [note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
+> Additionally, button and links have different behavior on right click.
+> see this [MDN note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
 
 
 ### Horizontal block
 
-You can stack multiple card blocks horizontally instead of vertically, by 
+You can stack multiple card blocks horizontally instead of vertically by 
 placing them inside of a `mdc-card-horizontal` block:
 
 ```html
@@ -141,8 +141,8 @@ placing them inside of a `mdc-card-horizontal` block:
 
 ### Media image
 
-`mdc-media-img` is designed to be used in horizontal blocks, taking up a 
-fixed height, rather than stretching to the width of the card.
+`mdc-media-img` is designed to be used in horizontal blocks by taking up a 
+fixed height rather than stretching to the width of the card.
 
 ```html
 <mdc-card>
@@ -156,7 +156,7 @@ fixed height, rather than stretching to the width of the card.
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
 |`src`| String|| image source |
-|`mult`| Number|| optional size multiplicator, can be `1.5`, `2` or `3`" |
+|`mult`| Number|| optional size multiplier, can be `1.5`, `2` or `3`" |
 
 
 > Unlike media blocks, media items are not designed to be used as optional 
