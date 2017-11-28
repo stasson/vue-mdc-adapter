@@ -1,10 +1,10 @@
 <template>
   <select :multiple="multiple"  ref="root" v-model="selected" 
-    :disabled="disabled"  :size="size"  
-    class="mdc-multi-select mdc-list"
+    :disabled="disabled"  :style="styles"  
+    class="mdc-select mdc-multi-select mdc-list"
     @change="onChange"
   >
-    <optgroup class="mdc-list-group" :label="label" v-if="label">
+    <optgroup ref="optgroup" class="mdc-list-group" :label="label" v-if="label">
         <slot></slot>
     </optgroup>
     <slot v-else></slot>
@@ -28,7 +28,23 @@ export default {
   data () {
     return {
       selected: this.value,
-      size: undefined
+      size: undefined,
+      count: undefined
+    }
+  },
+  computed: {
+    styles () {
+      let scroll = (this.count > this.size)
+      let size = 48* this.size + (scroll? 0 : 16)
+
+      let styles =  {
+        'height': size + 'px',
+        'overflow-y':  scroll ? 'scroll' : 'hidden'
+      }
+      if (!scroll) {
+        styles['background-image'] = 'unset'
+      }
+      return styles
     }
   },
   methods: {
@@ -39,6 +55,7 @@ export default {
   mounted () {
     const refreshSize = () => {
       let count = this.$refs.root.querySelectorAll('option, optgroup').length
+      this.count = count
       let max = Number(this.maxSize)
       if (this.label) {
         max += 1

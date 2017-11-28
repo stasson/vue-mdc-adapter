@@ -31,7 +31,7 @@ var vm = new Vue({
 
 ### Positioning
 
-The menu can either be positioned manually, or automatically, by anchoring it to an element.
+The menu can either be positioned manually or automatically by anchoring it to an element.
 
 The anchor is a wrapper element that contains the actual visible element to attach to:
 
@@ -44,7 +44,7 @@ The anchor is a wrapper element that contains the actual visible element to atta
 </mdc-menu-anchor>
 ```
 
-> for manual positioning see  https://material.io/components/web/catalog/menus/#manual-positioning
+> for manual positioning see the [MDC docs](https://material.io/components/web/catalog/menus/#manual-positioning)
 
 
 ### Props
@@ -61,25 +61,25 @@ The anchor is a wrapper element that contains the actual visible element to atta
 #### mdc-menu-item
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`:disabled`|Boolean| false | wether item is disabled |
+|`disabled`|Boolean| false | whether item is disabled |
 
 
 
 ### Events 
 | props | arg | Description |
 |-------|-----|-------------|
-|`@select`| `{ index: Number, item: HTMLElement }` | emited when a menu item is selected   |
-|`@cancel`| | emited when menu is cancelled   |
+|`@select`| `{ index: Number, item: HTMLElement }` | emitted when a menu item is selected   |
+|`@cancel`| | emitted when menu is cancelled   |
 
-> select event data specisfies index and item :  
+> `select` event data specifies index and item :  
 
 
 ### Methods
 
 - `open({focusIndex: number} = {}) => void`  
-Opens the menu. Takes an options object containing a focusIndex property that 
+Opens the menu. Takes an options object containing a `focusIndex` property that 
 specifies the index of the menu item to be focused.
-If the options object or focusIndex is omitted, no menu item will be focused.
+If the options object or `focusIndex` is omitted, no menu item will be focused.
 
 - `close() => void`  
 Closes the menu.

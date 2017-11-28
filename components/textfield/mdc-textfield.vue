@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mdc-textfield-wrapper">
     <!--fullwidth multiline case-->
     <div ref="root" :class="rootClasses" v-if="multiline && fullwidth">
       <textarea ref="input" :class="inputClasses"
@@ -60,7 +60,9 @@
 
 <script>
 import MDCTextfieldFoundation from '@material/textfield/foundation'
-import {RippleBase} from '../util'
+import MDCTextFieldBottomLineFoundation from '@material/textfield/bottom-line/foundation'
+import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation'
+import {RippleBase, emitCustomEvent} from '../util'
 
 export default {
   name: 'mdc-textfield',
@@ -93,6 +95,7 @@ export default {
     return {
       text: this.value,
       rootClasses: {
+        'mdc-textfield': true,
         'mdc-text-field': true,
         'mdc-text-field--upgraded': true,
         'mdc-text-field--disabled': this.disabled,
@@ -110,9 +113,9 @@ export default {
         'mdc-text-field__bottom-line': true
       },
       helpClasses: {
-        'mdc-text-field-helptext': true,
-        'mdc-text-field-helptext--persistent': this.helptextPersistent,
-        'mdc-text-field-helptext--validation-msg': this.helptextValidation
+        'mdc-text-field-helper-text': true,
+        'mdc-text-field-helper-text--persistent': this.helptextPersistent,
+        'mdc-text-field-helper-text--validation-msg': this.helptextValidation
       }
     }
   },
@@ -155,60 +158,102 @@ export default {
       deregisterTextFieldInteractionHandler: (evtType, handler) => {
         this.$refs.root.removeEventListener(evtType, handler)
       },
-      addClassToBottomLine: (className) => {
-        this.$set(this.bottomClasses, className, true)
-      },
-      removeClassFromBottomLine: (className) => {
-        this.$delete(this.bottomClasses, className)
-      },
-      addClassToHelptext: (className) => {
-        this.$set(this.helpClasses, className, true)
-      },
-      removeClassFromHelptext: (className) => {
-        this.$delete(this.helpClasses, className)
-      },
-      helptextHasClass: (className) => {
-        return this.$refs.help &&
-          this.$refs.help.classList.contains(className)
-      },
       registerInputInteractionHandler: (evtType, handler) => {
         this.$refs.input.addEventListener(evtType, handler)
       },
       deregisterInputInteractionHandler: (evtType, handler) => {
         this.$refs.input.removeEventListener(evtType, handler)
       },
-      registerTransitionEndHandler: (handler) => {
-        if (this.$refs.bottom) {
-          this.$refs.bottom.addEventListener('transitionend', handler)
-        }
-      },
-      deregisterTransitionEndHandler: (handler) => {
-        if (this.$refs.bottom) {
-          this.$refs.bottom.removeEventListener('transitionend', handler)
-        }
-      },
-      setBottomLineAttr: (name, value) => {
-        if (this.$refs.bottom) {
-          this.$refs.bottom.setAttribute(name, value)
-        }
-      },
-      setHelptextAttr: (name, value) => {
-        if (this.$refs.help) {
-          this.$refs.help.setAttribute(name, value)
-        }
-      },
-      removeHelptextAttr: (name) => {
-        if (this.$refs.help) {
-          this.$refs.help.removeAttribute(name)
-        }
-      },
+      // registerTransitionEndHandler: (handler) => {
+      //   if (this.$refs.bottom) {
+      //     this.$refs.bottom.addEventListener('transitionend', handler)
+      //   }
+      // },
+      // deregisterTransitionEndHandler: (handler) => {
+      //   if (this.$refs.bottom) {
+      //     this.$refs.bottom.removeEventListener('transitionend', handler)
+      //   }
+      // },
       getNativeInput: () => {
         return this.$refs.input
       },
       notifyIconAction: () => {
         this.$emit('icon')
-      }
+      },
+      registerBottomLineEventHandler: (evtType, handler) => {
+        if (this.$refs.bottom) {
+          this.$refs.bottom.addEventListener(evtType, handler);
+        }
+      },
+      deregisterBottomLineEventHandler: (evtType, handler) => {
+        if (this.$refs.bottom) {
+          this.$refs.bottom.removeEventListener(evtType, handler);
+        }
+      },
+      getBottomLineFoundation: () => {
+        if (this.$refs.bottom) {
+          return this.bottomLineFoundation
+        }
+        return undefined;
+      },
+      getHelperTextFoundation: () => {
+        if (this.$refs.help) {
+          return this.helperTextFoundation
+        }
+        return undefined;
+      },
     })
+
+    if (this.$refs.bottom) {
+      this.bottomLineFoundation = new MDCTextFieldBottomLineFoundation({
+        addClass: (className) => {
+          this.$set(this.bottomClasses, className, true)
+        },
+        removeClass: (className) => {
+          this.$delete(this.bottomClasses, className)
+        },
+        setAttr: (name, value) => {
+          this.$refs.bottom.setAttribute(name, value)
+        },
+        registerEventHandler: (evtType, handler) => {
+          this.$refs.bottom.addEventListener(evtType, handler)
+        },
+        deregisterEventHandler: (evtType, handler) => {
+          this.$refs.bottom.removeEventListener(evtType, handler)
+        },
+        notifyAnimationEnd: () => {
+          emitCustomEvent(
+            this.$refs.bottom,
+            MDCTextFieldBottomLineFoundation.strings.ANIMATION_END_EVENT, 
+            {});
+        },
+      }) 
+      this.bottomLineFoundation.init()
+    }
+
+    if (this.$refs.help) {
+      this.helperTextFoundation = new MDCTextFieldHelperTextFoundation({
+        addClass: (className) => {
+          this.$set(this.helpClasses, className, true)
+        },
+        removeClass: (className) => {
+          this.$delete(this.helpClasses, className)
+        },
+        hasClass: (className) => {
+          return this.$refs.help.classList.contains(className)
+        },
+        setAttr: (name, value) => {
+          this.$refs.help.setAttribute(name, value)
+        },
+        removeAttr: (name) => {
+          this.$refs.help.removeAttribute(name)
+        },
+        setContent: (content) => {
+          this.$refs.help.textContent = content;
+        }
+      }) 
+      this.helperTextFoundation.init()
+    }
     this.foundation.init()
     this.foundation.setDisabled(this.disabled)
 

@@ -35,11 +35,11 @@ var vm = new Vue({
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`checked`|Boolean|| whether the checkbox is checkecked, bind with `v-model` |
-|`indeterminate`|Boolean|| whether the checkbox is in indeterminate state bind with `.sync` modifier | |
+|`checked`|Boolean|| whether the checkbox is checked, bind with `v-model` |
+|`indeterminate`|Boolean|| whether the checkbox is in an indeterminate state bind with `.sync` modifier | |
 |`disabled`| Boolean|| whether the checkbox is disabled |
 |`label`| String|| checkbox label |
-|`align-end`| Boolean|| align the checkbox after the label |
+|`align-end`| Boolean|| whether to align the checkbox after the label |
 |`value`|String| `'on'`| checkbox value |
 
 

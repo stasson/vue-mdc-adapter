@@ -1,5 +1,6 @@
 <template>
-  <div class="mdc-select mdc-menu-anchor" role="listbox" :tabindex="tabIndex"
+  <div class="mdc-select mdc-menu-select mdc-menu-anchor" 
+    role="listbox" :tabindex="tabIndex"
     :class="classes" :style="styles">
     <span class="mdc-select__selected-text">{{ selectedTextContent }}</span>
     <mdc-menu ref="menu" :style="menuStyles" @update="resetIndex">
@@ -119,7 +120,9 @@ export default {
         this.$emit('change', this.foundation.getValue())
       },
       getWindowInnerHeight: () =>
-        window.innerHeight
+        window.innerHeight,
+      addBodyClass: (className) => document.body.classList.add(className),
+      removeBodyClass: (className) => document.body.classList.remove(className),
     })
     
     foundation.init()

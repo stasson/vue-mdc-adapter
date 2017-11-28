@@ -1,5 +1,5 @@
 <template>
-  <header class="mdc-toolbar--container">
+  <header class="mdc-toolbar-wrapper">
     <!--Toolbar-->
     <div ref="root" :class="rootClasses" :style="rootStyles">
         <slot></slot>

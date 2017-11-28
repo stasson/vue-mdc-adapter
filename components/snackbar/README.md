@@ -68,7 +68,7 @@ properties and their usage.
 | `show(data)` |  trigger the display of a message with optional action.|
 
 ### Reference
-- <https://material.io/components/web/catalog/snackbars
+- <https://material.io/components/web/catalog/snackbars>
 
 
 

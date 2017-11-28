@@ -34,8 +34,8 @@ var vm = new Vue({
 |`accept`|String|`'Ok'`| the dialog accept button text   |
 |`cancel`| String| `'cancel'`| the dialog cancel button text  |
 |`scrollable`| String|| whether the dialog is scrollable |
-|`@accept`| String|| emited when dialog is accepted   |
-|`@cancel`| String|| emited when dialog is cancelled   |
+|`@accept`| String|| emitted when dialog is accepted   |
+|`@cancel`| String|| emitted when dialog is cancelled   |
 |`dark`| boolean| | set the dark theme |
 
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="mdc-toolbar__section" :class="classes">
+  <section class="mdc-toolbar-section mdc-toolbar__section" :class="classes">
     <slot></slot>
   </section>
 </template>

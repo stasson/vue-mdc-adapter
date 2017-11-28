@@ -1,8 +1,10 @@
 <template>
-   <option :disabled="disabled" :value="value" v-if="hasValue">
+   <option :disabled="disabled" :value="value" v-if="hasValue"
+    class="mdc-option mdc-native-option">
      <slot></slot>
    </option>
-   <option :disabled="disabled" v-else>
+   <option :disabled="disabled" v-else
+    class="mdc-option mdc-native-option">
      <slot></slot>
    </option>
 </template>

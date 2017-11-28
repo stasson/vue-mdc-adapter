@@ -1,6 +1,6 @@
 ## Usage
 
-The mdc-typography components defines basic properties for text, such as the 
+The `mdc-typography` components defines basic properties for text, such as the 
 typeface and antialiasing settings.
 
 ```html
@@ -16,7 +16,7 @@ typeface and antialiasing settings.
 
 ### mdc-text
 
-`mdc-text` is the base typography component, it has no restriction on props 
+`mdc-text` is the base typography component, it has no restriction on props.
 
 ```html
 <mdc-text typo='body2' tag="span" adjust-margin></mdc-text>
@@ -32,8 +32,8 @@ typeface and antialiasing settings.
 subheading2, body1, body2, caption, button
 
 
-(**)  the 'adjust-margin' property should only be used in a text context; using this 
-property on UI elements such as buttons may cause them to be positioned incorrectly.
+(**)  the `adjust-margin` property should only be used in a text context; using this 
+property on UI elements such as buttons might cause them to be positioned incorrectly.
 
 > wrap typography components with  `mdc-text-section` to force margin adjustment:
 

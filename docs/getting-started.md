@@ -7,7 +7,7 @@ components and plugin system.
 #### Playground
 
 Fork the [reference codepen template](https://codepen.io/stasson/pen/XzmMKp)
-one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
+or one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
 or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
 
 
@@ -39,12 +39,12 @@ vue init stasson/vue-mdc-adapter-simple my-project
 ## Getting Serious
 
 > Vue.js version `^2.5.3` is required as a peer dependency.  
-> Material Components are bundled and do need to be installed.  
+> Material Components are bundled and do not need to be installed.  
 > Material Icons and Fonts are not bundled and need to be fetched.
 
 ### UMD Distribution
 
-The  ES5 distribution is available at
+The ES5 distribution is available at
 [unpkg.com/vue-mdc-adapter/dist](https://unpkg.com/vue-mdc-adapter/dist/) or via npm.
 
 ```console
@@ -59,7 +59,7 @@ The distribution comes in two flavors:
 | ------------ | ----- | ----------- |
 | dist/index.js | development | plugin (injected styles) |
 | dist/index.min.js | production | minified plugin (ES5)  |
-| dist/index.min.css | production | minified stylecheet (CSS)|
+| dist/index.min.css | production | minified stylesheet (CSS)|
 
 #### _a la carte_  plugins
 
@@ -72,9 +72,9 @@ The distribution comes in two flavors:
 ### Source Distribution
 
 > Advanced users may want to leverage the ES6 / SASS source distribution.
-material components modules are required so you need to make sure your
-webpack/rollup config resolves node_modules for transpiling and sass imports
-(see _Building from ES6 Sources_ below.)
+Material components modules are required so you need to make sure your
+webpack/rollup config resolves `node_modules` for transpiling and sass imports.
+(see _Building from ES6 Sources_ below)
 
 #### standalone plugin
 
@@ -98,7 +98,7 @@ webpack/rollup config resolves node_modules for transpiling and sass imports
 
 ### Using the UMD Distribution
 
-#### Add dependencies to html template
+#### Add dependencies to HTML template
 
 ```html
 <!-- index.html template -->
@@ -142,7 +142,7 @@ import VueMDCButton from 'vue-mdc-adapter/button'
 Vue.use(VueMDCButton)
 ```
 
-> Bundling vue-mdc-adapter and vue libraries may not be optimal. Alternatively you can setup vue-mdc-adapter as an [external libray](https://webpack.js.org/configuration/externals/#externals).
+> Bundling vue-mdc-adapter and vue libraries might not be optimal. In this case you should set up vue-mdc-adapter as an [external libray](https://webpack.js.org/configuration/externals/#externals).
 
 ```html
 <!-- index.html template -->
@@ -173,7 +173,7 @@ externals: {
 
 ### Building from ES6 Sources
 
-#### resolve vue-mdc-adapter sources
+#### Resolve vue-mdc-adapter sources:
 
 ```javascript
   // webpack.config.js
@@ -184,7 +184,7 @@ externals: {
   }
 ```
 
-#### Make sure @material imports are transpiled
+#### Make sure @material imports are transpiled:
 
 ```javascript
 // babel loader config
@@ -197,7 +197,7 @@ externals: {
   }
 ```
 
-#### Make sure sass modules can be imported
+#### Make sure sass modules can be imported:
 
 ```javascript
 // sass loader config
@@ -210,10 +210,10 @@ externals: {
   },
 ```
 
-#### create your own theme file
+#### Create your own theme file:
 
-> Material Components styles come as highly themable SASS framework. To be able to theme
-and avoid any duplicates/ordering style issue in the bundle, we recommend to manage styles globaly:
+> Material Components styles come as highly themable SASS framework. In order to be able to theme properly
+and avoid any duplicate/ordering style issues in the bundle, we recommend managing styles globally:
 
 ```scss
 /* theme.scss */
@@ -224,7 +224,7 @@ $mdc-theme-background: #fff;
 @import "vue-mdc-adapter/components/styles.scss";
 ```
 
-#### You can now import the _standalone_ plugin
+#### You can now import the _standalone_ plugin:
 
 ```javascript
 // main.js
@@ -257,8 +257,8 @@ Vue.use(VueMDCFAB)
 ```
 
 > If you do not want to manage styles globally and want to import them in your `.vue` single file components,
-> we recommend that you import the css from the distribution and not use the sass source tree.  
-> Refer to [Material Components Theming Guide](https://material.io/components/web/docs/theming/)
+> we recommend that you import the CSS from the distribution and do not use the SASS source tree.  
+> Refer to the [Material Components Theming Guide](https://material.io/components/web/docs/theming/)
 > to learn how to create your own CSS theme or leverage CSS variables 
 
 ### _A la carte_ component imports
@@ -281,7 +281,7 @@ In case you want to import the mdc component directly (avoiding plugin registrat
 </script>
 ```
 
-or to import all components (kebab-case) from a plugin at once:
+or import all components (kebab-case) from a plugin at once:
 
 ```html
 <template>

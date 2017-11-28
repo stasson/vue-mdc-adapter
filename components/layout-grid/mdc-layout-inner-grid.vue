@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-layout-grid__inner">
+  <div class="mdc-layout-inner-grid mdc-layout-grid__inner">
     <slot></slot>
   </div>
 </template>

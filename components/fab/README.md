@@ -10,14 +10,14 @@
 
 > FAB can't be disabled 
 
-> add an href attribute for link
+> add an `href` attribute for link
 
 
 ### events
 
 | event | args | Description |
 |-------|------|-------------|
-|`@click`||emited on click |
+|`@click`||emitted on click |
 
 
 ### props
@@ -34,12 +34,12 @@
 |`href`|String|| link's href, renders anchor (see notes below) | 
 
 
-> (*) initializer attribute, not dynamic propertie
+> (*) initializer attribute, not dynamic property
 
 
 ### Custom Icons
 
-> You can ommit the icon prop to render your custom icons 
+> You can omit the icon prop to render your custom icons 
 
 **Font Awsome**
 
@@ -62,7 +62,7 @@
 <mdc-fab icon="home" href="#">Home</mdc-fab>
 ```
 
-Using the href attribute will render `<a role="button">`
+Using the `href` attribute will render `<a role="button">`
 
 > Accessibility Warning:  
 > Buttons are expected to be triggered using the Space or Enter key, 
@@ -70,7 +70,7 @@ Using the href attribute will render `<a role="button">`
 > Also button and links have different behaviour on right click.
 > see this MDN [note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
 
-You may want to keep button behavior and do the navigation programatically:
+You might want to keep button behavior and do the navigation programatically:
 
 ```html
 <mdc-button @click="location.href='#'">Home</mdc-button>

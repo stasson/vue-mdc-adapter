@@ -32,7 +32,7 @@ export default {
     'label': String,
     'max-size': {
       type: [String, Number],
-      default: 8
+      default: 4
     }
   },
   provide () {

@@ -1,5 +1,5 @@
 <template>
-<div :class="formFieldClasses">
+<div :class="formFieldClasses" class="mdc-radio-wrapper">
   <div ref="root" class="mdc-radio" :class="classes" :style="styles">
     <input type="radio" ref="control" :id="_uid" :name="name" 
       class="mdc-radio__native-control" @change="sync">
