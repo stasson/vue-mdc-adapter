@@ -1,9 +1,9 @@
 <template>
-  <mdc-toolbar waterfall>
+  <mdc-toolbar waterfall class="main-toolbar">
     <mdc-toolbar-row>
       <mdc-toolbar-section align-start >
         <mdc-toolbar-menu-icon event="toggle-drawer"></mdc-toolbar-menu-icon>
-        <mdc-toolbar-title @click="$router.push('/')">vue-mdc-adapter</mdc-toolbar-title>
+        <mdc-toolbar-title @click="$router.push('/')">{{'vue\u2022mdc\u2022adapter'}}</mdc-toolbar-title>
       </mdc-toolbar-section>
       <mdc-toolbar-section shrink-to-fit align-end>
         <mdc-toolbar-icon href="https://github.com/stasson/vue-mdc-adapter"

@@ -1,5 +1,5 @@
 <template>
-  <mdc-drawer ref="drawer" toggle-on="toggle-drawer">
+  <mdc-drawer class="primary-drawer" ref="drawer" toggle-on="toggle-drawer">
     <mdc-drawer-header temporary></mdc-drawer-header>
     <mdc-drawer-list dense>
       

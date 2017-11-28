@@ -2,7 +2,11 @@
   <section>
     <div class="demo-icon" :style="'background-image: url('+icon+')'">
     </div>
-    <mdc-display typo="display1" v-if="title" >{{title}}</mdc-display>
+    <mdc-display ref="title" typo="display1" v-if="title" >
+      <span v-for="(word, i) in title" :key="word"
+        :class="(i+1 < title.length)? 'hidden-mark hidden-mark--dot' : 'hidden-mark hidden-mark--return'"
+        >{{word.trim()}}&nbsp</span>
+    </mdc-display>
     <article class="demo-article" v-if="demo" >
       <component :is="demo" />
     </article>
@@ -84,7 +88,7 @@ export default {
       return (key in this.$options.components) ? key : undefined
     },
     title () {
-      return titles[this.$route.params.id] 
+      return titles[this.$route.params.id].split(' ') 
     },
     icon () {
       return icons[this.$route.params.id] 
@@ -93,6 +97,6 @@ export default {
   beforeRouteUpdate (to, from, next) {
     this.$nextTick(() => scrollTo(0,0))
     next()
-  }  
+  },
 }
 </script>

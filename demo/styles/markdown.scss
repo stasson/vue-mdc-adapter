@@ -1,106 +1,153 @@
+$rootpath: '' !default;
+
+$black-02: rgba(0, 0, 0, 0.02);
+$black-05: rgba(0, 0, 0, 0.05);
+$black-10: rgba(0, 0, 0, 0.10);
+$black-20: rgba(0, 0, 0, 0.20);
+$black-54: rgba(0, 0, 0, 0.54);
+$black-87: rgba(0, 0, 0, 0.87);
+$black: #000;
+$brown-200: #bcaaa4;
+$brown-400: #8d6e63;
+$green-a700: #00c853;
+$grey-50: #fafafa;
+$grey-100: #f5f5f5;
+$grey-200: #eee;
+$asset-min-height: 200px;
+$asset-padding: 24px;
+$ui-font-family: 'Roboto Mono';
+
 .markdown {
-    
-      margin-top: 64px;
-    
-      @include mdc-typography-base;
-    
-      a, a:active, a:hover, a:link, a:visited {
-          font-family: Roboto,sans-serif;
-          font-size: .875rem;
-          font-weight: 400;
-          letter-spacing: .04em;
-          line-height: 1.25rem;
-          color: rgba(0,0,0,.87);
-          font-family: Roboto Mono;
-      }
-      
-    
-      h1 {
-        @include mdc-typography(display1);
-        margin-top: 32px;
-      }
-    
-    
-      h2 {
-        margin-top: 24px;
-        @include mdc-typography(headline) 
-      }
-    
-      h3 {
-        margin-top: 16px;
-        @include mdc-typography(title) 
-      }
-    
-      h4 {
-        @include mdc-typography(subheading2) 
-      }
-    
-      h5, h6 {
-        @include mdc-typography(subheading1) 
-      }
-    
-      p {
-        @include mdc-typography(body1) 
-      }
-    
-      blockquote {
-    
-        margin: 24px 0px;
-        padding: 0 1em;
-        border-left: 0.25em solid #dfe2e5;    
-        
-        p {
-          @include mdc-typography(body2) 
-          // @include mdc-typography-adjust-margin(body2) 
-        }
-      }
-    
-      table {
-        padding: 0; 
-        margin-top: -8px;
-        margin-bottom: 24px;
-    
-        tr {
-          border-top: 1px solid #cccccc;
-          background-color: white;
-          margin: 0;
-          padding: 0; 
-        
-    
-          th {
-            @include mdc-typography(caption); 
-            border: 1px solid #cccccc;
-            text-align: left;
-            margin: 0;
-            padding: 6px 13px; 
-            background-color: #f8f8f8; 
-            font-weight: 500;
-            text-transform: lowercase;
-          }
-      
-          td {
-            border: 1px solid #cccccc;
-            text-align: left;
-            margin: 0;
-            font-size:.87em;
-            padding: 6px 13px; 
-            
-          }
-        }
-          
-      }
-    
-      table tr th :first-child, table tr td :first-child {
-        margin-top: 0; 
-      }
-      
-      table tr:nth-child(2n) {
-        background-color: #f8f8f8; 
-      }
-    
-      table tr th :last-child, table tr td :last-child {
-        margin-bottom: 0; 
-      }
-    
+
+  @include mdc-typography(body1);
+  
+
+
+    max-width: 760px;
+  
+    h1 {
+      // See _component-icons.scss for additional mutations in component pages.
+      @include mdc-typography(headline);
+      margin-bottom: 24px;
     }
-    
+  
+    h2 {
+      @include mdc-typography(subheading2);
+      font-size: 1.25rem;
+      margin: 56px 0 24px;
+    }
+  
+    h3 {
+      @include mdc-typography(subheading2);
+      font-weight: 500;
+      margin: 32px 0 0;
+    }
+  
+    h4 {
+      @include mdc-typography(subheading2);
+      margin: 20px 0 0;
+    }
+  
+    h5 {
+      @include mdc-typography(body2);
+      font-weight: 500;
+      margin: 20px 0 0;
+    }
+  
+    h6 {
+      @include mdc-typography(body1);
+    }
+  
+    h1,
+    h2 {
+      font-family: $ui-font-family;
+    }
+  
+    hr {
+      border: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      margin: 1.5rem 0;
+      padding: 0;
+    }
+  
+    p {
+      margin: 16px 0;
+    }
+  
+    h2 + p,
+    h3 + p,
+    h4 + p,
+    h5 + p {
+      margin-top: 4px;
+    }
+  
+    // Lists
+  
+    li > ul,
+    li > ol {
+      padding-top: 8px;
+    }
+  
+    // Data table
+  
+    table {
+      // Display as inline-block so that we can introduce a horizontal scroll on
+      // smaller screens.
+      display: inline-block;
+      overflow-x: auto;
+      margin: 8px 0 32px;
+      max-width: 100%;
+  
+      border: 1px solid $grey-200;
+    }
+  
+    th,
+    td {
+      border: 1px solid $grey-200;
+      padding: 12px 12px 12px 24px;
+  
+      &:first-child {
+        border-left: none;
+      }
+  
+      &:last-child {
+        border-right: none;
+      }
+    }
+  
+    th {
+      background: $grey-50;
+      border-top: none;
+      color: $black-54;
+      font-weight: 500;
+      text-align: left;
+    }
+  
+    td {
+      &:first-child code {
+        background: 0;
+      }
+    }
+  
+    tr:last-child > td {
+      border-bottom: none;
+    }
+  
+    // Modifier
+  
+    &--full-width {
+      max-width: 100%;
+    }
+
+    a, a:active, a:hover, a:link, a:visited {
+      font-family: Roboto Mono;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-size: .875rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      line-height: 1.25rem;
+      color: rgba(0,0,0,.87);
+  }
+
+}

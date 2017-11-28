@@ -1,9 +1,24 @@
+@import "./_constant.scss";
+@import "./jazzy.scss";
 @import "@material/typography/mdc-typography";
 @import "@material/elevation/mdc-elevation";
 @import "./markdown";
 @import "./highlight";
 
-.mdc-drawer-header {
+.primary-drawer .mdc-drawer-item {
+  font-family: "Roboto Mono", Monaco, courier, monospace;
+  font-weight: 400;
+  font-size: .875rem;
+}
+
+.main-toolbar .mdc-toolbar-title {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
+  letter-spacing: .0675rem;
+  text-transform: uppercase;
+}
+
+.primary-drawer .mdc-drawer-header {
   background-image: url("../assets/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -19,6 +34,10 @@
   margin:16px auto 16px auto;
   max-width : 800px;
   min-width : 250px;
+
+  .mdc-display {
+    font-family: "Roboto Mono", Monaco, courier, monospace;
+  }
 }
 
 .demo-icon {
@@ -30,12 +49,12 @@
   background-position-x: 50%;
   background-position-y: center;
   background-size: 100%;
-  /* background-repeat-x: initial;
+  background-repeat-x: initial;
   background-repeat-y: initial;
   background-attachment: initial;
   background-origin: initial;
   background-clip: initial;
-  background-color: initial; */
+  background-color: initial;
 }
 .demo-article {
   display:flex;
@@ -69,5 +88,28 @@
   a, a:active, a:hover, a:link, a:visited, p {
     font-size: 1rem;
     line-height: 1.25rem;
+  }
+}
+
+// This code is designed to position the hidden marks appropriately, while still
+// allowing the user to copy the text with spaces intact and without hidden
+// marks.
+.hidden-mark {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    color: #9b9b9b;
+  }
+
+  &--dot::after {
+    content: '•';
+  }
+
+  &--return::after {
+    content: '¬';
   }
 }

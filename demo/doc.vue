@@ -1,6 +1,10 @@
 <template>
   <section>
-    <mdc-display v-if="title" >{{title}}</mdc-display>
+    <mdc-display ref="title" v-if="title" >
+      <span v-for="(word, i) in title" :key="word"
+        :class="(i+1 < title.length)? 'hidden-mark hidden-mark--dot' : 'hidden-mark hidden-mark--return'"
+        >{{word.trim()}}&nbsp</span>
+    </mdc-display>
     <article class="doc-article markdown">
       <component :is="$route.params.id" />
     </article>
@@ -8,7 +12,7 @@
 </template>
 
 <script>
-import {capitalize} from './utils'
+import { capitalize } from './utils'
 
 export default {
   components: {
@@ -17,12 +21,12 @@ export default {
   },
   computed: {
     title () {
-      return  capitalize(this.$route.params.id) 
+      return  capitalize(this.$route.params.id).split(' ')
     }
   },
   beforeRouteUpdate (to, from, next) {
     this.$nextTick(() => scrollTo(0,0))
     next()
-  }  
+  }
 }
 </script>
