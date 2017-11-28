@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" class="mdc-drawer-item mdc-list-item" 
+  <a :href="href" class="mdc-drawer-item mdc-list-item vue-mdc-clickable" 
     :class="classes" :style="styles"
     @click="onClick">
     <span class="mdc-list-item__start-detail" v-if="hasStartDetail">
