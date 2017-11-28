@@ -120,7 +120,9 @@ export default {
         this.$emit('change', this.foundation.getValue())
       },
       getWindowInnerHeight: () =>
-        window.innerHeight
+        window.innerHeight,
+      addBodyClass: (className) => document.body.classList.add(className),
+      removeBodyClass: (className) => document.body.classList.remove(className),
     })
     
     foundation.init()
