@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.5.0...v0.5.1) (2017-11-28)
+
+
+### Bug Fixes
+
+* **demo:** set iframe elevation to 1 ([1662382](https://github.com/stasson/vue-mdc-adapter/commit/1662382))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.4.2...v0.5.0) (2017-11-28)
 
