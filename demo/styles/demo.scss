@@ -15,12 +15,28 @@
 }
 
 .content {
-  padding: 8px 16px;
+  padding: 80px 16px;
   margin:16px auto 16px auto;
   max-width : 800px;
   min-width : 250px;
 }
 
+.demo-icon {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 24px;
+  background-position-x: 50%;
+  background-position-y: center;
+  background-size: 100%;
+  /* background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial; */
+}
 .demo-article {
   display:flex;
   justify-content: flex-start;
@@ -31,11 +47,11 @@
 
   .mdc-demo {
     flex: 1 1 auto;
-    background-color: #FAFAFA
+    background-color: #f2f2f2
   }
 
   .mdc-demo--container {
-    @include mdc-elevation(4);
+    @include mdc-elevation(0);
     min-height: 100px;
     min-width: 200px;
     padding: 48px;
@@ -43,11 +59,6 @@
     justify-content: center;
     align-items: center;
     }
-
-  .mdc-demo--fluid {
-    @include mdc-elevation(4);
-  }
-
 }
 
 .doc-article {

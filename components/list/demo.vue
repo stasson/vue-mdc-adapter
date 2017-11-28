@@ -25,15 +25,15 @@
         <mdc-list dense bordered >
           <mdc-list-item>
             <i slot="start-detail" class="material-icons">favorite_border</i>
-            With start details
+            start details
           </mdc-list-item>
           <mdc-list-item>
-            With end details
+            end details
             <i slot="end-detail" class="material-icons">star_border</i>
           </mdc-list-item>
           <mdc-list-item>
             <i slot="start-detail" class="material-icons">favorite_border</i>
-            With both details
+            both details
             <i slot="end-detail" class="material-icons">star_border</i>
           </mdc-list-item>
         </mdc-list>

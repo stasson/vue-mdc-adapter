@@ -1,6 +1,8 @@
 <template>
   <section>
-    <mdc-display v-if="title" >{{title}}</mdc-display>
+    <div class="demo-icon" :style="'background-image: url('+icon+')'">
+    </div>
+    <mdc-display typo="display1" v-if="title" >{{title}}</mdc-display>
     <article class="demo-article" v-if="demo" >
       <component :is="demo" />
     </article>
@@ -15,6 +17,10 @@ import links from './links.js'
 
 const titles = links.reduce((result, link) => {
   return {...result,  ...{ [link.id]: link.title}}
+},{})
+
+const icons = links.reduce((result, link) => {
+  return {...result,  ...{ [link.id]: link.icon}}
 },{})
 
 export default {
@@ -79,6 +85,9 @@ export default {
     },
     title () {
       return titles[this.$route.params.id] 
+    },
+    icon () {
+      return icons[this.$route.params.id] 
     }
   },
   beforeRouteUpdate (to, from, next) {
