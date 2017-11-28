@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.4.2...v0.5.0) (2017-11-28)
+
+
+### Bug Fixes
+
+* enforce class name convention ([5660b39](https://github.com/stasson/vue-mdc-adapter/commit/5660b39)), closes [#121](https://github.com/stasson/vue-mdc-adapter/issues/121)
+* enforce component naming convention ([8f805c5](https://github.com/stasson/vue-mdc-adapter/commit/8f805c5))
+* **package:** update material-components-web to version 0.26.0 ([d1f6da5](https://github.com/stasson/vue-mdc-adapter/commit/d1f6da5))
+* **select:** size property not applied with mdc 0.26.0 ([9925308](https://github.com/stasson/vue-mdc-adapter/commit/9925308))
+
+
+### Features
+
+* **select:** implement foundation as per mdc 0.26.0 ([53c47db](https://github.com/stasson/vue-mdc-adapter/commit/53c47db))
+* **textfield:** implement foundation as per mdc 0.26.0 ([426ceb9](https://github.com/stasson/vue-mdc-adapter/commit/426ceb9))
+
+
+
 <a name="0.4.2"></a>
 ## [0.4.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.4.1...v0.4.2) (2017-11-26)
 
