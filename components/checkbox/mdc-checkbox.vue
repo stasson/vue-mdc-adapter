@@ -1,5 +1,5 @@
 <template>
-<div :class=formFieldClasses>
+<div :class=formFieldClasses class="mdc-checkbox-wrapper">
   <div ref="root" class="mdc-checkbox"
    :class="classes" :style="styles">
     <input ref="control" :id="_uid" type="checkbox"

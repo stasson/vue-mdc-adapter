@@ -1,5 +1,5 @@
 <template>
-  <li role="separator" class="mdc-list-divider"></li>
+  <li role="separator" class="mdc-menu-divider mdc-list-divider"></li>
 </template>
 
 <script>

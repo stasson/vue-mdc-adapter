@@ -1,5 +1,5 @@
 <template>
-    <a class="mdc-toolbar__title" @click="dispatchEvent">
+    <a class="mdc-toolbar-title mdc-toolbar__title" @click="dispatchEvent">
         <slot></slot>
     </a>
 </template>

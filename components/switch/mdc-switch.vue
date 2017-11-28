@@ -1,5 +1,5 @@
 <template>
-<div :class="formFieldClasses">
+<div :class="formFieldClasses" class="mdc-switch-wrapper">
   <div class="mdc-switch" ref=root 
     :class="{ 'mdc-switch--disabled': disabled }">
     <input ref="control" type="checkbox" :id="_uid" 

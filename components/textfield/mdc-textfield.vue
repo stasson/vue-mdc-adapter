@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mdc-textfield-wrapper">
     <!--fullwidth multiline case-->
     <div ref="root" :class="rootClasses" v-if="multiline && fullwidth">
       <textarea ref="input" :class="inputClasses"
@@ -93,6 +93,7 @@ export default {
     return {
       text: this.value,
       rootClasses: {
+        'mdc-textfield': true,
         'mdc-text-field': true,
         'mdc-text-field--upgraded': true,
         'mdc-text-field--disabled': this.disabled,

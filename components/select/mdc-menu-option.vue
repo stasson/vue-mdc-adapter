@@ -1,5 +1,6 @@
 <template>
-   <li class="mdc-list-item" role="option" 
+   <li class="mdc-option mdc-menu-option mdc-list-item" 
+    role="option" 
     :tabindex="disabled?-1:0"
     :aria-disabled="disabled"
     :data-value="value">

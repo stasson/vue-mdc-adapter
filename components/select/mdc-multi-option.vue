@@ -1,8 +1,10 @@
 <template>
-   <option class="mdc-list-item" :disabled="disabled" :value="value" v-if="hasValue">
+   <option class="mdc-option mdc-multi-option mdc-list-item" 
+    :disabled="disabled" :value="value" v-if="hasValue">
      <slot></slot>
    </option>
-   <option class="mdc-list-item" :disabled="disabled" v-else>
+   <option class="mdc-option mdc-multi-option mdc-list-item" 
+    :disabled="disabled" v-else>
      <slot></slot>
    </option>
 </template>

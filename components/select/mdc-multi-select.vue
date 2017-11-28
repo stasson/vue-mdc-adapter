@@ -1,7 +1,7 @@
 <template>
   <select :multiple="multiple"  ref="root" v-model="selected" 
     :disabled="disabled"  :size="size"  
-    class="mdc-multi-select mdc-list"
+    class="mdc-select mdc-multi-select mdc-list"
     @change="onChange"
   >
     <optgroup class="mdc-list-group" :label="label" v-if="label">

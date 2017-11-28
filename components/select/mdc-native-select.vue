@@ -1,5 +1,6 @@
 <template>
-  <select ref="root" class="mdc-select" v-model="selected" :disabled="disabled"
+  <select ref="root" class="mdc-select mdc-native-select" 
+    v-model="selected" :disabled="disabled"
     @change="onChange"
   >
     <option disabled value="" v-if="label">{{ label }}</option>

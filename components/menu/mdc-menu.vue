@@ -1,5 +1,6 @@
 <template>
-  <div ref="root" :class="classes" tabindex="-1">
+  <div ref="root" :class="classes" tabindex="-1"
+    class="mdc-menu mdc-simple-menu">
     <ul ref="items" class="mdc-simple-menu__items mdc-list" 
       role="menu" :aria-hidden="isOpen()?'false':'true'">
       <slot></slot>
@@ -23,7 +24,6 @@ export default {
   data () {
     return {
       classes: {
-        'mdc-simple-menu': true,
         'mdc-simple-menu--open-from-top-left': this.openFromTopLeft,
         'mdc-simple-menu--open-from-top-right': this.openFromTopRight,
         'mdc-simple-menu--open-from-bottom-left': this.openFromBottomLeft,

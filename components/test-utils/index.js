@@ -3,8 +3,8 @@ import {mount} from 'vue-test-utils'
 
 export * from 'vue-test-utils'
 
-export function pluginSanityCheck(name, plugin, options) {
-  describe(name, () => {
+export function pluginSanityCheck(pluginName, plugin, options) {
+  describe(pluginName, () => {
 
     let components = plugin.components 
     test('is a valid adapter plugin', () => {
@@ -41,6 +41,8 @@ export function checkValidMdcAdapter(vm) {
 
   checkValidOptions(vm.$options)
 
+  checkValidClass(vm, vm.$options.name)
+  
   vm.ripple && checkValidFoundation(vm.ripple)
 
   vm.foundation && checkValidFoundation(vm.foundation)
@@ -64,7 +66,18 @@ export function checkValidOptions(options) {
 
 }
 
+export function checkValidClass(vm, name) {
+  
+  test('has a valid class', () => {
 
+    let hasVallidClass = vm.$el.classList.contains(name) ||
+      ( vm.$el.classList.contains(name + '-wrapper') && 
+        ( vm.$el.querySelector('.'+ name) !== null ))
+
+    expect(hasVallidClass).toBeTruthy()
+    })
+}
+  
 
 export function checkValidFoundation(foundation) {
 
