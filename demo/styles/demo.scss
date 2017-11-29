@@ -25,8 +25,8 @@
   background-position: center;
 }
 
-.router-link-exact-active .mdc-drawer-item {
-  font-size: 1.1rem;  
+.router-link-exact-active.mdc-drawer-item {
+  font-weight: 500;  
 }
 
 .content {

@@ -14,6 +14,6 @@ export const CustomElement = {
 
 export const CustomElementMixin = {
   components: {
-    'custom-element': CustomElement
+    CustomElement
   }
 }

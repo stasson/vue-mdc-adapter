@@ -1,5 +1,6 @@
 <template>
-  <a :href="href" class="mdc-drawer-item mdc-list-item vue-mdc-clickable" 
+  <custom-link :link="link" 
+    class="mdc-drawer-item mdc-list-item" 
     :class="classes" :style="styles"
     @click="onClick">
     <span class="mdc-list-item__start-detail" v-if="hasStartDetail">
@@ -8,20 +9,19 @@
       </slot>
     </span>
     <slot></slot>
-  </a>
+  </custom-link>
 </template>
 
 <script>
-import {RippleBase, DispatchEventMixin} from '../util'
+import {RippleBase, DispatchEventMixin, LinkMixin} from '../util'
 
 export default {
   name: 'mdc-drawer-item',
   inject: ['mdcDrawer'],
-  mixins: [DispatchEventMixin],
+  mixins: [DispatchEventMixin, LinkMixin],
   props: {
     'start-icon': String,
-    'href': String,
-    'temporary-close': {type: Boolean, default: true}
+    'temporary-close': {type: Boolean, default: true},
   },
   data () {
     return {
