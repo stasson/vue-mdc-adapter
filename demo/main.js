@@ -1,7 +1,7 @@
+import './styles/demo.scss'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMDCAdapter from 'vue-mdc-adapter'
-import './styles/demo.scss'
 import index from './index.vue'
 import routes from './routes.js'
 

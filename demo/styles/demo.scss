@@ -1,32 +1,36 @@
-@import "./_constant.scss";
-@import "./jazzy.scss";
-@import "@material/typography/mdc-typography";
-@import "@material/elevation/mdc-elevation";
+@import "../../components/theme";
+@import "./_constant";
+@import "./jazzy";
 @import "./markdown";
 @import "./highlight";
 
-.primary-drawer .mdc-drawer-item {
-  font-family: "Roboto Mono", Monaco, courier, monospace;
-  font-weight: 400;
-  font-size: .875rem;
+.primary-drawer.mdc-drawer { 
+
+  .mdc-drawer-header {
+    background-image: url("../assets/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .mdc-drawer-item {
+    font-family: "Roboto Mono", Monaco, courier, monospace;
+    font-weight: 400;
+    font-size: .875rem;
+
+    &.router-link-exact-active {
+      font-weight: 500;  
+    }
+  }
 }
 
-.main-toolbar .mdc-toolbar-title {
-  font-family: "Roboto Mono", monospace;
-  font-size: 1rem;
-  letter-spacing: .0675rem;
-  text-transform: uppercase;
-}
-
-.primary-drawer .mdc-drawer-header {
-  background-image: url("../assets/logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.router-link-exact-active.mdc-drawer-item {
-  font-weight: 500;  
+.main-toolbar {
+  .mdc-toolbar-title {
+    font-family: "Roboto Mono", monospace;
+    font-size: 1rem;
+    letter-spacing: .0675rem;
+    text-transform: uppercase;
+  }
 }
 
 .content {

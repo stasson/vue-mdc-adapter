@@ -157,7 +157,7 @@ const config = {
   },
   resolve: {
     alias: {
-      'vue-mdc-adapter': path.resolve(__dirname,'components/entry.js'),
+      'vue-mdc-adapter': path.resolve(__dirname,'components/index.js'),
       'demo': path.resolve(__dirname,'demo/')
     }
   },
