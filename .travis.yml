@@ -12,6 +12,7 @@ branches:
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
   - /^greenkeeper/.*$/
   - master
+  - staging
   - dev
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload

@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.5.1...v0.5.2) (2017-11-29)
+
+
+### Bug Fixes
+
+* **package:** fix unpkg field to new /dist/index.js ([917d528](https://github.com/stasson/vue-mdc-adapter/commit/917d528))
+
+
+### Features
+
+* **drawer:** add support for router-link mode ([45b6796](https://github.com/stasson/vue-mdc-adapter/commit/45b6796))
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.5.0...v0.5.1) (2017-11-28)
 
