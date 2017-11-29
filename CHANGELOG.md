@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/stasson/vue-mdc-adapter/compare/v0.5.2...v0.5.3) (2017-11-29)
+
+
+### Bug Fixes
+
+* **demo:** demo styles are not selected on production build ([16dcc93](https://github.com/stasson/vue-mdc-adapter/commit/16dcc93))
+
+
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.5.1...v0.5.2) (2017-11-29)
 
