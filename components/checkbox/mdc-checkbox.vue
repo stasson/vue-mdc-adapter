@@ -92,14 +92,6 @@ export default {
     this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => RippleBase.isSurfaceActive(this.$refs.control),
-      registerInteractionHandler: (evt, handler) => {
-        this.$refs.root.addEventListener(evt, handler)
-        this.$refs.label.addEventListener(evt, handler)
-      },
-      deregisterInteractionHandler: (evt, handler) => {
-        this.$refs.root.removeEventListener(evt, handler)
-        this.$refs.label.removeEventListener(evt, handler)
-      },
       computeBoundingRect: () => {
         const {left, top} = this.$refs.control.getBoundingClientRect()
         const DIM = 40
