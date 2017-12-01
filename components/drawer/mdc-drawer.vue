@@ -76,7 +76,7 @@ export default {
       }
     },
     isPermanent () {
-      return this.permamnent || this.type === 'mdc-permanent-drawer'
+      return this.permanent || this.type === 'mdc-permanent-drawer'
     },
     isPersistent () {
       return this.persistent || this.type === 'mdc-persistent-drawer'
@@ -85,7 +85,7 @@ export default {
       return this.temporary || this.type === 'mdc-temporary-drawer'
     },
     isTypePermanent () {
-      return this.permamnent || this.drawerType === 'permanent'
+      return this.permanent || this.drawerType === 'permanent'
     },
     isTypePersistent () {
       return this.persistent || this.drawerType === 'persistent'
