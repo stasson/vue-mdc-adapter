@@ -29,6 +29,12 @@ export default {
     'permanent': Boolean,
     'persistent': Boolean,
     'temporary': Boolean,
+    'drawer-type': {
+      type: String,
+      validator: (val) => {
+        return val in ['temporary', 'persistent', 'permanent']
+      }
+    },
     'toggle-on': String,
     'toggle-on-source': {type: Object, required: false},
     'toolbar-spacer': Boolean
@@ -56,14 +62,21 @@ export default {
         return 'mdc-persistent-drawer'
       } else if (this.temporary) {
         return 'mdc-temporary-drawer'
-      } else if (this.mobile) {
-        return 'mdc-temporary-drawer'
       } else {
-        return 'mdc-persistent-drawer'
-      }
+        switch (this.drawerType) {
+          case 'permanent':
+            return 'mdc-permanent-drawer';
+          case 'persistent':
+            return 'mdc-persistent-drawer';
+          case 'temporary':
+            return 'mdc-temporary-drawer';
+          default:
+            return this.mobile ? 'mdc-temporary-drawer' : 'mdc-persistent-drawer'
+        }
+      }  
     },
     isPermanent () {
-      return this.permamnent || this.type === 'mdc-permanent-drawer'
+      return this.permanent || this.type === 'mdc-permanent-drawer'
     },
     isPersistent () {
       return this.persistent || this.type === 'mdc-persistent-drawer'

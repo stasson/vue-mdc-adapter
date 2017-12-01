@@ -83,4 +83,48 @@ describe(__dirname, () => {
 
   })
 
+  describe('drawer-type', () => {
+    
+    test('drawer-type is reactive', () => {
+      const spec = mount(mdcDrawer)
+
+      spec.setProps({drawerType: 'temporary'})
+      expect(spec.vm.type).toBe('mdc-temporary-drawer')
+      expect(spec.vm.isTemporary).toBeTruthy()
+
+      spec.setProps({drawerType: 'persistent'})
+      expect(spec.vm.type).toBe('mdc-persistent-drawer')
+      expect(spec.vm.isPersistent).toBeTruthy()
+
+      spec.setProps({drawerType: 'permanent'})
+      expect(spec.vm.type).toBe('mdc-permanent-drawer')
+      expect(spec.vm.isPermanent).toBeTruthy()
+
+      spec.setProps({temporary: true, drawerType: 'permanent'})
+      expect(spec.vm.type).toBe('mdc-temporary-drawer')
+      expect(spec.vm.isTemporary).toBeTruthy()
+
+      spec.setProps({temporary: false, persistent: true})
+      expect(spec.vm.type).toBe('mdc-persistent-drawer')
+      expect(spec.vm.isPersistent).toBeTruthy()
+
+      spec.setProps({persistent: false, permanent: true, drawerType:'temporary'})
+      expect(spec.vm.type).toBe('mdc-permanent-drawer')
+      expect(spec.vm.isPermanent).toBeTruthy()
+
+
+    })
+
+    test('temporary', () => {
+      const spec = mount(mdcDrawer, {
+        propsData: { temporary:true }
+      })
+      expect(spec.vm.type).toBe('mdc-temporary-drawer')
+      expect(spec.vm.isTemporary).toBeTruthy()
+    })
+
+  })
+
+
+
 })

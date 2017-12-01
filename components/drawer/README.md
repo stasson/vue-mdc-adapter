@@ -41,22 +41,25 @@ By default the drawer component is responsive and will switch from temporary to 
 
 | prop | Type | Default | Description |
 |------|------|---------|-------------|
-|`permanent`|Boolean| undefined | force the drawer to be permanent (*) |
-|`persistent`|Boolean| undefined | force the drawer to be persistent (*) |
-|`temporary`|Boolean| undefined | force the drawer to be temporary (*) |
+|`drawer-type`|String| undefined | 'temporary', 'persistent' or 'permanent' (*) |
+|`permanent`|Boolean| undefined | shorthand for drawer-type="permanent" (*) |
+|`persistent`|Boolean| undefined | shorthand for drawer-type="persistent" (*) |
+|`temporary`|Boolean| undefined | shorthand for drawer-type="temporary" (*) |
 |`toolbar-spacer`|Boolean| undefined | add a toolbar spacer  |
 |`toggle-on`|String| undefined | optional event to listen on  |
 |`toggle-on-source`|Object| vm.$root | optional event source, defaults to root bus |
+
+> (*) drawer is responsive if `drawer-type` undefined: temporary on mobile breakpoint and persistent otherwise.
 
 ### Drawer Header
 
 | prop | Type | Default | Description |
 |------|------|---------|-------------|
-|`permanent`|Boolean| undefined | show only if drawer is permanent (*) |
-|`persistent`|Boolean| undefined | show only if drawer is persistent (*) |
-|`temporary`|Boolean| undefined | show only if drawer is temporary (*) |
+|`permanent`|Boolean| undefined | show only if drawer is permanent (**) |
+|`persistent`|Boolean| undefined | show only if drawer is persistent (**) |
+|`temporary`|Boolean| undefined | show only if drawer is temporary (**) |
 
-> (*) specifies whether or not the header is shown for responsive drawer
+> (**) specifies whether or not the header is shown for responsive drawer
 
 ### Drawer Items
 
