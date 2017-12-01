@@ -1,30 +1,6 @@
 //
 // vue PlugIn
 //
-export * from './button'
-export * from './card'
-export * from './checkbox'
-export * from './dialog'
-export * from './drawer'
-export * from './fab'
-export * from './grid-list'
-export * from './icon'
-export * from './icon-toggle'
-export * from './layout-app'
-export * from './layout-grid'
-export * from './linear-progress'
-export * from './list'
-export * from './menu'
-export * from './radio'
-export * from './select'
-export * from './slider'
-export * from './snackbar'
-export * from './switch'
-export * from './tabs'
-export * from './textfield'
-export * from './toolbar'
-export * from './typography'
-
 import VueMDCButton from './button'
 import VueMDCCard from './card'
 import VueMDCCheckbox from './checkbox'
@@ -45,45 +21,34 @@ import VueMDCSlider from './slider'
 import VueMDCSnackbar from './snackbar'
 import VueMDCSwitch from './switch'
 import VueMDCTabs from './tabs'
-import VueMDCTexfield from './textfield'
+import VueMDCTextfield from './textfield'
 import VueMDCToolbar from './toolbar'
 import VueMDCTypography from './typography'
 
-const plugins = [
-  VueMDCButton,
-  VueMDCCard,
-  VueMDCCheckbox,
-  VueMDCDialog,
-  VueMDCDrawer,
-  VueMDCFab,
-  VueMDCGridList,
-  VueMDCIcon,
-  VueMDCIconToggle,
-  VueMDCLayoutApp,
-  VueMDCLayoutGrid,
-  VueMDCLinearProgress,
-  VueMDCList,
-  VueMDCMenu,
-  VueMDCRadio,
-  VueMDCSelect,
-  VueMDCSlider,
-  VueMDCSnackbar,
-  VueMDCSwitch,
-  VueMDCTabs,
-  VueMDCTexfield,
-  VueMDCToolbar,
-  VueMDCTypography,
-]
-
-const plugin = {
-  install (vm) {
-    for (let plugin of plugins) {
-      vm.use(plugin)
-    }
-  },
-  components: plugins.reduce( (result, plugin) => {
-    return Object.assign(result, plugin.components)
-  },{})
+export default {
+  install  (vm) {
+    vm.use(VueMDCButton)
+    vm.use(VueMDCCard)
+    vm.use(VueMDCCheckbox)
+    vm.use(VueMDCDialog)
+    vm.use(VueMDCDrawer)
+    vm.use(VueMDCFab)
+    vm.use(VueMDCGridList)
+    vm.use(VueMDCIcon)
+    vm.use(VueMDCIconToggle)
+    vm.use(VueMDCLayoutApp)
+    vm.use(VueMDCLayoutGrid)
+    vm.use(VueMDCLinearProgress)
+    vm.use(VueMDCList)
+    vm.use(VueMDCMenu)
+    vm.use(VueMDCRadio)
+    vm.use(VueMDCSelect)
+    vm.use(VueMDCSlider)
+    vm.use(VueMDCSnackbar)
+    vm.use(VueMDCSwitch)
+    vm.use(VueMDCTabs)
+    vm.use(VueMDCTextfield)
+    vm.use(VueMDCToolbar)
+    vm.use(VueMDCTypography)
+  }
 }
-
-export default plugin

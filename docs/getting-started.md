@@ -98,6 +98,14 @@ webpack/rollup config resolves `node_modules` for transpiling and sass imports.
 
 ### Using the UMD Distribution
 
+install vue, vue-mdc-adapter and eventually vue-router
+
+```bash
+npm install vue
+npm install vue-router # optional
+npm install vue-mdc-adapter
+```
+
 #### Add dependencies to HTML template
 
 ```html
@@ -184,7 +192,7 @@ externals: {
   }
 ```
 
-#### Make sure @material imports are transpiled:
+#### Make sure @material and vue-mdc-adapter sources are transpiled:
 
 ```javascript
 // babel loader config
@@ -193,6 +201,7 @@ externals: {
     loader: 'babel-loader',
     include: [
       path.resolve(__dirname, 'node_modules/@material')
+      path.resolve(__dirname, 'node_modules/vue-mdc-adapter')
     ]
   }
 ```

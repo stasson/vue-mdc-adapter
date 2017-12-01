@@ -15,7 +15,7 @@
   "author": "Sebastien Tasson <sebastien.tasson@gmail.com>",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "components/index.js",
+  "module": "dist/index.esm.js",
   "unpkg": "dist/index.js",
   "files": [
     "dist",
