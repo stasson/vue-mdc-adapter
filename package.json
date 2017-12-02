@@ -15,8 +15,9 @@
   "author": "Sebastien Tasson <sebastien.tasson@gmail.com>",
   "license": "MIT",
   "main": "dist/vue-mdc-adapter.js",
+  "style": "dist/vue-mdc-adapter.css",
   "module": "dist/index.js",
-  "unpkg": "dist/vue-mdc-adapter.js",
+  "unpkg": "dist/unpkg.min.js",
   "files": [
     "dist",
     "static",

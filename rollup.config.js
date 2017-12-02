@@ -90,13 +90,14 @@ const capitalize = (str) => {
     .replace(/[_.-]/g,'')
 }
 
-function createUmdConfig(module, env) {
+function createUmdConfig(module, env, extract) {
   
+  const isPlugin = PLUGINS.includes(module) 
   const isProduction = env === `production`
   const isDevelopment = env === `development`
-  const dist = module ? `dist/${module}/vue-mdc-${module}` : 'dist/vue-mdc-adapter'
-  const name = module ? 'VueMDC' + capitalize(module)  : 'VueMDCAdapter'
-  const input = 'components/' + ( module ? module + '/' : '')  + 'entry.js' 
+  const dist = isPlugin ? `dist/${module}/${module}` : 'dist/' + module
+  const name = isPlugin ? 'VueMDC' + capitalize(module)  : 'VueMDCAdapter'
+  const input = 'components/' + ( isPlugin ? module + '/' : '')  + 'entry.js' 
   const output = {
     file: dist + (isDevelopment ? `.js` : `.min.js`),
     format: 'umd',
@@ -104,7 +105,7 @@ function createUmdConfig(module, env) {
   }
   
   const banner = BANNER
-  .replace('{{module}}', module || '')
+  .replace('{{module}}', isPlugin ? module : '')
   .replace('{{name}}', name)
   
   const sassConfig = {
@@ -117,8 +118,12 @@ function createUmdConfig(module, env) {
                       .then(result => result.css)
   }
   
-  if (isProduction) {
-    sassConfig.output = dist + '.min.css'
+  if (extract) {
+    if (isProduction) {
+      sassConfig.output = dist + '.min.css'
+    } else {
+      sassConfig.output = dist + '.css'
+    }
   } else {
     sassConfig.insert = true
   }
@@ -159,33 +164,20 @@ function createUmdConfig(module, env) {
 
 function createEsmConfig(module) {
   
-  const dist = module ? `dist/${module}/index.js` : 'dist/index.js'
-  const style = module ? `dist/${module}/styles.css` : 'dist/styles.css'
-  const input = 'components/' + ( module ? module + '/' : '')  + 'entry.esm.js' 
-  const output = {
-    file: dist,
-    format: 'es',
-  }
+  const isModule = MODULES.includes(module) 
+  const dist = isModule ? `dist/${module}/index.js` : 'dist/index.js'
+  const input = 'components/' + ( isModule ? module + '/' : '')  + 'index.js' 
+  const output = { file: dist, format: 'es'}
     
   const banner = BANNER
-  .replace('{{module}}', module || '')
+  .replace('{{module}}', isModule ? module : '')
   .replace('{{name}}', 'default')
 
-  const sassConfig = {
-    include: [ '**/*.css', '**/*.scss' ],
-    output: style,
-    options: {includePaths: ['node_modules']},
-    processor: css => postcss([autoprefixer()])
-                      .process(css)
-                      .then(result => result.css)
-  }
-
-  let intro =  (PLUGINS.includes(module) || !module) ? "import './styles.css';" : ''
   let external = []
   let paths = {}
   let outro = ''
 
-  if (module) {
+  if (isModule) {
     for (let folder of MODULES) {
       if (folder != module) {
         let id = path.resolve('.', 'components', folder, 'index.js') 
@@ -218,14 +210,12 @@ function createEsmConfig(module) {
     input,
     output,
     banner,
-    intro,
     outro,
     external,
     paths,
     plugins: [
       vue ({ autoStyles: false, styleToImports: true }),
       resolve({ jsnext: true, main: true, browser: true }),
-      sass(sassConfig),
       babel(babelConfig),
       commonjs(),
     ],
@@ -241,19 +231,20 @@ const configs = []
 for (let module of MODULES) {
   configs.push(createEsmConfig(module))
 } 
-configs.push(createEsmConfig(undefined))
+configs.push(createEsmConfig('index'))
 
 
 // a la carte UMD plugins
 for (let module of PLUGINS) {
-  configs.push(createUmdConfig(module,'development'))
-  configs.push(createUmdConfig(module,'production'))
+  configs.push(createUmdConfig(module,'development',true))
+  configs.push(createUmdConfig(module,'production', true))
 } 
 
-// main UMD plugin
-configs.push(createUmdConfig(undefined,'development'))
-configs.push(createUmdConfig(undefined,'production'))
-
+// UMD
+configs.push(createUmdConfig('vue-mdc-adapter','development',true),)
+configs.push(createUmdConfig('vue-mdc-adapter','production',true))
+configs.push(createUmdConfig('unpkg','development',false))
+configs.push(createUmdConfig('unpkg','production',false))
 
 function onwarn (warning) {
 
