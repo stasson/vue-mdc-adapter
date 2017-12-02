@@ -148,7 +148,6 @@ const config = {
   entry: {
     'demo': path.resolve(__dirname,'demo/main.js'),
     'plugin': path.resolve(__dirname,'components/index.js'),
-    'styles': path.resolve(__dirname,'components/theme.scss'),
   },
   output: {
     filename:  isProduction ? '[name].[chunkhash].js' : '[name].js',
