@@ -94,11 +94,11 @@ function createUmdConfig(module, env) {
   
   const isProduction = env === `production`
   const isDevelopment = env === `development`
-  const dist = module ? module +'/index' : 'index' 
+  const dist = module ? `dist/${module}/vue-mdc-${module}` : 'dist/vue-mdc-adapter'
   const name = module ? 'VueMDC' + capitalize(module)  : 'VueMDCAdapter'
   const input = 'components/' + ( module ? module + '/' : '')  + 'entry.js' 
   const output = {
-    file: (isDevelopment) ? `dist/${dist}.js` : `dist/${dist}.min.js`,
+    file: dist + (isDevelopment ? `.js` : `.min.js`),
     format: 'umd',
     name
   }
@@ -118,7 +118,7 @@ function createUmdConfig(module, env) {
   }
   
   if (isProduction) {
-    sassConfig.output = `dist/${dist}.min.css`
+    sassConfig.output = dist + '.min.css'
   } else {
     sassConfig.insert = true
   }
@@ -159,11 +159,11 @@ function createUmdConfig(module, env) {
 
 function createEsmConfig(module) {
   
-  const dist = module ? module +'/index' : 'index' 
-  // const name = module ? 'VueMDC' + camelize(module)  : 'VueMDCAdapter'
+  const dist = module ? `dist/${module}/index.js` : 'dist/index.js'
+  const style = module ? `dist/${module}/styles.css` : 'dist/styles.css'
   const input = 'components/' + ( module ? module + '/' : '')  + 'entry.esm.js' 
   const output = {
-    file: `dist/${dist}.esm.js`,
+    file: dist,
     format: 'es',
   }
     
@@ -173,14 +173,14 @@ function createEsmConfig(module) {
 
   const sassConfig = {
     include: [ '**/*.css', '**/*.scss' ],
-    output: `dist/${dist}.css`,
+    output: style,
     options: {includePaths: ['node_modules']},
     processor: css => postcss([autoprefixer()])
                       .process(css)
                       .then(result => result.css)
   }
 
-  let intro = (module in PLUGINS || !module) ? "import './index.css'" : ''
+  let intro =  (PLUGINS.includes(module) || !module) ? "import './styles.css';" : ''
   let external = []
   let paths = {}
   let outro = ''
@@ -190,7 +190,7 @@ function createEsmConfig(module) {
       if (folder != module) {
         let id = path.resolve('.', 'components', folder, 'index.js') 
         external.push(id)
-        paths[id] = `../${folder}/index.esm.js`
+        paths[id] = `../${folder}/index.js`
       }
     }
   } else {
@@ -198,7 +198,7 @@ function createEsmConfig(module) {
       if (folder != module) {
         let id = path.resolve('.', 'components', folder, 'index.js') 
         external.push(id)
-        paths[id] = `./${folder}/index.esm.js`
+        paths[id] = `./${folder}/index.js`
       }
     }
 
@@ -209,7 +209,7 @@ function createEsmConfig(module) {
     }
     outro += os.EOL
     for (let folder of PLUGINS) {
-      outro +=`export * from './${folder}/index.esm.js'` + os.EOL
+      outro +=`export * from './${folder}/index.js'` + os.EOL
     }
   }
 

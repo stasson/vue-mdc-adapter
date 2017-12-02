@@ -14,9 +14,9 @@
   ],
   "author": "Sebastien Tasson <sebastien.tasson@gmail.com>",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "unpkg": "dist/index.js",
+  "main": "dist/vue-mdc-adapter.js",
+  "module": "dist/index.js",
+  "unpkg": "dist/vue-mdc-adapter.js",
   "files": [
     "dist",
     "static",
