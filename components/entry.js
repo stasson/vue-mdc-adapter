@@ -1,4 +1,4 @@
-import './theme.scss'
+import './styles.scss'
 import register from './register.js'
 import plugin from './index.js'
 export default plugin
