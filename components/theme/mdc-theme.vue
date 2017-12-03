@@ -10,23 +10,24 @@
 <script>
 import { CustomElement } from '../util'
 
-export const TONE = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  BACKGROUND: 'background',
-  PRIMARY_LIGHT: 'primary-light',
-  SECONDARY_LIGHT: 'secondary-light',
-  SECONDARY_DARK: 'secondary-dark',
-  PRIMARY_DARK: 'primary-dark',
-};
 
-export const THEME = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  HINT: 'hint',
-  ICON: 'icon',
-  SECONDARY_LIGHT: 'disabled',
-};
+const THEME_COLORS = [
+  'primary',
+  'secondary',
+  'background',
+  'primary-light',
+  'secondary-light',
+  'secondary-dark',
+  'primary-dark'
+]
+
+const THEME_STYLES = [
+  'text-primary',
+  'text-secondary',
+  'text-hint',
+  'text-icon',
+  'text-disabled'
+]
 
 export default {
   name: 'mdc-theme',
@@ -35,30 +36,24 @@ export default {
   },
   props: {
     tag: {type: String, default: 'div' },
-
-    // text style = primary, secondary, hint, icon, disable
-    theme: { type: String, default: THEME.PRIMARY },
-    // or tone : primary [&dark|&light], secondary[&dark|&light] , backgound,
-    // or color : #FFFFFF, rgb, rgba 
     color: String,
-    // bg tone = primary [&dark|&light], secondary[&dark|&light] , backgound, 
-    // or color : #FFFFFF, rgb, rgba
-    background: { type: String, default: TONE.PRIMARY }
+    background: String
   },
   computed: {
     classes () {
       let classes = {}
 
-      // apply backgound
-      if (this.background) {
-        classes[`mdc-theme--${this.background}-bg`] = true
-      }
-      if (this.color) {
-        classes[`mdc-theme--${this.color}-bg`] = true
-      } else {
-        classes[`mdc-theme--text-${this.theme}-on${this.background}`] = true
+      if (this.color && THEME_COLORS.includes(this.color)) {
+          classes[`mdc-theme--${this.color}`] = true
       }
 
+      if (this.background && THEME_COLORS.includes(this.background)) {
+        classes[`mdc-theme--${this.background}-bg`] = true
+
+        if (this.color && THEME_STYLES.includes(this.color)) {
+          classes[`mdc-theme--${this.color}-on-${this.background}`] = true
+        }
+      }
       return classes
     }
   }
