@@ -1,4 +1,4 @@
-import { pluginSanityCheck, mount, checkValidFoundation } from '../test-utils'
+import { pluginSanityCheck, mount, checkValidFoundation } from '../unit-test'
 import plugin from './index.js';
 import {mdcTextField} from './index.js';
 

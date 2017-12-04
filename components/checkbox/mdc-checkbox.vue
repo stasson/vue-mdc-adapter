@@ -28,7 +28,7 @@
 import MDCCheckboxFoundation from '@material/checkbox/foundation'
 import {getCorrectEventName} from '@material/animation'
 
-import {RippleBase} from '../util'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-checkbox',

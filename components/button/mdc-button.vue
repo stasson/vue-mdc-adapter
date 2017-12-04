@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import {RippleBase, DispatchEventMixin, CustomElementMixin} from '../util'
+import {DispatchEventMixin, CustomElementMixin} from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-button',
@@ -45,7 +46,6 @@ export default {
   },
   watch: {
     raised () {
-      console.log('raised')
       this.$set(this.classes, 'mdc-button--raised', this.raised )
     },
     unelevated () {

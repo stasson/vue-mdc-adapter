@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcList from './mdc-list.vue'
 import mdcListItem from './mdc-list-item.vue'
 import mdcListDivider from './mdc-list-divider.vue'
@@ -15,7 +15,7 @@ export {
   mdcListGroupDivider
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcList,
   mdcListItem,
   mdcListDivider,

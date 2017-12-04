@@ -1,17 +1,8 @@
 export const DispatchEventMixin = {
   props: {
-    'event': {
-      type: String,
-      required: false
-    },
-    'event-target': {
-      type: Object,
-      required: false
-    },
-    'event-args': {
-      type: Array,
-      required: false
-    }
+    'event': String,
+    'event-target': Object,
+    'event-args': Array,
   },
   methods: {
     dispatchEvent (evt) {

@@ -41,8 +41,6 @@ const PLUGINS = [
   'typography',
 ]
 
-const MODULES = ['util', ... PLUGINS]
-
 const BANNER = `/**
 * @module vue-mdc-adapter{{module}} {{version}}
 * @exports {{name}}
@@ -76,14 +74,6 @@ const babelConfig = {
     'external-helpers'  
   ]
 }
-
-
-
-// const camelize = (str) => {
-//   return str.replace(/[_.-](\w|$)/g, function (_,x) {
-//           return x.toUpperCase();
-//   });
-// }
 
 const capitalize = (str) => {
   return str
@@ -167,7 +157,7 @@ function createUmdConfig(module, env, extract) {
 
 function createEsmConfig(module) {
   
-  const isModule = MODULES.includes(module) 
+  const isModule = PLUGINS.includes(module) 
   const dist = isModule ? `dist/${module}/index.js` : 'dist/index.js'
   const input = 'components/' + ( isModule ? module + '/' : '')  + 'index.js' 
   const output = { file: dist, format: 'es'}
@@ -181,19 +171,19 @@ function createEsmConfig(module) {
   let outro = ''
 
   if (isModule) {
-    for (let folder of MODULES) {
+    for (let folder of PLUGINS) {
       if (folder != module) {
         let id = path.resolve('.', 'components', folder, 'index.js') 
         external.push(id)
-        paths[id] = `../${folder}/index.js`
+        paths[id] = `../${folder}`
       }
     }
   } else {
-    for (let folder of MODULES) {
+    for (let folder of PLUGINS) {
       if (folder != module) {
         let id = path.resolve('.', 'components', folder, 'index.js') 
         external.push(id)
-        paths[id] = `./${folder}/index.js`
+        paths[id] = `./${folder}`
       }
     }
 
@@ -204,7 +194,7 @@ function createEsmConfig(module) {
     }
     outro += os.EOL
     for (let folder of PLUGINS) {
-      outro +=`export * from './${folder}/index.js'` + os.EOL
+      outro +=`export * from './${folder}'` + os.EOL
     }
   }
 
@@ -230,20 +220,18 @@ function createEsmConfig(module) {
 
 const configs = []
 
-// build ESM modules
-for (let module of MODULES) {
+// ESM
+for (let module of PLUGINS) {
   configs.push(createEsmConfig(module))
 } 
 configs.push(createEsmConfig('index'))
 
-
-// a la carte UMD plugins
+// UMD
 for (let module of PLUGINS) {
   configs.push(createUmdConfig(module,'development',true))
   configs.push(createUmdConfig(module,'production', true))
 } 
 
-// UMD
 configs.push(createUmdConfig('vue-mdc-adapter','development',true),)
 configs.push(createUmdConfig('vue-mdc-adapter','production',true))
 configs.push(createUmdConfig('unpkg','development',false))

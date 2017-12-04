@@ -1,4 +1,4 @@
-import { mount, createLocalVue, checkValidMdcAdapter } from '../test-utils'
+import { mount, createLocalVue, checkValidMdcAdapter } from '../unit-test'
 import plugin from './index.js';
 import Spec from './test.spec.vue';
 import mdcDrawer from './mdc-drawer.vue'

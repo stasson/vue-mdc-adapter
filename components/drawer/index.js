@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcDrawer from './mdc-drawer.vue'
 import mdcDrawerLayout from './mdc-drawer-layout.vue'
 import mdcDrawerHeader from './mdc-drawer-header.vue'
@@ -15,7 +15,7 @@ export {
   mdcDrawerDivider
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcDrawer,
   mdcDrawerLayout,
   mdcDrawerHeader,

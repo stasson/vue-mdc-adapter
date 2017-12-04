@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcLayoutGrid from './mdc-layout-grid.vue'
 import mdcLayoutCell from './mdc-layout-cell.vue'
 import mdcLayoutInnerGrid from './mdc-layout-inner-grid.vue'
@@ -9,7 +9,7 @@ export {
   mdcLayoutInnerGrid
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcLayoutGrid,
   mdcLayoutCell,
   mdcLayoutInnerGrid

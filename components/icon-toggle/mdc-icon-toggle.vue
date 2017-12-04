@@ -11,7 +11,7 @@
 
 <script>
 import MDCIconToggleFoundation from '@material/icon-toggle/foundation'
-import {RippleBase} from '../util'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-icon-toggle',

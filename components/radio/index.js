@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcRadio from './mdc-radio.vue'
 
 export {
   mdcRadio
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcRadio
 })

@@ -1,4 +1,4 @@
-export default function (components) { 
+export function BasePlugin (components) { 
   return {
     install: (vm) => {
       for (let key in components) {
@@ -9,3 +9,4 @@ export default function (components) {
     components
   } 
 }
+
