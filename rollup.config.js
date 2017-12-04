@@ -1,3 +1,5 @@
+import os from 'os'
+import path from 'path'
 import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
@@ -10,56 +12,105 @@ import csso from 'postcss-csso';
 import { minify } from 'uglify-es'
 import pkg from './package.json';
 
+const PLUGINS = [
+  'button',
+  'card',
+  'checkbox',
+  'dialog',
+  'drawer',
+  'elevation',
+  'fab',
+  'grid-list',
+  'icon-toggle',
+  'icon',
+  'layout-app',
+  'layout-grid',
+  'linear-progress',
+  'list',
+  'menu',
+  'radio',
+  'ripple',
+  'select',
+  'slider',
+  'snackbar',
+  'switch',
+  'tabs',
+  'textfield',
+  'theme',
+  'toolbar',
+  'typography',
+]
 
+const MODULES = ['util', ... PLUGINS]
 
-
-const isProduction = process.env.NODE_ENV === `production`
-const isDevelopment = process.env.NODE_ENV === `development`
-
-
-function createConfig(entry, module, name) {
-
-  const output = module ? module +'/index' : 'index' 
-  const banner = `/**
-  * @module vue-mdc-adapter{{module}} {{version}}
-  * @exports {{name}}
-  * @copyright (c) 2017-present, Sebastien Tasson
-  * @license https://opensource.org/licenses/MIT
-  * @implements {{dependencies}}
-  * @requires {{peerDependencies}}
-  * @see https://github.com/stasson/vue-mdc-adapter
-  */`
-  .replace('{{module}}', module || '')
-  .replace('{{name}}', name)
+const BANNER = `/**
+* @module vue-mdc-adapter{{module}} {{version}}
+* @exports {{name}}
+* @copyright (c) 2017-present, Sebastien Tasson
+* @license https://opensource.org/licenses/MIT
+* @implements {{dependencies}}
+* @requires {{peerDependencies}}
+* @see https://github.com/stasson/vue-mdc-adapter
+*/
+`
   .replace('{{version}}', pkg.version)
   .replace('{{dependencies}}', JSON.stringify(pkg.dependencies))
   .replace('{{peerDependencies}}', JSON.stringify(pkg.peerDependencies))
-  
 
-  const libPath = (isDevelopment 
-        ? `dist/${output}.js` 
-        : `dist/${output}.min.js`)
 
-  const babelConfig = {
-    'compact': false,
-    'babelrc': false,
-    'presets': [ 
-      [
-        // env preset https://github.com/babel/babel-preset-env
-        'env', 
-        // let rollup take care of modules 
-        { 'modules': false } 
-      ]
-    ],
-    'plugins': [
-      "transform-object-rest-spread",
-      // let rollup bundle helpers once
-      // see https://github.com/rollup/rollup-plugin-babel#helpers
-      'external-helpers'  
+const babelConfig = {
+  'compact': false,
+  'babelrc': false,
+  'presets': [ 
+    [
+      // env preset https://github.com/babel/babel-preset-env
+      'env', 
+      // let rollup take care of modules 
+      { 'modules': false } 
     ]
+  ],
+  'plugins': [
+    "transform-object-rest-spread",
+    // let rollup bundle helpers once
+    // see https://github.com/rollup/rollup-plugin-babel#helpers
+    'external-helpers'  
+  ]
+}
+
+
+
+// const camelize = (str) => {
+//   return str.replace(/[_.-](\w|$)/g, function (_,x) {
+//           return x.toUpperCase();
+//   });
+// }
+
+const capitalize = (str) => {
+  return str
+    .replace(/\b(\w)/g, function (_,x) {
+          return x.toUpperCase();
+    })
+    .replace(/[_.-]/g,'')
+}
+
+function createUmdConfig(module, env, extract) {
+  
+  const isPlugin = PLUGINS.includes(module) 
+  const isProduction = env === `production`
+  const isDevelopment = env === `development`
+  const dist = isPlugin ? `dist/${module}/${module}` : 'dist/' + module
+  const name = isPlugin ? 'VueMDC' + capitalize(module)  : 'VueMDCAdapter'
+  const input = 'components/' + ( isPlugin ? module + '/' : '')  + 'entry.js' 
+  const output = {
+    file: dist + (isDevelopment ? `.js` : `.min.js`),
+    format: 'umd',
+    name
   }
   
-    
+  const banner = BANNER
+  .replace('{{module}}', isPlugin ? module : '')
+  .replace('{{name}}', name)
+  
   const sassConfig = {
     include: [ '**/*.css', '**/*.scss' ],
     options: {includePaths: ['node_modules']},
@@ -70,19 +121,21 @@ function createConfig(entry, module, name) {
                       .then(result => result.css)
   }
   
-  if (isProduction) {
-    sassConfig.output = `dist/${output}.min.css`
+  if (extract) {
+    if (isProduction) {
+      sassConfig.output = dist + '.min.css'
+    } else {
+      sassConfig.output = dist + '.css'
+    }
   } else {
     sassConfig.insert = true
   }
 
   const config = {
-    input: entry,
-    output: {
-      file: libPath,
-      format: 'umd',
-      name: name
-    },
+    input,
+    output,
+    env,
+    banner,
     external: ['vue'],
     plugins: [
       vue ({ autoStyles: false, styleToImports: true }),
@@ -91,7 +144,6 @@ function createConfig(entry, module, name) {
       babel(babelConfig),
       commonjs(),
     ],
-    banner,
     sourcemap: isDevelopment ? 'inline' : true,
     onwarn
   }
@@ -113,34 +165,89 @@ function createConfig(entry, module, name) {
   return config
 }
 
+function createEsmConfig(module) {
+  
+  const isModule = MODULES.includes(module) 
+  const dist = isModule ? `dist/${module}/index.js` : 'dist/index.js'
+  const input = 'components/' + ( isModule ? module + '/' : '')  + 'index.js' 
+  const output = { file: dist, format: 'es'}
+    
+  const banner = BANNER
+  .replace('{{module}}', isModule ? module : '')
+  .replace('{{name}}', 'default')
 
-export default [
-  createConfig('components/entry.js', undefined, 'VueMDCAdapter'),
-  createConfig('components/button/entry.js', 'button', 'VueMDCButton'),
-  createConfig('components/card/entry.js', 'card', 'VueMDCCard'),
-  createConfig('components/checkbox/entry.js', 'checkbox', 'VueMDCCheckbox'),
-  createConfig('components/dialog/entry.js', 'dialog', 'VueMDCDialog'),
-  createConfig('components/drawer/entry.js', 'drawer', 'VueMDCDrawer'),
-  createConfig('components/fab/entry.js', 'fab', 'VueMDCFab'),
-  createConfig('components/grid-list/entry.js', 'grid-list', 'VueMDCGridList'),
-  createConfig('components/icon-toggle/entry.js', 'icon-toggle', 'VueMDCIconToggle'),
-  createConfig('components/icon/entry.js', 'icon', 'VueMDCIcon'),
-  createConfig('components/layout-app/entry.js', 'layout-app', 'VueMDCLayoutApp'),
-  createConfig('components/layout-grid/entry.js', 'layout-grid', 'VueMDCLayoutGrid'),
-  createConfig('components/linear-progress/entry.js', 'linear-progress', 'VueMDCLinearProgress'),
-  createConfig('components/list/entry.js', 'list', 'VueMDCList'),
-  createConfig('components/menu/entry.js', 'menu', 'VueMDCMenu'),
-  createConfig('components/radio/entry.js', 'radio', 'VueMDCRadio'),
-  createConfig('components/select/entry.js', 'select', 'VueMDCSelect'),
-  createConfig('components/slider/entry.js', 'slider', 'VueMDCSlider'),
-  createConfig('components/snackbar/entry.js', 'snackbar', 'VueMDCSnackbar'),
-  createConfig('components/switch/entry.js', 'switch', 'VueMDCSwitch'),
-  createConfig('components/tabs/entry.js', 'tabs', 'VueMDCTabs'),
-  createConfig('components/textfield/entry.js', 'texfield', 'VueMDCTextfield'),
-  createConfig('components/toolbar/entry.js', 'toolbar', 'VueMDCToolbar'),
-  createConfig('components/typography/entry.js', 'typography', 'VueMDCTypography'),
-]
+  let external = []
+  let paths = {}
+  let outro = ''
 
+  if (isModule) {
+    for (let folder of MODULES) {
+      if (folder != module) {
+        let id = path.resolve('.', 'components', folder, 'index.js') 
+        external.push(id)
+        paths[id] = `../${folder}/index.js`
+      }
+    }
+  } else {
+    for (let folder of MODULES) {
+      if (folder != module) {
+        let id = path.resolve('.', 'components', folder, 'index.js') 
+        external.push(id)
+        paths[id] = `./${folder}/index.js`
+      }
+    }
+
+    for (let folder of PLUGINS) {
+      let exportName = 'VueMDC' + capitalize(folder)
+      
+      outro +=`export { ${exportName} }` + os.EOL
+    }
+    outro += os.EOL
+    for (let folder of PLUGINS) {
+      outro +=`export * from './${folder}/index.js'` + os.EOL
+    }
+  }
+
+
+  const config = {
+    input,
+    output,
+    banner,
+    outro,
+    external,
+    paths,
+    plugins: [
+      vue ({ autoStyles: false, styleToImports: true }),
+      resolve({ jsnext: true, main: true, browser: true }),
+      babel(babelConfig),
+      commonjs(),
+    ],
+    sourcemap: true,
+    onwarn
+  }
+  return config
+}
+
+const configs = []
+
+// build ESM modules
+for (let module of MODULES) {
+  configs.push(createEsmConfig(module))
+} 
+configs.push(createEsmConfig('index'))
+
+
+// a la carte UMD plugins
+for (let module of PLUGINS) {
+  configs.push(createUmdConfig(module,'development',true))
+  configs.push(createUmdConfig(module,'production', true))
+} 
+
+// UMD
+configs.push(createUmdConfig('vue-mdc-adapter','development',true),)
+configs.push(createUmdConfig('vue-mdc-adapter','production',true))
+configs.push(createUmdConfig('unpkg','development',false))
+configs.push(createUmdConfig('unpkg','production',false))
 
 function onwarn (warning) {
 
@@ -153,3 +260,5 @@ function onwarn (warning) {
   console.log(warning);
   console.warn(warning.message);
 }
+
+export default configs
