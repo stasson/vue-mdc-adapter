@@ -1,4 +1,8 @@
-@import "../../components/theme";
+$mdc-theme-primary: #212121;
+$mdc-theme-accent: #41B883;
+$mdc-theme-background: #fff;
+
+@import "../../components/styles";
 @import "./_constant";
 @import "./jazzy";
 @import "./markdown";
@@ -7,8 +11,9 @@
 .primary-drawer.mdc-drawer { 
 
   .mdc-drawer-header {
-    background-image: url("../assets/logo.png");
-    background-size: contain;
+    background-color: $grey-900;
+    background-image: url("/logo.svg");
+    background-size: 33.333%;
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -26,10 +31,13 @@
 
 .main-toolbar {
   .mdc-toolbar-title {
+    padding: 2px 0 2px 50px;
+    background: no-repeat 0/32px url(/logo.svg);
     font-family: "Roboto Mono", monospace;
     font-size: 1rem;
     letter-spacing: .0675rem;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 }
 
