@@ -12,7 +12,7 @@ $mdc-theme-background: #fff;
 
   .mdc-drawer-header {
     background-color: $grey-900;
-    background-image: url("/logo.svg");
+    background-image: url(../assets/logo.svg);
     background-size: 33.333%;
     background-repeat: no-repeat;
     background-position: center;
@@ -32,7 +32,7 @@ $mdc-theme-background: #fff;
 .main-toolbar {
   .mdc-toolbar-title {
     padding: 2px 0 2px 50px;
-    background: no-repeat 0/32px url(/logo.svg);
+    background: no-repeat 0/32px url(../assets/logo.svg);
     font-family: "Roboto Mono", monospace;
     font-size: 1rem;
     letter-spacing: .0675rem;
