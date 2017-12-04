@@ -36,23 +36,23 @@ The distribution comes in two flavors:
 
 #### standalone plugin
 
-| distribution                 | env         | description               |
-| ---------------------------- | ----------- | ------------------------- |
-| dist/vue-mdc-adapter.js      | development | plugin (injected styles)  |
-| dist/vue-mdc-adapter.min.js  | production  | minified plugin (ES5)     |
-| dist/vue-mdc-adapter.min.css | production  | minified stylesheet (CSS) |
+| distribution                 | env         | description                |
+| ---------------------------- | ----------- | -------------------------- |
+| dist/vue-mdc-adapter.js      | development | plugin (ES5)               |
+| dist/vue-mdc-adapter.css     | development | stylesheet (CSS)           |
+| dist/vue-mdc-adapter.min.js  | production  | minified plugin (ES5)      |
+| dist/vue-mdc-adapter.min.css | production  | minified stylesheet (CSS)  |
 
 #### _a la carte_  plugins
 
-| distribution                   | env         | description                  |
-| ------------------------------ | ----------- | ---------------------------- |
-| dist/[plugin]/[plugin].js      | development | plugin (styles are injected) |
-| dist/[plugin]/[plugin].min.js  | production  | minified plugin (ES5)        |
-| dist/[plugin]/[plugin].min.css | production  | minified stylesheet (CCS)    |
+| distribution                   | env         | description                |
+| ------------------------------ | ----------- | -------------------------- |
+| dist/[plugin]/[plugin].js      | development | plugin (ES5)               |
+| dist/[plugin]/[plugin].css     | development | stylesheet (CCS)           |
+| dist/[plugin]/[plugin].min.js  | production  | minified plugin (ES5)      |
+| dist/[plugin]/[plugin].min.css | production  | minified stylesheet (CCS)  |
 
 #### Using the CDN
-
-> development
 
 ```html
 <head>
@@ -70,7 +70,7 @@ The distribution comes in two flavors:
 <body>
 ```
 
-> production
+> You may want to use the split distribution and freeze the version used:
 
 ```html
 <head>
@@ -92,6 +92,13 @@ The distribution comes in two flavors:
 
 > The following guide assumes you have a valid Vue.js/Webpack congig.
 > refer to [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) for more.
+
+| module                          | type  |
+| ------------------------------- | ----- |
+| vue-mdc-adapter                 | ESM   |
+| vue-mdc-adapter/styles          | SASS  |
+| vue-mdc-adapter[plugin]         | ESM   |
+| vue-mdc-adapter/[plugin]/styles | SASS  |
 
 #### install vue, vue-mdc-adapter and eventually vue-router
 
@@ -118,7 +125,7 @@ npm install vue-mdc-adapter
   </body>
 ```
 
-#### _standalone_ plugin
+#### import _standalone_ plugin
 
 ```javascript
 import Vue from 'vue'
@@ -126,7 +133,7 @@ import VueMDCAdapter from 'vue-mdc-adapter'
 Vue.use(VueMdcAdapter)
 ```
 
-#### _a la carte_  plugins
+#### import _a la carte_  plugins
 
 ```javascript
 import Vue from 'vue'
@@ -134,13 +141,12 @@ import VueMDCButton from 'vue-mdc-adapter/button'
 Vue.use(VueMDCButton)
 ```
 
-#### _a la carte_ SFC mixins
+#### import _a la carte_ SFC mixins
 
 ```html
 <!-- my-component.vue -->
 <template>
     <div class="my-own-component">
-        <mdc-display >Display</mdc-display>
         <mdc-headline>Headline</mdc-headline>
         <mdc-title>Title <mdc-caption>Caption</mdc-caption></mdc-title>
         <mdc-subheading >Subheading</mdc-subheading>
@@ -157,28 +163,44 @@ Vue.use(VueMDCButton)
 </script>
 ```
 
-#### Create your own theme file:
+#### Create your own SASS Theme
 
 > Material Components styles come as a highly themable SASS framework.
 > refer to the [MDC Theming Guide](https://material.io/components/web/docs/theming/) 
 > for more.
 
+Configure Webpack with sass-loader and make sure sass modules can be resolved:
+
 ```javascript
-  //  add node_modules includes to sass loader config
+// sass loader config
   {
     loader: 'sass-loader',
     options: {
       sourceMap: false,
-      includePaths: [path.resolve(__dirname,'./node_modules')],
+      includePaths: [path.resolve(__dirname,'node_modules')],
     },
   },
 ```
+
+import styles
 
 ```scss
 /* theme.scss */
 $mdc-theme-primary: #212121;
 $mdc-theme-accent: #41B883;
-$mdc-theme-background: #FFFFFF;
+$mdc-theme-background: #fff;
 
-@import "@material/theme/mdc-theme";
+@import "vue-mdc-adapter/dist/styles";
+```
+
+or _a la carte_
+
+```scss
+/* theme.scss */
+$mdc-theme-primary: #212121;
+$mdc-theme-accent: #41B883;
+$mdc-theme-background: #fff;
+
+@import "vue-mdc-adapter/dist/button/styles";
+@import "vue-mdc-adapter/dist/fab/styles";
 ```
