@@ -17,9 +17,9 @@
   "main": "dist/vue-mdc-adapter.js",
   "style": "dist/vue-mdc-adapter.css",
   "module": "dist/index.js",
-  "unpkg": "dist/unpkg.min.js",
+  "unpkg": "dist/vue-mdc-adapter.umd.min.js",
   "files": [
-    "src",
+    "components",
     "dist",
     "static",
     "LICENSE",
@@ -60,7 +60,7 @@
     }
   },
   "dependencies": {
-    "material-components-web": "0.26.0"
+    "material-components-web": "^0.26.0"
   },
   "peerDependencies": {
     "vue": "^2.5.6"

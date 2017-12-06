@@ -234,8 +234,8 @@ for (let module of PLUGINS) {
 
 configs.push(createUmdConfig('vue-mdc-adapter','development',true),)
 configs.push(createUmdConfig('vue-mdc-adapter','production',true))
-configs.push(createUmdConfig('unpkg','development',false))
-configs.push(createUmdConfig('unpkg','production',false))
+configs.push(createUmdConfig('vue-mdc-adapter.umd','development',false))
+configs.push(createUmdConfig('vue-mdc-adapter.umd','production',false))
 
 function onwarn (warning) {
 

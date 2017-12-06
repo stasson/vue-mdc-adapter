@@ -189,7 +189,13 @@ Vue.use(VueMDCButton)
 > refer to the [MDC Theming Guide](https://material.io/components/web/docs/theming/) 
 > for more.
 
-Configure Webpack with sass-loader and make sure sass modules can be resolved:
+Install Material Components SASS as a dependency.
+
+```bash
+npm install material-components-web --save
+```
+
+Configure Webpack with sass-loader and make sure sass modules can be resolved.
 
 ```javascript
 // sass loader config
