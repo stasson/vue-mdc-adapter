@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.6.0...v0.6.1) (2017-12-06)
+
+
+### Bug Fixes
+
+* **dist:** add missing source distribution and fix unpkg name ([28980e7](https://github.com/stasson/vue-mdc-adapter/commit/28980e7))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.5.3...v0.6.0) (2017-12-06)
 
