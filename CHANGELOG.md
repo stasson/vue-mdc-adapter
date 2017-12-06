@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.5.3...v0.6.0) (2017-12-06)
+
+
+### Bug Fixes
+
+* **checkbox:** checkbox throws error if no label [#135](https://github.com/stasson/vue-mdc-adapter/issues/135) ([c3e7c97](https://github.com/stasson/vue-mdc-adapter/commit/c3e7c97))
+* **tabs:** Fixing mdc-tab-bar bar property reference [#148](https://github.com/stasson/vue-mdc-adapter/issues/148) ([943d851](https://github.com/stasson/vue-mdc-adapter/commit/943d851))
+
+
+### build
+
+* **dist:** simplify webpack config as per new ESM distribution ([309bcd6](https://github.com/stasson/vue-mdc-adapter/commit/309bcd6))
+* **sass:** add sass theme to distribution ([3f66f4e](https://github.com/stasson/vue-mdc-adapter/commit/3f66f4e))
+
+
+### Features
+
+* **button:** make all props reactive ([1b1a06b](https://github.com/stasson/vue-mdc-adapter/commit/1b1a06b))
+* **demo:** add vue-analytics ([c25cf84](https://github.com/stasson/vue-mdc-adapter/commit/c25cf84))
+* **dist:** add esm distribution for bundlers ([be55a74](https://github.com/stasson/vue-mdc-adapter/commit/be55a74))
+* **dist:** add esm distribution for bundlers ([e55dd5b](https://github.com/stasson/vue-mdc-adapter/commit/e55dd5b))
+* **theme:** implement mdc-theme ([385ca64](https://github.com/stasson/vue-mdc-adapter/commit/385ca64))
+
+
+### BREAKING CHANGES
+
+* **sass:** components source are not distributed. use sass from dist folder.
+* **dist:** UMD distribution names have changed. see docs/getting-started.md
+
+
+
 <a name="0.5.3"></a>
 ## [0.5.3](https://github.com/stasson/vue-mdc-adapter/compare/v0.5.2...v0.5.3) (2017-11-29)
 

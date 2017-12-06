@@ -1,6 +1,6 @@
 {
   "name": "vue-mdc-adapter",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Vue wrapper arround Material Components for the Web",
   "keywords": [
     "vue",
@@ -19,6 +19,7 @@
   "module": "dist/index.js",
   "unpkg": "dist/unpkg.min.js",
   "files": [
+    "src",
     "dist",
     "static",
     "LICENSE",

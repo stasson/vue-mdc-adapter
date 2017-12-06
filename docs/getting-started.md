@@ -1,6 +1,9 @@
 
 > This Guide assumes you are familiar with [Vue.js](https://vuejs.org/v2/guide/index.html)
-components and plugin system.
+> components and plugin system.  
+> Vue.js version `^2.5.3` is required as a peer dependency.  
+> Material Components are bundled and do not need to be installed.  
+> Material Icons and Fonts are not bundled and need to be fetched.
 
 ## Quick Start
 
@@ -12,24 +15,38 @@ or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcompone
 
 #### Vue CLI
 
-```console
+```bash
 npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
-## Getting Serious
+#### Webpack
 
-> Vue.js version `^2.5.3` is required as a peer dependency.  
-> Material Components are bundled and do not need to be installed.  
-> Material Icons and Fonts are not bundled and need to be fetched.
+```bash
+npm install -g vue-cli
+vue init webpack my-project
+cd my-project
+npm install
+npm install vue-mdc-adapter --save-dev
+npm run dev
+```
+
+```javascript
+import Vue from 'vue'
+import 'vue-mdc-adapter/dist/vue-mdc-adapter.css'
+import VueMDCAdapter from 'vue-mdc-adapter'
+Vue.use(VueMdcAdapter)
+```
+
+## Getting Serious
 
 ### UMD Distribution
 
 The UMD distribution is available at
 [unpkg.com/vue-mdc-adapter/dist](https://unpkg.com/vue-mdc-adapter/dist/) or via npm:
 
-```console
-npm install --save vue-mdc-adapter
+```bash
+npm install vue-mdc-adapter
 ```
 
 The distribution comes in two flavors:
@@ -88,7 +105,9 @@ The distribution comes in two flavors:
 </head>
 ```
 
-### ES Module Distribution (Webpack/Rollup)
+## Webpack/Rollup
+
+### ESM Distribution
 
 > The following guide assumes you have a valid Vue.js/Webpack congig.
 > refer to [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) for more.
@@ -165,7 +184,8 @@ Vue.use(VueMDCButton)
 
 #### Create your own SASS Theme
 
-> Material Components styles come as a highly themable SASS framework.
+> Material Components styles come as highly themable SASS framework. In order to be able to theme properly
+> and avoid any duplicate/ordering style issues in the bundle, we recommend managing styles globally.
 > refer to the [MDC Theming Guide](https://material.io/components/web/docs/theming/) 
 > for more.
 
@@ -203,4 +223,87 @@ $mdc-theme-background: #fff;
 
 @import "vue-mdc-adapter/dist/button/styles";
 @import "vue-mdc-adapter/dist/fab/styles";
+```
+
+### Building from Sources
+
+> You may want to optimize your build and leverage the source distribution.
+
+#### Resolve vue-mdc-adapter sources
+
+```javascript
+  // webpack.config.js
+  resolve: {
+    alias: {
+      'vue-mdc-adapter': 'vue-mdc-adapter/components',
+    }
+  }
+```
+
+#### Make sure @material imports are transpiled
+
+```javascript
+// babel loader config
+  {
+    test: /\.js$/,
+    loader: 'babel-loader',
+    include: [
+      path.resolve(__dirname, 'node_modules/@material'),
+      path.resolve(__dirname, 'node_modules/vue-mdc-adapter')
+    ]
+  }
+```
+
+#### Make sure sass modules can be imported
+
+```javascript
+// sass loader config
+  {
+    loader: 'sass-loader',
+    options: {
+      sourceMap: false,
+      includePaths: [path.resolve(__dirname,'node_modules')],
+    },
+  },
+```
+
+#### Full build
+
+```scss
+/* theme.scss */
+$mdc-theme-primary: #212121;
+$mdc-theme-accent: #41B883;
+$mdc-theme-background: #fff;
+
+@import "vue-mdc-adapter/components/styles.scss";
+```
+
+```javascript
+// main.js
+import `./theme.scss`
+import Vue from 'vue'
+import VueMDCAdapter from 'vue-mdc-adapter'
+Vue.use(VueMdcAdapter)
+```
+
+####  or cherry pick _a la carte_ plugins
+
+```scss
+/* theme.scss */
+$mdc-theme-primary: #212121;
+$mdc-theme-accent: #41B883;
+$mdc-theme-background: #fff;
+
+@import "vue-mdc-adapter/components/button/styles.scss";
+@import "vue-mdc-adapter/components/fab/styles.scss";
+```
+
+```javascript
+// main.js
+import `./theme.scss`
+import Vue from 'vue'
+import VueMDCButton from 'vue-mdc-adapter/button'
+import VueMDCFAB from 'vue-mdc-adapter/fab'
+Vue.use(VueMDCButton)
+Vue.use(VueMDCFAB)
 ```
