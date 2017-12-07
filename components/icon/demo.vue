@@ -5,7 +5,7 @@
           Material Icon <mdc-icon slot="end-detail" icon="home"></mdc-icon>
         </mdc-list-item>
         <mdc-list-item>
-          Awesome Font<mdc-icon slot="end-detail" class="fa fa-home"></mdc-icon>
+          Awesome Font<mdc-icon slot="end-detail" class="fa fa-font-awesome"></mdc-icon>
         </mdc-list-item>
       </mdc-list>
   </div>
