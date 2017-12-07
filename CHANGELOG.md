@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.5"></a>
+## [0.6.5](https://github.com/stasson/vue-mdc-adapter/compare/v0.6.4...v0.6.5) (2017-12-07)
+
+
+### Bug Fixes
+
+* **drawer:** temporary drawer should close on item click ([0d9017c](https://github.com/stasson/vue-mdc-adapter/commit/0d9017c))
+* **icon-toggle:** Custom Icons Don't work [#150](https://github.com/stasson/vue-mdc-adapter/issues/150) ([0a5f454](https://github.com/stasson/vue-mdc-adapter/commit/0a5f454))
+
+
+
 <a name="0.6.4"></a>
 ## [0.6.4](https://github.com/stasson/vue-mdc-adapter/compare/v0.6.3...v0.6.4) (2017-12-06)
 
