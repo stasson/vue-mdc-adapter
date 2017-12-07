@@ -13,12 +13,13 @@
 </template>
 
 <script>
-import {RippleBase, DispatchEventMixin, LinkMixin} from '../util'
+import {DispatchEventMixin, CustomLinkMixin} from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-drawer-item',
   inject: ['mdcDrawer'],
-  mixins: [DispatchEventMixin, LinkMixin],
+  mixins: [DispatchEventMixin, CustomLinkMixin],
   props: {
     'start-icon': String,
     'temporary-close': {type: Boolean, default: true},

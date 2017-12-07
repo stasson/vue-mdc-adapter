@@ -1,4 +1,3 @@
-
 export const CustomLink = {
   name: 'custom-link',
   props: {
@@ -16,7 +15,7 @@ export const CustomLink = {
     if (this.$router && this.link) {
       // router-link case
       element = this.$root.$options.components['router-link'] 
-      data.props = {tag: this.tag, ...this.link}
+      data.props = Object.assign({tag: this.tag}, this.link)
     } else {
       // element fallback
       element = this.tag 
@@ -26,7 +25,7 @@ export const CustomLink = {
   }
 }
 
-export const LinkMixin = {
+export const CustomLinkMixin = {
   props: {
     to: [String, Object],
     exact: Boolean,

@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcTab from './mdc-tab.vue'
 import mdcTabBar from './mdc-tab-bar.vue'
 
@@ -7,7 +7,7 @@ export {
   mdcTabBar 
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcTab, 
   mdcTabBar 
 })

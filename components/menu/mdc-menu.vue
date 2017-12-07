@@ -11,7 +11,7 @@
 <script>
 import MDCSimpleMenuFoundation from '@material/menu/simple/foundation'
 import {getTransformPropertyName} from '@material/menu/util'
-import {emitCustomEvent} from '../util'
+import {emitCustomEvent} from '../base'
 
 export default {
   name: 'mdc-menu',

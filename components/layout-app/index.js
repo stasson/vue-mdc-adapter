@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcLayoutApp from './mdc-layout-app.vue'
 
 export {
   mdcLayoutApp
 }
 
-export default plugin({
+export default BasePlugin({
   mdcLayoutApp
 })

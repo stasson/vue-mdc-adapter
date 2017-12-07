@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcSwitch from './mdc-switch.vue'
 
 export {
   mdcSwitch
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcSwitch
 })

@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcElevation from './mdc-elevation.vue'
 
 export {
   mdcElevation
 }
 
-export default plugin({
+export default BasePlugin({
   mdcElevation
 })

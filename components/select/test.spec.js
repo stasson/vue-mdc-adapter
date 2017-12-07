@@ -1,4 +1,4 @@
-import { mount, createLocalVue, checkValidMdcAdapter } from '../test-utils'
+import { mount, createLocalVue, checkValidMdcAdapter } from '../unit-test'
 
 import mdcMenuSelect from './mdc-menu-select.vue'
 import mdcMenuOption from './mdc-menu-option.vue'
