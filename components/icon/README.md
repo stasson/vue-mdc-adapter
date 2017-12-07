@@ -9,7 +9,7 @@
 ### props
 
 | prop | Type | Description |
-|-------|------|-------------|
+|------|------|-------------|
 |`icon`|String| material-icon content |
 
 ### Custom Icons
