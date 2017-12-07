@@ -1,12 +1,11 @@
 <template>
-<i class="mdc-icon-toggle material-icons" 
-  role="button" aria-pressed="false" 
-  :class="classes" :style="styles"
-  :tabindex="tabIndex"
-  :data-toggle-on='toggleOnData'
-  :data-toggle-off='toggleOffData'>
-  {{text}}
-</i>
+  <span class="mdc-icon-toggle" role="button" aria-pressed="false"
+    :class="classes" :style="styles"
+    :tabindex="tabIndex"
+    :data-toggle-on="toggleOnData"
+    :data-toggle-off="toggleOffData">
+    <i :class="iconClasses" aria-hidden="true">{{text}}</i>
+  </span>
 </template>
 
 <script>
@@ -16,12 +15,8 @@ import {RippleBase} from '../ripple'
 export default {
   name: 'mdc-icon-toggle',
   props: {
-    'toggle-on': String,
-    'toggle-off': String,
-    'label-on': String,
-    'label-off': String,
-    'class-on': String,
-    'class-off': String,
+    toggleOn: [String, Object],
+    toggleOff: [String, Object],
     value: Boolean,
     disabled: Boolean,
     primary: Boolean,
@@ -34,32 +29,59 @@ export default {
         'mdc-icon-toggle--accent': this.accent
       },
       styles: {},
+      iconClasses: {},
       tabIndex: 0,
       text: '',
-      toggleOnData: JSON.stringify({
-        content: this.toggleOn,
-        label: this.labelOn,
-        cssClass: this.classOn
-      }),
-      toggleOffData: JSON.stringify({
-        content: this.toggleOff,
-        label: this.labelOff,
-        cssClass: this.classOff
-      })
     }
   },
   watch: {
-    'value' (value) {
-      this.foundation.toggle(value)
+    value (value) {
+      this.foundation && this.foundation.toggle(value)
     },
-    'disabled' (disabled) {
-      this.foundation.setDisabled(disabled)
-    }
+    disabled (disabled) {
+      this.foundation && this.foundation.setDisabled(disabled)
+    },
+    toggleOnData () {
+     this.foundation && this.foundation.refreshToggleData()
+    },
+    toggleOffData () {
+    this.foundation && this.foundation.refreshToggleData()
+    },
+    primary (value) {
+      this.$set(this.classes, 'mdc-icon-toggle--primary', value)
+    },
+    accent (value) {
+      this.$set(this.classes, 'mdc-icon-toggle--secondary', value)
+    },
+  },
+  computed: {
+    toggleOnData () {
+      let toggle = this.toggleOn
+      return toggle && JSON.stringify((typeof toggle === 'string') ? { 
+        content: toggle, 
+        cssClass: 'material-icons' 
+      } : {
+        content: toggle.icon || toggle.content,
+        label: toggle.label,
+        cssClass: toggle.icon ? 'material-icons' : toggle.cssClass
+      })
+    } ,
+    toggleOffData () {
+      let toggle = this.toggleOff
+      return toggle && JSON.stringify((typeof toggle === 'string') ? { 
+        content: toggle, 
+        cssClass: 'material-icons' 
+      } : {
+        content: toggle.icon || toggle.content,
+        label: toggle.label,
+        cssClass: toggle.icon ? 'material-icons' : toggle.cssClass
+      })
+    },
   },
   mounted () {
     this.foundation = new MDCIconToggleFoundation({
-      addClass: (className) => this.$set(this.classes, className, true),
-      removeClass: (className) => this.$delete(this.classes, className),
+      addClass: (className) => this.$set(this.iconClasses, className, true),
+      removeClass: (className) => this.$delete(this.iconClasses, className),
       registerInteractionHandler: (evt, handler) =>
         this.$el.addEventListener(evt, handler),
       deregisterInteractionHandler: (evt, handler) =>
@@ -67,13 +89,12 @@ export default {
       setText: (text) => { this.text = text },
       getTabIndex: () => this.tabIndex,
       setTabIndex: (tabIndex) => { this.tabIndex = tabIndex },
-      getAttr: (name) => this.$el.getAttribute(name),
+      getAttr: (name, value) => this.$el.getAttribute(name, value),
       setAttr: (name, value) => { this.$el.setAttribute(name, value) },
       rmAttr: (name) => { this.$el.removeAttribute(name) },
       notifyChange: (evtData) => { this.$emit('input', evtData.isOn) }
     })
     this.foundation.init()
-    this.foundation.refreshToggleData()
     this.foundation.toggle(this.value)
     this.foundation.setDisabled(this.disabled)
 
