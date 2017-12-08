@@ -97,25 +97,43 @@ git cz
 
 > Rules below apply to adapter component source code. For demo site code, follow  [vuejs-component-style-guide](https://pablohpsilva.github.io/vuejs-component-style-guide/#/).
 
-- Adapter plugin shall be located @ `components/[feature]/` 
-  where _feature_ matches the  pkg name of the component being wrapped: `@material/[feature]`
+The style guide is organized into two types of rules: enforced and recommended.
 
-- Each feature `components/[feature]` package shall be a vue plugin and export the components as well.
+Enforced rules are designed to reduce bugs and must be followed. Code that does not conform to enforced rules may be rejected.
 
-- Component shall have a name property which matches the MDC component css class name, kebab case. for example: _mdc_button.vue_ adapts `<button class="mdc-button"> ... </button>`
+Recommended rules should be followed to maintain a consistent and readable codebase but failure to do so is not grounds for rejection of a pull request.
 
-- Adapter plugins shall register the vue components with the same element name as the component name property.
+## Enforced Rules
 
-- Single File Components shall have a `<template>` and `<script>` section, with no lang specified (this is to avoid vue support issues with the complex build env.)
+All of Vue's official style guide [prority A rules](https://vuejs.org/v2/style-guide/#Priority-A-Rules-Essential-Error-Prevention) are enforced with the exception of [scoped styles](https://vuejs.org/v2/style-guide/#Component-style-scoping-essential). Due to the way that MDC works, some global styles are required.
 
-- styles shall not be put in the `.vue` sfc file. styles shall be kept in a separate sass file.
+### Single-File Components
 
-- vue component should have a class on the main mdc element which matches the component name (this is to allow customization).
+  - SFC sections should be only `<template>` and `<script>` with no attributes
+  - SFC should not have a `<style>` section. (build env requirement to avoid issues with sass: stylesheet goes to style.scss)
+  - SFC template section has no attributes (=> html).
+  - SFC script section has no attributes (=> es6)
 
-- when adapting an mdc component do not wrap the mdc component, implement the mdc foundation.
+### Distributed Plugins
 
-- when importing foundation from @material/xxx, import from the foundation module instead of pullingthe full package  
-  __don't__  
-  ~~`import { MDCCheckboxFoundation } from '@material/checkbox'`~~    
-  do  
-  `import MDCCheckboxFoundation from '@material/checkbox/foundation'`  
+  - A distributed package's default export should be a valid Vue plugin (expose an [install function](https://vuejs.org/v2/guide/plugins.html#Writing-a-Plugin)) *OR* a Vue mixin
+  - The source code for plugins should be located in `components/[plugin]/*`
+  - Adapter plugins shall register the vue components with the same element name as the component name property.
+
+### Distributed Components
+
+  - Component source code should be located in `components/[plugin]/mdc-xxx-yyy.(vue|js)`
+  - The name of the component should be prefixed with `mdc-`
+  - Has a static class which exactly matches the component name
+  - `data` must be a function
+  - `provide` must be a function
+  - MDC adapters must **exactly** match the MDC API
+  - When adapting an MDC component do not wrap the MDC component, implement the MDC foundation.
+
+### Miscellaneous
+
+  - When importing foundation from @material/xxx, import from the foundation module instead of pulling the entire package  
+    __don't__  
+    ~~`import { MDCCheckboxFoundation } from '@material/checkbox'`~~    
+    do  
+    `import MDCCheckboxFoundation from '@material/checkbox/foundation'`
