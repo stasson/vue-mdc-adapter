@@ -2,11 +2,12 @@
   <div class="mdc-select mdc-menu-select mdc-menu-anchor" 
     role="listbox" :tabindex="tabIndex"
     :class="classes">
-    <div ref="surface" class="mdc-select__surface" :style="styles">
+    <div ref="surface" class="mdc-select__surface"
+      :style="styles">
         <div ref="label" class="mdc-select__label"
           :class="labelClasses"
         >{{label}}</div>
-        <div ref="selectedContent" class="mdc-select__selected-text"
+        <div ref="selectedContent" class="mdc-select__selected-text" 
         >{{selectedTextContent}}</div>
         <div ref="bottomLine" class="mdc-select__bottom-line"
           :class="bottomLineClasses"></div>
@@ -51,7 +52,8 @@ export default {
     resetIndex () {
       if (this.foundation) {
         this.foundation.setSelectedIndex(-1)
-        this.$emit('change', this.foundation.getValue())
+        this.$emit('change', this.foundation.getValue()) // TODO: MDCFIX
+        this.$delete(this.labelClasses, 'mdc-select__label--float-above')
       }
     }
   },
@@ -136,7 +138,48 @@ export default {
       addBodyClass: (className) => document.body.classList.add(className),
       removeBodyClass: (className) => document.body.classList.remove(className),
     })
-    
+
+
+    //TODO: MDCFIX
+    foundation.resize = () => {
+      
+      const font = foundation.adapter_.getComputedStyleValue('font');
+      const letterSpacing = parseFloat(foundation.adapter_.getComputedStyleValue('letter-spacing'));
+
+      if (font) {
+        foundation.ctx_.font = font;
+      } else {
+        const primaryFontFamily = foundation.adapter_.getComputedStyleValue('font-family').split(',')[0];
+        const fontSize = foundation.adapter_.getComputedStyleValue('font-size');
+        foundation.ctx_.font = `${fontSize} ${primaryFontFamily}`;
+      }
+
+      let maxTextLength = 0;
+
+      const surfacePaddingRight = parseInt(foundation.adapter_.getComputedStyleValue('padding-right'), 10);
+      const surfacePaddingLeft = parseInt(foundation.adapter_.getComputedStyleValue('padding-left'), 10);
+      const selectBoxAddedPadding = surfacePaddingRight + surfacePaddingLeft;
+
+      for (let i = 0, l = foundation.adapter_.getNumberOfOptions(); i < l; i++) {
+        const txt = foundation.adapter_.getTextForOptionAtIndex(i).trim();
+        const {width} = foundation.ctx_.measureText(txt);
+        const addedSpace = letterSpacing * txt.length;
+
+        maxTextLength =
+          Math.max(maxTextLength, Math.ceil(width + addedSpace + selectBoxAddedPadding));
+      }
+
+      const labelTxt = this.label;
+      const {width} = foundation.ctx_.measureText(labelTxt);
+      const addedSpace = letterSpacing * labelTxt.length;
+
+      maxTextLength =
+        Math.max(maxTextLength, Math.ceil(width + addedSpace + selectBoxAddedPadding));
+
+
+      foundation.adapter_.setStyle('width', `${maxTextLength}px`);
+    }
+
     foundation.init()
     let options = this.$refs.menu.items
     for (let i = 0; i < options.length; i++) {
