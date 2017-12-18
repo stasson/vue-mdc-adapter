@@ -1,13 +1,18 @@
 <template>
   <div class="mdc-select mdc-menu-select mdc-menu-anchor" 
     role="listbox" :tabindex="tabIndex"
-    :class="classes" :style="styles">
-    <span class="mdc-select__selected-text">{{ selectedTextContent }}</span>
+    :class="classes">
+    <div ref="surface" class="mdc-select__surface" :style="styles">
+        <div ref="label" class="mdc-select__label"
+          :class="labelClasses"
+        >{{label}}</div>
+        <div ref="selectedContent" class="mdc-select__selected-text"
+        >{{selectedTextContent}}</div>
+        <div ref="bottomLine" class="mdc-select__bottom-line"
+          :class="bottomLineClasses"></div>
+    </div>
     <mdc-menu ref="menu" :style="menuStyles" @update="resetIndex">
-        <li class="mdc-list-item" role="option" aria-disabled="true" data-value="">
-        {{label}}
-        </li>
-        <slot></slot>
+      <slot></slot>
     </mdc-menu>
   </div>
 </template>
@@ -31,6 +36,8 @@ export default {
   data () {
     return {
       classes: {},
+      labelClasses: {},
+      bottomLineClasses: {},
       styles: {},
       menuStyles: {},
       tabIndex: 0,
@@ -43,7 +50,7 @@ export default {
   methods: {
     resetIndex () {
       if (this.foundation) {
-        this.foundation.setSelectedIndex(this.label ? 0 : -1)
+        this.foundation.setSelectedIndex(-1)
         this.$emit('change', this.foundation.getValue())
       }
     }
@@ -54,12 +61,22 @@ export default {
         this.$set(this.classes, className, true),
       removeClass: (className) =>
         this.$delete(this.classes, className),
+      addClassToLabel: (className) =>
+        this.$set(this.labelClasses, className, true),
+      removeClassFromLabel: (className) =>
+        this.$delete(this.labelClasses, className),
+      addClassToBottomLine: (className) => 
+        this.$set(this.bottomLineClasses, className, true),
+      removeClassFromBottomLine: (className) =>
+        this.$delete(this.bottomLineClasses, className),
+      setBottomLineAttr: (attr, value) => 
+        this.$refs.bottomLine.setAttribute(attr, value),
       setAttr: (attr, value) =>
         this.$el.setAttribute(attr, value),
       rmAttr: (attr, value) =>
         this.$el.removeAttribute(attr, value),
       computeBoundingRect: () =>
-        this.$el.getBoundingClientRect(),
+        this.$refs.surface.getBoundingClientRect(),
       registerInteractionHandler: (type, handler) =>
         this.$el.addEventListener(type, handler),
       deregisterInteractionHandler: (type, handler) =>
@@ -73,7 +90,7 @@ export default {
         this.tabIndex = -1
       },
       getComputedStyleValue: (prop) =>
-        window.getComputedStyle(this.$el).getPropertyValue(prop),
+        window.getComputedStyle(this.$refs.surface).getPropertyValue(prop),
       setStyle: (propertyName, value) =>
         this.$set(this.styles, propertyName, value),
       create2dRenderingContext: () =>
@@ -98,13 +115,8 @@ export default {
       getTextForOptionAtIndex: (index) =>
         this.$refs.menu.items[index].textContent.trim(),
       getValueForOptionAtIndex: (index) => {
-        if ( (index == 0 && this.label) 
-          || !this.$refs.menu.items[index]) 
-            return undefined
-        else {
-          return this.$refs.menu.items[index].getAttribute('data-value') 
-            || this.$refs.menu.items[index].textContent.trim()
-        }
+        return this.$refs.menu.items[index].getAttribute('data-value') 
+          || this.$refs.menu.items[index].textContent.trim()
       },
       setAttrForOptionAtIndex: (index, attr, value) =>
         this.$refs.menu.items[index].setAttribute(attr, value),
@@ -126,20 +138,18 @@ export default {
     })
     
     foundation.init()
-
-    if (!this.disabled) {
-      let idx = 0
-      let options = this.$refs.menu.items
-      for (let i = 0; i < options.length; i++) {
-        let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
-        if (this.value === optionValue) {
-          idx = i
-        }
+    let options = this.$refs.menu.items
+    for (let i = 0; i < options.length; i++) {
+      let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
+      if (this.value === optionValue) {
+        foundation.setSelectedIndex(i)
+        break;
       }
-      foundation.setSelectedIndex(idx)
     }
     foundation.setDisabled(this.disabled)
+
     this.foundation = foundation
+
     if (this.value !== this.foundation.getValue()) {
       this.$emit('change', this.foundation.getValue())
     }
