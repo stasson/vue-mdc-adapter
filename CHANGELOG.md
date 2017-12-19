@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.6.5...v0.7.0) (2017-12-19)
+
+
+### Bug Fixes
+
+* **list:** Correct "mdc-list-item__secondary-text" ([308ea01](https://github.com/stasson/vue-mdc-adapter/commit/308ea01))
+* **package:** update material-components-web to version 0.27.0 ([005c08e](https://github.com/stasson/vue-mdc-adapter/commit/005c08e))
+* **select:** mdc 0.27.0 styles issues workarrounds ([4f37bd6](https://github.com/stasson/vue-mdc-adapter/commit/4f37bd6))
+* **textfield:** label should be transparent ([d22cf3c](https://github.com/stasson/vue-mdc-adapter/commit/d22cf3c))
+
+
+### Features
+
+* **docs:** add style guide ([2334b74](https://github.com/stasson/vue-mdc-adapter/commit/2334b74))
+* **drawer:** implement mdc v0.27.0 ([a3e3e3e](https://github.com/stasson/vue-mdc-adapter/commit/a3e3e3e))
+* **drawer:** temporary drawer should be auto-scrollable [#159](https://github.com/stasson/vue-mdc-adapter/issues/159) ([d9588b5](https://github.com/stasson/vue-mdc-adapter/commit/d9588b5))
+* **list:** implement mdc v0.27.0 ([b35cad7](https://github.com/stasson/vue-mdc-adapter/commit/b35cad7))
+* **menu:** implement mdc v0.27.0 ([1179781](https://github.com/stasson/vue-mdc-adapter/commit/1179781))
+* **radio:** mdc-radio's init should follow v-model when checked prop is unset? [#155](https://github.com/stasson/vue-mdc-adapter/issues/155) ([5e3263d](https://github.com/stasson/vue-mdc-adapter/commit/5e3263d))
+* **select:** implement mdc v0.27.0 ([5247b59](https://github.com/stasson/vue-mdc-adapter/commit/5247b59))
+* **textfield:** implement mdc v0.27.0 ([dbf39f8](https://github.com/stasson/vue-mdc-adapter/commit/dbf39f8))
+
+
+
 <a name="0.6.5"></a>
 ## [0.6.5](https://github.com/stasson/vue-mdc-adapter/compare/v0.6.4...v0.6.5) (2017-12-07)
 
