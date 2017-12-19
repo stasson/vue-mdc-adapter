@@ -27,11 +27,11 @@ var vm = new Vue({
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
 |`disabled`|String|| disable the button |
-|`raised`| Boolean|| a contained button that is elevated upon the surface  (*)|
-|`unelevated`| Boolean|| a contained button that is flush with the surface (*)|
+|`raised`| Boolean|| a contained button that is elevated upon the surface |
+|`unelevated`| Boolean|| a contained button that is flush with the surface |
 |`stroked`| Boolean|| a contained button that is flush with the surface and has a visible border(*)|
-|`dense`| String||  compresses the button text to make it slightly smaller (*)|
-|`compact`| Boolean|| reduces the amount of horizontal padding in the button (*)|
+|`dense`| String||  compresses the button text to make it slightly smaller |
+|`compact`| Boolean|| reduces the amount of horizontal padding in the button |
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |

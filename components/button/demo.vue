@@ -1,30 +1,61 @@
 <template>
-  <div class="mdc-demo mdc-demo--container">
-    <div>
+  <div class="mdc-demo">
+      <div class="mdc-demo--container">
+        <div class="mdc-demo-button">
+          <mdc-button :dense="dense" :compact="compact" :disabled="disabled" 
+            :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
+          <mdc-button :dense="dense" :compact="compact" :disabled="disabled"
+            :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
+          <mdc-button :dense="dense" :compact="compact" :disabled="disabled"
+            :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
+        </div>  
+      </div>  
 
-      <div class="button-line">
-        <mdc-button >baseline</mdc-button>
-        <mdc-button compact>compact</mdc-button>
-        <mdc-button dense>dense</mdc-button>
-      </div>  
-      
-      <div class="button-line">
-        <mdc-button raised>baseline</mdc-button>
-        <mdc-button raised compact>compact</mdc-button>
-        <mdc-button raised dense>dense</mdc-button>
-      </div>  
+      <div class="mdc-demo--container">
+        <div class="button-type-select">
+            <mdc-radio label="baseline" name="button-type" v-model="type" checked></mdc-radio>
+            <mdc-radio label="raised" name="button-type" v-model="type" ></mdc-radio>
+            <mdc-radio label="unelevated" name="button-type" v-model="type"></mdc-radio>
+            <mdc-radio label="stroked" name="button-type" v-model="type"></mdc-radio>
+          </div>
+        </mdc-layout-cell>
+
+        <div class="button-style-select">
+          <mdc-checkbox label="disabled" v-model="disabled"></mdc-checkbox>
+          <mdc-checkbox label="compact" v-model="compact" ></mdc-checkbox>
+          <mdc-checkbox label="dense"  v-model="dense"></mdc-checkbox>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
 
-<style>
-  .button-line {
-    margin-top: -8px;
-    margin-bottom: 32px;
+<script>
+export default {
+  data () {
+    return {type: '', dense: false, compact:false, disabled:false}
+  },
+  computed: {
+    raised () { return this.type == 'raised'},
+    unelevated () { return this.type == 'unelevated'},
+    stroked () { return this.type == 'stroked'},
   }
+}
+</script>
 
-  .mdc-caption {
-    display: inline-block;
-    width: 120px;
-  }
+
+<style>
+.mdc-demo-button {
+  margin: 0 auto;
+  text-align:center;
+}
+
+.button-type-select, .button-style-select {
+  margin: 0 32px;
+  display: flex;
+  flex-flow:  column nowrap;
+  justify-content: flex-start;
+}
+
 </style>

@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcDialog from './mdc-dialog.vue'
 
 export {
   mdcDialog
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcDialog
 })

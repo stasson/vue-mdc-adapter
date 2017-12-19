@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcCard from './mdc-card.vue'
 import mdcCardMedia from './mdc-card-media.vue'
 import mdcCardHeader from './mdc-card-header.vue'
@@ -23,7 +23,7 @@ export {
   mdcCardActionButton
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcCard, 
   mdcCardMedia,
   mdcCardHeader,

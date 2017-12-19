@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcMenu from './mdc-menu.vue'
 import mdcMenuItem from './mdc-menu-item.vue'
 import mdcMenuDivider from './mdc-menu-divider.vue'
@@ -11,7 +11,7 @@ export {
   mdcMenuAnchor
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcMenu,
   mdcMenuItem,
   mdcMenuDivider,

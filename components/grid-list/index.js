@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcGridList from './mdc-grid-list.vue'
 import mdcGridTile from './mdc-grid-tile.vue'
 
@@ -7,7 +7,7 @@ export {
   mdcGridTile
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcGridList,
   mdcGridTile
 })

@@ -1,10 +1,12 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcRipple from './mdc-ripple.vue'
+
+export * from './mdc-ripple-base.js'
 
 export {
   mdcRipple
 }
 
-export default plugin({
+export default BasePlugin({
   mdcRipple
 })

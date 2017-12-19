@@ -11,7 +11,7 @@
 <script>
 import MDCSimpleMenuFoundation from '@material/menu/simple/foundation'
 import {getTransformPropertyName} from '@material/menu/util'
-import {emitCustomEvent} from '../util'
+import {emitCustomEvent} from '../base'
 
 export default {
   name: 'mdc-menu',
@@ -62,6 +62,7 @@ export default {
       hasNecessaryDom: () => Boolean(this.$refs.items),
       getAttributeForEventTarget: (target, attributeName) =>
         target.getAttribute(attributeName),
+      eventTargetHasClass: (target, className) => target.classList.contains(className),  
       getInnerDimensions: () => ({
         width: this.$refs.items.offsetWidth,
         height: this.$refs.items.offsetHeight
@@ -140,29 +141,6 @@ export default {
       },
       getAccurateTime: () => window.performance.now()
     })
-
-    /** TODO: MDCFIX -- temporary fix for duplicate $emit */
-    this.foundation.clickHandler_ = (evt) => {
-      evt.stopPropagation()
-      this.foundation.handlePossibleSelected_(evt)
-    }
-
-    this.foundation.keydownHandler_ = (evt) => {
-      evt.stopPropagation()
-      this.foundation.handleKeyboardDown_(evt)
-    }
-
-    this.foundation.keyupHandler_ = (evt) => {
-      evt.stopPropagation()
-      this.foundation.handleKeyboardUp_(evt)
-    }
-
-    this.foundation.documentClickHandler_ = (evt) => {
-      evt.stopPropagation()
-      this.foundation.adapter_.notifyCancel()
-      this.foundation.close(evt)
-    }
-    /* -- temporary fix for duplicate $emit **/
 
     refreshItems()
     this.foundation.init()

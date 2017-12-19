@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcToolbar from './mdc-toolbar.vue'
 import mdcToolbarRow from './mdc-toolbar-row.vue'
 import mdcToolbarSection from './mdc-toolbar-section.vue'
@@ -15,7 +15,7 @@ export {
   mdcToolbarIcon
 }
 
-export default plugin({
+export default BasePlugin({
   mdcToolbar,
   mdcToolbarRow,
   mdcToolbarSection,

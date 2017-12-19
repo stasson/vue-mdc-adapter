@@ -62,7 +62,8 @@
 import MDCTextfieldFoundation from '@material/textfield/foundation'
 import MDCTextFieldBottomLineFoundation from '@material/textfield/bottom-line/foundation'
 import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation'
-import {RippleBase, emitCustomEvent} from '../util'
+import {emitCustomEvent} from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-textfield',
@@ -137,73 +138,6 @@ export default {
     }
   },
   mounted () {
-    this.foundation = new MDCTextfieldFoundation({
-      addClass: (className) => {
-        this.$set(this.rootClasses, className, true)
-      },
-      removeClass: (className) => {
-        this.$delete(this.rootClasses, className)
-      },
-      addClassToLabel: (className) => {
-        this.$set(this.labelClasses, className, true)
-      },
-      removeClassFromLabel: (className) => {
-        this.$delete(this.labelClasses, className)
-      },
-      setIconAttr: (/* name: string, value: string */) => {},
-      eventTargetHasClass: (target, className) =>  target.classList.contains(className),
-      registerTextFieldInteractionHandler: (evtType, handler) => {
-        this.$refs.root.addEventListener(evtType, handler)
-      },
-      deregisterTextFieldInteractionHandler: (evtType, handler) => {
-        this.$refs.root.removeEventListener(evtType, handler)
-      },
-      registerInputInteractionHandler: (evtType, handler) => {
-        this.$refs.input.addEventListener(evtType, handler)
-      },
-      deregisterInputInteractionHandler: (evtType, handler) => {
-        this.$refs.input.removeEventListener(evtType, handler)
-      },
-      // registerTransitionEndHandler: (handler) => {
-      //   if (this.$refs.bottom) {
-      //     this.$refs.bottom.addEventListener('transitionend', handler)
-      //   }
-      // },
-      // deregisterTransitionEndHandler: (handler) => {
-      //   if (this.$refs.bottom) {
-      //     this.$refs.bottom.removeEventListener('transitionend', handler)
-      //   }
-      // },
-      getNativeInput: () => {
-        return this.$refs.input
-      },
-      notifyIconAction: () => {
-        this.$emit('icon')
-      },
-      registerBottomLineEventHandler: (evtType, handler) => {
-        if (this.$refs.bottom) {
-          this.$refs.bottom.addEventListener(evtType, handler);
-        }
-      },
-      deregisterBottomLineEventHandler: (evtType, handler) => {
-        if (this.$refs.bottom) {
-          this.$refs.bottom.removeEventListener(evtType, handler);
-        }
-      },
-      getBottomLineFoundation: () => {
-        if (this.$refs.bottom) {
-          return this.bottomLineFoundation
-        }
-        return undefined;
-      },
-      getHelperTextFoundation: () => {
-        if (this.$refs.help) {
-          return this.helperTextFoundation
-        }
-        return undefined;
-      },
-    })
-
     if (this.$refs.bottom) {
       this.bottomLineFoundation = new MDCTextFieldBottomLineFoundation({
         addClass: (className) => {
@@ -254,6 +188,55 @@ export default {
       }) 
       this.helperTextFoundation.init()
     }
+
+    this.foundation = new MDCTextfieldFoundation({
+      addClass: (className) => {
+        this.$set(this.rootClasses, className, true)
+      },
+      removeClass: (className) => {
+        this.$delete(this.rootClasses, className)
+      },
+      addClassToLabel: (className) => {
+        this.$set(this.labelClasses, className, true)
+      },
+      removeClassFromLabel: (className) => {
+        this.$delete(this.labelClasses, className)
+      },
+      setIconAttr: (/* name: string, value: string */) => {},
+      eventTargetHasClass: (target, className) =>  target.classList.contains(className),
+      registerTextFieldInteractionHandler: (evtType, handler) => {
+        this.$refs.root.addEventListener(evtType, handler)
+      },
+      deregisterTextFieldInteractionHandler: (evtType, handler) => {
+        this.$refs.root.removeEventListener(evtType, handler)
+      },
+      registerInputInteractionHandler: (evtType, handler) => {
+        this.$refs.input.addEventListener(evtType, handler)
+      },
+      deregisterInputInteractionHandler: (evtType, handler) => {
+        this.$refs.input.removeEventListener(evtType, handler)
+      },
+      getNativeInput: () => {
+        return this.$refs.input
+      },
+      notifyIconAction: () => {
+        this.$emit('icon')
+      },
+      registerBottomLineEventHandler: (evtType, handler) => {
+        if (this.$refs.bottom) {
+          this.$refs.bottom.addEventListener(evtType, handler);
+        }
+      },
+      deregisterBottomLineEventHandler: (evtType, handler) => {
+        if (this.$refs.bottom) {
+          this.$refs.bottom.removeEventListener(evtType, handler);
+        }
+      },
+    }, {
+      bottomLine: this.bottomLineFoundation,
+      helperText: this.helperTextFoundation
+    })
+
     this.foundation.init()
     this.foundation.setDisabled(this.disabled)
 
@@ -265,10 +248,10 @@ export default {
 
   },
   beforeDestroy () {
-    this.foundation.destroy()
-    if (this.ripple) {
-      this.ripple.destroy()
-    }
+    this.foundation && this.foundation.destroy()
+    this.bottomLineFoundation && this.bottomLineFoundation.destroy()
+    this.helperTextFoundation && this.helperTextFoundation.destroy()
+    this.ripple && this.ripple.destroy()
   }
 }
 </script>

@@ -57,6 +57,7 @@ export default {
       },
       addBodyClass: (className) => document.body.classList.add(className),
       removeBodyClass: (className) => document.body.classList.remove(className),
+      eventTargetHasClass: (target, className) => target.classList.contains(className),
       hasNecessaryDom: () => {
         return !!this.$refs.drawer
       },

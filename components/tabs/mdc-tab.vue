@@ -10,7 +10,8 @@
 
 <script>
 import MDCTabFoundation from '@material/tabs/tab/foundation'
-import { RippleBase, emitCustomEvent, DispatchEventMixin } from '../util'
+import { emitCustomEvent, DispatchEventMixin } from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-tab',

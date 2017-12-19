@@ -1,6 +1,6 @@
 {
   "name": "vue-mdc-adapter",
-  "version": "0.5.3",
+  "version": "0.7.0",
   "description": "Vue wrapper arround Material Components for the Web",
   "keywords": [
     "vue",
@@ -17,8 +17,9 @@
   "main": "dist/vue-mdc-adapter.js",
   "style": "dist/vue-mdc-adapter.css",
   "module": "dist/index.js",
-  "unpkg": "dist/unpkg.min.js",
+  "unpkg": "dist/vue-mdc-adapter.umd.min.js",
   "files": [
+    "components",
     "dist",
     "static",
     "LICENSE",
@@ -59,7 +60,7 @@
     }
   },
   "dependencies": {
-    "material-components-web": "0.26.0"
+    "material-components-web": "^0.27.0"
   },
   "peerDependencies": {
     "vue": "^2.5.6"
@@ -69,7 +70,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
-    "babel-jest": "^21.2.0",
+    "babel-jest": "^22.0.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -93,8 +94,8 @@
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
-    "jest-cli": "^21.2.1",
+    "jest": "^22.0.0",
+    "jest-cli": "^22.0.0",
     "markdown-it": "^8.4.0",
     "markdown-it-highlightjs": "^3.0.0",
     "npm-run-all": "^4.1.1",
@@ -111,7 +112,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sass": "^0.5.3",
     "rollup-plugin-uglify": "^2.0.1",
-    "rollup-plugin-vue": "^2.5.2",
+    "rollup-plugin-vue": "^3.0.0",
     "sass-loader": "^6.0.6",
     "standard-changelog": "^1.0.4",
     "standard-version": "^4.2.0",
@@ -124,13 +125,14 @@
     "url-loader": "^0.6.2",
     "validate-commit-msg": "^2.14.0",
     "vue": "^2.5.8",
+    "vue-analytics": "^5.5.0",
     "vue-jest": "^1.1.0",
     "vue-loader": "^13.4.0",
     "vue-markdown-loader": "^2.3.0",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.8",
     "vue-template-validator": "^1.1.5",
-    "vue-test-utils": "1.0.0-beta.6",
+    "vue-test-utils": "1.0.0-beta.7",
     "webpack": "^3.6.0",
     "webpack-cdn-plugin": "^1.6.5",
     "webpack-dev-server": "^2.9.4"

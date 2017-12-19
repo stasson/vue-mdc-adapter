@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcICon from './mdc-icon.vue'
 
 export {
   mdcICon
 }
 
-export default plugin({
+export default BasePlugin({
   mdcICon
 })

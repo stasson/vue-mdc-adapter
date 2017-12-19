@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcCheckbox from './mdc-checkbox.vue'
 
 export {
   mdcCheckbox
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcCheckbox
 })

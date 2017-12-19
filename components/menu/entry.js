@@ -1,6 +1,6 @@
 import './styles.scss'
-import register from '../register.js'
+import {autoInit} from '../base'
 import plugin from './index.js'
 export default plugin
 
-register(plugin)
+autoInit(plugin)

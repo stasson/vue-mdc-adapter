@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcIConToggle from './mdc-icon-toggle.vue'
 
 export {
   mdcIConToggle
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcIConToggle
 })

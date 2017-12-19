@@ -1,4 +1,4 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import {  
   mdcTextSection,
   mdcText,
@@ -21,7 +21,7 @@ export {
   mdcTitle
 }
 
-export default plugin({
+export default BasePlugin({
   mdcTextSection,
   mdcText,
   mdcBody,
