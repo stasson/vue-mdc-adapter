@@ -13,3 +13,9 @@
 .mdc-drawer-item {
   cursor: pointer;
 }
+
+.mdc-drawer.mdc-temporary-drawer {
+  .mdc-drawer-list {
+    overflow-y: auto;
+  }
+}
