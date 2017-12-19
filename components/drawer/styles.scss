@@ -9,7 +9,13 @@
   }
 }
 
-// drawer item is nav should be clickable
+.mdc-temporary-drawer {
+  &__drawer {
+    overflow-y: auto;
+  }
+}
+
+// drawer item in nav should be clickable
 .mdc-drawer-item {
   cursor: pointer;
 }
