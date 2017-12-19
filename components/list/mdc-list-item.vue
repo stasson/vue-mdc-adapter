@@ -7,7 +7,7 @@
 
     <span class="mdc-list-item__text" v-if="hasSecondary">
       <slot></slot>
-      <span class="mdc-list-item__text__secondary">
+      <span class="mdc-list-item__secondary-text">
         <slot name="secondary"></slot>
       </span>
     </span>

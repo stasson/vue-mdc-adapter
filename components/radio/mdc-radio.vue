@@ -27,10 +27,11 @@ export default {
   props: {
     'name': String,
     'value': String,
+    'picked': String,
     'checked': Boolean,
     'label': String,
     'align-end': Boolean,
-    'disabled': Boolean
+    'disabled': Boolean,
   },
   data () {
     return {
@@ -52,7 +53,7 @@ export default {
     this.foundation.init()
     this.foundation.setValue(this.value ? this.value : this.label)
     this.foundation.setDisabled(this.disabled)
-    this.foundation.setChecked(this.checked)
+    this.foundation.setChecked(this.checked || this.picked == this.foundation.getValue())
 
     // add ripple
     this.ripple = new RippleBase(this, {
@@ -89,7 +90,7 @@ export default {
     this.ripple.destroy()
   },
   watch: {
-    'disabled' (value) {
+    disabled (value) {
       this.foundation.setDisabled(value)
     }
   },
