@@ -24,7 +24,7 @@ var vm = new Vue({
 |`align-end`| Boolean|| align the radio after the label |
 |`name`|String|| radio group name  |
 |`value`|String| `label`| radio value, defaults to label value if any |
-|`checked`|Boolean|| whether this radio is selected by default |
+|`checked`|Boolean|| forces this radio to be selected. follows v-model otherwise |
 |`:disabled`| Boolean|| whether the radio is disabled |
 |`v-model`| String || tracks selected radio's value |
 
