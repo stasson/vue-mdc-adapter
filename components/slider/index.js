@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcSlider from './mdc-slider.vue'
 
 export {
   mdcSlider
 }
 
-export default plugin({
+export default BasePlugin({
   mdcSlider
 })

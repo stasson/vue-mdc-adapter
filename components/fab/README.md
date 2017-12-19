@@ -8,16 +8,16 @@
 
 > refer to [Material Design Icon Font](https://material.io/icons/) for the list of icons 
 
-> FAB can't be disabled 
+> FAB can't be disabled
 
 > add an `href` attribute for link
 
 
 ### events
 
-| event | args | Description |
-|-------|------|-------------|
-|`@click`||emitted on click |
+| event   | args | Description |
+|---------|------|-------------|
+|`@click` |     | emitted on click |
 
 
 ### props
@@ -39,12 +39,12 @@
 
 ### Custom Icons
 
-> You can omit the icon prop to render your custom icons 
-
 **Font Awsome**
 
 ```html
-  <mdc-fab class="fa fa-star"></mdc-fab>
+  <mdc-fab>
+    <mdc-icon class="fa fa-star"></mdc-icon>
+  </mdc-fab>
 ```
 
 
@@ -74,9 +74,8 @@ You might want to keep button behavior and do the navigation programatically:
 
 ```html
 <mdc-button @click="location.href='#'">Home</mdc-button>
-``` 
-
-
+```
 
 ### Reference
+
 - <https://material.io/components/web/catalog/buttons/floating-action-buttons>

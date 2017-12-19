@@ -8,7 +8,7 @@
 
 
 <script>
-import { CustomElement } from '../util'
+import { CustomElement } from '../base'
 
 
 const THEME_COLORS = [

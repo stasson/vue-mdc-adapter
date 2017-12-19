@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {DispatchEventMixin} from '../util'
+import {DispatchEventMixin} from '../base'
 
 export default {
   name: 'mdc-toolbar-title',

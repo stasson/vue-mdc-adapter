@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import {RippleBase, DispatchEventMixin, CustomElementMixin} from '../util'
+import {DispatchEventMixin, CustomElementMixin} from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-fab',
@@ -36,7 +37,7 @@ export default {
     }
   },
   mounted () {
-    this.ripple = new RippleBase(this)
+    this.ripple = new RippleBase (this)
     this.ripple.init()
   },
   beforeDestroy () {

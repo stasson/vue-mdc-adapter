@@ -1,10 +1,10 @@
-import plugin from '../plugin.js'
+import {BasePlugin} from '../base'
 import mdcSnackbar from './mdc-snackbar.vue'
 
 export {
   mdcSnackbar
 }
 
-export default plugin ({
+export default BasePlugin({
   mdcSnackbar
 })

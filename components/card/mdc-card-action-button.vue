@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import {RippleBase, DispatchEventMixin, CustomElementMixin} from '../util'
+import {DispatchEventMixin, CustomElementMixin} from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-card-action-button',

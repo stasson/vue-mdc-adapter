@@ -1,5 +1,6 @@
 <template>
   <custom-element 
+    class="mdc-button"
     :tag="isLink ? 'a': 'button'" 
     :href="isLink && href"
     :role="isLink ? 'button' : undefined"
@@ -11,7 +12,8 @@
 </template>
 
 <script>
-import {RippleBase, DispatchEventMixin, CustomElementMixin} from '../util'
+import {DispatchEventMixin, CustomElementMixin} from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-button',
@@ -25,15 +27,9 @@ export default {
     dense: Boolean,
     compact: Boolean
   },
-  computed: {
-    isLink () {
-      return this.href && !this.disabled
-    }
-  },
   data () {
     return {
       classes: {
-        'mdc-button': true,
         'mdc-button--raised': this.raised,
         'mdc-button--unelevated': this.unelevated,
         'mdc-button--stroked': this.stroked,
@@ -42,6 +38,28 @@ export default {
       },
       styles: {}
     }
+  },
+  computed: {
+    isLink () {
+      return this.href && !this.disabled
+    }
+  },
+  watch: {
+    raised () {
+      this.$set(this.classes, 'mdc-button--raised', this.raised )
+    },
+    unelevated () {
+      this.$set(this.classes, 'mdc-button--unelevated', this.unelevated )
+    },
+    stroked () {
+      this.$set(this.classes, 'mdc-button--stroked', this.stroked )
+    },
+    dense () {
+      this.$set(this.classes, 'mdc-button--dense', this.dense )
+    },
+    compact () {
+      this.$set(this.classes, 'mdc-button--compact', this.compact )
+    },
   },
   mounted () {
     this.ripple = new RippleBase(this)

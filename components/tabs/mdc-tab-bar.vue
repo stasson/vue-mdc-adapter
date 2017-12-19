@@ -60,7 +60,7 @@ export default {
       getOffsetWidthForIndicator: () =>
         this.$refs.indicator.offsetWidth,
       notifyChange: (evtData) => {
-        this.$emit('change', evtData.activeIndex)
+        this.$emit('change', evtData.activeTabIndex)
       },
       getNumberOfTabs: () =>
         this.tabs.length,

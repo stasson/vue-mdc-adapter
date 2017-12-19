@@ -2,7 +2,7 @@
   <custom-link :link="link" 
     class="mdc-drawer-item mdc-list-item" 
     :class="classes" :style="styles"
-    @click="onClick">
+    @click.native="onClick">
     <span class="mdc-list-item__start-detail" v-if="hasStartDetail">
       <slot name="start-detail">
         <i class="material-icons" aria-hidden="true">{{startIcon}}</i>
@@ -13,12 +13,13 @@
 </template>
 
 <script>
-import {RippleBase, DispatchEventMixin, LinkMixin} from '../util'
+import {DispatchEventMixin, CustomLinkMixin} from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-drawer-item',
   inject: ['mdcDrawer'],
-  mixins: [DispatchEventMixin, LinkMixin],
+  mixins: [DispatchEventMixin, CustomLinkMixin],
   props: {
     'start-icon': String,
     'temporary-close': {type: Boolean, default: true},

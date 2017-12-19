@@ -62,7 +62,8 @@
 import MDCTextfieldFoundation from '@material/textfield/foundation'
 import MDCTextFieldBottomLineFoundation from '@material/textfield/bottom-line/foundation'
 import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation'
-import {RippleBase, emitCustomEvent} from '../util'
+import {emitCustomEvent} from '../base'
+import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-textfield',

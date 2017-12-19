@@ -58,3 +58,19 @@ export class RippleBase extends MDCRippleFoundation {
     }, options))
   }
 }
+
+export const RippleMixin = {
+  data () {
+    return {
+      classes: {},
+      styles: {}
+    }
+  },
+  mounted () {
+    this.ripple = new RippleBase(this)
+    this.ripple.init()
+  },
+  beforeDestroy () {
+    this.ripple.destroy()
+  }
+}  
