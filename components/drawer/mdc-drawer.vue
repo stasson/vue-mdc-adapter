@@ -29,6 +29,19 @@ export default {
     'permanent': Boolean,
     'persistent': Boolean,
     'temporary': Boolean,
+    'drawer-type': {
+      type: String,
+      validator (val) {
+        switch (val) {
+          case 'temporary':
+          case 'persistent':
+          case 'permanent':
+            return true
+          default:
+            return false
+        }
+      }
+    },
     'toggle-on': String,
     'toggle-on-source': {type: Object, required: false},
     'toolbar-spacer': Boolean
@@ -50,11 +63,11 @@ export default {
   },
   computed: {
     type () {
-      if (this.permanent) {
+      if (this.isTypePermanent) {
         return 'mdc-permanent-drawer'
-      } else if (this.persistent) {
+      } else if (this.isTypePersistent) {
         return 'mdc-persistent-drawer'
-      } else if (this.temporary) {
+      } else if (this.isTypeTemporary) {
         return 'mdc-temporary-drawer'
       } else if (this.mobile) {
         return 'mdc-temporary-drawer'
@@ -63,13 +76,22 @@ export default {
       }
     },
     isPermanent () {
-      return this.permamnent || this.type === 'mdc-permanent-drawer'
+      return this.permanent || this.type === 'mdc-permanent-drawer'
     },
     isPersistent () {
       return this.persistent || this.type === 'mdc-persistent-drawer'
     },
     isTemporary () {
       return this.temporary || this.type === 'mdc-temporary-drawer'
+    },
+    isTypePermanent () {
+      return this.permanent || this.drawerType === 'permanent'
+    },
+    isTypePersistent () {
+      return this.persistent || this.drawerType === 'persistent'
+    },
+    isTypeTemporary () {
+      return this.temporary || this.drawerType === 'temporary'
     }
   },
   methods: {
