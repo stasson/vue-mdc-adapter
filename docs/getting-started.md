@@ -35,7 +35,7 @@ npm run dev
 import Vue from 'vue'
 import 'vue-mdc-adapter/dist/vue-mdc-adapter.css'
 import VueMDCAdapter from 'vue-mdc-adapter'
-Vue.use(VueMdcAdapter)
+Vue.use(VueMDCAdapter)
 ```
 
 ## Getting Serious
@@ -149,7 +149,7 @@ npm install vue-mdc-adapter
 ```javascript
 import Vue from 'vue'
 import VueMDCAdapter from 'vue-mdc-adapter'
-Vue.use(VueMdcAdapter)
+Vue.use(VueMDCAdapter)
 ```
 
 #### import _a la carte_  plugins
