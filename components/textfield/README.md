@@ -20,6 +20,14 @@ var vm = new Vue({
 <mdc-textfield v-model="text" label="Hint text"  helptext="Help text...">
 ```
 
+### Using Slots
+```html
+<mdc-textfield v-model="text" label="Hint text">
+  <mdc-button slot="start" raised>Start</mdc-button>
+  <mdc-button slot="end" raised>End</mdc-button>
+</mdc-textfield>
+```
+
 ### Multiline
 ```html
 <mdc-textfield v-model="text" label="Hint text" multiline rows="8" cols="40" />

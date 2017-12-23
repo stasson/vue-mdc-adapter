@@ -12,6 +12,12 @@
         <p><mdc-textfield :disabled="!enabled" v-model="textField" multiline
             label="multiline" ></mdc-textfield></p>
       </mdc-layout-cell>
+      <mdc-layout-cell span="12">
+        <mdc-textfield v-model="textField" label="Using slots">
+          <mdc-button slot="start" raised>Start</mdc-button>
+          <mdc-button slot="end" raised>End</mdc-button>
+        </mdc-textfield>
+      </mdc-layout-cell>
     </mdc-layout-grid>
   </div>
 </template>
