@@ -11,7 +11,6 @@ branches:
   only:
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
   - /^greenkeeper/.*$/
-  - /^dev/.*$/
   - master
   - staging
   - dev
