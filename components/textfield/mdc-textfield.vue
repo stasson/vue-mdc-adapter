@@ -1,5 +1,7 @@
 <template>
   <div class="mdc-textfield-wrapper">
+    <slot name="start" />
+
     <!--fullwidth multiline case-->
     <div ref="root" :class="rootClasses" v-if="multiline && fullwidth">
       <textarea ref="input" :class="inputClasses"
@@ -52,9 +54,10 @@
     <!--help text -->
     <p ref="help" :id="'help-'+_uid" :class="helpClasses"
       aria-hidden="true" v-if="helptext">
-      {{ helptext  }}
+      {{ helptext }}
     </p>
 
+    <slot name="end" />
   </div>
 </template>
 
