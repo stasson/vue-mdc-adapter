@@ -40,6 +40,12 @@ var vm = new Vue({
   v-model="password" />
 ```
 
+### events
+
+| event | args | Description |
+|-------|------|-------------|
+|`@blur`||emitted on input or textarea blur (focus lost) |
+
 ### props
 
 | props | Type | default | Description |
