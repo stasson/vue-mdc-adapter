@@ -74,7 +74,7 @@ export default {
       default: 'text',
       validator: function (value) {
         return ['text', 'email', 'search', 'password', 'tel', 'url']
-          .includes(value)
+          .indexOf(value) !== -1
       }
     },
     'dense': Boolean,

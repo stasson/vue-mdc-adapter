@@ -43,14 +43,14 @@ export default {
     classes () {
       let classes = {}
 
-      if (this.color && THEME_COLORS.includes(this.color)) {
+      if (this.color && THEME_COLORS.indexOf(this.color) !== -1) {
           classes[`mdc-theme--${this.color}`] = true
       }
 
-      if (this.background && THEME_COLORS.includes(this.background)) {
+      if (this.background && THEME_COLORS.indexOf(this.background) !== -1) {
         classes[`mdc-theme--${this.background}-bg`] = true
 
-        if (this.color && THEME_STYLES.includes(this.color)) {
+        if (this.color && THEME_STYLES.indexOf(this.color) !== -1) {
           classes[`mdc-theme--${this.color}-on-${this.background}`] = true
         }
       }
