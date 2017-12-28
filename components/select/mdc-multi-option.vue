@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     hasValue () {
-      return !(typeof value === 'undefined')
+      return !(typeof this.value === 'undefined')
     }
   }
 }
