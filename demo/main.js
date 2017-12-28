@@ -1,5 +1,5 @@
 import './styles/demo.scss'
-import 'babel-polyfill';
+import './polyfill.js';
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueAnalytics from 'vue-analytics'
