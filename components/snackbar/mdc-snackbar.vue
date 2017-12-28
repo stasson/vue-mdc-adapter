@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       classes: {
-        'mdc-snackbar--align-start': this['align-start']
+        'mdc-snackbar--align-start': this.alignStart
       },
       message: '',
       actionText: '',
