@@ -1,5 +1,10 @@
 @import "@material/textfield/mdc-text-field";
 
+.mdc-textfield-wrapper {
+    display: inline-flex;
+    flex-flow: column;
+}
+
 // TODO: MDCFIX
 .mdc-text-field--textarea .mdc-text-field__label {
     background-color: transparent;
