@@ -25,7 +25,7 @@ export default {
     align: {
       type: String,
       validator: function (value) {
-        return ['top', 'bottom', 'middle'].includes(value)
+        return ['top', 'bottom', 'middle'].indexOf(value) !== -1
       }
     }
   },
