@@ -42,6 +42,7 @@
   .mdc-layout-app {
     // ie11 workarround
     // https://stackoverflow.com/questions/25177791/ie11-flexbox-and-vh-height-units-not-compatible
-    height: 64px;
+    display:block;
+    height: 100%;
   }   
 }
