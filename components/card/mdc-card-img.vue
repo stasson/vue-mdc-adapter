@@ -16,7 +16,7 @@ export default {
     mult: {
       type: [Number, String],
       validator: function (value) {
-        return [1, 1.5, 2, 3].includes(Number(value))
+        return [1, 1.5, 2, 3].indexOf(Number(value)) !== -1
       }
     }
   },

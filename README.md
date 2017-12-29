@@ -63,32 +63,32 @@ or contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=bad
 
 > Each MDCWeb component is mapped to a single vue plugin 
 
-- [x] button 
-- [x] card 
-- [x] checkbox 
-- [x] dialog 
-- [x] drawer 
-- [x] fab 
-- [x] grid-list 
-- [x] icon-toggle 
-- [x] layout-grid 
-- [x] linear-progress 
-- [x] list 
-- [x] menu 
-- [x] radio 
-- [x] select 
-- [x] slider 
-- [x] snackbar 
-- [x] switch 
-- [x] tabs 
-- [x] textfield 
-- [x] toolbar 
-- [x] typography 
+- [x] [button](https://stasson.github.io/vue-mdc-adapter/#/component/button) 
+- [x] [card](https://stasson.github.io/vue-mdc-adapter/#/component/card) 
+- [x] [checkbox](https://stasson.github.io/vue-mdc-adapter/#/component/checkbox) 
+- [x] [dialog](https://stasson.github.io/vue-mdc-adapter/#/component/dialog) 
+- [x] [drawer](https://stasson.github.io/vue-mdc-adapter/#/component/drawer) 
+- [x] [fab](https://stasson.github.io/vue-mdc-adapter/#/component/fab) 
+- [x] [grid-list](https://stasson.github.io/vue-mdc-adapter/#/component/grid-list) 
+- [x] [icon-toggle](https://stasson.github.io/vue-mdc-adapter/#/component/icon-toggle) 
+- [x] [layout-grid](https://stasson.github.io/vue-mdc-adapter/#/component/layout-grid) 
+- [x] [linear-progress](https://stasson.github.io/vue-mdc-adapter/#/component/linear-progress) 
+- [x] [list](https://stasson.github.io/vue-mdc-adapter/#/component/list) 
+- [x] [menu](https://stasson.github.io/vue-mdc-adapter/#/component/menu) 
+- [x] [radio](https://stasson.github.io/vue-mdc-adapter/#/component/radio) 
+- [x] [select](https://stasson.github.io/vue-mdc-adapter/#/component/select) 
+- [x] [slider](https://stasson.github.io/vue-mdc-adapter/#/component/slider) 
+- [x] [snackbar](https://stasson.github.io/vue-mdc-adapter/#/component/snackbar) 
+- [x] [switch](https://stasson.github.io/vue-mdc-adapter/#/component/switch) 
+- [x] [tabs](https://stasson.github.io/vue-mdc-adapter/#/component/tabs) 
+- [x] [textfield](https://stasson.github.io/vue-mdc-adapter/#/component/textfield) 
+- [x] [toolbar](https://stasson.github.io/vue-mdc-adapter/#/component/toolbar) 
+- [x] [typography](https://stasson.github.io/vue-mdc-adapter/#/component/typography) 
 
 > Extra plugins
 
-- [x] layout-app: provides a flexible layout to simplify toolbar vs drawer positioning
-- [x] icon : provides a material icon wrapper with support for font-awesome, svg, etc.
+- [x] [layout-app](https://stasson.github.io/vue-mdc-adapter/#/component/layout-app): provides a flexible layout to simplify toolbar vs drawer positioning
+- [x] [icon](https://stasson.github.io/vue-mdc-adapter/#/component/icon): provides a material icon wrapper with support for font-awesome, svg, etc.
 
 
 ## Quick Start

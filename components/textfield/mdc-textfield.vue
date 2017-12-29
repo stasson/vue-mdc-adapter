@@ -8,8 +8,8 @@
         :minlength="minlength" :maxlength="maxlength"
         :aria-controls="'help-'+_uid"
         :placeholder="label"
-        :aria-label="label" >
-        ></textarea>
+        :aria-label="label"
+        @blur="emitBlurEvent"></textarea>
     </div>
 
     <!--multiline case-->
@@ -19,7 +19,7 @@
         :rows="rows" :cols="cols"
         :minlength="minlength" :maxlength="maxlength"
         :aria-controls="'help-'+_uid"
-        ></textarea>
+        @blur="emitBlurEvent"></textarea>
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
@@ -33,7 +33,8 @@
         :minlength="minlength" :maxlength="maxlength"
         :aria-controls="'help-'+_uid"
         :placeholder="label"
-        :aria-label="label" >
+        :aria-label="label"
+        @blur="emitBlurEvent">
     </div>
 
     <!--default case -->
@@ -42,7 +43,8 @@
         :value="value" @input="updateValue($event.target.value)"
         :required="required" :size="size"
         :minlength="minlength" :maxlength="maxlength"
-        :aria-controls="'help-'+_uid">
+        :aria-controls="'help-'+_uid"
+        @blur="emitBlurEvent">
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
@@ -74,7 +76,7 @@ export default {
       default: 'text',
       validator: function (value) {
         return ['text', 'email', 'search', 'password', 'tel', 'url']
-          .includes(value)
+          .indexOf(value) !== -1
       }
     },
     'dense': Boolean,
@@ -128,6 +130,9 @@ export default {
   methods: {
     updateValue (value) {
       this.$emit('input', value)
+    },
+    emitBlurEvent (eventData) {
+      this.$emit('blur', eventData)
     }
   },
   computed: {

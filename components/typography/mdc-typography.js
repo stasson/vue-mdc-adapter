@@ -41,7 +41,7 @@ export function mdcTypoPropMixin(defaultTag, defaultTypo, validTypos) {
       'typo': {
         type: String,
         default: defaultTypo,
-        validator:  (value) => validTypos.includes(value)
+        validator:  (value) => validTypos.indexOf(value) !== -1
       },
       'adjust-margin': { 
         type: Boolean,
