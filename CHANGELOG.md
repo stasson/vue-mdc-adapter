@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.0...v0.7.1) (2017-12-29)
+
+
+### Bug Fixes
+
+* **demo:** add missing meta tags ([5c5f2b4](https://github.com/stasson/vue-mdc-adapter/commit/5c5f2b4))
+* **demo:** fix logo size for ie11 ([ffb154d](https://github.com/stasson/vue-mdc-adapter/commit/ffb154d))
+
+
+### Features
+
+* **demo:** add compatibility meta tag ([a555a9d](https://github.com/stasson/vue-mdc-adapter/commit/a555a9d))
+* **demo:** add ie11 support ([def1985](https://github.com/stasson/vue-mdc-adapter/commit/def1985))
+* **drawer:** add drawer-type prop for easy drawer type switching ([ae97d16](https://github.com/stasson/vue-mdc-adapter/commit/ae97d16)), closes [#132](https://github.com/stasson/vue-mdc-adapter/issues/132)
+* remove need for polyfill on ie11 ([e39f6b9](https://github.com/stasson/vue-mdc-adapter/commit/e39f6b9)), closes [#168](https://github.com/stasson/vue-mdc-adapter/issues/168)
+* **textfield:** emit blur event from input or textarea element ([697b782](https://github.com/stasson/vue-mdc-adapter/commit/697b782)), closes [#172](https://github.com/stasson/vue-mdc-adapter/issues/172)
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.6.5...v0.7.0) (2017-12-19)
 
