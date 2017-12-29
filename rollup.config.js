@@ -92,11 +92,6 @@ function createUmdConfig(module, env, extract) {
   const dist = isPlugin ? `dist/${module}/${module}` : 'dist/' + module
   const name = isPlugin ? 'VueMDC' + capitalize(module)  : 'VueMDCAdapter'
   const input = 'components/' + ( isPlugin ? module + '/' : '')  + 'entry.js' 
-  const output = {
-    file: dist + (isDevelopment ? `.js` : `.min.js`),
-    format: 'umd',
-    name
-  }
   
   const banner = BANNER
   .replace('{{module}}', isPlugin ? module : '')
@@ -111,7 +106,16 @@ function createUmdConfig(module, env, extract) {
                       .process(css)
                       .then(result => result.css)
   }
+
+  const output = {
+    file: dist + (isDevelopment ? `.js` : `.min.js`),
+    format: 'umd',
+    sourcemap: isDevelopment ? 'inline' : true,
+    name, 
+    banner
+  }
   
+
   if (extract) {
     if (isProduction) {
       sassConfig.output = dist + '.min.css'
@@ -126,7 +130,6 @@ function createUmdConfig(module, env, extract) {
     input,
     output,
     env,
-    banner,
     external: ['vue'],
     plugins: [
       vue ({ autoStyles: false, styleToImports: true }),
@@ -135,7 +138,6 @@ function createUmdConfig(module, env, extract) {
       babel(babelConfig),
       commonjs(),
     ],
-    sourcemap: isDevelopment ? 'inline' : true,
     onwarn
   }
 
@@ -161,8 +163,6 @@ function createEsmConfig(module) {
   const isModule = PLUGINS.includes(module) 
   const dist = isModule ? `dist/${module}/index.js` : 'dist/index.js'
   const input = 'components/' + ( isModule ? module + '/' : '')  + 'index.js' 
-  const output = { file: dist, format: 'es'}
-    
   const banner = BANNER
   .replace('{{module}}', isModule ? module : '')
   .replace('{{name}}', 'default')
@@ -172,48 +172,51 @@ function createEsmConfig(module) {
   let outro = ''
 
   if (isModule) {
-    for (let folder of PLUGINS) {
+    PLUGINS.forEach((folder) => {
       if (folder != module) {
         let id = path.resolve('.', 'components', folder, 'index.js') 
         external.push(id)
         paths[id] = `../${folder}`
       }
-    }
+    })
   } else {
-    for (let folder of PLUGINS) {
+    PLUGINS.forEach((folder) => {
       if (folder != module) {
         let id = path.resolve('.', 'components', folder, 'index.js') 
         external.push(id)
         paths[id] = `./${folder}`
       }
-    }
+    })
 
-    for (let folder of PLUGINS) {
+    PLUGINS.forEach((folder) => {
       let exportName = 'VueMDC' + capitalize(folder)
-      
       outro +=`export { ${exportName} }` + os.EOL
-    }
+    })
+
     outro += os.EOL
-    for (let folder of PLUGINS) {
+    PLUGINS.forEach((folder) => {
       outro +=`export * from './${folder}'` + os.EOL
-    }
+    })
   }
 
+
+  const output = { 
+    file: dist, 
+    format: 'es',
+    sourcemap: true,
+    banner,paths,outro,
+  }
 
   const config = {
     input,
     output,
-    banner,
-    outro,
     external,
-    paths,
     plugins: [
       vue ({ autoStyles: false, styleToImports: true }),
       resolve({ jsnext: true, main: true, browser: true }),
       babel(babelConfig),
       commonjs(),
     ],
-    sourcemap: true,
     onwarn
   }
   return config
@@ -222,16 +225,16 @@ function createEsmConfig(module) {
 const configs = []
 
 // ESM
-for (let module of PLUGINS) {
+PLUGINS.forEach((module) => {
   configs.push(createEsmConfig(module))
-} 
+})
 configs.push(createEsmConfig('index'))
 
 // UMD
-for (let module of PLUGINS) {
+PLUGINS.forEach((module) => {
   configs.push(createUmdConfig(module,'development',true))
   configs.push(createUmdConfig(module,'production', true))
-} 
+})
 
 configs.push(createUmdConfig('vue-mdc-adapter','development',true),)
 configs.push(createUmdConfig('vue-mdc-adapter','production',true))
