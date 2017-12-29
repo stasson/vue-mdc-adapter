@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.2"></a>
+## [0.7.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.1...v0.7.2) (2017-12-29)
+
+
+### Bug Fixes
+
+* **layout-app:** flex min-height workarround vor ie11 ([4aea0ce](https://github.com/stasson/vue-mdc-adapter/commit/4aea0ce)), closes [#176](https://github.com/stasson/vue-mdc-adapter/issues/176)
+* **textfield:** mdc-textfield should be inline-flex ([8d2d256](https://github.com/stasson/vue-mdc-adapter/commit/8d2d256)), closes [#166](https://github.com/stasson/vue-mdc-adapter/issues/166)
+
+
+
 <a name="0.7.1"></a>
 ## [0.7.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.0...v0.7.1) (2017-12-29)
 
