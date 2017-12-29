@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.3"></a>
+## [0.7.3](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.2...v0.7.3) (2017-12-29)
+
+
+### Bug Fixes
+
+* **layout-app:** use display:block for ie11 ([de40002](https://github.com/stasson/vue-mdc-adapter/commit/de40002))
+
+
+
 <a name="0.7.2"></a>
 ## [0.7.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.1...v0.7.2) (2017-12-29)
 
