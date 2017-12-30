@@ -76,12 +76,12 @@ The anchor is a wrapper element that contains the actual visible element to atta
 
 ### Methods
 
-- `open({focusIndex: number} = {}) => void`  
-Opens the menu. Takes an options object containing a `focusIndex` property that 
+- `show({focusIndex: number} = {}) => void`  
+Shows the menu. Takes an options object containing a `focusIndex` property that 
 specifies the index of the menu item to be focused.
 If the options object or `focusIndex` is omitted, no menu item will be focused.
 
-- `close() => void`  
+- `hide() => void`  
 Closes the menu.
 
 ### Reference
