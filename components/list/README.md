@@ -47,11 +47,11 @@ To insert a second line, set the slot attribute to `secondary`
 <mdc-list two-line>
   <mdc-list-item>
     <span>First Line</span>
-    <span slot="secondary">Second Line</slot>
+    <span slot="secondary">Second Line</span>
   </mdc-list-item>
   <mdc-list-item>
     <span>First Line</span>
-    <span slot="secondary">Second Line</slot>
+    <span slot="secondary">Second Line</span>
   </mdc-list-item>
 </mdc-list>
 ```
