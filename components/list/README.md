@@ -17,7 +17,7 @@
 |`dense`|Boolean|| dense style |
 |`bordered`|Boolean|| bordered style |
 |`two-line`|Boolean|| two-line style |
-|`avatar`|Boolean|| set avatar style list |
+|`avatar-list`|Boolean|| set avatar style list |
 
 
 ### Dense List
@@ -77,7 +77,7 @@ To insert a detail, set the slot attribute to `start-detail` or `end-detail`
 
 
 ```html
-<mdc-list avatar>
+<mdc-list avatar-list>
   <mdc-list-item>
     <img slot="start-detail" src="/users/1/profile_pic.png"
          width="56" height="56" alt="Picture of Janet Perkins">
@@ -105,7 +105,7 @@ To insert a detail, set the slot attribute to `start-detail` or `end-detail`
 > for avatar list, add the `inset` attribute to `mdc-list-divider`
 
 ```html
-<mdc-list avatar>
+<mdc-list avatar-list>
   <mdc-list-item>
     <img slot="start-detail" src="/users/1/profile_pic.png"
          width="56" height="56" alt="Picture of Janet Perkins">
