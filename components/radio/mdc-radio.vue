@@ -2,7 +2,8 @@
 <div :class="formFieldClasses" class="mdc-radio-wrapper">
   <div ref="root" class="mdc-radio" :class="classes" :style="styles">
     <input type="radio" ref="control" :id="_uid" :name="name" 
-      class="mdc-radio__native-control" @change="sync">
+      class="mdc-radio__native-control" @change="sync"
+      @blur="emitBlurEvent">
   
     <div ref="label" class="mdc-radio__background">
       <div class="mdc-radio__outer-circle"></div>
@@ -17,9 +18,11 @@
 <script>
 import MDCRadioFoundation from '@material/radio/foundation'
 import {RippleBase} from '../ripple'
+import {EmitBlurEventMixin} from '../base'
 
 export default {
   name: 'mdc-radio',
+  mixins: [EmitBlurEventMixin],
   model: {
     prop: 'picked',
     event: 'change'

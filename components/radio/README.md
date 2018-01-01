@@ -16,6 +16,12 @@ var vm = new Vue({
 })
 ```
 
+### events
+
+| event | args | Description |
+|-------|------|-------------|
+|`@blur`||emitted on input blur (focus lost) |
+
 ### props
 
 | props | Type | Default | Description |

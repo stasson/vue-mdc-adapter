@@ -4,7 +4,8 @@
     :class="{ 'mdc-switch--disabled': disabled }">
     <input ref="control" type="checkbox" :id="_uid" 
       class="mdc-switch__native-control" 
-      @change="onChanged" :checked="checked" :disabled="disabled"/>
+      @change="onChanged" :checked="checked" :disabled="disabled"
+      @blur="emitBlurEvent"/>
     <div class="mdc-switch__background">
       <div class="mdc-switch__knob"></div>
     </div>
@@ -14,9 +15,11 @@
 </template>
 
 <script>
+import {EmitBlurEventMixin} from '../base'
 
 export default {
   name: 'mdc-switch',
+  mixins: [EmitBlurEventMixin],
   model: {
     prop: 'checked',
     event: 'change'
