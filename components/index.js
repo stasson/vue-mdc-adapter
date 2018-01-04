@@ -29,6 +29,7 @@ import VueMDCToolbar from './toolbar'
 import VueMDCTypography from './typography'
 
 export default {
+  version: '__VERSION__',
   install  (vm) {
     vm.use(VueMDCButton)
     vm.use(VueMDCCard)

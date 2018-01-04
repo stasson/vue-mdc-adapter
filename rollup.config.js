@@ -11,6 +11,7 @@ import postcss from 'postcss'
 import csso from 'postcss-csso';
 import { minify } from 'uglify-es'
 import pkg from './package.json';
+import replace from 'rollup-plugin-replace'
 
 const PLUGINS = [
   'button',
@@ -137,6 +138,9 @@ function createUmdConfig(module, env, extract) {
       sass(sassConfig),
       babel(babelConfig),
       commonjs(),
+      replace({
+        __VERSION__: pkg.version
+      }),
     ],
     onwarn
   }
@@ -216,6 +220,9 @@ function createEsmConfig(module) {
       resolve({ jsnext: true, main: true, browser: true }),
       babel(babelConfig),
       commonjs(),
+      replace({
+        __VERSION__: pkg.version
+      }),
     ],
     onwarn
   }
