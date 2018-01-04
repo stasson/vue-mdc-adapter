@@ -18,6 +18,7 @@
   "style": "dist/vue-mdc-adapter.css",
   "module": "dist/index.js",
   "unpkg": "dist/vue-mdc-adapter.umd.min.js",
+  "jsdelivr": "dist/vue-mdc-adapter.umd.min.js",
   "files": [
     "components",
     "dist",
