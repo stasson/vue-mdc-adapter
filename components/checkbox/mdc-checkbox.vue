@@ -4,7 +4,8 @@
     :class="classes" :style="styles">
       <input ref="control" :id="_uid" type="checkbox"
         class="mdc-checkbox__native-control" :value="value"
-        @change="onChange"/>
+        @change="onChange"
+        @blur="emitBlurEvent"/>
       <div class="mdc-checkbox__background">
         <svg class="mdc-checkbox__checkmark"
             viewBox="0 0 24 24">
@@ -29,9 +30,11 @@ import MDCCheckboxFoundation from '@material/checkbox/foundation'
 import {getCorrectEventName} from '@material/animation'
 
 import {RippleBase} from '../ripple'
+import {EmitBlurEventMixin} from '../base'
 
 export default {
   name: 'mdc-checkbox',
+  mixins: [EmitBlurEventMixin],
   model: {
     prop: 'checked',
     event: 'change'

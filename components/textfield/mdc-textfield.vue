@@ -64,11 +64,12 @@
 import MDCTextfieldFoundation from '@material/textfield/foundation'
 import MDCTextFieldBottomLineFoundation from '@material/textfield/bottom-line/foundation'
 import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation'
-import {emitCustomEvent} from '../base'
+import {emitCustomEvent, EmitBlurEventMixin} from '../base'
 import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-textfield',
+  mixins: [EmitBlurEventMixin],
   props: {
     'value': String,
     'type': {
@@ -130,9 +131,6 @@ export default {
   methods: {
     updateValue (value) {
       this.$emit('input', value)
-    },
-    emitBlurEvent (eventData) {
-      this.$emit('blur', eventData)
     }
   },
   computed: {
