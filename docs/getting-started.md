@@ -13,41 +13,37 @@ Fork the [reference codepen template](https://codepen.io/stasson/pen/XzmMKp)
 or one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
 or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
 
-#### Vue CLI
+#### Vue CLI Simple 
 
 ```bash
 npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
 ```
 
-#### Webpack
+#### Vue CLI Webpack
 
 ```bash
 npm install -g vue-cli
-vue init webpack my-project
+vue init stasson/vue-mdc-adapter-webpack my-project
 cd my-project
 npm install
-npm install vue-mdc-adapter --save-dev
 npm run dev
-```
-
-```javascript
-import Vue from 'vue'
-import 'vue-mdc-adapter/dist/vue-mdc-adapter.css'
-import VueMDCAdapter from 'vue-mdc-adapter'
-Vue.use(VueMDCAdapter)
 ```
 
 ## Getting Serious
 
 ### UMD Distribution
 
-The UMD distribution is available at
-[unpkg.com/vue-mdc-adapter/dist](https://unpkg.com/vue-mdc-adapter/dist/) or via npm:
+Install via npm:
 
 ```bash
 npm install vue-mdc-adapter
 ```
+
+The UMD distribution is also available through CDN at
+[unpkg.com/vue-mdc-adapter/dist](https://unpkg.com/vue-mdc-adapter/dist/) 
+or [cdn.jsdelivr.net/npm/vue-mdc-adapter/dist](https://cdn.jsdelivr.net/npm/vue-mdc-adapter@latest/dist/)
+
 
 The distribution comes in two flavors:
 
@@ -207,6 +203,8 @@ Configure Webpack with sass-loader and make sure sass modules can be resolved.
     },
   },
 ```
+
+> If you are using a vue-cli webpack template, sass loader config is usually located in [config/build/utils.js](https://github.com/stasson/vue-mdc-adapter-webpack/commit/51de905ea878c51ee293947d404d831d13c8b99a#diff-8b394e36c9b3687bafaebea4caa2ebf1)
 
 import styles
 

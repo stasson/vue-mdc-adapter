@@ -119,9 +119,21 @@ or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcompone
 
 #### Vue CLI
 
+##### Simple
+
 ```console
 npm install -g vue-cli
 vue init stasson/vue-mdc-adapter-simple my-project
+```
+
+##### Webpack
+
+```console
+npm install -g vue-cli
+vue init stasson/vue-mdc-adapter-webpack my-project
+cd my-project
+npm install
+npm run dev
 ```
 
 > Check out the [Getting Started](https://stasson.github.io/vue-mdc-adapter/#/docs/getting-started) guide for more.

@@ -12,14 +12,14 @@ import mdcPersistentDrawer from './mdc-persistent-drawer.vue'
 import mdcTemporaryDrawer from './mdc-temporary-drawer.vue'
 
 const media = new class {
-  get mobile () {
-    return this._mobile || (this._mobile =
-      window.matchMedia('(max-width: 840px)'))
+  get small () {
+    return this._small || (this._small =
+      window.matchMedia('(max-width: 839px)'))
   }
 
-  get xlarge () {
-    return this._xlarge || (this._xlarge =
-      window.matchMedia('(min-width: 1320px)'))
+  get large () {
+    return this._large || (this._large =
+      window.matchMedia('(min-width: 1200px)'))
   }
 }()
 
@@ -44,8 +44,8 @@ export default {
   },
   data () {
     return {
-      mobile: false,
-      xlarge: false,
+      small: false,
+      large: false,
       open_: false,
     }
   },
@@ -71,7 +71,7 @@ export default {
           case 'temporary':
             return 'mdc-temporary-drawer';
           default:
-            return this.mobile ? 'mdc-temporary-drawer' : 'mdc-persistent-drawer'
+            return this.small ? 'mdc-temporary-drawer' : 'mdc-persistent-drawer'
         }
       }  
     },
@@ -83,6 +83,9 @@ export default {
     },
     isTemporary () {
       return this.temporary || this.type === 'mdc-temporary-drawer'
+    },
+    isResponsive () {
+      return !(this.permanent || this.persistent || this.temporary || this.drawerType)
     }
   },
   methods: {
@@ -99,16 +102,22 @@ export default {
       return this.isPermanent|| ( this.open_ )
     },
     refreshMedia () {
-      this.mobile = media.mobile.matches
-      this.xlarge = media.xlarge.matches
-      this.xlarge && this.isPersistent && this.open()
-      this.mobile && this.close()
+      this.small = media.small.matches
+      this.large = media.large.matches
+      if (this.isResponsive) {
+        if (this.large) {
+          this.open()
+        }
+        else {
+          this.close()
+        }
+      }
     }
   },
   created () {
     if (window && window.matchMedia) {
-      this.mobile = media.mobile.matches
-      this.xlarge = media.xlarge.matches
+      this.small = media.small.matches
+      this.large = media.large.matches
     }
   },
   mounted () {
@@ -116,13 +125,13 @@ export default {
       let source = this.toggleOnSource || this.$root
       source.$on(this.toggleOn, () => this.toggle())
     }
-    media.mobile.addListener(this.refreshMedia)
-    media.xlarge.addListener(this.refreshMedia)
+    media.small.addListener(this.refreshMedia)
+    media.large.addListener(this.refreshMedia)
     this.$nextTick(() => this.refreshMedia())
   },
   beforeDestroy () {
-    media.mobile.removeListener(this.refreshMedia)
-    media.xlarge.removeListener(this.refreshMedia)
+    media.small.removeListener(this.refreshMedia)
+    media.large.removeListener(this.refreshMedia)
   }
 }
 </script>
