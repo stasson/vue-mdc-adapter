@@ -16,10 +16,13 @@
 
 <script>
 import MDCRadioFoundation from '@material/radio/foundation'
+import {DispatchFocusMixin} from '../base'
 import {RippleBase} from '../ripple'
+
 
 export default {
   name: 'mdc-radio',
+  mixins: [DispatchFocusMixin],
   model: {
     prop: 'picked',
     event: 'change'

@@ -41,6 +41,16 @@ var vm = new Vue({
 |`disabled`|Boolean| false | whether this option is disabled |
 |`value`|String| | option value |
 
+### events
+
+#### mdc-select
+
+| event | args | Description |
+|-------|------|-------------|
+|`@focus`| - |emitted on focus gained |
+|`@blur`| - |emitted on focus lost |
+
+
 ### Multiple select
 
 ```html

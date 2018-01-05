@@ -9,7 +9,7 @@
         :aria-controls="'help-'+_uid"
         :placeholder="label"
         :aria-label="label"
-        @blur="emitBlurEvent"></textarea>
+        ></textarea>
     </div>
 
     <!--multiline case-->
@@ -19,7 +19,7 @@
         :rows="rows" :cols="cols"
         :minlength="minlength" :maxlength="maxlength"
         :aria-controls="'help-'+_uid"
-        @blur="emitBlurEvent"></textarea>
+        ></textarea>
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
@@ -34,7 +34,7 @@
         :aria-controls="'help-'+_uid"
         :placeholder="label"
         :aria-label="label"
-        @blur="emitBlurEvent">
+        >
     </div>
 
     <!--default case -->
@@ -44,7 +44,7 @@
         :required="required" :size="size"
         :minlength="minlength" :maxlength="maxlength"
         :aria-controls="'help-'+_uid"
-        @blur="emitBlurEvent">
+        >
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="label">
         {{ label }}
       </label>
@@ -64,11 +64,12 @@
 import MDCTextfieldFoundation from '@material/textfield/foundation'
 import MDCTextFieldBottomLineFoundation from '@material/textfield/bottom-line/foundation'
 import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation'
-import {emitCustomEvent} from '../base'
+import {emitCustomEvent, DispatchFocusMixin} from '../base'
 import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-textfield',
+  mixins: [DispatchFocusMixin],
   props: {
     'value': String,
     'type': {
@@ -130,9 +131,6 @@ export default {
   methods: {
     updateValue (value) {
       this.$emit('input', value)
-    },
-    emitBlurEvent (eventData) {
-      this.$emit('blur', eventData)
     }
   },
   computed: {

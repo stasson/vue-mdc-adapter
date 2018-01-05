@@ -24,9 +24,11 @@
 
 <script>
 import MDCSliderFoundation from '@material/slider/foundation'
+import {DispatchFocusMixin} from '../base'
 
 export default {
   name: 'mdc-slider',
+  mixins: [DispatchFocusMixin],
   model: {
     prop: 'value',
     event: 'change'

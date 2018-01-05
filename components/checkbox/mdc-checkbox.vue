@@ -27,11 +27,12 @@
 /* global HTMLElement */
 import MDCCheckboxFoundation from '@material/checkbox/foundation'
 import {getCorrectEventName} from '@material/animation'
-
+import {DispatchFocusMixin} from '../base'
 import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-checkbox',
+  mixins: [DispatchFocusMixin],
   model: {
     prop: 'checked',
     event: 'change'

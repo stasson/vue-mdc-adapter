@@ -40,12 +40,6 @@ var vm = new Vue({
   v-model="password" />
 ```
 
-### events
-
-| event | args | Description |
-|-------|------|-------------|
-|`@blur`||emitted on input or textarea blur (focus lost) |
-
 ### props
 
 | props | Type | default | Description |
@@ -66,6 +60,12 @@ var vm = new Vue({
 |`cols`| [Number, String] | 40 |multiline: number of columns  |
 |`disabled`| [Number, String] | | binds to disabled state  |
 
+### events
+
+| event | args | Description |
+|-------|------|-------------|
+|`@focus`| - |emitted on focus gained |
+|`@blur`| - |emitted on focus lost |
 
 ### Reference
 - <https://material.io/components/web/catalog/input-controls/text-fields>

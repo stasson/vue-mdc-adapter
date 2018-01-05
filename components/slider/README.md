@@ -43,8 +43,14 @@ var vm = new Vue({
 
 ### events
 
-- `input` event is emitted whenever the slider value is changed by way of a user event, e.g. when a user is dragging the slider or changing the value using the arrow keys. 
-- `change` event is emitted whenever the slider value is changed and committed by way of a user event, e.g. when a user stops dragging the slider or changes the value using the arrow keys.
+
+| event | args | Description |
+|-------|------|-------------|
+|`@input`| - |emitted whenever the slider value is changed by way of a user event, e.g. when a user is dragging the slider or changing the value using the arrow keys |
+|`@change`| - |emitted whenever the slider value is changed and committed by way of a user event, e.g. when a user stops dragging the slider or changes the value using the arrow keys |
+|`@focus`| - |emitted on focus gained |
+|`@blur`| - |emitted on focus lost |
+
 
 ### model
 

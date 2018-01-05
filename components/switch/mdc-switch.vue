@@ -14,9 +14,11 @@
 </template>
 
 <script>
+import {DispatchFocusMixin} from '../base'
 
 export default {
   name: 'mdc-switch',
+  mixins: [DispatchFocusMixin],
   model: {
     prop: 'checked',
     event: 'change'

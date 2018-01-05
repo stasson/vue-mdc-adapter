@@ -42,6 +42,12 @@ var vm = new Vue({
 |`align-end`| Boolean|| whether to align the checkbox after the label |
 |`value`|String| `'on'`| checkbox value |
 
+### events
+
+| event | args | Description |
+|-------|------|-------------|
+|`@focus`| - |emitted on focus gained |
+|`@blur`| - |emitted on focus lost |
 
 ### Reference
 - <https://material.io/components/web/catalog/input-controls/checkboxes>

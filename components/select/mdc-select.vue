@@ -11,7 +11,8 @@
 import MDCNativeSelect from './mdc-native-select.vue'
 import MDCMenuSelect from './mdc-menu-select.vue'
 import MDCMultiSelect from './mdc-multi-select.vue'
-
+import { DispatchFocusMixin } from '../base'
+ 
 const media = new class {
   get mobile () {
     return this._mobile || (this._mobile =
@@ -21,6 +22,7 @@ const media = new class {
 
 export default {
   name: 'mdc-select',
+  mixins: [DispatchFocusMixin],
   model: {
     prop: 'value',
     event: 'change'
