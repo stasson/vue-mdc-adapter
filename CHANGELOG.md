@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.4"></a>
+## [0.7.4](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.3...v0.7.4) (2018-01-05)
+
+
+### Bug Fixes
+
+* **drawer:** make responsive behaviour consistent ([9b1395a](https://github.com/stasson/vue-mdc-adapter/commit/9b1395a)), closes [#76](https://github.com/stasson/vue-mdc-adapter/issues/76)
+* **drawer:** toolbar spacer should be  inside the mdc-drawer__drawer element [#187](https://github.com/stasson/vue-mdc-adapter/issues/187) ([e45a8f0](https://github.com/stasson/vue-mdc-adapter/commit/e45a8f0))
+* **select:** select with pre-selected option doesn't float label [#188](https://github.com/stasson/vue-mdc-adapter/issues/188) ([f296d42](https://github.com/stasson/vue-mdc-adapter/commit/f296d42))
+
+
+### Features
+
+* add focus/blur events to inputs ([4c99d44](https://github.com/stasson/vue-mdc-adapter/commit/4c99d44)), closes [#181](https://github.com/stasson/vue-mdc-adapter/issues/181)
+* distribution should have a version [#129](https://github.com/stasson/vue-mdc-adapter/issues/129) ([a9bf69d](https://github.com/stasson/vue-mdc-adapter/commit/a9bf69d))
+
+
+
 <a name="0.7.3"></a>
 ## [0.7.3](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.2...v0.7.3) (2017-12-29)
 
