@@ -186,6 +186,7 @@ export default {
       let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
       if (this.value === optionValue) {
         foundation.setSelectedIndex(i)
+        this.$set(this.labelClasses, 'mdc-select__label--float-above', true);
         break;
       }
     }
