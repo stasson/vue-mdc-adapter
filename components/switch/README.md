@@ -25,6 +25,12 @@ var vm = new Vue({
 |`align-end`| Boolean|| align the checkbox after the label |
 |`value`|String| `'on'`| checkbox value |
 
+### events
+
+| event | args | Description |
+|-------|------|-------------|
+|`@focus`| - |emitted on focus gained |
+|`@blur`| - |emitted on focus lost |
 
 
 ### Reference

@@ -28,6 +28,14 @@ var vm = new Vue({
 |`:disabled`| Boolean|| whether the radio is disabled |
 |`v-model`| String || tracks selected radio's value |
 
+### events
+
+| event | args | Description |
+|-------|------|-------------|
+|`@focus`| - |emitted on focus gained |
+|`@blur`| - |emitted on focus lost |
+
+
 ### Reference
 - <https://material.io/components/web/catalog/input-controls/radio-buttons>
 
