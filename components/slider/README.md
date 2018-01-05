@@ -1,7 +1,7 @@
 ## Usage
 
 ```html
-<mdc-radio min=0 max=10 step=1 v-model="sliderValue" />
+<mdc-slider min=0 max=10 step=1 v-model="sliderValue" />
 ```
 
 ```javascript
@@ -11,7 +11,6 @@ var vm = new Vue({
   }
 })
 ```
-
 
 ### props
 
@@ -27,19 +26,19 @@ var vm = new Vue({
 - Continuous Slider
 
 ```html
-<mdc-radio min=0 max=10 v-model="sliderValue" />
+<mdc-slider min=0 max=10 v-model="sliderValue" />
 ```
 
 - Discrete Slider
 
 ```html
-<mdc-radio min=0 max=10 step=1 v-model="sliderValue" />
+<mdc-slider min=0 max=10 step=1 v-model="sliderValue" />
 ```
 
 - Discrete Slider with Markers
 
 ```html
-<mdc-radio min=0 max=10 step=1 display-markers v-model="sliderValue" />
+<mdc-slider min=0 max=10 step=1 display-markers v-model="sliderValue" />
 ```
 
 ### events
@@ -53,10 +52,8 @@ The v-model directive is `lazy`,  update happens on the `change` event.
 
 > In order to get update on input, fallback to explicit binding:
 ```html
-<mdc-radio :value="sliderValue" @input="value => { sliderValue = value }" />
+<mdc-slider :value="sliderValue" @input="value => { sliderValue = value }" />
 ```
 
 ### Reference
 - <https://material.io/components/web/catalog/input-controls/sliders>
-
-
