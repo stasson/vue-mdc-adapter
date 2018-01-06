@@ -139,7 +139,7 @@ const plugins = [
   // merge manifest in vendor chunk    
   new webpack.optimize.CommonsChunkPlugin({
     name: "manifest",
-    chuncks: ['vendor']
+    chunks: ['vendor']
   }),
   
 ]
