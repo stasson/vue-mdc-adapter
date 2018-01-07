@@ -1,25 +1,22 @@
 <template>
-  <custom-element 
-    :tag="href ? 'a': 'button'" 
-    :href="href"
-    :role="href ? 'button' : undefined"
-    class="mdc-fab" :class="classes" :style="styles"
+  <custom-button class="mdc-fab" 
+    :class="classes" :style="styles"
+    :href="href" :link="link" 
     @click="dispatchEvent" >
     <span class="mdc-fab__icon">
       <slot>{{ icon }}</slot>
     </span>
-  </custom-element>
+  </custom-button>
 </template>
 
 <script>
-import {DispatchEventMixin, CustomElementMixin} from '../base'
-import {RippleBase} from '../ripple'
+import {DispatchEventMixin, CustomButtonMixin} from '../base'
+import {RippleMixin} from '../ripple'
 
 export default {
   name: 'mdc-fab',
-  mixins: [DispatchEventMixin, CustomElementMixin],
+  mixins: [DispatchEventMixin, CustomButtonMixin, RippleMixin],
   props: {
-    href: String,
     icon: String,
     mini: Boolean,
     absolute: Boolean,
@@ -36,12 +33,13 @@ export default {
       styles: {}
     }
   },
-  mounted () {
-    this.ripple = new RippleBase (this)
-    this.ripple.init()
-  },
-  beforeDestroy () {
-    this.ripple.destroy()
+  watch: {
+    icon () {
+      this.$set(this.classes, 'material-icons', this.icon )
+    },
+    mini () {
+      this.$set(this.classes, 'mdc-fab--mini', this.mini )
+    }
   }
 }
 </script>
