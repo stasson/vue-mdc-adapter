@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.6"></a>
+## [0.7.6](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.5...v0.7.6) (2018-01-07)
+
+
+### Features
+
+* **button:** add button accent property ([fd3e124](https://github.com/stasson/vue-mdc-adapter/commit/fd3e124)), closes [#147](https://github.com/stasson/vue-mdc-adapter/issues/147)
+* **button:** add support for vue-router ([43a9d3f](https://github.com/stasson/vue-mdc-adapter/commit/43a9d3f))
+* **card:** add accent property to mdc-card action ([01a0f7e](https://github.com/stasson/vue-mdc-adapter/commit/01a0f7e))
+* **card:** add vue-router support for action button ([52ddaf2](https://github.com/stasson/vue-mdc-adapter/commit/52ddaf2))
+* **fab:** add support for vue-router ([383dffa](https://github.com/stasson/vue-mdc-adapter/commit/383dffa))
+
+
+
 <a name="0.7.5"></a>
 ## [0.7.5](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.4...v0.7.5) (2018-01-07)
 
