@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.5"></a>
+## [0.7.5](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.4...v0.7.5) (2018-01-07)
+
+
+### Bug Fixes
+
+* **webpack:** common chunks plugin typo ([014df1f](https://github.com/stasson/vue-mdc-adapter/commit/014df1f))
+
+
+### Features
+
+* **checkbox:** allow custom label markup ([3bf6547](https://github.com/stasson/vue-mdc-adapter/commit/3bf6547)), closes [#185](https://github.com/stasson/vue-mdc-adapter/issues/185)
+* **switch:** allow custom label markup with default slot ([e89a618](https://github.com/stasson/vue-mdc-adapter/commit/e89a618))
+
+
+
 <a name="0.7.4"></a>
 ## [0.7.4](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.3...v0.7.4) (2018-01-05)
 
