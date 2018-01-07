@@ -16,9 +16,8 @@
         <div class="mdc-checkbox__mixedmark"></div>
       </div>
     </div>
-    <div ref="label">
-      <label :for="_uid" v-if="label">{{ label }}</label>
-    </div>
+    <label ref="label"  :for="_uid"
+    ><slot>{{label}}</slot></label>
   </div>
 </template>
 
@@ -26,6 +25,7 @@
 
 /* global HTMLElement */
 import MDCCheckboxFoundation from '@material/checkbox/foundation'
+import MDCFormFieldFoundation from '@material/form-field/foundation'
 import {getCorrectEventName} from '@material/animation'
 import {DispatchFocusMixin} from '../base'
 import {RippleBase} from '../ripple'
@@ -52,10 +52,13 @@ export default {
     }
   },
   computed: {
+    hasLabel () {
+      return this.label || this.$slots.default
+    },
     formFieldClasses () {
       return {
-        'mdc-form-field': this.label,
-        'mdc-form-field--align-end': this.label && this.alignEnd
+        'mdc-form-field': this.hasLabel,
+        'mdc-form-field--align-end': this.hasLabel && this.alignEnd
       }
     }
   },
@@ -83,28 +86,21 @@ export default {
       registerChangeHandler: (handler) => this.$refs.control.addEventListener('change', handler),
       deregisterChangeHandler: (handler) => this.$refs.control.removeEventListener('change', handler),
       getNativeControl: () => this.$refs.control,
-      forceLayout: () => this.$forceUpdate(),
+      forceLayout: () => this.$refs.root.offsetWidth,
       isAttachedToDOM: () => Boolean(this.$el.parentNode)
     })
-
-    this.foundation.init()
-    this.foundation.setChecked(this.checked)
-    this.foundation.setDisabled(this.disabled)
-    this.foundation.setIndeterminate(this.indeterminate)
 
     this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => RippleBase.isSurfaceActive(this.$refs.control),
       registerInteractionHandler: (evt, handler) => {		
-        this.$refs.root.addEventListener(evt, handler)		
-        this.$refs.label.addEventListener(evt, handler)		
+        this.$refs.control.addEventListener(evt, handler)		
       },		
       deregisterInteractionHandler: (evt, handler) => {		
-        this.$refs.root.removeEventListener(evt, handler)		
-        this.$refs.label.removeEventListener(evt, handler)		
+        this.$refs.control.addEventListener(evt, handler)		
       },
       computeBoundingRect: () => {
-        const {left, top} = this.$refs.control.getBoundingClientRect()
+        const {left, top} = this.$refs.root.getBoundingClientRect()
         const DIM = 40
         return {
           top,
@@ -116,9 +112,32 @@ export default {
         }
       }
     })
+
+    this.formField = new MDCFormFieldFoundation({
+      registerInteractionHandler: (type, handler) => {
+        this.$refs.label.addEventListener(type, handler)
+      },
+      deregisterInteractionHandler: (type, handler) => {
+        this.$refs.label.removeEventListener(type, handler)
+      },
+      activateInputRipple: () => {
+        this.ripple && this.ripple.activate()
+      },
+      deactivateInputRipple: () => {
+        this.ripple && this.ripple.deactivate()
+      },
+    });
+
+    this.foundation.init()
     this.ripple.init()
+    this.formField.init()
+    this.foundation.setChecked(this.checked)
+    this.foundation.setDisabled(this.disabled)
+    this.foundation.setIndeterminate(this.indeterminate)
+
   },
   beforeDestroy () {
+    this.formField.destroy()
     this.ripple.destroy()
     this.foundation.destroy()
   },

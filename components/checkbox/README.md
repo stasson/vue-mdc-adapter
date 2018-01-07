@@ -30,6 +30,16 @@ var vm = new Vue({
 })
 ```
 
+### Custom label markup
+
+```html
+<mdc-checkbox v-model="agreed">
+  <span>I agree with </span>
+  <a @click.stop href="...">Terms of Serivce</a>
+</mdc-checkbox>
+```
+
+> use `@click.stop` to prevent triggering checkbox ripple
 
 ### props
 
