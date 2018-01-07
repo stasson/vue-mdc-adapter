@@ -16,6 +16,14 @@ var vm = new Vue({
 })
 ```
 
+> or use default slot for label
+
+```html
+<mdc-radio v-model="answer">Yes for sure</mdc-radio>
+<mdc-radio v-model="answer">definitely NO!</mdc-radio>
+<mdc-radio v-model="answer" checked>"I guess"</mdc-radio>
+```
+
 ### props
 
 | props | Type | Default | Description |
@@ -35,7 +43,6 @@ var vm = new Vue({
 |`@focus`| - |emitted on focus gained |
 |`@blur`| - |emitted on focus lost |
 
-
 ### Reference
-- <https://material.io/components/web/catalog/input-controls/radio-buttons>
 
+- <https://material.io/components/web/catalog/input-controls/radio-buttons>

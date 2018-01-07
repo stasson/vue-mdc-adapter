@@ -8,14 +8,14 @@
       <div class="mdc-radio__outer-circle"></div>
       <div class="mdc-radio__inner-circle"></div>
     </div>
-  
   </div>
-  <label ref="label" :for="_uid" v-if="label">{{ label }}</label>
+  <label ref="label" :for="_uid"><slot>{{label}}</slot></label>
 </div>
 </template>
 
 <script>
 import MDCRadioFoundation from '@material/radio/foundation'
+import MDCFormFieldFoundation from '@material/form-field/foundation'
 import {DispatchFocusMixin} from '../base'
 import {RippleBase} from '../ripple'
 
@@ -53,22 +53,16 @@ export default {
       removeClass: (className) => this.$delete(this.classes, className),
       getNativeControl: () => this.$refs.control
     })
-    this.foundation.init()
-    this.foundation.setValue(this.value ? this.value : this.label)
-    this.foundation.setDisabled(this.disabled)
-    this.foundation.setChecked(this.checked || this.picked == this.foundation.getValue())
 
     // add ripple
     this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => false,
       registerInteractionHandler: (evt, handler) => {
-        this.$refs.root.addEventListener(evt, handler)
-        this.$refs.label.addEventListener(evt, handler)
+        this.$refs.control.addEventListener(evt, handler)
       },
       deregisterInteractionHandler: (evt, handler) => {
-        this.$refs.root.removeEventListener(evt, handler)
-        this.$refs.label.removeEventListener(evt, handler)
+        this.$refs.control.removeEventListener(evt, handler)
       },
       computeBoundingRect: () => {
         const {left, top} = this.$refs.root.getBoundingClientRect()
@@ -83,14 +77,37 @@ export default {
         }
       }
     })
+
+    this.formField = new MDCFormFieldFoundation({
+      registerInteractionHandler: (type, handler) => {
+        this.$refs.label.addEventListener(type, handler)
+      },
+      deregisterInteractionHandler: (type, handler) => {
+        this.$refs.label.removeEventListener(type, handler)
+      },
+      activateInputRipple: () => {
+        this.ripple && this.ripple.activate()
+      },
+      deactivateInputRipple: () => {
+        this.ripple && this.ripple.deactivate()
+      },
+    });
+
+    this.foundation.init()
     this.ripple.init()
+    this.formField.init()
+
+    this.foundation.setValue(this.value ? this.value : this.label)
+    this.foundation.setDisabled(this.disabled)
+    this.foundation.setChecked(this.checked || this.picked == this.foundation.getValue())
 
     // refresh model
     this.checked && this.sync()
   },
   beforeDestroy () {
-    this.foundation.destroy()
+    this.formField.destroy()
     this.ripple.destroy()
+    this.foundation.destroy()
   },
   watch: {
     disabled (value) {
