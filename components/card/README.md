@@ -109,6 +109,7 @@ container:
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
 |`disabled`| boolean |false| whether the button is disabled |
+|`accent`|Boolean|| secondary color theme |
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
