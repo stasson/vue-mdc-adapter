@@ -46,6 +46,8 @@ export function checkValidMdcAdapter(vm) {
   vm.ripple && checkValidFoundation(vm.ripple)
 
   vm.foundation && checkValidFoundation(vm.foundation)
+
+  vm.formField && checkValidFoundation(vm.formField)
 }
 
 export function checkValidOptions(options) {
