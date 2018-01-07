@@ -20,8 +20,7 @@ export default {
         'mdc-button--stroked': this.stroked,
         'mdc-button--dense': this.dense,
         'mdc-button--compact': this.compact
-      },
-      styles: {}
+      }
     }
   },
   watch: {
