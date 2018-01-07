@@ -1,27 +1,24 @@
 export const CustomLink = {
   name: 'custom-link',
+  functional: true,
   props: {
     tag: { type: String, default: 'a' },
-    event: { type: [String, Array], default: 'click'},
     link : Object,
   },
-  render (h) {
+  render (h, context) {
     let element 
-    let data = {
-      'attrs': this.$attrs,
-      'on': this.$listeners
-    }
-    
-    if (this.$router && this.link) {
+    let data = Object.assign({}, context.data)
+
+    if (context.props.link && context.parent.$router) {
       // router-link case
-      element = this.$root.$options.components['router-link'] 
-      data.props = Object.assign({tag: this.tag}, this.link)
+      element = context.parent.$root.$options.components['router-link'] 
+      data.props = Object.assign({tag: context.props.tag}, context.props.link)
     } else {
       // element fallback
-      element = this.tag 
+      element = context.props.tag 
     } 
 
-    return h(element, data, this.$slots.default)
+    return h(element, data, context.children)
   }
 }
 
