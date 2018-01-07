@@ -1,26 +1,10 @@
-<template>
-  <custom-element 
-    class="mdc-button"
-    :tag="isLink ? 'a': 'button'" 
-    :href="isLink && href"
-    :role="isLink ? 'button' : undefined"
-    ref="root" :disabled="disabled" 
-    :class="classes" :style="styles" 
-    @click="dispatchEvent">
-    <slot />
-  </custom-element>
-</template>
-
 <script>
-import {DispatchEventMixin, CustomElementMixin} from '../base'
-import {RippleBase} from '../ripple'
+import mdcButtonBase from './mdc-button-base.vue'
 
 export default {
   name: 'mdc-button',
-  mixins: [DispatchEventMixin, CustomElementMixin],
+  extends: mdcButtonBase,
   props: {
-    href: String,
-    disabled: Boolean,
     raised: Boolean,
     unelevated: Boolean,
     stroked: Boolean,
@@ -30,6 +14,7 @@ export default {
   data () {
     return {
       classes: {
+        'mdc-button': true,
         'mdc-button--raised': this.raised,
         'mdc-button--unelevated': this.unelevated,
         'mdc-button--stroked': this.stroked,
@@ -37,11 +22,6 @@ export default {
         'mdc-button--compact': this.compact
       },
       styles: {}
-    }
-  },
-  computed: {
-    isLink () {
-      return this.href && !this.disabled
     }
   },
   watch: {
@@ -60,13 +40,6 @@ export default {
     compact () {
       this.$set(this.classes, 'mdc-button--compact', this.compact )
     },
-  },
-  mounted () {
-    this.ripple = new RippleBase(this)
-    this.ripple.init()
-  },
-  beforeDestroy () {
-    this.ripple.destroy()
   }
 }
 </script>
