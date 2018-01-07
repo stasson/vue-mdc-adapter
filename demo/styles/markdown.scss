@@ -16,12 +16,16 @@ $grey-200: #eee;
 $asset-min-height: 200px;
 $asset-padding: 24px;
 $ui-font-family: 'Roboto Mono';
+$quote_color: #858585;
+$quote_border: 4px solid #e5e5e5;
+$code_bg_color: rgba(0, 0, 0, 0.05);
+$code_font: 'Roboto Mono';
+
+
 
 .markdown {
 
   @include mdc-typography(body1);
-  
-
 
     max-width: 760px;
   
@@ -87,7 +91,76 @@ $ui-font-family: 'Roboto Mono';
     li > ol {
       padding-top: 8px;
     }
+ 
+    // blockquote
+    blockquote {
+      margin: 0 0 0.85em;
+      padding: 0 15px;
+      color: $quote_color;
+      border-left: $quote_border;
+    }
+
+    pre {
+      margin: 0 0 1.275em;
+      padding: .85em 1em;
+      overflow: auto;
+      background: $code_bg_color;
+      font-size: .85em;
+      font-family: $code_font;
+    }
+    
+    code {
+      font-family: $code_font;
+    }
+     
+    p, li {
+      > code {
+        background: $code_bg_color;
+        padding: .2em;
+        &:before, &:after {
+          letter-spacing: -.2em;
+          content: "\00a0";
+        }
+      }
+    }
+    
+    pre code {
+      padding: 0;
+      white-space: pre;
+    }
+        
+    // ----- Inline elements
+    
+    img {
+      max-width: 100%;
+    }
+    
+    // a {
+    //   color: $link_color;
+    //   text-decoration: none;
+    
+    //   &:hover, &:focus {
+    //     outline: 0;
+    //     text-decoration: underline;
+    //   }
+    // }
+    a, a:active, a:hover, a:link, a:visited {
+      font-family: Roboto Mono;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-size: .875rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      line-height: 1.25rem;
+      color: rgba(0,0,0,.87);
+    } 
+
+    // Modifier
   
+    &--full-width {
+      max-width: 100%;
+    }
+
     // Data table
   
     table {
@@ -99,6 +172,8 @@ $ui-font-family: 'Roboto Mono';
       max-width: 100%;
   
       border: 1px solid $grey-200;
+      border-collapse: collapse;
+
     }
   
     th,
@@ -132,22 +207,5 @@ $ui-font-family: 'Roboto Mono';
     tr:last-child > td {
       border-bottom: none;
     }
-  
-    // Modifier
-  
-    &--full-width {
-      max-width: 100%;
-    }
-
-    a, a:active, a:hover, a:link, a:visited {
-      font-family: Roboto Mono;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font-size: .875rem;
-      font-weight: 400;
-      letter-spacing: .04em;
-      line-height: 1.25rem;
-      color: rgba(0,0,0,.87);
-  }
 
 }
