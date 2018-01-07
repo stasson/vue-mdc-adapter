@@ -3,11 +3,14 @@
     <div class="mdc-demo--container">
       <div class="mdc-demo-button">
         <mdc-button :dense="dense" :compact="compact" :disabled="disabled" 
-          :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
+          :raised="raised" :stroked="stroked" :unelevated="unelevated" 
+          :accent="accent">Button</mdc-button>
         <mdc-button :dense="dense" :compact="compact" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
+          :raised="raised" :stroked="stroked" :unelevated="unelevated" 
+          :accent="accent">Button</mdc-button>
         <mdc-button :dense="dense" :compact="compact" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
+          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+          :accent="accent">Button</mdc-button>
       </div>  
     </div>  
 
@@ -23,6 +26,7 @@
         <mdc-checkbox label="disabled" v-model="disabled"></mdc-checkbox>
         <mdc-checkbox label="compact" v-model="compact" ></mdc-checkbox>
         <mdc-checkbox label="dense"  v-model="dense"></mdc-checkbox>
+        <mdc-checkbox label="accent"  v-model="accent"></mdc-checkbox>
       </div>
     </div>
   </div>
@@ -31,7 +35,13 @@
 <script>
 export default {
   data () {
-    return {type: '', dense: false, compact:false, disabled:false}
+    return {
+      type: '', 
+      dense: false, 
+      compact:false, 
+      disabled:false, 
+      accent:false
+    }
   },
   computed: {
     raised () { return this.type == 'raised'},

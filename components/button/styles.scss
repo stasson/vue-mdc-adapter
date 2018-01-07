@@ -1,5 +1,24 @@
 @import "@material/button/mdc-button";
 
+.mdc-button--accent {
+
+  &.mdc-button {
+    @include mdc-button-ink-color(secondary);
+    @include mdc-states(secondary);
+  }
+
+  &.mdc-button--raised,
+  &.mdc-button--unelevated {
+    @include mdc-button-container-fill-color(secondary);
+    @include mdc-button-ink-color(text-primary-on-secondary);
+    @include mdc-states(text-primary-on-secondary);
+  }
+
+  &.mdc-button--stroked {
+    @include mdc-button-stroke-color(secondary);
+  }
+
+}
 
 .mdc-button {
   .mdc-icon {

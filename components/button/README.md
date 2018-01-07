@@ -10,7 +10,7 @@ var vm = new Vue({
     buttonDisabled: false
   },
   methods: {
-    onClick () {...} 
+    onClick () {...}
   }
 })
 ```
@@ -27,6 +27,7 @@ var vm = new Vue({
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
 |`disabled`|String|| disable the button |
+|`accent`|Boolean|| secondary color theme |
 |`raised`| Boolean|| a contained button that is elevated upon the surface |
 |`unelevated`| Boolean|| a contained button that is flush with the surface |
 |`stroked`| Boolean|| a contained button that is flush with the surface and has a visible border(*)|
