@@ -6,3 +6,10 @@
   background-repeat: no-repeat;
 }
 
+.mdc-button--accent {
+  &.mdc-card__actionn {
+    @include mdc-button-ink-color(secondary);
+    @include mdc-states(secondary);
+  }
+}
+
