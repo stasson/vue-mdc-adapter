@@ -9,7 +9,7 @@
       <div class="mdc-switch__knob"></div>
     </div>
   </div>
-  <label :for="_uid" v-if="label">{{ label }}</label>
+  <label ref="label" :for="_uid"><slot>{{label}}</slot></label>
 </div>
 </template>
 

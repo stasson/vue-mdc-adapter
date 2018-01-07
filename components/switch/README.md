@@ -15,6 +15,12 @@ var vm = new Vue({
 })
 ```
 
+> or use default slot for label
+
+```html
+<mdc-switch v-model="checked">{{Label}}</mdc-switch>
+```
+
 ### props
 
 | props | Type | Default | Description |
