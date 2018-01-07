@@ -113,8 +113,15 @@ container:
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
 |`href`|String|| link's href, renders anchor (see notes below) | 
+|`href`|String|| link's href, renders anchor (see notes below) | 
+|`to`|String, Object| undefined | router-link property _(*)_ |
+|`replace`|Boolean| false | router-link property _(*)_ |
+|`append`|Boolean| false | router-link property _(*)_ |
+|`exact`|Boolean| false | router-link property _(*)_ |
+|`active-class`|String| router-link-active | router-link property _(*)_ |
+|`exact-active-class`|String| router-link-exact-active | router-link property _(*)_ |
 
-
+> _(*)_ Requires [vue-router](https://router.vuejs.org)
 
 Using the `href` attribute will render `<a role="button">`
 
@@ -162,7 +169,5 @@ fixed height rather than stretching to the width of the card.
 > Unlike media blocks, media items are not designed to be used as optional 
 containers.
 
-
 ### Reference
 - <https://material.io/components/web/catalog/cards>
-
