@@ -7,6 +7,9 @@
         <mdc-textfield :disabled="!enabled" v-model="textField"
           label="with help text"
           helptext="Help text..."></mdc-textfield>
+        <mdc-textfield :disabled="!enabled" v-model="textField"
+          label="in a box"
+          helptext="Help text..." box></mdc-textfield>
       </mdc-layout-cell>
       <mdc-layout-cell  span=6>
         <p><mdc-textfield :disabled="!enabled" v-model="textField" multiline

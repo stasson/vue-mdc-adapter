@@ -47,6 +47,7 @@ var vm = new Vue({
 |`v-model`| String || binds textfield value |
 |`dense`| Boolean | | compresses the textfield to make it slightly smaller |
 |`label`| String | | hint text |
+|`box`| Boolean | | whether the textfield is a box  |
 |`helptext`| String | |  help text |
 |`helptext-persistent`| Boolean | | whether help text is persistent |
 |`helptext-validation`| Boolean | | whether help text is a validation  |
@@ -69,4 +70,3 @@ var vm = new Vue({
 
 ### Reference
 - <https://material.io/components/web/catalog/input-controls/text-fields>
-
