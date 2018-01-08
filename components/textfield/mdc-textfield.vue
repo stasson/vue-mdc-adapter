@@ -85,6 +85,7 @@ export default {
     'helptext': String,
     'helptext-persistent': Boolean,
     'helptext-validation': Boolean,
+    'box': Boolean,
     'disabled': Boolean,
     'required': Boolean,
     'minlength': { type: [Number, String], default: undefined },
@@ -105,7 +106,8 @@ export default {
         'mdc-text-field--disabled': this.disabled,
         'mdc-text-field--dense': this.dense,
         'mdc-text-field--fullwidth': this.fullwidth,
-        'mdc-text-field--textarea': this.multiline
+        'mdc-text-field--textarea': this.multiline,
+        'mdc-text-field--box': this.box
       },
       inputClasses: {
         'mdc-text-field__input': true
@@ -161,10 +163,10 @@ export default {
         notifyAnimationEnd: () => {
           emitCustomEvent(
             this.$refs.bottom,
-            MDCTextFieldBottomLineFoundation.strings.ANIMATION_END_EVENT, 
+            MDCTextFieldBottomLineFoundation.strings.ANIMATION_END_EVENT,
             {});
         },
-      }) 
+      })
       this.bottomLineFoundation.init()
     }
 
@@ -188,7 +190,7 @@ export default {
         setContent: (content) => {
           this.$refs.help.textContent = content;
         }
-      }) 
+      })
       this.helperTextFoundation.init()
     }
 
