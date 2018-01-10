@@ -73,7 +73,9 @@ export default {
       },
       deregisterTransitionEndHandler: (handler) => {
         this.$refs.root.removeEventListener(getCorrectEventName(window, 'transitionend'), handler)
-      }
+      },
+      notifyShow: () => this.$emit('show'),
+      notifyHide: () => this.$emit('hide'),
     })
     this.foundation.init()
     if (this.event) {

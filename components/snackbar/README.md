@@ -60,12 +60,15 @@ properties and their usage.
 | `dismisses-on-action` |Boolean| true| Whether the snackbar will be dimissed when the user presses the action button.  |
 | `align-start` |Boolean| false| Whether the snackbar is start aligned. |
 
-
 ### methods
 
 | method | Description |
 |--------|-------------|
 | `show(data)` |  trigger the display of a message with optional action.|
+
+# events 
+| `@show` | notify listeners that the snackbar has been shown. |
+| `@hide` | notify listeners that the snackbar has been hidden. |
 
 ### Reference
 - <https://material.io/components/web/catalog/snackbars>
