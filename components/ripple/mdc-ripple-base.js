@@ -1,5 +1,5 @@
 import MDCRippleFoundation from '@material/ripple/foundation.js'
-import { supportsCssVariables, getMatchesProperty } from '@material/ripple/util'
+import {supportsCssVariables, getMatchesProperty, applyPassive} from '@material/ripple/util'
 
 export class RippleBase extends MDCRippleFoundation {
 
@@ -18,20 +18,8 @@ export class RippleBase extends MDCRippleFoundation {
       browserSupportsCssVars: () => {
         return supportsCssVariables(window)
       },
-      registerResizeHandler: (handler) => {
-        return window.addEventListener('resize', handler)
-      },
-      deregisterResizeHandler: (handler) => {
-        return window.removeEventListener('resize', handler)
-      },
-      getWindowPageOffset: () => {
-        return ({x: window.pageXOffset, y: window.pageYOffset})
-      },
       isUnbounded: () => {
         return false
-      },
-      computeBoundingRect: () => {
-        return vm.$el.getBoundingClientRect()
       },
       isSurfaceActive: () => {
         return vm.$el[RippleBase.MATCHES](':active')
@@ -42,7 +30,6 @@ export class RippleBase extends MDCRippleFoundation {
       addClass (className) {
         vm.$set(vm.classes, className, true)
       },
-      // assumes a data 'classes' property on the root element
       removeClass (className) {
         vm.$delete(vm.classes, className)
       },
@@ -52,9 +39,25 @@ export class RippleBase extends MDCRippleFoundation {
       deregisterInteractionHandler: (evt, handler) => {
         vm.$el.removeEventListener(evt, handler)
       },
+      registerDocumentInteractionHandler: (evtType, handler) =>
+        document.documentElement.addEventListener(evtType, handler, applyPassive()),
+      deregisterDocumentInteractionHandler: (evtType, handler) =>
+        document.documentElement.removeEventListener(evtType, handler, applyPassive()),
+      registerResizeHandler: (handler) => {
+        return window.addEventListener('resize', handler)
+      },
+      deregisterResizeHandler: (handler) => {
+        return window.removeEventListener('resize', handler)
+      },
       updateCssVariable: (varName, value) => {
         vm.$set(vm.styles, varName, value)
-      }
+      },
+      computeBoundingRect: () => {
+        return vm.$el.getBoundingClientRect()
+      },
+      getWindowPageOffset: () => {
+        return ({x: window.pageXOffset, y: window.pageYOffset})
+      },
     }, options))
   }
 }

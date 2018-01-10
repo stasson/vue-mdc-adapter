@@ -7,26 +7,13 @@
 
 <script>
 import {CustomElementMixin} from '../base'
-import {RippleBase} from './mdc-ripple-base'
+import {RippleMixin} from './mdc-ripple-base'
 
 export default {
   name: 'mdc-ripple',
-  mixins:[CustomElementMixin],
+  mixins:[CustomElementMixin, RippleMixin],
   props: {
     tag: String
   },
-  data () {
-    return {
-      classes: {},
-      styles: {},
-    }
-  },
-  mounted () {
-    this.ripple = new RippleBase(this)
-    this.ripple.init()
-  },
-  beforeDestroy () {
-    this.ripple.destroy()
-  }
 }
 </script>
