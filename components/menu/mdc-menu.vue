@@ -1,15 +1,16 @@
 <template>
-  <div ref="root" :class="classes" tabindex="-1"
-    class="mdc-menu mdc-simple-menu">
+  <div ref="root" class="mdc-menu mdc-simple-menu"
+    :class="classes" :style="styles" 
+    tabindex="-1">
     <ul ref="items" class="mdc-simple-menu__items mdc-list" 
-      role="menu" :aria-hidden="isOpen()?'false':'true'">
+      role="menu" aria-hidden="true">
       <slot></slot>
     </ul>
   </div>
 </template>
 
 <script>
-import MDCSimpleMenuFoundation from '@material/menu/simple/foundation'
+import {MDCSimpleMenuFoundation} from '@material/menu/simple/foundation'
 import {getTransformPropertyName} from '@material/menu/util'
 import {emitCustomEvent} from '../base'
 
@@ -29,6 +30,7 @@ export default {
         'mdc-simple-menu--open-from-bottom-left': this.openFromBottomLeft,
         'mdc-simple-menu--open-from-bottom-right': this.openFromBottomRight
       },
+      styles: {},
       items: []
     }
   },
@@ -52,7 +54,6 @@ export default {
     this.slotObserver = new MutationObserver(() => refreshItems())
     this.slotObserver.observe(this.$el, { childList: true, subtree: true })
 
-    const transformPropertyName = getTransformPropertyName(window)
     this._previousFocus = undefined
 
     this.foundation = new MDCSimpleMenuFoundation({
@@ -75,12 +76,6 @@ export default {
         width: window.innerWidth,
         height: window.innerHeight
       }),
-      setScale: (x, y) => {
-        this.$refs.root.style[transformPropertyName] = `scale(${x}, ${y})`
-      },
-      setInnerScale: (x, y) => {
-        this.$refs.items.style[transformPropertyName] = `scale(${x}, ${y})`
-      },
       getNumberOfItems: () => this.items.length,
       registerInteractionHandler: (type, handler) =>
         this.$refs.root.addEventListener(type, handler),
@@ -90,12 +85,6 @@ export default {
         document.body.addEventListener('click', handler),
       deregisterBodyClickHandler: (handler) =>
         document.body.removeEventListener('click', handler),
-      getYParamsForItemAtIndex: (index) => {
-        const {offsetTop: top, offsetHeight: height} = this.items[index]
-        return {top, height}
-      },
-      setTransitionDelayForItemAtIndex: (index, value) =>
-        this.items[index].style.setProperty('transition-delay', value),
       getIndexForEventTarget: (target) => this.items.indexOf(target),
       notifySelected: (evtData) => {
         const evt = {
@@ -126,20 +115,17 @@ export default {
       isRtl: () => getComputedStyle(this.$refs.root)
         .getPropertyValue('direction') === 'rtl',
       setTransformOrigin: (origin) => {
-        this.$refs.root.style[`${getTransformPropertyName(window)}-origin`] =
-          origin
+        this.$set(this.styles, `${getTransformPropertyName(window)}-origin`, origin)
       },
       setPosition: (position) => {
-        this.$refs.root.style.left =
-          'left' in position ? position.left : null
-        this.$refs.root.style.right =
-          'right' in position ? position.right : null
-        this.$refs.root.style.top =
-          'top' in position ? position.top : null
-        this.$refs.root.style.bottom =
-          'bottom' in position ? position.bottom : null
+        this.$set(this.styles,'left', position.left)
+        this.$set(this.styles,'right', position.right)
+        this.$set(this.styles,'top', position.top)
+        this.$set(this.styles,'bottom', position.bottom)
       },
-      getAccurateTime: () => window.performance.now()
+      setMaxHeight: (height) => {
+        this.$set(this.styles,'max-height', height)
+      },
     })
 
     refreshItems()
