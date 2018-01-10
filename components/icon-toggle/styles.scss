@@ -1,1 +1,6 @@
 @import "@material/icon-toggle/mdc-icon-toggle";
+
+.mdc-icon-toggle.mdc-icon-toggle--accent {
+    @include mdc-states(secondary);
+    @include mdc-icon-toggle-ink-color(secondary);
+}

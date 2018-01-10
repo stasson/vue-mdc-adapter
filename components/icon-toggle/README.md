@@ -42,7 +42,6 @@ var vm = new Vue({
 |------------|------------------|-----------|-------------|
 |`v-model`   | Boolean          | value     | togggle state binding |
 |`disabled`  | Boolean          | false     | whether component is disabled |
-|`primary`   | Boolean          | false     | set primary theme |
 |`accent`    | Boolean          | false     | set accent theme |
 |`toggle-on` | [String, Object] | undefined | toggle on material icon name or options (*) |
 |`toggle-off`| [String, Object] | undefined | toggle off material icon name or options (*)|

@@ -19,13 +19,11 @@ export default {
     toggleOff: [String, Object],
     value: Boolean,
     disabled: Boolean,
-    primary: Boolean,
     accent: Boolean
   },
   data () {
     return {
       classes: {
-        'mdc-icon-toggle--primary': this.primary,
         'mdc-icon-toggle--accent': this.accent
       },
       styles: {},
@@ -46,9 +44,6 @@ export default {
     },
     toggleOffData () {
     this.foundation && this.foundation.refreshToggleData()
-    },
-    primary (value) {
-      this.$set(this.classes, 'mdc-icon-toggle--primary', value)
     },
     accent (value) {
       this.$set(this.classes, 'mdc-icon-toggle--secondary', value)
