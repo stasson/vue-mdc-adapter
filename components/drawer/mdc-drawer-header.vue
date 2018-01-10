@@ -1,6 +1,6 @@
 <template>
-  <header class="mdc-drawer-header" :class="[headerClass]" v-if="show">
-    <div :class="[headerContentClass]">
+  <header class="mdc-drawer-header mdc-drawer__header" v-if="show">
+    <div class="mdc-drawer__header-content">
       <slot />
     </div>
   </header>
@@ -16,12 +16,6 @@ export default {
   },
   inject: ['mdcDrawer'],
   computed: {
-    headerClass () {
-      return this.mdcDrawer.type + '__header'
-    },
-    headerContentClass () {
-      return this.mdcDrawer.type + '__header-content'
-    },
     show () {
       if (this.temporary || this.persistent || this.permanent) {
         return (this.temporary && this.mdcDrawer.isTemporary) ||

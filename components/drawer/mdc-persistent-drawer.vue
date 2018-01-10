@@ -1,7 +1,7 @@
 <template>
-  <aside class="mdc-persistent-drawer mdc-typography" :class="classes">
-    <nav ref="drawer" class="mdc-persistent-drawer__drawer">
-      <div class="mdc-persistent-drawer__toolbar-spacer" 
+  <aside class="mdc-persistent-drawer mdc-drawer--persistent mdc-typography" :class="classes">
+    <nav ref="drawer" class="mdc-drawer__drawer">
+      <div class="mdc-drawer__toolbar-spacer" 
         v-if="toolbarSpacer"></div>
       <slot />
     </nav>

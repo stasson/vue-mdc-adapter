@@ -1,7 +1,7 @@
 <template>
-  <aside class="mdc-temporary-drawer mdc-typography" :class="classes">
-    <nav ref="drawer" class="mdc-temporary-drawer__drawer">
-      <div class="mdc-temporary-drawer__toolbar-spacer" v-if="toolbarSpacer"></div>
+  <aside class="mdc-temporary-drawer mdc-drawer--temporary mdc-typography" :class="classes">
+    <nav ref="drawer" class="mdc-drawer__drawer">
+      <div class="mdc-drawer__toolbar-spacer" v-if="toolbarSpacer"></div>
       <slot />
     </nav>
   </aside>

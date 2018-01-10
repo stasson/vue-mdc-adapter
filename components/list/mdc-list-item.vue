@@ -1,7 +1,7 @@
 <template>
   <li class="mdc-list-item">
 
-    <span class="mdc-list-item__start-detail" v-if="hasStartDetail">
+    <span class="mdc-list-item__graphic" v-if="hasStartDetail">
       <slot name="start-detail"></slot>
     </span>
 
@@ -13,7 +13,7 @@
     </span>
     <slot v-else></slot>
 
-    <span class="mdc-list-item__end-detail" v-if="hasEndDetail">
+    <span class="mdc-list-item__meta" v-if="hasEndDetail">
       <slot name="end-detail"></slot>
     </span>
 

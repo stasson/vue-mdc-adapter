@@ -1,7 +1,7 @@
 <template>
-  <nav class="mdc-permanent-drawer mdc-typography">
-    <nav class="mdc-permanent-drawer__content">
-      <div class="mdc-permanent-drawer__toolbar-spacer" 
+  <nav class="mdc-permanent-drawer mdc-drawer--permanent mdc-typography">
+    <nav class="mdc-drawer__content">
+      <div class="mdc-drawer__toolbar-spacer" 
         v-if="toolbarSpacer"></div>
       <slot />
     </nav>
