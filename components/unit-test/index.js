@@ -1,7 +1,7 @@
 import './polyfills.js'
-import {mount} from 'vue-test-utils'
+import {mount} from '@vue/test-utils'
 
-export * from 'vue-test-utils'
+export * from '@vue/test-utils'
 
 export function pluginSanityCheck(pluginName, plugin, options) {
   describe(pluginName, () => {
