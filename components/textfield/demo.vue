@@ -3,17 +3,24 @@
     <mdc-layout-grid>
       <mdc-layout-cell span=6>
         <mdc-textfield :disabled="!enabled" v-model="textField"
-          label="Simple textfield"></mdc-textfield>
-        <mdc-textfield :disabled="!enabled" v-model="textField"
-          label="with help text"
+          label="textfield"
           helptext="Help text..."></mdc-textfield>
+        <mdc-textfield :disabled="!enabled" v-model="textField"
+          label="outlined" outline
+           helptext="Help text..."
+          ></mdc-textfield>
         <mdc-textfield :disabled="!enabled" v-model="textField"
           label="in a box"
           helptext="Help text..." box></mdc-textfield>
       </mdc-layout-cell>
       <mdc-layout-cell  span=6>
         <p><mdc-textfield :disabled="!enabled" v-model="textField" multiline
+            rows="10"
             label="multiline" ></mdc-textfield></p>
+      </mdc-layout-cell>
+      <mdc-layout-cell  span=12>
+        <p><mdc-textfield :disabled="!enabled" v-model="textField" fullwidth 
+            label="full width" ></mdc-textfield></p>
       </mdc-layout-cell>
     </mdc-layout-grid>
   </div>
