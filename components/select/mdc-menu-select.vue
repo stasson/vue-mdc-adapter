@@ -1,9 +1,9 @@
 <template>
-  <div class="mdc-select mdc-menu-select mdc-menu-anchor" 
-    role="listbox" :tabindex="tabIndex"
+  <div class="mdc-select mdc-menu-select" 
+    role="listbox" 
     :class="classes">
     <div ref="surface" class="mdc-select__surface"
-      :style="styles">
+      :style="surfaceStyles" :tabindex="tabIndex">
         <div ref="label" class="mdc-select__label"
           :class="labelClasses"
         >{{label}}</div>
@@ -12,7 +12,9 @@
         <div ref="bottomLine" class="mdc-select__bottom-line"
           :class="bottomLineClasses"></div>
     </div>
-    <mdc-menu ref="menu" :style="menuStyles" @update="resetIndex">
+    <mdc-menu ref="menu" 
+      class="mdc-select__menu"
+      :style="menuStyles" @update="resetIndex">
       <slot></slot>
     </mdc-menu>
   </div>
@@ -39,7 +41,7 @@ export default {
       classes: {},
       labelClasses: {},
       bottomLineClasses: {},
-      styles: {},
+      surfaceStyles: {},
       menuStyles: {},
       tabIndex: 0,
       selectedTextContent: ''
@@ -80,11 +82,11 @@ export default {
       computeBoundingRect: () =>
         this.$refs.surface.getBoundingClientRect(),
       registerInteractionHandler: (type, handler) =>
-        this.$el.addEventListener(type, handler),
+        this.$refs.surface.addEventListener(type, handler),
       deregisterInteractionHandler: (type, handler) =>
-        this.$el.removeEventListener(type, handler),
+        this.$refs.surface.removeEventListener(type, handler),
       focus: () =>
-        this.$el.focus(),
+        this.$refs.surface.focus(),
       makeTabbable: () => {
         this.tabIndex = 0
       },
@@ -94,7 +96,7 @@ export default {
       getComputedStyleValue: (prop) =>
         window.getComputedStyle(this.$refs.surface).getPropertyValue(prop),
       setStyle: (propertyName, value) =>
-        this.$set(this.styles, propertyName, value),
+        this.$set(this.surfaceStyles, propertyName, value),
       create2dRenderingContext: () =>
         document.createElement('canvas').getContext('2d'),
       setMenuElStyle: (propertyName, value) =>
@@ -127,14 +129,13 @@ export default {
       getOffsetTopForOptionAtIndex: (index) =>
         this.$refs.menu.items[index].offsetTop,
       registerMenuInteractionHandler: (type, handler) =>
-        this.$refs.menu.foundation.adapter_.registerInteractionHandler(type, handler),
+        this.$refs.menu.$el.addEventListener(type, handler),
       deregisterMenuInteractionHandler: (type, handler) =>
-        this.$refs.menu.foundation.adapter_.deregisterInteractionHandler(type, handler),
+        this.$refs.menu.$el.removeEventListener(type, handler),
       notifyChange: () => {
         this.$emit('change', this.foundation.getValue())
       },
-      getWindowInnerHeight: () =>
-        window.innerHeight,
+      getWindowInnerHeight: () => window.innerHeight,
       addBodyClass: (className) => document.body.classList.add(className),
       removeBodyClass: (className) => document.body.classList.remove(className),
     })
@@ -186,7 +187,11 @@ export default {
       let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
       if (this.value === optionValue) {
         foundation.setSelectedIndex(i)
+        
+        //TODO: MDCFIX
+        //force float above if value valid value
         this.$set(this.labelClasses, 'mdc-select__label--float-above', true);
+        
         break;
       }
     }
