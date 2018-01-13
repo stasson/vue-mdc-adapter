@@ -63,9 +63,13 @@ import {
   emitCustomEvent, extractIconProp, 
   DispatchFocusMixin, CustomElementMixin} from '../base'
 import {RippleBase} from '../ripple'
+import MDCTextfieldIcon from './mdc-textfield-icon.vue'
 
 export default {
   name: 'mdc-textfield',
+  components: {
+    'mdc-textfield-icon': MDCTextfieldIcon
+  },
   mixins: [CustomElementMixin, DispatchFocusMixin],
   props: {
     value: String,
