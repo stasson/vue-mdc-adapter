@@ -1,6 +1,6 @@
 <template>
   <div class="mdc-demo">
-    <div class="mdc-demo--container">
+    <div class="mdc-demo--container" style="min-height: 40px; padding-bottom: 0">
       <div class="mdc-demo-button">
         <mdc-button :dense="dense" :compact="compact" :disabled="disabled" 
           :raised="raised" :stroked="stroked" :unelevated="unelevated" 
