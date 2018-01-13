@@ -59,7 +59,9 @@ import MDCTextFieldIconFoundation from '@material/textfield/icon/foundation';
 import MDCTextFieldLabelFoundation from '@material/textfield/label/foundation';
 import MDCTextFieldOutlineFoundation from '@material/textfield/outline/foundation';
 
-import {emitCustomEvent, DispatchFocusMixin, CustomElementMixin} from '../base'
+import {
+  emitCustomEvent, extractIconProp, 
+  DispatchFocusMixin, CustomElementMixin} from '../base'
 import {RippleBase} from '../ripple'
 
 export default {
@@ -350,30 +352,6 @@ export default {
     this.labelFoundation && this.labelFoundation.destroy()
     this.outlineFoundation && this.outlineFoundation.destroy()
     this.ripple && this.ripple.destroy()
-  }
-}
-
-function extractIconProp (iconProp) {
-  if (typeof iconProp === 'string') {
-    return {
-      classes: { 'material-icons' : true},
-      content: iconProp 
-    }
-  }
-  else if (iconProp instanceof Array){
-    return { 
-      classes: iconProp.reduce(
-        (result, value) => Object.assign(result,{[value]:true}),
-        {}),
-      }
-  }
-  else if (typeof iconProp === 'object'){
-    return { 
-      classes: iconProp.className.split(' ').reduce(
-        (result, value) => Object.assign(result,{[value]:true}),
-        {}),
-      content: iconProp.textContent 
-    }
   }
 }
 
