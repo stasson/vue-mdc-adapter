@@ -1,24 +1,32 @@
 <template>
-  <a class="mdc-tab" :class="classes" :style="styles"
+  <custom-link class="mdc-tab" :class="classes" :style="styles"
     @click="dispatchEvent">
-    <i class="material-icons mdc-tab__icon" v-if="hasIcon">{{icon}}</i>
-    <span v-if="">
+
+    <i ref="icon" v-if="!!hasIcon"
+      tabindex="0" 
+      class="mdc-tab__icon"  
+      :class="hasIcon.classes">
+      <slot name="icon">{{ hasIcon.content }}</slot>
+    </i>
+
+    <span :class="{'mdc-tab__icon-text': !!hasIcon}" v-if="hasText">
       <slot></slot>  
     </span>
-  </a>
+
+  </custom-link>
 </template>
 
 <script>
 import MDCTabFoundation from '@material/tabs/tab/foundation'
-import { emitCustomEvent, DispatchEventMixin } from '../base'
+import {CustomLinkMixin, DispatchEventMixin, emitCustomEvent, extractIconProp } from '../base'
 import {RippleBase} from '../ripple'
 
 export default {
   name: 'mdc-tab',
-  mixins: [DispatchEventMixin],
+  mixins: [CustomLinkMixin, DispatchEventMixin],
   props: {
     active: Boolean,
-    icon: String
+    icon: [String, Array, Object],
   },
   data () {
     return {
@@ -28,7 +36,10 @@ export default {
   },
   computed: {
     hasIcon () {
-      return !!this.icon
+      if (this.icon || this.$slots.icon) {
+        this.icon ? extractIconProp(this.icon) : {}
+      }
+      return false
     },
     hasText () {
       return !!this.$slots.default
