@@ -1,6 +1,15 @@
 <template>
   <div class="mdc-textfield-wrapper" :style="{width:fullwidth?'100%':undefined}">
+
     <div ref="root" :class="rootClasses">
+
+      <i ref="icon" v-if="!!hasLeadingIcon"
+        tabindex="0" 
+        class="mdc-text-field__icon"  
+        :class="hasLeadingIcon.classes">
+        <slot name="leading-icon">{{ hasLeadingIcon.content }}</slot>
+      </i>
+
       <custom-element ref="input"
         :tag="inputTag"
         :rows="inputRows" 
@@ -12,9 +21,18 @@
         :aria-label="inputPlaceHolder"
         :aria-controls="inputAriaControls"
       />
+
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="hasLabel">
         {{ label }}
       </label>
+
+      <i ref="icon" v-if="!!hasTrailingIcon"
+        tabindex="0" 
+        class="mdc-text-field__icon"  
+        :class="hasTrailingIcon.classes">
+        <slot name="trailing-icon">{{ hasTrailingIcon.content }}</slot>
+      </i>
+
       <div ref="outline" class="mdc-text-field__outline" v-if="hasOutline">
         <svg>
           <path class="mdc-text-field__outline-path" :d="outlinePathAttr" />
@@ -22,11 +40,14 @@
       </div>
       <div class="mdc-text-field__idle-outline" v-if="hasOutline"></div>
       <div ref="bottom" :class="bottomClasses" v-if="hasBottomLine"></div>
+
     </div>
+
     <p ref="help" :id="'help-'+_uid" :class="helpClasses"
       aria-hidden="true" v-if="helptext">
       {{ helptext  }}
     </p>
+
   </div>
 </template>
 
@@ -69,7 +90,9 @@ export default {
     fullwidth: Boolean,
     multiline: Boolean,
     rows: { type: [Number, String], default: 8 },
-    cols: { type: [Number, String], default: 40 }
+    cols: { type: [Number, String], default: 40 },
+    leadingIcon: [String, Array, Object],
+    trailingIcon: [String, Array, Object],
   },
   data: function () {
     return {
@@ -83,7 +106,7 @@ export default {
         'mdc-text-field--fullwidth': this.fullwidth,
         'mdc-text-field--textarea': this.multiline,
         'mdc-text-field--box': this.box,
-        'mdc-text-field--outlined': this.outline
+        'mdc-text-field--outlined': this.outline,
       },
       inputClasses: {
         'mdc-text-field__input': true
@@ -136,6 +159,19 @@ export default {
     },
     hasBottomLine () {
       return !this.outline && !this.multiline
+    },
+    hasLeadingIcon () {
+      if ((this.leadingIcon || this.$slots['leading-icon'])
+         && !(this.trailingIcon || this.$slots['trailing-icon'])) {
+        return this.leadingIcon ? extractIconProp(this.leadingIcon) : {}
+      }
+      return false
+    },
+    hasTrailingIcon () {
+      if (this.trailingIcon || this.$slots['trailing-icon']) {
+        return this.trailingIcon ? extractIconProp(this.trailingIcon) : {}
+      }
+      return false
     },
     labelClassesUpgraded () {
       return Object.assign(this.labelClasses, {
@@ -198,6 +234,12 @@ export default {
     }
 
     if (this.$refs.icon) {
+      if (this.hasLeadingIcon){
+        this.$set(this.rootClasses, 'mdc-text-field--with-leading-icon', true)
+      } else if (this.hasTrailingIcon) {
+        this.$set(this.rootClasses, 'mdc-text-field--with-trailing-icon', true)
+      }
+
       this.iconFoundation = new MDCTextFieldIconFoundation({
         setAttr: (attr, value) => this.$refs.icon.setAttribute(attr, value),
         registerInteractionHandler: (evtType, handler) => {
@@ -289,8 +331,10 @@ export default {
       outline: this.outlineFoundation,
     })
 
+
     this.foundation.init()
     this.foundation.setDisabled(this.disabled)
+
 
     if (this.textbox) {
       this.ripple = new RippleBase(this)
@@ -308,4 +352,29 @@ export default {
     this.ripple && this.ripple.destroy()
   }
 }
+
+function extractIconProp (iconProp) {
+  if (typeof iconProp === 'string') {
+    return {
+      classes: { 'material-icons' : true},
+      content: iconProp 
+    }
+  }
+  else if (iconProp instanceof Array){
+    return { 
+      classes: iconProp.reduce(
+        (result, value) => Object.assign(result,{[value]:true}),
+        {}),
+      }
+  }
+  else if (typeof iconProp === 'object'){
+    return { 
+      classes: iconProp.className.split(' ').reduce(
+        (result, value) => Object.assign(result,{[value]:true}),
+        {}),
+      content: iconProp.textContent 
+    }
+  }
+}
+
 </script>

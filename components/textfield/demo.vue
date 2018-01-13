@@ -8,8 +8,9 @@
         <mdc-textfield :disabled="!enabled" v-model="textField"
           label="outlined" outline
            helptext="Help text..."
-          ></mdc-textfield>
+           trailing-icon="event"></mdc-textfield>
         <mdc-textfield :disabled="!enabled" v-model="textField"
+          :leading-icon="{className: 'fa fa-font-awesome'}"
           label="in a box"
           helptext="Help text..." box></mdc-textfield>
       </mdc-layout-cell>
@@ -36,3 +37,9 @@
     }
   }
 </script>
+
+<<style>
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+</style>
+
