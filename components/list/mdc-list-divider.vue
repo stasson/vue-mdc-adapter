@@ -1,17 +1,20 @@
 <template>
-  <li role="separator" class="mdc-list-divider" :class="classes"></li>
+  <li role="separator" class="mdc-list-divider" 
+  :class="classes"></li>
 </template>
 
 <script>
 export default {
   name: 'mdc-list-divider',
   props: {
-    'inset': Boolean
+    inset: Boolean,
+    padded: Boolean
   },
-  data () {
-    return {
-      classes: {
-        'mdc-list-divider--inset': this.inset
+  computed: {
+    classes () {
+      return {
+        'mdc-list-divider--inset': this.inset,
+        'mdc-list-divider--padded': this.padded
       }
     }
   }

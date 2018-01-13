@@ -91,7 +91,7 @@ To insert a detail, set the slot attribute to `start-detail` or `end-detail`
 </mdc-list>
 ```
 
-### List Groups & Dividers
+### List Dividers
 
 ```html
   <mdc-list>
@@ -101,6 +101,16 @@ To insert a detail, set the slot attribute to `start-detail` or `end-detail`
     <mdc-list-item>Single-line item</mdc-list-item>
   </mdc-list>
 ```
+> Separators span the entire list width by default, use the `padded` property to add padding
+
+```html
+  <mdc-list>
+    <mdc-list-item>Single-line item</mdc-list-item>
+    <mdc-list-divider padded />
+    <mdc-list-item>Single-line item</mdc-list-item>
+  </mdc-list>
+```
+
 
 > for avatar list, add the `inset` attribute to `mdc-list-divider`
 
