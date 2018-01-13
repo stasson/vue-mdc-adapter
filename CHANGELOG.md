@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.6...v0.8.0) (2018-01-13)
+
+
+### Bug Fixes
+
+* **base:** custom link and button should dispatch click event when rendering router-link ([bfd3e5a](https://github.com/stasson/vue-mdc-adapter/commit/bfd3e5a)), closes [#206](https://github.com/stasson/vue-mdc-adapter/issues/206)
+* **drawer-item:** emit click event regardless of router link presence ([217413f](https://github.com/stasson/vue-mdc-adapter/commit/217413f)), closes [#206](https://github.com/stasson/vue-mdc-adapter/issues/206)
+* **package:** update material-components-web to version 0.28.0 ([73eae0e](https://github.com/stasson/vue-mdc-adapter/commit/73eae0e))
+
+
+### Features
+
+* **drawer:** refactor classes as per mdc 0.28.0 ([6a9dc05](https://github.com/stasson/vue-mdc-adapter/commit/6a9dc05))
+* **icon-toggle:** remove primary property as per mdc 0.28.0 ([69c983a](https://github.com/stasson/vue-mdc-adapter/commit/69c983a))
+* **list:** add new padded prop to list-deivider as per mdc 0.28.0 ([21f3a2f](https://github.com/stasson/vue-mdc-adapter/commit/21f3a2f))
+* **menu:** refactor adapter as per mdc 0.28.0 ([6d0e0c1](https://github.com/stasson/vue-mdc-adapter/commit/6d0e0c1))
+* **ripple:** refactor adapter as per mdc 0.28.0 ([10afb2e](https://github.com/stasson/vue-mdc-adapter/commit/10afb2e))
+* **select:** refactor markup and adapter as per mdc 0.28.0 ([a7e29d5](https://github.com/stasson/vue-mdc-adapter/commit/a7e29d5))
+* **snackbar:** add show and hide event as per mdc 0.28.0 ([eb372d2](https://github.com/stasson/vue-mdc-adapter/commit/eb372d2))
+* **tabs:** add support for vue-router and custom icons ([38d2d51](https://github.com/stasson/vue-mdc-adapter/commit/38d2d51)), closes [#195](https://github.com/stasson/vue-mdc-adapter/issues/195)
+* **text-field:** add text-field--box support ([40a03ce](https://github.com/stasson/vue-mdc-adapter/commit/40a03ce))
+* **textfield:** add support for leading and trailing icons ([f95274e](https://github.com/stasson/vue-mdc-adapter/commit/f95274e)), closes [#174](https://github.com/stasson/vue-mdc-adapter/issues/174)
+* **textfield:** refactor foundation and markup as per mdc 0.28.0 ([70dfab9](https://github.com/stasson/vue-mdc-adapter/commit/70dfab9))
+
+
+
 <a name="0.7.6"></a>
 ## [0.7.6](https://github.com/stasson/vue-mdc-adapter/compare/v0.7.5...v0.7.6) (2018-01-07)
 
