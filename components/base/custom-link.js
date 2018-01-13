@@ -13,6 +13,9 @@ export const CustomLink = {
       // router-link case
       element = context.parent.$root.$options.components['router-link'] 
       data.props = Object.assign({tag: context.props.tag}, context.props.link)
+      if (data.on.click) {
+        data.nativeOn = {click: data.on.click }
+      }
     } else {
       // element fallback
       element = context.props.tag 

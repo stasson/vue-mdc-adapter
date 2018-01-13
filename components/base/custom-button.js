@@ -13,6 +13,9 @@ export const CustomButton = {
       element = context.parent.$root.$options.components['router-link'] 
       data.props = Object.assign({tag: context.props.tag}, context.props.link)
       data.attrs.role = 'button'
+      if (data.on.click) {
+        data.nativeOn = {click: data.on.click }
+      }
     } else if (data.attrs && data.attrs.href) {
       // href case
       element = 'a' 
