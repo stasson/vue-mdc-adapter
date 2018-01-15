@@ -75,3 +75,10 @@
 }).call(this);
 
 
+(function() {
+  // global HTMLInputElement
+  HTMLInputElement.prototype.validity = {
+    badInput: false,
+    valid: true,
+  }
+}).call(this);
