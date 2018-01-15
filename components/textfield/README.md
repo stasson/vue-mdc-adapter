@@ -12,7 +12,6 @@ var vm = new Vue({
     text: ""
   }
 })
-
 ```
 
 ### Help text
@@ -57,6 +56,9 @@ var vm = new Vue({
 ```
 
 ### Validation
+
+- Native validation: use `type`, `required`, `minlength` and `maxlength` properties
+
 ```html
 <mdc-textfield type="password" label="Password"
   required minlength=8 maxlength=10
@@ -64,6 +66,31 @@ var vm = new Vue({
   helptext-persistent helptext-validation
   v-model="password" />
 ```
+
+- Custom Validation: use `:valid` property:
+
+```html
+<mdc-textfield
+  :valid="isValid"
+  helptext="custom check"
+  helptext-persistent helptext-validation
+  v-model="value" />
+```
+
+```javascript
+var vm = new Vue({
+  data: {
+    text: ""
+  }
+  computed: {
+    isValid () {
+      return myCustomCheck(this.text)
+    }
+  }
+})
+```
+
+> Once set, native validition is ignored.
 
 ### props
 
@@ -81,6 +108,7 @@ var vm = new Vue({
 |`required`| Boolean | |  validation: whether this field is required|
 |`minlength`| [Number, String] | |  validation: minimal length|
 |`maxlength`| [Number, String] | |  validation: max length|
+|`valid`| [Number, String] | |  validation: custom validation property |
 |`size`| [Number, String] | 20 |  textfield size (chars) |
 |`fullwidth`| Boolean | | whether the textfield is full width |
 |`multiline`| Boolean | | whether the textfield is multiline  |

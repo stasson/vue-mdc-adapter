@@ -12,10 +12,11 @@
 
       <custom-element ref="input"
         :tag="inputTag"
+        :type="inputType"
         :rows="inputRows" 
         :cols="inputCols"
         :value="value" @input="updateValue($event.target.value)"
-        :class="inputClasses" :required="required"
+        :class="inputClasses"
         :minlength="minlength" :maxlength="maxlength"
         :placeholder="inputPlaceHolder"
         :aria-label="inputPlaceHolder"
@@ -86,6 +87,7 @@ export default {
     outline: Boolean,
     disabled: Boolean,
     required: Boolean,
+    valid: {type: Boolean, default: undefined}, 
     minlength: { type: [Number, String], default: undefined },
     maxlength: { type: [Number, String], default: undefined },
     size: { type: [Number, String], default: 20 },
@@ -130,6 +132,14 @@ export default {
   watch:  {
     disabled () {
       this.foundation && this.foundation.setDisabled(this.disabled)
+    },
+    required () {
+      this.foundation && this.foundation.setRequired(this.disabled)
+    },
+    valid () {
+      if (typeof this.valid !== "undefined") {
+        this.foundation && this.foundation.setValid(this.valid)
+      }
     }
   },
   methods: {
@@ -140,6 +150,9 @@ export default {
   computed: {
     inputTag () {
       return this.multiline ? 'textarea' : 'input'
+    },
+    inputType () {
+      return !this.multiline ? this.type : undefined
     },
     inputRows () {
       return this.multiline ? this.rows : undefined
@@ -336,7 +349,10 @@ export default {
 
     this.foundation.init()
     this.foundation.setDisabled(this.disabled)
-
+    this.foundation.setRequired(this.required)
+    if (typeof this.valid !== "undefined") {
+      this.foundation.setValid(this.valid)
+    }
 
     if (this.textbox) {
       this.ripple = new RippleBase(this)
