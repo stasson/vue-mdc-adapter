@@ -130,7 +130,6 @@ function createUmdConfig(module, env, extract) {
   const config = {
     input,
     output,
-    env,
     external: ['vue'],
     plugins: [
       vue ({ autoStyles: false, styleToImports: true }),
