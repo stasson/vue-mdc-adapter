@@ -30,6 +30,8 @@ var vm = new Vue({
 |`label`| String|| checkbox label |
 |`align-end`| Boolean|| align the checkbox after the label |
 |`value`|String| `'on'`| checkbox value |
+|`name`|String|| input name |
+
 
 ### events
 

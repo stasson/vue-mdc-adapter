@@ -33,6 +33,8 @@ var vm = new Vue({
 |`value`|[String, Array]| | bind with v-model (update on `change` event)|
 |`multiple`|Boolean| | whether the select accept multiple values|
 |`max-size`|Boolean| 8 | multi select max size |
+|`native`|String|| force native select rendering |
+|`name`|String|| native select name |
 
 #### mdc-option
 

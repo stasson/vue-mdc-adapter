@@ -2,7 +2,7 @@
   <div :class=formFieldClasses class="mdc-checkbox-wrapper">
     <div ref="root" class="mdc-checkbox"
     :class="classes" :style="styles">
-      <input ref="control" :id="_uid" type="checkbox"
+      <input ref="control" :id="_uid" type="checkbox" :name="name"
         class="mdc-checkbox__native-control" :value="value"
         @change="onChange"/>
       <div class="mdc-checkbox__background">
@@ -43,7 +43,8 @@ export default {
     'disabled': Boolean,
     'label': String,
     'align-end': Boolean,
-    'value': { type: String, default () { return 'on' } }
+    'value': { type: String, default () { return 'on' } },
+    'name': String
   },
   data () {
     return {

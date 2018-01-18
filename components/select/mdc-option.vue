@@ -22,15 +22,15 @@ export default {
     'mdc-menu-option': MDCMenuOption
   },
   computed: {
-    native () {
-      return this.mdcSelect.native
+    isNative () {
+      return this.mdcSelect.isNative
     },
     multiple () {
       return this.mdcSelect.multiple
     },
     type () {
       return this.multiple ? 'mdc-multi-option'
-        : this.native ? 'mdc-native-option'
+        : this.isNative ? 'mdc-native-option'
           : 'mdc-menu-option'
     }
   }

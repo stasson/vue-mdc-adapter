@@ -13,6 +13,7 @@
       <custom-element ref="input"
         :tag="inputTag"
         :type="inputType"
+        :name="name"
         :rows="inputRows" 
         :cols="inputCols"
         :value="value" @input="updateValue($event.target.value)"
@@ -78,6 +79,7 @@ export default {
           .indexOf(value) !== -1
       }
     },
+    name: String,
     dense: Boolean,
     label: String,
     helptext: String,
