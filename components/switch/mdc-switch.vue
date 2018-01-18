@@ -2,7 +2,7 @@
 <div :class="formFieldClasses" class="mdc-switch-wrapper">
   <div class="mdc-switch" ref=root 
     :class="{ 'mdc-switch--disabled': disabled }">
-    <input ref="control" type="checkbox" :id="_uid" 
+    <input ref="control" type="checkbox" :name="name" :id="_uid" 
       class="mdc-switch__native-control" 
       @change="onChanged" :checked="checked" :disabled="disabled"/>
     <div class="mdc-switch__background">
@@ -28,7 +28,8 @@ export default {
     'label': String,
     'alignEnd': Boolean,
     'disabled': Boolean,
-    'value': { type: String, default () { return 'on' } }
+    'value': { type: String, default () { return 'on' } },
+    'name': String
   },
   data () {
     return {

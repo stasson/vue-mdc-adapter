@@ -2,6 +2,7 @@
   <component :is="type" :multiple="multiple"
     :max-size="multiple ? maxSize : undefined"
     :disabled="disabled" :label="label" :value="value" @change="onChange"
+    :name="name"
   >
     <slot></slot>
   </component>
@@ -28,14 +29,16 @@ export default {
     event: 'change'
   },
   props: {
-    'multiple': Boolean,
-    'value': [String, Array],
-    'disabled': Boolean,
-    'label': String,
-    'max-size': {
+    multiple: Boolean,
+    value: [String, Array],
+    disabled: Boolean,
+    label: String,
+    maxSize: {
       type: [String, Number],
       default: 4
-    }
+    },
+    name: String,
+    native: Boolean
   },
   provide () {
     return {mdcSelect: this}
@@ -54,11 +57,11 @@ export default {
     type () {
       return this.multiple ? 'mdc-multi-select'
         : this.menu ? 'mdc-menu-select'
-        : this.native ? 'mdc-native-select'
+        : this.isNative ? 'mdc-native-select'
           : 'mdc-menu-select'
     },
-    native () {
-      return this.multiple || this.mobile
+    isNative () {
+      return this.native || this.multiple || this.mobile
     }
   },
   methods: {
