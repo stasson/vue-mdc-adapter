@@ -10,19 +10,27 @@
         <slot name="leading-icon">{{ hasLeadingIcon.content }}</slot>
       </i>
 
-      <custom-element ref="input"
-        :tag="inputTag"
-        :type="inputType"
-        :name="name"
-        :rows="inputRows" 
-        :cols="inputCols"
-        :value="value" @input="updateValue($event.target.value)"
+      <textarea ref="input" v-if="multiline"
         :class="inputClasses"
+        :value="value" 
+        @input="updateValue($event.target.value)"
+        :name="name"
         :minlength="minlength" :maxlength="maxlength"
         :placeholder="inputPlaceHolder"
         :aria-label="inputPlaceHolder"
         :aria-controls="inputAriaControls"
-      />
+        :rows="rows" :cols="cols" ></textarea>
+
+      <input ref="input" v-else
+        :class="inputClasses"
+        :value="value" 
+        @input="updateValue($event.target.value)"
+        :type="type"
+        :name="name"
+        :minlength="minlength" :maxlength="maxlength"
+        :placeholder="inputPlaceHolder"
+        :aria-label="inputPlaceHolder"
+        :aria-controls="inputAriaControls" />
 
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="hasLabel">
         {{ label }}
@@ -150,18 +158,6 @@ export default {
     }
   },
   computed: {
-    inputTag () {
-      return this.multiline ? 'textarea' : 'input'
-    },
-    inputType () {
-      return !this.multiline ? this.type : undefined
-    },
-    inputRows () {
-      return this.multiline ? this.rows : undefined
-    },
-    inputCols () {
-      return this.multiline ? this.cols : undefined
-    },
     inputPlaceHolder () {
       return this.fullwidth ? this.label : undefined
     },
