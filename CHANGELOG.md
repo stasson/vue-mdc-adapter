@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.8.1...v0.8.2) (2018-01-19)
+
+
+### Bug Fixes
+
+* Component properties ([f3fcff4](https://github.com/stasson/vue-mdc-adapter/commit/f3fcff4))
+* **textfield:** textarea model value ignored ([737e391](https://github.com/stasson/vue-mdc-adapter/commit/737e391)), closes [#215](https://github.com/stasson/vue-mdc-adapter/issues/215)
+
+
+### Features
+
+* add name property to texfield, checkbox, select, switch ([0de50f9](https://github.com/stasson/vue-mdc-adapter/commit/0de50f9)), closes [#212](https://github.com/stasson/vue-mdc-adapter/issues/212)
+
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.8.0...v0.8.1) (2018-01-16)
 
