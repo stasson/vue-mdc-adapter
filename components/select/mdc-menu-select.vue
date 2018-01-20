@@ -14,7 +14,7 @@
     </div>
     <mdc-menu ref="menu" 
       class="mdc-select__menu"
-      :style="menuStyles" @update="resetIndex">
+      @update="resetIndex">
       <slot></slot>
     </mdc-menu>
   </div>
@@ -42,7 +42,6 @@ export default {
       labelClasses: {},
       bottomLineClasses: {},
       surfaceStyles: {},
-      menuStyles: {},
       tabIndex: 0,
       selectedTextContent: ''
     }
@@ -100,7 +99,7 @@ export default {
       create2dRenderingContext: () =>
         document.createElement('canvas').getContext('2d'),
       setMenuElStyle: (propertyName, value) =>
-        this.$set(this.menuStyles, propertyName, value),
+        this.$refs.menu.$el.style[propertyName] = value,
       setMenuElAttr: (attr, value) =>
         this.$refs.menu.$el.setAttribute(attr, value),
       rmMenuElAttr: (attr) =>
