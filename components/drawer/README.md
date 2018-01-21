@@ -46,8 +46,12 @@ By default the drawer component is responsive and will switch from temporary to 
 |`persistent`|Boolean| undefined | shorthand for drawer-type="persistent" (*) |
 |`temporary`|Boolean| undefined | shorthand for drawer-type="temporary" (*) |
 |`toolbar-spacer`|Boolean| undefined | add a toolbar spacer  |
-|`toggle-on`|String| undefined | optional event to listen on  |
-|`toggle-on-source`|Object| vm.$root | optional event source, defaults to root bus |
+|`toggle-on`|String| undefined | optional toggle event to listen on  |
+|`toggle-on-source`|Object| vm.$root | optional toggle event source, defaults to root bus |
+|`open-on`|String| undefined | optional open event to listen on  |
+|`open-on-source`|Object| vm.$root | optional open event source, defaults to root bus |
+|`close-on`|String| undefined | optional close event to listen on  |
+|`close-on-source`|Object| vm.$root | optional close event source, defaults to root bus |
 
 > (*) drawer is responsive if `drawer-type` undefined: temporary on mobile breakpoint and persistent otherwise.
 

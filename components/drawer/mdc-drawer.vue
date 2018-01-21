@@ -35,9 +35,13 @@ export default {
         return val in ['temporary', 'persistent', 'permanent']
       }
     },
+    'toolbar-spacer': Boolean,
     'toggle-on': String,
     'toggle-on-source': {type: Object, required: false},
-    'toolbar-spacer': Boolean
+    'open-on': String,
+    'open-on-source': {type: Object, required: false},
+    'close-on': String,
+    'close-on-source': {type: Object, required: false},
   },
   provide () {
     return { mdcDrawer: this }
@@ -124,6 +128,14 @@ export default {
     if (this.toggleOn) {
       let source = this.toggleOnSource || this.$root
       source.$on(this.toggleOn, () => this.toggle())
+    }
+    if (this.openOn) {
+      let source = this.openOnSource || this.$root
+      source.$on(this.openOn, () => this.open())
+    }
+    if (this.closeOn) {
+      let source = this.closeOnSource || this.$root
+      source.$on(this.closeOn, () => this.close())
     }
     media.small.addListener(this.refreshMedia)
     media.large.addListener(this.refreshMedia)
