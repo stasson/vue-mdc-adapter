@@ -152,8 +152,14 @@ $code_font: 'Roboto Mono';
       font-weight: 400;
       letter-spacing: .04em;
       line-height: 1.25rem;
-      color: rgba(0,0,0,.87);
-    } 
+      color: rgba(0,0,0,.80);
+      text-decoration: none;
+      outline: 0
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
 
     // Modifier
   
