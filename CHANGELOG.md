@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/stasson/vue-mdc-adapter/compare/v0.8.2...v0.8.3) (2018-01-21)
+
+
+### Bug Fixes
+
+* **select:** set menu styles synchronuously ([9a9a1b6](https://github.com/stasson/vue-mdc-adapter/commit/9a9a1b6))
+
+
+### Features
+
+* **drawer:** add openOn and closeOn property ([ec1ef88](https://github.com/stasson/vue-mdc-adapter/commit/ec1ef88))
+
+
+
 <a name="0.8.2"></a>
 ## [0.8.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.8.1...v0.8.2) (2018-01-19)
 
