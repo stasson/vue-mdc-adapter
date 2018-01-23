@@ -18,7 +18,7 @@
 |`bordered`|Boolean|| bordered style |
 |`two-line`|Boolean|| two-line style |
 |`avatar-list`|Boolean|| set avatar style list |
-
+|`interactive`|Boolean|| set interactive style for hover, focus, and press states |
 
 ### Dense List
 

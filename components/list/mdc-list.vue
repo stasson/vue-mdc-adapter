@@ -8,10 +8,14 @@
 export default {
   name: 'mdc-list',
   props: {
-    'dense': Boolean,
-    'avatar-list': Boolean,
-    'two-line': Boolean,
-    'bordered': Boolean
+    dense: Boolean,
+    avatarList: Boolean,
+    twoLine: Boolean,
+    bordered: Boolean,
+    interactive: Boolean
+  },
+  provide () {
+    return { mdcList: this }
   },
   data () {
     return {
@@ -19,8 +23,9 @@ export default {
         'mdc-list--dense': this.dense,
         'mdc-list--avatar-list': this.avatarList,
         'mdc-list--two-line': this.twoLine,
-        'mdc-list--bordered': this.bordered
-      }
+        'mdc-list--bordered': this.bordered,
+        'mdc-list--non-interactive': !this.interactive
+      }      
     }
   }
 }
