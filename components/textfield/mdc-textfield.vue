@@ -48,7 +48,7 @@
           <path class="mdc-text-field__outline-path" :d="outlinePathAttr" />
         </svg>
       </div>
-      <div class="mdc-text-field__idle-outline" v-if="hasOutline"></div>
+      <div ref="outlineIdle" class="mdc-text-field__idle-outline" v-if="hasOutline"></div>
       <div ref="bottom" :class="bottomClasses" v-if="hasBottomLine"></div>
 
     </div>
@@ -286,6 +286,13 @@ export default {
         setOutlinePathAttr: (value) => {
           this.outlinePathAttr = value
         },
+        getIdleOutlineStyleValue: (propertyName) => {
+          const idleOutlineElement = this.$refs.outlineIdle;
+          if (idleOutlineElement) {
+            return window.getComputedStyle(idleOutlineElement)
+              .getPropertyValue(propertyName);
+          }
+        },
       })
       this.outlineFoundation.init()
     }    
@@ -314,12 +321,6 @@ export default {
       deregisterBottomLineEventHandler: (evtType, handler) => {
         if (this.$refs.bottom) {
           this.$refs.bottom.removeEventListener(evtType, handler);
-        }
-      },
-      getIdleOutlineStyleValue: (propertyName) => {
-        const idleOutlineElement = this.$refs.outline
-        if (idleOutlineElement) {
-          return window.getComputedStyle(idleOutlineElement).getPropertyValue(propertyName);
         }
       },
       isFocused: () => {
