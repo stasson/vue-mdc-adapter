@@ -105,7 +105,7 @@ The distribution comes in two flavors:
 
 ### ESM Distribution
 
-> The following guide assumes you have a valid Vue.js/Webpack congig.
+> The following guide assumes you have a valid Vue.js/Webpack config.
 > refer to [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) for more.
 
 | module                          | type  |
