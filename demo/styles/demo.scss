@@ -42,7 +42,7 @@ $mdc-theme-background: #fff;
 }
 
 .content {
-  padding: 80px 16px;
+  padding: 48px 32px;
   margin:16px auto 16px auto;
   max-width : 800px;
   min-width : 250px;
@@ -68,13 +68,13 @@ $mdc-theme-background: #fff;
   background-clip: initial;
   background-color: initial;
 }
+
 .demo-article {
   display:flex;
   justify-content: flex-start;
   align-items: flex-start;
   align-content: stretch;
   min-height: 50px;
-  padding: 8px;
 
   .mdc-demo {
     flex: 1 1 auto;
@@ -86,7 +86,6 @@ $mdc-theme-background: #fff;
     min-height: 100px;
     min-width: 200px;
     padding: 32px;
-    margin: 16px;
     display:flex;
     justify-content: center;
     align-items: center;

@@ -27,7 +27,8 @@ $code_font: 'Roboto Mono';
 
   @include mdc-typography(body1);
 
-    max-width: 760px;
+    // max-width: 800px;
+    // padding: 32px;
   
     h1 {
       // See _component-icons.scss for additional mutations in component pages.
