@@ -150,7 +150,18 @@ export default {
       if (typeof this.valid !== "undefined") {
         this.foundation && this.foundation.setValid(this.valid)
       }
-    }
+    },
+    dense () {
+        this.$set(this.rootClasses, 'mdc-text-field--dense', this.dense)
+    },
+    helptextPersistent () {
+      this.helperTextFoundation 
+        && this.helperTextFoundation.setPersistent(this.helptextPersistent)
+    },
+    helptextValidation () {
+      this.helperTextFoundation 
+        && this.helperTextFoundation.setValidation(this.helptextValidation)
+    },
   },
   methods: {
     updateValue (value) {
