@@ -1,1 +1,11 @@
 @import "@material/ripple/mdc-ripple";
+
+.mdc-ripple-upgraded.mdc-ripple-upgraded--background-focused::before {
+    transition-duration: 75ms;
+    opacity: 0.06;
+}
+
+.mdc-ripple-upgraded.mdc-ripple-upgraded--background-focused:hover::before {
+    transition-duration: 75ms;
+    opacity: 0.08;
+}
