@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.8.3...v0.9.0) (2018-01-27)
+
+
+### Bug Fixes
+
+* **package:** update material-components-web to version 0.29.0 ([f13d0b5](https://github.com/stasson/vue-mdc-adapter/commit/f13d0b5))
+* **select:** fix stylelint issues ([a03c907](https://github.com/stasson/vue-mdc-adapter/commit/a03c907))
+* **select:** multi select styles removed from mdc 0.29.0 ([44b8711](https://github.com/stasson/vue-mdc-adapter/commit/44b8711))
+* **texfield:** update textfield adapters as per mdc 0.29.0 ([d565a31](https://github.com/stasson/vue-mdc-adapter/commit/d565a31))
+* **textfield:** make helptext-persistent and helptext-validation props persitent ([85811a9](https://github.com/stasson/vue-mdc-adapter/commit/85811a9)), closes [#231](https://github.com/stasson/vue-mdc-adapter/issues/231)
+
+
+### Features
+
+* **list:** add support for interactive prop, default to non-interactive ([d3b9edb](https://github.com/stasson/vue-mdc-adapter/commit/d3b9edb)), closes [#224](https://github.com/stasson/vue-mdc-adapter/issues/224)
+
+
+
 <a name="0.8.3"></a>
 ## [0.8.3](https://github.com/stasson/vue-mdc-adapter/compare/v0.8.2...v0.8.3) (2018-01-21)
 
