@@ -22,7 +22,7 @@
       </mdc-layout-cell>
 
       <mdc-layout-cell>
-        <mdc-list dense bordered >
+        <mdc-list dense bordered>
           <mdc-list-item>
             <i slot="start-detail" class="material-icons">favorite_border</i>
             start details
