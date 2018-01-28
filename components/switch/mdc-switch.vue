@@ -1,16 +1,31 @@
 <template>
-<div :class="formFieldClasses" class="mdc-switch-wrapper">
-  <div class="mdc-switch" ref=root 
-    :class="{ 'mdc-switch--disabled': disabled }">
-    <input ref="control" type="checkbox" :name="name" :id="_uid" 
-      class="mdc-switch__native-control" 
-      @change="onChanged" :checked="checked" :disabled="disabled"/>
-    <div class="mdc-switch__background">
-      <div class="mdc-switch__knob"></div>
+  <div class="mdc-switch-wrapper" 
+    :class="{
+        'mdc-form-field': this.hasLabel,
+        'mdc-form-field--align-end': this.hasLabel && this.alignEnd
+      }" >
+
+    <div class="mdc-switch" 
+      :class="{'mdc-switch--disabled': disabled }">
+      <input ref="control" type="checkbox" 
+        :name="name" :id="_uid" 
+        class="mdc-switch__native-control" 
+        :checked="checked" 
+        :disabled="disabled"
+        @change="onChanged" />
+
+      <div class="mdc-switch__background">
+        <div class="mdc-switch__knob"></div>
+      </div>
+
     </div>
+
+    <label :for="_uid" v-if="hasLabel"
+      class="mdc-switch-label">
+      <slot>{{label}}</slot>
+    </label>
+
   </div>
-  <label ref="label" :for="_uid"><slot>{{label}}</slot></label>
-</div>
 </template>
 
 <script>
@@ -31,20 +46,10 @@ export default {
     'value': { type: String, default () { return 'on' } },
     'name': String
   },
-  data () {
-    return {
-      formFieldClasses: {
-        'mdc-form-field': this.label,
-        'mdc-form-field--align-end': this.label && this.alignEnd
-      }
-    }
-  },
-  watch: {
-    'disabled' (value) {
-      this.foundation.setDisabled(value)
-    }
-  },
   computed: {
+    hasLabel () {
+      return this.label || this.$slots.default
+    }
   },
   methods: {
     onChanged (event) {
