@@ -17,9 +17,9 @@ export default {
   provide () {
     return { mdcList: this }
   },
-  data () {
-    return {
-      classes: {
+  computed: {
+    classes () {
+      return {
         'mdc-list--dense': this.dense,
         'mdc-list--avatar-list': this.avatarList,
         'mdc-list--two-line': this.twoLine,
