@@ -39,7 +39,9 @@ export default {
       return this.mdcList && this.mdcList.interactive
     },
     hasSecondary () {
-      return !!this.$slots['secondary']
+      return this.$slots['secondary'] && (
+        this.mdcList && this.mdcList.twoLine
+      ) 
     },
     hasEndDetail () {
       return !!this.$slots['end-detail']
@@ -48,16 +50,38 @@ export default {
       return !!this.$slots['start-detail']
     }
   },
-  mounted () {
-    if (this.isInteractive) {
-      this.ripple = new RippleBase(this)
-      this.ripple.init()
+  watch: {
+    isInteractive (value) {
+        if (value) {
+          this.addRipple() 
+        } else {
+          this.removeRipple()
+        }
     }
   },
+  mounted () {
+    this.isInteractive && this.addRipple()
+  },
   beforeDestroy () {
-    this.ripple && this.ripple.destroy()
-    this.ripple = null
+    this.removeRipple()
+  },
+  methods: {
+    addRipple () {
+      if (!this.ripple) {
+        let ripple = new RippleBase(this)
+        ripple.init()
+        this.ripple = ripple                 
+      } 
+    },
+    removeRipple () {
+      if (this.ripple) {
+        let ripple = this.ripple
+        this.ripple = null 
+        ripple.destroy()
+      }                
+    }
   }
+  
 }
 </script>
   
