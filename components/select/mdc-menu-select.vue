@@ -49,6 +49,11 @@ export default {
   components: {
     'mdc-menu': mdcMenu 
   },
+  watch : {
+    disabled () {
+      this.foundation && this.foundation.setDisabled(this.disabled)
+    }
+  },
   methods: {
     resetIndex () {
       if (this.foundation) {
