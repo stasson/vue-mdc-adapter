@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.1"></a>
+## [0.9.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.9.0...v0.9.1) (2018-01-31)
+
+
+### Bug Fixes
+
+* **list:** make props reactive ([bb6aeea](https://github.com/stasson/vue-mdc-adapter/commit/bb6aeea)), closes [#231](https://github.com/stasson/vue-mdc-adapter/issues/231)
+* **select:** make disabled prop reactive ([6da65cc](https://github.com/stasson/vue-mdc-adapter/commit/6da65cc)), closes [#231](https://github.com/stasson/vue-mdc-adapter/issues/231)
+* **switch:** make alignEnd prop reactive ([61380ef](https://github.com/stasson/vue-mdc-adapter/commit/61380ef)), closes [#231](https://github.com/stasson/vue-mdc-adapter/issues/231)
+
+
+### Features
+
+* **list:** add mdc-list-item selected and activated property ([cccda1d](https://github.com/stasson/vue-mdc-adapter/commit/cccda1d)), closes [#235](https://github.com/stasson/vue-mdc-adapter/issues/235)
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.8.3...v0.9.0) (2018-01-27)
 
