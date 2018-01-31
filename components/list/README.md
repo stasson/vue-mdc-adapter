@@ -12,6 +12,8 @@
 
 ### Props
 
+#### mdc-list
+
 | prop | Type | Default | Description |
 |-------|------|---------|-------------|
 |`dense`|Boolean|| dense style |
@@ -19,6 +21,17 @@
 |`two-line`|Boolean|| two-line style |
 |`avatar-list`|Boolean|| set avatar style list |
 |`interactive`|Boolean|| set interactive style for hover, focus, and press states |
+
+#### mdc-list-item
+
+| prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `selected` | Boolean | | Styles the row in a selected state (*)|
+| `activated` | Boolean | | Styles the row in an activated state (*)|
+
+> Note: the difference between selected and activated states:
+- Selected is ephemeral and likely to change soon. E.g., selecting one or more photos to share in Google Photos. Multiple items in a list can be selected at the same time.
+- Activated is more permanent within the page’s lifetime. E.g., the currently highlighted destination in a nav drawer. Only one item in a list can be activated at a time.
 
 ### Dense List
 
@@ -101,6 +114,7 @@ To insert a detail, set the slot attribute to `start-detail` or `end-detail`
     <mdc-list-item>Single-line item</mdc-list-item>
   </mdc-list>
 ```
+
 > Separators span the entire list width by default, use the `padded` property to add padding
 
 ```html

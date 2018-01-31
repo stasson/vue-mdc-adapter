@@ -1,6 +1,6 @@
 <template>
   <li class="mdc-list-item"
-    :class="classes" :style="styles"   
+    :class="[classes, itemClasses]" :style="styles"   
     :tabindex="isInteractive ? '0' : undefined">
 
     <span class="mdc-list-item__graphic" v-if="hasStartDetail">
@@ -28,6 +28,10 @@ import {RippleBase} from '../ripple'
 export default {
   name: 'mdc-list-item',
   inject: ['mdcList'],
+  props: {
+    selected: Boolean,
+    activated: Boolean
+  },
   data () {
     return {
       classes: {},
@@ -35,6 +39,12 @@ export default {
     } 
   },
   computed: {
+    itemClasses () {
+      return {
+        'mdc-list-item--selected': this.selected,
+        'mdc-list-item--activated': this.activated
+      }
+    },
     isInteractive () {
       return this.mdcList && this.mdcList.interactive
     },
