@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.2"></a>
+## [0.9.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.9.1...v0.9.2) (2018-02-02)
+
+
+### Bug Fixes
+
+* **dialog:** workarround fixed element position issue whith transform ([c658ff9](https://github.com/stasson/vue-mdc-adapter/commit/c658ff9)), closes [#238](https://github.com/stasson/vue-mdc-adapter/issues/238)
+* **select:** select model should be reactive ([2dea85c](https://github.com/stasson/vue-mdc-adapter/commit/2dea85c)), closes [#239](https://github.com/stasson/vue-mdc-adapter/issues/239)
+
+
+### Features
+
+* **textfield:** add focus/blur method ([975033b](https://github.com/stasson/vue-mdc-adapter/commit/975033b))
+
+
+
 <a name="0.9.1"></a>
 ## [0.9.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.9.0...v0.9.1) (2018-01-31)
 
