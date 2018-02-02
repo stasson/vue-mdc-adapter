@@ -14,7 +14,7 @@
     </div>
     <mdc-menu ref="menu" 
       class="mdc-select__menu"
-      @update="resetIndex">
+      @update="refreshIndex">
       <slot></slot>
     </mdc-menu>
   </div>
@@ -49,22 +49,36 @@ export default {
   components: {
     'mdc-menu': mdcMenu 
   },
-  watch : {
-    disabled () {
-      this.foundation && this.foundation.setDisabled(this.disabled)
-    }
+  watch: {
+    disabled (value) {
+      this.foundation && this.foundation.setDisabled(value)
+    },
+    value () {
+      this.refreshIndex()
+    } 
   },
   methods: {
-    resetIndex () {
+    refreshIndex () {
       if (this.foundation) {
+        let options = this.$refs.menu.items
+        for (let i = 0; i < options.length; i++) {
+          let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
+          if (this.value == optionValue) {
+            this.foundation.setSelectedIndex(i)
+            //TODO: MDCFIX force float above if value is valid
+            this.$set(this.labelClasses, 'mdc-select__label--float-above', true);
+            return;
+          }
+        }
+        //TODO: MDCFIX force float above if value is valid
         this.foundation.setSelectedIndex(-1)
+        this.$set(this.labelClasses, 'mdc-select__label--float-above', false);
         this.$emit('change', this.foundation.getValue()) // TODO: MDCFIX
-        this.$delete(this.labelClasses, 'mdc-select__label--float-above')
       }
-    }
+    },
   },
   mounted () {
-    let foundation = new MDCSelectFoundation({
+    this.foundation  = new MDCSelectFoundation({
       addClass: (className) =>
         this.$set(this.classes, className, true),
       removeClass: (className) =>
@@ -146,6 +160,7 @@ export default {
 
 
     //TODO: MDCFIX
+    let foundation = this.foundation
     foundation.resize = () => {
       
       const font = foundation.adapter_.getComputedStyleValue('font');
@@ -184,25 +199,11 @@ export default {
 
       foundation.adapter_.setStyle('width', `${maxTextLength}px`);
     }
-
-    foundation.init()
-    let options = this.$refs.menu.items
-    for (let i = 0; i < options.length; i++) {
-      let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
-      if (this.value === optionValue) {
-        foundation.setSelectedIndex(i)
-        
-        //TODO: MDCFIX
-        //force float above if value valid value
-        this.$set(this.labelClasses, 'mdc-select__label--float-above', true);
-        
-        break;
-      }
-    }
-    foundation.setDisabled(this.disabled)
-
-    this.foundation = foundation
-
+    /// 
+    
+    this.foundation.init()
+    this.foundation.setDisabled(this.disabled)
+    this.refreshIndex ()
     if (this.value !== this.foundation.getValue()) {
       this.$emit('change', this.foundation.getValue())
     }
