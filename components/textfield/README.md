@@ -133,5 +133,12 @@ var vm = new Vue({
 |`@blur`| - |emitted on focus lost |
 |`@icon-action`| - |emitted on icon action |
 
+### methods
+
+| event | args | Description |
+|-------|------|-------------|
+|`focus()` | - | focus the input element |
+| `blur()` | - | blur the input element |
+
 ### Reference
 - <https://material.io/components/web/catalog/input-controls/text-fields>

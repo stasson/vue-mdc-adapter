@@ -166,6 +166,12 @@ export default {
   methods: {
     updateValue (value) {
       this.$emit('input', value)
+    },
+    focus () {
+      this.$refs.input && this.$refs.input.focus() 
+    },
+    blur () {
+      this.$refs.input && this.$refs.input.blur() 
     }
   },
   computed: {
