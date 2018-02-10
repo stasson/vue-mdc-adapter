@@ -72,8 +72,4 @@
 
 .mdc-multi-select:focus .mdc-list-item:checked {
   @include mdc-theme-prop(background-color, primary);
-
-  @include mdc-theme-dark {
-    @include mdc-theme-prop(background-color, text-primary-on-dark);
-  }
 }
