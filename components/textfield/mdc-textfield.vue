@@ -63,14 +63,14 @@
 
 <script>
 import MDCTextfieldFoundation from '@material/textfield/foundation'
-import MDCTextFieldBottomLineFoundation from '@material/textfield/bottom-line/foundation'
+import MDCLineRippleFoundation from '@material/line-ripple/foundation'
 import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation'
 import MDCTextFieldIconFoundation from '@material/textfield/icon/foundation';
 import MDCTextFieldLabelFoundation from '@material/textfield/label/foundation';
 import MDCTextFieldOutlineFoundation from '@material/textfield/outline/foundation';
 
 import {
-  emitCustomEvent, extractIconProp, 
+  extractIconProp, 
   DispatchFocusMixin, CustomElementMixin} from '../base'
 import {RippleBase} from '../ripple'
 
@@ -129,7 +129,7 @@ export default {
         'mdc-text-field__label': true
       },
       bottomClasses: {
-        'mdc-text-field__bottom-line': true
+        'mdc-line-ripple': true
       },
       helpClasses: {
         'mdc-text-field-helper-text': true,
@@ -212,12 +212,15 @@ export default {
   mounted () {
 
     if (this.$refs.bottom) {
-      this.bottomLineFoundation = new MDCTextFieldBottomLineFoundation({
+      this.bottomLineFoundation = new MDCLineRippleFoundation({
         addClass: (className) => {
           this.$set(this.bottomClasses, className, true)
         },
         removeClass: (className) => {
           this.$delete(this.bottomClasses, className)
+        },
+        hasClass: (className) => {
+          this.bottomClasses.classList.contains(className)
         },
         setAttr: (name, value) => {
           this.$refs.bottom.setAttribute(name, value)
@@ -228,12 +231,12 @@ export default {
         deregisterEventHandler: (evtType, handler) => {
           this.$refs.bottom.removeEventListener(evtType, handler)
         },
-        notifyAnimationEnd: () => {
-          emitCustomEvent(
-            this.$refs.bottom,
-            MDCTextFieldBottomLineFoundation.strings.ANIMATION_END_EVENT,
-            {});
-        },
+        // notifyAnimationEnd: () => {
+        //   emitCustomEvent(
+        //     this.$refs.bottom,
+        //     MDCLineRippleFoundation.strings.ANIMATION_END_EVENT,
+        //     {});
+        // },
       })
       this.bottomLineFoundation.init()
     }
@@ -330,20 +333,35 @@ export default {
       deregisterTextFieldInteractionHandler: (evtType, handler) => {
         this.$refs.root.removeEventListener(evtType, handler)
       },
-      registerBottomLineEventHandler: (evtType, handler) => {
-        if (this.$refs.bottom) {
-          this.$refs.bottom.addEventListener(evtType, handler);
-        }
-      },
-      deregisterBottomLineEventHandler: (evtType, handler) => {
-        if (this.$refs.bottom) {
-          this.$refs.bottom.removeEventListener(evtType, handler);
-        }
-      },
+      // registerBottomLineEventHandler: (evtType, handler) => {
+      //   if (this.$refs.bottom) {
+      //     this.$refs.bottom.addEventListener(evtType, handler);
+      //   }
+      // },
+      // deregisterBottomLineEventHandler: (evtType, handler) => {
+      //   if (this.$refs.bottom) {
+      //     this.$refs.bottom.removeEventListener(evtType, handler);
+      //   }
+      // },
       isFocused: () => {
         return document.activeElement === this.$refs.input
       },
       isRtl: () => window.getComputedStyle(this.$refs.root).getPropertyValue('direction') === 'rtl',     
+      deactivateLineRipple: () => {
+        if (this.bottom) {
+          this.bottom.deactivate();
+        }
+      },
+      activateLineRipple: () => {
+        if (this.bottom) {
+          this.bottom.activate();
+        }
+      },
+      setLineRippleTransformOrigin: (normalizedX) => {
+        if (this.bottom) {
+          this.bottom.setRippleCenter(normalizedX);
+        }
+      },
       registerInputInteractionHandler: (evtType, handler) => {
         this.$refs.input.addEventListener(evtType, handler)
       },
