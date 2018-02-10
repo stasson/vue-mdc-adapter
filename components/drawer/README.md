@@ -80,6 +80,7 @@ By default the drawer component is responsive and will switch from temporary to 
 |`exact`|Boolean| false | router-link property _(*)_ |
 |`active-class`|String| router-link-active | router-link property _(*)_ |
 |`exact-active-class`|String| router-link-exact-active | router-link property _(*)_ |
+|`activated`|Boolean| undefined | whether this item is selected (not needed if router-link mode is used) |
 
 > _(*)_ Requires [vue-router](https://router.vuejs.org)
 > If the `to` property is defined, the item behaves as a

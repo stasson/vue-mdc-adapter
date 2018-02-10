@@ -1,7 +1,7 @@
 <template>
   <custom-link :link="link" 
     class="mdc-drawer-item mdc-list-item" 
-    :class="classes" :style="styles"
+    :class="[classes. itemClasses]" :style="styles"
     @click="onClick">
     <span class="mdc-list-item__graphic" v-if="hasStartDetail">
       <slot name="start-detail">
@@ -21,8 +21,16 @@ export default {
   inject: ['mdcDrawer'],
   mixins: [DispatchEventMixin, CustomLinkMixin],
   props: {
-    'start-icon': String,
-    'temporary-close': {type: Boolean, default: true},
+    startIcon: String,
+    temporaryClose: { 
+      type: Boolean, 
+      default: true
+    },
+    activated: Boolean,
+    exactActiveClass: { 
+      type: String, 
+      default: 'mdc-list-item--activated' 
+    }
   },
   data () {
     return {
@@ -31,6 +39,11 @@ export default {
     }
   },
   computed: {
+    itemClasses () {
+      return {
+        'mdc-list-item--activated': this.activated
+      }
+    },
     hasStartDetail () {
       return this.startIcon || this.$slots['start-detail']
     }
