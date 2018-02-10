@@ -28,7 +28,7 @@ export default {
     event: 'change'
   },
   props: {
-    'name': String,
+    'name': {type: String, required: true},
     'value': String,
     'picked': String,
     'checked': Boolean,

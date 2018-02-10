@@ -1,9 +1,9 @@
 ## Usage
 
 ```html
-<mdc-radio v-model="answer" label="Yes for sure"  />
-<mdc-radio v-model="answer" label="definitely NO!" />
-<mdc-radio v-model="answer" label="I guess"  checked />
+<mdc-radio v-model="answer" name="radios" label="Yes for sure"  />
+<mdc-radio v-model="answer" name="radios" label="definitely NO!" />
+<mdc-radio v-model="answer" name="radios" label="I guess"  checked />
 
 <p>Answer:  {{ answer }}</p>
 ```
@@ -19,22 +19,24 @@ var vm = new Vue({
 > or use default slot for label
 
 ```html
-<mdc-radio v-model="answer">Yes for sure</mdc-radio>
-<mdc-radio v-model="answer">definitely NO!</mdc-radio>
-<mdc-radio v-model="answer" checked>"I guess"</mdc-radio>
+<mdc-radio v-model="answer" name="radios">Yes for sure</mdc-radio>
+<mdc-radio v-model="answer" name="radios">definitely NO!</mdc-radio>
+<mdc-radio v-model="answer" name="radios"checked>"I guess"</mdc-radio>
 ```
 
 ### props
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
+|`name`|String || radio group name (__*__)  |
 |`label`| String|static| radio label |
 |`align-end`| Boolean|| align the radio after the label |
-|`name`|String|| radio group name  |
 |`value`|String| `label`| radio value, defaults to label value if any |
 |`checked`|Boolean|| forces this radio to be selected. follows v-model otherwise |
 |`:disabled`| Boolean|| whether the radio is disabled |
 |`v-model`| String || tracks selected radio's value |
+
+> (__*__) name prop is required for proper behavior.
 
 ### events
 
