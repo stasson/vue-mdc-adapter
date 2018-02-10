@@ -17,6 +17,7 @@
         :name="name"
         :minlength="minlength" :maxlength="maxlength"
         :placeholder="inputPlaceHolder"
+        :readonly="readonly"
         :aria-label="inputPlaceHolder"
         :aria-controls="inputAriaControls"
         :rows="rows" :cols="cols" ></textarea>
@@ -28,6 +29,7 @@
         :type="type"
         :name="name"
         :minlength="minlength" :maxlength="maxlength"
+        :readonly="readonly"
         :placeholder="inputPlaceHolder"
         :aria-label="inputPlaceHolder"
         :aria-controls="inputAriaControls" />
@@ -97,6 +99,7 @@ export default {
     outline: Boolean,
     disabled: Boolean,
     required: Boolean,
+    readonly: Boolean,
     valid: {type: Boolean, default: undefined}, 
     minlength: { type: [Number, String], default: undefined },
     maxlength: { type: [Number, String], default: undefined },

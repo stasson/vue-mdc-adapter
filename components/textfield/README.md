@@ -100,6 +100,7 @@ var vm = new Vue({
 |`disabled`| [Number, String] | | binds to disabled state  |
 |`type`|String|| input type attribute  |
 |`name`|String|| input name attribute  |
+|`readonly`|String|| input is readonly  |
 |`label`| String | | hint text |
 |`dense`| Boolean | | compresses the textfield to make it slightly smaller |
 |`outline`| Boolean | | whether the textfield is outlined  |
