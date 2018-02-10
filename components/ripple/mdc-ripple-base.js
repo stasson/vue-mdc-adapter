@@ -33,6 +33,7 @@ export class RippleBase extends MDCRippleFoundation {
       removeClass (className) {
         vm.$delete(vm.classes, className)
       },
+      containsEventTarget: (target) => vm.$el.contains(target),
       registerInteractionHandler: (evt, handler) => {
         vm.$el.addEventListener(evt, handler)
       },
