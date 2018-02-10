@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {MDCSimpleMenuFoundation} from '@material/menu/simple/foundation'
+import {MDCMenuFoundation} from '@material/menu/foundation'
 import {getTransformPropertyName} from '@material/menu/util'
 import {emitCustomEvent} from '../base'
 
@@ -56,14 +56,13 @@ export default {
 
     this._previousFocus = undefined
 
-    this.foundation = new MDCSimpleMenuFoundation({
+    this.foundation = new MDCMenuFoundation({
       addClass: (className) => this.$set(this.classes, className, true),
       removeClass: (className) => this.$delete(this.classes, className),
       hasClass: (className) => this.$refs.root.classList.contains(className),
       hasNecessaryDom: () => Boolean(this.$refs.items),
       getAttributeForEventTarget: (target, attributeName) =>
         target.getAttribute(attributeName),
-      eventTargetHasClass: (target, className) => target.classList.contains(className),  
       getInnerDimensions: () => ({
         width: this.$refs.items.offsetWidth,
         height: this.$refs.items.offsetHeight
@@ -93,13 +92,13 @@ export default {
         }
         this.$emit('select', evt)
         emitCustomEvent(this.$el,
-          MDCSimpleMenuFoundation.strings.SELECTED_EVENT,
+          MDCMenuFoundation.strings.SELECTED_EVENT,
           evt)
       },
       notifyCancel: () => {
         this.$emit('cancel')
         emitCustomEvent(this.$el,
-          MDCSimpleMenuFoundation.strings.CANCEL_EVENT,
+          MDCMenuFoundation.strings.CANCEL_EVENT,
           {})
       },
       saveFocus: () => { this._previousFocus = document.activeElement },
@@ -125,6 +124,18 @@ export default {
       },
       setMaxHeight: (height) => {
         this.$set(this.styles,'max-height', height)
+      },
+      setAttrForOptionAtIndex: (index, attr, value) => {
+        this.items[index].setAttribute(attr, value)
+      },
+      rmAttrForOptionAtIndex: (index, attr) => {
+        this.items[index].removeAttribute(attr)
+      },
+      addClassForOptionAtIndex: (index, className) => {
+        this.items[index].classList.add(className)
+      },
+      rmClassForOptionAtIndex: (index, className) => {
+        this.items[index].classList.remove(className)
       },
     })
 
