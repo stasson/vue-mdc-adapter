@@ -127,8 +127,8 @@ export default {
         'mdc-text-field--dense': this.dense,
         'mdc-text-field--fullwidth': this.fullwidth,
         'mdc-text-field--textarea': this.multiline,
-        'mdc-text-field--box': this.box,
-        'mdc-text-field--outlined': this.outline,
+        'mdc-text-field--box': !this.fullwidth && this.box,
+        'mdc-text-field--outlined': !this.fullwidth && this.outline,
       },
       inputClasses: {
         'mdc-text-field__input': true
@@ -190,13 +190,13 @@ export default {
       return this.help ? 'help-' + this._uid: undefined
     },
     hasLabel () {
-      return this.label && !this.fullwidth
+      return !this.fullwidth && this.label
     },
     hasOutline () {
-      return this.outline
+      return !this.fullwidth && this.outline 
     },
     hasBottomLine () {
-      return !this.outline && !this.multiline
+      return !this.hasOutline && !this.multiline
     },
     hasLeadingIcon () {
       if ((this.leadingIcon || this.$slots['leading-icon'])
