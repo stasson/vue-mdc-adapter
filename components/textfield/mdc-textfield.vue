@@ -11,28 +11,30 @@
       </i>
 
       <textarea ref="input" v-if="multiline"
+        v-on="$listeners"
+        v-bind="$attrs"
         :class="inputClasses"
         :value="value" 
         @input="updateValue($event.target.value)"
-        :name="name"
         :minlength="minlength" :maxlength="maxlength"
         :placeholder="inputPlaceHolder"
-        :readonly="readonly"
         :aria-label="inputPlaceHolder"
         :aria-controls="inputAriaControls"
-        :rows="rows" :cols="cols" ></textarea>
+        :rows="rows" :cols="cols" 
+        ></textarea>
 
       <input ref="input" v-else
+        v-on="$listeners" 
+        v-bind="$attrs"
         :class="inputClasses"
         :value="value" 
         @input="updateValue($event.target.value)"
         :type="type"
-        :name="name"
         :minlength="minlength" :maxlength="maxlength"
-        :readonly="readonly"
         :placeholder="inputPlaceHolder"
         :aria-label="inputPlaceHolder"
-        :aria-controls="inputAriaControls" />
+        :aria-controls="inputAriaControls" 
+        />
 
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="hasLabel">
         {{ label }}
@@ -79,6 +81,11 @@ import {RippleBase} from '../ripple'
 export default {
   name: 'mdc-textfield',
   mixins: [CustomElementMixin, DispatchFocusMixin],
+  inheritAttrs: false,
+  model: {
+    prop: 'value',
+    event: 'model'
+  },
   props: {
     value: String,
     type: {
@@ -89,7 +96,6 @@ export default {
           .indexOf(value) !== -1
       }
     },
-    name: String,
     dense: Boolean,
     label: String,
     helptext: String,
@@ -99,7 +105,6 @@ export default {
     outline: Boolean,
     disabled: Boolean,
     required: Boolean,
-    readonly: Boolean,
     valid: {type: Boolean, default: undefined}, 
     minlength: { type: [Number, String], default: undefined },
     maxlength: { type: [Number, String], default: undefined },
@@ -168,7 +173,7 @@ export default {
   },
   methods: {
     updateValue (value) {
-      this.$emit('input', value)
+      this.$emit('model', value)
     },
     focus () {
       this.$refs.input && this.$refs.input.focus() 
@@ -234,12 +239,6 @@ export default {
         deregisterEventHandler: (evtType, handler) => {
           this.$refs.bottom.removeEventListener(evtType, handler)
         },
-        // notifyAnimationEnd: () => {
-        //   emitCustomEvent(
-        //     this.$refs.bottom,
-        //     MDCLineRippleFoundation.strings.ANIMATION_END_EVENT,
-        //     {});
-        // },
       })
       this.bottomLineFoundation.init()
     }
@@ -336,16 +335,6 @@ export default {
       deregisterTextFieldInteractionHandler: (evtType, handler) => {
         this.$refs.root.removeEventListener(evtType, handler)
       },
-      // registerBottomLineEventHandler: (evtType, handler) => {
-      //   if (this.$refs.bottom) {
-      //     this.$refs.bottom.addEventListener(evtType, handler);
-      //   }
-      // },
-      // deregisterBottomLineEventHandler: (evtType, handler) => {
-      //   if (this.$refs.bottom) {
-      //     this.$refs.bottom.removeEventListener(evtType, handler);
-      //   }
-      // },
       isFocused: () => {
         return document.activeElement === this.$refs.input
       },

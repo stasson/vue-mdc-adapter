@@ -98,9 +98,7 @@ var vm = new Vue({
 |-------|------|---------|-------------|
 |`v-model`| String || binds textfield value |
 |`disabled`| [Number, String] | | binds to disabled state  |
-|`type`|String|| input type attribute  |
-|`name`|String|| input name attribute  |
-|`readonly`|String|| input is readonly  |
+|`type`|String| text | input type attribute  |
 |`label`| String | | hint text |
 |`dense`| Boolean | | compresses the textfield to make it slightly smaller |
 |`outline`| Boolean | | whether the textfield is outlined  |
@@ -120,11 +118,9 @@ var vm = new Vue({
 |`trailing-icon`|[String, Array, Object ] | | trailing icon _*_|
 |`leading-icon`| [String, Array, Object ] | | leading icon _*_ |
 
-(*) icon prop usage: 
-- use `String` for material icons
-- use `Array` to specify icon classList
-- use `{className: String, textContent: String}` for custom class and/or content
-- use `trailing-icon` or `leading-icon` slots for  custom icon markup (svg, ...).
+> other attributes (`name`, `readonly`, ... ) are being passed down to the rendered input element.
+
+> (*) icon prop usage: use `String` for material icons, `Array` to specify icon classList,  `{className: String, textContent: String}` for custom class and/or content, or use `trailing-icon` or `leading-icon` slots for  custom icon markup (svg, ...).
 
 ### events
 
@@ -133,6 +129,15 @@ var vm = new Vue({
 |`@focus`| - |emitted on focus gained |
 |`@blur`| - |emitted on focus lost |
 |`@icon-action`| - |emitted on icon action |
+|`@[listener]`| - |emitted on icon action |
+
+> Other bound listeners are being passsed down to the rendered input element
+
+```html
+<mdc-textfield v-model="text" label="Hint text" 
+  @keypress.enter="handleEnterKey"/>
+```
+
 
 ### methods
 
