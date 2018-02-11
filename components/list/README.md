@@ -33,6 +33,8 @@
 - Selected is ephemeral and likely to change soon. E.g., selecting one or more photos to share in Google Photos. Multiple items in a list can be selected at the same time.
 - Activated is more permanent within the page’s lifetime. E.g., the currently highlighted destination in a nav drawer. Only one item in a list can be activated at a time.
 
+> if the list is interactive, `mdc-list-item` will dispatch mouse and keyboard listeners (`@click`, ...)
+
 ### Dense List
 
 ```html

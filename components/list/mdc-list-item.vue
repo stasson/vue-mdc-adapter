@@ -1,7 +1,8 @@
 <template>
   <li class="mdc-list-item"
     :class="[classes, itemClasses]" :style="styles"   
-    :tabindex="isInteractive ? '0' : undefined">
+    :tabindex="isInteractive ? '0' : undefined"
+    v-on="isInteractive ? $listeners : {}">
 
     <span class="mdc-list-item__graphic" v-if="hasStartDetail">
       <slot name="start-detail"></slot>
