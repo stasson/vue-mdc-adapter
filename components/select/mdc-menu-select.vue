@@ -34,11 +34,14 @@ export default {
     multiple: Boolean,
     value: [String, Array],
     disabled: Boolean,
-    label: String
+    label: String, 
+    box: Boolean
   },
   data () {
     return {
-      classes: {},
+      classes: {
+        'mdc-select--box': this.box
+      },
       labelClasses: {},
       bottomLineClasses: {},
       surfaceStyles: {},
@@ -55,7 +58,10 @@ export default {
     },
     value () {
       this.refreshIndex()
-    } 
+    },
+    box () {
+      this.$set(this.classes, 'mdc-select--box' , this.box)
+    }
   },
   methods: {
     refreshIndex () {

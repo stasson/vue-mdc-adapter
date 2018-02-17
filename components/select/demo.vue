@@ -6,7 +6,7 @@
         >{{type}}</mdc-option>
       </mdc-select>
       <br><br><br>
-      <mdc-select v-model="selectedValue" label="Pick up a food"
+      <mdc-select box v-model="selectedValue" label="Pick up a food"
         v-if="selectedType">
         <mdc-option v-for="option of options" :key="option"
         :value="option.toLowerCase()"

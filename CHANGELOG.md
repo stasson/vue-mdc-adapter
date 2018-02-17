@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.9.2...v0.10.0) (2018-02-17)
+
+
+### Bug Fixes
+
+* **icon:** icon component typo ([9ecfafc](https://github.com/stasson/vue-mdc-adapter/commit/9ecfafc))
+* **list:** make props reactive ([989b09a](https://github.com/stasson/vue-mdc-adapter/commit/989b09a)), closes [#231](https://github.com/stasson/vue-mdc-adapter/issues/231)
+* **package:** update material-components-web to version 0.30.0 ([3402eab](https://github.com/stasson/vue-mdc-adapter/commit/3402eab))
+* **radio:** fix unit tests err log ([639e28c](https://github.com/stasson/vue-mdc-adapter/commit/639e28c))
+* **radio:** name prop is required ([b6bdac7](https://github.com/stasson/vue-mdc-adapter/commit/b6bdac7)), closes [#251](https://github.com/stasson/vue-mdc-adapter/issues/251)
+* **select:** make disabled prop reactive ([f22883d](https://github.com/stasson/vue-mdc-adapter/commit/f22883d)), closes [#231](https://github.com/stasson/vue-mdc-adapter/issues/231)
+* **switch:** make alignEnd prop reactive ([c5cde20](https://github.com/stasson/vue-mdc-adapter/commit/c5cde20)), closes [#231](https://github.com/stasson/vue-mdc-adapter/issues/231)
+* **tabs:** property link is missing on custom-link ([e3fbf80](https://github.com/stasson/vue-mdc-adapter/commit/e3fbf80))
+* **textfield:** disallow outline or box style for fullwidth textfield ([2d2502d](https://github.com/stasson/vue-mdc-adapter/commit/2d2502d)), closes [#243](https://github.com/stasson/vue-mdc-adapter/issues/243)
+
+
+### Features
+
+* **card:** card components updated as per MDCWeb 0.30.0 ([d4215d4](https://github.com/stasson/vue-mdc-adapter/commit/d4215d4)), closes [#258](https://github.com/stasson/vue-mdc-adapter/issues/258)
+* **checkbox:** refactor checkmark as per MDCWeb 0.30.0 ([4a455b4](https://github.com/stasson/vue-mdc-adapter/commit/4a455b4))
+* **drawer:** add support for drawer-item activated style ([94c6c59](https://github.com/stasson/vue-mdc-adapter/commit/94c6c59)), closes [#247](https://github.com/stasson/vue-mdc-adapter/issues/247)
+* **list:** support item [@click](https://github.com/click) when list is interactive ([5f0527d](https://github.com/stasson/vue-mdc-adapter/commit/5f0527d)), closes [#246](https://github.com/stasson/vue-mdc-adapter/issues/246)
+* **menu:** support item select attributes as per MDCWeb 0.30.0 ([2eb6322](https://github.com/stasson/vue-mdc-adapter/commit/2eb6322))
+* **ripple:** new ripple style and behavior as per MDCWeb 0.30.0 ([5f81089](https://github.com/stasson/vue-mdc-adapter/commit/5f81089))
+* **select:** add non box version as per MDCWeb 0.30.0 ([990b091](https://github.com/stasson/vue-mdc-adapter/commit/990b091)), closes [#260](https://github.com/stasson/vue-mdc-adapter/issues/260)
+* **textfield:** add readonly support ([63c7834](https://github.com/stasson/vue-mdc-adapter/commit/63c7834)), closes [#252](https://github.com/stasson/vue-mdc-adapter/issues/252) [#250](https://github.com/stasson/vue-mdc-adapter/issues/250)
+* **textfield:** new ripl line as per MDCWeb 0.30.0 ([9f7c555](https://github.com/stasson/vue-mdc-adapter/commit/9f7c555))
+* **textfield:** pass event-listeners and attributes to input element ([8cc88e2](https://github.com/stasson/vue-mdc-adapter/commit/8cc88e2)), closes [#242](https://github.com/stasson/vue-mdc-adapter/issues/242)
+
+
+### BREAKING CHANGES
+
+* **card:** mdc-card-horizontal and mdc-card-img have been removed, check doc for new action
+block api
+
+
+
 <a name="0.9.2"></a>
 ## [0.9.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.9.1...v0.9.2) (2018-02-02)
 
