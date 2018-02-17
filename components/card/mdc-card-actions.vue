@@ -1,5 +1,5 @@
 <template>
-  <section class="mdc-card-actions" 
+  <section class="mdc-card-actions mdc-card__actions" 
           :class="classes">
     <slot>
     </slot>
@@ -7,23 +7,18 @@
 </template>
 
 <script>
-import MDCCardActionButton from './mdc-card-action-button.vue'
 
 export default {
   name: 'mdc-card-actions',
   props: {
-    vertical: Boolean
+    fullBleed: Boolean
   },
-  components: {
-    'mdc-card-action-button': MDCCardActionButton
-  },
-  data () {
-    return {
-      classes: {
-        'mdc-card__actions': true,
-        'mdc-card__actions--vertical': this.vertical
+  computed: {
+    classes () {
+      return {
+          'mdc-card__actions--full-bleed': this.fullBleed,
       }
     }
-  }
+  },
 }
 </script>

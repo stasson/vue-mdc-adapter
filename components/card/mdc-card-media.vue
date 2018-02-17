@@ -1,34 +1,30 @@
 <template>
-  <section class="mdc-card-media mdc-card__media" :style="styles"
-    :classes="{'mdc-theme--dark': dark}" >
-    <slot>
-    </slot>
+  <section class="mdc-card-media mdc-card__media" 
+    :class="classes" :style="styles">
+    <div class="mdc-card__media-content" v-if="$slots.default">
+      <slot>
+      </slot>
+    </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'mdc-card-media',
+  name: "mdc-card-media",
   props: {
     src: String,
-    size:String,
-    position:String,
-    height: [String, Number],
-    dark: Boolean
+    'square': Boolean
   },
   computed: {
-    styles () {
+    styles() {
       var styles = {
-        backgroundImage: `url(${this.src})`,
-        backgroundSize: this.size,
-        backgroundPosition: this.position
-      }
+        backgroundImage: `url(${this.src})`
+      };
 
-      if (this.height) {
-        styles.height = `${this.height}px`
-      }
-
-      return styles
+      return styles;
+    }, 
+    classes() {
+      return this.square ? 'mdc-card__media--square': 'mdc-card__media--16-9'
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-card" :class="classes">
+  <div class="mdc-card" :class="{'mdc-card--stroked': stroked}">
     <slot>
     </slot>
   </div>
@@ -7,16 +7,9 @@
 
 <script>
 export default {
-  name: 'mdc-card',
+  name: "mdc-card",
   props: {
-    'dark': Boolean
-  },
-  data () {
-    return {
-      classes: {
-        'mdc-card--theme-dark': this.dark
-      }
-    }
+    stroked: Boolean
   }
-}
+};
 </script>

@@ -5,10 +5,11 @@ import mdcCardHeader from './mdc-card-header.vue'
 import mdcCardTitle from './mdc-card-title.vue'
 import mdcCardSubtitle from './mdc-card-subtitle.vue'
 import mdcCardText from './mdc-card-text.vue'
-import mdcCardHorizontal from './mdc-card-horizontal.vue'
-import mdcCardImg from './mdc-card-img.vue'
 import mdcCardActions from './mdc-card-actions.vue'
+import mdcCardActionButtons from './mdc-card-action-buttons.vue'
 import mdcCardActionButton from './mdc-card-action-button.vue'
+import mdcCardActionIcons from './mdc-card-action-icons.vue'
+import mdcCardActionIcon from './mdc-card-action-icon.vue'
 
 export {
   mdcCard, 
@@ -17,10 +18,11 @@ export {
   mdcCardTitle,
   mdcCardSubtitle,
   mdcCardText,
-  mdcCardHorizontal,
-  mdcCardImg,
   mdcCardActions,
-  mdcCardActionButton
+  mdcCardActionButtons,
+  mdcCardActionButton,
+  mdcCardActionIcons,
+  mdcCardActionIcon
 }
 
 export default BasePlugin({
@@ -30,8 +32,9 @@ export default BasePlugin({
   mdcCardTitle,
   mdcCardSubtitle,
   mdcCardText,
-  mdcCardHorizontal,
-  mdcCardImg,
   mdcCardActions,
-  mdcCardActionButton
+  mdcCardActionButtons,
+  mdcCardActionButton,
+  mdcCardActionIcons,
+  mdcCardActionIcon
 })
