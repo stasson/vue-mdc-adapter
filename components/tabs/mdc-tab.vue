@@ -1,5 +1,7 @@
 <template>
-  <custom-link class="mdc-tab" :class="classes" :style="styles"
+  <custom-link class="mdc-tab" 
+    :class="classes" :style="styles"
+    :link="link" 
     @click="dispatchEvent">
 
     <i ref="icon" v-if="!!hasIcon"
