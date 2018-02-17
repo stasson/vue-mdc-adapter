@@ -23,7 +23,10 @@ export default {
     value: [String, Array],
     disabled: Boolean,
     label: String,
-    'max-size': [String, Number]
+    maxSize: {
+      type: [String, Number],
+      default: 4
+    }
   },
   data () {
     return {

@@ -1,8 +1,8 @@
 <template>
   <component :is="type" :multiple="multiple"
-    :max-size="multiple ? maxSize : undefined"
-    :disabled="disabled" :label="label" :value="value" @change="onChange"
-    :name="name"
+    :label="label" 
+    :value="value" @change="onChange"
+    v-bind="$attrs"
   >
     <slot></slot>
   </component>
@@ -31,13 +31,7 @@ export default {
   props: {
     multiple: Boolean,
     value: [String, Array],
-    disabled: Boolean,
     label: String,
-    maxSize: {
-      type: [String, Number],
-      default: 4
-    },
-    name: String,
     native: Boolean
   },
   provide () {

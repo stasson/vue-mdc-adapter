@@ -18,40 +18,44 @@ var vm = new Vue({
   }
 })
 ```
-> For better cross-device experiennce, `<mdc-select>` will switch from menu to 
+
+> For better cross-device experiennce, `<mdc-select>` will switch from menu to
 > native rendering based on the media query
 > `(max-width: 600px) and (pointer: coarse)`.
 
-### Props
+### mdc-select
 
-#### mdc-select
+| props      | Type            | Default | Description                                  |
+| ---------- | --------------- | ------- | -------------------------------------------- |
+| `disabled` | Boolean         | false   | whether this select is disabled              |
+| `label`    | String          |         | the selection label                          |
+| `value`    | [String, Array] |         | bind with v-model (update on `change` event) |
+| `multiple` | Boolean         |         | whether the select accept multiple values    |
+| `max-size` | Boolean         | 4       | multi select max size                        |
+| `native`   | String          |         | force native select rendering                |
+| `name`     | String          |         | native select name                           |
 
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`disabled`|Boolean| false | whether this select is disabled |
-|`label`|String| | the selection label |
-|`value`|[String, Array]| | bind with v-model (update on `change` event)|
-|`multiple`|Boolean| | whether the select accept multiple values|
-|`max-size`|Boolean| 8 | multi select max size |
-|`native`|String|| force native select rendering |
-|`name`|String|| native select name |
+| event    | Description             |
+| -------- | ----------------------- |
+| `@focus` | emitted on focus gained |
+| `@blur`  | emitted on focus lost   |
 
-#### mdc-option
+### mdc-option
 
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`disabled`|Boolean| false | whether this option is disabled |
-|`value`|String| | option value |
+| props      | Type    | Default | Description                     |
+| ---------- | ------- | ------- | ------------------------------- |
+| `disabled` | Boolean | false   | whether this option is disabled |
+| `value`    | String  |         | option value                    |
 
-### events
+> If no option value is specified, the select component will take the option's textContent.
 
-#### mdc-select
-
-| event | args | Description |
-|-------|------|-------------|
-|`@focus`| - |emitted on focus gained |
-|`@blur`| - |emitted on focus lost |
-
+```html
+<mdc-select v-model="selected" label=">Please select one">
+  <mdc-option value="a">A</mdc-option>
+  <mdc-option value="b">B</mdc-option>
+  <mdc-option value="c">C</mdc-option>
+</mdc-select>
+```
 
 ### Multiple select
 
@@ -74,21 +78,9 @@ var vm = new Vue({
 })
 ```
 
-> multi-select are always rendered natively. the size is reactive and is caped  
-> by the max-size property    
-
-### Option value
-
-> If no option value is specified, the select component will take the option' 
-> textContent.
-
-```html
-<mdc-select v-model="selected" label=">Please select one">
-  <mdc-option value="a">A</mdc-option>
-  <mdc-option value="b">B</mdc-option>
-  <mdc-option value="c">C</mdc-option>
-</mdc-select>
-```
+> multi-select are always rendered natively. the size is reactive and is caped
+> by the max-size property
 
 ### Reference
+
 - <https://material.io/components/web/catalog/input-controls/select-menus>

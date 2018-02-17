@@ -1,6 +1,7 @@
 ## Usage
 
 ### Single-line
+
 ```html
 <mdc-textfield v-model="text" label="Hint text" />
 <mdc-textfield v-model="text" label="Hint text dense" />
@@ -15,11 +16,13 @@ var vm = new Vue({
 ```
 
 ### Help text
+
 ```html
 <mdc-textfield v-model="text" label="Hint text"  helptext="Help text...">
 ```
 
 ### Multiline
+
 ```html
 <mdc-textfield v-model="text" label="Hint text" multiline rows="8" cols="40" />
 ```
@@ -94,29 +97,29 @@ var vm = new Vue({
 
 ### props
 
-| props | Type | default | Description |
-|-------|------|---------|-------------|
-|`v-model`| String || binds textfield value |
-|`disabled`| [Number, String] | | binds to disabled state  |
-|`type`|String| text | input type attribute  |
-|`label`| String | | hint text |
-|`dense`| Boolean | | compresses the textfield to make it slightly smaller |
-|`outline`| Boolean | | whether the textfield is outlined  |
-|`box`| Boolean | | whether the textfield is a box  |
-|`helptext`| String | |  help text |
-|`helptext-persistent`| Boolean | | whether help text is persistent |
-|`helptext-validation`| Boolean | | whether help text is a validation  |
-|`required`| Boolean | |  validation: whether this field is required|
-|`minlength`| [Number, String] | |  validation: minimal length|
-|`maxlength`| [Number, String] | |  validation: max length|
-|`valid`| [Number, String] | |  validation: custom validation property |
-|`size`| [Number, String] | 20 |  textfield size (chars) |
-|`fullwidth`| Boolean | | whether the textfield is full width |
-|`multiline`| Boolean | | whether the textfield is multiline  |
-|`rows`| [Number, String] | 8 | multiline: number of rows |
-|`cols`| [Number, String] | 40 |multiline: number of columns  |
-|`trailing-icon`|[String, Array, Object ] | | trailing icon _*_|
-|`leading-icon`| [String, Array, Object ] | | leading icon _*_ |
+| props                 | Type                     | default | Description                                          |
+| --------------------- | ------------------------ | ------- | ---------------------------------------------------- |
+| `v-model`             | String                   |         | binds textfield value                                |
+| `disabled`            | [Number, String]         |         | binds to disabled state                              |
+| `type`                | String                   | text    | input type attribute                                 |
+| `label`               | String                   |         | hint text                                            |
+| `dense`               | Boolean                  |         | compresses the textfield to make it slightly smaller |
+| `outline`             | Boolean                  |         | whether the textfield is outlined                    |
+| `box`                 | Boolean                  |         | whether the textfield is a box                       |
+| `helptext`            | String                   |         | help text                                            |
+| `helptext-persistent` | Boolean                  |         | whether help text is persistent                      |
+| `helptext-validation` | Boolean                  |         | whether help text is a validation                    |
+| `required`            | Boolean                  |         | validation: whether this field is required           |
+| `minlength`           | [Number, String]         |         | validation: minimal length                           |
+| `maxlength`           | [Number, String]         |         | validation: max length                               |
+| `valid`               | [Number, String]         |         | validation: custom validation property               |
+| `size`                | [Number, String]         | 20      | textfield size (chars)                               |
+| `fullwidth`           | Boolean                  |         | whether the textfield is full width                  |
+| `multiline`           | Boolean                  |         | whether the textfield is multiline                   |
+| `rows`                | [Number, String]         | 8       | multiline: number of rows                            |
+| `cols`                | [Number, String]         | 40      | multiline: number of columns                         |
+| `trailing-icon`       | [String, Array, Object ] |         | trailing icon _*_                                    |
+| `leading-icon`        | [String, Array, Object ] |         | leading icon _*_                                     |
 
 > other attributes (`name`, `readonly`, ... ) are being passed down to the rendered input element.
 
@@ -124,12 +127,12 @@ var vm = new Vue({
 
 ### events
 
-| event | args | Description |
-|-------|------|-------------|
-|`@focus`| - |emitted on focus gained |
-|`@blur`| - |emitted on focus lost |
-|`@icon-action`| - |emitted on icon action |
-|`@[listener]`| - |emitted on icon action |
+| event          | args | Description             |
+| -------------- | ---- | ----------------------- |
+| `@focus`       | -    | emitted on focus gained |
+| `@blur`        | -    | emitted on focus lost   |
+| `@icon-action` | -    | emitted on icon action  |
+| `@[listener]`  | -    | emitted on icon action  |
 
 > Other bound listeners are being passsed down to the rendered input element
 
@@ -141,10 +144,10 @@ var vm = new Vue({
 
 ### methods
 
-| event | args | Description |
-|-------|------|-------------|
-|`focus()` | - | focus the input element |
-| `blur()` | - | blur the input element |
+| event     | args | Description             |
+| --------- | ---- | ----------------------- |
+| `focus()` | -    | focus the input element |
+| `blur()`  | -    | blur the input element  |
 
 ### Reference
 - <https://material.io/components/web/catalog/input-controls/text-fields>
