@@ -1,12 +1,16 @@
 <template>
   <div class="mdc-demo">
     <mdc-card>
-      <mdc-card-media height=150 :src="card" size="cover" position="center">
+      <mdc-card-media :src="card" >
       </mdc-card-media>
       <mdc-card-header title="Title goes here" subtitle="subtitle here" ></mdc-card-header>
       <mdc-card-actions>
-        <mdc-card-action-button>ACTION 1</mdc-card-action-button>
-        <mdc-card-action-button>ACTION 2</mdc-card-action-button>
+        <mdc-card-action-buttons>
+          <mdc-card-action-button>ACTION</mdc-card-action-button>
+        </mdc-card-action-buttons>
+        <mdc-card-action-icons>
+          <mdc-card-action-icon icon="star" />
+        </mdc-card-action-icons>
       </mdc-card-actions>
     </mdc-card>
   </div>

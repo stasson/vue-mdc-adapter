@@ -1,10 +1,10 @@
 import {BasePlugin} from '../base'
-import mdcICon from './mdc-icon.vue'
+import mdcIcon from './mdc-icon.vue'
 
 export {
-  mdcICon
+  mdcIcon
 }
 
 export default BasePlugin({
-  mdcICon
+  mdcIcon
 })

@@ -1,51 +1,62 @@
 ## Usage
 
-The card package provides the building blocks for composing your card components
+Cards are composed of different content blocks which are typically laid out in vertical succession.
+The card package provides the building blocks for composing your card components.
+
+| Component  | Usage |
+| ---------- | ----- |
+| `mdc-card` | Mandatory, for the card component |
+| `mdc-card-media` | Media area that displays a custom background-image with background-size: cover |
+| `mdc-card-header` | Header content block |
+| `mdc-card-title` | Title element |
+| `mdc-card-subtitle` |  Subtitle element |
+| `mdc-card-text` | Text content block |
+| `mdc-card-actions` | Row containing action buttons and/or icons |
+| `mdc-card-action-buttons` | A group of action buttons, displayed on the left side of the card (in LTR) |
+| `mdc-card-action-icons` | A group of supplemental action icons, displayed on the right side of the card (in LTR) |
+| `mdc-card-action-button` | An action button with text |
+| `mdc-card-action-icon` | An action icon with no text |
+
+
+### Card
 
 ```html
 <mdc-card>
-  <mdc-card-header :title="title" :subtitle="subtitle" />
-  <mdc-card-text> {{ text }} </mdc-card-text> 
+  <mdc-card-media :src="card">
+  </mdc-card-media>
+  <mdc-card-header 
+    title="Title goes here" 
+    subtitle="subtitle here" >
+  </mdc-card-header>
   <mdc-card-actions>
-    <mdc-card-action-button @click="onAction">Action</mdc-card-action-button>
+    <mdc-card-action-buttons>
+      <mdc-card-action-button>ACTION</mdc-card-action-button>
+    </mdc-card-action-buttons>
+    <mdc-card-action-icons>
+      <mdc-card-action-icon icon="star" />
+    </mdc-card-action-icons>
   </mdc-card-actions>
 </mdc-card>
 ```
 
-```javascript
-var vm = new Vue({
-  data: {
-    title: 'Title',
-    subtitle: 'Subtitle',
-    text: 'Lorem ipsum dolor sit amet, ...',
-  },
-  methods: {
-    onAction: function (action) {
-      console.log('card action triggered: '+ action)
-    } 
-  }
-})
-```
+| props | Type | Default | Description |
+|-------|------|---------|-------------|
+|`stroked`|Boolean|| Removes the shadow and displays a hairline stroke instead |
 
-## Content blocks
-
-Cards are composed of different content blocks which are typically laid out in 
-vertical succession.
-
-### Rich Media
+### Media
 
 ```html
 <mdc-card>
-  <mdc-card-media :src="media.jpg" :height="90" />
+  <mdc-card-media :src="media.jpg" />
 </mdc-card>
 ```
 
-`mdc-card-media` is used for showing rich media in cards and optionally as a 
+`mdc-card-media` is used for showing rich media in cards and optionally as a
 container:
 
 ```html
 <mdc-card>
-  <mdc-card-media :src="media.img" :height="150" dark>
+  <mdc-card-media :src="media.img">
     <mdc-card-title>Title</mdc-card-title>
   </mdc-card-media>
 </mdc-card>
@@ -54,11 +65,11 @@ container:
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
 |`src`| String|required| the backgound image source |
-|`height`|number|| height of the rich media in px |
-|`dark`|String|| whether the image is dark, applies dark-theme |
+|`square`|Boolean|| Automatically scales the media area’s height to equal its width |
 
+> by default the media area size is 16x9
 
-### Primary  (Title/Subtitle)
+### Header (Title/Subtitle)
 
 ```html
 <mdc-card>
@@ -82,39 +93,40 @@ container:
 
 ### Actions
 
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`vertical`| boolean |false| whether action layout is vertical |
-
 ```html
 <mdc-card>
-  <mdc-card-actions vertical>
-    <mdc-card-action-button>Action 1</mdc-card-action-button>
-    <mdc-card-action-button>Action 2</mdc-card-action-button>
+  <mdc-card-actions>
+    <mdc-card-action-button>Action</mdc-card-action-button>
   </mdc-card-actions>
 </mdc-card>
 ```
+
+| props | Type | Default | Description |
+|-------|------|---------|-------------|
+|`full-bleed`|Boolean||Removes the action area’s padding and causes its only child (an mdc-card__action element) to consume 100% of the action area’s width |
+
 
 ### Action Buttons
 
 ```html
 <mdc-card>
   <mdc-card-actions>
-    <mdc-card-action-button @click="onAction">Action</mdc-card-action-button>
+    <mdc-card-action-button>Action1</mdc-card-action-button>
+    <mdc-card-action-button>Action2</mdc-card-action-button>
   </mdc-card-actions>
 </mdc-card>
 ```
-
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
 |`disabled`| boolean |false| whether the button is disabled |
 |`accent`|Boolean|| secondary color theme |
+|`compact`|Boolean|| reduces the amount of horizontal padding in the button |
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
-|`href`|String|| link's href, renders anchor (see notes below) | 
-|`href`|String|| link's href, renders anchor (see notes below) | 
+|`href`|String|| link's href, renders anchor (see notes below) |
+|`href`|String|| link's href, renders anchor (see notes below) |
 |`to`|String, Object| undefined | router-link property _(*)_ |
 |`replace`|Boolean| false | router-link property _(*)_ |
 |`append`|Boolean| false | router-link property _(*)_ |
@@ -132,43 +144,40 @@ Using the `href` attribute will render `<a role="button">`
 > Additionally, button and links have different behavior on right click.
 > see this [MDN note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
 
-
-### Horizontal block
-
-You can stack multiple card blocks horizontally instead of vertically by 
-placing them inside of a `mdc-card-horizontal` block:
+### Action Icons
 
 ```html
 <mdc-card>
-  <mdc-card-horizontal>
-    <mdc-card-header :title="title" :subtitle="subtitle" />
-    <mdc-card-actions vertical :actions="['action1', 'action2']" />
-  </mdc-card-horizontal> 
-</mdc-card>
-```
-
-### Media image
-
-`mdc-media-img` is designed to be used in horizontal blocks by taking up a 
-fixed height rather than stretching to the width of the card.
-
-```html
-<mdc-card>
-  <mdc-card-horizontal>
-    <mdc-card-header :title="title" :subtitle="subtitle" />
-    <mdc-card-img src="image.jpg" mult="1.5" />
-  </mdc-card-horizontal> 
+  <mdc-card-actions>
+    <mdc-card-action-icon icon="star">
+    <mdc-card-action-icon icon="favorite">
+  </mdc-card-actions>
 </mdc-card>
 ```
 
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
-|`src`| String|| image source |
-|`mult`| Number|| optional size multiplier, can be `1.5`, `2` or `3`" |
+|`icon` | String |undefined| material icon |
 
+> for custom icon markup, do not set the _icon_ prop
 
-> Unlike media blocks, media items are not designed to be used as optional 
-containers.
+### Action Button & Icons
+
+you can group Buttons and icons on the same line 
+
+```html
+    <mdc-card>
+      <mdc-card-actions>
+        <mdc-card-action-buttons>
+          <mdc-card-action-button>ACTION</mdc-card-action-button>
+        </mdc-card-action-buttons>
+        <mdc-card-action-icons>
+          <mdc-card-action-icon icon="star" />
+        </mdc-card-action-icons>
+      </mdc-card-actions>
+    </mdc-card>
+  </div>
+```
 
 ### Reference
 - <https://material.io/components/web/catalog/cards>

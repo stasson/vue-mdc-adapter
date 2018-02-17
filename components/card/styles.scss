@@ -13,3 +13,59 @@
   }
 }
 
+// Legacy mdc layout
+.mdc-card {
+
+  &__title {
+    @include mdc-typography(body2);
+    @include mdc-theme-prop(color, text-primary-on-light);
+
+    margin: -.063rem 0; // -1sp 0
+  }
+
+  &__title--large {
+    @include mdc-typography(headline);
+
+    margin: 0;
+  }
+
+  &__primary {
+    padding: 16px;
+
+    // Add extra space before large title.
+    .mdc-card__title--large {
+      padding-top: 8px;
+    }
+
+    // Add extra padding if this is the last block.
+    &:last-child {
+      padding-bottom: 24px;
+    }
+  }
+
+  &__supporting-text {
+    @include mdc-typography(body1);
+    @include mdc-theme-prop(color, text-primary-on-light);
+
+    box-sizing: border-box;
+    padding: 8px 16px;
+
+    // Remove top padding if immediately preceded by a primary block.
+    .mdc-card__primary + & {
+      margin-top: -8px;
+      padding-top: 0;
+    }
+
+    // Add extra padding if this is the last block.
+    &:last-child {
+      padding-bottom: 24px;
+    }
+  }
+
+  &__subtitle {
+    @include mdc-typography(body1);
+    @include mdc-theme-prop(color, text-primary-on-light);
+
+    margin: -.063rem 0; // -1sp 0
+  }
+}
