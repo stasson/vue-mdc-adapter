@@ -38,7 +38,7 @@
 
 `vue-mdc-adapter` is an integration of
 [Material Components](https://material.io/components/web/)
-for [Vue.js](https://vuejs.org) which follows the best practices 
+for [Vue.js](https://vuejs.org) which follows the best practices
 recommended by Google:
 [Using Foundations and Adapters](https://github.com/material-components/material-components-web/blob/master/docs/integrating-into-frameworks.md#the-advanced-approach-using-foundations-and-adapters)
 
@@ -47,11 +47,11 @@ customization while sticking to the _Vue Spirit_ (approachable, versatile, and p
 
 ## Quick Links
 
-- [Documentation & Demo](https://stasson.github.io/vue-mdc-adapter)
-- [CodePen](https://codepen.io/collection/XBpwxq/) & [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
-- [Webpack Boilerplate](https://github.com/stasson/vue-mdc-adapter-template)
-- [Changelog](https://github.com/stasson/vue-mdc-adapter/blob/master/CHANGELOG.md)
-- [Contributing](https://github.com/stasson/vue-mdc-adapter/blob/master/CONTRIBUTING.md)
+* [Documentation & Demo](https://stasson.github.io/vue-mdc-adapter)
+* [CodePen](https://codepen.io/collection/XBpwxq/) & [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
+* [Webpack Boilerplate](https://github.com/stasson/vue-mdc-adapter-template)
+* [Changelog](https://github.com/stasson/vue-mdc-adapter/blob/master/CHANGELOG.md)
+* [Contributing](https://github.com/stasson/vue-mdc-adapter/blob/master/CONTRIBUTING.md)
 
 ## Project Status
 
@@ -61,42 +61,42 @@ Do not hesitate to open an issue on [GitHub](https://github.com/stasson/vue-mdc-
 contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge),
 or follow us on Twitter [@vuemdc](https://twitter.com/vuemdc)
 
-> Each MDCWeb component is mapped to a single vue plugin 
+> Each MDCWeb component is mapped to a single vue plugin
 
-- [x] [button](https://stasson.github.io/vue-mdc-adapter/#/component/button) 
-- [x] [card](https://stasson.github.io/vue-mdc-adapter/#/component/card) 
-- [x] [checkbox](https://stasson.github.io/vue-mdc-adapter/#/component/checkbox) 
-- [x] [dialog](https://stasson.github.io/vue-mdc-adapter/#/component/dialog) 
-- [x] [drawer](https://stasson.github.io/vue-mdc-adapter/#/component/drawer) 
-- [x] [fab](https://stasson.github.io/vue-mdc-adapter/#/component/fab) 
-- [x] [grid-list](https://stasson.github.io/vue-mdc-adapter/#/component/grid-list) 
-- [x] [icon-toggle](https://stasson.github.io/vue-mdc-adapter/#/component/icon-toggle) 
-- [x] [layout-grid](https://stasson.github.io/vue-mdc-adapter/#/component/layout-grid) 
-- [x] [linear-progress](https://stasson.github.io/vue-mdc-adapter/#/component/linear-progress) 
-- [x] [list](https://stasson.github.io/vue-mdc-adapter/#/component/list) 
-- [x] [menu](https://stasson.github.io/vue-mdc-adapter/#/component/menu) 
-- [x] [radio](https://stasson.github.io/vue-mdc-adapter/#/component/radio) 
-- [x] [select](https://stasson.github.io/vue-mdc-adapter/#/component/select) 
-- [x] [slider](https://stasson.github.io/vue-mdc-adapter/#/component/slider) 
-- [x] [snackbar](https://stasson.github.io/vue-mdc-adapter/#/component/snackbar) 
-- [x] [switch](https://stasson.github.io/vue-mdc-adapter/#/component/switch) 
-- [x] [tabs](https://stasson.github.io/vue-mdc-adapter/#/component/tabs) 
-- [x] [textfield](https://stasson.github.io/vue-mdc-adapter/#/component/textfield) 
-- [x] [toolbar](https://stasson.github.io/vue-mdc-adapter/#/component/toolbar) 
-- [x] [typography](https://stasson.github.io/vue-mdc-adapter/#/component/typography) 
+* [x] [button](https://stasson.github.io/vue-mdc-adapter/#/component/button)
+* [x] [card](https://stasson.github.io/vue-mdc-adapter/#/component/card)
+* [x] [checkbox](https://stasson.github.io/vue-mdc-adapter/#/component/checkbox)
+* [x] [chips](https://stasson.github.io/vue-mdc-adapter/#/component/chips)
+* [x] [dialog](https://stasson.github.io/vue-mdc-adapter/#/component/dialog)
+* [x] [drawer](https://stasson.github.io/vue-mdc-adapter/#/component/drawer)
+* [x] [fab](https://stasson.github.io/vue-mdc-adapter/#/component/fab)
+* [x] [grid-list](https://stasson.github.io/vue-mdc-adapter/#/component/grid-list)
+* [x] [icon-toggle](https://stasson.github.io/vue-mdc-adapter/#/component/icon-toggle)
+* [x] [layout-grid](https://stasson.github.io/vue-mdc-adapter/#/component/layout-grid)
+* [x] [linear-progress](https://stasson.github.io/vue-mdc-adapter/#/component/linear-progress)
+* [x] [list](https://stasson.github.io/vue-mdc-adapter/#/component/list)
+* [x] [menu](https://stasson.github.io/vue-mdc-adapter/#/component/menu)
+* [x] [radio](https://stasson.github.io/vue-mdc-adapter/#/component/radio)
+* [x] [select](https://stasson.github.io/vue-mdc-adapter/#/component/select)
+* [x] [slider](https://stasson.github.io/vue-mdc-adapter/#/component/slider)
+* [x] [snackbar](https://stasson.github.io/vue-mdc-adapter/#/component/snackbar)
+* [x] [switch](https://stasson.github.io/vue-mdc-adapter/#/component/switch)
+* [x] [tabs](https://stasson.github.io/vue-mdc-adapter/#/component/tabs)
+* [x] [textfield](https://stasson.github.io/vue-mdc-adapter/#/component/textfield)
+* [x] [toolbar](https://stasson.github.io/vue-mdc-adapter/#/component/toolbar)
+* [x] [typography](https://stasson.github.io/vue-mdc-adapter/#/component/typography)
 
 > Extra plugins
 
-- [x] [layout-app](https://stasson.github.io/vue-mdc-adapter/#/component/layout-app): provides a flexible layout to simplify toolbar vs drawer positioning
-- [x] [icon](https://stasson.github.io/vue-mdc-adapter/#/component/icon): provides a material icon wrapper with support for font-awesome, svg, etc.
-
+* [x] [layout-app](https://stasson.github.io/vue-mdc-adapter/#/component/layout-app): provides a flexible layout to simplify toolbar vs drawer positioning
+* [x] [icon](https://stasson.github.io/vue-mdc-adapter/#/component/icon): provides a material icon wrapper with support for font-awesome, svg, etc.
 
 ## Quick Start
 
 #### Playground
 
 Fork the [reference codepen template](https://codepen.io/stasson/pen/XzmMKp)
-or one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
+or one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/)
 or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
 
 #### CDN
