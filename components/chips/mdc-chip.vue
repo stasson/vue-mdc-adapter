@@ -1,10 +1,10 @@
 <template>
   <div class="mdc-chip" :class="classes" :style="styles" tabindex="0" @click="dispatchEvent">
+    <i class="material-icons mdc-chip__icon mdc-chip__icon--leading" v-if="icon && !trailing">{{icon}}</i>
     <div classes="mdc-chip__text">
-      <i class="material-icons mdc-chip__icon mdc-chip__icon--leading" v-if="icon && !trailing">{{icon}}</i>
       <slot></slot>
-      <i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button" v-if="icon && trailing">{{icon}}</i>
     </div>
+    <i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button" v-if="icon && trailing">{{icon}}</i>
   </div>  
 </template>
 
