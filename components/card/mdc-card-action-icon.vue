@@ -35,18 +35,6 @@ export default {
   mounted () {
     this.ripple = new RippleBase(this,{
       isUnbounded: () => true,
-      computeBoundingRect: () => {
-        const dim = 48
-        const {left, top} = this.$el.getBoundingClientRect()
-        return {
-          left,
-          top,
-          width: dim,
-          height: dim,
-          right: left + dim,
-          bottom: left + dim
-        }
-      }
     })
     this.ripple.init()
   },
