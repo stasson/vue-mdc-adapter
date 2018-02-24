@@ -1,16 +1,20 @@
 <template>
-<div class="mdc-chip" :class="classes" :style="styles" tabindex="0" @click="dispatchEvent">
-  <i class="mdc-chip__icon mdc-chip__icon--leading" :class="leadingClasses" v-if="haveleadingIcon">{{leadingIcon}}</i>
+<div class="mdc-chip" :class="classes" :style="styles" tabindex="0" >
+  <i class="mdc-chip__icon mdc-chip__icon--leading" 
+    :class="leadingClasses" v-if="haveleadingIcon"
+  >{{leadingIcon}}</i>
   <div classes="mdc-chip__text">
     <slot></slot>
   </div>
-  <i class="mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button" :class="trailingClasses" v-if="havetrailingIcon">{{trailingIcon}}</i>
+  <i class="mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button" 
+    :class="trailingClasses" v-if="havetrailingIcon"
+  >{{trailingIcon}}</i>
 </div>
 </template>
 
 <script>
 import MDCChipFoundation from "@material/chips/chip/foundation";
-import { CustomLinkMixin, DispatchEventMixin, emitCustomEvent } from "../base";
+import { CustomLinkMixin, DispatchEventMixin } from "../base";
 import { RippleBase } from "../ripple";
 
 export default {
@@ -35,15 +39,9 @@ export default {
         this.$el.addEventListener(type, handler),
       deregisterInteractionHandler: (type, handler) =>
         this.$el.removeEventListener(type, handler),
-      notifyInteraction: () =>
-        emitCustomEvent(
-          this.$el,
-          MDCChipFoundation.strings.INTERACTION_EVENT,
-          {
-            chip: this
-          },
-          true
-        )
+      notifyInteraction: () => {
+        this.dispatchEvent({ type: 'click' })
+      }
     });
 
     this.foundation.init();

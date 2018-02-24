@@ -30,6 +30,10 @@ mdc-chip is a compact element that allows a user to enter information or select 
 | `leadingIconClasses`  | Object | optional | optional leading icon classes (font-awesome)  |
 | `trailingIconClasses` | Object | optional | optional trailing icon classes (font-awesome) |
 
+| event  | description                 |
+|--------|-----------------------------|
+| @click | emitted on chip interaction |
+
 ### Chips with icons
 
 ```html
