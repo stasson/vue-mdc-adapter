@@ -12,17 +12,6 @@ var vm = new Vue({
 })
 ```
 
-### props
-
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`value`|Number| - | The current value of the slider. Changing this will update the slider’s value. |
-|`min`|Number| 0 | The minimum value a slider can have. Values set programmatically will be clamped to this minimum value. Changing this property will update the slider’s value if it is lower than the new minimum |
-|`max`|Number| 100 |  The maximum value a slider can have. Values set programmatically will be clamped to this maximum value. Changing this property will update the slider’s value if it is greater than the new maximum |
-|`step`|Number| 0| Specifies the increments at which a slider value can be set. Can be any positive number, or `0` for no step. Changing this property will update the slider’s value to be quantized along the new step increments |
-|`disabled`| Boolean|false| Whether or not the slider is disabled |
-|`display-markers`| Boolean|false| whether to display discrete markers |
-
 - Continuous Slider
 
 ```html
@@ -41,8 +30,24 @@ var vm = new Vue({
 <mdc-slider min=0 max=10 step=1 display-markers v-model="sliderValue" />
 ```
 
-### events
+### props
 
+| props | Type | Default | Description |
+|-------|------|---------|-------------|
+|`value`|Number| - | The current value of the slider. Changing this will update the slider’s value. |
+|`min`|Number| 0 | The minimum value a slider can have. Values set programmatically will be clamped to this minimum value. Changing this property will update the slider’s value if it is lower than the new minimum |
+|`max`|Number| 100 |  The maximum value a slider can have. Values set programmatically will be clamped to this maximum value. Changing this property will update the slider’s value if it is greater than the new maximum |
+|`step`|Number| 0| Specifies the increments at which a slider value can be set. Can be any positive number, or `0` for no step. Changing this property will update the slider’s value to be quantized along the new step increments |
+|`disabled`| Boolean|false| Whether or not the slider is disabled |
+|`display-markers`| Boolean|false| whether to display discrete markers |
+|`layout-on`|String| undefined | optional event to trigger a re-layout  _(*)_ |
+|`layout-on-source`|Object| vm.$root | optional layout event source, defaults to root bus |
+
+> _(*)_ By default, the slider component tracks window resize and drawer open/close events in order to reset it's layout,
+but it in case off css resize or positioning change, the layout may be off. in this case you can use the `layout-on` event 
+to force a layout, or call the layout() method programatically.
+
+### events
 
 | event | args | Description |
 |-------|------|-------------|
