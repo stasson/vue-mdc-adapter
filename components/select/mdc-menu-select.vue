@@ -23,6 +23,7 @@
 <script>
 import { mdcMenu } from '../menu'
 import MDCSelectFoundation from '@material/select/foundation'
+import MDCSelectLabelFoundation from '@material/select/label/foundation'
 
 export default {
   name: 'mdc-menu-select',
@@ -84,15 +85,22 @@ export default {
     },
   },
   mounted () {
+
+    this.labelFoundation = new MDCSelectLabelFoundation({
+      addClass: (className) =>
+        this.$set(this.labelClasses, className, true),
+      removeClass: (className) =>
+        this.$delete(this.labelClasses, className),
+    })
+
     this.foundation  = new MDCSelectFoundation({
       addClass: (className) =>
         this.$set(this.classes, className, true),
       removeClass: (className) =>
         this.$delete(this.classes, className),
-      addClassToLabel: (className) =>
-        this.$set(this.labelClasses, className, true),
-      removeClassFromLabel: (className) =>
-        this.$delete(this.labelClasses, className),
+      floatLabel: (value) => {
+        this.labelFoundation.styleFloat(value) 
+      },
       addClassToBottomLine: (className) => 
         this.$set(this.bottomLineClasses, className, true),
       removeClassFromBottomLine: (className) =>
@@ -206,7 +214,7 @@ export default {
       foundation.adapter_.setStyle('width', `${maxTextLength}px`);
     }
     /// 
-    
+    this.labelFoundation.init()
     this.foundation.init()
     this.foundation.setDisabled(this.disabled)
     this.refreshIndex ()
@@ -218,6 +226,10 @@ export default {
     let foundation = this.foundation
     this.foundation = null
     foundation.destroy()
+    
+    let foundationLabel = this.foundationLabel
+    this.foundationLabel = null
+    foundationLabel.destroy()
   }
 }
 </script>
