@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.10.0...v0.11.0) (2018-02-24)
+
+
+### Bug Fixes
+
+* remove mdc-chip icon element from mdc-chip__text element ([44d9849](https://github.com/stasson/vue-mdc-adapter/commit/44d9849))
+* Support leading and trailing icons simultaneously (needs material-components-web@0.31.0). ([ddafc68](https://github.com/stasson/vue-mdc-adapter/commit/ddafc68))
+* Support leading and trailing icons simultaneously (needs material-components-web@0.31.0). ([8f4a414](https://github.com/stasson/vue-mdc-adapter/commit/8f4a414))
+* **drawer:** item classes are not applied ([5ec5ec6](https://github.com/stasson/vue-mdc-adapter/commit/5ec5ec6)), closes [#247](https://github.com/stasson/vue-mdc-adapter/issues/247)
+* **package:** update material-components-web to version 0.31.0 ([b43017a](https://github.com/stasson/vue-mdc-adapter/commit/b43017a))
+* **select:** refactor label foundation as per MDCWeb 0.31.0 ([0db8ad6](https://github.com/stasson/vue-mdc-adapter/commit/0db8ad6)), closes [#274](https://github.com/stasson/vue-mdc-adapter/issues/274)
+* **slider:** slider thumbContainer is offset when drawer open/close ([a1516ec](https://github.com/stasson/vue-mdc-adapter/commit/a1516ec)), closes [#268](https://github.com/stasson/vue-mdc-adapter/issues/268)
+* **textfield:** validation should happen on first unfocus ([b327b6a](https://github.com/stasson/vue-mdc-adapter/commit/b327b6a)), closes [#272](https://github.com/stasson/vue-mdc-adapter/issues/272)
+
+
+### Features
+
+* **chips:** Add 'mdc-chip-set' and 'mdc-chip' ([adbfa3d](https://github.com/stasson/vue-mdc-adapter/commit/adbfa3d))
+* **chips:** add mdc-chip-set and mdc-chip [#267](https://github.com/stasson/vue-mdc-adapter/issues/267) ([d63ab16](https://github.com/stasson/vue-mdc-adapter/commit/d63ab16))
+* **drawer:** expose open/close events ([4a2bd78](https://github.com/stasson/vue-mdc-adapter/commit/4a2bd78)), closes [#268](https://github.com/stasson/vue-mdc-adapter/issues/268) [#271](https://github.com/stasson/vue-mdc-adapter/issues/271)
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.9.2...v0.10.0) (2018-02-17)
 
