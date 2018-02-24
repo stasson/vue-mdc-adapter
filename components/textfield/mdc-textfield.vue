@@ -14,7 +14,6 @@
         v-on="$listeners"
         v-bind="$attrs"
         :class="inputClasses"
-        :value="value" 
         @input="updateValue($event.target.value)"
         :minlength="minlength" :maxlength="maxlength"
         :placeholder="inputPlaceHolder"
@@ -27,7 +26,6 @@
         v-on="$listeners" 
         v-bind="$attrs"
         :class="inputClasses"
-        :value="value" 
         @input="updateValue($event.target.value)"
         :type="type"
         :minlength="minlength" :maxlength="maxlength"
@@ -170,6 +168,13 @@ export default {
       this.helperTextFoundation 
         && this.helperTextFoundation.setValidation(this.helptextValidation)
     },
+    value (value) {
+      if (this.foundation) {
+        if (value !== this.foundation.getValue()) {
+          this.foundation.setValue(value)
+        }
+      } 
+    }
   },
   methods: {
     updateValue (value) {
@@ -374,6 +379,7 @@ export default {
 
 
     this.foundation.init()
+    this.foundation.setValue(this.value)
     this.foundation.setDisabled(this.disabled)
     this.foundation.setRequired(this.required)
     if (typeof this.valid !== "undefined") {
