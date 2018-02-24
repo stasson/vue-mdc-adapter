@@ -1,7 +1,8 @@
 import {capitalize} from './utils'
 
 import icButton from  './assets/ic_button_24px.svg' 
-import icCard from  './assets/ic_card_24px.svg' 
+import icCard from  './assets/ic_card_24px.svg'
+import icChips from  './assets/ic_card_24px.svg' 
 import icComponent from  './assets/ic_component_24px.svg' 
 import icDialog from  './assets/ic_dialog_24px.svg' 
 import icList from  './assets/ic_list_24px.svg' 
@@ -33,6 +34,7 @@ export default [
   link('button', icButton),
   link('card', icCard),
   link('checkbox',icSelectionControl),
+  link('chips',icChips),
   link('dialog',icDialog),
   link('drawer',icSideNavigation),
   link('fab', icButton,'FAB', 'Floating Action Button'),
