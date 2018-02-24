@@ -1,7 +1,10 @@
 <template>
-  <component ref="drawer" class="mdc-drawer"
-    :is="type" v-model="open_"
-    :toolbar-spacer="toolbarSpacer">
+  <component  ref="drawer" class="mdc-drawer"
+      :is="type" v-model="open_"
+      :toolbar-spacer="toolbarSpacer"
+      @change="$root.$emit('mdc:layout')" 
+      @open="$emit('open')" 
+      @close="$emit('close')" >
     <slot />
   </component>
 </template>
@@ -26,22 +29,22 @@ const media = new class {
 export default {
   name: 'mdc-drawer',
   props: {
-    'permanent': Boolean,
-    'persistent': Boolean,
-    'temporary': Boolean,
-    'drawer-type': {
+    permanent: Boolean,
+    persistent: Boolean,
+    temporary: Boolean,
+    drawerType: {
       type: String,
       validator: (val) => {
         return val in ['temporary', 'persistent', 'permanent']
       }
     },
-    'toolbar-spacer': Boolean,
-    'toggle-on': String,
-    'toggle-on-source': {type: Object, required: false},
-    'open-on': String,
-    'open-on-source': {type: Object, required: false},
-    'close-on': String,
-    'close-on-source': {type: Object, required: false},
+    toolbarSpacer: Boolean,
+    toggleOn: String,
+    toggleOnSource: {type: Object, required: false},
+    openOn: String,
+    openOnSource: {type: Object, required: false},
+    closeOn: String,
+    closeOnSource: {type: Object, required: false},
   },
   provide () {
     return { mdcDrawer: this }
