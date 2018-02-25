@@ -30,7 +30,7 @@ export default {
   },
   props: {
     multiple: Boolean,
-    value: [Number, String, Object, Array],
+    value: [String, Array],
     label: String,
     native: Boolean
   },

@@ -28,12 +28,12 @@ var vm = new Vue({
 | props      | Type            | Default | Description                                  |
 | ---------- | --------------- | ------- | -------------------------------------------- |
 | `disabled` | Boolean         | false   | whether this select is disabled              |
-| `label`    | String          | undefined  | the selection label                          |
-| `value`    | [Number, String, Object, Array] |         | bind with v-model (update on `change` event) |
-| `multiple` | Boolean         | false   | whether the select accept multiple values    |
+| `label`    | String          |         | the selection label                          |
+| `value`    | [String, Array] |         | bind with v-model (update on `change` event) |
+| `multiple` | Boolean         |         | whether the select accept multiple values    |
 | `max-size` | Boolean         | 4       | multi select max size                        |
-| `native`   | String          | false   | force native select rendering                |
-| `name`     | String          | undefined | native select name                         |
+| `native`   | String          |         | force native select rendering                |
+| `name`     | String          |         | native select name                           |
 
 | event    | Description             |
 | -------- | ----------------------- |
@@ -45,7 +45,7 @@ var vm = new Vue({
 | props      | Type    | Default | Description                     |
 | ---------- | ------- | ------- | ------------------------------- |
 | `disabled` | Boolean | false   | whether this option is disabled |
-| `value`    | [Number, String, Object]  |  text content  | option value                    |
+| `value`    | String  |         | option value                    |
 
 > If no option value is specified, the select component will take the option's textContent.
 

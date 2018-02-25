@@ -13,7 +13,7 @@
 export default {
   name: 'mdc-multi-option',
   props: {
-    value: [Number, String, Object],
+    value: String,
     disabled: Boolean
   },
   computed: {
