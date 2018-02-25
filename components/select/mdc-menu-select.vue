@@ -33,7 +33,7 @@ export default {
   },
   props: {
     multiple: Boolean,
-    value: [String, Array],
+    value: [Number, String, Object],
     disabled: Boolean,
     label: String, 
     box: Boolean
@@ -69,7 +69,7 @@ export default {
       if (this.foundation) {
         let options = this.$refs.menu.items
         for (let i = 0; i < options.length; i++) {
-          let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
+          let optionValue = options[i].__vue__.getValue() 
           if (this.value == optionValue) {
             this.foundation.setSelectedIndex(i)
             //TODO: MDCFIX force float above if value is valid
@@ -151,8 +151,7 @@ export default {
       getTextForOptionAtIndex: (index) =>
         this.$refs.menu.items[index].textContent.trim(),
       getValueForOptionAtIndex: (index) => {
-        return this.$refs.menu.items[index].getAttribute('data-value') 
-          || this.$refs.menu.items[index].textContent.trim()
+        return this.$refs.menu.items[index].__vue__.getValue() 
       },
       setAttrForOptionAtIndex: (index, attr, value) =>
         this.$refs.menu.items[index].setAttribute(attr, value),

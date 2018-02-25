@@ -2,8 +2,7 @@
    <li class="mdc-option mdc-menu-option mdc-list-item" 
     role="option" 
     :tabindex="disabled?-1:0"
-    :aria-disabled="disabled"
-    :data-value="value">
+    :aria-disabled="disabled">
      <slot></slot>
    </li>
 </template>
@@ -12,8 +11,13 @@
 export default {
   name: 'mdc-menu-option',
   props: {
-    value: String,
+    value: [Number, String, Object],
     disabled: Boolean
+  },
+  methods: {
+    getValue () {
+      return this.value || this.$el.textContent.trim()
+    }
   }
 }
 </script>
