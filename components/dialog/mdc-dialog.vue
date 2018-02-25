@@ -16,13 +16,14 @@
       </section>
       <footer class="mdc-dialog__footer">
         <mdcButton ref="cancel" v-if="cancel"
-          class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel">
-          {{ cancel }}
-        </mdcButton>
+          class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel"
+          :class="{'mdc-dialog__action':accent}"
+          >{{ cancel }}</mdcButton>
         <mdcButton  ref="accept"
-        class="mdc-dialog__footer__button mdc-dialog__footer__button--accept">
-          {{ accept }}
-        </mdcButton>
+          class="mdc-dialog__footer__button mdc-dialog__footer__button--accept"
+          :class="{'mdc-dialog__action':accent}"
+          :disabled="acceptDisabled"
+        >{{ accept }}</mdcButton>
       </footer>
     </div>
     <div class="mdc-dialog__backdrop"></div>
@@ -37,11 +38,12 @@ import {mdcButton} from '../button'
 export default {
   name: 'mdc-dialog',
   props: {
-    'title': { type: String, required: true },
-    'accept': { type: String, default: 'Ok' },
-    'cancel': { type: String, default: 'Cancel' },
-    'scrollable': Boolean,
-    'dark': Boolean
+    title: { type: String, required: true },
+    accept: { type: String, default: 'Ok' },
+    acceptDisabled: Boolean,
+    cancel: { type: String, default: 'Cancel' },
+    accent: Boolean,
+    scrollable: Boolean
   },
   components: {
     mdcButton : mdcButton

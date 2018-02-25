@@ -1,10 +1,10 @@
 ## Usage
 
 ```html
-<mdc-dialog ref="dialog" title="Title" accept="Accept" cancel="Decline"
-  @accept="onAccept" @cancel="onDecline">
-  {{ dialogText }}  
-</mdc-dialog>
+<mdc-dialog ref="dialog"
+  title="Title" accept="Accept" cancel="Decline"
+  @accept="onAccept" @cancel="onDecline"
+>{{ dialogText }}</mdc-dialog>
 ```
 
 ```javascript
@@ -32,13 +32,18 @@ var vm = new Vue({
 |-------|------|---------|-------------|
 |`title`|String| required | the dialog title |
 |`accept`|String|`'Ok'`| the dialog accept button text   |
+|`accept-disabled`|String|`'Ok'`| the dialog accept button text   |
 |`cancel`| String| `'cancel'`| the dialog cancel button text  |
-|`scrollable`| String|| whether the dialog is scrollable |
-|`@accept`| String|| emitted when dialog is accepted   |
-|`@cancel`| String|| emitted when dialog is cancelled   |
-|`dark`| boolean| | set the dark theme |
+|`scrollable`| Boolean| false | whether the dialog is scrollable |
+|`accent`| Boolean| false | set accented style to the footer buttons |
 
+### events
+
+| props   | args |  Description |
+|---------|------|--------------|
+|`@accept`| none | emitted when dialog is accepted   |
+|`@cancel`| none | emitted when dialog is cancelled  |
 
 ### Reference
-- <https://material.io/components/web/catalog/dialogs>
 
+<https://material.io/components/web/catalog/dialogs>
