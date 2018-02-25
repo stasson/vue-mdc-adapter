@@ -16,13 +16,15 @@
       </section>
       <footer class="mdc-dialog__footer">
         <mdcButton ref="cancel" v-if="cancel"
-          class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel"
+          class="mdc-dialog__footer__button"
           :class="{'mdc-dialog__action':accent}"
+          @click="onCancel"
           >{{ cancel }}</mdcButton>
         <mdcButton  ref="accept"
-          class="mdc-dialog__footer__button mdc-dialog__footer__button--accept"
+          class="mdc-dialog__footer__button"
           :class="{'mdc-dialog__action':accent}"
           :disabled="acceptDisabled"
+          @click="onAccept"
         >{{ accept }}</mdcButton>
       </footer>
     </div>
@@ -75,10 +77,14 @@ export default {
         this.$refs.root.addEventListener(evt, handler),
       deregisterInteractionHandler: (evt, handler) =>
         this.$refs.root.removeEventListener(evt, handler),
-      registerSurfaceInteractionHandler: (evt, handler) =>
-        this.$refs.surface.addEventListener(evt, handler),
-      deregisterSurfaceInteractionHandler: (evt, handler) =>
-        this.$refs.surface.removeEventListener(evt, handler),
+      registerSurfaceInteractionHandler: (/*evt, handler*/) => {
+        // VMA_HACK: handle button clicks ourselves
+        // this.$refs.surface.addEventListener(evt, handler)
+      },
+      deregisterSurfaceInteractionHandler: (/*evt, handler*/) => {
+        // VMA_HACK: handle button clicks ourselves
+        // this.$refs.surface.removeEventListener(evt, handler)
+      },
       registerDocumentKeydownHandler: (handler) =>
         document.addEventListener('keydown', handler),
       deregisterDocumentKeydownHandler: (handler) =>
@@ -104,6 +110,19 @@ export default {
     this.foundation.destroy()
   },
   methods: {
+    onCancel() {
+      this.foundation.cancel(true);
+    },
+    onAccept() {
+      if (this.$listeners['validate']) {
+        this.$emit('validate', {
+          accept: (notify = true) => this.foundation.accept(notify)
+        })
+      }
+      else {
+        this.foundation.accept(true)
+      }
+    },
     show () {
       this.foundation.open()
     },
