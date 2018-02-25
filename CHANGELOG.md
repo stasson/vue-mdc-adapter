@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.2"></a>
+## [0.11.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.1...v0.11.2) (2018-02-25)
+
+
+### Reverts
+
+* **select:** allow Number and Object value types ([f6974f6](https://github.com/stasson/vue-mdc-adapter/commit/f6974f6))
+
+
+
 <a name="0.11.1"></a>
 ## [0.11.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.0...v0.11.1) (2018-02-25)
 
