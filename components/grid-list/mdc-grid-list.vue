@@ -1,7 +1,7 @@
 <template>
-  <div class="mdc-grid-list" :class="classes" :style=styles>
-    <ul class="mdc-grid-list__tiles">
-      <slot></slot>
+  <div class="mdc-grid-list">
+    <ul class="mdc-grid-list__tiles" :class="classes" :style=styles>
+        <slot></slot>
     </ul>
   </div>
 </template>
@@ -18,35 +18,31 @@ export default {
     'header-caption': Boolean,
     'icon-align-start': Boolean,
     'icon-align-end': Boolean,
-    'with-support-text': Boolean
+    'with-support-text': Boolean,
+    'interactive': Boolean
   },
-  data () {
-    let classes = {}
-    if (this.narrowGutter) {
-      classes['mdc-grid-list--tile-gutter-1'] = true
-    }
-    if (this.headerCaption) {
-      classes['mdc-grid-list--header-caption'] = true
-    }
-    if (this.ratio) {
-      classes[`mdc-grid-list--tile-aspect-${this.ratio}`] = true
-    }
-    if (this.iconAlignStart) {
-      classes['mdc-grid-list--with-icon-align-start'] = true
-    }
-    if (this.iconAlignEnd) {
-      classes['mdc-grid-list--with-icon-align-end'] = true
-    }
-    if (this.withSupportText) {
-      classes['mdc-grid-list--twoline-caption'] = true
-    }
+  provide () {
+    return { mdcGrid: this }
+  },
+  computed: {
+    classes () {
+      let classes = {}
 
-    let styles = {}
-    if (this.width) {
-      styles['--mdc-grid-list-tile-width'] = `${this.width}px`
-    }
+      classes['mdc-grid-list--tile-gutter-1'] = this.narrowGutter
+      classes['mdc-grid-list--header-caption'] = this.headerCaption
+      classes[`mdc-grid-list--tile-aspect-${this.ratio}`] = this.ratio
+      classes['mdc-grid-list--with-icon-align-start'] = this.iconAlignStart
+      classes['mdc-grid-list--with-icon-align-end'] = this.iconAlignEnd
+      classes['mdc-grid-list--twoline-caption'] = this.withSupportText
+      classes['mdc-grid-list--non-interactive'] = !this.interactive
 
-    return { classes, styles }
+      return classes
+    },
+    styles () {
+      return {
+        '--mdc-grid-list-tile-width': `${this.width}px`
+      }
+    }
   },
   mounted () {
     this.foundation = new MDCGridListFoundation({
