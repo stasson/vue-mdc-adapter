@@ -21,6 +21,10 @@
   @include mdc-grid-tile-graphic-ink-color(primary);
 }
 
+.mdc-grid-tile {
+  overflow: hidden;
+}
+
 :not(.mdc-grid-list--non-interactive) > .mdc-grid-tile {
   cursor: pointer;
   @include mdc-ripple-surface;
@@ -30,6 +34,3 @@
   @include mdc-states-selected(primary);
 }
 
-.mdc-grid-tile {
-  overflow: hidden;
-}
