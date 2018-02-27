@@ -12,7 +12,7 @@ import MDCMultiOption from './mdc-multi-option.vue'
 export default {
   name: 'mdc-option',
   props: {
-    value: String,
+    value: [Number, String, Object],
     disabled: Boolean
   },
   inject: ['mdcSelect'],

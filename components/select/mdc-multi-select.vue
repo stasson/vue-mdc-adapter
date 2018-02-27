@@ -20,7 +20,7 @@ export default {
   },
   props: {
     multiple: Boolean,
-    value: [String, Array],
+    value: [Number, String, Object, Array],
     disabled: Boolean,
     label: String,
     maxSize: {

@@ -16,7 +16,7 @@ export default {
     event: 'change'
   },
   props: {
-    value: [String, Array],
+    value: [Number, String],
     disabled: Boolean,
     label: String
   },

@@ -8,9 +8,9 @@
       <br><br><br>
       <mdc-select box v-model="selectedValue" label="Pick up a food"
         v-if="selectedType">
-        <mdc-option v-for="option of options" :key="option"
-        :value="option.toLowerCase()"
-        >{{option}}</mdc-option>
+        <mdc-option v-for="option of options" :key="String(option)"
+        :value="option"
+        >*{{option}}*</mdc-option>
       </mdc-select>
 
       <mdc-caption tag="p" v-if="selectedType"
@@ -19,8 +19,8 @@
 
       <mdc-select multiple v-model="selectedValues" label="Pick one or more"
       v-if="selectedType">
-      <mdc-option v-for="option of options" :key="option"
-      :value="option.toLowerCase()">
+      <mdc-option v-for="option of options" :key="String(option)"
+      :value="option">
       {{option}}
       </mdc-option>
       </mdc-select>
@@ -40,7 +40,7 @@
         food: {
           'Vegetables' : ['Spinach', 'Carrots', 'Onions', 'Broccoli'], 
           'Meat' : [ 'Eggs', 'Chicken', 'Fish', 'Turkey', 'Pork' , 'Beef'], 
-          'Fruits' : ['Apples', 'Oranges', 'Bananas', 'Berries', 'Lemons'], 
+          'Fruits' : [1, 2, {tutu: 3}, 'Berries', 'Lemons'], 
         }
       }
     },

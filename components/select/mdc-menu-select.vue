@@ -27,13 +27,16 @@ import MDCSelectLabelFoundation from '@material/select/label/foundation'
 
 export default {
   name: 'mdc-menu-select',
+  provide() {
+    return {mdcMenuSelect: this }
+  },
   model: {
     prop: 'value',
     event: 'change'
   },
   props: {
     multiple: Boolean,
-    value: [String, Array],
+    value: [Number, String, Object],
     disabled: Boolean,
     label: String, 
     box: Boolean
@@ -69,7 +72,7 @@ export default {
       if (this.foundation) {
         let options = this.$refs.menu.items
         for (let i = 0; i < options.length; i++) {
-          let optionValue = options[i].getAttribute('data-value') || options[i].textContent.trim()
+          let optionValue = this._valueMap.get(options[i]) 
           if (this.value == optionValue) {
             this.foundation.setSelectedIndex(i)
             //TODO: MDCFIX force float above if value is valid
@@ -83,6 +86,10 @@ export default {
         this.$emit('change', this.foundation.getValue()) // TODO: MDCFIX
       }
     },
+  },
+  created () {
+    /* global WeakMap */
+    this._valueMap = new WeakMap()
   },
   mounted () {
 
@@ -151,8 +158,8 @@ export default {
       getTextForOptionAtIndex: (index) =>
         this.$refs.menu.items[index].textContent.trim(),
       getValueForOptionAtIndex: (index) => {
-        return this.$refs.menu.items[index].getAttribute('data-value') 
-          || this.$refs.menu.items[index].textContent.trim()
+        let el = this.$refs.menu.items[index]
+        return this._valueMap.get(el)  
       },
       setAttrForOptionAtIndex: (index, attr, value) =>
         this.$refs.menu.items[index].setAttribute(attr, value),
@@ -230,6 +237,8 @@ export default {
     let foundationLabel = this.foundationLabel
     this.foundationLabel = null
     foundationLabel.destroy()
+
+    this._valueMap = null
   }
 }
 </script>
