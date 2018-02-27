@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.2"></a>
+## [0.11.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.1...v0.11.2) (2018-02-25)
+
+
+### Reverts
+
+* **select:** allow Number and Object value types ([f6974f6](https://github.com/stasson/vue-mdc-adapter/commit/f6974f6))
+
+
+
+<a name="0.11.1"></a>
+## [0.11.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.0...v0.11.1) (2018-02-25)
+
+
+### Features
+
+* **card:** add support for primary action as per MDCWeb 0.31.0 ([8c4caec](https://github.com/stasson/vue-mdc-adapter/commit/8c4caec)), closes [#276](https://github.com/stasson/vue-mdc-adapter/issues/276)
+* **dialog:** add accent and accept-disabled property ([42c0c01](https://github.com/stasson/vue-mdc-adapter/commit/42c0c01))
+* **dialog:** add support for custom accept validation logic ([7b01357](https://github.com/stasson/vue-mdc-adapter/commit/7b01357)), closes [#278](https://github.com/stasson/vue-mdc-adapter/issues/278)
+* **select:** allow Number and Object value types ([6a031dd](https://github.com/stasson/vue-mdc-adapter/commit/6a031dd)), closes [#275](https://github.com/stasson/vue-mdc-adapter/issues/275)
+* **textfield:** keep non input attributes on the outer element ([c8795d9](https://github.com/stasson/vue-mdc-adapter/commit/c8795d9)), closes [#280](https://github.com/stasson/vue-mdc-adapter/issues/280)
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.10.0...v0.11.0) (2018-02-24)
 

@@ -1,8 +1,10 @@
 <template>
   <div class="mdc-demo">
     <mdc-card>
-      <mdc-card-media :src="card" >
-      </mdc-card-media>
+      <mdc-card-primary-action>
+        <mdc-card-media :src="card" >
+        </mdc-card-media>
+      </mdc-card-primary-action>
       <mdc-card-header title="Title goes here" subtitle="subtitle here" ></mdc-card-header>
       <mdc-card-actions>
         <mdc-card-action-buttons>

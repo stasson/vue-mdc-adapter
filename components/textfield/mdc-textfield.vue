@@ -12,7 +12,7 @@
 
       <textarea ref="input" v-if="multiline"
         v-on="$listeners"
-        v-bind="$attrs"
+        v-bind="inputAttrs"
         :class="inputClasses"
         @input="updateValue($event.target.value)"
         :minlength="minlength" :maxlength="maxlength"
@@ -24,7 +24,7 @@
 
       <input ref="input" v-else
         v-on="$listeners" 
-        v-bind="$attrs"
+        v-bind="inputAttrs"
         :class="inputClasses"
         @input="updateValue($event.target.value)"
         :type="type"
@@ -79,7 +79,6 @@ import {RippleBase} from '../ripple'
 export default {
   name: 'mdc-textfield',
   mixins: [CustomElementMixin, DispatchFocusMixin],
-  inheritAttrs: false,
   model: {
     prop: 'value',
     event: 'model'
@@ -104,15 +103,21 @@ export default {
     disabled: Boolean,
     required: Boolean,
     valid: {type: Boolean, default: undefined}, 
-    minlength: { type: [Number, String], default: undefined },
-    maxlength: { type: [Number, String], default: undefined },
-    size: { type: [Number, String], default: 20 },
     fullwidth: Boolean,
     multiline: Boolean,
-    rows: { type: [Number, String], default: 8 },
-    cols: { type: [Number, String], default: 40 },
     leadingIcon: [String, Array, Object],
     trailingIcon: [String, Array, Object],
+    size: { type: [Number, String], default: 20 },
+    minlength: { type: [Number, String], default: undefined },
+    maxlength: { type: [Number, String], default: undefined },
+    rows: { type: [Number, String], default: 8 },
+    cols: { type: [Number, String], default: 40 },
+    
+    // other input props  
+    name: String,
+    readonly: Boolean,
+    autocomplete: Boolean,
+    autofocus: Boolean,
   },
   data: function () {
     return {
@@ -188,6 +193,10 @@ export default {
     }
   },
   computed: {
+    inputAttrs () {
+      let { name, readonly, autocomplete, autofocus} = this
+      return { name, readonly, autocomplete, autofocus};
+    },
     inputPlaceHolder () {
       return this.fullwidth ? this.label : undefined
     },

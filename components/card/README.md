@@ -7,6 +7,7 @@ The card package provides the building blocks for composing your card components
 | ---------- | ----- |
 | `mdc-card` | Mandatory, for the card component |
 | `mdc-card-media` | Media area that displays a custom background-image with background-size: cover |
+| `mdc-card-primary-action` | The main tappable area of the card|
 | `mdc-card-header` | Header content block |
 | `mdc-card-title` | Title element |
 | `mdc-card-subtitle` |  Subtitle element |
@@ -17,15 +18,16 @@ The card package provides the building blocks for composing your card components
 | `mdc-card-action-button` | An action button with text |
 | `mdc-card-action-icon` | An action icon with no text |
 
-
 ### Card
 
 ```html
 <mdc-card>
-  <mdc-card-media :src="card">
-  </mdc-card-media>
-  <mdc-card-header 
-    title="Title goes here" 
+  <mdc-card-primary-action>
+    <mdc-card-media :src="card">
+    </mdc-card-media>
+  </mdc-card-primary-action>
+  <mdc-card-header
+    title="Title goes here"
     subtitle="subtitle here" >
   </mdc-card-header>
   <mdc-card-actions>
@@ -42,6 +44,29 @@ The card package provides the building blocks for composing your card components
 | props | Type | Default | Description |
 |-------|------|---------|-------------|
 |`stroked`|Boolean|| Removes the shadow and displays a hairline stroke instead |
+
+### Primary Action
+
+Typically contains most (or all) card content except mdc-card-actions.
+Only applicable to cards that have a primary action that the main surface should trigger.
+
+| event  | Description |
+|--------|-------------|
+|`@click`| emited on action area click |
+
+| prop | Type | Default | Description |
+|------|------|---------|-------------|
+|`event`|String| undefined | optional event to emit on click  |
+|`event-target`|Object| vm.$root | optional event target, defaults to root bus |
+|`event-args`|Array| [] | optional event args |
+|`href`|String| undefined | link's href |
+|`to`|String, Object| undefined | router-link property _(*)_ |
+|`replace`|Boolean| false | router-link property _(*)_ |
+|`append`|Boolean| false | router-link property _(*)_ |
+
+> _(*)_ Requires [vue-router](https://router.vuejs.org).
+> If the `to` property is defined, the item behaves as a
+> [router-link](https://router.vuejs.org/en/api/router-link.html).
 
 ### Media
 
@@ -125,7 +150,6 @@ container:
 |`event`|String| optional | optional event to emit on click  |
 |`event-target`|Object| vm.$root | optional event target, defaults to root bus |
 |`event-args`|Array| [] | optional event args |
-|`href`|String|| link's href, renders anchor (see notes below) |
 |`href`|String|| link's href, renders anchor (see notes below) |
 |`to`|String, Object| undefined | router-link property _(*)_ |
 |`replace`|Boolean| false | router-link property _(*)_ |
