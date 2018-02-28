@@ -90,11 +90,6 @@ export default {
   },
   mounted () {
     this.isInteractive && this.addRipple()
-    /* eslint-disable no-console */
-    console.log(this)
-    console.log(this.$el.getBoundingClientRect())
-    console.log(this.ripple)
-    /* eslint-enable no-console */
   },
   beforeDestroy () {
     this.removeRipple()
