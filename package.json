@@ -127,7 +127,7 @@
     "stylelint-processor-html": "^1.0.0",
     "stylelint-scss": "^2.4.0",
     "uglify-es": "^3.3.10",
-    "url-loader": "^0.6.2",
+    "url-loader": "^1.0.0",
     "validate-commit-msg": "^2.14.0",
     "vue": "^2.5.13",
     "vue-analytics": "^5.9.0",
