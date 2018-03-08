@@ -9,7 +9,7 @@
           minlength=8 maxlength=10
           helptext="passord must be 8 to 10 characters"
           helptext-persistent helptext-validation
-          v-model="password" />
+          v-model="password"/>
         <mdc-textfield :disabled="!enabled" v-model="textField"
           label="outlined" outline
            helptext="Help text..."
@@ -33,19 +33,17 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        textField: '',
-        enabled: true,
-        password: ''
-      }
-    }
-  }
+export default {
+  data() {
+    return {
+      textField: '',
+      enabled: true,
+      password: '',
+    };
+  },
+};
 </script>
 
 <<style>
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 </style>
-

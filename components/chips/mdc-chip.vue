@@ -1,47 +1,63 @@
 <template>
 <div class="mdc-chip" :class="classes" :style="styles" tabindex="0" >
-  <i class="mdc-chip__icon mdc-chip__icon--leading" 
+  <i ref="leadingIcon" class="mdc-chip__icon mdc-chip__icon--leading" 
     :class="leadingClasses" v-if="haveleadingIcon"
   >{{leadingIcon}}</i>
   <div classes="mdc-chip__text">
     <slot></slot>
   </div>
-  <i class="mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button" 
+  <i ref="trailingIcon" class="mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button" 
     :class="trailingClasses" v-if="havetrailingIcon"
   >{{trailingIcon}}</i>
 </div>
 </template>
 
 <script>
-import MDCChipFoundation from "@material/chips/chip/foundation";
-import { CustomLinkMixin, DispatchEventMixin } from "../base";
-import { RippleBase } from "../ripple";
+import MDCChipFoundation from '@material/chips/chip/foundation';
+import { CustomLinkMixin, DispatchEventMixin } from '../base';
+import { RippleBase } from '../ripple';
 
 export default {
-  name: "mdc-chip",
+  name: 'mdc-chip',
   mixins: [CustomLinkMixin, DispatchEventMixin],
   props: {
     leadingIcon: [String],
     trailingIcon: [String],
     leadingIconClasses: [Object],
-    trailingIconClasses: [Object]
+    trailingIconClasses: [Object],
   },
   data() {
     return {
       classes: {},
-      styles: {}
+      styles: {},
     };
   },
   methods: {},
   mounted() {
     this.foundation = new MDCChipFoundation({
+      addClass: className => this.$set(this.classes, className, true),
+      removeClass: className => this.$delete(this.rootClasses, className),
+      hasClass: className => this.$refs.root.classList.contains(className),
       registerInteractionHandler: (type, handler) =>
         this.$el.addEventListener(type, handler),
       deregisterInteractionHandler: (type, handler) =>
         this.$el.removeEventListener(type, handler),
       notifyInteraction: () => {
-        this.dispatchEvent({ type: 'click' })
-      }
+        this.dispatchEvent({ type: 'click' });
+      },
+      notifyTrailingIconInteraction: () => {
+        this.dispatchEvent({ type: 'trailingIconClick' });
+      },
+      registerTrailingIconInteractionHandler: (evtType, handler) => {
+        if (this.$refs.trailingIcon) {
+          this.$refs.trailingIcon.addEventListener(evtType, handler);
+        }
+      },
+      deregisterTrailingIconInteractionHandler: (evtType, handler) => {
+        if (this.$refs.trailingIcon) {
+          this.$refs.trailingIcon.removeEventListener(evtType, handler);
+        }
+      },
     });
 
     this.foundation.init();
@@ -60,24 +76,24 @@ export default {
       return Object.assign(
         {},
         {
-          "material-icons": !!this.leadingIcon
+          'material-icons': !!this.leadingIcon,
         },
-        this.leadingIconClasses
+        this.leadingIconClasses,
       );
     },
     trailingClasses() {
       return Object.assign(
         {},
         {
-          "material-icons": !!this.trailingIcon
+          'material-icons': !!this.trailingIcon,
         },
-        this.trailingIconClasses
+        this.trailingIconClasses,
       );
-    }
+    },
   },
   beforeDestroy() {
     this.ripple.destroy();
     this.foundation.destroy();
-  }
+  },
 };
 </script>
