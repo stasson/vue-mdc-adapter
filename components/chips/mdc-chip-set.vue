@@ -19,6 +19,12 @@ export default {
   mounted() {
     this.foundation = new MDCChipSetFoundation({
       hasClass: className => this.$refs.root.classList.contains(className),
+      registerInteractionHandler: (evtType, handler) => {
+        this.$refs.root.addEventListener(evtType, handler);
+      },
+      deregisterInteractionHandler: (evtType, handler) => {
+        this.$refs.root.removeEventListener(evtType, handler);
+      },
     });
 
     this.foundation.init();
