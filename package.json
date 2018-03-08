@@ -19,7 +19,13 @@
   "module": "dist/index.js",
   "unpkg": "dist/vue-mdc-adapter.umd.min.js",
   "jsdelivr": "dist/vue-mdc-adapter.umd.min.js",
-  "files": ["components", "dist", "static", "LICENSE", "README.md"],
+  "files": [
+    "components",
+    "dist",
+    "static",
+    "LICENSE",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/stasson/vue-mdc-adapter.git"
@@ -139,5 +145,8 @@
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": ["> 1%", "last 2 versions"]
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

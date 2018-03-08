@@ -160,7 +160,7 @@ export default {
       this.foundation && this.foundation.setDisabled(this.disabled);
     },
     required() {
-      this.foundation && this.foundation.setRequired(this.disabled);
+      this.$refs.input && (this.$refs.input.required = this.required);
     },
     valid() {
       if (typeof this.valid !== 'undefined') {
@@ -391,6 +391,16 @@ export default {
         deregisterInputInteractionHandler: (evtType, handler) => {
           this.$refs.input.removeEventListener(evtType, handler);
         },
+        registerValidationAttributeChangeHandler: handler => {
+          const observer = new MutationObserver(handler);
+          const targetNode = this.$refs.input;
+          const config = { attributes: true };
+          observer.observe(targetNode, config);
+          return observer;
+        },
+        deregisterValidationAttributeChangeHandler: observer => {
+          observer.disconnect();
+        },
         shakeLabel: shouldShake => {
           this.labelFoundation.shake(shouldShake);
         },
@@ -419,7 +429,7 @@ export default {
     this.foundation.init();
     this.foundation.setValue(this.value);
     this.foundation.setDisabled(this.disabled);
-    this.foundation.setRequired(this.required);
+    this.$refs.input && (this.$refs.input.required = this.required);
     if (typeof this.valid !== 'undefined') {
       this.foundation.setValid(this.valid);
     }
