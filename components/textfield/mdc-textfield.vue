@@ -234,7 +234,7 @@ export default {
     },
     labelClassesUpgraded() {
       return Object.assign(this.labelClasses, {
-        'mdc-text-field__label--float-above': this.value,
+        'mdc-floating-label--float-above': this.value,
       });
     },
   },
