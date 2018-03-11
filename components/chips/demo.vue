@@ -23,11 +23,22 @@
       <mdc-chip :leading-icon-classes="{fa:1, 'fa-smile-o':1}" :trailing-icon-classes="{fa:1, 'fa-ellipsis-v':1}">John Doe</mdc-chip>
     </mdc-chip-set>
   </section>
+  
+  <section class="mdc-demo">
+    <h3>Choice Chips</h3>
+    <mdc-chip-set choice>
+      <mdc-chip>Extra small</mdc-chip>
+      <mdc-chip>Small</mdc-chip>
+      <mdc-chip>Medium</mdc-chip>
+      <mdc-chip>Large</mdc-chip>
+      <mdc-chip>Extra Large</mdc-chip>
+    </mdc-chip-set>
+    </section>
 
   <section class="mdc-demo">
     <h3>Filter Chips</h3>
-    <mdc-chip-set>
-      <mdc-chip trailing-icon="cancel" class="">Tops</mdc-chip>
+    <mdc-chip-set filter>
+      <mdc-chip trailing-icon="cancel">Tops</mdc-chip>
       <mdc-chip trailing-icon="cancel">Bottoms</mdc-chip>
       <mdc-chip trailing-icon="cancel">Shoes</mdc-chip>
       <mdc-chip trailing-icon="cancel">Accessories</mdc-chip>
@@ -56,7 +67,7 @@
 </template>
 
 <style scoped>
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 .custom-chip-primary {
   background-color: #6200ee;
   /* @alternate */
