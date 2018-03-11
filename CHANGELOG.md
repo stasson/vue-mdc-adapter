@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.2...v0.12.0) (2018-03-11)
+
+
+### Bug Fixes
+
+* **grid-list:** Default width attribute ([a71ab3a](https://github.com/stasson/vue-mdc-adapter/commit/a71ab3a))
+* **grid-list:** Resolve Lint error in SCSS ([177ca62](https://github.com/stasson/vue-mdc-adapter/commit/177ca62))
+* **grid-tile:** Remove console.log ([b540ecc](https://github.com/stasson/vue-mdc-adapter/commit/b540ecc))
+* Update other components to pass tests with mdc 0.32.0 ([615c2f3](https://github.com/stasson/vue-mdc-adapter/commit/615c2f3))
+
+
+### Features
+
+* **chips:** Implement filter and choice chip-set variants. ([f09aa67](https://github.com/stasson/vue-mdc-adapter/commit/f09aa67))
+* **grid-list:** Add interactive support ([24063e4](https://github.com/stasson/vue-mdc-adapter/commit/24063e4))
+* **grid-list:** Update README ([bfdcc1b](https://github.com/stasson/vue-mdc-adapter/commit/bfdcc1b))
+* **textfield:** Update mdc-textfield for floating-label in mdc v0.32.0 ([24ee306](https://github.com/stasson/vue-mdc-adapter/commit/24ee306))
+* **textfield:** use mdc-floating-label as per MDCWeb 0.32.0 ([8c2dbeb](https://github.com/stasson/vue-mdc-adapter/commit/8c2dbeb))
+* **top-app-bar:** Implement mdc-top-app-bar ([c6a46dd](https://github.com/stasson/vue-mdc-adapter/commit/c6a46dd))
+
+
+
 <a name="0.11.2"></a>
 ## [0.11.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.1...v0.11.2) (2018-02-25)
 

@@ -1,1 +1,36 @@
 @import "@material/grid-list/mdc-grid-list";
+
+// Interactive support
+@import "@material/ripple/common";
+@import "@material/ripple/mixins";
+
+// Mixins
+@mixin mdc-grid-tile-primary-text-ink-color($color) {
+  @include mdc-theme-prop(color, $color);
+}
+
+@mixin mdc-grid-tile-graphic-ink-color($color) {
+  .mdc-grid-tile__primary-content {
+    @include mdc-theme-prop(color, $color);
+  }
+}
+
+.mdc-grid-tile--selected,
+.mdc-grid-tile--activated {
+  @include mdc-grid-tile-primary-text-ink-color(primary);
+  @include mdc-grid-tile-graphic-ink-color(primary);
+}
+
+.mdc-grid-tile {
+  overflow: hidden;
+}
+
+:not(.mdc-grid-list--non-interactive) > .mdc-grid-tile {
+  cursor: pointer;
+  @include mdc-ripple-surface;
+  @include mdc-ripple-radius-bounded;
+  @include mdc-states;
+  @include mdc-states-activated(primary);
+  @include mdc-states-selected(primary);
+}
+
