@@ -96,18 +96,6 @@ export default {
     this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => this.foundation.isKeyboardActivated(),
-      computeBoundingRect: () => {
-        const dim = 48
-        const {left, top} = this.$el.getBoundingClientRect()
-        return {
-          left,
-          top,
-          width: dim,
-          height: dim,
-          right: left + dim,
-          bottom: left + dim
-        }
-      }
     })
     this.ripple.init()
   },

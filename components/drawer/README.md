@@ -55,6 +55,12 @@ By default the drawer component is responsive and will switch from temporary to 
 
 > (*) drawer is responsive if `drawer-type` undefined: temporary on mobile breakpoint and persistent otherwise.
 
+| event  | args | Description |
+|--------|------|-------------|
+|`@open` |      | triggered on drawer open  |
+|`@close`|      | triggered on drawer close |
+
+
 ### Drawer Header
 
 | prop | Type | Default | Description |

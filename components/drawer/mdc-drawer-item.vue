@@ -1,7 +1,7 @@
 <template>
   <custom-link :link="link" 
     class="mdc-drawer-item mdc-list-item" 
-    :class="[classes. itemClasses]" :style="styles"
+    :class="[classes, itemClasses]" :style="styles"
     @click="onClick">
     <span class="mdc-list-item__graphic" v-if="hasStartDetail">
       <slot name="start-detail">

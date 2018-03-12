@@ -5,7 +5,7 @@ Each item in a grid list is called a tile. Tiles maintain consistent width,
 height, and padding across screen sizes.
 
 ```html
-<mdc-grid-list with-support-text>
+<mdc-grid-list with-support-text interactive>
   <mdc-grid-tile ratio="16x9"  
     v-for="(item, index) in tiles" :key="index"
     :src="item.src"
@@ -49,6 +49,7 @@ var vm = new Vue({
 |`icon-align-start`| Boolean|| whether tiles have a start icon |
 |`icon-align-end`| Boolean|| whether tiles have an end icon |
 |`with-support-text`| Boolean|| whether tiles have support text |
+|`interactive`| Boolean|| set interactive style for hover, focus, and press states |
 
 #### mdc-grid-tile
 
@@ -59,7 +60,14 @@ var vm = new Vue({
 |`icon`|String|| icon name |
 |`title`|String|| title name |
 |`support-text`|String|| support text |
+|`activated`|Boolean|| styles the row in an activated state (*)|
+|`selected`|Boolean|| styles the row in a selected state (*)|
 
+> Note: the difference between selected and activated states:
+- Selected is ephemeral and likely to change soon. E.g., selecting one or more photos to share in Google Photos. Multiple items in a list can be selected at the same time.
+- Activated is more permanent within the page’s lifetime. E.g., the currently highlighted destination in a nav drawer. Only one item in a list can be activated at a time.
+
+> if the list is interactive, `mdc-grid-tile` will dispatch mouse and keyboard listeners (`@click`, ...)
 
 ### Image only tiles
 

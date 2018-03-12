@@ -121,7 +121,7 @@ var vm = new Vue({
 | `trailing-icon`       | [String, Array, Object ] |         | trailing icon _*_                                    |
 | `leading-icon`        | [String, Array, Object ] |         | leading icon _*_                                     |
 
-> other attributes (`name`, `readonly`, ... ) are being passed down to the rendered input element.
+> other input attributes (`name`, `readonly`, ... ) are being passed down to the rendered input element.
 
 > (*) icon prop usage: use `String` for material icons, `Array` to specify icon classList,  `{className: String, textContent: String}` for custom class and/or content, or use `trailing-icon` or `leading-icon` slots for  custom icon markup (svg, ...).
 

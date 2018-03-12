@@ -34,12 +34,14 @@ export default {
     event: 'change'
   },
   props: {
-    'value': [Number, String],
-    'min': { type: [Number, String], default: 0 },
-    'max': { type: [Number, String], default: 100 },
-    'step': { type: [Number, String], default: 0 },
-    'display-markers': Boolean,
-    'disabled': Boolean
+    value: [Number, String],
+    min: { type: [Number, String], default: 0 },
+    max: { type: [Number, String], default: 100 },
+    step: { type: [Number, String], default: 0 },
+    displayMarkers: Boolean,
+    disabled: Boolean,
+    layoutOn: String,
+    layoutOnSource: {type: Object, required: false},
   },
   data () {
     return {
@@ -83,7 +85,9 @@ export default {
   },
   methods: {
     layout () {
-      this.foundation && this.foundation.layout()
+      this.$nextTick( () => {
+        this.foundation && this.foundation.layout()
+      })
     }
   },
   mounted () {
@@ -160,11 +164,14 @@ export default {
     if (this.hasMarkers) {
       this.foundation.setupTrackMarker()
     }
-    this.$root.$on('mdc:layout', () => {
-      this.$nextTick(() => {
-        this.foundation.layout()
-      })
-    })
+    
+    this.$root.$on('mdc:layout', this.layout)
+
+    if (this.layoutOn) {
+      let source = this.layoutOnSource || this.$root
+      source.$on(this.layoutOn, this.layout)
+    }
+    
   },
   beforeDestroy () {
     this.foundation.destroy()

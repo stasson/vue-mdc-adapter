@@ -1,0 +1,5 @@
+@import '@material/chips/mdc-chips';
+
+.mdc-chip {
+  @include mdc-chip-selected-ink-color(#6200ee);
+}
