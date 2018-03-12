@@ -2,6 +2,82 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.1"></a>
+## [0.12.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.12.0...v0.12.1) (2018-03-12)
+
+
+
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.2...v0.12.0) (2018-03-11)
+
+
+### Bug Fixes
+
+* **grid-list:** Default width attribute ([a71ab3a](https://github.com/stasson/vue-mdc-adapter/commit/a71ab3a))
+* **grid-list:** Resolve Lint error in SCSS ([177ca62](https://github.com/stasson/vue-mdc-adapter/commit/177ca62))
+* **grid-tile:** Remove console.log ([b540ecc](https://github.com/stasson/vue-mdc-adapter/commit/b540ecc))
+* Update other components to pass tests with mdc 0.32.0 ([615c2f3](https://github.com/stasson/vue-mdc-adapter/commit/615c2f3))
+
+
+### Features
+
+* **chips:** Implement filter and choice chip-set variants. ([f09aa67](https://github.com/stasson/vue-mdc-adapter/commit/f09aa67))
+* **grid-list:** Add interactive support ([24063e4](https://github.com/stasson/vue-mdc-adapter/commit/24063e4))
+* **grid-list:** Update README ([bfdcc1b](https://github.com/stasson/vue-mdc-adapter/commit/bfdcc1b))
+* **textfield:** Update mdc-textfield for floating-label in mdc v0.32.0 ([24ee306](https://github.com/stasson/vue-mdc-adapter/commit/24ee306))
+* **textfield:** use mdc-floating-label as per MDCWeb 0.32.0 ([8c2dbeb](https://github.com/stasson/vue-mdc-adapter/commit/8c2dbeb))
+* **top-app-bar:** Implement mdc-top-app-bar ([c6a46dd](https://github.com/stasson/vue-mdc-adapter/commit/c6a46dd))
+
+
+
+<a name="0.11.2"></a>
+## [0.11.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.1...v0.11.2) (2018-02-25)
+
+
+### Reverts
+
+* **select:** allow Number and Object value types ([f6974f6](https://github.com/stasson/vue-mdc-adapter/commit/f6974f6))
+
+
+
+<a name="0.11.1"></a>
+## [0.11.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.11.0...v0.11.1) (2018-02-25)
+
+
+### Features
+
+* **card:** add support for primary action as per MDCWeb 0.31.0 ([8c4caec](https://github.com/stasson/vue-mdc-adapter/commit/8c4caec)), closes [#276](https://github.com/stasson/vue-mdc-adapter/issues/276)
+* **dialog:** add accent and accept-disabled property ([42c0c01](https://github.com/stasson/vue-mdc-adapter/commit/42c0c01))
+* **dialog:** add support for custom accept validation logic ([7b01357](https://github.com/stasson/vue-mdc-adapter/commit/7b01357)), closes [#278](https://github.com/stasson/vue-mdc-adapter/issues/278)
+* **select:** allow Number and Object value types ([6a031dd](https://github.com/stasson/vue-mdc-adapter/commit/6a031dd)), closes [#275](https://github.com/stasson/vue-mdc-adapter/issues/275)
+* **textfield:** keep non input attributes on the outer element ([c8795d9](https://github.com/stasson/vue-mdc-adapter/commit/c8795d9)), closes [#280](https://github.com/stasson/vue-mdc-adapter/issues/280)
+
+
+
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.10.0...v0.11.0) (2018-02-24)
+
+
+### Bug Fixes
+
+* remove mdc-chip icon element from mdc-chip__text element ([44d9849](https://github.com/stasson/vue-mdc-adapter/commit/44d9849))
+* Support leading and trailing icons simultaneously (needs material-components-web@0.31.0). ([ddafc68](https://github.com/stasson/vue-mdc-adapter/commit/ddafc68))
+* Support leading and trailing icons simultaneously (needs material-components-web@0.31.0). ([8f4a414](https://github.com/stasson/vue-mdc-adapter/commit/8f4a414))
+* **drawer:** item classes are not applied ([5ec5ec6](https://github.com/stasson/vue-mdc-adapter/commit/5ec5ec6)), closes [#247](https://github.com/stasson/vue-mdc-adapter/issues/247)
+* **package:** update material-components-web to version 0.31.0 ([b43017a](https://github.com/stasson/vue-mdc-adapter/commit/b43017a))
+* **select:** refactor label foundation as per MDCWeb 0.31.0 ([0db8ad6](https://github.com/stasson/vue-mdc-adapter/commit/0db8ad6)), closes [#274](https://github.com/stasson/vue-mdc-adapter/issues/274)
+* **slider:** slider thumbContainer is offset when drawer open/close ([a1516ec](https://github.com/stasson/vue-mdc-adapter/commit/a1516ec)), closes [#268](https://github.com/stasson/vue-mdc-adapter/issues/268)
+* **textfield:** validation should happen on first unfocus ([b327b6a](https://github.com/stasson/vue-mdc-adapter/commit/b327b6a)), closes [#272](https://github.com/stasson/vue-mdc-adapter/issues/272)
+
+
+### Features
+
+* **chips:** Add 'mdc-chip-set' and 'mdc-chip' ([adbfa3d](https://github.com/stasson/vue-mdc-adapter/commit/adbfa3d))
+* **chips:** add mdc-chip-set and mdc-chip [#267](https://github.com/stasson/vue-mdc-adapter/issues/267) ([d63ab16](https://github.com/stasson/vue-mdc-adapter/commit/d63ab16))
+* **drawer:** expose open/close events ([4a2bd78](https://github.com/stasson/vue-mdc-adapter/commit/4a2bd78)), closes [#268](https://github.com/stasson/vue-mdc-adapter/issues/268) [#271](https://github.com/stasson/vue-mdc-adapter/issues/271)
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.9.2...v0.10.0) (2018-02-17)
 
