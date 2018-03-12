@@ -71,7 +71,7 @@ const babelConfig = {
   plugins: [
     'transform-object-assign',
     'transform-object-rest-spread',
-    // let rollup bundle helpers once
+    // let rollup bundle helpers  once
     // see https://github.com/rollup/rollup-plugin-babel#helpers
     'external-helpers',
   ],
