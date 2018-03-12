@@ -1,7 +1,7 @@
 <template>
   <div class="mdc-demo mdc-demo--container">
     <mdc-grid-list icon-align-start with-support-text width=150 
-      class="mdc-demo">
+      class="mdc-demo" interactive>
       <mdc-grid-tile :src="tile"
         :title="'Title ' + (index + 1)"
         support-text="support text" cover icon="star_border"
