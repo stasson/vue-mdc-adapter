@@ -1,6 +1,6 @@
 {
   "name": "vue-mdc-adapter",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Vue wrapper arround Material Components for the Web",
   "keywords": [
     "vue",
