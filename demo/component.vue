@@ -41,7 +41,8 @@ export default {
     'icon-toggle-readme': () => import('../components/icon-toggle/README.md'),
     'layout-app-readme': () => import('../components/layout-app/README.md'),
     'layout-grid-readme': () => import('../components/layout-grid/README.md'),
-    'linear-progress-readme': () => import('../components/linear-progress/README.md'),
+    'linear-progress-readme': () =>
+      import('../components/linear-progress/README.md'),
     'list-readme': () => import('../components/list/README.md'),
     'menu-readme': () => import('../components/menu/README.md'),
     'radio-readme': () => import('../components/radio/README.md'),
@@ -52,6 +53,7 @@ export default {
     'tabs-readme': () => import('../components/tabs/README.md'),
     'textfield-readme': () => import('../components/textfield/README.md'),
     'toolbar-readme': () => import('../components/toolbar/README.md'),
+    'top-app-bar-readme': () => import('../components/top-app-bar/README.md'),
     'typography-readme': () => import('../components/typography/README.md'),
 
     'button-demo': () => import('../components/button/demo.vue'),
@@ -66,7 +68,8 @@ export default {
     'icon-toggle-demo': () => import('../components/icon-toggle/demo.vue'),
     'layout-app-demo': () => import('../components/layout-app/demo.vue'),
     'layout-grid-demo': () => import('../components/layout-grid/demo.vue'),
-    'linear-progress-demo': () => import('../components/linear-progress/demo.vue'),
+    'linear-progress-demo': () =>
+      import('../components/linear-progress/demo.vue'),
     'list-demo': () => import('../components/list/demo.vue'),
     'menu-demo': () => import('../components/menu/demo.vue'),
     'radio-demo': () => import('../components/radio/demo.vue'),
@@ -77,6 +80,7 @@ export default {
     'tabs-demo': () => import('../components/tabs/demo.vue'),
     'textfield-demo': () => import('../components/textfield/demo.vue'),
     'toolbar-demo': () => import('../components/toolbar/demo.vue'),
+    'top-app-bar-demo': () => import('../components/top-app-bar/demo.vue'),
     'typography-demo': () => import('../components/typography/demo.vue'),
   },
   computed: {
