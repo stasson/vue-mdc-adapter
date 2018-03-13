@@ -138,7 +138,7 @@
     "vue-template-compiler": "^2.5.13",
     "vue-template-validator": "^1.1.5",
     "webpack": "^3.11.0",
-    "webpack-cdn-plugin": "^1.8.1",
+    "webpack-cdn-plugin": "^2.0.0",
     "webpack-dev-server": "^2.11.1"
   },
   "engines": {
