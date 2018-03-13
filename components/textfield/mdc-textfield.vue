@@ -4,8 +4,8 @@
     <div ref="root" :class="rootClasses">
 
       <i ref="icon" v-if="!!hasLeadingIcon"
-        tabindex="0" 
-        class="mdc-text-field__icon"  
+        tabindex="0"
+        class="mdc-text-field__icon"
         :class="hasLeadingIcon.classes">
         <slot name="leading-icon">{{ hasLeadingIcon.content }}</slot>
       </i>
@@ -19,11 +19,11 @@
         :placeholder="inputPlaceHolder"
         :aria-label="inputPlaceHolder"
         :aria-controls="inputAriaControls"
-        :rows="rows" :cols="cols" 
+        :rows="rows" :cols="cols"
         ></textarea>
 
       <input ref="input" v-else
-        v-on="$listeners" 
+        v-on="$listeners"
         v-bind="inputAttrs"
         :class="inputClasses"
         @input="updateValue($event.target.value)"
@@ -31,7 +31,7 @@
         :minlength="minlength" :maxlength="maxlength"
         :placeholder="inputPlaceHolder"
         :aria-label="inputPlaceHolder"
-        :aria-controls="inputAriaControls" 
+        :aria-controls="inputAriaControls"
         />
 
       <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="hasLabel">
@@ -39,8 +39,8 @@
       </label>
 
       <i ref="icon" v-if="!!hasTrailingIcon"
-        tabindex="0" 
-        class="mdc-text-field__icon"  
+        tabindex="0"
+        class="mdc-text-field__icon"
         :class="hasTrailingIcon.classes">
         <slot name="trailing-icon">{{ hasTrailingIcon.content }}</slot>
       </i>
@@ -248,7 +248,7 @@ export default {
           this.$delete(this.bottomClasses, className);
         },
         hasClass: className => {
-          this.bottomClasses.classList.contains(className);
+          this.$refs.bottom.classList.contains(className);
         },
         setAttr: (name, value) => {
           this.$refs.bottom.setAttribute(name, value);
