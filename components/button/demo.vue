@@ -2,13 +2,13 @@
   <div class="mdc-demo">
     <div class="mdc-demo--container" style="min-height: 40px; padding-bottom: 0">
       <div class="mdc-demo-button">
-        <mdc-button :dense="dense" :compact="compact" :disabled="disabled" 
+        <mdc-button :dense="dense" :disabled="disabled" 
           :raised="raised" :stroked="stroked" :unelevated="unelevated" 
           :accent="accent">Button</mdc-button>
-        <mdc-button :dense="dense" :compact="compact" :disabled="disabled"
+        <mdc-button :dense="dense" :disabled="disabled"
           :raised="raised" :stroked="stroked" :unelevated="unelevated" 
           :accent="accent">Button</mdc-button>
-        <mdc-button :dense="dense" :compact="compact" :disabled="disabled"
+        <mdc-button :dense="dense" :disabled="disabled"
           :raised="raised" :stroked="stroked" :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
       </div>  
@@ -24,7 +24,6 @@
 
       <div class="button-style-select">
         <mdc-checkbox label="disabled" v-model="disabled"></mdc-checkbox>
-        <mdc-checkbox label="compact" v-model="compact" ></mdc-checkbox>
         <mdc-checkbox label="dense"  v-model="dense"></mdc-checkbox>
         <mdc-checkbox label="accent"  v-model="accent"></mdc-checkbox>
       </div>
@@ -34,35 +33,40 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      type: '', 
-      dense: false, 
-      compact:false, 
-      disabled:false, 
-      accent:false
-    }
+      type: '',
+      dense: false,
+      disabled: false,
+      accent: false,
+    };
   },
   computed: {
-    raised () { return this.type == 'raised'},
-    unelevated () { return this.type == 'unelevated'},
-    stroked () { return this.type == 'stroked'},
-  }
-}
+    raised() {
+      return this.type == 'raised';
+    },
+    unelevated() {
+      return this.type == 'unelevated';
+    },
+    stroked() {
+      return this.type == 'stroked';
+    },
+  },
+};
 </script>
 
 
 <style>
 .mdc-demo-button {
   margin: 0 auto;
-  text-align:center;
+  text-align: center;
 }
 
-.button-type-select, .button-style-select {
+.button-type-select,
+.button-style-select {
   margin: 0 32px;
   display: flex;
-  flex-flow:  column nowrap;
+  flex-flow: column nowrap;
   justify-content: flex-start;
 }
-
 </style>
