@@ -1,5 +1,5 @@
 <script>
-import mdcButtonBase from './mdc-button-base.vue'
+import mdcButtonBase from './mdc-button-base.vue';
 
 export default {
   name: 'mdc-button',
@@ -9,10 +9,9 @@ export default {
     unelevated: Boolean,
     stroked: Boolean,
     dense: Boolean,
-    compact: Boolean, 
-    accent: Boolean
+    accent: Boolean,
   },
-  data () {
+  data() {
     return {
       classes: {
         'mdc-button': true,
@@ -20,30 +19,26 @@ export default {
         'mdc-button--unelevated': this.unelevated,
         'mdc-button--stroked': this.stroked,
         'mdc-button--dense': this.dense,
-        'mdc-button--compact': this.compact,
-        'mdc-button--accent': this.accent
-      }
-    }
+        'mdc-button--accent': this.accent,
+      },
+    };
   },
   watch: {
-    raised () {
-      this.$set(this.classes, 'mdc-button--raised', this.raised )
+    raised() {
+      this.$set(this.classes, 'mdc-button--raised', this.raised);
     },
-    unelevated () {
-      this.$set(this.classes, 'mdc-button--unelevated', this.unelevated )
+    unelevated() {
+      this.$set(this.classes, 'mdc-button--unelevated', this.unelevated);
     },
-    stroked () {
-      this.$set(this.classes, 'mdc-button--stroked', this.stroked )
+    stroked() {
+      this.$set(this.classes, 'mdc-button--stroked', this.stroked);
     },
-    dense () {
-      this.$set(this.classes, 'mdc-button--dense', this.dense )
+    dense() {
+      this.$set(this.classes, 'mdc-button--dense', this.dense);
     },
-    compact () {
-      this.$set(this.classes, 'mdc-button--compact', this.compact )
+    accent() {
+      this.$set(this.classes, 'mdc-button--accent', this.accent);
     },
-    accent () {
-      this.$set(this.classes, 'mdc-button--accent', this.accent )
-    },
-  }
-}
+  },
+};
 </script>
