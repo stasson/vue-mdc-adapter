@@ -5,34 +5,39 @@
 </template>
 
 <script>
-import MDCNativeOption from './mdc-native-option.vue'
-import MDCMenuOption from './mdc-menu-option.vue'
-import MDCMultiOption from './mdc-multi-option.vue'
+import MDCNativeOption from './mdc-native-option.vue';
+import MDCMenuOption from './mdc-menu-option.vue';
+import MDCMultiOption from './mdc-multi-option.vue';
 
 export default {
   name: 'mdc-option',
   props: {
     value: String,
-    disabled: Boolean
+    disabled: Boolean,
   },
   inject: ['mdcSelect'],
   components: {
     'mdc-native-option': MDCNativeOption,
     'mdc-multi-option': MDCMultiOption,
-    'mdc-menu-option': MDCMenuOption
+    'mdc-menu-option': MDCMenuOption,
   },
   computed: {
-    isNative () {
-      return this.mdcSelect.isNative
+    isNative() {
+      return this.mdcSelect.isNative;
     },
-    multiple () {
-      return this.mdcSelect.multiple
+    multiple() {
+      return this.mdcSelect.multiple;
     },
-    type () {
-      return this.multiple ? 'mdc-multi-option'
-        : this.isNative ? 'mdc-native-option'
-          : 'mdc-menu-option'
-    }
-  }
-}
+    menu() {
+      return this.mdcSelect.menu;
+    },
+    type() {
+      return this.multiple
+        ? 'mdc-multi-option'
+        : this.menu
+          ? 'mdc-menu-option'
+          : this.isNative ? 'mdc-native-option' : 'mdc-menu-option';
+    },
+  },
+};
 </script>
