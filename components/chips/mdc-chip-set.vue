@@ -13,6 +13,9 @@ export default {
     choice: [Boolean],
     filter: [Boolean],
   },
+  provide() {
+    return { mdcChipSet: this };
+  },
   data() {
     return {
       classes: {

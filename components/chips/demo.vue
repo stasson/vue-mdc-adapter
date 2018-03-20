@@ -43,6 +43,14 @@
       <mdc-chip trailing-icon="cancel">Shoes</mdc-chip>
       <mdc-chip trailing-icon="cancel">Accessories</mdc-chip>
     </mdc-chip-set>
+    
+    <h3>Filter Chips with leading icon</h3>
+    <mdc-chip-set filter>
+      <mdc-chip leading-icon="face" trailing-icon="cancel">Tops</mdc-chip>
+      <mdc-chip leading-icon="face" trailing-icon="cancel">Bottoms</mdc-chip>
+      <mdc-chip leading-icon="face" trailing-icon="cancel">Shoes</mdc-chip>
+      <mdc-chip leading-icon="face" trailing-icon="cancel">Accessories</mdc-chip>
+    </mdc-chip-set>
   </section>
 
   <section class="mdc-demo">
