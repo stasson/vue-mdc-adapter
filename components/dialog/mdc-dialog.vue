@@ -16,12 +16,12 @@
       </section>
       <footer class="mdc-dialog__footer">
         <mdcButton ref="cancel" v-if="cancel"
-          class="mdc-dialog__footer__button"
+          class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel"
           :class="{'mdc-dialog__action':accent}"
           @click="onCancel"
           >{{ cancel }}</mdcButton>
         <mdcButton  ref="accept"
-          class="mdc-dialog__footer__button"
+          class="mdc-dialog__footer__button mdc-dialog__footer__button--accept"
           :class="{'mdc-dialog__action':accent}"
           :disabled="acceptDisabled"
           @click="onAccept"
@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import MDCDialogFoundation from '@material/dialog/foundation'
-import { createFocusTrapInstance } from '@material/dialog/util'
-import {mdcButton} from '../button'
+import MDCDialogFoundation from '@material/dialog/foundation';
+import { createFocusTrapInstance } from '@material/dialog/util';
+import { mdcButton } from '../button';
 
 export default {
   name: 'mdc-dialog',
@@ -45,32 +45,34 @@ export default {
     acceptDisabled: Boolean,
     cancel: { type: String, default: 'Cancel' },
     accent: Boolean,
-    scrollable: Boolean
+    scrollable: Boolean,
   },
   components: {
-    mdcButton : mdcButton
+    mdcButton: mdcButton,
   },
-  data () {
+  data() {
     return {
       classes: {
-        'mdc-theme--dark': this.dark
+        'mdc-theme--dark': this.dark,
       },
       styles: {},
       surfaceClasses: {},
       bodyClasses: {
-        'mdc-dialog__body--scrollable': this.scrollable
-      }
-    }
+        'mdc-dialog__body--scrollable': this.scrollable,
+      },
+    };
   },
-  mounted () {
+  mounted() {
     this.focusTrap = createFocusTrapInstance(
-      this.$refs.surface, this.$refs.accept)
+      this.$refs.surface,
+      this.$refs.accept,
+    );
 
     this.foundation = new MDCDialogFoundation({
-      addClass: (className) => this.$set(this.classes, className, true),
-      removeClass: (className) => this.$delete(this.classes, className),
-      addBodyClass: (className) => document.body.classList.add(className),
-      removeBodyClass: (className) => document.body.classList.remove(className),
+      addClass: className => this.$set(this.classes, className, true),
+      removeClass: className => this.$delete(this.classes, className),
+      addBodyClass: className => document.body.classList.add(className),
+      removeBodyClass: className => document.body.classList.remove(className),
       eventTargetHasClass: (target, className) =>
         target.classList.contains(className),
       registerInteractionHandler: (evt, handler) =>
@@ -85,29 +87,29 @@ export default {
         // VMA_HACK: handle button clicks ourselves
         // this.$refs.surface.removeEventListener(evt, handler)
       },
-      registerDocumentKeydownHandler: (handler) =>
+      registerDocumentKeydownHandler: handler =>
         document.addEventListener('keydown', handler),
-      deregisterDocumentKeydownHandler: (handler) =>
+      deregisterDocumentKeydownHandler: handler =>
         document.removeEventListener('keydown', handler),
-      registerTransitionEndHandler: (handler) =>
+      registerTransitionEndHandler: handler =>
         this.$refs.surface.addEventListener('transitionend', handler),
-      deregisterTransitionEndHandler: (handler) =>
+      deregisterTransitionEndHandler: handler =>
         this.$refs.surface.removeEventListener('transitionend', handler),
       notifyAccept: () => this.$emit('accept'),
       notifyCancel: () => this.$emit('cancel'),
       trapFocusOnSurface: () => this.focusTrap.activate(),
       untrapFocusOnSurface: () => this.focusTrap.deactivate(),
-      isDialog: (el) => (this.$refs.surface === el),
+      isDialog: el => this.$refs.surface === el,
       layoutFooterRipples: () => {
-        this.$refs.accept.ripple.layout()
-        this.cancel && this.$refs.cancel.ripple.layout()
-      }
-    })
+        this.$refs.accept.ripple.layout();
+        this.cancel && this.$refs.cancel.ripple.layout();
+      },
+    });
 
-    this.foundation.init()
+    this.foundation.init();
   },
-  beforeDestroy () {
-    this.foundation.destroy()
+  beforeDestroy() {
+    this.foundation.destroy();
   },
   methods: {
     onCancel() {
@@ -116,19 +118,18 @@ export default {
     onAccept() {
       if (this.$listeners['validate']) {
         this.$emit('validate', {
-          accept: (notify = true) => this.foundation.accept(notify)
-        })
-      }
-      else {
-        this.foundation.accept(true)
+          accept: (notify = true) => this.foundation.accept(notify),
+        });
+      } else {
+        this.foundation.accept(true);
       }
     },
-    show () {
-      this.foundation.open()
+    show() {
+      this.foundation.open();
     },
-    close () {
-      this.foundation.close()
-    }
-  }
-}
+    close() {
+      this.foundation.close();
+    },
+  },
+};
 </script>
