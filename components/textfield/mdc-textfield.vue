@@ -45,12 +45,12 @@
         <slot name="trailing-icon">{{ hasTrailingIcon.content }}</slot>
       </i>
 
-      <div ref="outline" class="mdc-text-field__outline" v-if="hasOutline">
+      <div ref="outline" class="mdc-notched-outline" v-if="hasOutline">
         <svg>
-          <path class="mdc-text-field__outline-path" :d="outlinePathAttr" />
+          <path class="mdc-notched-outline__path" :d="outlinePathAttr" />
         </svg>
       </div>
-      <div ref="outlineIdle" class="mdc-text-field__idle-outline" v-if="hasOutline"></div>
+      <div ref="outlineIdle" class="mdc-notched-outline__idle" v-if="hasOutline"></div>
       <div ref="bottom" :class="bottomClasses" v-if="hasBottomLine"></div>
 
     </div>
@@ -69,7 +69,7 @@ import MDCLineRippleFoundation from '@material/line-ripple/foundation';
 import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation';
 import MDCTextFieldIconFoundation from '@material/textfield/icon/foundation';
 import MDCFloatingLabelFoundation from '@material/floating-label/foundation';
-import MDCTextFieldOutlineFoundation from '@material/textfield/outline/foundation';
+import MDCNotchedOutlineFoundation from '@material/notched-outline/foundation';
 
 import {
   extractIconProp,
@@ -328,7 +328,7 @@ export default {
     }
 
     if (this.$refs.outline) {
-      this.outlineFoundation = new MDCTextFieldOutlineFoundation({
+      this.outlineFoundation = new MDCNotchedOutlineFoundation({
         getWidth: () => this.$refs.outline.offsetWidth,
         getHeight: () => this.$refs.outline.offsetHeight,
         setOutlinePathAttr: value => {
@@ -415,6 +415,10 @@ export default {
         },
         getNativeInput: () => {
           return this.$refs.input;
+        },
+        hasOutline: () => !!this.hasOutline,
+        updateOutlinePath: (labelWidth, isRtl) => {
+          this.outlineFoundation.updateSvgPath(labelWidth, isRtl);
         },
       },
       {

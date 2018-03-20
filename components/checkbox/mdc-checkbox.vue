@@ -22,122 +22,137 @@
 </template>
 
 <script>
-
 /* global HTMLElement */
-import MDCCheckboxFoundation from '@material/checkbox/foundation'
-import MDCFormFieldFoundation from '@material/form-field/foundation'
-import {getCorrectEventName} from '@material/animation'
-import {DispatchFocusMixin} from '../base'
-import {RippleBase} from '../ripple'
+import MDCCheckboxFoundation from '@material/checkbox/foundation';
+import MDCFormFieldFoundation from '@material/form-field/foundation';
+import { getCorrectEventName } from '@material/animation';
+import { DispatchFocusMixin } from '../base';
+import { RippleBase } from '../ripple';
 
 export default {
   name: 'mdc-checkbox',
   mixins: [DispatchFocusMixin],
   model: {
     prop: 'checked',
-    event: 'change'
+    event: 'change',
   },
   props: {
-    'checked': Boolean,
-    'indeterminate': Boolean,
-    'disabled': Boolean,
-    'label': String,
+    checked: Boolean,
+    indeterminate: Boolean,
+    disabled: Boolean,
+    label: String,
     'align-end': Boolean,
-    'value': { type: String, default () { return 'on' } },
-    'name': String
+    value: {
+      type: String,
+      default() {
+        return 'on';
+      },
+    },
+    name: String,
   },
-  data () {
+  data() {
     return {
       styles: {},
-      classes: {}
-    }
+      classes: {},
+    };
   },
   computed: {
-    hasLabel () {
-      return this.label || this.$slots.default
+    hasLabel() {
+      return this.label || this.$slots.default;
     },
-    formFieldClasses () {
+    formFieldClasses() {
       return {
         'mdc-form-field': this.hasLabel,
-        'mdc-form-field--align-end': this.hasLabel && this.alignEnd
-      }
-    }
+        'mdc-form-field--align-end': this.hasLabel && this.alignEnd,
+      };
+    },
   },
   watch: {
-    'checked' (value) {
-      this.foundation.setChecked(value)
+    checked(value) {
+      this.foundation.setChecked(value);
     },
-    'disabled' (value) {
-      this.foundation.setDisabled(value)
+    disabled(value) {
+      this.foundation.setDisabled(value);
     },
-    'indeterminate' (value) {
-      this.foundation.setIndeterminate(value)
-    }
+    indeterminate(value) {
+      this.foundation.setIndeterminate(value);
+    },
   },
-  mounted () {
+  mounted() {
     this.foundation = new MDCCheckboxFoundation({
-      addClass: (className) => this.$set(this.classes, className, true),
-      removeClass: (className) => this.$delete(this.classes, className),
-      registerAnimationEndHandler: (handler) =>
+      addClass: className => this.$set(this.classes, className, true),
+      removeClass: className => this.$delete(this.classes, className),
+      setNativeControlAttr: (attr, value) => {
+        this.$refs.control.setAttribute(attr, value);
+      },
+      removeNativeControlAttr: attr => {
+        this.$refs.control.removeAttribute(attr);
+      },
+      registerAnimationEndHandler: handler =>
         this.$refs.root.addEventListener(
-          getCorrectEventName(window, 'animationend'), handler),
-      deregisterAnimationEndHandler: (handler) =>
+          getCorrectEventName(window, 'animationend'),
+          handler,
+        ),
+      deregisterAnimationEndHandler: handler =>
         this.$refs.root.removeEventListener(
-          getCorrectEventName(window, 'animationend'), handler),
-      registerChangeHandler: (handler) => this.$refs.control.addEventListener('change', handler),
-      deregisterChangeHandler: (handler) => this.$refs.control.removeEventListener('change', handler),
+          getCorrectEventName(window, 'animationend'),
+          handler,
+        ),
+      registerChangeHandler: handler =>
+        this.$refs.control.addEventListener('change', handler),
+      deregisterChangeHandler: handler =>
+        this.$refs.control.removeEventListener('change', handler),
       getNativeControl: () => this.$refs.control,
       forceLayout: () => this.$refs.root.offsetWidth,
-      isAttachedToDOM: () => Boolean(this.$el.parentNode)
-    })
+      isAttachedToDOM: () => Boolean(this.$el.parentNode),
+    });
 
     this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => RippleBase.isSurfaceActive(this.$refs.control),
-      registerInteractionHandler: (evt, handler) => {		
-        this.$refs.control.addEventListener(evt, handler)		
-      },		
-      deregisterInteractionHandler: (evt, handler) => {		
-        this.$refs.control.addEventListener(evt, handler)		
+      registerInteractionHandler: (evt, handler) => {
+        this.$refs.control.addEventListener(evt, handler);
+      },
+      deregisterInteractionHandler: (evt, handler) => {
+        this.$refs.control.addEventListener(evt, handler);
       },
       computeBoundingRect: () => {
-        return this.$refs.root.getBoundingClientRect()
-      }
-    })
-
-    this.formField = new MDCFormFieldFoundation({
-      registerInteractionHandler: (type, handler) => {
-        this.$refs.label.addEventListener(type, handler)
-      },
-      deregisterInteractionHandler: (type, handler) => {
-        this.$refs.label.removeEventListener(type, handler)
-      },
-      activateInputRipple: () => {
-        this.ripple && this.ripple.activate()
-      },
-      deactivateInputRipple: () => {
-        this.ripple && this.ripple.deactivate()
+        return this.$refs.root.getBoundingClientRect();
       },
     });
 
-    this.foundation.init()
-    this.ripple.init()
-    this.formField.init()
-    this.foundation.setChecked(this.checked)
-    this.foundation.setDisabled(this.disabled)
-    this.foundation.setIndeterminate(this.indeterminate)
+    this.formField = new MDCFormFieldFoundation({
+      registerInteractionHandler: (type, handler) => {
+        this.$refs.label.addEventListener(type, handler);
+      },
+      deregisterInteractionHandler: (type, handler) => {
+        this.$refs.label.removeEventListener(type, handler);
+      },
+      activateInputRipple: () => {
+        this.ripple && this.ripple.activate();
+      },
+      deactivateInputRipple: () => {
+        this.ripple && this.ripple.deactivate();
+      },
+    });
 
+    this.foundation.init();
+    this.ripple.init();
+    this.formField.init();
+    this.foundation.setChecked(this.checked);
+    this.foundation.setDisabled(this.disabled);
+    this.foundation.setIndeterminate(this.indeterminate);
   },
-  beforeDestroy () {
-    this.formField.destroy()
-    this.ripple.destroy()
-    this.foundation.destroy()
+  beforeDestroy() {
+    this.formField.destroy();
+    this.ripple.destroy();
+    this.foundation.destroy();
   },
   methods: {
-    onChange () {
-      this.$emit('update:indeterminate', this.foundation.isIndeterminate())
-      this.$emit('change', this.foundation.isChecked())
-    }
-  }
-}
+    onChange() {
+      this.$emit('update:indeterminate', this.foundation.isIndeterminate());
+      this.$emit('change', this.foundation.isChecked());
+    },
+  },
+};
 </script>

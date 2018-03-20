@@ -44,10 +44,22 @@ export default {
       addClass: className => this.$set(this.classes, className, true),
       removeClass: className => this.$delete(this.classes, className),
       hasClass: className => this.$el.classList.contains(className),
-      registerInteractionHandler: (type, handler) =>
-        this.$el.addEventListener(type, handler),
-      deregisterInteractionHandler: (type, handler) =>
-        this.$el.removeEventListener(type, handler),
+      addClassToLeadingIcon: className => {
+        if (this.haveleadingIcon) {
+          this.$refs.leadingIcon.classList.add(className);
+        }
+      },
+      removeClassFromLeadingIcon: className => {
+        if (this.haveleadingIcon) {
+          this.$refs.leadingIcon.classList.remove(className);
+        }
+      },
+      eventTargetHasClass: (target, className) =>
+        target.classList.contains(className),
+      registerEventHandler: (evtType, handler) =>
+        this.$el.addEventListener(evtType, handler),
+      deregisterEventHandler: (evtType, handler) =>
+        this.$el.removeEventListener(evtType, handler),
       notifyInteraction: () => {
         this.dispatchEvent({ type: 'click' });
         emitCustomEvent(
@@ -70,6 +82,7 @@ export default {
           true,
         );
       },
+
       registerTrailingIconInteractionHandler: (evtType, handler) => {
         if (this.$refs.trailingIcon) {
           this.$refs.trailingIcon.addEventListener(evtType, handler);
