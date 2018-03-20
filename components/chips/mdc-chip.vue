@@ -3,6 +3,12 @@
   <i ref="leadingIcon" class="mdc-chip__icon mdc-chip__icon--leading" 
     :class="leadingClasses" v-if="haveleadingIcon"
   >{{leadingIcon}}</i>
+  <div class="mdc-chip__checkmark" v-if="isFilter">
+    <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+      <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+    </svg>
+  </div>
   <div class="mdc-chip__text">
     <slot></slot>
   </div>
@@ -26,6 +32,7 @@ export default {
     leadingIconClasses: [Object],
     trailingIconClasses: [Object],
   },
+  inject: ['mdcChipSet'],
   data() {
     return {
       classes: {
@@ -101,6 +108,9 @@ export default {
     this.ripple.init();
   },
   computed: {
+    isFilter() {
+      return this.mdcChipSet && this.mdcChipSet.filter;
+    },
     haveleadingIcon() {
       return !!this.leadingIcon || this.leadingIconClasses;
     },
