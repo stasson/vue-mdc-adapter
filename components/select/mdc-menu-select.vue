@@ -253,9 +253,9 @@ export default {
     this.foundation = null;
     foundation.destroy();
 
-    let foundationLabel = this.foundationLabel;
-    this.foundationLabel = null;
-    foundationLabel.destroy();
+    let labelFoundation = this.labelFoundation;
+    this.labelFoundation = null;
+    labelFoundation.destroy();
 
     let bottomLineFoundation = this.bottomLineFoundation;
     this.bottomLineFoundation = null;
