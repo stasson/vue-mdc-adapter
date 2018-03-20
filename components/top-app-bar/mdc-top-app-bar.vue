@@ -14,6 +14,7 @@
 
 <script>
 import MDCTopAppBarFoundation from '@material/top-app-bar/foundation';
+import MDCShortTopAppBarFoundation from '@material/top-app-bar/short/foundation';
 import * as util from '@material/top-app-bar/util';
 import { DispatchEventMixin, emitCustomEvent } from '../base';
 
@@ -41,7 +42,7 @@ export default {
   },
   mixins: [DispatchEventMixin],
   mounted() {
-    this.foundation = new MDCTopAppBarFoundation({
+    const adapter = {
       addClass: className => {
         this.$set(this.rootClasses, className, true);
       },
@@ -83,7 +84,12 @@ export default {
         this.$refs.root.querySelectorAll(
           MDCTopAppBarFoundation.strings.ACTION_ITEM_SELECTOR,
         ).length,
-    });
+    };
+
+    this.foundation = this.short
+      ? new MDCShortTopAppBarFoundation(adapter)
+      : new MDCTopAppBarFoundation(adapter);
+
     this.foundation.init();
   },
   computed: {
