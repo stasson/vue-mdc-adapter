@@ -50,13 +50,17 @@ The anchor is a wrapper element that contains the actual visible element to atta
 
 #### mdc-menu
 
-| props                    | Type    | Default | Description                                                   |
-| ------------------------ | ------- | ------- | ------------------------------------------------------------- |
-| `open-from-top-left`     | Boolean | false   | overrides opening point                                       |
-| `open-from-top-right`    | Boolean | false   | overrides opening point                                       |
-| `open-from-bottom-left`  | Boolean | false   | overrides opening point                                       |
-| `open-from-bottom-right` | Boolean | false   | overrides opening point                                       |
-| `quick-open`             | Boolean | false   | sets whether the menu should open and close without animation |
+| props                    | Type    | Default   | Description                                                   |
+| ------------------------ | ------- | --------- | ------------------------------------------------------------- |
+| `open-from-top-left`     | Boolean | false     | overrides opening point                                       |
+| `open-from-top-right`    | Boolean | false     | overrides opening point                                       |
+| `open-from-bottom-left`  | Boolean | false     | overrides opening point                                       |
+| `open-from-bottom-right` | Boolean | false     | overrides opening point                                       |
+| `quick-open`             | Boolean | false     | sets whether the menu should open and close without animation |
+| `anchor-corner`          | Number  | undefined | set anchor corner alignment of menu corner                    |
+| `anchor-margin`          | Object  | undefined | set anchor margin of menu (top, right, bottom, left)          |
+
+> for anchor corner and margin see the [MDC docs](https://github.com/material-components/material-components-web/tree/master/packages/mdc-menu#MDCMenu)
 
 #### mdc-menu-item
 

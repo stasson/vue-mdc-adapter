@@ -13,7 +13,9 @@
 import { MDCMenuFoundation } from '@material/menu/foundation';
 import { getTransformPropertyName } from '@material/menu/util';
 import { emitCustomEvent } from '../base';
+import { Corner } from '@material/menu/constants';
 
+export { Corner };
 export default {
   name: 'mdc-menu',
   props: {
@@ -22,6 +24,8 @@ export default {
     'open-from-bottom-left': Boolean,
     'open-from-bottom-right': Boolean,
     'quick-open': Boolean,
+    'anchor-corner': [String, Number],
+    'anchor-margin': Object,
   },
   data() {
     return {
@@ -151,10 +155,22 @@ export default {
 
     refreshItems();
     this.foundation.init();
+    if (this.anchorCorner !== void 0) {
+      this.foundation.setAnchorCorner(Number(this.anchorCorner));
+    }
+    if (this.anchorMargin !== void 0) {
+      this.foundation.setAnchorMargin(this.anchorMargin);
+    }
   },
   watch: {
     quickOpen(nv) {
       this.foundation.setQuickOpen(nv);
+    },
+    anchorCorner(nv) {
+      this.foundation.setAnchorCorner(Number(nv));
+    },
+    anchorMargin(nv) {
+      this.foundation.setAnchorMargin(nv);
     },
   },
   beforeDestroy() {
