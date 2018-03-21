@@ -16,17 +16,17 @@
 ```javascript
 var vm = new Vue({
   methods: {
-    showMenu () {
-      this.$refs.menu.show()
+    showMenu() {
+      this.$refs.menu.show();
     },
-    onSelect (selected) {
-      console.log('selected index: ' + selected.index)
+    onSelect(selected) {
+      console.log('selected index: ' + selected.index);
     },
-    onCancel () {
-      console.log('menu cancelled')
+    onCancel() {
+      console.log('menu cancelled');
     },
-  }
-})
+  },
+});
 ```
 
 ### Positioning
@@ -46,43 +46,43 @@ The anchor is a wrapper element that contains the actual visible element to atta
 
 > for manual positioning see the [MDC docs](https://material.io/components/web/catalog/menus/#manual-positioning)
 
-
 ### Props
 
 #### mdc-menu
 
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`open-from-top-left`|Boolean| false | overrides opening point |
-|`open-from-top-right`|Boolean| false | overrides opening point |
-|`open-from-bottom-left`|Boolean| false | overrides opening point |
-|`open-from-bottom-right`|Boolean| false | overrides opening point |
+| props                    | Type    | Default | Description                                                   |
+| ------------------------ | ------- | ------- | ------------------------------------------------------------- |
+| `open-from-top-left`     | Boolean | false   | overrides opening point                                       |
+| `open-from-top-right`    | Boolean | false   | overrides opening point                                       |
+| `open-from-bottom-left`  | Boolean | false   | overrides opening point                                       |
+| `open-from-bottom-right` | Boolean | false   | overrides opening point                                       |
+| `quick-open`             | Boolean | false   | sets whether the menu should open and close without animation |
 
 #### mdc-menu-item
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`disabled`|Boolean| false | whether item is disabled |
 
+| props      | Type    | Default | Description              |
+| ---------- | ------- | ------- | ------------------------ |
+| `disabled` | Boolean | false   | whether item is disabled |
 
+### Events
 
-### Events 
-| props | arg | Description |
-|-------|-----|-------------|
-|`@select`| `{ index: Number, item: HTMLElement }` | emitted when a menu item is selected   |
-|`@cancel`| | emitted when menu is cancelled   |
+| props     | arg                                    | Description                          |
+| --------- | -------------------------------------- | ------------------------------------ |
+| `@select` | `{ index: Number, item: HTMLElement }` | emitted when a menu item is selected |
+| `@cancel` |                                        | emitted when menu is cancelled       |
 
-> `select` event data specifies index and item :  
-
+> `select` event data specifies index and item :
 
 ### Methods
 
-- `show({focusIndex: number} = {}) => void`  
-Shows the menu. Takes an options object containing a `focusIndex` property that 
-specifies the index of the menu item to be focused.
-If the options object or `focusIndex` is omitted, no menu item will be focused.
+* `show({focusIndex: number} = {}) => void`  
+  Shows the menu. Takes an options object containing a `focusIndex` property that
+  specifies the index of the menu item to be focused.
+  If the options object or `focusIndex` is omitted, no menu item will be focused.
 
-- `hide() => void`  
-Closes the menu.
+* `hide() => void`  
+  Closes the menu.
 
 ### Reference
-- <https://material.io/components/web/catalog/menus>
+
+* <https://material.io/components/web/catalog/menus>
