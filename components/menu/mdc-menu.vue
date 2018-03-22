@@ -13,9 +13,7 @@
 import { MDCMenuFoundation } from '@material/menu/foundation';
 import { getTransformPropertyName } from '@material/menu/util';
 import { emitCustomEvent } from '../base';
-import { Corner } from '@material/menu/constants';
 
-export { Corner };
 export default {
   name: 'mdc-menu',
   props: {
