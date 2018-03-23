@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.13.2"></a>
+## [0.13.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.12.1...v0.13.2) (2018-03-23)
+
+
+### Bug Fixes
+
+* Update for material-components-web@0.33.0 ([9d04004](https://github.com/stasson/vue-mdc-adapter/commit/9d04004))
+* **mdc-button:** Remove compact variant as removed from material-components-web@0.33.0 ([a267f34](https://github.com/stasson/vue-mdc-adapter/commit/a267f34))
+* **mdc-dialog:** add missing classes to footer buttons. Resolves [#309](https://github.com/stasson/vue-mdc-adapter/issues/309) ([b17c83a](https://github.com/stasson/vue-mdc-adapter/commit/b17c83a))
+* **mdc-menu:** Remove unused import and unavailable export ([38b4248](https://github.com/stasson/vue-mdc-adapter/commit/38b4248)), closes [#326](https://github.com/stasson/vue-mdc-adapter/issues/326)
+* **mdc-select:** Add menu prop ([c2daafc](https://github.com/stasson/vue-mdc-adapter/commit/c2daafc))
+* **mdc-select:** Correct a typo in foundationLabel in the beforeDestroy method ([ed3d391](https://github.com/stasson/vue-mdc-adapter/commit/ed3d391))
+* **mdc-slider:** Set min and max taking into account current max value. ([2d61239](https://github.com/stasson/vue-mdc-adapter/commit/2d61239))
+* **mdc-top-app-bar:** Use variant specific foundation according to material-web-components@0.33.0 ([a51ada8](https://github.com/stasson/vue-mdc-adapter/commit/a51ada8))
+* **package:** update material-components-web to version 0.33.0 ([00c7e21](https://github.com/stasson/vue-mdc-adapter/commit/00c7e21))
+
+
+### Features
+
+* **mdc-chips:** Implement checkmark for filter chips ([40e6caa](https://github.com/stasson/vue-mdc-adapter/commit/40e6caa))
+* **mdc-menu:** Add new anchor postioning functionality. ([00eb3c3](https://github.com/stasson/vue-mdc-adapter/commit/00eb3c3))
+* **mdc-menu:** Add support for quick-open. ([eace817](https://github.com/stasson/vue-mdc-adapter/commit/eace817))
+
+
+
 <a name="0.13.1"></a>
 ## [0.13.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.12.1...v0.13.1) (2018-03-23)
 
