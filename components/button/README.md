@@ -68,8 +68,20 @@ var vm = new Vue({
 ### Icon buttons
 
 ```html
-<mdc-button ><mdc-icon icon="favorite"></mdc-icon>like</mdc-button>
+<mdc-button ><i class="material-icons mdc-button__icon">favorite</i>like</mdc-button>
 ```
+
+or an SVG button
+
+```html
+<mdc-button >  <svg class="mdc-button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="...">
+  ...
+  </svg>
+  like
+</mdc-button>
+```
+
+> Note: `mdc-icon` is not suitable for rendering in an `mdc-button` as it does not set the required `mdc-button__icon` class.
 
 ### Link buttons
 
