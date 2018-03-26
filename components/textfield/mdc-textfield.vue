@@ -12,7 +12,7 @@
 
       <textarea ref="input" v-if="multiline"
         v-on="$listeners"
-        v-bind="inputAttrs"
+        v-bind="$attrs"
         :class="inputClasses"
         @input="updateValue($event.target.value)"
         :minlength="minlength" :maxlength="maxlength"
@@ -24,7 +24,7 @@
 
       <input ref="input" v-else
         v-on="$listeners"
-        v-bind="inputAttrs"
+        v-bind="$attrs"
         :class="inputClasses"
         @input="updateValue($event.target.value)"
         :type="type"
@@ -85,6 +85,7 @@ export default {
     prop: 'value',
     event: 'model',
   },
+  inheritAttrs: false,
   props: {
     value: String,
     type: {
@@ -117,12 +118,6 @@ export default {
     maxlength: { type: [Number, String], default: undefined },
     rows: { type: [Number, String], default: 8 },
     cols: { type: [Number, String], default: 40 },
-
-    // other input props
-    name: String,
-    readonly: Boolean,
-    autocomplete: Boolean,
-    autofocus: Boolean,
   },
   data: function() {
     return {
@@ -198,10 +193,6 @@ export default {
     },
   },
   computed: {
-    inputAttrs() {
-      let { name, readonly, autocomplete, autofocus } = this;
-      return { name, readonly, autocomplete, autofocus };
-    },
     inputPlaceHolder() {
       return this.fullwidth ? this.label : undefined;
     },
