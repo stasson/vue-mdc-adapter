@@ -13,6 +13,7 @@
       <textarea ref="input" v-if="multiline"
         v-on="$listeners"
         v-bind="$attrs"
+        :id="_vma_uid"
         :class="inputClasses"
         @input="updateValue($event.target.value)"
         :minlength="minlength" :maxlength="maxlength"
@@ -25,6 +26,7 @@
       <input ref="input" v-else
         v-on="$listeners"
         v-bind="$attrs"
+        :id="_vma_uid"
         :class="inputClasses"
         @input="updateValue($event.target.value)"
         :type="type"
@@ -34,7 +36,7 @@
         :aria-controls="inputAriaControls"
         />
 
-      <label ref="label" :class="labelClassesUpgraded" :for="_uid"  v-if="hasLabel">
+      <label ref="label" :class="labelClassesUpgraded" :for="_vma_uid"  v-if="hasLabel">
         {{ label }}
       </label>
 
@@ -55,7 +57,7 @@
 
     </div>
 
-    <p ref="help" :id="'help-'+_uid" :class="helpClasses"
+    <p ref="help" :id="'help-'+_vma_uid" :class="helpClasses"
       aria-hidden="true" v-if="helptext">
       {{ helptext  }}
     </p>
@@ -197,7 +199,7 @@ export default {
       return this.fullwidth ? this.label : undefined;
     },
     inputAriaControls() {
-      return this.help ? 'help-' + this._uid : undefined;
+      return this.help ? 'help-' + this._vma_uid : undefined;
     },
     hasLabel() {
       return !this.fullwidth && this.label;

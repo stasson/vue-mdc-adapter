@@ -1,7 +1,7 @@
 <template>
 <div :class="formFieldClasses" class="mdc-radio-wrapper">
   <div ref="root" class="mdc-radio" :class="classes" :style="styles">
-    <input type="radio" ref="control" :id="_uid" :name="name" 
+    <input type="radio" ref="control" :id="_vma_uid" :name="name" 
       class="mdc-radio__native-control" @change="sync">
   
     <div ref="label" class="mdc-radio__background">
@@ -9,7 +9,7 @@
       <div class="mdc-radio__inner-circle"></div>
     </div>
   </div>
-  <label ref="label" :for="_uid"><slot>{{label}}</slot></label>
+  <label ref="label" :for="_vma_uid"><slot>{{label}}</slot></label>
 </div>
 </template>
 
