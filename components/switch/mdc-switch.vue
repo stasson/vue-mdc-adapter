@@ -8,7 +8,7 @@
     <div class="mdc-switch" 
       :class="{'mdc-switch--disabled': disabled }">
       <input ref="control" type="checkbox" 
-        :name="name" :id="_uid" 
+        :name="name" :id="_vma_uid" 
         class="mdc-switch__native-control" 
         :checked="checked" 
         :disabled="disabled"
@@ -20,7 +20,7 @@
 
     </div>
 
-    <label :for="_uid" v-if="hasLabel"
+    <label :for="_vma_uid" v-if="hasLabel"
       class="mdc-switch-label">
       <slot>{{label}}</slot>
     </label>
