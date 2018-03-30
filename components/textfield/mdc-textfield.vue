@@ -95,9 +95,15 @@ export default {
       default: 'text',
       validator: function(value) {
         return (
-          ['text', 'email', 'search', 'password', 'tel', 'url'].indexOf(
-            value,
-          ) !== -1
+          [
+            'text',
+            'email',
+            'search',
+            'password',
+            'tel',
+            'url',
+            'number',
+          ].indexOf(value) !== -1
         );
       },
     },
