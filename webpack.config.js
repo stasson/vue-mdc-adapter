@@ -5,7 +5,6 @@ const WebpackCdnPlugin = require('webpack-cdn-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV === `production`
 const isDevelopment = process.env.NODE_ENV === `development`
@@ -16,6 +15,7 @@ const cssLoaders = [
     options: {
       sourceMap: false,
       'import': false,
+      minimize: isProduction,
     },
   },
   {
@@ -118,30 +118,7 @@ const plugins = [
         path: isProduction ? 'dist/vue-router.min.js' : 'dist/vue-router.js'
       }
     ],
-  }),
-
-  // explicit entry chunks    
-  new webpack.optimize.CommonsChunkPlugin({
-    names: ['plugin','styles'],
-    minChunks: Infinity,
-    children: true,
-    async:true
-  }),
-  
-  // vendor chunk
-  new webpack.optimize.CommonsChunkPlugin({
-    name: "vendor",
-    minChunks: function(module){
-      return module.context && module.context.indexOf("node_modules") !== -1;
-    }
-  }),
-
-  // merge manifest in vendor chunk    
-  new webpack.optimize.CommonsChunkPlugin({
-    name: "manifest",
-    chunks: ['vendor']
-  }),
-  
+  }),  
 ]
 
 const config = {
@@ -152,7 +129,7 @@ const config = {
   output: {
     filename:  isProduction ? '[name].[chunkhash].js' : '[name].js',
     chunkFilename: isProduction ? '[name].[chunkhash].js' : '[name].js',
-    path: path.resolve(__dirname, isProduction ? 'public' : 'dev'),
+    path: path.resolve(__dirname, isProduction ? 'public/vue-mdc-adapter' : 'dev'),
   },
   resolve: {
     alias: {
@@ -169,6 +146,7 @@ const config = {
 // Optimize for prod
 if (isProduction) {
 
+  config.mode = 'production'
   config.output.publicPath = '/vue-mdc-adapter/'
 
   // extract css rule
@@ -183,14 +161,6 @@ if (isProduction) {
   config.plugins.push(
     // clean output path
     new CleanWebpackPlugin(config.output.path),
-    
-    // optimize module, rollup way
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    
-    new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 5, // Must be greater than or equal to one
-      minChunkSize: 1000
-    }),
     
     // split css
     new ExtractTextPlugin({
@@ -207,25 +177,13 @@ if (isProduction) {
       }
     ]),
 
-    // minimize JS
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
-    }),
-
-    // minimize CSS
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: {
-        safe: true
-      }
-    })
   );
 } 
 
 // Enable dev server
 if (isDevelopment) {
+
+  config.mode = 'development'
 
   // laod css rule
   config.module.rules.push({

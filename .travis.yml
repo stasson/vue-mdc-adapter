@@ -31,7 +31,7 @@ deploy:
     provider: pages
     skip_cleanup: true
     github_token: $GH_TOKEN
-    local_dir: public
+    local_dir: public/vue-mdc-adapter
     on:
       repo: stasson/vue-mdc-adapter
       tags: true
