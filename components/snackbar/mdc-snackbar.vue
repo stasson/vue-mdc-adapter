@@ -11,82 +11,103 @@
 </template>
 
 <script>
-import MDCSnackbarFoundation from '@material/snackbar/foundation'
-import { getCorrectEventName } from '@material/animation'
+import MDCSnackbarFoundation from '@material/snackbar/foundation';
+import { getCorrectEventName } from '@material/animation';
 
 export default {
   name: 'mdc-snackbar',
   props: {
     'align-start': Boolean,
-    'event': {
+    event: {
       type: String,
       required: false,
-      default () { return 'show-snackbar' }
+      default() {
+        return 'show-snackbar';
+      },
     },
     'event-source': {
       type: Object,
       required: false,
-      default () { return this.$root }
+      default() {
+        return this.$root;
+      },
     },
-    'dismisses-on-action': {type: Boolean, default: true}
+    'dismisses-on-action': { type: Boolean, default: true },
   },
-  data () {
+  data() {
     return {
       classes: {
-        'mdc-snackbar--align-start': this.alignStart
+        'mdc-snackbar--align-start': this.alignStart,
       },
       message: '',
       actionText: '',
       hidden: false,
       actionHidden: false,
-    }
+    };
   },
   methods: {
-    show (data) {
-      this.foundation.show(data)
-    }
+    show(data) {
+      this.foundation.show(data);
+    },
   },
-  mounted () {
+  mounted() {
     this.foundation = new MDCSnackbarFoundation({
-      addClass: (className) => this.$set(this.classes, className, true),
-      removeClass: (className) => this.$delete(this.classes, className),
-      setAriaHidden: () => this.hidden = true,
-      unsetAriaHidden: () => this.hidden = false,
-      setActionAriaHidden: () => this.actionHidden = true,
-      unsetActionAriaHidden: () => this.actionHidden = false,
-      setActionText: (text) => { this.actionText = text },
-      setMessageText: (text) => { this.message = text  },
+      addClass: className => this.$set(this.classes, className, true),
+      removeClass: className => this.$delete(this.classes, className),
+      setAriaHidden: () => (this.hidden = true),
+      unsetAriaHidden: () => (this.hidden = false),
+      setActionAriaHidden: () => (this.actionHidden = true),
+      unsetActionAriaHidden: () => (this.actionHidden = false),
+      setActionText: text => {
+        this.actionText = text;
+      },
+      setMessageText: text => {
+        this.message = text;
+      },
       setFocus: () => this.$refs.button.focus(),
       visibilityIsHidden: () => document.hidden,
-      registerCapturedBlurHandler: (handler) => this.$refs.button.addEventListener('blur', handler, true),
-      deregisterCapturedBlurHandler: (handler) => this.$refs.button.removeEventListener('blur', handler, true),
-      registerVisibilityChangeHandler: (handler) => document.addEventListener('visibilitychange', handler),
-      deregisterVisibilityChangeHandler: (handler) => document.removeEventListener('visibilitychange', handler),
+      registerCapturedBlurHandler: handler =>
+        this.$refs.button.addEventListener('blur', handler, true),
+      deregisterCapturedBlurHandler: handler =>
+        this.$refs.button.removeEventListener('blur', handler, true),
+      registerVisibilityChangeHandler: handler =>
+        document.addEventListener('visibilitychange', handler),
+      deregisterVisibilityChangeHandler: handler =>
+        document.removeEventListener('visibilitychange', handler),
       registerCapturedInteractionHandler: (evt, handler) =>
         document.body.addEventListener(evt, handler, true),
       deregisterCapturedInteractionHandler: (evt, handler) =>
         document.body.removeEventListener(evt, handler, true),
-      registerActionClickHandler: (handler) => this.$refs.button.addEventListener('click', handler),
-      deregisterActionClickHandler: (handler) => this.$refs.button.removeEventListener('click', handler),
-      registerTransitionEndHandler: (handler) => {
-        this.$refs.root.addEventListener(getCorrectEventName(window, 'transitionend'), handler)
+      registerActionClickHandler: handler =>
+        this.$refs.button.addEventListener('click', handler),
+      deregisterActionClickHandler: handler =>
+        this.$refs.button.removeEventListener('click', handler),
+      registerTransitionEndHandler: handler => {
+        this.$refs.root.addEventListener(
+          getCorrectEventName(window, 'transitionend'),
+          handler,
+        );
       },
-      deregisterTransitionEndHandler: (handler) => {
-        this.$refs.root.removeEventListener(getCorrectEventName(window, 'transitionend'), handler)
+      deregisterTransitionEndHandler: handler => {
+        this.$refs.root.removeEventListener(
+          getCorrectEventName(window, 'transitionend'),
+          handler,
+        );
       },
       notifyShow: () => this.$emit('show'),
       notifyHide: () => this.$emit('hide'),
-    })
-    this.foundation.init()
+    });
+    this.foundation.init();
     if (this.event) {
-      this.eventSource.$on(this.event, (data) => {
-        this.foundation.show(data)
-      })
+      this.eventSource.$on(this.event, this.show);
     }
-    this.foundation.setDismissOnAction(this.dismissesOnAction)
+    this.foundation.setDismissOnAction(this.dismissesOnAction);
   },
-  beforeDestroy () {
-    this.foundation.destroy()
-  }
-}
+  beforeDestroy() {
+    if (this.eventSource) {
+      this.eventSource.$of(this.event, this.show);
+    }
+    this.foundation.destroy();
+  },
+};
 </script>

@@ -141,16 +141,16 @@ export default {
   },
   mounted() {
     if (this.toggleOn) {
-      let source = this.toggleOnSource || eventBus;
-      source.$on(this.toggleOn, () => this.toggle());
+      this.toggleOnEventSource = this.toggleOnSource || eventBus;
+      this.toggleOnEventSource.$on(this.toggleOn, this.toggle);
     }
     if (this.openOn) {
-      let source = this.openOnSource || eventBus;
-      source.$on(this.openOn, () => this.open());
+      this.openOnEventSource = this.openOnSource || eventBus;
+      this.openOnEventSource.$on(this.openOn, this.open);
     }
     if (this.closeOn) {
-      let source = this.closeOnSource || eventBus;
-      source.$on(this.closeOn, () => this.close());
+      this.closeOnEventSource = this.closeOnSource || eventBus;
+      this.closeOnEventSource.$on(this.closeOn, this.close);
     }
     media.small.addListener(this.refreshMedia);
     media.large.addListener(this.refreshMedia);
@@ -159,6 +159,16 @@ export default {
   beforeDestroy() {
     media.small.removeListener(this.refreshMedia);
     media.large.removeListener(this.refreshMedia);
+
+    if (this.toggleOnEventSource) {
+      this.toggleOnEventSource.$off(this.toggleOn, this.toggle);
+    }
+    if (this.openOnEventSource) {
+      this.openOnEventSource.$off(this.openOn, this.open);
+    }
+    if (this.closeOnEventSource) {
+      this.closeOnEventSource.$off(this.closeOn, this.close);
+    }
   },
 };
 </script>
