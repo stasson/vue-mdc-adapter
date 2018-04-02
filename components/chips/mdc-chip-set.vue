@@ -1,7 +1,7 @@
 <template>
-  <div :class="classes">
+  <div :class="classes" v-on="$listeners">
     <slot></slot>
-  </div>  
+  </div>
 </template>
 
 <script>

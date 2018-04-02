@@ -1,6 +1,6 @@
 <template>
-<div :class="classes" :style="styles" tabindex="0" >
-  <i ref="leadingIcon" class="mdc-chip__icon mdc-chip__icon--leading" 
+<div :class="classes" :style="styles" tabindex="0" v-on="$listeners">
+  <i ref="leadingIcon" class="mdc-chip__icon mdc-chip__icon--leading"
     :class="leadingClasses" v-if="haveleadingIcon"
   >{{leadingIcon}}</i>
   <div class="mdc-chip__checkmark" v-if="isFilter">
@@ -12,7 +12,7 @@
   <div class="mdc-chip__text">
     <slot></slot>
   </div>
-  <i ref="trailingIcon" class="mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button" 
+  <i ref="trailingIcon" class="mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button"
     :class="trailingClasses" v-if="havetrailingIcon"
   >{{trailingIcon}}</i>
 </div>
@@ -20,12 +20,12 @@
 
 <script>
 import MDCChipFoundation from '@material/chips/chip/foundation';
-import { CustomLinkMixin, DispatchEventMixin, emitCustomEvent } from '../base';
+import { CustomLinkMixin, emitCustomEvent } from '../base';
 import { RippleBase } from '../ripple';
 
 export default {
   name: 'mdc-chip',
-  mixins: [CustomLinkMixin, DispatchEventMixin],
+  mixins: [CustomLinkMixin],
   props: {
     leadingIcon: [String],
     trailingIcon: [String],
@@ -68,7 +68,6 @@ export default {
       deregisterEventHandler: (evtType, handler) =>
         this.$el.removeEventListener(evtType, handler),
       notifyInteraction: () => {
-        this.dispatchEvent({ type: 'click' });
         emitCustomEvent(
           this.$el,
           MDCChipFoundation.strings.INTERACTION_EVENT,
@@ -79,7 +78,7 @@ export default {
         );
       },
       notifyTrailingIconInteraction: () => {
-        this.dispatchEvent({ type: 'trailingIconClick' });
+        this.$emit('trailingIconClick');
         emitCustomEvent(
           this.$el,
           MDCChipFoundation.strings.TRAILING_ICON_INTERACTION_EVENT,
