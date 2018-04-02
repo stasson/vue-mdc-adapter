@@ -26,18 +26,19 @@ mdc-chip is a compact element that allows a user to enter information or select 
 |                       |         |          | which allow a single selection from a set of options.           |
 | `filter`              | Boolean | optional | Optional. Indicates that the chips in the set are filter chips, |
 |                       |         |          | which allow a multiple selection from a set of options.         |
-| `event`               | String  | optional | optional event to emit on click                                 |
-| `event-target`        | Object  | vm.$root | optional event target, defaults to root bus                     |
-| `event-args`          | Array   | []       | optional event args                                             |
 | `leadingIcon`         | String  | optional | optional leading icon                                           |
 | `trailingIcon`        | String  | optional | optional trailing icon                                          |
 | `leadingIconClasses`  | Object  | optional | optional leading icon classes (font-awesome)                    |
 | `trailingIconClasses` | Object  | optional | optional trailing icon classes (font-awesome)                   |
 
-| event              | description                          |
-| ------------------ | ------------------------------------ |
-| @click             | emitted on chip interaction          |
-| @trailingIconClick | emitted on trailing icon interaction |
+| event                            | description                                        |
+| -------------------------------- | -------------------------------------------------- |
+| @click                           | emitted on chip interaction                        |
+| @trailingIconClick               | emitted on trailing icon interaction               |
+| @MDCChip:interaction             | emitted on chip interaction (will bubble)          |
+| @MDCChip:trailingIconInteraction | emitted on trailing icon interaction (will bubble) |
+
+> Note: Events emitted by `material-components-web` on `mdc-chip` interaction appear as normal `Vue` events (no need for the .native modifier) and also "bubble" so can be listened for on the `mdc-chip-set` element and will receive the `mdc-chip` instance in the `detail` property.
 
 ### Chips with icons
 
