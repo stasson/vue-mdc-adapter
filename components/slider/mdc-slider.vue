@@ -174,11 +174,15 @@ export default {
     eventBus.$on('mdc:layout', this.layout);
 
     if (this.layoutOn) {
-      let source = this.layoutOnSource || this.$root;
-      source.$on(this.layoutOn, this.layout);
+      this.layoutOnEventSource = this.layoutOnSource || this.$root;
+      this.layoutOnEventSource.$on(this.layoutOn, this.layout);
     }
   },
   beforeDestroy() {
+    eventBus.$off('mdc:layout', this.layout);
+    if (this.layoutOnEventSource) {
+      this.layoutOnEventSource.$off(this.layoutOn, this.layout);
+    }
     this.foundation.destroy();
   },
 };
