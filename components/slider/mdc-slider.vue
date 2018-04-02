@@ -3,7 +3,7 @@
     <div class="mdc-slider__track-container">
       <div class="mdc-slider__track" :style="trackStyles"></div>
       <div class="mdc-slider__track-marker-container" v-if="hasMarkers">
-        <div class="mdc-slider__track-marker" 
+        <div class="mdc-slider__track-marker"
           v-for="markerNum in numMarkers"
           :key="markerNum"
           :style="(markerNum == numMarkers) ? lastTrackMarkersStyles : {}"
@@ -25,6 +25,7 @@
 <script>
 import MDCSliderFoundation from '@material/slider/foundation';
 import { DispatchFocusMixin } from '../base';
+import { eventBus } from '../common';
 
 export default {
   name: 'mdc-slider',
@@ -170,7 +171,7 @@ export default {
       this.foundation.setupTrackMarker();
     }
 
-    this.$root.$on('mdc:layout', this.layout);
+    eventBus.$on('mdc:layout', this.layout);
 
     if (this.layoutOn) {
       let source = this.layoutOnSource || this.$root;

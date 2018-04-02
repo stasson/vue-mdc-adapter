@@ -7,4 +7,3 @@ export * from './custom-button.js';
 export * from './custom-icon.js';
 export * from './dispatch-event-mixin.js';
 export * from './dispatch-focus-mixin.js';
-export * from './unique-id.js';

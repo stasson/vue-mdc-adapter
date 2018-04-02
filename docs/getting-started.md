@@ -1,4 +1,3 @@
-
 > This Guide assumes you are familiar with [Vue.js](https://vuejs.org/v2/guide/index.html)
 > components and plugin system.  
 > Vue.js version `^2.5.3` is required as a peer dependency.  
@@ -10,10 +9,10 @@
 #### Playground
 
 Fork the [reference codepen template](https://codepen.io/stasson/pen/XzmMKp)
-or one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/) 
+or one of the [vue-mdc-adapter codepen collection](https://codepen.io/collection/XBpwxq/)
 or the [CodeSandbox](https://codesandbox.io/s/r5o35xnn3q?module=%2Fsrc%2Fcomponents%2FHello.vue)
 
-#### Vue CLI Simple 
+#### Vue CLI Simple
 
 ```bash
 npm install -g vue-cli
@@ -41,29 +40,28 @@ npm install vue-mdc-adapter
 ```
 
 The UMD distribution is also available through CDN at
-[unpkg.com/vue-mdc-adapter/dist](https://unpkg.com/vue-mdc-adapter/dist/) 
+[unpkg.com/vue-mdc-adapter/dist](https://unpkg.com/vue-mdc-adapter/dist/)
 or [cdn.jsdelivr.net/npm/vue-mdc-adapter/dist](https://cdn.jsdelivr.net/npm/vue-mdc-adapter@latest/dist/)
-
 
 The distribution comes in two flavors:
 
 #### standalone plugin
 
-| distribution                 | env         | description                |
-| ---------------------------- | ----------- | -------------------------- |
-| dist/vue-mdc-adapter.js      | development | plugin (ES5)               |
-| dist/vue-mdc-adapter.css     | development | stylesheet (CSS)           |
-| dist/vue-mdc-adapter.min.js  | production  | minified plugin (ES5)      |
-| dist/vue-mdc-adapter.min.css | production  | minified stylesheet (CSS)  |
+| distribution                 | env         | description               |
+| ---------------------------- | ----------- | ------------------------- |
+| dist/vue-mdc-adapter.js      | development | plugin (ES5)              |
+| dist/vue-mdc-adapter.css     | development | stylesheet (CSS)          |
+| dist/vue-mdc-adapter.min.js  | production  | minified plugin (ES5)     |
+| dist/vue-mdc-adapter.min.css | production  | minified stylesheet (CSS) |
 
-#### _a la carte_  plugins
+#### _a la carte_ plugins
 
-| distribution                   | env         | description                |
-| ------------------------------ | ----------- | -------------------------- |
-| dist/[plugin]/[plugin].js      | development | plugin (ES5)               |
-| dist/[plugin]/[plugin].css     | development | stylesheet (CCS)           |
-| dist/[plugin]/[plugin].min.js  | production  | minified plugin (ES5)      |
-| dist/[plugin]/[plugin].min.css | production  | minified stylesheet (CCS)  |
+| distribution                   | env         | description               |
+| ------------------------------ | ----------- | ------------------------- |
+| dist/[plugin]/[plugin].js      | development | plugin (ES5)              |
+| dist/[plugin]/[plugin].css     | development | stylesheet (CCS)          |
+| dist/[plugin]/[plugin].min.js  | production  | minified plugin (ES5)     |
+| dist/[plugin]/[plugin].min.css | production  | minified stylesheet (CCS) |
 
 #### Using the CDN
 
@@ -108,12 +106,12 @@ The distribution comes in two flavors:
 > The following guide assumes you have a valid Vue.js/Webpack config.
 > refer to [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) for more.
 
-| module                          | type  |
-| ------------------------------- | ----- |
-| vue-mdc-adapter                 | ESM   |
-| vue-mdc-adapter/styles          | SASS  |
-| vue-mdc-adapter[plugin]         | ESM   |
-| vue-mdc-adapter/[plugin]/styles | SASS  |
+| module                          | type |
+| ------------------------------- | ---- |
+| vue-mdc-adapter                 | ESM  |
+| vue-mdc-adapter/styles          | SASS |
+| vue-mdc-adapter[plugin]         | ESM  |
+| vue-mdc-adapter/[plugin]/styles | SASS |
 
 #### install vue, vue-mdc-adapter and eventually vue-router
 
@@ -143,17 +141,18 @@ npm install vue-mdc-adapter
 #### import _standalone_ plugin
 
 ```javascript
-import Vue from 'vue'
-import VueMDCAdapter from 'vue-mdc-adapter'
-Vue.use(VueMDCAdapter)
+import Vue from 'vue';
+import VueMDCAdapter from 'vue-mdc-adapter';
+Vue.use(VueMDCAdapter);
 ```
 
-#### import _a la carte_  plugins
+#### import _a la carte_ plugins
 
 ```javascript
-import Vue from 'vue'
-import VueMDCButton from 'vue-mdc-adapter/button'
-Vue.use(VueMDCButton)
+import Vue from 'vue';
+import VueMDCCommon from 'vue-mdc-adapter/common';
+import VueMDCButton from 'vue-mdc-adapter/button';
+Vue.use(VueMDCButton);
 ```
 
 #### import _a la carte_ SFC mixins
@@ -182,7 +181,7 @@ Vue.use(VueMDCButton)
 
 > Material Components styles come as highly themable SASS framework. In order to be able to theme properly
 > and avoid any duplicate/ordering style issues in the bundle, we recommend managing styles globally.
-> refer to the [MDC Theming Guide](https://material.io/components/web/docs/theming/) 
+> refer to the [MDC Theming Guide](https://material.io/components/web/docs/theming/)
 > for more.
 
 Install Material Components SASS as a dependency.
@@ -211,10 +210,10 @@ import styles
 ```scss
 /* theme.scss */
 $mdc-theme-primary: #212121;
-$mdc-theme-accent: #41B883;
+$mdc-theme-accent: #41b883;
 $mdc-theme-background: #fff;
 
-@import "vue-mdc-adapter/dist/styles";
+@import 'vue-mdc-adapter/dist/styles';
 ```
 
 or _a la carte_
@@ -222,11 +221,11 @@ or _a la carte_
 ```scss
 /* theme.scss */
 $mdc-theme-primary: #212121;
-$mdc-theme-accent: #41B883;
+$mdc-theme-accent: #41b883;
 $mdc-theme-background: #fff;
 
-@import "vue-mdc-adapter/dist/button/styles";
-@import "vue-mdc-adapter/dist/fab/styles";
+@import 'vue-mdc-adapter/dist/button/styles';
+@import 'vue-mdc-adapter/dist/fab/styles';
 ```
 
 ### Building from Sources
@@ -276,10 +275,10 @@ $mdc-theme-background: #fff;
 ```scss
 /* theme.scss */
 $mdc-theme-primary: #212121;
-$mdc-theme-accent: #41B883;
+$mdc-theme-accent: #41b883;
 $mdc-theme-background: #fff;
 
-@import "vue-mdc-adapter/components/styles.scss";
+@import 'vue-mdc-adapter/components/styles.scss';
 ```
 
 ```javascript
@@ -290,22 +289,23 @@ import VueMDCAdapter from 'vue-mdc-adapter'
 Vue.use(VueMdcAdapter)
 ```
 
-####  or cherry pick _a la carte_ plugins
+#### or cherry pick _a la carte_ plugins
 
 ```scss
 /* theme.scss */
 $mdc-theme-primary: #212121;
-$mdc-theme-accent: #41B883;
+$mdc-theme-accent: #41b883;
 $mdc-theme-background: #fff;
 
-@import "vue-mdc-adapter/components/button/styles.scss";
-@import "vue-mdc-adapter/components/fab/styles.scss";
+@import 'vue-mdc-adapter/components/button/styles.scss';
+@import 'vue-mdc-adapter/components/fab/styles.scss';
 ```
 
 ```javascript
 // main.js
 import `./theme.scss`
 import Vue from 'vue'
+import VueMDCCommon from 'vue-mdc-adapter/common';
 import VueMDCButton from 'vue-mdc-adapter/button'
 import VueMDCFAB from 'vue-mdc-adapter/fab'
 Vue.use(VueMDCButton)
