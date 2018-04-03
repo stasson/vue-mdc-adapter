@@ -1,42 +1,24 @@
 <template>
-  <component :is="type" :disabled="disabled" :value=value>
-    <slot></slot>
-  </component>
+   <option :disabled="disabled" :value="value" v-if="hasValue"
+    class="mdc-option">
+     <slot></slot>
+   </option>
+   <option :disabled="disabled" v-else
+    class="mdc-option">
+     <slot></slot>
+   </option>
 </template>
 
 <script>
-import MDCNativeOption from './mdc-native-option.vue';
-import MDCMenuOption from './mdc-menu-option.vue';
-import MDCMultiOption from './mdc-multi-option.vue';
-
 export default {
   name: 'mdc-option',
   props: {
     value: String,
     disabled: Boolean,
   },
-  inject: ['mdcSelect'],
-  components: {
-    'mdc-native-option': MDCNativeOption,
-    'mdc-multi-option': MDCMultiOption,
-    'mdc-menu-option': MDCMenuOption,
-  },
   computed: {
-    isNative() {
-      return this.mdcSelect.isNative;
-    },
-    multiple() {
-      return this.mdcSelect.multiple;
-    },
-    menu() {
-      return this.mdcSelect.menu;
-    },
-    type() {
-      return this.multiple
-        ? 'mdc-multi-option'
-        : this.menu
-          ? 'mdc-menu-option'
-          : this.isNative ? 'mdc-native-option' : 'mdc-menu-option';
+    hasValue() {
+      return !(typeof this.value === 'undefined');
     },
   },
 };

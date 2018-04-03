@@ -1,83 +1,127 @@
 <template>
-  <component :is="type" :multiple="multiple"
-    :label="label" 
-    :value="value" @change="onChange"
-    v-bind="$attrs"
-  >
+<div class="mdc-select" :class="classes">
+  <select ref="native_control" class="mdc-select__native-control" v-on="listeners" v-bind="$attrs">
     <slot></slot>
-  </component>
+  </select>
+  <div ref="label" class="mdc-select__label" :class="labelClasses">{{label}}</div>
+  <div ref="bottomLine" class="mdc-select__bottom-line" :class="bottomLineClasses"></div>
+</div>
 </template>
 
 <script>
-import MDCNativeSelect from './mdc-native-select.vue';
-import MDCMenuSelect from './mdc-menu-select.vue';
-import MDCMultiSelect from './mdc-multi-select.vue';
-import { DispatchFocusMixin } from '../base';
-
-const media = new class {
-  get mobile() {
-    return (
-      this._mobile ||
-      (this._mobile = window.matchMedia(
-        '(max-width: 600px) and (pointer: coarse)',
-      ))
-    );
-  }
-}();
+import { mdcOption } from './mdc-option.vue';
+import { mdcOptgroup } from './mdc-optgroup.vue';
+import MDCSelectFoundation from '@material/select/foundation';
+import MDCSelectBottomLineFoundation from '@material/select/bottom-line/foundation';
+import MDCSelectLabelFoundation from '@material/select/label/foundation';
+import { RippleBase } from '../ripple';
 
 export default {
   name: 'mdc-select',
-  mixins: [DispatchFocusMixin],
   model: {
     prop: 'value',
     event: 'change',
   },
   props: {
-    multiple: Boolean,
     value: [String, Array],
+    disabled: Boolean,
     label: String,
-    native: Boolean,
-    menu: Boolean,
+    box: Boolean,
   },
-  provide() {
-    return { mdcSelect: this };
-  },
-  components: {
-    'mdc-native-select': MDCNativeSelect,
-    'mdc-menu-select': MDCMenuSelect,
-    'mdc-multi-select': MDCMultiSelect,
-  },
+  inheritAttrs: false,
   data() {
     return {
-      mobile: window ? media.mobile.matches : true,
+      classes: {
+        'mdc-select--box': this.box,
+      },
+      labelClasses: {},
+      bottomLineClasses: {},
     };
   },
+  components: {
+    'mdc-option': mdcOption,
+    'mdc-optgroup': mdcOptgroup,
+  },
+  watch: {
+    disabled(value) {
+      this.foundation && this.foundation.setDisabled(value);
+    },
+    box() {
+      this.$set(this.classes, 'mdc-select--box', this.box);
+    },
+  },
+  methods: {},
   computed: {
-    type() {
-      return this.multiple
-        ? 'mdc-multi-select'
-        : this.menu
-          ? 'mdc-menu-select'
-          : this.isNative ? 'mdc-native-select' : 'mdc-menu-select';
-    },
-    isNative() {
-      return this.native || this.multiple || this.mobile;
+    listeners() {
+      return {
+        ...this.$listeners,
+        change: event => this.$emit('change', event.target.value),
+      };
     },
   },
-  methods: {
-    onChange(value) {
-      this.$emit('change', value);
-    },
-    refreshMedia() {
-      this.mobile = media.mobile.matches;
-    },
-  },
-  beforeMount() {
-    media.mobile.addListener(this.refreshMedia);
-    this.refreshMedia();
+  mounted() {
+    this.labelFoundation = new MDCSelectLabelFoundation({
+      addClass: className => this.$set(this.labelClasses, className, true),
+      removeClass: className => this.$delete(this.labelClasses, className),
+    });
+
+    this.bottomLineFoundation = new MDCSelectBottomLineFoundation({
+      addClass: className => {
+        this.$set(this.bottomLineClasses, className, true);
+      },
+      removeClass: className => {
+        this.$delete(this.bottomLineClasses, className);
+      },
+    });
+    this.bottomLineFoundation.init();
+
+    this.foundation = new MDCSelectFoundation({
+      addClass: className => this.$set(this.classes, className, true),
+      removeClass: className => this.$delete(this.classes, className),
+      floatLabel: value => {
+        this.labelFoundation.styleFloat(value);
+      },
+      activateBottomLine: () => {
+        this.bottomLineFoundation.activate();
+      },
+      deactivateBottomLine: () => {
+        this.bottomLineFoundation.deactivate();
+      },
+      registerInteractionHandler: (type, handler) =>
+        this.$refs.native_control.addEventListener(type, handler),
+      deregisterInteractionHandler: (type, handler) =>
+        this.$refs.native_control.removeEventListener(type, handler),
+      getSelectedIndex: () => this.$refs.native_control.selectedIndex,
+      setSelectedIndex: index =>
+        (this.$refs.native_control.selectedIndex = index),
+      setDisabled: disabled => (this.$refs.native_control.disabled = disabled),
+      getValue: () => this.$refs.native_control.value,
+      setValue: value => (this.$refs.native_control.value = value),
+    });
+
+    this.labelFoundation.init();
+    this.foundation.init();
+    this.foundation.setDisabled(this.disabled);
+
+    if (this.box) {
+      this.ripple = new RippleBase(this);
+      this.ripple.init();
+    }
   },
   beforeDestroy() {
-    media.mobile.removeListener(this.refreshMedia);
+    let foundation = this.foundation;
+    this.foundation = null;
+    foundation.destroy();
+
+    let labelFoundation = this.labelFoundation;
+    this.labelFoundation = null;
+    labelFoundation.destroy();
+
+    let bottomLineFoundation = this.bottomLineFoundation;
+    this.bottomLineFoundation = null;
+    bottomLineFoundation.destroy();
+
+    this.ripple && this.ripple.destroy();
   },
 };
 </script>
