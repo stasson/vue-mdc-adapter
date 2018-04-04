@@ -5,8 +5,6 @@ import {
 } from '../unit-test'
 import {
   mdcSelect,
-  mdcOption,
-  mdcOptgroup
 } from './index.js'
 import Spec from './test.spec.vue';
 
@@ -19,12 +17,6 @@ describe(__dirname, () => {
     })
     describe('mdcSelect', () => {
       checkValidMdcAdapter(spec.find(mdcSelect).vm)
-    })
-    describe('mdcOption', () => {
-      checkValidMdcAdapter(spec.find(mdcOption).vm)
-    })
-    describe('mdcOptgroup', () => {
-      checkValidMdcAdapter(spec.find(mdcOptgroup).vm)
     })
   })
 })

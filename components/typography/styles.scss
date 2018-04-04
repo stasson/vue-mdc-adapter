@@ -1,13 +1,6 @@
-@import "@material/typography/mdc-typography";
+@import '@material/typography/mdc-typography';
 
 .mdc-text-section {
   margin-top: 0.5rem;
   margin-bottom: 0.75rem;
-}
-
-// apply adjust-margin for sibling typo elements
-@each $style in map-keys($mdc-typography-styles) {
-  .mdc-text-section > .mdc-typography--#{$style} {
-    @include mdc-typography-adjust-margin($style);
-  }
 }

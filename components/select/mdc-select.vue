@@ -1,16 +1,15 @@
 <template>
-<div class="mdc-select" :class="classes">
+<div class="mdc-select" :class="rootClasses" :style="styles">
   <select ref="native_control" class="mdc-select__native-control" v-on="listeners" v-bind="$attrs">
+    <option class="mdc-option" value="" disabled selected v-if="!!label"></option>
     <slot></slot>
   </select>
   <div ref="label" class="mdc-select__label" :class="labelClasses">{{label}}</div>
-  <div ref="bottomLine" class="mdc-select__bottom-line" :class="bottomLineClasses"></div>
+  <div ref="bottomLine" class="mdc-select__bottom-line" :class="bottomLineClasses" v-if="bottomLine"></div>
 </div>
 </template>
 
 <script>
-import { mdcOption } from './mdc-option.vue';
-import { mdcOptgroup } from './mdc-optgroup.vue';
 import MDCSelectFoundation from '@material/select/foundation';
 import MDCSelectBottomLineFoundation from '@material/select/bottom-line/foundation';
 import MDCSelectLabelFoundation from '@material/select/label/foundation';
@@ -23,35 +22,47 @@ export default {
     event: 'change',
   },
   props: {
-    value: [String, Array],
+    value: String,
     disabled: Boolean,
     label: String,
     box: Boolean,
+    bottomLine: { type: Boolean, default: true },
   },
   inheritAttrs: false,
   data() {
     return {
-      classes: {
-        'mdc-select--box': this.box,
-      },
+      styles: {},
       labelClasses: {},
       bottomLineClasses: {},
+      classes: {},
     };
-  },
-  components: {
-    'mdc-option': mdcOption,
-    'mdc-optgroup': mdcOptgroup,
   },
   watch: {
     disabled(value) {
       this.foundation && this.foundation.setDisabled(value);
     },
-    box() {
-      this.$set(this.classes, 'mdc-select--box', this.box);
+    value: 'refreshIndex',
+  },
+  methods: {
+    refreshIndex() {
+      const options = [...this.$refs.native_control.querySelectorAll('option')];
+
+      const idx = options.findIndex(({ value }) => {
+        return this.value === value;
+      });
+
+      if (this.$refs.native_control.selectedIndex !== idx) {
+        this.foundation.setSelectedIndex(idx);
+      }
     },
   },
-  methods: {},
   computed: {
+    rootClasses() {
+      return {
+        'mdc-select--box': this.box,
+        ...this.classes,
+      };
+    },
     listeners() {
       return {
         ...this.$listeners,
@@ -60,20 +71,25 @@ export default {
     },
   },
   mounted() {
-    this.labelFoundation = new MDCSelectLabelFoundation({
-      addClass: className => this.$set(this.labelClasses, className, true),
-      removeClass: className => this.$delete(this.labelClasses, className),
-    });
+    if (this.label) {
+      this.labelFoundation = new MDCSelectLabelFoundation({
+        addClass: className => this.$set(this.labelClasses, className, true),
+        removeClass: className => this.$delete(this.labelClasses, className),
+      });
+      this.labelFoundation.init();
+    }
 
-    this.bottomLineFoundation = new MDCSelectBottomLineFoundation({
-      addClass: className => {
-        this.$set(this.bottomLineClasses, className, true);
-      },
-      removeClass: className => {
-        this.$delete(this.bottomLineClasses, className);
-      },
-    });
-    this.bottomLineFoundation.init();
+    if (this.bottomLine) {
+      this.bottomLineFoundation = new MDCSelectBottomLineFoundation({
+        addClass: className => {
+          this.$set(this.bottomLineClasses, className, true);
+        },
+        removeClass: className => {
+          this.$delete(this.bottomLineClasses, className);
+        },
+      });
+      this.bottomLineFoundation.init();
+    }
 
     this.foundation = new MDCSelectFoundation({
       addClass: className => this.$set(this.classes, className, true),
@@ -99,9 +115,17 @@ export default {
       setValue: value => (this.$refs.native_control.value = value),
     });
 
-    this.labelFoundation.init();
     this.foundation.init();
+
     this.foundation.setDisabled(this.disabled);
+
+    // initial sync with DOM
+    this.refreshIndex();
+    this.slotObserver = new MutationObserver(() => this.refreshIndex());
+    this.slotObserver.observe(this.$refs.native_control, {
+      childList: true,
+      subtree: true,
+    });
 
     if (this.box) {
       this.ripple = new RippleBase(this);
@@ -109,6 +133,7 @@ export default {
     }
   },
   beforeDestroy() {
+    this.slotObserver.disconnect();
     let foundation = this.foundation;
     this.foundation = null;
     foundation.destroy();

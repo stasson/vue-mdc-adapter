@@ -2,11 +2,16 @@
 <div class="mdc-demo mdc-demo--container">
   <div>
     <mdc-select v-model="selectedType" label="Pick up a food type">
-      <mdc-option v-for="type in types" :key="type">{{type}}</mdc-option>
+      <optgroup label="categories">
+        <option v-for="type in types" :value="type" :key="type">{{type}}</option>
+      </optgroup>
     </mdc-select>
+
+    <mdc-caption tag="p" >Selected Type: {{ selectedType }}</mdc-caption>
+    <br>
     <br><br><br>
     <mdc-select box v-model="selectedValue" label="Pick up a food" v-if="selectedType">
-      <mdc-option v-for="option of options" :key="option" :value="option.toLowerCase()">{{option}}</mdc-option>
+      <option v-for="option of options" :key="option" :value="option.toLowerCase()">{{option}}</option>
     </mdc-select>
 
     <mdc-caption tag="p" v-if="selectedType">Selected Value: {{ selectedValue }}</mdc-caption>
@@ -20,9 +25,8 @@
 export default {
   data() {
     return {
-      selectedType: undefined,
+      selectedType: 'Meat',
       selectedValue: undefined,
-      selectedValues: [],
       food: {
         Vegetables: ['Spinach', 'Carrots', 'Onions', 'Broccoli'],
         Meat: ['Eggs', 'Chicken', 'Fish', 'Turkey', 'Pork', 'Beef'],
@@ -40,3 +44,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.mdc-demo .mdc-select {
+  width: 10em;
+}
+</style>

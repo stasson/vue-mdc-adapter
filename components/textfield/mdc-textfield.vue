@@ -47,13 +47,13 @@
         <slot name="trailing-icon">{{ hasTrailingIcon.content }}</slot>
       </i>
 
-      <div ref="outline" class="mdc-notched-outline" v-if="hasOutline">
+      <div ref="outline" class="mdc-notched-outline" :class="outlineClasses" v-if="hasOutline">
         <svg>
           <path class="mdc-notched-outline__path" :d="outlinePathAttr" />
         </svg>
       </div>
       <div ref="outlineIdle" class="mdc-notched-outline__idle" v-if="hasOutline"></div>
-      <div ref="bottom" :class="bottomClasses" v-if="hasBottomLine"></div>
+      <div ref="bottom" :class="bottomClasses" :style="bottomStyles" v-if="hasBottomLine"></div>
 
     </div>
 
@@ -150,11 +150,13 @@ export default {
       bottomClasses: {
         'mdc-line-ripple': true,
       },
+      bottomStyles: {},
       helpClasses: {
         'mdc-text-field-helper-text': true,
         'mdc-text-field-helper-text--persistent': this.helptextPersistent,
         'mdc-text-field-helper-text--validation-msg': this.helptextValidation,
       },
+      outlineClasses: {},
       outlinePathAttr: undefined,
     };
   },
@@ -249,8 +251,8 @@ export default {
         hasClass: className => {
           this.$refs.bottom.classList.contains(className);
         },
-        setAttr: (name, value) => {
-          this.$refs.bottom.setAttribute(name, value);
+        setStyle: (name, value) => {
+          this.$set(this.styles, name, value);
         },
         registerEventHandler: (evtType, handler) => {
           this.$refs.bottom.addEventListener(evtType, handler);
@@ -330,6 +332,12 @@ export default {
       this.outlineFoundation = new MDCNotchedOutlineFoundation({
         getWidth: () => this.$refs.outline.offsetWidth,
         getHeight: () => this.$refs.outline.offsetHeight,
+        addClass: className => {
+          this.$set(this.outlineClasses, className, true);
+        },
+        removeClass: className => {
+          this.$delete(this.outlineClasses, className);
+        },
         setOutlinePathAttr: value => {
           this.outlinePathAttr = value;
         },
@@ -416,9 +424,9 @@ export default {
           return this.$refs.input;
         },
         hasOutline: () => !!this.hasOutline,
-        updateOutlinePath: (labelWidth, isRtl) => {
-          this.outlineFoundation.updateSvgPath(labelWidth, isRtl);
-        },
+        notchOutline: (notchWidth, isRtl) =>
+          this.outlineFoundation.notch(notchWidth, isRtl),
+        closeOutline: () => this.outlineFoundation.closeNotch(),
       },
       {
         bottomLine: this.bottomLineFoundation,
