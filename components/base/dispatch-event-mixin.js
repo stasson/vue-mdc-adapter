@@ -1,5 +1,3 @@
-import { eventBus } from '../common';
-
 export const DispatchEventMixin = {
   props: {
     event: String,
@@ -10,7 +8,7 @@ export const DispatchEventMixin = {
     dispatchEvent(evt) {
       this.$emit(evt.type);
       if (this.event) {
-        let target = this.eventTarget || eventBus;
+        let target = this.eventTarget || this.$root;
         let args = this.eventArgs || [];
         target.$emit(this.event, ...args);
       }
