@@ -1,8 +1,8 @@
 <template>
-<header ref="root" :class="rootClasses">
+<header :class="rootClasses" v-on="$listeners">
   <div class="mdc-top-app-bar__row">
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-      <a ref="navigationIcon" href="#" :class="naviconClasses" v-if="haveNavigationIcon" @click="dispatchEvent">{{icon}}</a>
+      <a ref="navigationIcon" href="#" :class="naviconClasses" v-if="haveNavigationIcon">{{icon}}</a>
       <span class="mdc-top-app-bar__title" v-if="!!title">{{title}}</span>
     </section>
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" v-if="$slots.default">
@@ -15,8 +15,7 @@
 <script>
 import MDCTopAppBarFoundation from '@material/top-app-bar/foundation';
 import MDCShortTopAppBarFoundation from '@material/top-app-bar/short/foundation';
-import * as util from '@material/top-app-bar/util';
-import { DispatchEventMixin, emitCustomEvent } from '../base';
+import { emitCustomEvent } from '../base';
 
 export default {
   name: 'mdc-top-app-bar',
@@ -29,18 +28,18 @@ export default {
       default: 'menu',
     },
     iconClasses: Object,
+    dense: Boolean,
   },
   data() {
     return {
       rootClasses: {
         'mdc-top-app-bar': true,
+        'mdc-top-app-bar--dense': this.dense,
         'mdc-top-app-bar--short': this.short,
         'mdc-top-app-bar--short-collapsed': this.shortCollapsed,
       },
-      foundation: null,
     };
   },
-  mixins: [DispatchEventMixin],
   mounted() {
     const adapter = {
       addClass: className => {

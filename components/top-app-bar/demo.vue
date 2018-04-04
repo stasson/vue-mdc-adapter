@@ -1,7 +1,7 @@
 <template>
 <div class="mdc-demo--appbar">
   <section class="mdc-demo">
-    <mdc-top-app-bar title="Title2">
+    <mdc-top-app-bar title="Title2" icon="menu">
         <mdc-top-app-bar--action event="show-help" icon="help"></mdc-top-app-bar--action>
         <mdc-top-app-bar--action event="show-info" icon="info_outline"></mdc-top-app-bar--action>
     </mdc-top-app-bar>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+export default {};
 </script>
 
 <style>
