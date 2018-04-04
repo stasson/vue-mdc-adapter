@@ -14,6 +14,12 @@
 </mdc-toolbar>
 ```
 
+# Important - Deprecation Notice
+
+The existing `MDCToolbar` component and styles will be removed in a future release. Some of its functionality
+will be available in the `mdc-top-app-bar` package instead. Bugs and feature requests
+will no longer be accepted for the `mdc-toolbar` package. It is recommended that you migrate to the
+`mdc-top-app-bar` package to continue to receive new features and updates.
 
 ### Toolbars
 
@@ -21,14 +27,13 @@
 application title, navigation menu, and tabs, among other things.
 Toolbars scroll with content by default, but support fixed behavior as well.
 
-
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`fixed`|Boolean|| whether the toolbar is fixed |
-|`waterfall`| String|false| whether the toolbar is waterfal |
-|`fixed-lastrow`| Boolean|false| whether the toolbar is fixed for lastrow |
-|`flexible`|Boolean|false| whether the toolbar is flexible |
-|`flexible-default`|Boolean| true | if flexible, apply default material design behaviour |
+| props              | Type    | Default | Description                                          |
+| ------------------ | ------- | ------- | ---------------------------------------------------- |
+| `fixed`            | Boolean |         | whether the toolbar is fixed                         |
+| `waterfall`        | String  | false   | whether the toolbar is waterfal                      |
+| `fixed-lastrow`    | Boolean | false   | whether the toolbar is fixed for lastrow             |
+| `flexible`         | Boolean | false   | whether the toolbar is flexible                      |
+| `flexible-default` | Boolean | true    | if flexible, apply default material design behaviour |
 
 When using the fixed pattern, a persistent elevation is added to toolbar.
 When using the waterfall pattern, a toolbar will have no elevation when the page
@@ -46,16 +51,15 @@ additional height added to their first rows.
 
 MDC Toolbars can accommodate multiple sections using the wrapper `mdc-toolbar-section`
 
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`align-start`|Boolean|false| whether the section aligns to start |
-|`align-end`|Boolean|false| whether the section aligns to end |
-|`shrink-to-fit`|Boolean|false| whether the section shrinks to fit |
+| props           | Type    | Default | Description                         |
+| --------------- | ------- | ------- | ----------------------------------- |
+| `align-start`   | Boolean | false   | whether the section aligns to start |
+| `align-end`     | Boolean | false   | whether the section aligns to end   |
+| `shrink-to-fit` | Boolean | false   | whether the section shrinks to fit  |
 
-Toolbar sections are aligned to the toolbar’s center. You can change this 
-behavior by applying `align-start` or `align-end` to align the sections to the 
+Toolbar sections are aligned to the toolbar’s center. You can change this
+behavior by applying `align-start` or `align-end` to align the sections to the
 start or the end of the toolbar (respectively).
-
 
 ### Rows
 
@@ -74,27 +78,26 @@ MDC Toolbars can accommodate multiple rows using the wrapper `mdc-toolbar-row`
 
 ### Title
 
-You can use the `mdc-toolbar-title` wrapper to style toolbar text representing 
+You can use the `mdc-toolbar-title` wrapper to style toolbar text representing
 a page’s title, or an application name.
-
 
 ### Icons
 
-- `mdc-toolbar-icon-menu` wraps the left most icon in `mdc-toolbar` usually to 
-the left of `mdc-toolbar-title`. It renders as material menu icon by default
+* `mdc-toolbar-icon-menu` wraps the left most icon in `mdc-toolbar` usually to
+  the left of `mdc-toolbar-title`. It renders as material menu icon by default
 
-- `mdc-toolbar-icon` wraps any icons placed on the right side of an
-mdc-toolbar.
+* `mdc-toolbar-icon` wraps any icons placed on the right side of an
+  mdc-toolbar.
 
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`icon`|String|          | the material icon name |
-|`event`|String| optional | optional event to emit on click  |
-|`event-target`|Object| vm.$root | optional event target, defaults to root bus |
+| props          | Type   | Default  | Description                                 |
+| -------------- | ------ | -------- | ------------------------------------------- |
+| `icon`         | String |          | the material icon name                      |
+| `event`        | String | optional | optional event to emit on click             |
+| `event-target` | Object | vm.$root | optional event target, defaults to root bus |
 
 > if the `event` property is not specified, use @click to catch click events
 
-> do not set the icon prop to render your custom icons 
+> do not set the icon prop to render your custom icons
 
 **Font Awsome**
 
@@ -105,8 +108,8 @@ mdc-toolbar.
 **SVG Icons**
 
 ```html
-  <mdc-icon> 
-    <svg ...> 
+  <mdc-icon>
+    <svg ...>
   </mdc-icon>
 ```
 
@@ -150,7 +153,7 @@ The toolbars will anchor only the last row to the top.
 
 ### Flexible toolbars
 
-With flexible behavior the toolbar height changes as the user scrolls. 
+With flexible behavior the toolbar height changes as the user scrolls.
 
 ```html
 <mdc-toolbar flexible>
@@ -166,11 +169,11 @@ With flexible behavior the toolbar height changes as the user scrolls.
 For the most common use case of flexible headers, the default behavior is as
 follow :
 
-- Flexible has a fixed initial height 4 times the default size of `mdc-toolbar-row`.
-- When it has `flexible-default` behavior, it further defines the background and title movement behavior.
+* Flexible has a fixed initial height 4 times the default size of `mdc-toolbar-row`.
+* When it has `flexible-default` behavior, it further defines the background and title movement behavior.
 
 refer to the [MDC Documentation](https://material.io/components/web/catalog/toolbar/#flexible-toolbar-requires-javascript) to learn about customization options.
 
-
 ### Reference
-- <https://material.io/components/web/catalog/toolbar>
+
+* <https://material.io/components/web/catalog/toolbar>

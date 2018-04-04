@@ -15,7 +15,6 @@
 <script>
 import MDCTopAppBarFoundation from '@material/top-app-bar/foundation';
 import MDCShortTopAppBarFoundation from '@material/top-app-bar/short/foundation';
-import * as util from '@material/top-app-bar/util';
 import { DispatchEventMixin, emitCustomEvent } from '../base';
 
 export default {
@@ -71,7 +70,7 @@ export default {
         );
       },
       registerScrollHandler: handler => {
-        window.addEventListener('scroll', handler, util.applyPassive());
+        window.addEventListener('scroll', handler);
       },
       deregisterScrollHandler: handler => {
         window.removeEventListener('scroll', handler);
