@@ -1,5 +1,5 @@
 <template>
-<header ref="root" :class="rootClasses">
+<header ref="root" :class="rootClasses" v-on="$listeners">
   <div class="mdc-top-app-bar__row">
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
       <a ref="navigationIcon" href="#" :class="naviconClasses" v-if="haveNavigationIcon" v-on="listeners">{{icon}}</a>
