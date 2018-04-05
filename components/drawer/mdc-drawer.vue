@@ -141,15 +141,15 @@ export default {
   },
   mounted() {
     if (this.toggleOn) {
-      this.toggleOnEventSource = this.toggleOnSource || eventBus;
+      this.toggleOnEventSource = this.toggleOnSource || this.$root;
       this.toggleOnEventSource.$on(this.toggleOn, this.toggle);
     }
     if (this.openOn) {
-      this.openOnEventSource = this.openOnSource || eventBus;
+      this.openOnEventSource = this.openOnSource || this.$root;
       this.openOnEventSource.$on(this.openOn, this.open);
     }
     if (this.closeOn) {
-      this.closeOnEventSource = this.closeOnSource || eventBus;
+      this.closeOnEventSource = this.closeOnSource || this.$root;
       this.closeOnEventSource.$on(this.closeOn, this.close);
     }
     media.small.addListener(this.refreshMedia);
