@@ -16,6 +16,7 @@ top-app-bars scroll with content by default.
 | -------------- | ------- | -------- | --------------------------------------------------------------- |
 | `short`        | Boolean |          | Short top app bars should only be used with one action item     |
 | `collapsed`    | String  | false    | Short top app bars can be configured to always appear collapsed |
+| `dense`        | Boolean | false    | optional changes tpo app bar to be dense                        |
 | `event`        | String  | optional | optional event to emit on navigation click                      |
 | `event-target` | Object  | vm.$root | optional event target, defaults to root bus                     |
 

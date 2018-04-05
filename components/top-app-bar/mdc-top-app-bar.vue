@@ -28,11 +28,13 @@ export default {
       default: 'menu',
     },
     iconClasses: Object,
+    dense: Boolean,
   },
   data() {
     return {
       rootClasses: {
         'mdc-top-app-bar': true,
+        'mdc-top-app-bar--dense': this.dense,
         'mdc-top-app-bar--short': this.short,
         'mdc-top-app-bar--short-collapsed': this.shortCollapsed,
       },
