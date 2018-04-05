@@ -1,8 +1,8 @@
 <template>
-  <li class="mdc-grid-tile" @click="onClick"
+  <li class="mdc-grid-tile"
     :class="[classes, itemClasses]" :style="styles"
     :tabindex="isInteractive ? '0' : undefined"
-    v-on="isInteractive ? $listeners : {}">
+    v-on="isInteractive ? listeners : clickListener">
     <div class="mdc-grid-tile__primary" v-if="cover">
       <div class="mdc-grid-tile__primary-content"
         :style="{ backgroundImage: 'url(' + src + ')' }">
@@ -21,78 +21,78 @@
 
 
 <script>
-import {DispatchEventMixin} from '../base'
-import {RippleBase} from '../ripple'
+import { DispatchEventMixin } from '../base';
+import { RippleBase } from '../ripple';
 
 export default {
   name: 'mdc-grid-tile',
   inject: ['mdcGrid'],
   mixins: [DispatchEventMixin],
   props: {
-    'src': String,
-    'cover': Boolean,
-    'icon': String,
-    'title': String,
+    src: String,
+    cover: Boolean,
+    icon: String,
+    title: String,
     'support-text': String,
-    'selected': Boolean,
-    'activated': Boolean
+    selected: Boolean,
+    activated: Boolean,
   },
-  data () {
+  data() {
     return {
       classes: {},
-      styles: {}
-    }
+      styles: {},
+    };
   },
   computed: {
-    itemClasses () {
+    clickListener() {
+      return { click: e => this.dispatchEvent(e) };
+    },
+    itemClasses() {
       return {
         'mdc-grid-tile--selected': this.selected,
-        'mdc-grid-tile--activated': this.activated
-      }
+        'mdc-grid-tile--activated': this.activated,
+      };
     },
-    isInteractive () {
-      return this.mdcGrid && this.mdcGrid.interactive
+    isInteractive() {
+      return this.mdcGrid && this.mdcGrid.interactive;
     },
-    hasStartDetail () {
-      return this.startIcon || this.$slots['start-detail']
+    hasStartDetail() {
+      return this.startIcon || this.$slots['start-detail'];
     },
-    hasEndDetail () {
-      return this.endIcon || this.$slots['end-detail']
-    }
+    hasEndDetail() {
+      return this.endIcon || this.$slots['end-detail'];
+    },
   },
   watch: {
-    isInteractive (value) {
+    isInteractive(value) {
       if (value) {
-        this.addRipple()
+        this.addRipple();
       } else {
-        this.removeRipple()
+        this.removeRipple();
       }
-    }
+    },
   },
   methods: {
-    onClick (evt) {
-      this.dispatchEvent(evt)
-    },
-    addRipple () {
+    addRipple() {
       if (!this.ripple) {
-        let ripple = new RippleBase(this)
-        ripple.init()
-        this.ripple = ripple
+        let ripple = new RippleBase(this);
+        ripple.init();
+        this.ripple = ripple;
       }
     },
-    removeRipple () {
+    removeRipple() {
       if (this.ripple) {
-        let ripple = this.ripple
-        this.ripple = null
-        ripple.destroy()
+        let ripple = this.ripple;
+        this.ripple = null;
+        ripple.destroy();
       }
-    }
+    },
   },
-  mounted () {
-    this.isInteractive && this.addRipple()
+  mounted() {
+    this.isInteractive && this.addRipple();
   },
-  beforeDestroy () {
-    this.removeRipple()
-  }
-}
+  beforeDestroy() {
+    this.removeRipple();
+  },
+};
 </script>

@@ -1,24 +1,24 @@
 <template>
   <custom-button ref="root"
-    :class="classes" :style="styles" 
-    :href="href" :link="link" :disabled="disabled" 
-    @click="dispatchEvent">
+    :class="classes" :style="styles"
+    :href="href" :link="link" :disabled="disabled"
+    v-on="listeners">
     <slot />
   </custom-button>
 </template>
 
 <script>
-import {DispatchEventMixin, CustomButtonMixin} from '../base'
-import {RippleMixin} from '../ripple'
+import { DispatchEventMixin, CustomButtonMixin } from '../base';
+import { RippleMixin } from '../ripple';
 
 export default {
   name: 'mdc-button-base',
   mixins: [DispatchEventMixin, CustomButtonMixin, RippleMixin],
-  data () {
+  data() {
     return {
       classes: {},
-      styles: {}
-    }
-  }
-}
+      styles: {},
+    };
+  },
+};
 </script>

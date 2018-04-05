@@ -1,8 +1,8 @@
 <template>
-  <custom-link :link="link" 
-    class="mdc-drawer-item mdc-list-item" 
+  <custom-link :link="link"
+    class="mdc-drawer-item mdc-list-item"
     :class="[classes, itemClasses]" :style="styles"
-    @click="onClick">
+    v-on="mylisteners">
     <span class="mdc-list-item__graphic" v-if="hasStartDetail">
       <slot name="start-detail">
         <i class="material-icons" aria-hidden="true">{{startIcon}}</i>
@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import {DispatchEventMixin, CustomLinkMixin} from '../base'
-import {RippleBase} from '../ripple'
+import { DispatchEventMixin, CustomLinkMixin } from '../base';
+import { RippleBase } from '../ripple';
 
 export default {
   name: 'mdc-drawer-item',
@@ -22,46 +22,50 @@ export default {
   mixins: [DispatchEventMixin, CustomLinkMixin],
   props: {
     startIcon: String,
-    temporaryClose: { 
-      type: Boolean, 
-      default: true
+    temporaryClose: {
+      type: Boolean,
+      default: true,
     },
     activated: Boolean,
-    exactActiveClass: { 
-      type: String, 
-      default: 'mdc-list-item--activated' 
-    }
+    exactActiveClass: {
+      type: String,
+      default: 'mdc-list-item--activated',
+    },
   },
-  data () {
+  data() {
     return {
       classes: {},
-      styles: {}
-    }
+      styles: {},
+    };
   },
   computed: {
-    itemClasses () {
+    mylisteners() {
       return {
-        'mdc-list-item--activated': this.activated
-      }
+        ...this.$listeners,
+        click: e => {
+          this.mdcDrawer.isTemporary &&
+            this.temporaryClose &&
+            this.mdcDrawer.close();
+          this.dispatchEvent(e);
+        },
+      };
     },
-    hasStartDetail () {
-      return this.startIcon || this.$slots['start-detail']
-    }
+    itemClasses() {
+      return {
+        'mdc-list-item--activated': this.activated,
+      };
+    },
+    hasStartDetail() {
+      return this.startIcon || this.$slots['start-detail'];
+    },
   },
-  methods: {
-    onClick (evt) {
-      this.mdcDrawer.isTemporary && this.temporaryClose 
-        && this.mdcDrawer.close()
-      this.dispatchEvent(evt)
-    }
+  mounted() {
+    this.ripple = new RippleBase(this);
+    this.ripple.init();
   },
-  mounted () {
-    this.ripple = new RippleBase(this)
-    this.ripple.init()
+  beforeDestroy() {
+    this.ripple && this.ripple.destroy();
+    this.ripple = null;
   },
-  beforeDestroy () {
-    this.ripple && this.ripple.destroy()
-    this.ripple = null
-  }
-}
+};
 </script>
