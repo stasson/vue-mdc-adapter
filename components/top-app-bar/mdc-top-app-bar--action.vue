@@ -1,5 +1,5 @@
 <template>
-<a href="#" class="mdc-top-app-bar--action mdc-top-app-bar__action-item" :class="actioniconClasses" @click="dispatchEvent">
+<a href="#" class="mdc-top-app-bar--action mdc-top-app-bar__action-item" :class="actioniconClasses" v-on="listeners">
   <slot>{{icon}}</slot>
 </a>
 </template>
