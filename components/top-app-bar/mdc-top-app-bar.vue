@@ -2,7 +2,7 @@
 <header ref="root" :class="rootClasses">
   <div class="mdc-top-app-bar__row">
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-      <a ref="navigationIcon" href="#" :class="naviconClasses" v-if="haveNavigationIcon" @click="dispatchEvent">{{icon}}</a>
+      <a ref="navigationIcon" href="#" :class="naviconClasses" v-if="haveNavigationIcon" v-on="listeners">{{icon}}</a>
       <span class="mdc-top-app-bar__title" v-if="!!title">{{title}}</span>
     </section>
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" v-if="$slots.default">

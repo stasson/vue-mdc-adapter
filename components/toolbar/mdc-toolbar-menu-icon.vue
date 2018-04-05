@@ -1,19 +1,19 @@
 <template>
   <a class="mdc-toolbar-menu-icon mdc-toolbar__menu-icon"
     :class="{'material-icons':!!icon}"
-    @click="dispatchEvent">
+    v-on="listeners">
     <slot>{{icon}}</slot>
   </a>
 </template>
 
 <script>
-import {DispatchEventMixin} from '../base'
+import { DispatchEventMixin } from '../base';
 
 export default {
   name: 'mdc-toolbar-menu-icon',
   mixins: [DispatchEventMixin],
   props: {
-    icon: {type: String, 'default': "menu"}
-  }
-}
+    icon: { type: String, default: 'menu' },
+  },
+};
 </script>

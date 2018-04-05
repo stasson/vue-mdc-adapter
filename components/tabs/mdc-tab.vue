@@ -1,18 +1,18 @@
 <template>
-  <custom-link class="mdc-tab" 
+  <custom-link class="mdc-tab"
     :class="classes" :style="styles"
-    :link="link" 
-    @click="dispatchEvent">
+    :link="link"
+    v-on="listeners">
 
     <i ref="icon" v-if="!!hasIcon"
-      tabindex="0" 
-      class="mdc-tab__icon"  
+      tabindex="0"
+      class="mdc-tab__icon"
       :class="hasIcon.classes">
       <slot name="icon">{{ hasIcon.content }}</slot>
     </i>
 
     <span :class="{'mdc-tab__icon-text': !!hasIcon}" v-if="hasText">
-      <slot></slot>  
+      <slot></slot>
     </span>
 
   </custom-link>
