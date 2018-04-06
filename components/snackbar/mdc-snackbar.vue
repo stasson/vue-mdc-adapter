@@ -105,7 +105,7 @@ export default {
   },
   beforeDestroy() {
     if (this.eventSource) {
-      this.eventSource.$of(this.event, this.show);
+      this.eventSource.$off(this.event, this.show);
     }
     this.foundation.destroy();
   },
