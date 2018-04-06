@@ -2,7 +2,7 @@
   <div :class=formFieldClasses class="mdc-checkbox-wrapper">
     <div ref="root" class="mdc-checkbox"
     :class="classes" :style="styles">
-      <input ref="control" :id="_vma_uid" type="checkbox" :name="name"
+      <input ref="control" :id="vma_uid_" type="checkbox" :name="name"
         class="mdc-checkbox__native-control" :value="value"
         @change="onChange"/>
       <div class="mdc-checkbox__background">
@@ -16,7 +16,7 @@
         <div class="mdc-checkbox__mixedmark"></div>
       </div>
     </div>
-    <label ref="label"  :for="_vma_uid"
+    <label ref="label"  :for="vma_uid_"
     ><slot>{{label}}</slot></label>
   </div>
 </template>
