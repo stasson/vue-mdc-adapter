@@ -1,16 +1,16 @@
 <template>
   <aside class="mdc-dialog" ref="root" :class="classes" :style="styles"
     role="alertdialog"
-    :aria-labelledby="'label' + _uid"
-    :aria-describedby="'desc' + _uid"
+    :aria-labelledby="'label' + vma_uid_"
+    :aria-describedby="'desc' + vma_uid_"
   >
     <div  ref="surface" class="mdc-dialog__surface" :class="surfaceClasses">
       <header class="mdc-dialog__header">
-        <h2 :id="'label' + _uid" class="mdc-dialog__header__title">
+        <h2 :id="'label' + vma_uid_" class="mdc-dialog__header__title">
           {{ title }}
         </h2>
       </header>
-      <section :id="'desc' + _uid"
+      <section :id="'desc' + vma_uid_"
         class="mdc-dialog__body" :class="bodyClasses">
         <slot />
       </section>

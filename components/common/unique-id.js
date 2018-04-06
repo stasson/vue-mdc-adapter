@@ -2,7 +2,7 @@ let uid_ = 0;
 
 const uidMixin = {
   beforeCreate() {
-    this._vma_uid = `_vma_${uid_++}`;
+    this.vma_uid_ = `_vma_${uid_++}`;
   },
 };
 
