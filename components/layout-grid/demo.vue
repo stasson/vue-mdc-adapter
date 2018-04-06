@@ -1,6 +1,6 @@
 <template>
   <div class="mdc-demo mdc-demo--fluid">
-    <mdc-layout-grid class=grid>
+    <mdc-layout-grid class="grid">
       <mdc-layout-cell class="cell cell1" desktop=3 tablet=3 ></mdc-layout-cell>
       <mdc-layout-cell class="cell cell2" desktop=3 tablet=5 align="top" >
         <mdc-body>
@@ -22,7 +22,6 @@
 </template>
 
 <style>
-
 .mdc-demo .cell {
   border: 1px dashed;
   min-height: 50px;
@@ -37,5 +36,4 @@
 .mdc-demo .cell.cell4 {
   min-height: 80px;
 }
-  
 </style>
