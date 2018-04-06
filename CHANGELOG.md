@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.0"></a>
+
+# [0.14.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.13.4...v0.14.0) (2018-04-06)
+
+### Bug Fixes
+
+* Remove event listeners on component destroy ([34a31d4](https://github.com/stasson/vue-mdc-adapter/commit/34a31d4))
+* Update for material-components-web breaking changes ([6a7616e](https://github.com/stasson/vue-mdc-adapter/commit/6a7616e))
+* **mdc-dialog:** use vue-mdc-adapter unique id ([0ceec66](https://github.com/stasson/vue-mdc-adapter/commit/0ceec66))
+* **mdc-snackbar:** typo in removing event source listener ([3222267](https://github.com/stasson/vue-mdc-adapter/commit/3222267))
+* **mdc-tab-bar:** Guard against deactivating a tab that no longer exists ([bfce806](https://github.com/stasson/vue-mdc-adapter/commit/bfce806))
+* **mdc-textfield:** Add unique id to textfield element input ([71fda09](https://github.com/stasson/vue-mdc-adapter/commit/71fda09))
+* **mdc-textfield:** Support number as permitted type attribute value. ([2089135](https://github.com/stasson/vue-mdc-adapter/commit/2089135))
+* **mdc-top-app-bar:** Missing listeners on element root. ([c2da57c](https://github.com/stasson/vue-mdc-adapter/commit/c2da57c))
+
+### Features
+
+* dispatchevent ([dfb923a](https://github.com/stasson/vue-mdc-adapter/commit/dfb923a))
+* isolate internal eventbus ([5adfe34](https://github.com/stasson/vue-mdc-adapter/commit/5adfe34))
+* **mdc-checkbox:** Support array as v-model. ([1c8ca1a](https://github.com/stasson/vue-mdc-adapter/commit/1c8ca1a))
+* **mdc-chip:** Allow underlying events to be emitted as first class Vue events. ([18a6d27](https://github.com/stasson/vue-mdc-adapter/commit/18a6d27))
+* **mdc-layout-grid:** add support for overall grid layout alignment ([2a21775](https://github.com/stasson/vue-mdc-adapter/commit/2a21775))
+* **mdc-select:** Implement native select ([755ffac](https://github.com/stasson/vue-mdc-adapter/commit/755ffac))
+* **mdc-top-app-bar:** Support dense mode ([bf72305](https://github.com/stasson/vue-mdc-adapter/commit/bf72305))
+
 <a name="0.13.5"></a>
 
 ## [0.13.5](https://github.com/stasson/vue-mdc-adapter/compare/v0.13.4...v0.13.5) (2018-03-26)
