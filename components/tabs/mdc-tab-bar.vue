@@ -1,9 +1,9 @@
 <template>
   <nav class="mdc-tab-bar" :class="classes" v-on="$listeners">
     <slot></slot>
-    <span ref="indicator" class="mdc-tab-bar__indicator" 
+    <span ref="indicator" class="mdc-tab-bar__indicator"
       :style="indicatorStyles"></span>
-  </nav>  
+  </nav>
 </template>
 
 <script>
@@ -65,6 +65,13 @@ export default {
       getNumberOfTabs: () => this.tabs.length,
       isTabActiveAtIndex: index => this.tabs[index].isActive(),
       setTabActiveAtIndex: (index, isActive) => {
+        // pgbr: 2018-04-07
+        // since it is possible to change the number of tabs programatically
+        // we need to detect the foundation deactivating a tab
+        // that no longer exists but was previously active.
+        if (!isActive && index >= this.tabs.length) {
+          return;
+        }
         this.tabs[index].setActive(isActive);
       },
       isDefaultPreventedOnClickForTabAtIndex: index =>
