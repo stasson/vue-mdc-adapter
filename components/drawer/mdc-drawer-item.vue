@@ -45,7 +45,7 @@ export default {
         click: e => {
           this.mdcDrawer.isTemporary &&
             this.temporaryClose &&
-            this.mdcDrawer.close();
+            this.mdcDrawer.closeDrawer();
           this.dispatchEvent(e);
         },
       };
