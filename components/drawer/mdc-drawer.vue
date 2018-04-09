@@ -2,7 +2,7 @@
   <component  ref="drawer" class="mdc-drawer"
       :is="type" v-model="open_"
       :toolbar-spacer="toolbarSpacer"
-      @change="busemit('mdc:layout')"
+      @change="onChange"
       @open="$emit('open')"
       @close="$emit('close')" >
     <slot />
@@ -31,7 +31,12 @@ const media = new class {
 
 export default {
   name: 'mdc-drawer',
+  model: {
+    prop: 'open',
+    event: 'change',
+  },
   props: {
+    open: Boolean,
     permanent: Boolean,
     persistent: Boolean,
     temporary: Boolean,
@@ -105,18 +110,26 @@ export default {
       );
     },
   },
+  watch: {
+    open: 'onOpen_',
+  },
   methods: {
-    busemit(event) {
-      eventBus.$emit(event);
+    onOpen_(value) {
+      this.isPermanent || (this.open_ = value);
     },
-    open() {
+    onChange(event) {
+      this.$emit('change', event);
+      eventBus.$emit('mdc:layout');
+    },
+    openDrawer() {
       this.open_ = true;
     },
-    close() {
+    closeDrawer() {
       this.isPermanent || (this.open_ = false);
     },
-    toggle() {
-      this.isPermanent || (this.isOpen() ? this.close() : this.open());
+    toggleDrawer() {
+      this.isPermanent ||
+        (this.isOpen() ? this.closeDrawer() : this.openDrawer());
     },
     isOpen() {
       return this.isPermanent || this.open_;
@@ -126,9 +139,9 @@ export default {
       this.large = media.large.matches;
       if (this.isResponsive) {
         if (this.large) {
-          this.open();
+          this.openDrawer();
         } else {
-          this.close();
+          this.closeDrawer();
         }
       }
     },
@@ -142,15 +155,15 @@ export default {
   mounted() {
     if (this.toggleOn) {
       this.toggleOnEventSource = this.toggleOnSource || this.$root;
-      this.toggleOnEventSource.$on(this.toggleOn, this.toggle);
+      this.toggleOnEventSource.$on(this.toggleOn, this.toggleDrawer);
     }
     if (this.openOn) {
       this.openOnEventSource = this.openOnSource || this.$root;
-      this.openOnEventSource.$on(this.openOn, this.open);
+      this.openOnEventSource.$on(this.openOn, this.openDrawer);
     }
     if (this.closeOn) {
       this.closeOnEventSource = this.closeOnSource || this.$root;
-      this.closeOnEventSource.$on(this.closeOn, this.close);
+      this.closeOnEventSource.$on(this.closeOn, this.closeDrawer);
     }
     media.small.addListener(this.refreshMedia);
     media.large.addListener(this.refreshMedia);
@@ -161,13 +174,13 @@ export default {
     media.large.removeListener(this.refreshMedia);
 
     if (this.toggleOnEventSource) {
-      this.toggleOnEventSource.$off(this.toggleOn, this.toggle);
+      this.toggleOnEventSource.$off(this.toggleOn, this.toggleDrawer);
     }
     if (this.openOnEventSource) {
-      this.openOnEventSource.$off(this.openOn, this.open);
+      this.openOnEventSource.$off(this.openOn, this.openDrawer);
     }
     if (this.closeOnEventSource) {
-      this.closeOnEventSource.$off(this.closeOn, this.close);
+      this.closeOnEventSource.$off(this.closeOn, this.closeDrawer);
     }
   },
 };
