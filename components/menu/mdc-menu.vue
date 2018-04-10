@@ -1,12 +1,9 @@
 <template>
-  <div ref="root" class="mdc-menu mdc-simple-menu"
-    :class="classes" :style="styles" 
-    tabindex="-1">
-    <ul ref="items" class="mdc-simple-menu__items mdc-list" 
-      role="menu" aria-hidden="true">
-      <slot></slot>
-    </ul>
-  </div>
+<div ref="root" class="mdc-menu mdc-simple-menu" :class="classes" :style="styles" tabindex="-1">
+  <ul ref="items" class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
+    <slot></slot>
+  </ul>
+</div>
 </template>
 
 <script>
@@ -16,28 +13,32 @@ import { emitCustomEvent } from '../base';
 
 export default {
   name: 'mdc-menu',
+  model: {
+    prop: 'open',
+    event: 'change',
+  },
   props: {
-    'open-from-top-left': Boolean,
-    'open-from-top-right': Boolean,
-    'open-from-bottom-left': Boolean,
-    'open-from-bottom-right': Boolean,
+    open: [Boolean, Object],
     'quick-open': Boolean,
     'anchor-corner': [String, Number],
     'anchor-margin': Object,
   },
   data() {
     return {
-      classes: {
-        'mdc-simple-menu--open-from-top-left': this.openFromTopLeft,
-        'mdc-simple-menu--open-from-top-right': this.openFromTopRight,
-        'mdc-simple-menu--open-from-bottom-left': this.openFromBottomLeft,
-        'mdc-simple-menu--open-from-bottom-right': this.openFromBottomRight,
-      },
+      classes: {},
       styles: {},
       items: [],
     };
   },
+
   methods: {
+    onOpen_(value) {
+      if (value) {
+        this.foundation.open(typeof value === 'object' ? value : void 0);
+      } else {
+        this.foundation.close();
+      }
+    },
     show(options) {
       this.foundation.open(options);
     },
@@ -56,7 +57,10 @@ export default {
       this.$emit('update');
     };
     this.slotObserver = new MutationObserver(() => refreshItems());
-    this.slotObserver.observe(this.$el, { childList: true, subtree: true });
+    this.slotObserver.observe(this.$el, {
+      childList: true,
+      subtree: true,
+    });
 
     this._previousFocus = undefined;
 
@@ -95,6 +99,7 @@ export default {
           index: evtData.index,
           item: this.items[evtData.index],
         };
+        this.$emit('change', false);
         this.$emit('select', evt);
         emitCustomEvent(
           this.$el,
@@ -103,6 +108,7 @@ export default {
         );
       },
       notifyCancel: () => {
+        this.$emit('change', false);
         this.$emit('cancel');
         emitCustomEvent(this.$el, MDCMenuFoundation.strings.CANCEL_EVENT, {});
       },
@@ -161,6 +167,7 @@ export default {
     }
   },
   watch: {
+    open: 'onOpen_',
     quickOpen(nv) {
       this.foundation.setQuickOpen(nv);
     },
