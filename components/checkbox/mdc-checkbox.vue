@@ -2,7 +2,7 @@
   <div :class=formFieldClasses class="mdc-checkbox-wrapper">
     <div ref="root" class="mdc-checkbox"
     :class="classes" :style="styles">
-      <input ref="control" :id="_vma_uid" type="checkbox" :name="name"
+      <input ref="control" :id="vma_uid_" type="checkbox" :name="name"
         class="mdc-checkbox__native-control" :value="value"
         @change="onChange"/>
       <div class="mdc-checkbox__background">
@@ -16,7 +16,7 @@
         <div class="mdc-checkbox__mixedmark"></div>
       </div>
     </div>
-    <label ref="label"  :for="_vma_uid"
+    <label ref="label"  :for="vma_uid_"
     ><slot>{{label}}</slot></label>
   </div>
 </template>
@@ -37,13 +37,13 @@ export default {
     event: 'change',
   },
   props: {
-    checked: Boolean,
+    checked: [Boolean, Array],
     indeterminate: Boolean,
     disabled: Boolean,
     label: String,
     'align-end': Boolean,
     value: {
-      type: String,
+      type: [String, Number],
       default() {
         return 'on';
       },
@@ -68,9 +68,7 @@ export default {
     },
   },
   watch: {
-    checked(value) {
-      this.foundation.setChecked(value);
-    },
+    checked: 'setChecked',
     disabled(value) {
       this.foundation.setDisabled(value);
     },
@@ -139,7 +137,7 @@ export default {
     this.foundation.init();
     this.ripple.init();
     this.formField.init();
-    this.foundation.setChecked(this.checked);
+    this.setChecked(this.checked);
     this.foundation.setDisabled(this.disabled);
     this.foundation.setIndeterminate(this.indeterminate);
   },
@@ -149,9 +147,30 @@ export default {
     this.foundation.destroy();
   },
   methods: {
+    setChecked(checked) {
+      this.foundation.setChecked(
+        Array.isArray(checked) ? checked.indexOf(this.value) > -1 : checked,
+      );
+    },
+
     onChange() {
       this.$emit('update:indeterminate', this.foundation.isIndeterminate());
-      this.$emit('change', this.foundation.isChecked());
+      const isChecked = this.foundation.isChecked();
+
+      if (Array.isArray(this.checked)) {
+        const idx = this.checked.indexOf(this.value);
+        if (isChecked) {
+          idx < 0 && this.$emit('change', this.checked.concat(this.value));
+        } else {
+          idx > -1 &&
+            this.$emit(
+              'change',
+              this.checked.slice(0, idx).concat(this.checked.slice(idx + 1)),
+            );
+        }
+      } else {
+        this.$emit('change', isChecked);
+      }
     },
   },
 };

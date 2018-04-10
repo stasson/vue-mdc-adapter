@@ -22,6 +22,7 @@ export default {
   props: {
     short: Boolean,
     shortCollapsed: Boolean,
+    prominent: Boolean,
     title: String,
     icon: {
       type: String,
@@ -37,6 +38,7 @@ export default {
         'mdc-top-app-bar--dense': this.dense,
         'mdc-top-app-bar--short': this.short,
         'mdc-top-app-bar--short-collapsed': this.shortCollapsed,
+        'mdc-top-app-bar--prominent': this.prominent,
       },
       foundation: null,
     };

@@ -1,11 +1,8 @@
 <template>
-<div ref="root" class="mdc-snackbar" :class="classes"
-    aria-live="assertive" aria-atomic="true" :aria-hidden="hidden">
+<div ref="root" class="mdc-snackbar" :class="classes" aria-live="assertive" aria-atomic="true" :aria-hidden="hidden">
   <div class="mdc-snackbar__text">{{message}}</div>
   <div class="mdc-snackbar__action-wrapper">
-    <button ref="button" type="button"
-        class="mdc-snackbar__action-button"
-        :aria-hidden="actionHidden">{{actionText}}</button>
+    <button ref="button" type="button" class="mdc-snackbar__action-button" :aria-hidden="actionHidden">{{actionText}}</button>
   </div>
 </div>
 </template>
@@ -16,15 +13,14 @@ import { getCorrectEventName } from '@material/animation';
 
 export default {
   name: 'mdc-snackbar',
+  model: {
+    prop: 'snack',
+    event: 'queued',
+  },
   props: {
     'align-start': Boolean,
-    event: {
-      type: String,
-      required: false,
-      default() {
-        return 'show-snackbar';
-      },
-    },
+    snack: Object,
+    event: String,
     'event-source': {
       type: Object,
       required: false,
@@ -32,7 +28,10 @@ export default {
         return this.$root;
       },
     },
-    'dismisses-on-action': { type: Boolean, default: true },
+    'dismisses-on-action': {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -45,7 +44,16 @@ export default {
       actionHidden: false,
     };
   },
+  watch: {
+    snack: 'onSnack',
+  },
   methods: {
+    onSnack(snack) {
+      if (snack && snack.message) {
+        this.foundation.show(snack);
+        this.$emit('queued', snack);
+      }
+    },
     show(data) {
       this.foundation.show(data);
     },
@@ -83,29 +91,37 @@ export default {
       deregisterActionClickHandler: handler =>
         this.$refs.button.removeEventListener('click', handler),
       registerTransitionEndHandler: handler => {
-        this.$refs.root.addEventListener(
-          getCorrectEventName(window, 'transitionend'),
-          handler,
-        );
+        const root = this.$refs.root;
+        root &&
+          root.addEventListener(
+            getCorrectEventName(window, 'transitionend'),
+            handler,
+          );
       },
       deregisterTransitionEndHandler: handler => {
-        this.$refs.root.removeEventListener(
-          getCorrectEventName(window, 'transitionend'),
-          handler,
-        );
+        const root = this.$refs.root;
+        root &&
+          root.removeEventListener(
+            getCorrectEventName(window, 'transitionend'),
+            handler,
+          );
       },
       notifyShow: () => this.$emit('show'),
       notifyHide: () => this.$emit('hide'),
     });
     this.foundation.init();
-    if (this.event) {
-      this.eventSource.$on(this.event, this.show);
+
+    // if event specified use it, else if no snack prop then use default.
+    this.eventName =
+      this.event || (this.snack === void 0 ? 'show-snackbar' : null);
+    if (this.eventName) {
+      this.eventSource.$on(this.eventName, this.show);
     }
     this.foundation.setDismissOnAction(this.dismissesOnAction);
   },
   beforeDestroy() {
     if (this.eventSource) {
-      this.eventSource.$of(this.event, this.show);
+      this.eventSource.$off(this.eventName, this.show);
     }
     this.foundation.destroy();
   },
