@@ -39,6 +39,10 @@ import { mdcButton } from '../button';
 
 export default {
   name: 'mdc-dialog',
+  model: {
+    prop: 'open',
+    event: 'change',
+  },
   props: {
     title: { type: String, required: true },
     accept: { type: String, default: 'Ok' },
@@ -46,6 +50,7 @@ export default {
     cancel: { type: String, default: 'Cancel' },
     accent: Boolean,
     scrollable: Boolean,
+    open: Boolean,
   },
   components: {
     mdcButton: mdcButton,
@@ -95,8 +100,14 @@ export default {
         this.$refs.surface.addEventListener('transitionend', handler),
       deregisterTransitionEndHandler: handler =>
         this.$refs.surface.removeEventListener('transitionend', handler),
-      notifyAccept: () => this.$emit('accept'),
-      notifyCancel: () => this.$emit('cancel'),
+      notifyAccept: () => {
+        this.$emit('change', false);
+        this.$emit('accept');
+      },
+      notifyCancel: () => {
+        this.$emit('change', false);
+        this.$emit('cancel');
+      },
       trapFocusOnSurface: () => this.focusTrap.activate(),
       untrapFocusOnSurface: () => this.focusTrap.deactivate(),
       isDialog: el => this.$refs.surface === el,
@@ -111,14 +122,31 @@ export default {
   beforeDestroy() {
     this.foundation.destroy();
   },
+  watch: { open: 'onOpen_' },
   methods: {
+    onOpen_(value) {
+      if (value) {
+        this.foundation.open();
+      } else {
+        this.foundation.close();
+      }
+    },
     onCancel() {
       this.foundation.cancel(true);
     },
     onAccept() {
       if (this.$listeners['validate']) {
         this.$emit('validate', {
-          accept: (notify = true) => this.foundation.accept(notify),
+          accept: (notify = true) => {
+            // if notify = false, the dialog will close
+            // but the notifyAccept method will not be called
+            // so we need to notify listeners the open state
+            // is changing.
+            if (!notify) {
+              this.$emit('change', false);
+            }
+            this.foundation.accept(notify);
+          },
         });
       } else {
         this.foundation.accept(true);
