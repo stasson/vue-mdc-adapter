@@ -12,16 +12,9 @@ import MDCTabFoundation from '@material/tabs/tab/foundation';
 
 export default {
   name: 'mdc-tab-bar',
-  props: {
-    'indicator-primary': Boolean,
-    'indicator-accent': Boolean,
-  },
   data() {
     return {
-      classes: {
-        'mdc-tab-bar--indicator-primary': this.indicatorPrimary,
-        'mdc-tab-bar--indicator-accent': this.indicatorAccent,
-      },
+      classes: {},
       indicatorStyles: {},
       tabs: [],
     };
