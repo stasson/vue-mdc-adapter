@@ -1,4 +1,5 @@
 @import "@material/fab/mdc-fab";
+@import "@material/rtl/_mixins";
 
 // support anchors as style
 a.mdc-fab, 
@@ -13,24 +14,48 @@ a:active.mdc-fab {
 .mdc-fab--absolute {
   position: absolute;
   bottom: 1rem;
+  left: auto;
   right: 1rem;
+  
+  @include mdc-rtl {
+    left: 1rem;
+    right: auto;
+  }
 }
 
 .mdc-fab--fixed {
   position: fixed;
   bottom: 1rem;
+  left: auto;
   right: 1rem;
   z-index: 4;
+  
+  @include mdc-rtl {
+    left: 1rem;
+    right: auto;
+  }
 }
 
 @media(min-width: 1024px) {
   .mdc-fab--absolute {
     bottom: 3rem;
+    left: auto;
     right: 5rem;
+    
+    @include mdc-rtl {
+      left: 5rem;
+      right: auto;
+    }
   }
 
   .mdc-fab--fixed {
     bottom: 3rem;
+    left: auto;
     right: 5rem;
+    
+    @include mdc-rtl {
+      left: 5rem;
+      right: auto;
+    }
   }
 }
