@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-textfield-wrapper" :style="{width:fullwidth?'100%':undefined}">
+  <div class="mdc-textfield-wrapper" :style="{width:fullwidth?'100%':undefined}" :id="id">
 
     <div ref="root" :class="rootClasses">
 
@@ -126,6 +126,7 @@ export default {
     maxlength: { type: [Number, String], default: undefined },
     rows: { type: [Number, String], default: 8 },
     cols: { type: [Number, String], default: 40 },
+    id: { type: String },
   },
   data: function() {
     return {
