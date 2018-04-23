@@ -25,7 +25,6 @@
 <script>
 import MDCSliderFoundation from '@material/slider/foundation';
 import { DispatchFocusMixin } from '../base';
-import { eventBus } from '../common';
 
 export default {
   name: 'mdc-slider',
@@ -171,7 +170,7 @@ export default {
       this.foundation.setupTrackMarker();
     }
 
-    eventBus.$on('mdc:layout', this.layout);
+    this.$root.$on('_vma_:layout', this.layout);
 
     if (this.layoutOn) {
       this.layoutOnEventSource = this.layoutOnSource || this.$root;
@@ -179,7 +178,7 @@ export default {
     }
   },
   beforeDestroy() {
-    eventBus.$off('mdc:layout', this.layout);
+    this.$root.$off('_vma_:layout', this.layout);
     if (this.layoutOnEventSource) {
       this.layoutOnEventSource.$off(this.layoutOn, this.layout);
     }
