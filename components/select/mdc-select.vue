@@ -1,29 +1,30 @@
 <template>
-  <div 
-    :class="rootClasses" 
-    :style="styles" 
+  <div
+    :id="id"
+    :class="rootClasses"
+    :style="styles"
     class="mdc-select">
-    <select 
-      ref="native_control" 
-      v-bind="$attrs" 
-      class="mdc-select__native-control" 
+    <select
+      ref="native_control"
+      v-bind="$attrs"
+      class="mdc-select__native-control"
       v-on="listeners">
-      <option 
-        v-if="!!label" 
-        class="mdc-option" 
-        value="" 
-        disabled 
+      <option
+        v-if="!!label"
+        class="mdc-option"
+        value=""
+        disabled
         selected/>
       <slot/>
     </select>
-    <div 
-      ref="label" 
-      :class="labelClasses" 
+    <div
+      ref="label"
+      :class="labelClasses"
       class="mdc-floating-label">{{ label }}</div>
-    <div 
-      ref="line" 
-      :class="lineClasses" 
-      :style="lineStyles" 
+    <div
+      ref="line"
+      :class="lineClasses"
+      :style="lineStyles"
       class="mdc-line-ripple"/>
   </div>
 </template>
@@ -45,7 +46,8 @@ export default {
     value: String,
     disabled: Boolean,
     label: String,
-    box: Boolean
+    box: Boolean,
+    id: { type: String }
   },
   data() {
     return {
