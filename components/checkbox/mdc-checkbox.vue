@@ -26,12 +26,12 @@
 import MDCCheckboxFoundation from '@material/checkbox/foundation';
 import MDCFormFieldFoundation from '@material/form-field/foundation';
 import { getCorrectEventName } from '@material/animation';
-import { DispatchFocusMixin } from '../base';
+import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base';
 import { RippleBase } from '../ripple';
 
 export default {
   name: 'mdc-checkbox',
-  mixins: [DispatchFocusMixin],
+  mixins: [DispatchFocusMixin, VMAUniqueIdMixin],
   model: {
     prop: 'checked',
     event: 'change',
