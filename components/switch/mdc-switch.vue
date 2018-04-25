@@ -29,32 +29,37 @@
 </template>
 
 <script>
-import {DispatchFocusMixin} from '../base'
+import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base';
 
 export default {
   name: 'mdc-switch',
-  mixins: [DispatchFocusMixin],
+  mixins: [DispatchFocusMixin, VMAUniqueIdMixin],
   model: {
     prop: 'checked',
-    event: 'change'
+    event: 'change',
   },
   props: {
-    'checked': Boolean,
-    'label': String,
-    'alignEnd': Boolean,
-    'disabled': Boolean,
-    'value': { type: String, default () { return 'on' } },
-    'name': String
+    checked: Boolean,
+    label: String,
+    alignEnd: Boolean,
+    disabled: Boolean,
+    value: {
+      type: String,
+      default() {
+        return 'on';
+      },
+    },
+    name: String,
   },
   computed: {
-    hasLabel () {
-      return this.label || this.$slots.default
-    }
+    hasLabel() {
+      return this.label || this.$slots.default;
+    },
   },
   methods: {
-    onChanged (event) {
-      this.$emit('change', event.target.checked)
-    }
-  }
-}
+    onChanged(event) {
+      this.$emit('change', event.target.checked);
+    },
+  },
+};
 </script>
