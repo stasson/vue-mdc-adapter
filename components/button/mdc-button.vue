@@ -9,7 +9,6 @@ export default {
     unelevated: Boolean,
     stroked: Boolean,
     dense: Boolean,
-    accent: Boolean,
   },
   data() {
     return {
@@ -19,7 +18,6 @@ export default {
         'mdc-button--unelevated': this.unelevated,
         'mdc-button--stroked': this.stroked,
         'mdc-button--dense': this.dense,
-        'mdc-button--accent': this.accent,
       },
     };
   },
@@ -35,9 +33,6 @@ export default {
     },
     dense() {
       this.$set(this.classes, 'mdc-button--dense', this.dense);
-    },
-    accent() {
-      this.$set(this.classes, 'mdc-button--accent', this.accent);
     },
   },
 };
