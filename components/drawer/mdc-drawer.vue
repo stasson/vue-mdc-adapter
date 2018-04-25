@@ -13,7 +13,6 @@
 import mdcPermanentDrawer from './mdc-permanent-drawer.vue';
 import mdcPersistentDrawer from './mdc-persistent-drawer.vue';
 import mdcTemporaryDrawer from './mdc-temporary-drawer.vue';
-import { eventBus } from '../common';
 
 const media = new class {
   get small() {
@@ -119,7 +118,7 @@ export default {
     },
     onChange(event) {
       this.$emit('change', event);
-      eventBus.$emit('mdc:layout');
+      this.$root.$emit('vma:layout');
     },
     openDrawer() {
       this.open_ = true;

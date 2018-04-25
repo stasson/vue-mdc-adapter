@@ -1,34 +1,33 @@
 <template>
   <div class="mdc-demo">
     <div class="mdc-demo--container" style="min-height: 40px; padding-bottom: 0">
-      <div class="mdc-demo-button">
-        <mdc-button :dense="dense" :disabled="disabled" 
-          :raised="raised" :stroked="stroked" :unelevated="unelevated" 
-          :accent="accent">Button</mdc-button>
+      <div class="mdc-demo-button" ref="buttons">
         <mdc-button :dense="dense" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated" 
+          :raised="raised" :stroked="stroked" :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
         <mdc-button :dense="dense" :disabled="disabled"
           :raised="raised" :stroked="stroked" :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
-      </div>  
-    </div>  
-
-    <div class="mdc-demo--container">
-      <div class="button-type-select">
-        <mdc-radio label="baseline" name="button-type" v-model="type" checked></mdc-radio>
-        <mdc-radio label="raised" name="button-type" v-model="type" ></mdc-radio>
-        <mdc-radio label="unelevated" name="button-type" v-model="type"></mdc-radio>
-        <mdc-radio label="stroked" name="button-type" v-model="type"></mdc-radio>
-      </div>
-
-      <div class="button-style-select">
-        <mdc-checkbox label="disabled" v-model="disabled"></mdc-checkbox>
-        <mdc-checkbox label="dense"  v-model="dense"></mdc-checkbox>
-        <mdc-checkbox label="accent"  v-model="accent"></mdc-checkbox>
+        <mdc-button :dense="dense" :disabled="disabled"
+          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+          :accent="accent">Button</mdc-button>
       </div>
     </div>
+
+  <div class="mdc-demo--container">
+    <div class="button-type-select">
+      <mdc-radio label="baseline" name="button-type" v-model="type" checked></mdc-radio>
+      <mdc-radio label="raised" name="button-type" v-model="type"></mdc-radio>
+      <mdc-radio label="unelevated" name="button-type" v-model="type"></mdc-radio>
+      <mdc-radio label="stroked" name="button-type" v-model="type"></mdc-radio>
+    </div>
+
+    <div class="button-style-select">
+      <mdc-checkbox label="disabled" v-model="disabled"></mdc-checkbox>
+      <mdc-checkbox label="dense" v-model="dense"></mdc-checkbox>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -38,11 +37,17 @@ export default {
       type: '',
       dense: false,
       disabled: false,
-      accent: false,
     };
   },
   computed: {
     raised() {
+      if (this.$refs.buttons) {
+        this.$nextTick(() => {
+          [...this.$refs.buttons.children].forEach(({ __vue__ }) =>
+            __vue__.ripple.layout(),
+          );
+        });
+      }
       return this.type == 'raised';
     },
     unelevated() {

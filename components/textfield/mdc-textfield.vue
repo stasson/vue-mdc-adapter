@@ -77,12 +77,13 @@ import {
   extractIconProp,
   DispatchFocusMixin,
   CustomElementMixin,
+  VMAUniqueIdMixin,
 } from '../base';
 import { RippleBase } from '../ripple';
 
 export default {
   name: 'mdc-textfield',
-  mixins: [CustomElementMixin, DispatchFocusMixin],
+  mixins: [CustomElementMixin, DispatchFocusMixin, VMAUniqueIdMixin],
   model: {
     prop: 'value',
     event: 'model',
