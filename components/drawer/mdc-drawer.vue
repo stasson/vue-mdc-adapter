@@ -118,7 +118,7 @@ export default {
     },
     onChange(event) {
       this.$emit('change', event);
-      this.$root.$emit('_vma_:layout');
+      this.$root.$emit('vma:layout');
     },
     openDrawer() {
       this.open_ = true;

@@ -170,7 +170,7 @@ export default {
       this.foundation.setupTrackMarker();
     }
 
-    this.$root.$on('_vma_:layout', this.layout);
+    this.$root.$on('vma:layout', this.layout);
 
     if (this.layoutOn) {
       this.layoutOnEventSource = this.layoutOnSource || this.$root;
@@ -178,7 +178,7 @@ export default {
     }
   },
   beforeDestroy() {
-    this.$root.$off('_vma_:layout', this.layout);
+    this.$root.$off('vma:layout', this.layout);
     if (this.layoutOnEventSource) {
       this.layoutOnEventSource.$off(this.layoutOn, this.layout);
     }
