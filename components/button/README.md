@@ -26,7 +26,6 @@ var vm = new Vue({
 | prop                 | Type           | Default                  | Description                                                                    |
 | -------------------- | -------------- | ------------------------ | ------------------------------------------------------------------------------ |
 | `disabled`           | String         |                          | disable the button                                                             |
-| `accent`             | Boolean        |                          | secondary color theme                                                          |
 | `raised`             | Boolean        |                          | a contained button that is elevated upon the surface                           |
 | `unelevated`         | Boolean        |                          | a contained button that is flush with the surface                              |
 | `stroked`            | Boolean        |                          | a contained button that is flush with the surface and has a visible border(\*) |
@@ -58,7 +57,7 @@ var vm = new Vue({
 <mdc-button raised dense>Dense</mdc-button>
 ```
 
-### Uneleveted buttons
+### Unelevated buttons
 
 ```html
 <mdc-button unelevated>Baseline</mdc-button>
@@ -109,7 +108,7 @@ If the `to` property is defined, the item behaves as a
 > Additionally, button and links have different behaviors on right click.
 > see this [MDN note](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role#Keyboard_and_focus)
 
-You might want to keep button behavior and do the navigation programatically:
+You might want to keep button behaviour and do the navigation programatically:
 
 ```html
 <mdc-button @click="location.href='#'">Home</mdc-button>
