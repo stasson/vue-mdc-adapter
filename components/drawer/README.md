@@ -65,11 +65,12 @@ methods: {
 
 > (\*) drawer is responsive if `drawer-type` undefined: temporary on mobile breakpoint and persistent otherwise.
 
-| event     | args    | Description                                             |
-| --------- | ------- | ------------------------------------------------------- |
-| `@change` | Boolean | notify v-model/listeners that drawer state has changed. |
-| `@open`   |         | triggered on drawer open                                |
-| `@close`  |         | triggered on drawer close                               |
+| event         | args    | Description                                             |
+| ------------- | ------- | ------------------------------------------------------- |
+| `@change`     | Boolean | notify v-model/listeners that drawer state has changed. |
+| `@open`       |         | triggered on drawer open                                |
+| `@close`      |         | triggered on drawer close                               |
+| `@vma:layout` | Boolean | notify listeners that screen layout has changed.        |
 
 ### Drawer Header
 
