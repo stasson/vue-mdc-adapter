@@ -1,12 +1,18 @@
 <template>
-<div class="mdc-demo">
-  <div class="mdc-demo--container" style="min-height: 40px; padding-bottom: 0">
-    <div class="mdc-demo-button">
-      <mdc-button :dense="dense" :disabled="disabled" :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
-      <mdc-button :dense="dense" :disabled="disabled" :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
-      <mdc-button :dense="dense" :disabled="disabled" :raised="raised" :stroked="stroked" :unelevated="unelevated">Button</mdc-button>
+  <div class="mdc-demo">
+    <div class="mdc-demo--container" style="min-height: 40px; padding-bottom: 0">
+      <div class="mdc-demo-button" ref="buttons">
+        <mdc-button :dense="dense" :disabled="disabled"
+          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+          :accent="accent">Button</mdc-button>
+        <mdc-button :dense="dense" :disabled="disabled"
+          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+          :accent="accent">Button</mdc-button>
+        <mdc-button :dense="dense" :disabled="disabled"
+          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+          :accent="accent">Button</mdc-button>
+      </div>
     </div>
-  </div>
 
   <div class="mdc-demo--container">
     <div class="button-type-select">
@@ -35,6 +41,13 @@ export default {
   },
   computed: {
     raised() {
+      if (this.$refs.buttons) {
+        this.$nextTick(() => {
+          [...this.$refs.buttons.children].forEach(({ __vue__ }) =>
+            __vue__.ripple.layout(),
+          );
+        });
+      }
       return this.type == 'raised';
     },
     unelevated() {
