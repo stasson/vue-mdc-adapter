@@ -1,26 +1,18 @@
-@import "@material/button/mdc-button";
-@import "@material/card/mdc-card";
+@import '@material/button/mdc-button';
+@import '@material/card/mdc-card';
 
 .mdc-card-media {
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.mdc-button--accent {
-  &.mdc-card__actionn {
-    @include mdc-button-ink-color(secondary);
-    @include mdc-states(secondary);
-  }
-}
-
 // Legacy mdc layout
 .mdc-card {
-
   &__title {
     @include mdc-typography(body2);
     @include mdc-theme-prop(color, text-primary-on-light);
 
-    margin: -.063rem 0; // -1sp 0
+    margin: -0.063rem 0; // -1sp 0
   }
 
   &__title--large {
@@ -66,6 +58,6 @@
     @include mdc-typography(body1);
     @include mdc-theme-prop(color, text-primary-on-light);
 
-    margin: -.063rem 0; // -1sp 0
+    margin: -0.063rem 0; // -1sp 0
   }
 }

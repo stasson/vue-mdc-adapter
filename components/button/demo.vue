@@ -14,21 +14,20 @@
       </div>
     </div>
 
-    <div class="mdc-demo--container">
-      <div class="button-type-select">
-        <mdc-radio label="baseline" name="button-type" v-model="type" checked></mdc-radio>
-        <mdc-radio label="raised" name="button-type" v-model="type" ></mdc-radio>
-        <mdc-radio label="unelevated" name="button-type" v-model="type"></mdc-radio>
-        <mdc-radio label="stroked" name="button-type" v-model="type"></mdc-radio>
-      </div>
+  <div class="mdc-demo--container">
+    <div class="button-type-select">
+      <mdc-radio label="baseline" name="button-type" v-model="type" checked></mdc-radio>
+      <mdc-radio label="raised" name="button-type" v-model="type"></mdc-radio>
+      <mdc-radio label="unelevated" name="button-type" v-model="type"></mdc-radio>
+      <mdc-radio label="stroked" name="button-type" v-model="type"></mdc-radio>
+    </div>
 
-      <div class="button-style-select">
-        <mdc-checkbox label="disabled" v-model="disabled"></mdc-checkbox>
-        <mdc-checkbox label="dense"  v-model="dense"></mdc-checkbox>
-        <mdc-checkbox label="accent"  v-model="accent"></mdc-checkbox>
-      </div>
+    <div class="button-style-select">
+      <mdc-checkbox label="disabled" v-model="disabled"></mdc-checkbox>
+      <mdc-checkbox label="dense" v-model="dense"></mdc-checkbox>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -38,7 +37,6 @@ export default {
       type: '',
       dense: false,
       disabled: false,
-      accent: false,
     };
   },
   computed: {
