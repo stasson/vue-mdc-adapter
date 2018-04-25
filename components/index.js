@@ -1,7 +1,6 @@
 //
 // vue PlugIn
 //
-import VueMDCCommon from './common';
 import VueMDCButton from './button';
 import VueMDCCard from './card';
 import VueMDCCheckbox from './checkbox';
@@ -34,7 +33,6 @@ import VueMDCTypography from './typography';
 export default {
   version: '__VERSION__',
   install(vm) {
-    vm.use(VueMDCCommon);
     vm.use(VueMDCButton);
     vm.use(VueMDCCard);
     vm.use(VueMDCCheckbox);

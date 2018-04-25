@@ -8,7 +8,7 @@
       <div class="mdc-checkbox__background">
         <svg class="mdc-checkbox__checkmark"
             viewBox="0 0 24 24">
-          <path class="checkbox__checkmark-path"
+          <path class="mdc-checkbox__checkmark-path"
                 fill="none"
                 stroke="white"
                 d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
@@ -26,12 +26,12 @@
 import MDCCheckboxFoundation from '@material/checkbox/foundation';
 import MDCFormFieldFoundation from '@material/form-field/foundation';
 import { getCorrectEventName } from '@material/animation';
-import { DispatchFocusMixin } from '../base';
+import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base';
 import { RippleBase } from '../ripple';
 
 export default {
   name: 'mdc-checkbox',
-  mixins: [DispatchFocusMixin],
+  mixins: [DispatchFocusMixin, VMAUniqueIdMixin],
   model: {
     prop: 'checked',
     event: 'change',

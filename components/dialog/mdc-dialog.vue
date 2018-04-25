@@ -36,6 +36,7 @@
 import MDCDialogFoundation from '@material/dialog/foundation';
 import { createFocusTrapInstance } from '@material/dialog/util';
 import { mdcButton } from '../button';
+import { VMAUniqueIdMixin } from '../base';
 
 export default {
   name: 'mdc-dialog',
@@ -55,6 +56,7 @@ export default {
   components: {
     mdcButton: mdcButton,
   },
+  mixins: [VMAUniqueIdMixin],
   data() {
     return {
       classes: {
