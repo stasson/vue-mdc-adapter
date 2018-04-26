@@ -1,5 +1,5 @@
 <template>
-<div class="mdc-select" :class="rootClasses" :style="styles">
+<div class="mdc-select" :class="rootClasses" :style="styles" :id="id">
   <select ref="native_control" class="mdc-select__native-control" v-on="listeners" v-bind="$attrs">
     <option class="mdc-option" value="" disabled selected v-if="!!label"></option>
     <slot></slot>
@@ -27,6 +27,7 @@ export default {
     label: String,
     box: Boolean,
     bottomLine: { type: Boolean, default: true },
+    id: { type: String },
   },
   inheritAttrs: false,
   data() {
