@@ -16,7 +16,7 @@
   }
 
   &__title--large {
-    @include mdc-typography(headline);
+    @include mdc-typography(headline1);
 
     margin: 0;
   }

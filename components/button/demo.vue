@@ -3,13 +3,13 @@
     <div class="mdc-demo--container" style="min-height: 40px; padding-bottom: 0">
       <div class="mdc-demo-button" ref="buttons">
         <mdc-button :dense="dense" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+          :raised="raised" :outlined="outlined" :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
         <mdc-button :dense="dense" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+          :raised="raised" :outlined="outlined" :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
         <mdc-button :dense="dense" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+          :raised="raised" :outlined="outlined" :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
       </div>
     </div>
@@ -19,7 +19,7 @@
       <mdc-radio label="baseline" name="button-type" v-model="type" checked></mdc-radio>
       <mdc-radio label="raised" name="button-type" v-model="type"></mdc-radio>
       <mdc-radio label="unelevated" name="button-type" v-model="type"></mdc-radio>
-      <mdc-radio label="stroked" name="button-type" v-model="type"></mdc-radio>
+      <mdc-radio label="outlined" name="button-type" v-model="type"></mdc-radio>
     </div>
 
     <div class="button-style-select">
@@ -53,8 +53,8 @@ export default {
     unelevated() {
       return this.type == 'unelevated';
     },
-    stroked() {
-      return this.type == 'stroked';
+    outlined() {
+      return this.type == 'outlined';
     },
   },
 };

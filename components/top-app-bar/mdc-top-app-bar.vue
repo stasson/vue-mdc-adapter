@@ -1,5 +1,5 @@
 <template>
-<header ref="root" :class="rootClasses" v-on="$listeners">
+<header ref="root" :class="rootClasses" v-on="$listeners" :style="rootStyles">
   <div class="mdc-top-app-bar__row">
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
       <a ref="navigationIcon" href="#" :class="naviconClasses" v-if="haveNavigationIcon" v-on="listeners">{{icon}}</a>
@@ -33,6 +33,7 @@ export default {
   },
   data() {
     return {
+      rootStyles: {},
       rootClasses: {
         'mdc-top-app-bar': true,
         'mdc-top-app-bar--dense': this.dense,
@@ -55,6 +56,10 @@ export default {
       hasClass: className => {
         return this.$refs.root.classList.contains(className);
       },
+      setStyle: (property, value) => {
+        this.$set(this.rootStyles, property, value);
+      },
+      getTopAppBarHeight: () => this.$el.clientHeight,
       registerNavigationIconInteractionHandler: (type, handler) => {
         if (this.$refs.navigationIcon) {
           this.$refs.navigationIcon.addEventListener(type, handler);
@@ -79,6 +84,10 @@ export default {
       deregisterScrollHandler: handler => {
         window.removeEventListener('scroll', handler);
       },
+      registerResizeHandler: handler =>
+        window.addEventListener('resize', handler),
+      deregisterResizeHandler: handler =>
+        window.removeEventListener('resize', handler),
 
       getViewportScrollY: () => {
         return window.pageYOffset;
