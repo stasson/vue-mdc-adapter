@@ -2,8 +2,8 @@ $rootpath: '' !default;
 
 $black-02: rgba(0, 0, 0, 0.02);
 $black-05: rgba(0, 0, 0, 0.05);
-$black-10: rgba(0, 0, 0, 0.10);
-$black-20: rgba(0, 0, 0, 0.20);
+$black-10: rgba(0, 0, 0, 0.1);
+$black-20: rgba(0, 0, 0, 0.2);
 $black-54: rgba(0, 0, 0, 0.54);
 $black-87: rgba(0, 0, 0, 0.87);
 $black: #000;
@@ -21,198 +21,199 @@ $quote_border: 4px solid #e5e5e5;
 $code_bg_color: rgba(0, 0, 0, 0.05);
 $code_font: 'Roboto Mono';
 
-
-
 .markdown {
-
   @include mdc-typography(body1);
 
-    // max-width: 800px;
-    // padding: 32px;
-  
-    h1 {
-      // See _component-icons.scss for additional mutations in component pages.
-      @include mdc-typography(headline);
-      margin-bottom: 24px;
-    }
-  
-    h2 {
-      @include mdc-typography(subheading2);
-      font-size: 1.25rem;
-      margin: 56px 0 24px;
-    }
-  
-    h3 {
-      @include mdc-typography(subheading2);
-      font-weight: 500;
-      margin: 32px 0 0;
-    }
-  
-    h4 {
-      @include mdc-typography(subheading2);
-      margin: 20px 0 0;
-    }
-  
-    h5 {
-      @include mdc-typography(body2);
-      font-weight: 500;
-      margin: 20px 0 0;
-    }
-  
-    h6 {
-      @include mdc-typography(body1);
-    }
-  
-    h1,
-    h2 {
-      font-family: $ui-font-family;
-    }
-  
-    hr {
-      border: 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-      margin: 1.5rem 0;
-      padding: 0;
-    }
-  
-    p {
-      margin: 16px 0;
-    }
-  
-    h2 + p,
-    h3 + p,
-    h4 + p,
-    h5 + p {
-      margin-top: 4px;
-    }
-  
-    // Lists
-  
-    li > ul,
-    li > ol {
-      padding-top: 8px;
-    }
- 
-    // blockquote
-    blockquote {
-      margin: 0 0 0.85em;
-      padding: 0 15px;
-      color: $quote_color;
-      border-left: $quote_border;
-    }
+  // max-width: 800px;
+  // padding: 32px;
 
-    pre {
-      margin: 0 0 1.275em;
-      padding: .85em 1em;
-      overflow: auto;
+  h1 {
+    // See _component-icons.scss for additional mutations in component pages.
+    @include mdc-typography(headline1);
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    @include mdc-typography(subtitle1);
+    font-size: 1.25rem;
+    margin: 56px 0 24px;
+  }
+
+  h3 {
+    @include mdc-typography(subtitle1);
+    font-weight: 500;
+    margin: 32px 0 0;
+  }
+
+  h4 {
+    @include mdc-typography(subtitle1);
+    margin: 20px 0 0;
+  }
+
+  h5 {
+    @include mdc-typography(body2);
+    font-weight: 500;
+    margin: 20px 0 0;
+  }
+
+  h6 {
+    @include mdc-typography(body1);
+  }
+
+  h1,
+  h2 {
+    font-family: $ui-font-family;
+  }
+
+  hr {
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 1.5rem 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 16px 0;
+  }
+
+  h2 + p,
+  h3 + p,
+  h4 + p,
+  h5 + p {
+    margin-top: 4px;
+  }
+
+  // Lists
+
+  li > ul,
+  li > ol {
+    padding-top: 8px;
+  }
+
+  // blockquote
+  blockquote {
+    margin: 0 0 0.85em;
+    padding: 0 15px;
+    color: $quote_color;
+    border-left: $quote_border;
+  }
+
+  pre {
+    margin: 0 0 1.275em;
+    padding: 0.85em 1em;
+    overflow: auto;
+    background: $code_bg_color;
+    font-size: 0.85em;
+    font-family: $code_font;
+  }
+
+  code {
+    font-family: $code_font;
+  }
+
+  p,
+  li {
+    > code {
       background: $code_bg_color;
-      font-size: .85em;
-      font-family: $code_font;
-    }
-    
-    code {
-      font-family: $code_font;
-    }
-     
-    p, li {
-      > code {
-        background: $code_bg_color;
-        padding: .2em;
-        &:before, &:after {
-          letter-spacing: -.2em;
-          content: "\00a0";
-        }
+      padding: 0.2em;
+      &:before,
+      &:after {
+        letter-spacing: -0.2em;
+        content: '\00a0';
       }
     }
-    
-    pre code {
-      padding: 0;
-      white-space: pre;
-    }
-        
-    // ----- Inline elements
-    
-    img {
-      max-width: 100%;
-    }
-    
-    // a {
-    //   color: $link_color;
-    //   text-decoration: none;
-    
-    //   &:hover, &:focus {
-    //     outline: 0;
-    //     text-decoration: underline;
-    //   }
-    // }
-    a, a:active, a:hover, a:link, a:visited {
-      font-family: Roboto Mono;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font-size: .875rem;
-      font-weight: 400;
-      letter-spacing: .04em;
-      line-height: 1.25rem;
-      color: rgba(0,0,0,.80);
-      text-decoration: none;
-      outline: 0
-    }
-    
-    a:hover {
-      text-decoration: underline;
+  }
+
+  pre code {
+    padding: 0;
+    white-space: pre;
+  }
+
+  // ----- Inline elements
+
+  img {
+    max-width: 100%;
+  }
+
+  // a {
+  //   color: $link_color;
+  //   text-decoration: none;
+
+  //   &:hover, &:focus {
+  //     outline: 0;
+  //     text-decoration: underline;
+  //   }
+  // }
+  a,
+  a:active,
+  a:hover,
+  a:link,
+  a:visited {
+    font-family: Roboto Mono;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.25rem;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    outline: 0;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  // Modifier
+
+  &--full-width {
+    max-width: 100%;
+  }
+
+  // Data table
+
+  table {
+    // Display as inline-block so that we can introduce a horizontal scroll on
+    // smaller screens.
+    display: inline-block;
+    overflow-x: auto;
+    margin: 8px 0 32px;
+    max-width: 100%;
+
+    border: 1px solid $grey-200;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: 1px solid $grey-200;
+    padding: 12px 12px 12px 24px;
+
+    &:first-child {
+      border-left: none;
     }
 
-    // Modifier
-  
-    &--full-width {
-      max-width: 100%;
+    &:last-child {
+      border-right: none;
     }
+  }
 
-    // Data table
-  
-    table {
-      // Display as inline-block so that we can introduce a horizontal scroll on
-      // smaller screens.
-      display: inline-block;
-      overflow-x: auto;
-      margin: 8px 0 32px;
-      max-width: 100%;
-  
-      border: 1px solid $grey-200;
-      border-collapse: collapse;
+  th {
+    background: $grey-50;
+    border-top: none;
+    color: $black-54;
+    font-weight: 500;
+    text-align: left;
+  }
 
+  td {
+    &:first-child code {
+      background: 0;
     }
-  
-    th,
-    td {
-      border: 1px solid $grey-200;
-      padding: 12px 12px 12px 24px;
-  
-      &:first-child {
-        border-left: none;
-      }
-  
-      &:last-child {
-        border-right: none;
-      }
-    }
-  
-    th {
-      background: $grey-50;
-      border-top: none;
-      color: $black-54;
-      font-weight: 500;
-      text-align: left;
-    }
-  
-    td {
-      &:first-child code {
-        background: 0;
-      }
-    }
-  
-    tr:last-child > td {
-      border-bottom: none;
-    }
+  }
 
+  tr:last-child > td {
+    border-bottom: none;
+  }
 }

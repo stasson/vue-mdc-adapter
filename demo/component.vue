@@ -2,11 +2,11 @@
   <section>
     <div class="demo-icon" :style="'background-image: url('+icon+')'">
     </div>
-    <mdc-display ref="title" typo="display1" v-if="title" >
+    <div class="mdc-typography--headline4" ref="title" v-if="title" >
       <span v-for="(word, i) in title" :key="word"
         :class="(i+1 < title.length)? 'hidden-mark hidden-mark--dot' : 'hidden-mark hidden-mark--return'"
         >{{word.trim()}}&nbsp</span>
-    </mdc-display>
+    </div>
     <article class="demo-article" v-if="demo" >
       <component :is="demo" />
     </article>
@@ -54,7 +54,7 @@ export default {
     'textfield-readme': () => import('../components/textfield/README.md'),
     'toolbar-readme': () => import('../components/toolbar/README.md'),
     'top-app-bar-readme': () => import('../components/top-app-bar/README.md'),
-    'typography-readme': () => import('../components/typography/README.md'),
+    // 'typography-readme': () => import('../components/typography/README.md'),
 
     'button-demo': () => import('../components/button/demo.vue'),
     'card-demo': () => import('../components/card/demo.vue'),
@@ -81,7 +81,7 @@ export default {
     'textfield-demo': () => import('../components/textfield/demo.vue'),
     'toolbar-demo': () => import('../components/toolbar/demo.vue'),
     'top-app-bar-demo': () => import('../components/top-app-bar/demo.vue'),
-    'typography-demo': () => import('../components/typography/demo.vue'),
+    // 'typography-demo': () => import('../components/typography/demo.vue'),
   },
   computed: {
     demo() {

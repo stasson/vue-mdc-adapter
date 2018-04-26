@@ -15,7 +15,7 @@
         <slot />
       </section>
       <footer class="mdc-dialog__footer">
-        <mdcButton ref="cancel" v-if="cancel"
+        <mdcButton  v-if="cancel"
           class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel"
           :class="{'mdc-dialog__action':accent}"
           @click="onCancel"
@@ -113,10 +113,6 @@ export default {
       trapFocusOnSurface: () => this.focusTrap.activate(),
       untrapFocusOnSurface: () => this.focusTrap.deactivate(),
       isDialog: el => this.$refs.surface === el,
-      layoutFooterRipples: () => {
-        this.$refs.accept.ripple.layout();
-        this.cancel && this.$refs.cancel.ripple.layout();
-      },
     });
 
     this.foundation.init();

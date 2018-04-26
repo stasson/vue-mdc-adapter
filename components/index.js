@@ -28,7 +28,7 @@ import VueMDCTextfield from './textfield';
 import VueMDCTheme from './theme';
 import VueMDCToolbar from './toolbar';
 import VueMDCTopAppBar from './top-app-bar';
-import VueMDCTypography from './typography';
+// import VueMDCTypography from './typography';
 
 export default {
   version: '__VERSION__',
@@ -60,6 +60,6 @@ export default {
     vm.use(VueMDCTheme);
     vm.use(VueMDCToolbar);
     vm.use(VueMDCTopAppBar);
-    vm.use(VueMDCTypography);
+    // vm.use(VueMDCTypography);
   },
 };
