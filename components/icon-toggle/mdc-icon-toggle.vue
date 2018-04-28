@@ -1,10 +1,16 @@
 <template>
-  <span class="mdc-icon-toggle" role="button" aria-pressed="false"
-    :class="classes" :style="styles"
+  <span 
+    :class="classes" 
+    :style="styles" 
     :tabindex="tabIndex"
-    :data-toggle-on="toggleOnData"
-    :data-toggle-off="toggleOffData">
-    <i :class="iconClasses" aria-hidden="true">{{text}}</i>
+    :data-toggle-on="toggleOnData" 
+    :data-toggle-off="toggleOffData"
+    class="mdc-icon-toggle"
+    role="button"
+    aria-pressed="false">
+    <i 
+      :class="iconClasses" 
+      aria-hidden="true">{{ text }}</i>
   </span>
 </template>
 
@@ -30,23 +36,6 @@ export default {
       iconClasses: {},
       tabIndex: 0,
       text: ''
-    }
-  },
-  watch: {
-    value(value) {
-      this.foundation && this.foundation.toggle(value)
-    },
-    disabled(disabled) {
-      this.foundation && this.foundation.setDisabled(disabled)
-    },
-    toggleOnData() {
-      this.foundation && this.foundation.refreshToggleData()
-    },
-    toggleOffData() {
-      this.foundation && this.foundation.refreshToggleData()
-    },
-    accent(value) {
-      this.$set(this.classes, 'mdc-icon-toggle--secondary', value)
     }
   },
   computed: {
@@ -85,6 +74,23 @@ export default {
               }
         )
       )
+    }
+  },
+  watch: {
+    value(value) {
+      this.foundation && this.foundation.toggle(value)
+    },
+    disabled(disabled) {
+      this.foundation && this.foundation.setDisabled(disabled)
+    },
+    toggleOnData() {
+      this.foundation && this.foundation.refreshToggleData()
+    },
+    toggleOffData() {
+      this.foundation && this.foundation.refreshToggleData()
+    },
+    accent(value) {
+      this.$set(this.classes, 'mdc-icon-toggle--secondary', value)
     }
   },
   mounted() {

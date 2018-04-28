@@ -1,65 +1,102 @@
 <template>
-  <div class="mdc-textfield-wrapper" :style="{width:fullwidth?'100%':undefined}" :id="id">
+  <div 
+    :style="{width:fullwidth?'100%':undefined}" 
+    :id="id" 
+    class="mdc-textfield-wrapper">
 
-    <div ref="root" :class="rootClasses">
+    <div 
+      ref="root" 
+      :class="rootClasses">
 
-      <i ref="icon" v-if="!!hasLeadingIcon"
+      <i 
+        v-if="!!hasLeadingIcon" 
+        ref="icon"
+        :class="hasLeadingIcon.classes"
         tabindex="0"
-        class="mdc-text-field__icon"
-        :class="hasLeadingIcon.classes">
+        class="mdc-text-field__icon">
         <slot name="leading-icon">{{ hasLeadingIcon.content }}</slot>
       </i>
 
-      <textarea ref="input" v-if="multiline"
-        v-on="$listeners"
+      <textarea 
+        v-if="multiline" 
+        ref="input"
         v-bind="$attrs"
         :id="vma_uid_"
         :class="inputClasses"
-        @input="updateValue($event.target.value)"
-        :minlength="minlength" :maxlength="maxlength"
-        :placeholder="inputPlaceHolder"
+        :minlength="minlength"
+        :maxlength="maxlength"
+        :placeholder="inputPlaceHolder" 
         :aria-label="inputPlaceHolder"
         :aria-controls="inputAriaControls"
-        :rows="rows" :cols="cols"
-        ></textarea>
-
-      <input ref="input" v-else
         v-on="$listeners"
+        :rows="rows"
+        :cols="cols" 
+        @input="updateValue($event.target.value)"
+      />
+
+      <input 
+        v-else 
+        ref="input"
         v-bind="$attrs"
         :id="vma_uid_"
         :class="inputClasses"
-        @input="updateValue($event.target.value)"
         :type="type"
-        :minlength="minlength" :maxlength="maxlength"
-        :placeholder="inputPlaceHolder"
+        :minlength="minlength"
+        :maxlength="maxlength"
+        :placeholder="inputPlaceHolder" 
         :aria-label="inputPlaceHolder"
+        v-on="$listeners"
         :aria-controls="inputAriaControls"
-        />
+        @input="updateValue($event.target.value)"
+      >
 
-      <label ref="label" :class="labelClassesUpgraded" :for="vma_uid_"  v-if="hasLabel">
+      <label 
+        v-if="hasLabel" 
+        ref="label" 
+        :class="labelClassesUpgraded" 
+        :for="vma_uid_">
         {{ label }}
       </label>
 
-      <i ref="icon" v-if="!!hasTrailingIcon"
+      <i 
+        v-if="!!hasTrailingIcon" 
+        ref="icon"
+        :class="hasTrailingIcon.classes"
         tabindex="0"
-        class="mdc-text-field__icon"
-        :class="hasTrailingIcon.classes">
+        class="mdc-text-field__icon">
         <slot name="trailing-icon">{{ hasTrailingIcon.content }}</slot>
       </i>
 
-      <div ref="outline" class="mdc-notched-outline" :class="outlineClasses" v-if="hasOutline">
+      <div 
+        v-if="hasOutline" 
+        ref="outline" 
+        :class="outlineClasses" 
+        class="mdc-notched-outline">
         <svg>
-          <path class="mdc-notched-outline__path" :d="outlinePathAttr" />
+          <path 
+            :d="outlinePathAttr" 
+            class="mdc-notched-outline__path" />
         </svg>
       </div>
-      <div ref="outlineIdle" class="mdc-notched-outline__idle" v-if="hasOutline"></div>
-      <div ref="bottom" :class="bottomClasses" :style="bottomStyles" v-if="hasBottomLine"></div>
+      <div 
+        v-if="hasOutline" 
+        ref="outlineIdle" 
+        class="mdc-notched-outline__idle"/>
+      <div 
+        v-if="hasBottomLine" 
+        ref="bottom" 
+        :class="bottomClasses" 
+        :style="bottomStyles"/>
 
     </div>
 
-    <p ref="help" :id="'help-'+vma_uid_" :class="helpClasses"
-      aria-hidden="true" v-if="helptext">
-      {{ helptext  }}
+    <p 
+      v-if="helptext" 
+      ref="help" 
+      :id="'help-'+vma_uid_"
+      :class="helpClasses" 
+      aria-hidden="true">
+      {{ helptext }}
     </p>
 
   </div>
@@ -84,11 +121,11 @@ import { RippleBase } from '../ripple'
 export default {
   name: 'mdc-textfield',
   mixins: [CustomElementMixin, DispatchFocusMixin, VMAUniqueIdMixin],
+  inheritAttrs: false,
   model: {
     prop: 'value',
     event: 'model'
   },
-  inheritAttrs: false,
   props: {
     value: String,
     type: {
@@ -162,48 +199,6 @@ export default {
       outlinePathAttr: undefined
     }
   },
-  watch: {
-    disabled() {
-      this.foundation && this.foundation.setDisabled(this.disabled)
-    },
-    required() {
-      this.$refs.input && (this.$refs.input.required = this.required)
-    },
-    valid() {
-      if (typeof this.valid !== 'undefined') {
-        this.foundation && this.foundation.setValid(this.valid)
-      }
-    },
-    dense() {
-      this.$set(this.rootClasses, 'mdc-text-field--dense', this.dense)
-    },
-    helptextPersistent() {
-      this.helperTextFoundation &&
-        this.helperTextFoundation.setPersistent(this.helptextPersistent)
-    },
-    helptextValidation() {
-      this.helperTextFoundation &&
-        this.helperTextFoundation.setValidation(this.helptextValidation)
-    },
-    value(value) {
-      if (this.foundation) {
-        if (value !== this.foundation.getValue()) {
-          this.foundation.setValue(value)
-        }
-      }
-    }
-  },
-  methods: {
-    updateValue(value) {
-      this.$emit('model', value)
-    },
-    focus() {
-      this.$refs.input && this.$refs.input.focus()
-    },
-    blur() {
-      this.$refs.input && this.$refs.input.blur()
-    }
-  },
   computed: {
     inputPlaceHolder() {
       return this.fullwidth ? this.label : undefined
@@ -239,6 +234,37 @@ export default {
       return Object.assign(this.labelClasses, {
         'mdc-floating-label--float-above': this.value
       })
+    }
+  },
+  watch: {
+    disabled() {
+      this.foundation && this.foundation.setDisabled(this.disabled)
+    },
+    required() {
+      this.$refs.input && (this.$refs.input.required = this.required)
+    },
+    valid() {
+      if (typeof this.valid !== 'undefined') {
+        this.foundation && this.foundation.setValid(this.valid)
+      }
+    },
+    dense() {
+      this.$set(this.rootClasses, 'mdc-text-field--dense', this.dense)
+    },
+    helptextPersistent() {
+      this.helperTextFoundation &&
+        this.helperTextFoundation.setPersistent(this.helptextPersistent)
+    },
+    helptextValidation() {
+      this.helperTextFoundation &&
+        this.helperTextFoundation.setValidation(this.helptextValidation)
+    },
+    value(value) {
+      if (this.foundation) {
+        if (value !== this.foundation.getValue()) {
+          this.foundation.setValue(value)
+        }
+      }
     }
   },
   mounted() {
@@ -460,6 +486,17 @@ export default {
     this.labelFoundation && this.labelFoundation.destroy()
     this.outlineFoundation && this.outlineFoundation.destroy()
     this.ripple && this.ripple.destroy()
+  },
+  methods: {
+    updateValue(value) {
+      this.$emit('model', value)
+    },
+    focus() {
+      this.$refs.input && this.$refs.input.focus()
+    },
+    blur() {
+      this.$refs.input && this.$refs.input.blur()
+    }
   }
 }
 </script>

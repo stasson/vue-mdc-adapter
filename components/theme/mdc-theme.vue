@@ -1,7 +1,8 @@
 <template>
-  <custom-element :tag="tag" 
-    class="mdc-theme"
-    :class="classes">
+  <custom-element 
+    :tag="tag" 
+    :class="classes"
+    class="mdc-theme">
     <slot />
   </custom-element>
 </template>

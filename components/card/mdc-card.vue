@@ -1,7 +1,8 @@
 <template>
-  <div class="mdc-card" :class="{'mdc-card--stroked': stroked}">
-    <slot>
-    </slot>
+  <div 
+    :class="{'mdc-card--stroked': stroked}" 
+    class="mdc-card">
+    <slot/>
   </div>
 </template>
 

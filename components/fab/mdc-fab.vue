@@ -1,7 +1,10 @@
 <template>
-  <custom-button class="mdc-fab" 
-    :class="classes" :style="styles"
-    :href="href" :link="link" 
+  <custom-button 
+    :class="classes" 
+    :style="styles" 
+    :href="href"
+    :link="link" 
+    class="mdc-fab" 
     v-on="listeners" >
     <span class="mdc-fab__icon">
       <slot>{{ icon }}</slot>

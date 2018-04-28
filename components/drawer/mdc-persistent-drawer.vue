@@ -1,10 +1,16 @@
 <template>
-<aside class="mdc-persistent-drawer mdc-drawer--persistent mdc-typography" :class="classes">
-  <nav ref="drawer" class="mdc-drawer__drawer">
-    <div class="mdc-drawer__toolbar-spacer" v-if="toolbarSpacer"></div>
-    <slot />
-  </nav>
-</aside>
+  <aside 
+    :class="classes" 
+    class="mdc-persistent-drawer mdc-drawer--persistent mdc-typography">
+    <nav 
+      ref="drawer" 
+      class="mdc-drawer__drawer">
+      <div 
+        v-if="toolbarSpacer" 
+        class="mdc-drawer__toolbar-spacer"/>
+      <slot />
+    </nav>
+  </aside>
 </template>
 
 <script>
@@ -28,15 +34,6 @@ export default {
   },
   watch: {
     open: '_refresh'
-  },
-  methods: {
-    _refresh() {
-      if (this.open) {
-        this.foundation && this.foundation.open()
-      } else {
-        this.foundation && this.foundation.close()
-      }
-    }
   },
   mounted() {
     const { FOCUSABLE_ELEMENTS } = MDCPersistentDrawerFoundation.strings
@@ -131,6 +128,15 @@ export default {
   beforeDestroy() {
     this.foundation && this.foundation.destroy()
     this.foundation = null
+  },
+  methods: {
+    _refresh() {
+      if (this.open) {
+        this.foundation && this.foundation.open()
+      } else {
+        this.foundation && this.foundation.close()
+      }
+    }
   }
 }
 </script>

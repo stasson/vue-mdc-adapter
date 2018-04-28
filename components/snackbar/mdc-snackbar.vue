@@ -1,10 +1,20 @@
 <template>
-<div ref="root" class="mdc-snackbar" :class="classes" aria-live="assertive" aria-atomic="true" :aria-hidden="hidden">
-  <div class="mdc-snackbar__text">{{message}}</div>
-  <div class="mdc-snackbar__action-wrapper">
-    <button ref="button" type="button" class="mdc-snackbar__action-button" :aria-hidden="actionHidden">{{actionText}}</button>
+  <div 
+    ref="root" 
+    :class="classes" 
+    :aria-hidden="hidden" 
+    class="mdc-snackbar" 
+    aria-live="assertive" 
+    aria-atomic="true">
+    <div class="mdc-snackbar__text">{{ message }}</div>
+    <div class="mdc-snackbar__action-wrapper">
+      <button 
+        ref="button" 
+        :aria-hidden="actionHidden" 
+        type="button" 
+        class="mdc-snackbar__action-button">{{ actionText }}</button>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -46,17 +56,6 @@ export default {
   },
   watch: {
     snack: 'onSnack'
-  },
-  methods: {
-    onSnack(snack) {
-      if (snack && snack.message) {
-        this.foundation.show(snack)
-        this.$emit('queued', snack)
-      }
-    },
-    show(data) {
-      this.foundation.show(data)
-    }
   },
   mounted() {
     this.foundation = new MDCSnackbarFoundation({
@@ -124,6 +123,17 @@ export default {
       this.eventSource.$off(this.eventName, this.show)
     }
     this.foundation.destroy()
+  },
+  methods: {
+    onSnack(snack) {
+      if (snack && snack.message) {
+        this.foundation.show(snack)
+        this.$emit('queued', snack)
+      }
+    },
+    show(data) {
+      this.foundation.show(data)
+    }
   }
 }
 </script>

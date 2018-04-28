@@ -1,7 +1,6 @@
 <template>
   <div class="mdc-card-action-buttons mdc-card__action-buttons">
-    <slot>
-    </slot>
+    <slot/>
   </div>
 </template>
 

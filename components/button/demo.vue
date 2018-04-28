@@ -1,33 +1,66 @@
 <template>
   <div class="mdc-demo">
-    <div class="mdc-demo--container" style="min-height: 40px; padding-bottom: 0">
-      <div class="mdc-demo-button" ref="buttons">
-        <mdc-button :dense="dense" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+    <div 
+      class="mdc-demo--container" 
+      style="min-height: 40px; padding-bottom: 0">
+      <div 
+        ref="buttons" 
+        class="mdc-demo-button">
+        <mdc-button 
+          :dense="dense" 
+          :disabled="disabled"
+          :raised="raised" 
+          :stroked="stroked" 
+          :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
-        <mdc-button :dense="dense" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+        <mdc-button 
+          :dense="dense" 
+          :disabled="disabled"
+          :raised="raised" 
+          :stroked="stroked" 
+          :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
-        <mdc-button :dense="dense" :disabled="disabled"
-          :raised="raised" :stroked="stroked" :unelevated="unelevated"
+        <mdc-button 
+          :dense="dense" 
+          :disabled="disabled"
+          :raised="raised" 
+          :stroked="stroked" 
+          :unelevated="unelevated"
           :accent="accent">Button</mdc-button>
       </div>
     </div>
 
-  <div class="mdc-demo--container">
-    <div class="button-type-select">
-      <mdc-radio label="baseline" name="button-type" v-model="type" checked></mdc-radio>
-      <mdc-radio label="raised" name="button-type" v-model="type"></mdc-radio>
-      <mdc-radio label="unelevated" name="button-type" v-model="type"></mdc-radio>
-      <mdc-radio label="stroked" name="button-type" v-model="type"></mdc-radio>
-    </div>
+    <div class="mdc-demo--container">
+      <div class="button-type-select">
+        <mdc-radio 
+          v-model="type" 
+          label="baseline" 
+          name="button-type" 
+          checked/>
+        <mdc-radio 
+          v-model="type" 
+          label="raised" 
+          name="button-type"/>
+        <mdc-radio 
+          v-model="type" 
+          label="unelevated" 
+          name="button-type"/>
+        <mdc-radio 
+          v-model="type" 
+          label="stroked" 
+          name="button-type"/>
+      </div>
 
-    <div class="button-style-select">
-      <mdc-checkbox label="disabled" v-model="disabled"></mdc-checkbox>
-      <mdc-checkbox label="dense" v-model="dense"></mdc-checkbox>
+      <div class="button-style-select">
+        <mdc-checkbox 
+          v-model="disabled" 
+          label="disabled"/>
+        <mdc-checkbox 
+          v-model="dense" 
+          label="dense"/>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>

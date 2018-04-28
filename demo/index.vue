@@ -1,12 +1,12 @@
 <template>
   <mdc-layout-app>
     
-    <toolbar slot='toolbar'/>
+    <toolbar slot="toolbar"/>
     
     <drawer slot="drawer"/>
     
     <main class="content">
-      <router-view></router-view>
+      <router-view/>
     </main>
 
   </mdc-layout-app>

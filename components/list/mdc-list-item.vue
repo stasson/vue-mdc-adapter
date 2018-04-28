@@ -1,23 +1,31 @@
 <template>
-  <li class="mdc-list-item"
-    :class="[classes, itemClasses]" :style="styles"   
-    :tabindex="isInteractive ? '0' : undefined"
+  <li 
+    :class="[classes, itemClasses]"
+    :style="styles" 
+    :tabindex="isInteractive ? '0' : undefined"   
+    class="mdc-list-item"
     v-on="isInteractive ? $listeners : {}">
 
-    <span class="mdc-list-item__graphic" v-if="hasStartDetail">
-      <slot name="start-detail"></slot>
+    <span 
+      v-if="hasStartDetail" 
+      class="mdc-list-item__graphic">
+      <slot name="start-detail"/>
     </span>
 
-    <span class="mdc-list-item__text" v-if="hasSecondary">
-      <slot></slot>
+    <span 
+      v-if="hasSecondary" 
+      class="mdc-list-item__text">
+      <slot/>
       <span class="mdc-list-item__secondary-text">
-        <slot name="secondary"></slot>
+        <slot name="secondary"/>
       </span>
     </span>
-    <slot v-else></slot>
+    <slot v-else/>
 
-    <span class="mdc-list-item__meta" v-if="hasEndDetail">
-      <slot name="end-detail"></slot>
+    <span 
+      v-if="hasEndDetail" 
+      class="mdc-list-item__meta">
+      <slot name="end-detail"/>
     </span>
 
   </li>

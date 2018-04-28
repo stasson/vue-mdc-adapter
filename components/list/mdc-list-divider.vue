@@ -1,6 +1,8 @@
 <template>
-  <li role="separator" class="mdc-list-divider" 
-  :class="classes"></li>
+  <li 
+    :class="classes" 
+    role="separator" 
+    class="mdc-list-divider"/>
 </template>
 
 <script>

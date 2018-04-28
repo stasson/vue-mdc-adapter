@@ -1,8 +1,15 @@
 <template>
   <div class="mdc-demo mdc-demo--container">
     <div class="slider-demo">
-      <mdc-slider step=1 max=10 v-model="sliderValue" />
-      <mdc-slider step=1 max=10 display-markers v-model="sliderValue" />
+      <mdc-slider 
+        v-model="sliderValue" 
+        step="1" 
+        max="10" />
+      <mdc-slider 
+        v-model="sliderValue" 
+        step="1" 
+        max="10" 
+        display-markers />
     </div>
   </div>
 </template>

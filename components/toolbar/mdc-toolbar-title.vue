@@ -1,7 +1,9 @@
 <template>
-    <a class="mdc-toolbar-title mdc-toolbar__title" v-on="listeners">
-        <slot></slot>
-    </a>
+  <a 
+    class="mdc-toolbar-title mdc-toolbar__title" 
+    v-on="listeners">
+    <slot/>
+  </a>
 </template>
 
 <script>

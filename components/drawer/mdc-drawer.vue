@@ -1,10 +1,13 @@
 <template>
-  <component  ref="drawer" class="mdc-drawer"
-      :is="type" v-model="open_"
-      :toolbar-spacer="toolbarSpacer"
-      @change="onChange"
-      @open="$emit('open')"
-      @close="$emit('close')" >
+  <component 
+    ref="drawer" 
+    :is="type"
+    v-model="open_" 
+    :toolbar-spacer="toolbarSpacer"
+    class="mdc-drawer"
+    @change="onChange"
+    @open="$emit('open')"
+    @close="$emit('close')" >
     <slot />
   </component>
 </template>
@@ -30,6 +33,11 @@ const media = new class {
 
 export default {
   name: 'mdc-drawer',
+  components: {
+    'mdc-permanent-drawer': mdcPermanentDrawer,
+    'mdc-persistent-drawer': mdcPersistentDrawer,
+    'mdc-temporary-drawer': mdcTemporaryDrawer
+  },
   model: {
     prop: 'open',
     event: 'change'
@@ -62,11 +70,6 @@ export default {
       large: false,
       open_: false
     }
-  },
-  components: {
-    'mdc-permanent-drawer': mdcPermanentDrawer,
-    'mdc-persistent-drawer': mdcPersistentDrawer,
-    'mdc-temporary-drawer': mdcTemporaryDrawer
   },
   computed: {
     type() {
@@ -110,39 +113,6 @@ export default {
   watch: {
     open: 'onOpen_'
   },
-  methods: {
-    onOpen_(value) {
-      this.isPermanent || (this.open_ = value)
-    },
-    onChange(event) {
-      this.$emit('change', event)
-      this.$root.$emit('vma:layout')
-    },
-    openDrawer() {
-      this.open_ = true
-    },
-    closeDrawer() {
-      this.isPermanent || (this.open_ = false)
-    },
-    toggleDrawer() {
-      this.isPermanent ||
-        (this.isOpen() ? this.closeDrawer() : this.openDrawer())
-    },
-    isOpen() {
-      return this.isPermanent || this.open_
-    },
-    refreshMedia() {
-      this.small = media.small.matches
-      this.large = media.large.matches
-      if (this.isResponsive) {
-        if (this.large) {
-          this.openDrawer()
-        } else {
-          this.closeDrawer()
-        }
-      }
-    }
-  },
   created() {
     if (window && window.matchMedia) {
       this.small = media.small.matches
@@ -178,6 +148,39 @@ export default {
     }
     if (this.closeOnEventSource) {
       this.closeOnEventSource.$off(this.closeOn, this.closeDrawer)
+    }
+  },
+  methods: {
+    onOpen_(value) {
+      this.isPermanent || (this.open_ = value)
+    },
+    onChange(event) {
+      this.$emit('change', event)
+      this.$root.$emit('vma:layout')
+    },
+    openDrawer() {
+      this.open_ = true
+    },
+    closeDrawer() {
+      this.isPermanent || (this.open_ = false)
+    },
+    toggleDrawer() {
+      this.isPermanent ||
+        (this.isOpen() ? this.closeDrawer() : this.openDrawer())
+    },
+    isOpen() {
+      return this.isPermanent || this.open_
+    },
+    refreshMedia() {
+      this.small = media.small.matches
+      this.large = media.large.matches
+      if (this.isResponsive) {
+        if (this.large) {
+          this.openDrawer()
+        } else {
+          this.closeDrawer()
+        }
+      }
     }
   }
 }

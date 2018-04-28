@@ -1,8 +1,9 @@
 <template>
-  <a class="mdc-toolbar-menu-icon mdc-toolbar__menu-icon"
+  <a 
     :class="{'material-icons':!!icon}"
+    class="mdc-toolbar-menu-icon mdc-toolbar__menu-icon"
     v-on="listeners">
-    <slot>{{icon}}</slot>
+    <slot>{{ icon }}</slot>
   </a>
 </template>
 

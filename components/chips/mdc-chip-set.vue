@@ -1,6 +1,8 @@
 <template>
-  <div :class="classes" v-on="$listeners">
-    <slot></slot>
+  <div 
+    :class="classes" 
+    v-on="$listeners">
+    <slot/>
   </div>
 </template>
 
@@ -25,7 +27,6 @@ export default {
       }
     }
   },
-  methods: {},
   mounted() {
     this.foundation = new MDCChipSetFoundation({
       hasClass: className => this.$el.classList.contains(className),
@@ -41,6 +42,7 @@ export default {
   },
   beforeDestroy() {
     this.foundation.destroy()
-  }
+  },
+  methods: {}
 }
 </script>

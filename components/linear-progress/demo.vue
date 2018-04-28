@@ -1,16 +1,20 @@
 <template>
   <div class="mdc-demo mdc-demo--container">
-    <div  class="linear-progress-demo">
-      <mdc-linear-progress progress=0.5></mdc-linear-progress>
+    <div class="linear-progress-demo">
+      <mdc-linear-progress progress="0.5"/>
       <p><mdc-caption>Determinate</mdc-caption></p>
       <br>
-      <mdc-linear-progress indeterminate></mdc-linear-progress>
+      <mdc-linear-progress indeterminate/>
       <p><mdc-caption>Indeterminate</mdc-caption></p>
       <br>
-      <mdc-linear-progress progress=0.5 buffer=0.75></mdc-linear-progress>
+      <mdc-linear-progress 
+        progress="0.5" 
+        buffer="0.75"/>
       <p><mdc-caption>Buffer</mdc-caption></p>
       <br>
-      <mdc-linear-progress accent progress=0.5></mdc-linear-progress>
+      <mdc-linear-progress 
+        accent 
+        progress="0.5"/>
       <p><mdc-caption>Accent</mdc-caption></p>
     </div>
   </div>

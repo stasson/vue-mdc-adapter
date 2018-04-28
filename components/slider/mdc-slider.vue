@@ -1,23 +1,43 @@
 <template>
-  <div class="mdc-slider" :class="classes" tabindex="0" role="slider">
+  <div 
+    :class="classes" 
+    class="mdc-slider" 
+    tabindex="0" 
+    role="slider">
     <div class="mdc-slider__track-container">
-      <div class="mdc-slider__track" :style="trackStyles"></div>
-      <div class="mdc-slider__track-marker-container" v-if="hasMarkers">
-        <div class="mdc-slider__track-marker"
+      <div 
+        :style="trackStyles" 
+        class="mdc-slider__track"/>
+      <div 
+        v-if="hasMarkers" 
+        class="mdc-slider__track-marker-container">
+        <div 
           v-for="markerNum in numMarkers"
           :key="markerNum"
           :style="(markerNum == numMarkers) ? lastTrackMarkersStyles : {}"
-          ></div>
+          class="mdc-slider__track-marker"
+        />
       </div>
     </div>
-    <div ref="thumbContainer" :style="thumbStyles" class="mdc-slider__thumb-container">
-      <div class="mdc-slider__pin" v-if="isDiscrete">
-        <span class="mdc-slider__pin-value-marker">{{markerValue}}</span>
+    <div 
+      ref="thumbContainer" 
+      :style="thumbStyles" 
+      class="mdc-slider__thumb-container">
+      <div 
+        v-if="isDiscrete" 
+        class="mdc-slider__pin">
+        <span class="mdc-slider__pin-value-marker">{{ markerValue }}</span>
       </div>
-      <svg class="mdc-slider__thumb" width="21" height="21">
-        <circle cx="10.5" cy="10.5" r="7.875"></circle>
+      <svg 
+        class="mdc-slider__thumb" 
+        width="21" 
+        height="21">
+        <circle 
+          cx="10.5" 
+          cy="10.5" 
+          r="7.875"/>
       </svg>
-      <div class="mdc-slider__focus-ring"></div>
+      <div class="mdc-slider__focus-ring"/>
     </div>
   </div>
 </template>
@@ -81,13 +101,6 @@ export default {
     },
     disabled() {
       this.foundation.setDisabled(this.disabled)
-    }
-  },
-  methods: {
-    layout() {
-      this.$nextTick(() => {
-        this.foundation && this.foundation.layout()
-      })
     }
   },
   mounted() {
@@ -183,6 +196,13 @@ export default {
       this.layoutOnEventSource.$off(this.layoutOn, this.layout)
     }
     this.foundation.destroy()
+  },
+  methods: {
+    layout() {
+      this.$nextTick(() => {
+        this.foundation && this.foundation.layout()
+      })
+    }
   }
 }
 </script>

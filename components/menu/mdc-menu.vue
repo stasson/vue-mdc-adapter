@@ -1,9 +1,18 @@
 <template>
-<div ref="root" class="mdc-menu mdc-simple-menu" :class="classes" :style="styles" tabindex="-1">
-  <ul ref="items" class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
-    <slot></slot>
-  </ul>
-</div>
+  <div 
+    ref="root" 
+    :class="classes" 
+    :style="styles" 
+    class="mdc-menu mdc-simple-menu" 
+    tabindex="-1">
+    <ul 
+      ref="items" 
+      class="mdc-simple-menu__items mdc-list" 
+      role="menu" 
+      aria-hidden="true">
+      <slot/>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -30,23 +39,16 @@ export default {
       items: []
     }
   },
-
-  methods: {
-    onOpen_(value) {
-      if (value) {
-        this.foundation.open(typeof value === 'object' ? value : void 0)
-      } else {
-        this.foundation.close()
-      }
+  watch: {
+    open: 'onOpen_',
+    quickOpen(nv) {
+      this.foundation.setQuickOpen(nv)
     },
-    show(options) {
-      this.foundation.open(options)
+    anchorCorner(nv) {
+      this.foundation.setAnchorCorner(Number(nv))
     },
-    hide() {
-      this.foundation.close()
-    },
-    isOpen() {
-      return this.foundation ? this.foundation.isOpen() : false
+    anchorMargin(nv) {
+      this.foundation.setAnchorMargin(nv)
     }
   },
   mounted() {
@@ -162,22 +164,29 @@ export default {
       this.foundation.setAnchorMargin(this.anchorMargin)
     }
   },
-  watch: {
-    open: 'onOpen_',
-    quickOpen(nv) {
-      this.foundation.setQuickOpen(nv)
-    },
-    anchorCorner(nv) {
-      this.foundation.setAnchorCorner(Number(nv))
-    },
-    anchorMargin(nv) {
-      this.foundation.setAnchorMargin(nv)
-    }
-  },
   beforeDestroy() {
     this._previousFocus = null
     this.slotObserver.disconnect()
     this.foundation.destroy()
+  },
+
+  methods: {
+    onOpen_(value) {
+      if (value) {
+        this.foundation.open(typeof value === 'object' ? value : void 0)
+      } else {
+        this.foundation.close()
+      }
+    },
+    show(options) {
+      this.foundation.open(options)
+    },
+    hide() {
+      this.foundation.close()
+    },
+    isOpen() {
+      return this.foundation ? this.foundation.isOpen() : false
+    }
   }
 }
 </script>

@@ -1,6 +1,8 @@
 <template>
-  <section class="mdc-toolbar-section mdc-toolbar__section" :class="classes">
-    <slot></slot>
+  <section 
+    :class="classes" 
+    class="mdc-toolbar-section mdc-toolbar__section">
+    <slot/>
   </section>
 </template>
 

@@ -1,7 +1,9 @@
 <template>
   <div class="mdc-demo mdc-demo--container">
-    <mdc-button raised @click="showSnackbar">Show Snackbar</mdc-button>
-    <mdc-snackbar v-model="snack"></mdc-snackbar>
+    <mdc-button 
+      raised 
+      @click="showSnackbar">Show Snackbar</mdc-button>
+    <mdc-snackbar v-model="snack"/>
   </div>
 </template>
 

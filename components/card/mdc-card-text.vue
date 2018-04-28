@@ -1,7 +1,6 @@
 <template>
   <section class="mdc-card-text mdc-card__supporting-text">
-    <slot>
-    </slot>
+    <slot/>
   </section>
 </template>
 

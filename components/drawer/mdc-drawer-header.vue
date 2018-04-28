@@ -1,9 +1,11 @@
 <template>
-<header class="mdc-drawer-header mdc-drawer__header" v-if="show">
-  <div class="mdc-drawer__header-content">
-    <slot />
-  </div>
-</header>
+  <header 
+    v-if="show" 
+    class="mdc-drawer-header mdc-drawer__header">
+    <div class="mdc-drawer__header-content">
+      <slot />
+    </div>
+  </header>
 </template>
 
 <script>

@@ -1,12 +1,31 @@
 <template>
-<div class="mdc-select" :class="rootClasses" :style="styles">
-  <select ref="native_control" class="mdc-select__native-control" v-on="listeners" v-bind="$attrs">
-    <option class="mdc-option" value="" disabled selected v-if="!!label"></option>
-    <slot></slot>
-  </select>
-  <div ref="label" class="mdc-select__label" :class="labelClasses">{{label}}</div>
-  <div ref="bottomLine" class="mdc-select__bottom-line" :class="bottomLineClasses" v-if="bottomLine"></div>
-</div>
+  <div 
+    :class="rootClasses" 
+    :style="styles" 
+    class="mdc-select">
+    <select 
+      ref="native_control" 
+      v-bind="$attrs" 
+      class="mdc-select__native-control" 
+      v-on="listeners">
+      <option 
+        v-if="!!label" 
+        class="mdc-option" 
+        value="" 
+        disabled 
+        selected/>
+      <slot/>
+    </select>
+    <div 
+      ref="label" 
+      :class="labelClasses" 
+      class="mdc-select__label">{{ label }}</div>
+    <div 
+      v-if="bottomLine" 
+      ref="bottomLine" 
+      :class="bottomLineClasses" 
+      class="mdc-select__bottom-line"/>
+  </div>
 </template>
 
 <script>
@@ -17,6 +36,7 @@ import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-select',
+  inheritAttrs: false,
   model: {
     prop: 'value',
     event: 'change'
@@ -28,32 +48,12 @@ export default {
     box: Boolean,
     bottomLine: { type: Boolean, default: true }
   },
-  inheritAttrs: false,
   data() {
     return {
       styles: {},
       labelClasses: {},
       bottomLineClasses: {},
       classes: {}
-    }
-  },
-  watch: {
-    disabled(value) {
-      this.foundation && this.foundation.setDisabled(value)
-    },
-    value: 'refreshIndex'
-  },
-  methods: {
-    refreshIndex() {
-      const options = [...this.$refs.native_control.querySelectorAll('option')]
-
-      const idx = options.findIndex(({ value }) => {
-        return this.value === value
-      })
-
-      if (this.$refs.native_control.selectedIndex !== idx) {
-        this.foundation.setSelectedIndex(idx)
-      }
     }
   },
   computed: {
@@ -69,6 +69,12 @@ export default {
         change: event => this.$emit('change', event.target.value)
       }
     }
+  },
+  watch: {
+    disabled(value) {
+      this.foundation && this.foundation.setDisabled(value)
+    },
+    value: 'refreshIndex'
   },
   mounted() {
     if (this.label) {
@@ -147,6 +153,19 @@ export default {
     bottomLineFoundation.destroy()
 
     this.ripple && this.ripple.destroy()
+  },
+  methods: {
+    refreshIndex() {
+      const options = [...this.$refs.native_control.querySelectorAll('option')]
+
+      const idx = options.findIndex(({ value }) => {
+        return this.value === value
+      })
+
+      if (this.$refs.native_control.selectedIndex !== idx) {
+        this.foundation.setSelectedIndex(idx)
+      }
+    }
   }
 }
 </script>

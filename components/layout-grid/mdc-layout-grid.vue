@@ -1,9 +1,9 @@
 <template>
-<div :class="classes">
-  <div class="mdc-layout-grid__inner">
-    <slot></slot>
+  <div :class="classes">
+    <div class="mdc-layout-grid__inner">
+      <slot/>
+    </div>
   </div>
-</div>
 </template>
 
 <script>

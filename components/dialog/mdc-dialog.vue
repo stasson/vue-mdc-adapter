@@ -1,34 +1,48 @@
 <template>
-  <aside class="mdc-dialog" ref="root" :class="classes" :style="styles"
-    role="alertdialog"
+  <aside 
+    ref="root" 
+    :class="classes" 
+    :style="styles" 
     :aria-labelledby="'label' + vma_uid_"
     :aria-describedby="'desc' + vma_uid_"
+    class="mdc-dialog"
+    role="alertdialog"
   >
-    <div  ref="surface" class="mdc-dialog__surface" :class="surfaceClasses">
+    <div 
+      ref="surface" 
+      :class="surfaceClasses" 
+      class="mdc-dialog__surface">
       <header class="mdc-dialog__header">
-        <h2 :id="'label' + vma_uid_" class="mdc-dialog__header__title">
+        <h2 
+          :id="'label' + vma_uid_" 
+          class="mdc-dialog__header__title">
           {{ title }}
         </h2>
       </header>
-      <section :id="'desc' + vma_uid_"
-        class="mdc-dialog__body" :class="bodyClasses">
+      <section 
+        :id="'desc' + vma_uid_"
+        :class="bodyClasses" 
+        class="mdc-dialog__body">
         <slot />
       </section>
       <footer class="mdc-dialog__footer">
-        <mdcButton ref="cancel" v-if="cancel"
-          class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel"
+        <mdcButton 
+          v-if="cancel" 
+          ref="cancel"
           :class="{'mdc-dialog__action':accent}"
+          class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel"
           @click="onCancel"
-          >{{ cancel }}</mdcButton>
-        <mdcButton  ref="accept"
-          class="mdc-dialog__footer__button mdc-dialog__footer__button--accept"
+        >{{ cancel }}</mdcButton>
+        <mdcButton 
+          ref="accept"
           :class="{'mdc-dialog__action':accent}"
           :disabled="acceptDisabled"
+          class="mdc-dialog__footer__button mdc-dialog__footer__button--accept"
           @click="onAccept"
         >{{ accept }}</mdcButton>
       </footer>
     </div>
-    <div class="mdc-dialog__backdrop"></div>
+    <div class="mdc-dialog__backdrop"/>
   </aside>
 </template>
 
@@ -40,6 +54,10 @@ import { VMAUniqueIdMixin } from '../base'
 
 export default {
   name: 'mdc-dialog',
+  components: {
+    mdcButton: mdcButton
+  },
+  mixins: [VMAUniqueIdMixin],
   model: {
     prop: 'open',
     event: 'change'
@@ -53,10 +71,6 @@ export default {
     scrollable: Boolean,
     open: Boolean
   },
-  components: {
-    mdcButton: mdcButton
-  },
-  mixins: [VMAUniqueIdMixin],
   data() {
     return {
       classes: {
@@ -69,6 +83,7 @@ export default {
       }
     }
   },
+  watch: { open: 'onOpen_' },
   mounted() {
     this.focusTrap = createFocusTrapInstance(
       this.$refs.surface,
@@ -124,7 +139,6 @@ export default {
   beforeDestroy() {
     this.foundation.destroy()
   },
-  watch: { open: 'onOpen_' },
   methods: {
     onOpen_(value) {
       if (value) {

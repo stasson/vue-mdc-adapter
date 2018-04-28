@@ -1,7 +1,6 @@
 <template>
   <h2 class="mdc-card-subtitle mdc-card__subtitle">
-    <slot>
-    </slot>
+    <slot/>
   </h2>
 </template>
 

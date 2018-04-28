@@ -1,7 +1,10 @@
 <template>
   <div class="mdc-grid-list">
-    <ul class="mdc-grid-list__tiles" :class="classes" :style="styles">
-        <slot></slot>
+    <ul 
+      :class="classes" 
+      :style="styles" 
+      class="mdc-grid-list__tiles">
+      <slot/>
     </ul>
   </div>
 </template>

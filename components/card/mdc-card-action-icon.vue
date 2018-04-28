@@ -1,6 +1,8 @@
 <template>
-  <span :class="classes" :style="styles" 
-     v-on="listeners">
+  <span 
+    :class="classes" 
+    :style="styles" 
+    v-on="listeners">
     <slot>{{ icon }}</slot>
   </span>
 </template>
