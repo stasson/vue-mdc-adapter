@@ -1,0 +1,12 @@
+
+{
+  "semi": false,
+  "trailingComma":"none",
+  "singleQuote": true,
+  "overrides": [{
+    "files": "*.scss",
+    "options": {
+      "singleQuote": false
+    }
+  }]
+}
