@@ -1,14 +1,20 @@
 <template>
-  <custom-link :link="link"
+  <custom-link 
+    :link="link"
+    :class="[classes, itemClasses]"
+    :style="styles" 
     class="mdc-drawer-item mdc-list-item"
-    :class="[classes, itemClasses]" :style="styles"
     v-on="mylisteners">
-    <span class="mdc-list-item__graphic" v-if="hasStartDetail">
+    <span 
+      v-if="hasStartDetail" 
+      class="mdc-list-item__graphic">
       <slot name="start-detail">
-        <i class="material-icons" aria-hidden="true">{{startIcon}}</i>
+        <i 
+          class="material-icons" 
+          aria-hidden="true">{{ startIcon }}</i>
       </slot>
     </span>
-    <slot></slot>
+    <slot/>
   </custom-link>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
-<div class="mdc-drawer-layout">
-  <slot />
-</div>
+  <div class="mdc-drawer-layout">
+    <slot />
+  </div>
 </template>
 
 <script>

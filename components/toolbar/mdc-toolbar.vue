@@ -1,13 +1,18 @@
 <template>
   <header class="mdc-toolbar-wrapper">
     <!--Toolbar-->
-    <div ref="root" :class="rootClasses" :style="rootStyles">
-        <slot></slot>
+    <div 
+      ref="root" 
+      :class="rootClasses" 
+      :style="rootStyles">
+      <slot/>
     </div>
     <!-- Fixed Adjust Element-->
-    <div ref="fixed-adjust" class="mdc-toolbar-fixed-adjust" 
+    <div 
+      v-if="fixed || waterfall || fixedLastrow" 
+      ref="fixed-adjust" 
       :style="adjustStyles"
-      v-if="fixed || waterfall || fixedLastrow"></div>
+      class="mdc-toolbar-fixed-adjust"/>
   </header>
 </template>
 

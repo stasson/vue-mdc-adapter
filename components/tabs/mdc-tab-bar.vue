@@ -1,8 +1,13 @@
 <template>
-  <nav class="mdc-tab-bar" :class="classes" v-on="$listeners">
-    <slot></slot>
-    <span ref="indicator" class="mdc-tab-bar__indicator"
-      :style="indicatorStyles"></span>
+  <nav 
+    :class="classes" 
+    class="mdc-tab-bar" 
+    v-on="$listeners">
+    <slot/>
+    <span 
+      ref="indicator" 
+      :style="indicatorStyles"
+      class="mdc-tab-bar__indicator"/>
   </nav>
 </template>
 
@@ -17,16 +22,6 @@ export default {
       classes: {},
       indicatorStyles: {},
       tabs: []
-    }
-  },
-  methods: {
-    onSelect({ detail }) {
-      const { tab } = detail
-      const index = this.tabs.indexOf(tab)
-      if (index < 0) {
-        throw new Error('mdc-tab-bar internal error: index not found')
-      }
-      this.foundation.switchToTabAtIndex(index, true)
     }
   },
   mounted() {
@@ -126,6 +121,16 @@ export default {
   beforeDestroy() {
     this.slotObserver.disconnect()
     this.foundation.destroy()
+  },
+  methods: {
+    onSelect({ detail }) {
+      const { tab } = detail
+      const index = this.tabs.indexOf(tab)
+      if (index < 0) {
+        throw new Error('mdc-tab-bar internal error: index not found')
+      }
+      this.foundation.switchToTabAtIndex(index, true)
+    }
   }
 }
 </script>

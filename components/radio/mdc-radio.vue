@@ -1,16 +1,31 @@
 <template>
-<div :class="formFieldClasses" class="mdc-radio-wrapper">
-  <div ref="root" class="mdc-radio" :class="classes" :style="styles">
-    <input type="radio" ref="control" :id="vma_uid_" :name="name"
-      class="mdc-radio__native-control" @change="sync">
+  <div 
+    :class="formFieldClasses" 
+    class="mdc-radio-wrapper">
+    <div 
+      ref="root" 
+      :class="classes" 
+      :style="styles" 
+      class="mdc-radio">
+      <input 
+        ref="control" 
+        :id="vma_uid_" 
+        :name="name" 
+        type="radio"
+        class="mdc-radio__native-control" 
+        @change="sync">
 
-    <div ref="label" class="mdc-radio__background">
-      <div class="mdc-radio__outer-circle"></div>
-      <div class="mdc-radio__inner-circle"></div>
+      <div 
+        ref="label" 
+        class="mdc-radio__background">
+        <div class="mdc-radio__outer-circle"/>
+        <div class="mdc-radio__inner-circle"/>
+      </div>
     </div>
+    <label 
+      ref="label" 
+      :for="vma_uid_"><slot>{{ label }}</slot></label>
   </div>
-  <label ref="label" :for="vma_uid_"><slot>{{label}}</slot></label>
-</div>
 </template>
 
 <script>
@@ -43,6 +58,11 @@ export default {
         'mdc-form-field': this.label,
         'mdc-form-field--align-end': this.label && this.alignEnd
       }
+    }
+  },
+  watch: {
+    disabled(value) {
+      this.foundation.setDisabled(value)
     }
   },
   mounted() {
@@ -100,11 +120,6 @@ export default {
     this.formField.destroy()
     this.ripple.destroy()
     this.foundation.destroy()
-  },
-  watch: {
-    disabled(value) {
-      this.foundation.setDisabled(value)
-    }
   },
   methods: {
     isChecked() {

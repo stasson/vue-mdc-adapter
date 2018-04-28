@@ -1,8 +1,14 @@
 <template>
-<iframe class="mdc-demo mdc-elevation--z1" scrolling="no" title="vue-mdc-adapter App Layout"
-  :src="iframe" width="400" height="150" frameborder='no'  
-  allowtransparency='false' allowfullscreen='false'>
-</iframe>
+  <iframe 
+    :src="iframe" 
+    class="mdc-demo mdc-elevation--z1" 
+    scrolling="no"
+    title="vue-mdc-adapter App Layout" 
+    width="400" 
+    height="150" 
+    frameborder="no"  
+    allowtransparency="false" 
+    allowfullscreen="false"/>
 </template>
 
 <script>

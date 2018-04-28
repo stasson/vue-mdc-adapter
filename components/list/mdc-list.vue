@@ -1,6 +1,8 @@
 <template>
-  <ul class="mdc-list" :class="classes">
-    <slot></slot>
+  <ul 
+    :class="classes" 
+    class="mdc-list">
+    <slot/>
   </ul>
 </template>
 

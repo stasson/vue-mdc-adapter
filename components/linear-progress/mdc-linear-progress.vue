@@ -1,13 +1,20 @@
 <template>
-  <div role="progressbar" class="mdc-linear-progress" 
-    :class="classes" :style="styles">
-    <div class="mdc-linear-progress__buffering-dots"></div>
-    <div ref="buffer" class="mdc-linear-progress__buffer"></div>
-    <div ref="primary" class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
-      <span class="mdc-linear-progress__bar-inner"></span>
+  <div 
+    :class="classes" 
+    :style="styles" 
+    role="progressbar" 
+    class="mdc-linear-progress">
+    <div class="mdc-linear-progress__buffering-dots"/>
+    <div 
+      ref="buffer" 
+      class="mdc-linear-progress__buffer"/>
+    <div 
+      ref="primary" 
+      class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+      <span class="mdc-linear-progress__bar-inner"/>
     </div>
     <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-      <span class="mdc-linear-progress__bar-inner"></span>
+      <span class="mdc-linear-progress__bar-inner"/>
     </div>
   </div>  
 </template>

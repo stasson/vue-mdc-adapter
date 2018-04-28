@@ -1,7 +1,14 @@
 <template>
   <div class="mdc-demo mdc-demo--container">
-      <mdc-radio label="Radio1" name="radios" v-model="picked" checked></mdc-radio>
-      <mdc-radio label="Radio2" name="radios" v-model="picked"></mdc-radio>
+    <mdc-radio 
+      v-model="picked" 
+      label="Radio1" 
+      name="radios" 
+      checked/>
+    <mdc-radio 
+      v-model="picked" 
+      label="Radio2" 
+      name="radios"/>
   </div>
 </template>
 

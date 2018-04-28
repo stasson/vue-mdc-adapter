@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-elevation"></div>
+  <div class="mdc-elevation"/>
 </template>
 
 <script>

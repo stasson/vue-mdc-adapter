@@ -2,10 +2,11 @@
   <div class="mdc-demo">
     <mdc-card>
       <mdc-card-primary-action>
-        <mdc-card-media :src="card" >
-        </mdc-card-media>
+        <mdc-card-media :src="card" />
       </mdc-card-primary-action>
-      <mdc-card-header title="Title goes here" subtitle="subtitle here" ></mdc-card-header>
+      <mdc-card-header 
+        title="Title goes here" 
+        subtitle="subtitle here" />
       <mdc-card-actions>
         <mdc-card-action-buttons>
           <mdc-card-action-button>ACTION</mdc-card-action-button>

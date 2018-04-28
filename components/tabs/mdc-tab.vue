@@ -1,18 +1,24 @@
 <template>
-  <custom-link class="mdc-tab"
-    :class="classes" :style="styles"
+  <custom-link 
+    :class="classes"
+    :style="styles" 
     :link="link"
+    class="mdc-tab"
     v-on="listeners">
 
-    <i ref="icon" v-if="!!hasIcon"
+    <i 
+      v-if="!!hasIcon" 
+      ref="icon"
+      :class="hasIcon.classes"
       tabindex="0"
-      class="mdc-tab__icon"
-      :class="hasIcon.classes">
+      class="mdc-tab__icon">
       <slot name="icon">{{ hasIcon.content }}</slot>
     </i>
 
-    <span :class="{'mdc-tab__icon-text': !!hasIcon}" v-if="hasText">
-      <slot></slot>
+    <span 
+      v-if="hasText" 
+      :class="{'mdc-tab__icon-text': !!hasIcon}">
+      <slot/>
     </span>
 
   </custom-link>
@@ -52,29 +58,6 @@ export default {
       return !!this.$slots.default
     }
   },
-  methods: {
-    getComputedWidth() {
-      return this.foundation.getComputedWidth()
-    },
-    getComputedLeft() {
-      return this.foundation.getComputedLeft()
-    },
-    isActive() {
-      return this.foundation.isActive()
-    },
-    setActive(isActive) {
-      this.foundation.setActive(isActive)
-    },
-    isDefaultPreventedOnClick() {
-      return this.foundation.preventsDefaultOnClick()
-    },
-    setPreventDefaultOnClick(preventDefaultOnClick) {
-      this.foundation.setPreventDefaultOnClick(preventDefaultOnClick)
-    },
-    measureSelf() {
-      this.foundation.measureSelf()
-    }
-  },
   mounted() {
     this.foundation = new MDCTabFoundation({
       addClass: className => this.$set(this.classes, className, true),
@@ -104,6 +87,29 @@ export default {
   beforeDestroy() {
     this.foundation.destroy()
     this.ripple.destroy()
+  },
+  methods: {
+    getComputedWidth() {
+      return this.foundation.getComputedWidth()
+    },
+    getComputedLeft() {
+      return this.foundation.getComputedLeft()
+    },
+    isActive() {
+      return this.foundation.isActive()
+    },
+    setActive(isActive) {
+      this.foundation.setActive(isActive)
+    },
+    isDefaultPreventedOnClick() {
+      return this.foundation.preventsDefaultOnClick()
+    },
+    setPreventDefaultOnClick(preventDefaultOnClick) {
+      this.foundation.setPreventDefaultOnClick(preventDefaultOnClick)
+    },
+    measureSelf() {
+      this.foundation.measureSelf()
+    }
   }
 }
 </script>

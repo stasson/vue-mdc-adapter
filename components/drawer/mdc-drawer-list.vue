@@ -1,7 +1,9 @@
 <template>
-<nav class="mdc-drawer-list mdc-list" :class="classes">
-  <slot></slot>
-</nav>
+  <nav 
+    :class="classes" 
+    class="mdc-drawer-list mdc-list">
+    <slot/>
+  </nav>
 </template>
 
 <script>

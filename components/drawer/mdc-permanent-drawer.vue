@@ -1,10 +1,12 @@
 <template>
-<nav class="mdc-permanent-drawer mdc-drawer--permanent mdc-typography">
-  <nav class="mdc-drawer__content">
-    <div class="mdc-drawer__toolbar-spacer" v-if="toolbarSpacer"></div>
-    <slot />
+  <nav class="mdc-permanent-drawer mdc-drawer--permanent mdc-typography">
+    <nav class="mdc-drawer__content">
+      <div 
+        v-if="toolbarSpacer" 
+        class="mdc-drawer__toolbar-spacer"/>
+      <slot />
+    </nav>
   </nav>
-</nav>
 </template>
 
 <script>

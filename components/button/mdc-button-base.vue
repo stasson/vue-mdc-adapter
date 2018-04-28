@@ -1,7 +1,11 @@
 <template>
-  <custom-button ref="root"
-    :class="classes" :style="styles"
-    :href="href" :link="link" :disabled="disabled"
+  <custom-button 
+    ref="root"
+    :class="classes" 
+    :style="styles"
+    :href="href" 
+    :link="link" 
+    :disabled="disabled"
     v-on="listeners">
     <slot />
   </custom-button>

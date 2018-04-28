@@ -1,23 +1,37 @@
 <template>
-  <div :class=formFieldClasses class="mdc-checkbox-wrapper">
-    <div ref="root" class="mdc-checkbox"
-    :class="classes" :style="styles">
-      <input ref="control" :id="vma_uid_" type="checkbox" :name="name"
-        class="mdc-checkbox__native-control" :value="value"
-        @change="onChange"/>
+  <div 
+    :class="formFieldClasses" 
+    class="mdc-checkbox-wrapper">
+    <div 
+      ref="root" 
+      :class="classes"
+      :style="styles" 
+      class="mdc-checkbox">
+      <input 
+        ref="control" 
+        :id="vma_uid_" 
+        :name="name" 
+        :value="value"
+        type="checkbox" 
+        class="mdc-checkbox__native-control"
+        @change="onChange">
       <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark"
-            viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path"
-                fill="none"
-                stroke="white"
-                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+        <svg 
+          class="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24">
+          <path 
+            class="mdc-checkbox__checkmark-path"
+            fill="none"
+            stroke="white"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
         </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
+        <div class="mdc-checkbox__mixedmark"/>
       </div>
     </div>
-    <label ref="label"  :for="vma_uid_"
-    ><slot>{{label}}</slot></label>
+    <label 
+      ref="label" 
+      :for="vma_uid_"
+    ><slot>{{ label }}</slot></label>
   </div>
 </template>
 

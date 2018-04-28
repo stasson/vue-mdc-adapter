@@ -1,9 +1,12 @@
 <template>
-  <section class="mdc-card-media mdc-card__media" 
-    :class="classes" :style="styles">
-    <div class="mdc-card__media-content" v-if="$slots.default">
-      <slot>
-      </slot>
+  <section 
+    :class="classes" 
+    :style="styles" 
+    class="mdc-card-media mdc-card__media">
+    <div 
+      v-if="$slots.default" 
+      class="mdc-card__media-content">
+      <slot/>
     </div>
   </section>
 </template>

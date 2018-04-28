@@ -1,17 +1,21 @@
 <template>
-<div class="mdc-demo--appbar">
-  <section class="mdc-demo">
-    <mdc-top-app-bar title="Title2">
-      <mdc-top-app-bar--action @click="buttonText='show help'" icon="help"></mdc-top-app-bar--action>
-      <mdc-top-app-bar--action @click="buttonText='show information'" icon="info_outline"></mdc-top-app-bar--action>
-    </mdc-top-app-bar>
-    <br>
-    <div v-if="buttonText">
-      Button: <span class="demo-button-info">{{buttonText}}</span>
-    </div>
-  </section>
+  <div class="mdc-demo--appbar">
+    <section class="mdc-demo">
+      <mdc-top-app-bar title="Title2">
+        <mdc-top-app-bar--action 
+          icon="help" 
+          @click="buttonText='show help'"/>
+        <mdc-top-app-bar--action 
+          icon="info_outline" 
+          @click="buttonText='show information'"/>
+      </mdc-top-app-bar>
+      <br>
+      <div v-if="buttonText">
+        Button: <span class="demo-button-info">{{ buttonText }}</span>
+      </div>
+    </section>
 
-</div>
+  </div>
 </template>
 
 <script>

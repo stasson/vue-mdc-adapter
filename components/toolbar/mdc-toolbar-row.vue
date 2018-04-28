@@ -1,6 +1,6 @@
 <template>
   <div class="mdc-toolbar-row mdc-toolbar__row">
-    <slot></slot>
+    <slot/>
   </div>
 </template>
 

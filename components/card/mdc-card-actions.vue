@@ -1,8 +1,8 @@
 <template>
-  <section class="mdc-card-actions mdc-card__actions" 
-          :class="classes">
-    <slot>
-    </slot>
+  <section 
+    :class="classes" 
+    class="mdc-card-actions mdc-card__actions">
+    <slot/>
   </section>
 </template>
 

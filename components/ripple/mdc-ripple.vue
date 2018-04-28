@@ -1,6 +1,9 @@
 <template>
-  <custom-element :tag="tag" class="mdc-ripple"
-    :classes="classes" :styles="styles">
+  <custom-element 
+    :tag="tag" 
+    :classes="classes"
+    :styles="styles" 
+    class="mdc-ripple">
     <slot />
   </custom-element>
 </template>

@@ -1,15 +1,27 @@
 <template>
-<header ref="root" :class="rootClasses" v-on="$listeners">
-  <div class="mdc-top-app-bar__row">
-    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-      <a ref="navigationIcon" href="#" :class="naviconClasses" v-if="haveNavigationIcon" v-on="listeners">{{icon}}</a>
-      <span class="mdc-top-app-bar__title" v-if="!!title">{{title}}</span>
-    </section>
-    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" v-if="$slots.default">
-      <slot></slot>
-    </section>
-  </div>
-</header>
+  <header 
+    ref="root" 
+    :class="rootClasses" 
+    v-on="$listeners">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <a 
+          v-if="haveNavigationIcon" 
+          ref="navigationIcon" 
+          :class="naviconClasses" 
+          href="#" 
+          v-on="listeners">{{ icon }}</a>
+        <span 
+          v-if="!!title" 
+          class="mdc-top-app-bar__title">{{ title }}</span>
+      </section>
+      <section 
+        v-if="$slots.default" 
+        class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+        <slot/>
+      </section>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -19,6 +31,7 @@ import { DispatchEventMixin, emitCustomEvent } from '../base'
 
 export default {
   name: 'mdc-top-app-bar',
+  mixins: [DispatchEventMixin],
   props: {
     short: Boolean,
     shortCollapsed: Boolean,
@@ -43,7 +56,18 @@ export default {
       foundation: null
     }
   },
-  mixins: [DispatchEventMixin],
+  computed: {
+    haveNavigationIcon() {
+      return !!this.icon || this.iconClasses
+    },
+    naviconClasses() {
+      return {
+        'mdc-top-app-bar__navigation-icon': true,
+        'material-icons': !!this.icon,
+        ...this.iconClasses
+      }
+    }
+  },
   mounted() {
     const adapter = {
       addClass: className => {
@@ -94,18 +118,6 @@ export default {
       : new MDCTopAppBarFoundation(adapter)
 
     this.foundation.init()
-  },
-  computed: {
-    haveNavigationIcon() {
-      return !!this.icon || this.iconClasses
-    },
-    naviconClasses() {
-      return {
-        'mdc-top-app-bar__navigation-icon': true,
-        'material-icons': !!this.icon,
-        ...this.iconClasses
-      }
-    }
   },
   beforeDestroy() {
     this.foundation.destroy()

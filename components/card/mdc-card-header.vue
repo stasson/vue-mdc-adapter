@@ -1,16 +1,18 @@
 <template>
   <section class="mdc-card-header mdc-card__primary">
     <slot>
-      <h1 class="mdc-card__title"
-        :class="{'mdc-card__title--large': largeTitle}"
+      <h1 
         v-if="title"
-        >
+        :class="{'mdc-card__title--large': largeTitle}"
+        class="mdc-card__title"
+      >
         {{ title }}
       </h1>
-      <h2 class="mdc-card__subtitle"
+      <h2 
         v-if="subtitle"
+        class="mdc-card__subtitle"
       >
-       {{ subtitle }} 
+        {{ subtitle }} 
       </h2>
     </slot>
   </section>
