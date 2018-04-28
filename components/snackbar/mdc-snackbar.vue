@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import MDCSnackbarFoundation from '@material/snackbar/foundation';
-import { getCorrectEventName } from '@material/animation';
+import MDCSnackbarFoundation from '@material/snackbar/foundation'
+import { getCorrectEventName } from '@material/animation'
 
 export default {
   name: 'mdc-snackbar',
   model: {
     prop: 'snack',
-    event: 'queued',
+    event: 'queued'
   },
   props: {
     'align-start': Boolean,
@@ -25,38 +25,38 @@ export default {
       type: Object,
       required: false,
       default() {
-        return this.$root;
-      },
+        return this.$root
+      }
     },
     'dismisses-on-action': {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   data() {
     return {
       classes: {
-        'mdc-snackbar--align-start': this.alignStart,
+        'mdc-snackbar--align-start': this.alignStart
       },
       message: '',
       actionText: '',
       hidden: false,
-      actionHidden: false,
-    };
+      actionHidden: false
+    }
   },
   watch: {
-    snack: 'onSnack',
+    snack: 'onSnack'
   },
   methods: {
     onSnack(snack) {
       if (snack && snack.message) {
-        this.foundation.show(snack);
-        this.$emit('queued', snack);
+        this.foundation.show(snack)
+        this.$emit('queued', snack)
       }
     },
     show(data) {
-      this.foundation.show(data);
-    },
+      this.foundation.show(data)
+    }
   },
   mounted() {
     this.foundation = new MDCSnackbarFoundation({
@@ -67,10 +67,10 @@ export default {
       setActionAriaHidden: () => (this.actionHidden = true),
       unsetActionAriaHidden: () => (this.actionHidden = false),
       setActionText: text => {
-        this.actionText = text;
+        this.actionText = text
       },
       setMessageText: text => {
-        this.message = text;
+        this.message = text
       },
       setFocus: () => this.$refs.button.focus(),
       visibilityIsHidden: () => document.hidden,
@@ -91,39 +91,39 @@ export default {
       deregisterActionClickHandler: handler =>
         this.$refs.button.removeEventListener('click', handler),
       registerTransitionEndHandler: handler => {
-        const root = this.$refs.root;
+        const root = this.$refs.root
         root &&
           root.addEventListener(
             getCorrectEventName(window, 'transitionend'),
-            handler,
-          );
+            handler
+          )
       },
       deregisterTransitionEndHandler: handler => {
-        const root = this.$refs.root;
+        const root = this.$refs.root
         root &&
           root.removeEventListener(
             getCorrectEventName(window, 'transitionend'),
-            handler,
-          );
+            handler
+          )
       },
       notifyShow: () => this.$emit('show'),
-      notifyHide: () => this.$emit('hide'),
-    });
-    this.foundation.init();
+      notifyHide: () => this.$emit('hide')
+    })
+    this.foundation.init()
 
     // if event specified use it, else if no snack prop then use default.
     this.eventName =
-      this.event || (this.snack === void 0 ? 'show-snackbar' : null);
+      this.event || (this.snack === void 0 ? 'show-snackbar' : null)
     if (this.eventName) {
-      this.eventSource.$on(this.eventName, this.show);
+      this.eventSource.$on(this.eventName, this.show)
     }
-    this.foundation.setDismissOnAction(this.dismissesOnAction);
+    this.foundation.setDismissOnAction(this.dismissesOnAction)
   },
   beforeDestroy() {
     if (this.eventSource) {
-      this.eventSource.$off(this.eventName, this.show);
+      this.eventSource.$off(this.eventName, this.show)
     }
-    this.foundation.destroy();
-  },
-};
+    this.foundation.destroy()
+  }
+}
 </script>

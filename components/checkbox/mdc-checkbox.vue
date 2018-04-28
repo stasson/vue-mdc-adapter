@@ -23,18 +23,18 @@
 
 <script>
 /* global HTMLElement */
-import MDCCheckboxFoundation from '@material/checkbox/foundation';
-import MDCFormFieldFoundation from '@material/form-field/foundation';
-import { getCorrectEventName } from '@material/animation';
-import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base';
-import { RippleBase } from '../ripple';
+import MDCCheckboxFoundation from '@material/checkbox/foundation'
+import MDCFormFieldFoundation from '@material/form-field/foundation'
+import { getCorrectEventName } from '@material/animation'
+import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-checkbox',
   mixins: [DispatchFocusMixin, VMAUniqueIdMixin],
   model: {
     prop: 'checked',
-    event: 'change',
+    event: 'change'
   },
   props: {
     checked: [Boolean, Array],
@@ -45,56 +45,56 @@ export default {
     value: {
       type: [String, Number],
       default() {
-        return 'on';
-      },
+        return 'on'
+      }
     },
-    name: String,
+    name: String
   },
   data() {
     return {
       styles: {},
-      classes: {},
-    };
+      classes: {}
+    }
   },
   computed: {
     hasLabel() {
-      return this.label || this.$slots.default;
+      return this.label || this.$slots.default
     },
     formFieldClasses() {
       return {
         'mdc-form-field': this.hasLabel,
-        'mdc-form-field--align-end': this.hasLabel && this.alignEnd,
-      };
-    },
+        'mdc-form-field--align-end': this.hasLabel && this.alignEnd
+      }
+    }
   },
   watch: {
     checked: 'setChecked',
     disabled(value) {
-      this.foundation.setDisabled(value);
+      this.foundation.setDisabled(value)
     },
     indeterminate(value) {
-      this.foundation.setIndeterminate(value);
-    },
+      this.foundation.setIndeterminate(value)
+    }
   },
   mounted() {
     this.foundation = new MDCCheckboxFoundation({
       addClass: className => this.$set(this.classes, className, true),
       removeClass: className => this.$delete(this.classes, className),
       setNativeControlAttr: (attr, value) => {
-        this.$refs.control.setAttribute(attr, value);
+        this.$refs.control.setAttribute(attr, value)
       },
       removeNativeControlAttr: attr => {
-        this.$refs.control.removeAttribute(attr);
+        this.$refs.control.removeAttribute(attr)
       },
       registerAnimationEndHandler: handler =>
         this.$refs.root.addEventListener(
           getCorrectEventName(window, 'animationend'),
-          handler,
+          handler
         ),
       deregisterAnimationEndHandler: handler =>
         this.$refs.root.removeEventListener(
           getCorrectEventName(window, 'animationend'),
-          handler,
+          handler
         ),
       registerChangeHandler: handler =>
         this.$refs.control.addEventListener('change', handler),
@@ -102,76 +102,76 @@ export default {
         this.$refs.control.removeEventListener('change', handler),
       getNativeControl: () => this.$refs.control,
       forceLayout: () => this.$refs.root.offsetWidth,
-      isAttachedToDOM: () => Boolean(this.$el.parentNode),
-    });
+      isAttachedToDOM: () => Boolean(this.$el.parentNode)
+    })
 
     this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => RippleBase.isSurfaceActive(this.$refs.control),
       registerInteractionHandler: (evt, handler) => {
-        this.$refs.control.addEventListener(evt, handler);
+        this.$refs.control.addEventListener(evt, handler)
       },
       deregisterInteractionHandler: (evt, handler) => {
-        this.$refs.control.addEventListener(evt, handler);
+        this.$refs.control.addEventListener(evt, handler)
       },
       computeBoundingRect: () => {
-        return this.$refs.root.getBoundingClientRect();
-      },
-    });
+        return this.$refs.root.getBoundingClientRect()
+      }
+    })
 
     this.formField = new MDCFormFieldFoundation({
       registerInteractionHandler: (type, handler) => {
-        this.$refs.label.addEventListener(type, handler);
+        this.$refs.label.addEventListener(type, handler)
       },
       deregisterInteractionHandler: (type, handler) => {
-        this.$refs.label.removeEventListener(type, handler);
+        this.$refs.label.removeEventListener(type, handler)
       },
       activateInputRipple: () => {
-        this.ripple && this.ripple.activate();
+        this.ripple && this.ripple.activate()
       },
       deactivateInputRipple: () => {
-        this.ripple && this.ripple.deactivate();
-      },
-    });
+        this.ripple && this.ripple.deactivate()
+      }
+    })
 
-    this.foundation.init();
-    this.ripple.init();
-    this.formField.init();
-    this.setChecked(this.checked);
-    this.foundation.setDisabled(this.disabled);
-    this.foundation.setIndeterminate(this.indeterminate);
+    this.foundation.init()
+    this.ripple.init()
+    this.formField.init()
+    this.setChecked(this.checked)
+    this.foundation.setDisabled(this.disabled)
+    this.foundation.setIndeterminate(this.indeterminate)
   },
   beforeDestroy() {
-    this.formField.destroy();
-    this.ripple.destroy();
-    this.foundation.destroy();
+    this.formField.destroy()
+    this.ripple.destroy()
+    this.foundation.destroy()
   },
   methods: {
     setChecked(checked) {
       this.foundation.setChecked(
-        Array.isArray(checked) ? checked.indexOf(this.value) > -1 : checked,
-      );
+        Array.isArray(checked) ? checked.indexOf(this.value) > -1 : checked
+      )
     },
 
     onChange() {
-      this.$emit('update:indeterminate', this.foundation.isIndeterminate());
-      const isChecked = this.foundation.isChecked();
+      this.$emit('update:indeterminate', this.foundation.isIndeterminate())
+      const isChecked = this.foundation.isChecked()
 
       if (Array.isArray(this.checked)) {
-        const idx = this.checked.indexOf(this.value);
+        const idx = this.checked.indexOf(this.value)
         if (isChecked) {
-          idx < 0 && this.$emit('change', this.checked.concat(this.value));
+          idx < 0 && this.$emit('change', this.checked.concat(this.value))
         } else {
           idx > -1 &&
             this.$emit(
               'change',
-              this.checked.slice(0, idx).concat(this.checked.slice(idx + 1)),
-            );
+              this.checked.slice(0, idx).concat(this.checked.slice(idx + 1))
+            )
         }
       } else {
-        this.$emit('change', isChecked);
+        this.$emit('change', isChecked)
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>

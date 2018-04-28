@@ -21,6 +21,6 @@
 
 <script>
 export default {
-  name: 'mdc-layout-app',
+  name: 'mdc-layout-app'
 }
 </script>

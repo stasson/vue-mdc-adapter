@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  name: 'mdc-menu-anchor',
+  name: 'mdc-menu-anchor'
 }
 </script>

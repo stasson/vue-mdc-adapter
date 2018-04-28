@@ -18,8 +18,8 @@
 
 <style>
 .linear-progress-demo {
-  flex:1;
-  min-width:150px;
-  max-width:450px;
+  flex: 1;
+  min-width: 150px;
+  max-width: 450px;
 }
 </style>

@@ -36,28 +36,28 @@ export default {
     return {
       type: '',
       dense: false,
-      disabled: false,
-    };
+      disabled: false
+    }
   },
   computed: {
     raised() {
       if (this.$refs.buttons) {
         this.$nextTick(() => {
-          [...this.$refs.buttons.children].forEach(({ __vue__ }) =>
-            __vue__.ripple.layout(),
-          );
-        });
+          ;[...this.$refs.buttons.children].forEach(({ __vue__ }) =>
+            __vue__.ripple.layout()
+          )
+        })
       }
-      return this.type == 'raised';
+      return this.type == 'raised'
     },
     unelevated() {
-      return this.type == 'unelevated';
+      return this.type == 'unelevated'
     },
     stroked() {
-      return this.type == 'stroked';
-    },
-  },
-};
+      return this.type == 'stroked'
+    }
+  }
+}
 </script>
 
 

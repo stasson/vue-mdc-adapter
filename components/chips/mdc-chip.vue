@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import MDCChipFoundation from '@material/chips/chip/foundation';
-import { CustomLinkMixin, emitCustomEvent } from '../base';
-import { RippleBase } from '../ripple';
+import MDCChipFoundation from '@material/chips/chip/foundation'
+import { CustomLinkMixin, emitCustomEvent } from '../base'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-chip',
@@ -30,21 +30,21 @@ export default {
     leadingIcon: [String],
     trailingIcon: [String],
     leadingIconClasses: [Object],
-    trailingIconClasses: [Object],
+    trailingIconClasses: [Object]
   },
   inject: ['mdcChipSet'],
   data() {
     return {
       classes: {
-        'mdc-chip': true,
+        'mdc-chip': true
       },
-      styles: {},
-    };
+      styles: {}
+    }
   },
   methods: {
     toggleSelected() {
-      this.foundation.toggleSelected();
-    },
+      this.foundation.toggleSelected()
+    }
   },
   mounted() {
     this.foundation = new MDCChipFoundation({
@@ -53,12 +53,12 @@ export default {
       hasClass: className => this.$el.classList.contains(className),
       addClassToLeadingIcon: className => {
         if (this.haveleadingIcon) {
-          this.$refs.leadingIcon.classList.add(className);
+          this.$refs.leadingIcon.classList.add(className)
         }
       },
       removeClassFromLeadingIcon: className => {
         if (this.haveleadingIcon) {
-          this.$refs.leadingIcon.classList.remove(className);
+          this.$refs.leadingIcon.classList.remove(className)
         }
       },
       eventTargetHasClass: (target, className) =>
@@ -72,72 +72,72 @@ export default {
           this.$el,
           MDCChipFoundation.strings.INTERACTION_EVENT,
           {
-            chip: this,
+            chip: this
           },
-          true,
-        );
+          true
+        )
       },
       notifyTrailingIconInteraction: () => {
-        this.$emit('trailingIconClick');
+        this.$emit('trailingIconClick')
         emitCustomEvent(
           this.$el,
           MDCChipFoundation.strings.TRAILING_ICON_INTERACTION_EVENT,
           {
-            chip: this,
+            chip: this
           },
-          true,
-        );
+          true
+        )
       },
 
       registerTrailingIconInteractionHandler: (evtType, handler) => {
         if (this.$refs.trailingIcon) {
-          this.$refs.trailingIcon.addEventListener(evtType, handler);
+          this.$refs.trailingIcon.addEventListener(evtType, handler)
         }
       },
       deregisterTrailingIconInteractionHandler: (evtType, handler) => {
         if (this.$refs.trailingIcon) {
-          this.$refs.trailingIcon.removeEventListener(evtType, handler);
+          this.$refs.trailingIcon.removeEventListener(evtType, handler)
         }
-      },
-    });
+      }
+    })
 
-    this.foundation.init();
+    this.foundation.init()
 
-    this.ripple = new RippleBase(this);
-    this.ripple.init();
+    this.ripple = new RippleBase(this)
+    this.ripple.init()
   },
   computed: {
     isFilter() {
-      return this.mdcChipSet && this.mdcChipSet.filter;
+      return this.mdcChipSet && this.mdcChipSet.filter
     },
     haveleadingIcon() {
-      return !!this.leadingIcon || this.leadingIconClasses;
+      return !!this.leadingIcon || this.leadingIconClasses
     },
     havetrailingIcon() {
-      return !!this.trailingIcon || this.trailingIconClasses;
+      return !!this.trailingIcon || this.trailingIconClasses
     },
     leadingClasses() {
       return Object.assign(
         {},
         {
-          'material-icons': !!this.leadingIcon,
+          'material-icons': !!this.leadingIcon
         },
-        this.leadingIconClasses,
-      );
+        this.leadingIconClasses
+      )
     },
     trailingClasses() {
       return Object.assign(
         {},
         {
-          'material-icons': !!this.trailingIcon,
+          'material-icons': !!this.trailingIcon
         },
-        this.trailingIconClasses,
-      );
-    },
+        this.trailingIconClasses
+      )
+    }
   },
   beforeDestroy() {
-    this.ripple.destroy();
-    this.foundation.destroy();
-  },
-};
+    this.ripple.destroy()
+    this.foundation.destroy()
+  }
+}
 </script>

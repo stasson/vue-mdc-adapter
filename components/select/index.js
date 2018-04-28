@@ -1,8 +1,8 @@
-import { BasePlugin } from '../base';
-import mdcSelect from './mdc-select.vue';
+import { BasePlugin } from '../base'
+import mdcSelect from './mdc-select.vue'
 
-export { mdcSelect };
+export { mdcSelect }
 
 export default BasePlugin({
-  mdcSelect,
-});
+  mdcSelect
+})

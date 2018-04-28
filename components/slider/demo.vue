@@ -8,13 +8,13 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        sliderValue: 5
-      }
+export default {
+  data() {
+    return {
+      sliderValue: 5
     }
   }
+}
 </script>
 
 <style>

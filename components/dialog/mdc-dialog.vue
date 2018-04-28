@@ -33,16 +33,16 @@
 </template>
 
 <script>
-import MDCDialogFoundation from '@material/dialog/foundation';
-import { createFocusTrapInstance } from '@material/dialog/util';
-import { mdcButton } from '../button';
-import { VMAUniqueIdMixin } from '../base';
+import MDCDialogFoundation from '@material/dialog/foundation'
+import { createFocusTrapInstance } from '@material/dialog/util'
+import { mdcButton } from '../button'
+import { VMAUniqueIdMixin } from '../base'
 
 export default {
   name: 'mdc-dialog',
   model: {
     prop: 'open',
-    event: 'change',
+    event: 'change'
   },
   props: {
     title: { type: String, required: true },
@@ -51,29 +51,29 @@ export default {
     cancel: { type: String, default: 'Cancel' },
     accent: Boolean,
     scrollable: Boolean,
-    open: Boolean,
+    open: Boolean
   },
   components: {
-    mdcButton: mdcButton,
+    mdcButton: mdcButton
   },
   mixins: [VMAUniqueIdMixin],
   data() {
     return {
       classes: {
-        'mdc-theme--dark': this.dark,
+        'mdc-theme--dark': this.dark
       },
       styles: {},
       surfaceClasses: {},
       bodyClasses: {
-        'mdc-dialog__body--scrollable': this.scrollable,
-      },
-    };
+        'mdc-dialog__body--scrollable': this.scrollable
+      }
+    }
   },
   mounted() {
     this.focusTrap = createFocusTrapInstance(
       this.$refs.surface,
-      this.$refs.accept,
-    );
+      this.$refs.accept
+    )
 
     this.foundation = new MDCDialogFoundation({
       addClass: className => this.$set(this.classes, className, true),
@@ -103,38 +103,38 @@ export default {
       deregisterTransitionEndHandler: handler =>
         this.$refs.surface.removeEventListener('transitionend', handler),
       notifyAccept: () => {
-        this.$emit('change', false);
-        this.$emit('accept');
+        this.$emit('change', false)
+        this.$emit('accept')
       },
       notifyCancel: () => {
-        this.$emit('change', false);
-        this.$emit('cancel');
+        this.$emit('change', false)
+        this.$emit('cancel')
       },
       trapFocusOnSurface: () => this.focusTrap.activate(),
       untrapFocusOnSurface: () => this.focusTrap.deactivate(),
       isDialog: el => this.$refs.surface === el,
       layoutFooterRipples: () => {
-        this.$refs.accept.ripple.layout();
-        this.cancel && this.$refs.cancel.ripple.layout();
-      },
-    });
+        this.$refs.accept.ripple.layout()
+        this.cancel && this.$refs.cancel.ripple.layout()
+      }
+    })
 
-    this.foundation.init();
+    this.foundation.init()
   },
   beforeDestroy() {
-    this.foundation.destroy();
+    this.foundation.destroy()
   },
   watch: { open: 'onOpen_' },
   methods: {
     onOpen_(value) {
       if (value) {
-        this.foundation.open();
+        this.foundation.open()
       } else {
-        this.foundation.close();
+        this.foundation.close()
       }
     },
     onCancel() {
-      this.foundation.cancel(true);
+      this.foundation.cancel(true)
     },
     onAccept() {
       if (this.$listeners['validate']) {
@@ -145,21 +145,21 @@ export default {
             // so we need to notify listeners the open state
             // is changing.
             if (!notify) {
-              this.$emit('change', false);
+              this.$emit('change', false)
             }
-            this.foundation.accept(notify);
-          },
-        });
+            this.foundation.accept(notify)
+          }
+        })
       } else {
-        this.foundation.accept(true);
+        this.foundation.accept(true)
       }
     },
     show() {
-      this.foundation.open();
+      this.foundation.open()
     },
     close() {
-      this.foundation.close();
-    },
-  },
-};
+      this.foundation.close()
+    }
+  }
+}
 </script>

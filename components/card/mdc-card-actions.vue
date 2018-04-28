@@ -7,18 +7,17 @@
 </template>
 
 <script>
-
 export default {
   name: 'mdc-card-actions',
   props: {
     fullBleed: Boolean
   },
   computed: {
-    classes () {
+    classes() {
       return {
-          'mdc-card__actions--full-bleed': this.fullBleed,
+        'mdc-card__actions--full-bleed': this.fullBleed
       }
     }
-  },
+  }
 }
 </script>

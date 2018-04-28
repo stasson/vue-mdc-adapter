@@ -1,9 +1,7 @@
-import {BasePlugin} from '../base'
+import { BasePlugin } from '../base'
 import mdcTheme from './mdc-theme.vue'
 
-export {
-  mdcTheme
-}
+export { mdcTheme }
 
 export default BasePlugin({
   mdcTheme

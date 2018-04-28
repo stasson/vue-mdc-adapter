@@ -1,84 +1,80 @@
 /* eslint-disable */
 
-(function() {
-  var MutationObserver;
+;(function() {
+  var MutationObserver
 
   if (window.MutationObserver != null) {
-    return;
+    return
   }
 
   MutationObserver = (function() {
     function MutationObserver(callBack) {
-      this.callBack = callBack;
+      this.callBack = callBack
     }
 
     MutationObserver.prototype.observe = function(element, options) {
-      this.element = element;
-      return this.interval = setInterval((function(_this) {
-        return function() {
-          var html;
-          html = _this.element.innerHTML;
-          if (html !== _this.oldHtml) {
-            _this.oldHtml = html;
-            return _this.callBack.apply(null);
+      this.element = element
+      return (this.interval = setInterval(
+        (function(_this) {
+          return function() {
+            var html
+            html = _this.element.innerHTML
+            if (html !== _this.oldHtml) {
+              _this.oldHtml = html
+              return _this.callBack.apply(null)
+            }
           }
-        };
-      })(this), 200);
-    };
+        })(this),
+        200
+      ))
+    }
 
     MutationObserver.prototype.disconnect = function() {
-      return window.clearInterval(this.interval);
-    };
+      return window.clearInterval(this.interval)
+    }
 
-    return MutationObserver;
+    return MutationObserver
+  })()
 
-  })();
+  window.MutationObserver = MutationObserver
+}.call(this))
 
-  window.MutationObserver = MutationObserver;
-
-}).call(this);
-
-(function() {
+;(function() {
   if (window.matchMedia) {
-    return;
+    return
   }
 
-  window.matchMedia = (mediaQueryString) => {
+  window.matchMedia = mediaQueryString => {
     const mql = {
       matches: false,
       media: mediaQueryString,
-      addListener: (f) => {},
-      removeListener: (f) => {},
+      addListener: f => {},
+      removeListener: f => {}
     }
     return mql
   }
+}.call(this))
 
-
-}).call(this);
-
-(function() {
+;(function() {
   if (window.requestAnimationFrame) {
-    return;
+    return
   }
 
   window.requestAnimationFrame = () => {}
+}.call(this))
 
-}).call(this);
-
-(function() {
+;(function() {
   if (window.cancelAnimationFrame) {
-    return;
+    return
   }
 
   window.cancelAnimationFrame = () => {}
+}.call(this))
 
-}).call(this);
-
-
-(function() {
+;(function() {
   // global HTMLInputElement
   HTMLInputElement.prototype.validity = {
     badInput: false,
-    valid: true,
+    valid: true
   }
-}).call(this);
+}.call(this))

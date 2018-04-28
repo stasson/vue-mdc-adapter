@@ -5,42 +5,42 @@
 </template>
 
 <script>
-import MDCChipSetFoundation from '@material/chips/chip-set/foundation';
+import MDCChipSetFoundation from '@material/chips/chip-set/foundation'
 
 export default {
   name: 'mdc-chip-set',
   props: {
     choice: [Boolean],
-    filter: [Boolean],
+    filter: [Boolean]
   },
   provide() {
-    return { mdcChipSet: this };
+    return { mdcChipSet: this }
   },
   data() {
     return {
       classes: {
         'mdc-chip-set': true,
         'mdc-chip-set--choice': this.choice,
-        'mdc-chip-set--filter': this.filter,
-      },
-    };
+        'mdc-chip-set--filter': this.filter
+      }
+    }
   },
   methods: {},
   mounted() {
     this.foundation = new MDCChipSetFoundation({
       hasClass: className => this.$el.classList.contains(className),
       registerInteractionHandler: (evtType, handler) => {
-        this.$el.addEventListener(evtType, handler);
+        this.$el.addEventListener(evtType, handler)
       },
       deregisterInteractionHandler: (evtType, handler) => {
-        this.$el.removeEventListener(evtType, handler);
-      },
-    });
+        this.$el.removeEventListener(evtType, handler)
+      }
+    })
 
-    this.foundation.init();
+    this.foundation.init()
   },
   beforeDestroy() {
-    this.foundation.destroy();
-  },
-};
+    this.foundation.destroy()
+  }
+}
 </script>

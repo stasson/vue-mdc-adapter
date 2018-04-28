@@ -14,17 +14,17 @@
 </template>
 
 <script>
-import MDCRadioFoundation from '@material/radio/foundation';
-import MDCFormFieldFoundation from '@material/form-field/foundation';
-import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base';
-import { RippleBase } from '../ripple';
+import MDCRadioFoundation from '@material/radio/foundation'
+import MDCFormFieldFoundation from '@material/form-field/foundation'
+import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-radio',
   mixins: [DispatchFocusMixin, VMAUniqueIdMixin],
   model: {
     prop: 'picked',
-    event: 'change',
+    event: 'change'
   },
   props: {
     name: { type: String, required: true },
@@ -33,7 +33,7 @@ export default {
     checked: Boolean,
     label: String,
     'align-end': Boolean,
-    disabled: Boolean,
+    disabled: Boolean
   },
   data() {
     return {
@@ -41,78 +41,78 @@ export default {
       styles: {},
       formFieldClasses: {
         'mdc-form-field': this.label,
-        'mdc-form-field--align-end': this.label && this.alignEnd,
-      },
-    };
+        'mdc-form-field--align-end': this.label && this.alignEnd
+      }
+    }
   },
   mounted() {
     // add foundation
     this.foundation = new MDCRadioFoundation({
       addClass: className => this.$set(this.classes, className, true),
       removeClass: className => this.$delete(this.classes, className),
-      getNativeControl: () => this.$refs.control,
-    });
+      getNativeControl: () => this.$refs.control
+    })
 
     // add ripple
     this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
       isSurfaceActive: () => false,
       registerInteractionHandler: (evt, handler) => {
-        this.$refs.control.addEventListener(evt, handler);
+        this.$refs.control.addEventListener(evt, handler)
       },
       deregisterInteractionHandler: (evt, handler) => {
-        this.$refs.control.removeEventListener(evt, handler);
+        this.$refs.control.removeEventListener(evt, handler)
       },
       computeBoundingRect: () => {
-        return this.$refs.root.getBoundingClientRect();
-      },
-    });
+        return this.$refs.root.getBoundingClientRect()
+      }
+    })
 
     this.formField = new MDCFormFieldFoundation({
       registerInteractionHandler: (type, handler) => {
-        this.$refs.label.addEventListener(type, handler);
+        this.$refs.label.addEventListener(type, handler)
       },
       deregisterInteractionHandler: (type, handler) => {
-        this.$refs.label.removeEventListener(type, handler);
+        this.$refs.label.removeEventListener(type, handler)
       },
       activateInputRipple: () => {
-        this.ripple && this.ripple.activate();
+        this.ripple && this.ripple.activate()
       },
       deactivateInputRipple: () => {
-        this.ripple && this.ripple.deactivate();
-      },
-    });
+        this.ripple && this.ripple.deactivate()
+      }
+    })
 
-    this.foundation.init();
-    this.ripple.init();
-    this.formField.init();
+    this.foundation.init()
+    this.ripple.init()
+    this.formField.init()
 
-    this.foundation.setValue(this.value ? this.value : this.label);
-    this.foundation.setDisabled(this.disabled);
+    this.foundation.setValue(this.value ? this.value : this.label)
+    this.foundation.setDisabled(this.disabled)
     this.foundation.setChecked(
-      this.checked || this.picked == this.foundation.getValue(),
-    );
+      this.checked || this.picked == this.foundation.getValue()
+    )
 
     // refresh model
-    this.checked && this.sync();
+    this.checked && this.sync()
   },
   beforeDestroy() {
-    this.formField.destroy();
-    this.ripple.destroy();
-    this.foundation.destroy();
+    this.formField.destroy()
+    this.ripple.destroy()
+    this.foundation.destroy()
   },
   watch: {
     disabled(value) {
-      this.foundation.setDisabled(value);
-    },
+      this.foundation.setDisabled(value)
+    }
   },
   methods: {
     isChecked() {
-      return this.foundation.isChecked();
+      return this.foundation.isChecked()
     },
     sync() {
-      this.$emit('change', this.foundation.getValue());
-    },
-  },
-};
+      this.$emit('change', this.foundation.getValue())
+    }
+  }
+}
 </script>

@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'mdc-layout-inner-grid',
+  name: 'mdc-layout-inner-grid'
 }
 </script>

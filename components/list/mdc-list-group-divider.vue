@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'mdc-list-group-divider',
+  name: 'mdc-list-group-divider'
 }
 </script>

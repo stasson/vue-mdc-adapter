@@ -10,21 +10,21 @@
 
 <script>
 export default {
-  name: "mdc-card-media",
+  name: 'mdc-card-media',
   props: {
     src: String,
-    'square': Boolean
+    square: Boolean
   },
   computed: {
     styles() {
       var styles = {
         backgroundImage: `url(${this.src})`
-      };
+      }
 
-      return styles;
-    }, 
+      return styles
+    },
     classes() {
-      return this.square ? 'mdc-card__media--square': 'mdc-card__media--16-9'
+      return this.square ? 'mdc-card__media--square' : 'mdc-card__media--16-9'
     }
   }
 }

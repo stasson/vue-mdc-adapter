@@ -5,7 +5,6 @@
 <script>
 export default {
   name: 'mdc-elevation',
-  props: {
-  }
+  props: {}
 }
 </script>

@@ -17,7 +17,7 @@ import MDCLinearProgressFoundation from '@material/linear-progress/foundation'
 
 const ProgressPropType = {
   type: [Number, String],
-  validator (value) {
+  validator(value) {
     return Number(value) >= 0 && Number(value) <= 1
   }
 }
@@ -25,43 +25,43 @@ const ProgressPropType = {
 export default {
   name: 'mdc-linear-progress',
   props: {
-    'open': { type: Boolean, default: true },
-    'indeterminate': Boolean,
-    'reverse': Boolean,
-    'accent': Boolean,
-    'progress': ProgressPropType,
-    'buffer': ProgressPropType
+    open: { type: Boolean, default: true },
+    indeterminate: Boolean,
+    reverse: Boolean,
+    accent: Boolean,
+    progress: ProgressPropType,
+    buffer: ProgressPropType
   },
-  data () {
+  data() {
     return {
-      classes: {'mdc-linear-progress--accent': this.accent},
+      classes: { 'mdc-linear-progress--accent': this.accent },
       styles: {}
     }
   },
   watch: {
-    open () {
+    open() {
       if (this.open) {
         this.foundation.open()
       } else {
         this.foundation.close()
       }
     },
-    progress () {
+    progress() {
       this.foundation.setProgress(Number(this.progress))
     },
-    buffer () {
+    buffer() {
       this.foundation.setBuffer(Number(this.buffer))
     },
-    indeterminate () {
+    indeterminate() {
       this.foundation.setDeterminate(!this.indeterminate)
     },
-    reverse () {
+    reverse() {
       this.foundation.setReverse(this.reverse)
     }
   },
-  mounted () {
+  mounted() {
     this.foundation = new MDCLinearProgressFoundation({
-      addClass: (className) => {
+      addClass: className => {
         this.$set(this.classes, className, true)
       },
       getPrimaryBar: () => /* el: Element */ {
@@ -70,10 +70,10 @@ export default {
       getBuffer: () => /* el: Element */ {
         return this.$refs.buffer
       },
-      hasClass: (className) => {
+      hasClass: className => {
         this.$el.classList.contains(className)
       },
-      removeClass: (className) => {
+      removeClass: className => {
         this.$delete(this.classes, className)
       },
       setStyle: (el, styleProperty, value) => {
@@ -92,7 +92,7 @@ export default {
       this.foundation.close()
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.foundation.destroy()
   }
 }

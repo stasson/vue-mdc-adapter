@@ -17,15 +17,15 @@ import { capitalize } from './utils'
 export default {
   components: {
     'getting-started': () => import('../docs/getting-started.md'),
-    'theming': () => import('../docs/theming.md'),
+    theming: () => import('../docs/theming.md')
   },
   computed: {
-    title () {
-      return  capitalize(this.$route.params.id).split(' ')
+    title() {
+      return capitalize(this.$route.params.id).split(' ')
     }
   },
-  beforeRouteUpdate (to, from, next) {
-    this.$nextTick(() => scrollTo(0,0))
+  beforeRouteUpdate(to, from, next) {
+    this.$nextTick(() => scrollTo(0, 0))
     next()
   }
 }

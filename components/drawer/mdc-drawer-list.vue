@@ -8,14 +8,14 @@
 export default {
   name: 'mdc-drawer-list',
   props: {
-    dense: Boolean,
+    dense: Boolean
   },
   data() {
     return {
       classes: {
-        'mdc-list--dense': this.dense,
-      },
-    };
-  },
-};
+        'mdc-list--dense': this.dense
+      }
+    }
+  }
+}
 </script>

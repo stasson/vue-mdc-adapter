@@ -17,11 +17,10 @@
 
 
 <script>
-
 import githubLogo from './assets/github-logo.svg'
 
 export default {
-  data () {
+  data() {
     return {
       githubLogo
     }
@@ -36,7 +35,6 @@ export default {
 }
 .vue-avatar img {
   border-radius: 32px;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
 }
 </style>
-

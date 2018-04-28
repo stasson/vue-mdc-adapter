@@ -1,4 +1,4 @@
-import {BasePlugin} from '../base'
+import { BasePlugin } from '../base'
 import mdcCard from './mdc-card.vue'
 import mdcCardPrimaryAction from './mdc-card-primary-action.vue'
 import mdcCardMedia from './mdc-card-media.vue'
@@ -14,7 +14,7 @@ import mdcCardActionIcon from './mdc-card-action-icon.vue'
 
 export {
   mdcCard,
-  mdcCardPrimaryAction, 
+  mdcCardPrimaryAction,
   mdcCardMedia,
   mdcCardHeader,
   mdcCardTitle,
@@ -24,11 +24,11 @@ export {
   mdcCardActionButtons,
   mdcCardActionButton,
   mdcCardActionIcons,
-  mdcCardActionIcon 
+  mdcCardActionIcon
 }
 
 export default BasePlugin({
-  mdcCard, 
+  mdcCard,
   mdcCardPrimaryAction,
   mdcCardMedia,
   mdcCardHeader,

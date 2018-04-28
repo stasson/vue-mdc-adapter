@@ -22,7 +22,7 @@
 import card from 'demo/assets/card-16-9.jpg'
 
 export default {
-  data () {
+  data() {
     return {
       card
     }

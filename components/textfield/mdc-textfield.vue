@@ -66,27 +66,27 @@
 </template>
 
 <script>
-import MDCTextfieldFoundation from '@material/textfield/foundation';
-import MDCLineRippleFoundation from '@material/line-ripple/foundation';
-import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation';
-import MDCTextFieldIconFoundation from '@material/textfield/icon/foundation';
-import MDCFloatingLabelFoundation from '@material/floating-label/foundation';
-import MDCNotchedOutlineFoundation from '@material/notched-outline/foundation';
+import MDCTextfieldFoundation from '@material/textfield/foundation'
+import MDCLineRippleFoundation from '@material/line-ripple/foundation'
+import MDCTextFieldHelperTextFoundation from '@material/textfield/helper-text/foundation'
+import MDCTextFieldIconFoundation from '@material/textfield/icon/foundation'
+import MDCFloatingLabelFoundation from '@material/floating-label/foundation'
+import MDCNotchedOutlineFoundation from '@material/notched-outline/foundation'
 
 import {
   extractIconProp,
   DispatchFocusMixin,
   CustomElementMixin,
-  VMAUniqueIdMixin,
-} from '../base';
-import { RippleBase } from '../ripple';
+  VMAUniqueIdMixin
+} from '../base'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-textfield',
   mixins: [CustomElementMixin, DispatchFocusMixin, VMAUniqueIdMixin],
   model: {
     prop: 'value',
-    event: 'model',
+    event: 'model'
   },
   inheritAttrs: false,
   props: {
@@ -103,10 +103,10 @@ export default {
             'password',
             'tel',
             'url',
-            'number',
+            'number'
           ].indexOf(value) !== -1
-        );
-      },
+        )
+      }
     },
     dense: Boolean,
     label: String,
@@ -127,7 +127,7 @@ export default {
     maxlength: { type: [Number, String], default: undefined },
     rows: { type: [Number, String], default: 8 },
     cols: { type: [Number, String], default: 40 },
-    id: { type: String },
+    id: { type: String }
   },
   data: function() {
     return {
@@ -141,193 +141,193 @@ export default {
         'mdc-text-field--fullwidth': this.fullwidth,
         'mdc-text-field--textarea': this.multiline,
         'mdc-text-field--box': !this.fullwidth && this.box,
-        'mdc-text-field--outlined': !this.fullwidth && this.outline,
+        'mdc-text-field--outlined': !this.fullwidth && this.outline
       },
       inputClasses: {
-        'mdc-text-field__input': true,
+        'mdc-text-field__input': true
       },
       labelClasses: {
-        'mdc-floating-label': true,
+        'mdc-floating-label': true
       },
       bottomClasses: {
-        'mdc-line-ripple': true,
+        'mdc-line-ripple': true
       },
       bottomStyles: {},
       helpClasses: {
         'mdc-text-field-helper-text': true,
         'mdc-text-field-helper-text--persistent': this.helptextPersistent,
-        'mdc-text-field-helper-text--validation-msg': this.helptextValidation,
+        'mdc-text-field-helper-text--validation-msg': this.helptextValidation
       },
       outlineClasses: {},
-      outlinePathAttr: undefined,
-    };
+      outlinePathAttr: undefined
+    }
   },
   watch: {
     disabled() {
-      this.foundation && this.foundation.setDisabled(this.disabled);
+      this.foundation && this.foundation.setDisabled(this.disabled)
     },
     required() {
-      this.$refs.input && (this.$refs.input.required = this.required);
+      this.$refs.input && (this.$refs.input.required = this.required)
     },
     valid() {
       if (typeof this.valid !== 'undefined') {
-        this.foundation && this.foundation.setValid(this.valid);
+        this.foundation && this.foundation.setValid(this.valid)
       }
     },
     dense() {
-      this.$set(this.rootClasses, 'mdc-text-field--dense', this.dense);
+      this.$set(this.rootClasses, 'mdc-text-field--dense', this.dense)
     },
     helptextPersistent() {
       this.helperTextFoundation &&
-        this.helperTextFoundation.setPersistent(this.helptextPersistent);
+        this.helperTextFoundation.setPersistent(this.helptextPersistent)
     },
     helptextValidation() {
       this.helperTextFoundation &&
-        this.helperTextFoundation.setValidation(this.helptextValidation);
+        this.helperTextFoundation.setValidation(this.helptextValidation)
     },
     value(value) {
       if (this.foundation) {
         if (value !== this.foundation.getValue()) {
-          this.foundation.setValue(value);
+          this.foundation.setValue(value)
         }
       }
-    },
+    }
   },
   methods: {
     updateValue(value) {
-      this.$emit('model', value);
+      this.$emit('model', value)
     },
     focus() {
-      this.$refs.input && this.$refs.input.focus();
+      this.$refs.input && this.$refs.input.focus()
     },
     blur() {
-      this.$refs.input && this.$refs.input.blur();
-    },
+      this.$refs.input && this.$refs.input.blur()
+    }
   },
   computed: {
     inputPlaceHolder() {
-      return this.fullwidth ? this.label : undefined;
+      return this.fullwidth ? this.label : undefined
     },
     inputAriaControls() {
-      return this.help ? 'help-' + this.vma_uid_ : undefined;
+      return this.help ? 'help-' + this.vma_uid_ : undefined
     },
     hasLabel() {
-      return !this.fullwidth && this.label;
+      return !this.fullwidth && this.label
     },
     hasOutline() {
-      return !this.fullwidth && this.outline;
+      return !this.fullwidth && this.outline
     },
     hasBottomLine() {
-      return !this.hasOutline && !this.multiline;
+      return !this.hasOutline && !this.multiline
     },
     hasLeadingIcon() {
       if (
         (this.leadingIcon || this.$slots['leading-icon']) &&
         !(this.trailingIcon || this.$slots['trailing-icon'])
       ) {
-        return this.leadingIcon ? extractIconProp(this.leadingIcon) : {};
+        return this.leadingIcon ? extractIconProp(this.leadingIcon) : {}
       }
-      return false;
+      return false
     },
     hasTrailingIcon() {
       if (this.trailingIcon || this.$slots['trailing-icon']) {
-        return this.trailingIcon ? extractIconProp(this.trailingIcon) : {};
+        return this.trailingIcon ? extractIconProp(this.trailingIcon) : {}
       }
-      return false;
+      return false
     },
     labelClassesUpgraded() {
       return Object.assign(this.labelClasses, {
-        'mdc-floating-label--float-above': this.value,
-      });
-    },
+        'mdc-floating-label--float-above': this.value
+      })
+    }
   },
   mounted() {
     if (this.$refs.bottom) {
       this.bottomLineFoundation = new MDCLineRippleFoundation({
         addClass: className => {
-          this.$set(this.bottomClasses, className, true);
+          this.$set(this.bottomClasses, className, true)
         },
         removeClass: className => {
-          this.$delete(this.bottomClasses, className);
+          this.$delete(this.bottomClasses, className)
         },
         hasClass: className => {
-          this.$refs.bottom.classList.contains(className);
+          this.$refs.bottom.classList.contains(className)
         },
         setStyle: (name, value) => {
-          this.$set(this.styles, name, value);
+          this.$set(this.styles, name, value)
         },
         registerEventHandler: (evtType, handler) => {
-          this.$refs.bottom.addEventListener(evtType, handler);
+          this.$refs.bottom.addEventListener(evtType, handler)
         },
         deregisterEventHandler: (evtType, handler) => {
-          this.$refs.bottom.removeEventListener(evtType, handler);
-        },
-      });
-      this.bottomLineFoundation.init();
+          this.$refs.bottom.removeEventListener(evtType, handler)
+        }
+      })
+      this.bottomLineFoundation.init()
     }
 
     if (this.$refs.help) {
       this.helperTextFoundation = new MDCTextFieldHelperTextFoundation({
         addClass: className => {
-          this.$set(this.helpClasses, className, true);
+          this.$set(this.helpClasses, className, true)
         },
         removeClass: className => {
-          this.$delete(this.helpClasses, className);
+          this.$delete(this.helpClasses, className)
         },
         hasClass: className => {
-          return this.$refs.help.classList.contains(className);
+          return this.$refs.help.classList.contains(className)
         },
         setAttr: (name, value) => {
-          this.$refs.help.setAttribute(name, value);
+          this.$refs.help.setAttribute(name, value)
         },
         removeAttr: name => {
-          this.$refs.help.removeAttribute(name);
+          this.$refs.help.removeAttribute(name)
         },
         setContent: (/*content*/) => {
           // help text get's updated from {{helptext}}
           // this.$refs.help.textContent = content;
-        },
-      });
-      this.helperTextFoundation.init();
+        }
+      })
+      this.helperTextFoundation.init()
     }
 
     if (this.$refs.icon) {
       if (this.hasLeadingIcon) {
-        this.$set(this.rootClasses, 'mdc-text-field--with-leading-icon', true);
+        this.$set(this.rootClasses, 'mdc-text-field--with-leading-icon', true)
       } else if (this.hasTrailingIcon) {
-        this.$set(this.rootClasses, 'mdc-text-field--with-trailing-icon', true);
+        this.$set(this.rootClasses, 'mdc-text-field--with-trailing-icon', true)
       }
 
       this.iconFoundation = new MDCTextFieldIconFoundation({
         setAttr: (attr, value) => this.$refs.icon.setAttribute(attr, value),
         registerInteractionHandler: (evtType, handler) => {
-          this.$refs.icon.addEventListener(evtType, handler);
+          this.$refs.icon.addEventListener(evtType, handler)
         },
         deregisterInteractionHandler: (evtType, handler) => {
-          this.$refs.icon.removeEventListener(evtType, handler);
+          this.$refs.icon.removeEventListener(evtType, handler)
         },
-        notifyIconAction: () => this.$emit('icon-action'),
-      });
-      this.iconFoundation.init();
+        notifyIconAction: () => this.$emit('icon-action')
+      })
+      this.iconFoundation.init()
     }
 
     if (this.$refs.label) {
       this.labelFoundation = new MDCFloatingLabelFoundation({
         addClass: className => {
-          this.$set(this.labelClasses, className, true);
+          this.$set(this.labelClasses, className, true)
         },
         removeClass: className => {
-          this.$delete(this.labelClasses, className);
+          this.$delete(this.labelClasses, className)
         },
         getWidth: () => this.$refs.label.offsetWidth,
         registerInteractionHandler: (evtType, handler) => {
-          this.$refs.label.addEventListener(evtType, handler);
+          this.$refs.label.addEventListener(evtType, handler)
         },
         deregisterInteractionHandler: (evtType, handler) => {
-          this.$refs.label.removeEventListener(evtType, handler);
-        },
-      });
-      this.labelFoundation.init();
+          this.$refs.label.removeEventListener(evtType, handler)
+        }
+      })
+      this.labelFoundation.init()
     }
 
     if (this.$refs.outline) {
@@ -335,45 +335,45 @@ export default {
         getWidth: () => this.$refs.outline.offsetWidth,
         getHeight: () => this.$refs.outline.offsetHeight,
         addClass: className => {
-          this.$set(this.outlineClasses, className, true);
+          this.$set(this.outlineClasses, className, true)
         },
         removeClass: className => {
-          this.$delete(this.outlineClasses, className);
+          this.$delete(this.outlineClasses, className)
         },
         setOutlinePathAttr: value => {
-          this.outlinePathAttr = value;
+          this.outlinePathAttr = value
         },
         getIdleOutlineStyleValue: propertyName => {
-          const idleOutlineElement = this.$refs.outlineIdle;
+          const idleOutlineElement = this.$refs.outlineIdle
           if (idleOutlineElement) {
             return window
               .getComputedStyle(idleOutlineElement)
-              .getPropertyValue(propertyName);
+              .getPropertyValue(propertyName)
           }
-        },
-      });
-      this.outlineFoundation.init();
+        }
+      })
+      this.outlineFoundation.init()
     }
 
     this.foundation = new MDCTextfieldFoundation(
       {
         addClass: className => {
-          this.$set(this.rootClasses, className, true);
+          this.$set(this.rootClasses, className, true)
         },
         removeClass: className => {
-          this.$delete(this.rootClasses, className);
+          this.$delete(this.rootClasses, className)
         },
         hasClass: className => {
-          this.$refs.root.classList.contains(className);
+          this.$refs.root.classList.contains(className)
         },
         registerTextFieldInteractionHandler: (evtType, handler) => {
-          this.$refs.root.addEventListener(evtType, handler);
+          this.$refs.root.addEventListener(evtType, handler)
         },
         deregisterTextFieldInteractionHandler: (evtType, handler) => {
-          this.$refs.root.removeEventListener(evtType, handler);
+          this.$refs.root.removeEventListener(evtType, handler)
         },
         isFocused: () => {
-          return document.activeElement === this.$refs.input;
+          return document.activeElement === this.$refs.input
         },
         isRtl: () =>
           window
@@ -381,85 +381,85 @@ export default {
             .getPropertyValue('direction') === 'rtl',
         deactivateLineRipple: () => {
           if (this.bottom) {
-            this.bottom.deactivate();
+            this.bottom.deactivate()
           }
         },
         activateLineRipple: () => {
           if (this.bottom) {
-            this.bottom.activate();
+            this.bottom.activate()
           }
         },
         setLineRippleTransformOrigin: normalizedX => {
           if (this.bottom) {
-            this.bottom.setRippleCenter(normalizedX);
+            this.bottom.setRippleCenter(normalizedX)
           }
         },
         registerInputInteractionHandler: (evtType, handler) => {
-          this.$refs.input.addEventListener(evtType, handler);
+          this.$refs.input.addEventListener(evtType, handler)
         },
         deregisterInputInteractionHandler: (evtType, handler) => {
-          this.$refs.input.removeEventListener(evtType, handler);
+          this.$refs.input.removeEventListener(evtType, handler)
         },
         registerValidationAttributeChangeHandler: handler => {
-          const observer = new MutationObserver(handler);
-          const targetNode = this.$refs.input;
-          const config = { attributes: true };
-          observer.observe(targetNode, config);
-          return observer;
+          const observer = new MutationObserver(handler)
+          const targetNode = this.$refs.input
+          const config = { attributes: true }
+          observer.observe(targetNode, config)
+          return observer
         },
         deregisterValidationAttributeChangeHandler: observer => {
-          observer.disconnect();
+          observer.disconnect()
         },
         shakeLabel: shouldShake => {
-          this.labelFoundation.shake(shouldShake);
+          this.labelFoundation.shake(shouldShake)
         },
         floatLabel: shouldFloat => {
-          this.labelFoundation.float(shouldFloat);
+          this.labelFoundation.float(shouldFloat)
         },
         hasLabel: () => {
-          return !!this.$refs.label;
+          return !!this.$refs.label
         },
         getLabelWidth: () => {
-          return this.labelFoundation.getWidth();
+          return this.labelFoundation.getWidth()
         },
         getNativeInput: () => {
-          return this.$refs.input;
+          return this.$refs.input
         },
         hasOutline: () => !!this.hasOutline,
         notchOutline: (notchWidth, isRtl) =>
           this.outlineFoundation.notch(notchWidth, isRtl),
-        closeOutline: () => this.outlineFoundation.closeNotch(),
+        closeOutline: () => this.outlineFoundation.closeNotch()
       },
       {
         bottomLine: this.bottomLineFoundation,
         helperText: this.helperTextFoundation,
         icon: this.iconFoundation,
         label: this.labelFoundation,
-        outline: this.outlineFoundation,
-      },
-    );
+        outline: this.outlineFoundation
+      }
+    )
 
-    this.foundation.init();
-    this.foundation.setValue(this.value);
-    this.foundation.setDisabled(this.disabled);
-    this.$refs.input && (this.$refs.input.required = this.required);
+    this.foundation.init()
+    this.foundation.setValue(this.value)
+    this.foundation.setDisabled(this.disabled)
+    this.$refs.input && (this.$refs.input.required = this.required)
     if (typeof this.valid !== 'undefined') {
-      this.foundation.setValid(this.valid);
+      this.foundation.setValid(this.valid)
     }
 
     if (this.textbox) {
-      this.ripple = new RippleBase(this);
-      this.ripple.init();
+      this.ripple = new RippleBase(this)
+      this.ripple.init()
     }
   },
   beforeDestroy() {
-    this.foundation && this.foundation.destroy();
-    this.bottomLineFoundation && this.bottomLineFoundation.destroy();
-    this.helperTextFoundation && this.helperTextFoundation.destroy();
-    this.iconFoundation && this.iconFoundation.destroy();
-    this.labelFoundation && this.labelFoundation.destroy();
-    this.outlineFoundation && this.outlineFoundation.destroy();
-    this.ripple && this.ripple.destroy();
-  },
-};
+    this.foundation && this.foundation.destroy()
+    this.bottomLineFoundation && this.bottomLineFoundation.destroy()
+    this.helperTextFoundation && this.helperTextFoundation.destroy()
+    this.iconFoundation && this.iconFoundation.destroy()
+    this.labelFoundation && this.labelFoundation.destroy()
+    this.outlineFoundation && this.outlineFoundation.destroy()
+    this.ripple && this.ripple.destroy()
+  }
+}
 </script>

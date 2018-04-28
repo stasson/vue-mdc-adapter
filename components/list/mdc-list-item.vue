@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {RippleBase} from '../ripple'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-list-item',
@@ -33,66 +33,62 @@ export default {
     selected: Boolean,
     activated: Boolean
   },
-  data () {
+  data() {
     return {
       classes: {},
       styles: {}
-    } 
+    }
   },
   computed: {
-    itemClasses () {
+    itemClasses() {
       return {
         'mdc-list-item--selected': this.selected,
         'mdc-list-item--activated': this.activated
       }
     },
-    isInteractive () {
+    isInteractive() {
       return this.mdcList && this.mdcList.interactive
     },
-    hasSecondary () {
-      return this.$slots['secondary'] && (
-        this.mdcList && this.mdcList.twoLine
-      ) 
+    hasSecondary() {
+      return this.$slots['secondary'] && (this.mdcList && this.mdcList.twoLine)
     },
-    hasEndDetail () {
+    hasEndDetail() {
       return !!this.$slots['end-detail']
     },
-    hasStartDetail () {
+    hasStartDetail() {
       return !!this.$slots['start-detail']
     }
   },
   watch: {
-    isInteractive (value) {
-        if (value) {
-          this.addRipple() 
-        } else {
-          this.removeRipple()
-        }
+    isInteractive(value) {
+      if (value) {
+        this.addRipple()
+      } else {
+        this.removeRipple()
+      }
     }
   },
-  mounted () {
+  mounted() {
     this.isInteractive && this.addRipple()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.removeRipple()
   },
   methods: {
-    addRipple () {
+    addRipple() {
       if (!this.ripple) {
         let ripple = new RippleBase(this)
         ripple.init()
-        this.ripple = ripple                 
-      } 
+        this.ripple = ripple
+      }
     },
-    removeRipple () {
+    removeRipple() {
       if (this.ripple) {
         let ripple = this.ripple
-        this.ripple = null 
+        this.ripple = null
         ripple.destroy()
-      }                
+      }
     }
   }
-  
 }
 </script>
-  

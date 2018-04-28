@@ -1,4 +1,4 @@
-import {BasePlugin} from '../base'
+import { BasePlugin } from '../base'
 import mdcList from './mdc-list.vue'
 import mdcListItem from './mdc-list-item.vue'
 import mdcListDivider from './mdc-list-divider.vue'

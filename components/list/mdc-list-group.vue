@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'mdc-list-group',
+  name: 'mdc-list-group'
 }
 </script>

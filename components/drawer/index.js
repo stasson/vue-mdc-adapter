@@ -1,4 +1,4 @@
-import {BasePlugin} from '../base'
+import { BasePlugin } from '../base'
 import mdcDrawer from './mdc-drawer.vue'
 import mdcDrawerLayout from './mdc-drawer-layout.vue'
 import mdcDrawerHeader from './mdc-drawer-header.vue'

@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import { DispatchEventMixin, CustomButtonMixin } from '../base';
-import { RippleMixin } from '../ripple';
+import { DispatchEventMixin, CustomButtonMixin } from '../base'
+import { RippleMixin } from '../ripple'
 
 export default {
   name: 'mdc-button-base',
@@ -17,8 +17,8 @@ export default {
   data() {
     return {
       classes: {},
-      styles: {},
-    };
-  },
-};
+      styles: {}
+    }
+  }
+}
 </script>

@@ -9,7 +9,7 @@
 export default {
   name: 'mdc-card-title',
   props: {
-    'large': Boolean
+    large: Boolean
   }
 }
 </script>

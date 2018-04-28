@@ -12,7 +12,7 @@ export default {
   props: {
     permanent: Boolean,
     persistent: Boolean,
-    temporary: Boolean,
+    temporary: Boolean
   },
   inject: ['mdcDrawer'],
   computed: {
@@ -22,11 +22,11 @@ export default {
           (this.temporary && this.mdcDrawer.isTemporary) ||
           (this.persistent && this.mdcDrawer.isPersistent) ||
           (this.permanent && this.mdcDrawer.isPermanent)
-        );
+        )
       } else {
-        return true;
+        return true
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>

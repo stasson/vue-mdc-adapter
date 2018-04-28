@@ -5,23 +5,23 @@
 </template>
 
 <script>
-import { DispatchEventMixin } from '../base';
-import { RippleMixin } from '../ripple';
+import { DispatchEventMixin } from '../base'
+import { RippleMixin } from '../ripple'
 
 export default {
   name: 'mdc-top-app-bar--action',
   mixins: [DispatchEventMixin, RippleMixin],
   props: {
     icon: String,
-    iconClasses: Object,
+    iconClasses: Object
   },
   computed: {
     actioniconClasses() {
       return {
         'material-icons': !!this.icon,
-        ...this.iconClasses,
-      };
-    },
-  },
-};
+        ...this.iconClasses
+      }
+    }
+  }
+}
 </script>

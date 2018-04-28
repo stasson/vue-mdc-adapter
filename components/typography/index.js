@@ -1,5 +1,5 @@
-import {BasePlugin} from '../base'
-import {  
+import { BasePlugin } from '../base'
+import {
   mdcTextSection,
   mdcText,
   mdcBody,

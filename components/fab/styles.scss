@@ -1,36 +1,36 @@
 @import "@material/fab/mdc-fab";
 
 // support anchors as style
-a.mdc-fab, 
-a:link.mdc-fab, 
-a:visited.mdc-fab, 
-a:hover.mdc-fab, 
+a.mdc-fab,
+a:link.mdc-fab,
+a:visited.mdc-fab,
+a:hover.mdc-fab,
 a:active.mdc-fab {
-  text-decoration: inherit;
-  font-weight: inherit;
+    text-decoration: inherit;
+    font-weight: inherit;
 }
 
 .mdc-fab--absolute {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
 }
 
 .mdc-fab--fixed {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 4;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 4;
 }
 
-@media(min-width: 1024px) {
-  .mdc-fab--absolute {
-    bottom: 3rem;
-    right: 5rem;
-  }
+@media (min-width: 1024px) {
+    .mdc-fab--absolute {
+        bottom: 3rem;
+        right: 5rem;
+    }
 
-  .mdc-fab--fixed {
-    bottom: 3rem;
-    right: 5rem;
-  }
+    .mdc-fab--fixed {
+        bottom: 3rem;
+        right: 5rem;
+    }
 }

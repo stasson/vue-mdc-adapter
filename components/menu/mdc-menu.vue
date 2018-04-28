@@ -7,62 +7,62 @@
 </template>
 
 <script>
-import { MDCMenuFoundation } from '@material/menu/foundation';
-import { getTransformPropertyName } from '@material/menu/util';
-import { emitCustomEvent } from '../base';
+import { MDCMenuFoundation } from '@material/menu/foundation'
+import { getTransformPropertyName } from '@material/menu/util'
+import { emitCustomEvent } from '../base'
 
 export default {
   name: 'mdc-menu',
   model: {
     prop: 'open',
-    event: 'change',
+    event: 'change'
   },
   props: {
     open: [Boolean, Object],
     'quick-open': Boolean,
     'anchor-corner': [String, Number],
-    'anchor-margin': Object,
+    'anchor-margin': Object
   },
   data() {
     return {
       classes: {},
       styles: {},
-      items: [],
-    };
+      items: []
+    }
   },
 
   methods: {
     onOpen_(value) {
       if (value) {
-        this.foundation.open(typeof value === 'object' ? value : void 0);
+        this.foundation.open(typeof value === 'object' ? value : void 0)
       } else {
-        this.foundation.close();
+        this.foundation.close()
       }
     },
     show(options) {
-      this.foundation.open(options);
+      this.foundation.open(options)
     },
     hide() {
-      this.foundation.close();
+      this.foundation.close()
     },
     isOpen() {
-      return this.foundation ? this.foundation.isOpen() : false;
-    },
+      return this.foundation ? this.foundation.isOpen() : false
+    }
   },
   mounted() {
     const refreshItems = () => {
       this.items = [].slice.call(
-        this.$refs.items.querySelectorAll('.mdc-list-item[role]'),
-      );
-      this.$emit('update');
-    };
-    this.slotObserver = new MutationObserver(() => refreshItems());
+        this.$refs.items.querySelectorAll('.mdc-list-item[role]')
+      )
+      this.$emit('update')
+    }
+    this.slotObserver = new MutationObserver(() => refreshItems())
     this.slotObserver.observe(this.$el, {
       childList: true,
-      subtree: true,
-    });
+      subtree: true
+    })
 
-    this._previousFocus = undefined;
+    this._previousFocus = undefined
 
     this.foundation = new MDCMenuFoundation({
       addClass: className => this.$set(this.classes, className, true),
@@ -73,7 +73,7 @@ export default {
         target.getAttribute(attributeName),
       getInnerDimensions: () => ({
         width: this.$refs.items.offsetWidth,
-        height: this.$refs.items.offsetHeight,
+        height: this.$refs.items.offsetHeight
       }),
       hasAnchor: () =>
         this.$refs.root.parentElement &&
@@ -82,7 +82,7 @@ export default {
         this.$refs.root.parentElement.getBoundingClientRect(),
       getWindowDimensions: () => ({
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: window.innerHeight
       }),
       getNumberOfItems: () => this.items.length,
       registerInteractionHandler: (type, handler) =>
@@ -97,27 +97,23 @@ export default {
       notifySelected: evtData => {
         const evt = {
           index: evtData.index,
-          item: this.items[evtData.index],
-        };
-        this.$emit('change', false);
-        this.$emit('select', evt);
-        emitCustomEvent(
-          this.$el,
-          MDCMenuFoundation.strings.SELECTED_EVENT,
-          evt,
-        );
+          item: this.items[evtData.index]
+        }
+        this.$emit('change', false)
+        this.$emit('select', evt)
+        emitCustomEvent(this.$el, MDCMenuFoundation.strings.SELECTED_EVENT, evt)
       },
       notifyCancel: () => {
-        this.$emit('change', false);
-        this.$emit('cancel');
-        emitCustomEvent(this.$el, MDCMenuFoundation.strings.CANCEL_EVENT, {});
+        this.$emit('change', false)
+        this.$emit('cancel')
+        emitCustomEvent(this.$el, MDCMenuFoundation.strings.CANCEL_EVENT, {})
       },
       saveFocus: () => {
-        this._previousFocus = document.activeElement;
+        this._previousFocus = document.activeElement
       },
       restoreFocus: () => {
         if (this._previousFocus) {
-          this._previousFocus.focus();
+          this._previousFocus.focus()
         }
       },
       isFocused: () => document.activeElement === this.$refs.root,
@@ -131,57 +127,57 @@ export default {
         this.$set(
           this.styles,
           `${getTransformPropertyName(window)}-origin`,
-          origin,
-        );
+          origin
+        )
       },
       setPosition: position => {
-        this.$set(this.styles, 'left', position.left);
-        this.$set(this.styles, 'right', position.right);
-        this.$set(this.styles, 'top', position.top);
-        this.$set(this.styles, 'bottom', position.bottom);
+        this.$set(this.styles, 'left', position.left)
+        this.$set(this.styles, 'right', position.right)
+        this.$set(this.styles, 'top', position.top)
+        this.$set(this.styles, 'bottom', position.bottom)
       },
       setMaxHeight: height => {
-        this.$set(this.styles, 'max-height', height);
+        this.$set(this.styles, 'max-height', height)
       },
       setAttrForOptionAtIndex: (index, attr, value) => {
-        this.items[index].setAttribute(attr, value);
+        this.items[index].setAttribute(attr, value)
       },
       rmAttrForOptionAtIndex: (index, attr) => {
-        this.items[index].removeAttribute(attr);
+        this.items[index].removeAttribute(attr)
       },
       addClassForOptionAtIndex: (index, className) => {
-        this.items[index].classList.add(className);
+        this.items[index].classList.add(className)
       },
       rmClassForOptionAtIndex: (index, className) => {
-        this.items[index].classList.remove(className);
-      },
-    });
+        this.items[index].classList.remove(className)
+      }
+    })
 
-    refreshItems();
-    this.foundation.init();
+    refreshItems()
+    this.foundation.init()
     if (this.anchorCorner !== void 0) {
-      this.foundation.setAnchorCorner(Number(this.anchorCorner));
+      this.foundation.setAnchorCorner(Number(this.anchorCorner))
     }
     if (this.anchorMargin !== void 0) {
-      this.foundation.setAnchorMargin(this.anchorMargin);
+      this.foundation.setAnchorMargin(this.anchorMargin)
     }
   },
   watch: {
     open: 'onOpen_',
     quickOpen(nv) {
-      this.foundation.setQuickOpen(nv);
+      this.foundation.setQuickOpen(nv)
     },
     anchorCorner(nv) {
-      this.foundation.setAnchorCorner(Number(nv));
+      this.foundation.setAnchorCorner(Number(nv))
     },
     anchorMargin(nv) {
-      this.foundation.setAnchorMargin(nv);
-    },
+      this.foundation.setAnchorMargin(nv)
+    }
   },
   beforeDestroy() {
-    this._previousFocus = null;
-    this.slotObserver.disconnect();
-    this.foundation.destroy();
-  },
-};
+    this._previousFocus = null
+    this.slotObserver.disconnect()
+    this.foundation.destroy()
+  }
+}
 </script>

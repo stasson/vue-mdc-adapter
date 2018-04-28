@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'mdc-drawer-layout',
-};
+  name: 'mdc-drawer-layout'
+}
 </script>

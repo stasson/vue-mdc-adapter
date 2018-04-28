@@ -10,7 +10,6 @@
 <script>
 import { CustomElement } from '../base'
 
-
 const THEME_COLORS = [
   'primary',
   'secondary',
@@ -35,16 +34,16 @@ export default {
     CustomElement
   },
   props: {
-    tag: {type: String, default: 'div' },
+    tag: { type: String, default: 'div' },
     color: String,
     background: String
   },
   computed: {
-    classes () {
+    classes() {
       let classes = {}
 
       if (this.color && THEME_COLORS.indexOf(this.color) !== -1) {
-          classes[`mdc-theme--${this.color}`] = true
+        classes[`mdc-theme--${this.color}`] = true
       }
 
       if (this.background && THEME_COLORS.indexOf(this.background) !== -1) {

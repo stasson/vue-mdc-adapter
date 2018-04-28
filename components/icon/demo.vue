@@ -12,10 +12,9 @@
 </template>
 
 <style>
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 .icon-demo .mdc-list-item {
   min-width: 150px;
 }
-
 </style>

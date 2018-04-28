@@ -12,7 +12,7 @@ export default {
   props: {
     'fixed-column-width': Boolean,
     'align-left': Boolean,
-    'align-right': Boolean,
+    'align-right': Boolean
   },
   computed: {
     classes() {
@@ -20,9 +20,9 @@ export default {
         'mdc-layout-grid': true,
         'mdc-layout-grid--fixed-column-width': this.fixedColumnWidth,
         'mdc-layout-grid--align-left': this.alignLeft,
-        'mdc-layout-grid--align-right': this.alignRight,
-      };
-    },
-  },
-};
+        'mdc-layout-grid--align-right': this.alignRight
+      }
+    }
+  }
+}
 </script>
