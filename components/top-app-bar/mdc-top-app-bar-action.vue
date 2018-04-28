@@ -1,8 +1,8 @@
 <template>
-  <a 
-    :class="actioniconClasses" 
-    href="#" 
-    class="mdc-top-app-bar--action mdc-top-app-bar__action-item" 
+  <a
+    :class="actioniconClasses"
+    href="#"
+    class="mdc-top-app-bar-action mdc-top-app-bar--action mdc-top-app-bar__action-item"
     v-on="listeners">
     <slot>{{ icon }}</slot>
   </a>
