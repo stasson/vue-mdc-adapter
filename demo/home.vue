@@ -1,13 +1,13 @@
 <template>
   <div class="demo-home">
-    <mdc-display 
-      ref="title" 
+    <mdc-display
+      ref="title"
       typo="display1">
-      <span 
-        v-for="(word, i) in title" 
+      <span
+        v-for="(word, i) in title"
         :key="word"
         :class="(i+1 < title.length)? 'hidden-mark hidden-mark--dot' : 'hidden-mark hidden-mark--return'"
-      >{{ word.trim() }}&nbsp</span>
+      >{{ word.trim() }}&nbsp;</span>
     </mdc-display>
     <about class="markdown" />
   </div>

@@ -1,13 +1,13 @@
 <template>
   <section>
-    <mdc-display 
-      v-if="title" 
+    <mdc-display
+      v-if="title"
       ref="title" >
-      <span 
-        v-for="(word, i) in title" 
+      <span
+        v-for="(word, i) in title"
         :key="word"
         :class="(i+1 < title.length)? 'hidden-mark hidden-mark--dot' : 'hidden-mark hidden-mark--return'"
-      >{{ word.trim() }}&nbsp</span>
+      >{{ word.trim() }}&nbsp;</span>
     </mdc-display>
     <article class="doc-article markdown">
       <component :is="$route.params.id" />
