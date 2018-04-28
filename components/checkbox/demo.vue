@@ -8,12 +8,12 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        checked:false,
-        indeterminate:false,
-      }
+export default {
+  data() {
+    return {
+      checked: false,
+      indeterminate: false
     }
   }
+}
 </script>

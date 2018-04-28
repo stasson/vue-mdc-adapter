@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import {CustomElementMixin} from '../base'
-import {RippleMixin} from './mdc-ripple-base'
+import { CustomElementMixin } from '../base'
+import { RippleMixin } from './mdc-ripple-base'
 
 export default {
   name: 'mdc-ripple',
-  mixins:[CustomElementMixin, RippleMixin],
+  mixins: [CustomElementMixin, RippleMixin],
   props: {
     tag: String
-  },
+  }
 }
 </script>

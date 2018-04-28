@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import MDCTopAppBarFoundation from '@material/top-app-bar/foundation';
-import MDCShortTopAppBarFoundation from '@material/top-app-bar/short/foundation';
-import { DispatchEventMixin, emitCustomEvent } from '../base';
+import MDCTopAppBarFoundation from '@material/top-app-bar/foundation'
+import MDCShortTopAppBarFoundation from '@material/top-app-bar/short/foundation'
+import { DispatchEventMixin, emitCustomEvent } from '../base'
 
 export default {
   name: 'mdc-top-app-bar',
@@ -26,10 +26,10 @@ export default {
     title: String,
     icon: {
       type: String,
-      default: 'menu',
+      default: 'menu'
     },
     iconClasses: Object,
-    dense: Boolean,
+    dense: Boolean
   },
   data() {
     return {
@@ -38,31 +38,31 @@ export default {
         'mdc-top-app-bar--dense': this.dense,
         'mdc-top-app-bar--short': this.short,
         'mdc-top-app-bar--short-collapsed': this.shortCollapsed,
-        'mdc-top-app-bar--prominent': this.prominent,
+        'mdc-top-app-bar--prominent': this.prominent
       },
-      foundation: null,
-    };
+      foundation: null
+    }
   },
   mixins: [DispatchEventMixin],
   mounted() {
     const adapter = {
       addClass: className => {
-        this.$set(this.rootClasses, className, true);
+        this.$set(this.rootClasses, className, true)
       },
       removeClass: className => {
-        this.$delete(this.rootClasses, className);
+        this.$delete(this.rootClasses, className)
       },
       hasClass: className => {
-        return this.$refs.root.classList.contains(className);
+        return this.$refs.root.classList.contains(className)
       },
       registerNavigationIconInteractionHandler: (type, handler) => {
         if (this.$refs.navigationIcon) {
-          this.$refs.navigationIcon.addEventListener(type, handler);
+          this.$refs.navigationIcon.addEventListener(type, handler)
         }
       },
       deregisterNavigationIconInteractionHandler: (type, handler) => {
         if (this.$refs.navigationIcon) {
-          this.$refs.navigationIcon.removeEventListener(type, handler);
+          this.$refs.navigationIcon.removeEventListener(type, handler)
         }
       },
       notifyNavigationIconClicked: () => {
@@ -70,45 +70,45 @@ export default {
           this.$el,
           MDCTopAppBarFoundation.strings.NAVIGATION_EVENT,
           {},
-          true,
-        );
+          true
+        )
       },
       registerScrollHandler: handler => {
-        window.addEventListener('scroll', handler);
+        window.addEventListener('scroll', handler)
       },
       deregisterScrollHandler: handler => {
-        window.removeEventListener('scroll', handler);
+        window.removeEventListener('scroll', handler)
       },
 
       getViewportScrollY: () => {
-        return window.pageYOffset;
+        return window.pageYOffset
       },
       getTotalActionItems: () =>
         this.$refs.root.querySelectorAll(
-          MDCTopAppBarFoundation.strings.ACTION_ITEM_SELECTOR,
-        ).length,
-    };
+          MDCTopAppBarFoundation.strings.ACTION_ITEM_SELECTOR
+        ).length
+    }
 
     this.foundation = this.short
       ? new MDCShortTopAppBarFoundation(adapter)
-      : new MDCTopAppBarFoundation(adapter);
+      : new MDCTopAppBarFoundation(adapter)
 
-    this.foundation.init();
+    this.foundation.init()
   },
   computed: {
     haveNavigationIcon() {
-      return !!this.icon || this.iconClasses;
+      return !!this.icon || this.iconClasses
     },
     naviconClasses() {
       return {
         'mdc-top-app-bar__navigation-icon': true,
         'material-icons': !!this.icon,
-        ...this.iconClasses,
-      };
-    },
+        ...this.iconClasses
+      }
+    }
   },
   beforeDestroy() {
-    this.foundation.destroy();
-  },
-};
+    this.foundation.destroy()
+  }
+}
 </script>

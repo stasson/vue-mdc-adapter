@@ -24,18 +24,18 @@
 <script>
 export default {
   data() {
-    const items = ['item one', 'item two', 'item three'];
+    const items = ['item one', 'item two', 'item three']
     return {
       selectedItem: items[0],
-      items,
-    };
+      items
+    }
   },
   methods: {
     onSelected(idx) {
-      this.selectedItem = this.items[idx];
-    },
-  },
-};
+      this.selectedItem = this.items[idx]
+    }
+  }
+}
 </script>
 
 <style>

@@ -8,11 +8,10 @@
 <script>
 import iframe from 'file-loader!./demo.html'
 export default {
-  data () {
+  data() {
     return {
       iframe
     }
   }
 }
 </script>
-

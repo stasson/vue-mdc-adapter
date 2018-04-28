@@ -13,14 +13,14 @@
 import mdcSelect from './mdc-select.vue'
 
 const components = {
-  'mdc-select': mdcSelect,
+  'mdc-select': mdcSelect
 }
 
 export default {
   name: 'spec',
   data() {
     return {
-      selectValue: undefined,
+      selectValue: undefined
     }
   },
   components

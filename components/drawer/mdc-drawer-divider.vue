@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'mdc-drawer-divider',
-};
+  name: 'mdc-drawer-divider'
+}
 </script>

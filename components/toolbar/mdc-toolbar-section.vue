@@ -12,7 +12,7 @@ export default {
     'align-end': Boolean,
     'shrink-to-fit': Boolean
   },
-  data () {
+  data() {
     return {
       classes: {
         'mdc-toolbar__section--align-start': this.alignStart,

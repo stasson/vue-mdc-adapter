@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  name: "mdc-card-action-buttons"
-};
+  name: 'mdc-card-action-buttons'
+}
 </script>

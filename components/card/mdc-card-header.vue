@@ -20,8 +20,8 @@
 export default {
   name: 'mdc-card-header',
   props: {
-    'title': String,
-    'subtitle': String,
+    title: String,
+    subtitle: String,
     'large-title': { type: Boolean, default: true }
   }
 }

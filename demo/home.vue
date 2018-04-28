@@ -10,16 +10,14 @@
 </template>
 
 <script>
-
 export default {
-  data () {
+  data() {
     return {
-      title: 'Material Components for Vue.js'.split(' '),
+      title: 'Material Components for Vue.js'.split(' ')
     }
   },
   components: {
-    'about': () => import('../docs/about.md'),
+    about: () => import('../docs/about.md')
   }
 }
 </script>
-

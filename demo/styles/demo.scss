@@ -1,5 +1,5 @@
 $mdc-theme-primary: #212121;
-$mdc-theme-accent: #41B883;
+$mdc-theme-accent: #41b883;
 $mdc-theme-background: #fff;
 
 @import "../../components/styles";
@@ -8,116 +8,120 @@ $mdc-theme-background: #fff;
 @import "./markdown";
 @import "./highlight";
 
-.primary-drawer.mdc-drawer { 
+.primary-drawer.mdc-drawer {
+    .mdc-drawer-header {
+        background-color: $grey-900;
+        background-image: url(../assets/logo.svg);
+        background-size: 33.333%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 
-  .mdc-drawer-header {
-    background-color: $grey-900;
-    background-image: url(../assets/logo.svg);
-    background-size: 33.333%;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  .mdc-drawer-item {
-    font-family: "Roboto Mono", Monaco, courier, monospace;
-    font-weight: 400;
-    font-size: .875rem;
-  }
+    .mdc-drawer-item {
+        font-family: "Roboto Mono", Monaco, courier, monospace;
+        font-weight: 400;
+        font-size: 0.875rem;
+    }
 }
 
 .main-toolbar {
-  .mdc-toolbar-title {
-    padding: 2px 0 2px 50px;
-    background: no-repeat 0/32px 32px url(../assets/logo.svg);
-    font-family: "Roboto Mono", monospace;
-    font-size: 1rem;
-    letter-spacing: .0675rem;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
+    .mdc-toolbar-title {
+        padding: 2px 0 2px 50px;
+        background: no-repeat 0/32px 32px url(../assets/logo.svg);
+        font-family: "Roboto Mono", monospace;
+        font-size: 1rem;
+        letter-spacing: 0.0675rem;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
 }
 
 .content {
-  padding: 48px 32px;
-  margin:16px auto 16px auto;
-  max-width : 800px;
-  min-width : 250px;
+    padding: 48px 32px;
+    margin: 16px auto 16px auto;
+    max-width: 800px;
+    min-width: 250px;
 
-  .mdc-display {
-    font-family: "Roboto Mono", Monaco, courier, monospace;
-  }
+    .mdc-display {
+        font-family: "Roboto Mono", Monaco, courier, monospace;
+    }
 }
 
 .demo-icon {
-  content: "";
-  display: block;
-  width: 96px;
-  height: 96px;
-  margin-bottom: 24px;
-  background-position-x: 50%;
-  background-position-y: center;
-  background-size: 100%;
-  background-repeat-x: initial;
-  background-repeat-y: initial;
-  background-attachment: initial;
-  background-origin: initial;
-  background-clip: initial;
-  background-color: initial;
+    content: "";
+    display: block;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 24px;
+    background-position-x: 50%;
+    background-position-y: center;
+    background-size: 100%;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
 }
 
 .demo-article {
-  display:flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-content: stretch;
-  min-height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: stretch;
+    min-height: 50px;
 
-  .mdc-demo {
-    flex: 1 1 auto;
-    background-color: #f2f2f2
-  }
+    .mdc-demo {
+        flex: 1 1 auto;
+        background-color: #f2f2f2;
+    }
 
-  .mdc-demo--container {
-    @include mdc-elevation(0);
-    min-height: 100px;
-    min-width: 200px;
-    padding: 32px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    .mdc-demo--container {
+        @include mdc-elevation(0);
+        min-height: 100px;
+        min-width: 200px;
+        padding: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
 .doc-article {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 
 .demo-home .markdown {
-  a, a:active, a:hover, a:link, a:visited, p {
-    font-size: 1rem;
-    line-height: 1.25rem;
-  }
+    a,
+    a:active,
+    a:hover,
+    a:link,
+    a:visited,
+    p {
+        font-size: 1rem;
+        line-height: 1.25rem;
+    }
 }
 
 // This code is designed to position the hidden marks appropriately, while still
 // allowing the user to copy the text with spaces intact and without hidden
 // marks.
 .hidden-mark {
-  position: relative;
-  display: inline-block;
-  white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
 
-  &::after {
-    position: absolute;
-    right: 0;
-    color: #9b9b9b;
-  }
+    &::after {
+        position: absolute;
+        right: 0;
+        color: #9b9b9b;
+    }
 
-  &--dot::after {
-    content: '•';
-  }
+    &--dot::after {
+        content: "•";
+    }
 
-  &--return::after {
-    content: '¬';
-  }
+    &--return::after {
+        content: "¬";
+    }
 }

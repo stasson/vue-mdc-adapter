@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import MDCToolbarFoundation from '@material/toolbar/foundation';
+import MDCToolbarFoundation from '@material/toolbar/foundation'
 
 export default {
   name: 'mdc-toolbar',
@@ -21,7 +21,7 @@ export default {
     waterfall: Boolean,
     'fixed-lastrow': Boolean,
     flexible: Boolean,
-    'flexible-default': { type: Boolean, default: true },
+    'flexible-default': { type: Boolean, default: true }
   },
   data() {
     return {
@@ -32,7 +32,7 @@ export default {
         'mdc-toolbar--fixed-lastrow-only': this.fixedLastrow,
         'mdc-toolbar--flexible': this.flexible,
         'mdc-toolbar--flexible-default-behavior':
-          this.flexible && this.flexibleDefault,
+          this.flexible && this.flexibleDefault
       },
       rootStyles: {},
       adjustStyles: {
@@ -41,73 +41,73 @@ export default {
         // TODO: find a better trick
         // height: '0.1px'
       },
-      foundation: null,
-    };
+      foundation: null
+    }
   },
   mounted() {
     this.foundation = new MDCToolbarFoundation({
       addClass: className => {
-        this.$set(this.rootClasses, className, true);
+        this.$set(this.rootClasses, className, true)
       },
       removeClass: className => {
-        this.$delete(this.rootClasses, className);
+        this.$delete(this.rootClasses, className)
       },
       hasClass: className => {
-        return this.$refs.root.classList.contains(className);
+        return this.$refs.root.classList.contains(className)
       },
       registerScrollHandler: handler => {
-        window.addEventListener('scroll', handler);
+        window.addEventListener('scroll', handler)
       },
       deregisterScrollHandler: handler => {
-        window.removeEventListener('scroll', handler);
+        window.removeEventListener('scroll', handler)
       },
       registerResizeHandler: handler => {
-        window.addEventListener('resize', handler);
+        window.addEventListener('resize', handler)
       },
       deregisterResizeHandler: handler => {
-        window.removeEventListener('resize', handler);
+        window.removeEventListener('resize', handler)
       },
       getViewportWidth: () => {
-        return window.innerWidth;
+        return window.innerWidth
       },
       getViewportScrollY: () => {
-        return window.pageYOffset;
+        return window.pageYOffset
       },
       getOffsetHeight: () => {
-        return this.$refs.root.offsetHeight;
+        return this.$refs.root.offsetHeight
       },
       getFirstRowElementOffsetHeight: () => {
         let el = this.$refs.root.querySelector(
-          MDCToolbarFoundation.strings.FIRST_ROW_SELECTOR,
-        );
-        return el ? el.offsetHeight : undefined;
+          MDCToolbarFoundation.strings.FIRST_ROW_SELECTOR
+        )
+        return el ? el.offsetHeight : undefined
       },
       notifyChange: evtData => {
-        this.$emit('change', evtData);
+        this.$emit('change', evtData)
       },
       setStyle: (property, value) => {
-        this.$set(this.rootStyles, property, value);
+        this.$set(this.rootStyles, property, value)
       },
       setStyleForTitleElement: (property, value) => {
         let el = this.$refs.root.querySelector(
-          MDCToolbarFoundation.strings.TITLE_SELECTOR,
-        );
-        if (el) el.style.setProperty(property, value);
+          MDCToolbarFoundation.strings.TITLE_SELECTOR
+        )
+        if (el) el.style.setProperty(property, value)
       },
       setStyleForFlexibleRowElement: (property, value) => {
         let el = this.$refs.root.querySelector(
-          MDCToolbarFoundation.strings.FIRST_ROW_SELECTOR,
-        );
-        if (el) el.style.setProperty(property, value);
+          MDCToolbarFoundation.strings.FIRST_ROW_SELECTOR
+        )
+        if (el) el.style.setProperty(property, value)
       },
       setStyleForFixedAdjustElement: (property, value) => {
-        this.$set(this.adjustStyles, property, value);
-      },
-    });
-    this.foundation.init();
+        this.$set(this.adjustStyles, property, value)
+      }
+    })
+    this.foundation.init()
   },
   beforeDestroy() {
-    this.foundation.destroy();
-  },
-};
+    this.foundation.destroy()
+  }
+}
 </script>

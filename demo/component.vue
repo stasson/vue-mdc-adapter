@@ -17,15 +17,15 @@
 </template>
 
 <script>
-import links from './links.js';
+import links from './links.js'
 
 const titles = links.reduce((result, link) => {
-  return { ...result, ...{ [link.id]: link.title } };
-}, {});
+  return { ...result, ...{ [link.id]: link.title } }
+}, {})
 
 const icons = links.reduce((result, link) => {
-  return { ...result, ...{ [link.id]: link.icon } };
-}, {});
+  return { ...result, ...{ [link.id]: link.icon } }
+}, {})
 
 export default {
   components: {
@@ -81,27 +81,27 @@ export default {
     'textfield-demo': () => import('../components/textfield/demo.vue'),
     'toolbar-demo': () => import('../components/toolbar/demo.vue'),
     'top-app-bar-demo': () => import('../components/top-app-bar/demo.vue'),
-    'typography-demo': () => import('../components/typography/demo.vue'),
+    'typography-demo': () => import('../components/typography/demo.vue')
   },
   computed: {
     demo() {
-      let key = this.$route.params.id + '-demo';
-      return key in this.$options.components ? key : undefined;
+      let key = this.$route.params.id + '-demo'
+      return key in this.$options.components ? key : undefined
     },
     readme() {
-      let key = this.$route.params.id + '-readme';
-      return key in this.$options.components ? key : undefined;
+      let key = this.$route.params.id + '-readme'
+      return key in this.$options.components ? key : undefined
     },
     title() {
-      return titles[this.$route.params.id].split(' ');
+      return titles[this.$route.params.id].split(' ')
     },
     icon() {
-      return icons[this.$route.params.id];
-    },
+      return icons[this.$route.params.id]
+    }
   },
   beforeRouteUpdate(to, from, next) {
-    this.$nextTick(() => scrollTo(0, 0));
-    next();
-  },
-};
+    this.$nextTick(() => scrollTo(0, 0))
+    next()
+  }
+}
 </script>

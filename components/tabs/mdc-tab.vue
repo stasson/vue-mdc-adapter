@@ -19,61 +19,61 @@
 </template>
 
 <script>
-import MDCTabFoundation from '@material/tabs/tab/foundation';
+import MDCTabFoundation from '@material/tabs/tab/foundation'
 import {
   CustomLinkMixin,
   DispatchEventMixin,
   emitCustomEvent,
-  extractIconProp,
-} from '../base';
-import { RippleBase } from '../ripple';
+  extractIconProp
+} from '../base'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-tab',
   mixins: [CustomLinkMixin, DispatchEventMixin],
   props: {
     active: Boolean,
-    icon: [String, Array, Object],
+    icon: [String, Array, Object]
   },
   data() {
     return {
       classes: {},
-      styles: {},
-    };
+      styles: {}
+    }
   },
   computed: {
     hasIcon() {
       if (this.icon || this.$slots.icon) {
-        return this.icon ? extractIconProp(this.icon) : {};
+        return this.icon ? extractIconProp(this.icon) : {}
       }
-      return false;
+      return false
     },
     hasText() {
-      return !!this.$slots.default;
-    },
+      return !!this.$slots.default
+    }
   },
   methods: {
     getComputedWidth() {
-      return this.foundation.getComputedWidth();
+      return this.foundation.getComputedWidth()
     },
     getComputedLeft() {
-      return this.foundation.getComputedLeft();
+      return this.foundation.getComputedLeft()
     },
     isActive() {
-      return this.foundation.isActive();
+      return this.foundation.isActive()
     },
     setActive(isActive) {
-      this.foundation.setActive(isActive);
+      this.foundation.setActive(isActive)
     },
     isDefaultPreventedOnClick() {
-      return this.foundation.preventsDefaultOnClick();
+      return this.foundation.preventsDefaultOnClick()
     },
     setPreventDefaultOnClick(preventDefaultOnClick) {
-      this.foundation.setPreventDefaultOnClick(preventDefaultOnClick);
+      this.foundation.setPreventDefaultOnClick(preventDefaultOnClick)
     },
     measureSelf() {
-      this.foundation.measureSelf();
-    },
+      this.foundation.measureSelf()
+    }
   },
   mounted() {
     this.foundation = new MDCTabFoundation({
@@ -84,7 +84,7 @@ export default {
       deregisterInteractionHandler: (type, handler) =>
         this.$el.removeEventListener(type, handler),
       getOffsetWidth: () => {
-        return this.$el.offsetWidth;
+        return this.$el.offsetWidth
       },
       getOffsetLeft: () => this.$el.offsetLeft,
       notifySelected: () => {
@@ -92,18 +92,18 @@ export default {
           this.$el,
           MDCTabFoundation.strings.SELECTED_EVENT,
           { tab: this },
-          true,
-        );
-      },
-    });
-    this.foundation.init();
-    this.setActive(this.active);
-    this.ripple = new RippleBase(this);
-    this.ripple.init();
+          true
+        )
+      }
+    })
+    this.foundation.init()
+    this.setActive(this.active)
+    this.ripple = new RippleBase(this)
+    this.ripple.init()
   },
   beforeDestroy() {
-    this.foundation.destroy();
-    this.ripple.destroy();
-  },
-};
+    this.foundation.destroy()
+    this.ripple.destroy()
+  }
+}
 </script>

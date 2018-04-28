@@ -14,9 +14,9 @@
 import tile from 'demo/assets/tile-1-1.jpg'
 
 export default {
-  data () {
+  data() {
     return {
-      tile,
+      tile
     }
   }
 }

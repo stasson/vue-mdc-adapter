@@ -1,12 +1,6 @@
-import {
-  mount,
-  createLocalVue,
-  checkValidMdcAdapter
-} from '../unit-test'
-import {
-  mdcSelect,
-} from './index.js'
-import Spec from './test.spec.vue';
+import { mount, createLocalVue, checkValidMdcAdapter } from '../unit-test'
+import { mdcSelect } from './index.js'
+import Spec from './test.spec.vue'
 
 describe(__dirname, () => {
   const localVue = createLocalVue()

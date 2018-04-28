@@ -10,7 +10,7 @@
 
 <script>
 import MDCIconToggleFoundation from '@material/icon-toggle/foundation'
-import {RippleBase} from '../ripple'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-icon-toggle',
@@ -21,7 +21,7 @@ export default {
     disabled: Boolean,
     accent: Boolean
   },
-  data () {
+  data() {
     return {
       classes: {
         'mdc-icon-toggle--accent': this.accent
@@ -29,65 +29,89 @@ export default {
       styles: {},
       iconClasses: {},
       tabIndex: 0,
-      text: '',
+      text: ''
     }
   },
   watch: {
-    value (value) {
+    value(value) {
       this.foundation && this.foundation.toggle(value)
     },
-    disabled (disabled) {
+    disabled(disabled) {
       this.foundation && this.foundation.setDisabled(disabled)
     },
-    toggleOnData () {
-     this.foundation && this.foundation.refreshToggleData()
+    toggleOnData() {
+      this.foundation && this.foundation.refreshToggleData()
     },
-    toggleOffData () {
-    this.foundation && this.foundation.refreshToggleData()
+    toggleOffData() {
+      this.foundation && this.foundation.refreshToggleData()
     },
-    accent (value) {
+    accent(value) {
       this.$set(this.classes, 'mdc-icon-toggle--secondary', value)
-    },
+    }
   },
   computed: {
-    toggleOnData () {
+    toggleOnData() {
       let toggle = this.toggleOn
-      return toggle && JSON.stringify((typeof toggle === 'string') ? { 
-        content: toggle, 
-        cssClass: 'material-icons' 
-      } : {
-        content: toggle.icon || toggle.content,
-        label: toggle.label,
-        cssClass: toggle.icon ? 'material-icons' : toggle.cssClass
-      })
-    } ,
-    toggleOffData () {
-      let toggle = this.toggleOff
-      return toggle && JSON.stringify((typeof toggle === 'string') ? { 
-        content: toggle, 
-        cssClass: 'material-icons' 
-      } : {
-        content: toggle.icon || toggle.content,
-        label: toggle.label,
-        cssClass: toggle.icon ? 'material-icons' : toggle.cssClass
-      })
+      return (
+        toggle &&
+        JSON.stringify(
+          typeof toggle === 'string'
+            ? {
+                content: toggle,
+                cssClass: 'material-icons'
+              }
+            : {
+                content: toggle.icon || toggle.content,
+                label: toggle.label,
+                cssClass: toggle.icon ? 'material-icons' : toggle.cssClass
+              }
+        )
+      )
     },
+    toggleOffData() {
+      let toggle = this.toggleOff
+      return (
+        toggle &&
+        JSON.stringify(
+          typeof toggle === 'string'
+            ? {
+                content: toggle,
+                cssClass: 'material-icons'
+              }
+            : {
+                content: toggle.icon || toggle.content,
+                label: toggle.label,
+                cssClass: toggle.icon ? 'material-icons' : toggle.cssClass
+              }
+        )
+      )
+    }
   },
-  mounted () {
+  mounted() {
     this.foundation = new MDCIconToggleFoundation({
-      addClass: (className) => this.$set(this.iconClasses, className, true),
-      removeClass: (className) => this.$delete(this.iconClasses, className),
+      addClass: className => this.$set(this.iconClasses, className, true),
+      removeClass: className => this.$delete(this.iconClasses, className),
       registerInteractionHandler: (evt, handler) =>
         this.$el.addEventListener(evt, handler),
       deregisterInteractionHandler: (evt, handler) =>
         this.$el.removeEventListener(evt, handler),
-      setText: (text) => { this.text = text },
+      setText: text => {
+        this.text = text
+      },
       getTabIndex: () => this.tabIndex,
-      setTabIndex: (tabIndex) => { this.tabIndex = tabIndex },
+      setTabIndex: tabIndex => {
+        this.tabIndex = tabIndex
+      },
       getAttr: (name, value) => this.$el.getAttribute(name, value),
-      setAttr: (name, value) => { this.$el.setAttribute(name, value) },
-      rmAttr: (name) => { this.$el.removeAttribute(name) },
-      notifyChange: (evtData) => { this.$emit('input', evtData.isOn) }
+      setAttr: (name, value) => {
+        this.$el.setAttribute(name, value)
+      },
+      rmAttr: name => {
+        this.$el.removeAttribute(name)
+      },
+      notifyChange: evtData => {
+        this.$emit('input', evtData.isOn)
+      }
     })
     this.foundation.init()
     this.foundation.toggle(this.value)
@@ -95,11 +119,11 @@ export default {
 
     this.ripple = new RippleBase(this, {
       isUnbounded: () => true,
-      isSurfaceActive: () => this.foundation.isKeyboardActivated(),
+      isSurfaceActive: () => this.foundation.isKeyboardActivated()
     })
     this.ripple.init()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.foundation.destroy()
     this.ripple.destroy()
   }

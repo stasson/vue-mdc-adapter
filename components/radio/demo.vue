@@ -7,9 +7,9 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      picked:'',
+      picked: ''
     }
   }
 }

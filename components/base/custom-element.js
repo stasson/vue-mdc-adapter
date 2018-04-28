@@ -1,10 +1,11 @@
 export const CustomElement = {
   functional: true,
-  render (createElement, context) {
+  render(createElement, context) {
     return createElement(
-      context.props.is || context.props.tag || 'div', 
+      context.props.is || context.props.tag || 'div',
       context.data,
-      context.children)
+      context.children
+    )
   }
 }
 

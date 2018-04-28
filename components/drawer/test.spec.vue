@@ -23,6 +23,6 @@
 
 <script>
 export default {
-  name: 'spec',
+  name: 'spec'
 }
 </script>

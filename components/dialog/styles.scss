@@ -1,13 +1,10 @@
 @import "@material/dialog/mdc-dialog";
 
-
 // TODO: MDCFIX
 .mdc-dialog.mdc-dialog--open {
-  z-index: 5;
+    z-index: 5;
 }
-
 
 .mdc-dialog--open:not(.mdc-dialog--animating) .mdc-dialog__surface {
     transform: none !important;
 }
-

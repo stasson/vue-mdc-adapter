@@ -21,8 +21,8 @@
 
 
 <script>
-import { DispatchEventMixin } from '../base';
-import { RippleBase } from '../ripple';
+import { DispatchEventMixin } from '../base'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-grid-tile',
@@ -35,64 +35,64 @@ export default {
     title: String,
     'support-text': String,
     selected: Boolean,
-    activated: Boolean,
+    activated: Boolean
   },
   data() {
     return {
       classes: {},
-      styles: {},
-    };
+      styles: {}
+    }
   },
   computed: {
     clickListener() {
-      return { click: e => this.dispatchEvent(e) };
+      return { click: e => this.dispatchEvent(e) }
     },
     itemClasses() {
       return {
         'mdc-grid-tile--selected': this.selected,
-        'mdc-grid-tile--activated': this.activated,
-      };
+        'mdc-grid-tile--activated': this.activated
+      }
     },
     isInteractive() {
-      return this.mdcGrid && this.mdcGrid.interactive;
+      return this.mdcGrid && this.mdcGrid.interactive
     },
     hasStartDetail() {
-      return this.startIcon || this.$slots['start-detail'];
+      return this.startIcon || this.$slots['start-detail']
     },
     hasEndDetail() {
-      return this.endIcon || this.$slots['end-detail'];
-    },
+      return this.endIcon || this.$slots['end-detail']
+    }
   },
   watch: {
     isInteractive(value) {
       if (value) {
-        this.addRipple();
+        this.addRipple()
       } else {
-        this.removeRipple();
+        this.removeRipple()
       }
-    },
+    }
   },
   methods: {
     addRipple() {
       if (!this.ripple) {
-        let ripple = new RippleBase(this);
-        ripple.init();
-        this.ripple = ripple;
+        let ripple = new RippleBase(this)
+        ripple.init()
+        this.ripple = ripple
       }
     },
     removeRipple() {
       if (this.ripple) {
-        let ripple = this.ripple;
-        this.ripple = null;
-        ripple.destroy();
+        let ripple = this.ripple
+        this.ripple = null
+        ripple.destroy()
       }
-    },
+    }
   },
   mounted() {
-    this.isInteractive && this.addRipple();
+    this.isInteractive && this.addRipple()
   },
   beforeDestroy() {
-    this.removeRipple();
-  },
-};
+    this.removeRipple()
+  }
+}
 </script>

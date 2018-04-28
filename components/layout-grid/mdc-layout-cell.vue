@@ -8,9 +8,9 @@
 const spanOptions = {
   type: [String, Number],
   default: null,
-  validator: function (value) {
+  validator: function(value) {
     var num = Number(value)
-    return isFinite(num) && (num <= 12) && (num > 0)
+    return isFinite(num) && num <= 12 && num > 0
   }
 }
 
@@ -24,13 +24,13 @@ export default {
     desktop: spanOptions,
     align: {
       type: String,
-      validator: function (value) {
+      validator: function(value) {
         return ['top', 'bottom', 'middle'].indexOf(value) !== -1
       }
     }
   },
   computed: {
-    classes () {
+    classes() {
       let classes = []
 
       if (this.span) {

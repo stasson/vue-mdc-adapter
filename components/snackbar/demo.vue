@@ -6,21 +6,21 @@
 </template>
 
 <script>
-let n = 0;
+let n = 0
 export default {
   data() {
     return {
-      snack: {},
-    };
+      snack: {}
+    }
   },
   methods: {
     showSnackbar() {
       this.snack = {
         message: `This is a snackbar: ${n++}`,
         actionText: 'action',
-        actionHandler() {},
-      };
-    },
-  },
-};
+        actionHandler() {}
+      }
+    }
+  }
+}
 </script>

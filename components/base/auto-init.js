@@ -1,4 +1,4 @@
-export function autoInit (plugin) {
+export function autoInit(plugin) {
   // Auto-install
   let _Vue = null
   if (typeof window !== 'undefined') {
@@ -11,4 +11,3 @@ export function autoInit (plugin) {
     _Vue.use(plugin)
   }
 }
-  

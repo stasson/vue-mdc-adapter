@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import { DispatchEventMixin } from '../base';
+import { DispatchEventMixin } from '../base'
 
 export default {
   name: 'mdc-toolbar-menu-icon',
   mixins: [DispatchEventMixin],
   props: {
-    icon: { type: String, default: 'menu' },
-  },
-};
+    icon: { type: String, default: 'menu' }
+  }
+}
 </script>

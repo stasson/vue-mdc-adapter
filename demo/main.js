@@ -1,5 +1,5 @@
 import './styles/demo.scss'
-import './polyfill.js';
+import './polyfill.js'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueAnalytics from 'vue-analytics'
@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 Vue.use(VueMDCAdapter)
 const router = new VueRouter({
   routes,
-  scrollBehavior () {
+  scrollBehavior() {
     return { x: 0, y: 0 }
   }
 })
@@ -24,6 +24,6 @@ Vue.use(VueAnalytics, {
 
 // mount app
 const App = Vue.extend({
-  render: (h) => h(index) 
+  render: h => h(index)
 })
-new App({router}).$mount('#app')
+new App({ router }).$mount('#app')

@@ -17,11 +17,10 @@
 import toolbar from './toolbar.vue'
 import drawer from './drawer.vue'
 
-export default { 
+export default {
   components: {
     toolbar,
     drawer
   }
-}  
+}
 </script>
-

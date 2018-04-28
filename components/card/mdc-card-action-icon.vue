@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import { DispatchEventMixin } from '../base';
-import { RippleBase } from '../ripple';
+import { DispatchEventMixin } from '../base'
+import { RippleBase } from '../ripple'
 
 export default {
   name: 'mdc-card-action-icon',
   mixins: [DispatchEventMixin],
   props: {
-    icon: String,
+    icon: String
   },
   data() {
     return {
@@ -22,24 +22,24 @@ export default {
         'material-icons': !!this.icon,
         'mdc-card__action': true,
         'mdc-card__action--icon': true,
-        'mdc-icon-toggle': true,
+        'mdc-icon-toggle': true
       },
-      styles: {},
-    };
+      styles: {}
+    }
   },
   watch: {
     icon() {
-      this.$set(this.classes, 'material-icons', !!this.icon);
-    },
+      this.$set(this.classes, 'material-icons', !!this.icon)
+    }
   },
   mounted() {
     this.ripple = new RippleBase(this, {
-      isUnbounded: () => true,
-    });
-    this.ripple.init();
+      isUnbounded: () => true
+    })
+    this.ripple.init()
   },
   beforeDestroy() {
-    this.ripple.destroy();
-  },
-};
+    this.ripple.destroy()
+  }
+}
 </script>

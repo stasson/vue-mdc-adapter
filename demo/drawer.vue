@@ -16,11 +16,11 @@
 <script>
 import links from './links.js'
 
-export default { 
-  data () {
+export default {
+  data() {
     return {
       links
     }
   }
-}  
+}
 </script>

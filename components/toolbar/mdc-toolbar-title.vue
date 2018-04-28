@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import { DispatchEventMixin } from '../base';
+import { DispatchEventMixin } from '../base'
 
 export default {
   name: 'mdc-toolbar-title',
-  mixins: [DispatchEventMixin],
-};
+  mixins: [DispatchEventMixin]
+}
 </script>

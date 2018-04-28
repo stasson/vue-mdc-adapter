@@ -1,21 +1,21 @@
 @import "@material/drawer/mdc-drawer";
 
 .mdc-drawer-layout {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-  .mdc-drawer {
-    order: -1;
-  }
+    .mdc-drawer {
+        order: -1;
+    }
 }
 
 // drawer item is nav should be clickable
 .mdc-drawer-item {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .mdc-drawer.mdc-temporary-drawer {
-  .mdc-drawer-list {
-    overflow-y: auto;
-  }
+    .mdc-drawer-list {
+        overflow-y: auto;
+    }
 }

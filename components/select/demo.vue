@@ -30,19 +30,19 @@ export default {
       food: {
         Vegetables: ['Spinach', 'Carrots', 'Onions', 'Broccoli'],
         Meat: ['Eggs', 'Chicken', 'Fish', 'Turkey', 'Pork', 'Beef'],
-        Fruits: ['Apples', 'Oranges', 'Bananas', 'Berries', 'Lemons'],
-      },
-    };
+        Fruits: ['Apples', 'Oranges', 'Bananas', 'Berries', 'Lemons']
+      }
+    }
   },
   computed: {
     types() {
-      return Object.keys(this.food);
+      return Object.keys(this.food)
     },
     options() {
-      return this.selectedType ? this.food[this.selectedType] : [];
-    },
-  },
-};
+      return this.selectedType ? this.food[this.selectedType] : []
+    }
+  }
+}
 </script>
 
 <style>

@@ -41,4 +41,3 @@
 
   </mdc-layout-grid> 
 </template>
-

@@ -38,10 +38,10 @@ export default {
     return {
       textField: '',
       enabled: true,
-      password: '',
-    };
-  },
-};
+      password: ''
+    }
+  }
+}
 </script>
 
 <style>
