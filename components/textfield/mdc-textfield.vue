@@ -17,6 +17,8 @@
         <slot name="leading-icon">{{ hasLeadingIcon.content }}</slot>
       </i>
 
+      <!-- workarround for https://github.com/vuejs/rollup-plugin-vue/issues/174 -->
+      <!-- eslint-disable vue/html-self-closing -->
       <textarea
         v-if="multiline"
         ref="input"
@@ -32,7 +34,7 @@
         :cols="cols"
         v-on="$listeners"
         @input="updateValue($event.target.value)"
-      />
+      ></textarea>
 
       <input
         v-else
