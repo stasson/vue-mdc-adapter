@@ -1,25 +1,25 @@
 <template>
   <section>
-    <div 
-      :style="'background-image: url('+icon+')'" 
+    <div
+      :style="'background-image: url('+icon+')'"
       class="demo-icon"/>
-    <mdc-display 
-      v-if="title" 
-      ref="title" 
+    <mdc-display
+      v-if="title"
+      ref="title"
       typo="display1" >
-      <span 
-        v-for="(word, i) in title" 
+      <span
+        v-for="(word, i) in title"
         :key="word"
         :class="(i+1 < title.length)? 'hidden-mark hidden-mark--dot' : 'hidden-mark hidden-mark--return'"
-      >{{ word.trim() }}&nbsp</span>
+      >{{ word.trim() }}&nbsp;</span>
     </mdc-display>
-    <article 
-      v-if="demo" 
+    <article
+      v-if="demo"
       class="demo-article" >
       <component :is="demo" />
     </article>
-    <article 
-      v-if="readme" 
+    <article
+      v-if="readme"
       class="doc-article markdown">
       <component :is="readme" />
     </article>

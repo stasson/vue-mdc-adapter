@@ -1,15 +1,15 @@
 <template>
-  <div 
-    :style="{width:fullwidth?'100%':undefined}" 
-    :id="id" 
+  <div
+    :style="{width:fullwidth?'100%':undefined}"
+    :id="id"
     class="mdc-textfield-wrapper">
 
-    <div 
-      ref="root" 
+    <div
+      ref="root"
       :class="rootClasses">
 
-      <i 
-        v-if="!!hasLeadingIcon" 
+      <i
+        v-if="!!hasLeadingIcon"
         ref="icon"
         :class="hasLeadingIcon.classes"
         tabindex="0"
@@ -17,25 +17,25 @@
         <slot name="leading-icon">{{ hasLeadingIcon.content }}</slot>
       </i>
 
-      <textarea 
-        v-if="multiline" 
+      <textarea
+        v-if="multiline"
         ref="input"
         v-bind="$attrs"
         :id="vma_uid_"
         :class="inputClasses"
         :minlength="minlength"
         :maxlength="maxlength"
-        :placeholder="inputPlaceHolder" 
+        :placeholder="inputPlaceHolder"
         :aria-label="inputPlaceHolder"
         :aria-controls="inputAriaControls"
-        v-on="$listeners"
         :rows="rows"
-        :cols="cols" 
+        :cols="cols"
+        v-on="$listeners"
         @input="updateValue($event.target.value)"
       />
 
-      <input 
-        v-else 
+      <input
+        v-else
         ref="input"
         v-bind="$attrs"
         :id="vma_uid_"
@@ -43,23 +43,23 @@
         :type="type"
         :minlength="minlength"
         :maxlength="maxlength"
-        :placeholder="inputPlaceHolder" 
+        :placeholder="inputPlaceHolder"
         :aria-label="inputPlaceHolder"
-        v-on="$listeners"
         :aria-controls="inputAriaControls"
+        v-on="$listeners"
         @input="updateValue($event.target.value)"
       >
 
-      <label 
-        v-if="hasLabel" 
-        ref="label" 
-        :class="labelClassesUpgraded" 
+      <label
+        v-if="hasLabel"
+        ref="label"
+        :class="labelClassesUpgraded"
         :for="vma_uid_">
         {{ label }}
       </label>
 
-      <i 
-        v-if="!!hasTrailingIcon" 
+      <i
+        v-if="!!hasTrailingIcon"
         ref="icon"
         :class="hasTrailingIcon.classes"
         tabindex="0"
@@ -67,34 +67,34 @@
         <slot name="trailing-icon">{{ hasTrailingIcon.content }}</slot>
       </i>
 
-      <div 
-        v-if="hasOutline" 
-        ref="outline" 
-        :class="outlineClasses" 
+      <div
+        v-if="hasOutline"
+        ref="outline"
+        :class="outlineClasses"
         class="mdc-notched-outline">
         <svg>
-          <path 
-            :d="outlinePathAttr" 
+          <path
+            :d="outlinePathAttr"
             class="mdc-notched-outline__path" />
         </svg>
       </div>
-      <div 
-        v-if="hasOutline" 
-        ref="outlineIdle" 
+      <div
+        v-if="hasOutline"
+        ref="outlineIdle"
         class="mdc-notched-outline__idle"/>
-      <div 
-        v-if="hasBottomLine" 
-        ref="bottom" 
-        :class="bottomClasses" 
+      <div
+        v-if="hasBottomLine"
+        ref="bottom"
+        :class="bottomClasses"
         :style="bottomStyles"/>
 
     </div>
 
-    <p 
-      v-if="helptext" 
-      ref="help" 
+    <p
+      v-if="helptext"
+      ref="help"
       :id="'help-'+vma_uid_"
-      :class="helpClasses" 
+      :class="helpClasses"
       aria-hidden="true">
       {{ helptext }}
     </p>

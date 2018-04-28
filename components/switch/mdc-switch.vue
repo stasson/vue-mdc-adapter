@@ -1,21 +1,21 @@
 <template>
-  <div 
+  <div
     :class="{
-      'mdc-form-field': this.hasLabel,
-      'mdc-form-field--align-end': this.hasLabel && this.alignEnd
-    }" 
+      'mdc-form-field': hasLabel,
+      'mdc-form-field--align-end': hasLabel && alignEnd
+    }"
     class="mdc-switch-wrapper" >
 
-    <div 
-      :class="{'mdc-switch--disabled': disabled }" 
+    <div
+      :class="{'mdc-switch--disabled': disabled }"
       class="mdc-switch">
-      <input 
-        ref="control" 
-        :name="name" 
-        :id="vma_uid_" 
-        :checked="checked" 
-        :disabled="disabled" 
-        type="checkbox" 
+      <input
+        ref="control"
+        :name="name"
+        :id="vma_uid_"
+        :checked="checked"
+        :disabled="disabled"
+        type="checkbox"
         class="mdc-switch__native-control"
         @change="onChanged" >
 
@@ -25,8 +25,8 @@
 
     </div>
 
-    <label 
-      v-if="hasLabel" 
+    <label
+      v-if="hasLabel"
       :for="vma_uid_"
       class="mdc-switch-label">
       <slot>{{ label }}</slot>
