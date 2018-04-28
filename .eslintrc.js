@@ -1,30 +1,32 @@
-// http://eslint.org/docs/user-guide/configuring
-
 module.exports = {
-  root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
-  },
   env: {
-    browser: true,
-    jest: true,
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "jest": true
   },
-  "extends": "eslint:recommended",
-  // required to lint *.vue files
   plugins: [
-    'html'
+    "vue",
+    "prettier"
   ],
-  // add your custom rules here
-  'rules': {
-    // allow paren-less arrow functions
-    'arrow-parens': 0,
-    // allow async-await
-    'generator-star-spacing': 0,
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 1,
-    // allow debugger during development
-    'no-console': process.env.NODE_ENV === 'production' ? 2 : 1
+  extends: [
+    "prettier",
+    "eslint:recommended",
+    "plugin:vue/recommended"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "parser": 'babel-eslint',
+    "ecmaFeatures": {
+      "jsx": true,
+    }
   },
-  
+  "rules": {
+    "vue/name-property-casing": ["error", "kebab-case"],
+    "vue/require-default-prop": "off",
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 1,
+    'no-console': process.env.NODE_ENV === 'production' ? 2 : 1,
+    "prettier/prettier": "warn"
+  }
 }
