@@ -2,11 +2,11 @@
   <div class="mdc-demo--appbar">
     <section class="mdc-demo">
       <mdc-top-app-bar title="Title2">
-        <mdc-top-app-bar--action 
-          icon="help" 
+        <mdc-top-app-bar-action
+          icon="help"
           @click="buttonText='show help'"/>
-        <mdc-top-app-bar--action 
-          icon="info_outline" 
+        <mdc-top-app-bar-action
+          icon="info_outline"
           @click="buttonText='show information'"/>
       </mdc-top-app-bar>
       <br>

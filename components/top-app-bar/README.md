@@ -2,7 +2,7 @@
 
 ```html
 <mdc-top-app-bar title="Title2" @click="openDrawer=true">
-  <mdc-top-app-bar--action @click="showHelp" icon="help"></mdc-top-app-bar--action>
+  <mdc-top-app-bar-action @click="showHelp" icon="help"></mdc-top-app-bar-action>
 </mdc-top-app-bar>
 <mdc-drawer v-model="openDrawer" />
 ```
@@ -48,7 +48,7 @@ Short top app bars can be configured to always appear collapsed by applying the 
 
 ### Action icons
 
-* `mdc-top-app-bar--action` wraps any icons placed on the right side of an
+* `mdc-top-app-bar-action` wraps any icons placed on the right side of an
   mdc-top-app-bar.
 
   | props          | Type   | Default  | Description                                 |
@@ -59,8 +59,8 @@ Short top app bars can be configured to always appear collapsed by applying the 
 
 ```html
 <mdc-top-app-bar title="Title" @click="toggleDrawer">
-    <mdc-top-app-bar--action @click="show-help" icon="help"></mdc-top-app-bar--action>
-    <mdc-top-app-bar--action @click="do-download" icon="file_download"></mdc-top-app-bar--action>
+    <mdc-top-app-bar-action @click="show-help" icon="help"></mdc-top-app-bar-action>
+    <mdc-top-app-bar-action @click="do-download" icon="file_download"></mdc-top-app-bar-action>
 </mdc-top-app-bar>
 ```
 
@@ -71,7 +71,7 @@ Short top app bars can be configured to always appear collapsed by applying the 
 **Font Awsome**
 
 ```html
-  <mdc-top-app-bar--action event="show-help" iconClasses="fa fa-star"></mdc-top-app-bar--action>
+  <mdc-top-app-bar-action event="show-help" iconClasses="fa fa-star"></mdc-top-app-bar-action>
 ```
 
 refer to the [MDC Documentation](https://material.io/components/web/catalog/toolbar/#flexible-toolbar-requires-javascript) to learn about customization options.
