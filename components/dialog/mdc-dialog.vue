@@ -1,39 +1,39 @@
 <template>
-  <aside 
-    ref="root" 
-    :class="classes" 
-    :style="styles" 
+  <aside
+    ref="root"
+    :class="classes"
+    :style="styles"
     :aria-labelledby="'label' + vma_uid_"
     :aria-describedby="'desc' + vma_uid_"
     class="mdc-dialog"
     role="alertdialog"
   >
-    <div 
-      ref="surface" 
-      :class="surfaceClasses" 
+    <div
+      ref="surface"
+      :class="surfaceClasses"
       class="mdc-dialog__surface">
       <header class="mdc-dialog__header">
-        <h2 
-          :id="'label' + vma_uid_" 
+        <h2
+          :id="'label' + vma_uid_"
           class="mdc-dialog__header__title">
           {{ title }}
         </h2>
       </header>
-      <section 
+      <section
         :id="'desc' + vma_uid_"
-        :class="bodyClasses" 
+        :class="bodyClasses"
         class="mdc-dialog__body">
         <slot />
       </section>
       <footer class="mdc-dialog__footer">
-        <mdcButton 
-          v-if="cancel" 
+        <mdcButton
+          v-if="cancel"
           ref="cancel"
           :class="{'mdc-dialog__action':accent}"
           class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel"
           @click="onCancel"
         >{{ cancel }}</mdcButton>
-        <mdcButton 
+        <mdcButton
           ref="accept"
           :class="{'mdc-dialog__action':accent}"
           :disabled="acceptDisabled"
@@ -127,11 +127,7 @@ export default {
       },
       trapFocusOnSurface: () => this.focusTrap.activate(),
       untrapFocusOnSurface: () => this.focusTrap.deactivate(),
-      isDialog: el => this.$refs.surface === el,
-      layoutFooterRipples: () => {
-        this.$refs.accept.ripple.layout()
-        this.cancel && this.$refs.cancel.ripple.layout()
-      }
+      isDialog: el => this.$refs.surface === el
     })
 
     this.foundation.init()
