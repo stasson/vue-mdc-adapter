@@ -328,6 +328,8 @@ export default {
 
       this.iconFoundation = new MDCTextFieldIconFoundation({
         setAttr: (attr, value) => this.$refs.icon.setAttribute(attr, value),
+        getAttr: attr => this.$refs.icon.getAttribute(attr),
+        removeAttr: attr => this.$refs.icon.removeAttribute(attr),
         registerInteractionHandler: (evtType, handler) => {
           this.$refs.icon.addEventListener(evtType, handler)
         },
