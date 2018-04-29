@@ -82,7 +82,7 @@ export const mdcText = {
 export const mdcDisplay = {
   name: 'mdc-display',
   mixins: [
-    mdcTypoMixin('mdc-headline'),
+    mdcTypoMixin('mdc-display'),
     mdcTypoPropMixin('h1', 'headline4', [
       'headline4',
       'headline3',
