@@ -6,27 +6,9 @@
       <div
         ref="buttons"
         class="mdc-demo-button">
-        <mdc-button
-          :dense="dense"
-          :disabled="disabled"
-          :raised="raised"
-          :stroked="stroked"
-          :unelevated="unelevated"
-          :accent="accent">Button</mdc-button>
-        <mdc-button
-          :dense="dense"
-          :disabled="disabled"
-          :raised="raised"
-          :stroked="stroked"
-          :unelevated="unelevated"
-          :accent="accent">Button</mdc-button>
-        <mdc-button
-          :dense="dense"
-          :disabled="disabled"
-          :raised="raised"
-          :stroked="stroked"
-          :unelevated="unelevated"
-          :accent="accent">Button</mdc-button>
+        <mdc-button v-bind="buttonProps">Button</mdc-button>
+        <mdc-button v-bind="buttonProps">Button</mdc-button>
+        <mdc-button v-bind="buttonProps">Button</mdc-button>
       </div>
     </div>
 
@@ -47,7 +29,7 @@
           name="button-type"/>
         <mdc-radio
           v-model="type"
-          label="stroked"
+          label="outlined"
           name="button-type"/>
       </div>
 
@@ -74,19 +56,22 @@ export default {
   },
   computed: {
     raised() {
-      if (this.$refs.buttons) {
-        this.$nextTick(() => {
-          let children = [...this.$refs.buttons.children]
-          children.forEach(({ __vue__ }) => __vue__.ripple.layout())
-        })
-      }
       return this.type == 'raised'
     },
     unelevated() {
       return this.type == 'unelevated'
     },
-    stroked() {
-      return this.type == 'stroked'
+    outlined() {
+      return this.type == 'outlined'
+    },
+    buttonProps() {
+      return {
+        dense: this.dense,
+        disabled: this.disabled,
+        raised: this.raised,
+        outlined: this.outlined,
+        unelevated: this.unelevated,
+      }
     }
   }
 }

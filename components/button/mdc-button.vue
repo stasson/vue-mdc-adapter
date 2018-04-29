@@ -7,7 +7,7 @@ export default {
   props: {
     raised: Boolean,
     unelevated: Boolean,
-    stroked: Boolean,
+    outlined: Boolean,
     dense: Boolean
   },
   data() {
@@ -16,7 +16,7 @@ export default {
         'mdc-button': true,
         'mdc-button--raised': this.raised,
         'mdc-button--unelevated': this.unelevated,
-        'mdc-button--stroked': this.stroked,
+        'mdc-button--outlined': this.outlined,
         'mdc-button--dense': this.dense
       }
     }
@@ -28,8 +28,8 @@ export default {
     unelevated() {
       this.$set(this.classes, 'mdc-button--unelevated', this.unelevated)
     },
-    stroked() {
-      this.$set(this.classes, 'mdc-button--stroked', this.stroked)
+    outlined() {
+      this.$set(this.classes, 'mdc-button--outlined', this.outlined)
     },
     dense() {
       this.$set(this.classes, 'mdc-button--dense', this.dense)
