@@ -10,14 +10,14 @@
 ```javascript
 var vm = new Vue({
   data: {
-    openDrawer: false,
+    openDrawer: false
   },
   methods: {
     showHelp() {
-      console.log('show help');
-    },
-  },
-});
+      console.log('show help')
+    }
+  }
+})
 ```
 
 ### top-app-bars
@@ -28,7 +28,8 @@ top-app-bars scroll with content by default.
 
 | Props          | Type    | Default  | Description                                                     |
 | -------------- | ------- | -------- | --------------------------------------------------------------- |
-| `short`        | Boolean |          | Short top app bars should only be used with one action item     |
+| `fixed`        | Boolean | false    | fixed at the top of the page                                    |
+| `short`        | Boolean | false    | Short top app bars should only be used with one action item     |
 | `collapsed`    | String  | false    | Short top app bars can be configured to always appear collapsed |
 | `dense`        | Boolean | false    | optional changes top app bar to be dense                        |
 | `prominent`    | Boolean | false    | optional changes too app bar style to be prominent              |
@@ -40,11 +41,9 @@ Short top app bars can be configured to always appear collapsed by applying the 
 
 ### events
 
-| Name                | Args | Description                                  |
-| ------------------- | ---- | -------------------------------------------- |
-| `@MDCTopAppBar:nav` |      | emitted when the navigation icon is clicked. |
-
-> Note you can also listen for the `@click` event for when the navigaton icon is clicked.
+| Name  | Args | Description                                  |
+| ----- | ---- | -------------------------------------------- |
+| `nav` |      | emitted when the navigation icon is clicked. |
 
 ### Action icons
 

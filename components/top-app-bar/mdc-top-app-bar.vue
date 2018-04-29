@@ -1,23 +1,23 @@
 <template>
-  <header 
-    ref="root" 
-    :class="rootClasses" 
-    :style="rootStyles" 
+  <header
+    ref="root"
+    :class="rootClasses"
+    :style="rootStyles"
     v-on="$listeners">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-        <a 
-          v-if="haveNavigationIcon" 
-          ref="navigationIcon" 
-          :class="naviconClasses" 
-          href="#" 
+        <a
+          v-if="haveNavigationIcon"
+          ref="navigationIcon"
+          :class="naviconClasses"
+          href="#"
           v-on="listeners">{{ icon }}</a>
-        <span 
-          v-if="!!title" 
+        <span
+          v-if="!!title"
           class="mdc-top-app-bar__title">{{ title }}</span>
       </section>
-      <section 
-        v-if="$slots.default" 
+      <section
+        v-if="$slots.default"
         class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
         <slot/>
       </section>
@@ -28,7 +28,7 @@
 <script>
 import MDCTopAppBarFoundation from '@material/top-app-bar/foundation'
 import MDCShortTopAppBarFoundation from '@material/top-app-bar/short/foundation'
-import { DispatchEventMixin, emitCustomEvent } from '../base'
+import { DispatchEventMixin } from '../base'
 
 export default {
   name: 'mdc-top-app-bar',
@@ -37,6 +37,7 @@ export default {
     short: Boolean,
     shortCollapsed: Boolean,
     prominent: Boolean,
+    fixed: Boolean,
     title: String,
     icon: {
       type: String,
@@ -53,7 +54,8 @@ export default {
         'mdc-top-app-bar--dense': this.dense,
         'mdc-top-app-bar--short': this.short,
         'mdc-top-app-bar--short-collapsed': this.shortCollapsed,
-        'mdc-top-app-bar--prominent': this.prominent
+        'mdc-top-app-bar--prominent': this.prominent,
+        'mdc-top-app-bar--fixed': this.fixed
       },
       foundation: null
     }
@@ -96,12 +98,7 @@ export default {
         }
       },
       notifyNavigationIconClicked: () => {
-        emitCustomEvent(
-          this.$el,
-          MDCTopAppBarFoundation.strings.NAVIGATION_EVENT,
-          {},
-          true
-        )
+        this.$emit('nav')
       },
       registerScrollHandler: handler => {
         window.addEventListener('scroll', handler)
