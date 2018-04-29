@@ -1,23 +1,43 @@
 <template>
-  <iframe 
-    :src="iframe" 
-    class="mdc-demo mdc-elevation--z1" 
-    scrolling="no"
-    title="vue-mdc-adapter App Layout" 
-    width="400" 
-    height="150" 
-    frameborder="no"  
-    allowtransparency="false" 
-    allowfullscreen="false"/>
+  <div class="mdc-demo--appbar">
+    <section class="mdc-demo">
+      <mdc-toolbar
+        slot="toolbar">
+        <mdc-toolbar-row>
+          <mdc-toolbar-section align-start >
+            <mdc-toolbar-menu-icon/>
+            <mdc-toolbar-title>Title</mdc-toolbar-title>
+          </mdc-toolbar-section>
+          <mdc-toolbar-section align-end>
+            <mdc-toolbar-icon
+              event="show-help"
+              icon="help"/>
+          </mdc-toolbar-section>
+        </mdc-toolbar-row>
+      </mdc-toolbar>
+    </section>
+  </div>
 </template>
 
 <script>
-import iframe from 'file-loader!./demo.html'
 export default {
   data() {
-    return {
-      iframe
-    }
+    return { buttonText: '' }
   }
 }
 </script>
+
+<style>
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.demo-button-info {
+  font-style: italic;
+}
+.mdc-demo--appbar {
+  width: 100%;
+}
+
+.mdc-demo .mdc-toolbar {
+  position: relative;
+}
+</style>
