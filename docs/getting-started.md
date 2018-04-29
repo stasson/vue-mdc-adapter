@@ -141,18 +141,17 @@ npm install vue-mdc-adapter
 #### import _standalone_ plugin
 
 ```javascript
-import Vue from 'vue';
-import VueMDCAdapter from 'vue-mdc-adapter';
-Vue.use(VueMDCAdapter);
+import Vue from 'vue'
+import VueMDCAdapter from 'vue-mdc-adapter'
+Vue.use(VueMDCAdapter)
 ```
 
 #### import _a la carte_ plugins
 
 ```javascript
-import Vue from 'vue';
-import VueMDCCommon from 'vue-mdc-adapter/common';
-import VueMDCButton from 'vue-mdc-adapter/button';
-Vue.use(VueMDCButton);
+import Vue from 'vue'
+import VueMDCButton from 'vue-mdc-adapter/button'
+Vue.use(VueMDCButton)
 ```
 
 #### import _a la carte_ SFC mixins
@@ -305,7 +304,6 @@ $mdc-theme-background: #fff;
 // main.js
 import `./theme.scss`
 import Vue from 'vue'
-import VueMDCCommon from 'vue-mdc-adapter/common';
 import VueMDCButton from 'vue-mdc-adapter/button'
 import VueMDCFAB from 'vue-mdc-adapter/fab'
 Vue.use(VueMDCButton)
