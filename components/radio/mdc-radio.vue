@@ -1,29 +1,29 @@
 <template>
-  <div 
-    :class="formFieldClasses" 
+  <div
+    :class="formFieldClasses"
     class="mdc-radio-wrapper">
-    <div 
-      ref="root" 
-      :class="classes" 
-      :style="styles" 
+    <div
+      ref="root"
+      :class="classes"
+      :style="styles"
       class="mdc-radio">
-      <input 
-        ref="control" 
-        :id="vma_uid_" 
-        :name="name" 
+      <input
+        ref="control"
+        :id="vma_uid_"
+        :name="name"
         type="radio"
-        class="mdc-radio__native-control" 
+        class="mdc-radio__native-control"
         @change="sync">
 
-      <div 
-        ref="label" 
+      <div
+        ref="label"
         class="mdc-radio__background">
         <div class="mdc-radio__outer-circle"/>
         <div class="mdc-radio__inner-circle"/>
       </div>
     </div>
-    <label 
-      ref="label" 
+    <label
+      ref="label"
       :for="vma_uid_"><slot>{{ label }}</slot></label>
   </div>
 </template>
@@ -33,6 +33,7 @@ import MDCRadioFoundation from '@material/radio/foundation'
 import MDCFormFieldFoundation from '@material/form-field/foundation'
 import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base'
 import { RippleBase } from '../ripple'
+import { applyPassive } from '../base'
 
 export default {
   name: 'mdc-radio',
@@ -78,10 +79,10 @@ export default {
       isUnbounded: () => true,
       isSurfaceActive: () => false,
       registerInteractionHandler: (evt, handler) => {
-        this.$refs.control.addEventListener(evt, handler)
+        this.$refs.control.addEventListener(evt, handler, applyPassive())
       },
       deregisterInteractionHandler: (evt, handler) => {
-        this.$refs.control.removeEventListener(evt, handler)
+        this.$refs.control.removeEventListener(evt, handler, applyPassive())
       },
       computeBoundingRect: () => {
         return this.$refs.root.getBoundingClientRect()

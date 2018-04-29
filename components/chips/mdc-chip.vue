@@ -1,24 +1,24 @@
 <template>
-  <div 
-    :class="classes" 
-    :style="styles" 
-    tabindex="0" 
+  <div
+    :class="classes"
+    :style="styles"
+    tabindex="0"
     v-on="$listeners">
-    <i 
-      v-if="haveleadingIcon" 
+    <i
+      v-if="haveleadingIcon"
       ref="leadingIcon"
-      :class="leadingClasses" 
+      :class="leadingClasses"
       class="mdc-chip__icon mdc-chip__icon--leading"
     >{{ leadingIcon }}</i>
-    <div 
-      v-if="isFilter" 
+    <div
+      v-if="isFilter"
       class="mdc-chip__checkmark">
-      <svg 
-        class="mdc-chip__checkmark-svg" 
+      <svg
+        class="mdc-chip__checkmark-svg"
         viewBox="-2 -3 30 30">
-        <path 
-          class="mdc-chip__checkmark-path" 
-          fill="none" 
+        <path
+          class="mdc-chip__checkmark-path"
+          fill="none"
           stroke="black"
           d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
       </svg>
@@ -26,20 +26,20 @@
     <div class="mdc-chip__text">
       <slot/>
     </div>
-    <i 
-      v-if="havetrailingIcon" 
-      ref="trailingIcon" 
-      :class="trailingClasses" 
+    <i
+      v-if="havetrailingIcon"
+      ref="trailingIcon"
+      :class="trailingClasses"
       class="mdc-chip__icon mdc-chip__icon--trailing"
-      tabindex="0" 
+      tabindex="0"
       role="button"
     >{{ trailingIcon }}</i>
   </div>
 </template>
-
+applyPassive
 <script>
 import MDCChipFoundation from '@material/chips/chip/foundation'
-import { CustomLinkMixin, emitCustomEvent } from '../base'
+import { CustomLinkMixin, emitCustomEvent, applyPassive } from '../base'
 import { RippleBase } from '../ripple'
 
 export default {
@@ -134,12 +134,20 @@ export default {
 
       registerTrailingIconInteractionHandler: (evtType, handler) => {
         if (this.$refs.trailingIcon) {
-          this.$refs.trailingIcon.addEventListener(evtType, handler)
+          this.$refs.trailingIcon.addEventListener(
+            evtType,
+            handler,
+            applyPassive()
+          )
         }
       },
       deregisterTrailingIconInteractionHandler: (evtType, handler) => {
         if (this.$refs.trailingIcon) {
-          this.$refs.trailingIcon.removeEventListener(evtType, handler)
+          this.$refs.trailingIcon.removeEventListener(
+            evtType,
+            handler,
+            applyPassive()
+          )
         }
       },
       notifyRemoval: () =>

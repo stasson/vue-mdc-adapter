@@ -1,17 +1,17 @@
 <template>
-  <div 
-    :class="classes" 
-    class="mdc-slider" 
-    tabindex="0" 
+  <div
+    :class="classes"
+    class="mdc-slider"
+    tabindex="0"
     role="slider">
     <div class="mdc-slider__track-container">
-      <div 
-        :style="trackStyles" 
+      <div
+        :style="trackStyles"
         class="mdc-slider__track"/>
-      <div 
-        v-if="hasMarkers" 
+      <div
+        v-if="hasMarkers"
         class="mdc-slider__track-marker-container">
-        <div 
+        <div
           v-for="markerNum in numMarkers"
           :key="markerNum"
           :style="(markerNum == numMarkers) ? lastTrackMarkersStyles : {}"
@@ -19,22 +19,22 @@
         />
       </div>
     </div>
-    <div 
-      ref="thumbContainer" 
-      :style="thumbStyles" 
+    <div
+      ref="thumbContainer"
+      :style="thumbStyles"
       class="mdc-slider__thumb-container">
-      <div 
-        v-if="isDiscrete" 
+      <div
+        v-if="isDiscrete"
         class="mdc-slider__pin">
         <span class="mdc-slider__pin-value-marker">{{ markerValue }}</span>
       </div>
-      <svg 
-        class="mdc-slider__thumb" 
-        width="21" 
+      <svg
+        class="mdc-slider__thumb"
+        width="21"
         height="21">
-        <circle 
-          cx="10.5" 
-          cy="10.5" 
+        <circle
+          cx="10.5"
+          cy="10.5"
           r="7.875"/>
       </svg>
       <div class="mdc-slider__focus-ring"/>
@@ -44,7 +44,7 @@
 
 <script>
 import MDCSliderFoundation from '@material/slider/foundation'
-import { DispatchFocusMixin } from '../base'
+import { DispatchFocusMixin, applyPassive } from '../base'
 
 export default {
   name: 'mdc-slider',
@@ -118,16 +118,24 @@ export default {
       computeBoundingRect: () => this.$el.getBoundingClientRect(),
       getTabIndex: () => this.$el.tabIndex,
       registerInteractionHandler: (type, handler) => {
-        this.$el.addEventListener(type, handler)
+        this.$el.addEventListener(type, handler, applyPassive())
       },
       deregisterInteractionHandler: (type, handler) => {
-        this.$el.removeEventListener(type, handler)
+        this.$el.removeEventListener(type, handler, applyPassive())
       },
       registerThumbContainerInteractionHandler: (type, handler) => {
-        this.$refs.thumbContainer.addEventListener(type, handler)
+        this.$refs.thumbContainer.addEventListener(
+          type,
+          handler,
+          applyPassive()
+        )
       },
       deregisterThumbContainerInteractionHandler: (type, handler) => {
-        this.$refs.thumbContainer.removeEventListener(type, handler)
+        this.$refs.thumbContainer.removeEventListener(
+          type,
+          handler,
+          applyPassive()
+        )
       },
       registerBodyInteractionHandler: (type, handler) => {
         document.body.addEventListener(type, handler)

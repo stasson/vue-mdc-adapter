@@ -1,3 +1,4 @@
+export * from './apply-passive.js'
 export * from './auto-init.js'
 export * from './base-plugin.js'
 export * from './custom-element.js'
