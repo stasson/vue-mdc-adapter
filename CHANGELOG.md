@@ -2,6 +2,59 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.0"></a>
+# [0.15.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.14.0...v0.15.0) (2018-04-29)
+
+
+### Bug Fixes
+
+* **demo:** button ripple layout on change button type. ([1cfe0da](https://github.com/stasson/vue-mdc-adapter/commit/1cfe0da))
+* **mdc-button:** Remove accent ([2ea1ec0](https://github.com/stasson/vue-mdc-adapter/commit/2ea1ec0))
+* **mdc-checkbox:** Correct classname for svg path. ([aea2733](https://github.com/stasson/vue-mdc-adapter/commit/aea2733))
+* **mdc-select:** Add scope id attribute to root element. ([7f91f61](https://github.com/stasson/vue-mdc-adapter/commit/7f91f61))
+* **mdc-tab-bar:** Remove obsolete support for primary/secondary indicators. ([6b902ba](https://github.com/stasson/vue-mdc-adapter/commit/6b902ba))
+* Revert isolate internal eventbus. Use relatively unique event name to isolate from user events. ([97eceaf](https://github.com/stasson/vue-mdc-adapter/commit/97eceaf))
+* **mdc-textfield:** Support "id" from scope attributes on root element ([3541eef](https://github.com/stasson/vue-mdc-adapter/commit/3541eef))
+* **mdc-top-bar-app:** fix mdc-top-app-bar-action name ([6cb1902](https://github.com/stasson/vue-mdc-adapter/commit/6cb1902))
+* **package:** update material-components-web to version 0.35.0 ([02fb05a](https://github.com/stasson/vue-mdc-adapter/commit/02fb05a))
+* **textfield:** fix self closing textarea build issue ([e66aed2](https://github.com/stasson/vue-mdc-adapter/commit/e66aed2))
+* **typography:** fix mdc-display class name ([e8aeb65](https://github.com/stasson/vue-mdc-adapter/commit/e8aeb65))
+* change event name and document. ([e862cd7](https://github.com/stasson/vue-mdc-adapter/commit/e862cd7))
+* fix passive event warnings ([2a0e886](https://github.com/stasson/vue-mdc-adapter/commit/2a0e886))
+* fix remaing template eslint  issues ([d9fff63](https://github.com/stasson/vue-mdc-adapter/commit/d9fff63))
+* Make unique id a mixin ([e4cce68](https://github.com/stasson/vue-mdc-adapter/commit/e4cce68))
+* workaround for postcss build issue [REVERTME] ([7c4e8be](https://github.com/stasson/vue-mdc-adapter/commit/7c4e8be))
+
+
+### Features
+
+* **button:** Rename stroke property to outline as per MDCWeb 0.35.0 ([b346320](https://github.com/stasson/vue-mdc-adapter/commit/b346320))
+* **card:** Rename stroke property to outline as per MDCWeb 0.35.0 ([c46639a](https://github.com/stasson/vue-mdc-adapter/commit/c46639a))
+* **chip:** update chip as per MDCWeb 0.35.0 ([e629bc2](https://github.com/stasson/vue-mdc-adapter/commit/e629bc2))
+* **dialog:** update mdc-dialog as per MDCWeb 0.35.0 ([4ccbd9e](https://github.com/stasson/vue-mdc-adapter/commit/4ccbd9e))
+* **fab:** RTL support for fab ([e634387](https://github.com/stasson/vue-mdc-adapter/commit/e634387))
+* **mdc-dialog:** Support v-model for open/close dialog ([5560ea6](https://github.com/stasson/vue-mdc-adapter/commit/5560ea6))
+* **mdc-drawer:** Support v-model to open/close drawer. ([7ce4311](https://github.com/stasson/vue-mdc-adapter/commit/7ce4311))
+* **mdc-menu:** Support v-model for open/close ([1648ef5](https://github.com/stasson/vue-mdc-adapter/commit/1648ef5))
+* **mdc-snackbar:** Support v-model to show snack. ([dfa29d3](https://github.com/stasson/vue-mdc-adapter/commit/dfa29d3))
+* **mdc-top-app-bar:** Add support for prominent prop ([62d9251](https://github.com/stasson/vue-mdc-adapter/commit/62d9251))
+* **select:** update as per MDCWeb 0.35.0 ([d2d7182](https://github.com/stasson/vue-mdc-adapter/commit/d2d7182))
+* **select:** update mdc-select as per MDCWeb 0.35.0 ([dc27135](https://github.com/stasson/vue-mdc-adapter/commit/dc27135))
+* **textfield:** update foundation as per MDCWeb 0.35.0 ([212022c](https://github.com/stasson/vue-mdc-adapter/commit/212022c))
+* **top-app-bar:** add fixed property ([83130ed](https://github.com/stasson/vue-mdc-adapter/commit/83130ed))
+* **top-app-bar:** update mdc-top-app-bar as per MDCWeb 0.35.0 ([fe71e18](https://github.com/stasson/vue-mdc-adapter/commit/fe71e18))
+* **typography:** typography: Update styles to match guidance as per MDCWeb 0.35.0 ([7aa9a33](https://github.com/stasson/vue-mdc-adapter/commit/7aa9a33))
+
+
+### BREAKING CHANGES
+
+* **select:** bottomLine property has removed
+* **card:** Rename stroke property to outline as per MDCWeb 0.35.0
+* **button:** Rename button stroke property to outline
+* **typography:** Previous typography styles are removed. The new styles are listed in the readme.
+
+
+
 <a name="0.14.0"></a>
 
 # [0.14.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.13.4...v0.14.0) (2018-04-06)
