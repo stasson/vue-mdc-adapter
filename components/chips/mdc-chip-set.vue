@@ -8,12 +8,13 @@
 
 <script>
 import MDCChipSetFoundation from '@material/chips/chip-set/foundation'
-
+import MDCChipFoundation from '@material/chips/chip/foundation'
 export default {
   name: 'mdc-chip-set',
   props: {
     choice: [Boolean],
-    filter: [Boolean]
+    filter: [Boolean],
+    input: [Boolean]
   },
   provide() {
     return { mdcChipSet: this }
@@ -23,7 +24,8 @@ export default {
       classes: {
         'mdc-chip-set': true,
         'mdc-chip-set--choice': this.choice,
-        'mdc-chip-set--filter': this.filter
+        'mdc-chip-set--filter': this.filter,
+        'mdc-chip-set--input': this.input
       }
     }
   },
@@ -35,6 +37,28 @@ export default {
       },
       deregisterInteractionHandler: (evtType, handler) => {
         this.$el.removeEventListener(evtType, handler)
+      },
+      appendChip: (text, leadingIcon, trailingIcon) => {
+        const chipTextEl = document.createElement('div')
+        chipTextEl.classList.add(MDCChipFoundation.cssClasses.TEXT)
+        chipTextEl.appendChild(document.createTextNode(text))
+
+        const chipEl = document.createElement('div')
+        chipEl.classList.add(MDCChipFoundation.cssClasses.CHIP)
+        if (leadingIcon) {
+          chipEl.appendChild(leadingIcon)
+        }
+        chipEl.appendChild(chipTextEl)
+        if (trailingIcon) {
+          chipEl.appendChild(trailingIcon)
+        }
+        this.root_.appendChild(chipEl)
+        return chipEl
+      },
+      removeChip: chip => {
+        const index = this.chips.indexOf(chip)
+        this.chips.splice(index, 1)
+        chip.remove()
       }
     })
 
