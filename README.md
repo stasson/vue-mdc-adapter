@@ -84,6 +84,7 @@ or follow us on Twitter [@vuemdc](https://twitter.com/vuemdc)
 * [x] [tabs](https://stasson.github.io/vue-mdc-adapter/#/component/tabs)
 * [x] [textfield](https://stasson.github.io/vue-mdc-adapter/#/component/textfield)
 * [x] [toolbar](https://stasson.github.io/vue-mdc-adapter/#/component/toolbar)
+* [x] [top-app-bar](https://stasson.github.io/vue-mdc-adapter/#/component/top-app-bar)
 * [x] [typography](https://stasson.github.io/vue-mdc-adapter/#/component/typography)
 
 > Extra plugins
