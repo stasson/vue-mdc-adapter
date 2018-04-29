@@ -1,0 +1,159 @@
+//
+// Copyright 2017 Google Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+@import "./keyframes";
+@import "./mixins";
+@import "./variables";
+@import "@material/animation/variables";
+@import "@material/line-ripple/mdc-line-ripple";
+@import "@material/floating-label/mdc-floating-label";
+@import "@material/typography/mixins";
+@import "@material/ripple/common";
+@import "@material/ripple/mixins";
+@import "@material/rtl/mixins";
+
+// postcss-bem-linter: define select
+.mdc-select {
+  @include mdc-select-container-fill-color(transparent);
+  @include mdc-select-dd-arrow-svg-bg_;
+  @include mdc-select-ink-color($mdc-select-ink-color);
+  @include mdc-select-label-color($mdc-select-label-color);
+  @include mdc-select-bottom-line-color($mdc-select-bottom-line-idle-color);
+
+  // Focused state colors
+  @include mdc-select-focused-bottom-line-color(primary);
+  @include mdc-select-focused-label-color($mdc-select-focused-label-color);
+
+  // Hover state colors
+  @include mdc-select-hover-bottom-line-color($mdc-select-bottom-line-hover-color);
+
+  display: inline-flex;
+  position: relative;
+  box-sizing: border-box;
+  height: 52px;
+  background-repeat: no-repeat;
+  background-position: right 8px bottom 12px;
+  overflow: hidden;
+
+  @include mdc-rtl {
+    background-position: left 8px bottom 12px;
+  }
+
+  &__native-control {
+    @include mdc-rtl-reflexive-property(padding, 0, $mdc-select-arrow-padding);
+    @include mdc-typography(subtitle1);
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    // counteracts the extra text padding that Firefox adds by default
+    @-moz-document url-prefix("") {
+      text-indent: -2px;
+    }
+
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 4px;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 0;
+    outline: none;
+    background-color: transparent;
+    white-space: nowrap;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  // stylelint-disable-next-line plugin/selector-bem-pattern
+  .mdc-floating-label {
+    pointer-events: none;
+  }
+
+  @include mdc-select-focused-line-ripple_ {
+    &::after {
+      transform: scale(1, 2);
+      opacity: 1;
+    }
+  }
+}
+
+.mdc-select--box {
+  @include mdc-select-container-fill-color($mdc-select-box-fill-color);
+  @include mdc-ripple-surface;
+  @include mdc-ripple-radius-bounded;
+  // Select Box intentionally omits press ripple, so each state needs to be specified individually
+  @include mdc-states-base-color($mdc-select-ink-color);
+  @include mdc-states-hover-opacity(mdc-states-opacity($mdc-select-ink-color, hover));
+  @include mdc-states-focus-opacity(
+    mdc-states-opacity($mdc-select-ink-color, focus),
+    $has-nested-focusable-element: true
+  );
+
+  height: 56px;
+  border-radius: 4px 4px 0 0;
+  background-position: right 10px center;
+
+  @include mdc-rtl {
+    background-position: left 10px center;
+  }
+
+  .mdc-select__native-control {
+    @include mdc-rtl-reflexive-property(padding, $mdc-select-label-padding, $mdc-select-arrow-padding);
+
+    height: 56px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  // stylelint-disable plugin/selector-bem-pattern
+  .mdc-floating-label {
+    @include mdc-rtl-reflexive-position(left, 16px);
+
+    bottom: 12px;
+    line-height: 1.75rem;
+
+    &--float-above {
+      transform: translateY(-40%) scale(.75, .75);
+    }
+  }
+  // stylelint-enable plugin/selector-bem-pattern
+}
+
+.mdc-select--disabled {
+  @include mdc-select-dd-arrow-svg-bg_($mdc-select-disabled-ink-color);
+
+  &.mdc-select--box {
+    @include mdc-select-container-fill-color_($mdc-select-box-disabled-fill-color);
+  }
+
+  .mdc-floating-label {
+    @include mdc-floating-label-ink-color($mdc-select-disabled-label-color);
+  }
+
+  // stylelint-disable plugin/selector-bem-pattern
+  .mdc-line-ripple {
+    display: none;
+  }
+  // stylelint-enable plugin/selector-bem-pattern
+
+  .mdc-select__native-control {
+    border-bottom-style: dotted;
+  }
+
+  opacity: .38;
+  cursor: default;
+  pointer-events: none;
+}
