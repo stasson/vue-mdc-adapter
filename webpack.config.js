@@ -5,6 +5,7 @@ const WebpackCdnPlugin = require('webpack-cdn-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV === `production`
 const isDevelopment = process.env.NODE_ENV === `development`
@@ -37,16 +38,16 @@ const cssLoaders = [
 const markdown = require('markdown-it')({
   html: true,
   breaks: false,
-}).use(require('markdown-it-highlightjs'))  
+}).use(require('markdown-it-highlightjs'))
 
 const rules = [
   {
     test: /\.vue$/,
     loader: 'vue-loader',
-    options: { 
-      loaders:  ['vue-style-loader'].concat(cssLoaders), 
+    options: {
+      loaders:  ['vue-style-loader'].concat(cssLoaders),
     }
-  }, 
+  },
   {
     test: /\.js$/,
     loader: 'babel-loader',
@@ -55,7 +56,7 @@ const rules = [
       path.resolve(__dirname, 'demo'),
       path.resolve(__dirname, 'node_modules/@material')
     ]
-  }, 
+  },
   {
     test: /\.md$/,
     loader: 'vue-markdown-loader',
@@ -71,7 +72,7 @@ const rules = [
     options: {
       limit: 10000,
     }
-  }, 
+  },
   {
     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
     loader: 'url-loader',
@@ -106,7 +107,7 @@ const plugins = [
         path: isProduction ? 'dist/vue-router.min.js' : 'dist/vue-router.js'
       }
     ],
-  }),  
+  }),
 ]
 
 const config = {
@@ -149,7 +150,7 @@ if (isProduction) {
   config.plugins.push(
     // clean output path
     new CleanWebpackPlugin(config.output.path),
-    
+
     // split css
     new ExtractTextPlugin({
       filename: '[name].[chunkhash].css',
@@ -157,7 +158,7 @@ if (isProduction) {
     }),
 
     // copy assets
-    new CopyWebpackPlugin([ 
+    new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, 'static'),
         to: config.output.path,
@@ -166,7 +167,7 @@ if (isProduction) {
     ]),
 
   );
-} 
+}
 
 // Enable dev server
 if (isDevelopment) {
@@ -179,17 +180,19 @@ if (isDevelopment) {
     use: ['style-loader'].concat(cssLoaders)
   })
 
-  config.plugins.push( 
+  config.plugins.push(
     // HMR
-    new webpack.HotModuleReplacementPlugin()
-  )  
+    new webpack.HotModuleReplacementPlugin(),
+    new FriendlyErrorsWebpackPlugin()
+  )
 
   config.devServer = {
     contentBase: path.resolve(__dirname, 'static'),
     disableHostCheck: true,
-    hot: true
+    hot: true,
+    quiet: true
   }
-  
+
   // cloud9 support
   process.env.IP && (config.devServer.host = process.env.IP)
   process.env.PORT && (config.devServer.port = process.env.PORT)
