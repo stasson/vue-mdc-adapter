@@ -29,24 +29,24 @@ $code_font: "Roboto Mono";
 
     h1 {
         // See _component-icons.scss for additional mutations in component pages.
-        @include mdc-typography(headline);
+        @include mdc-typography(headline5);
         margin-bottom: 24px;
     }
 
     h2 {
-        @include mdc-typography(subheading2);
+        @include mdc-typography(subtitle2);
         font-size: 1.25rem;
         margin: 56px 0 24px;
     }
 
     h3 {
-        @include mdc-typography(subheading2);
+        @include mdc-typography(subtitle2);
         font-weight: 500;
         margin: 32px 0 0;
     }
 
     h4 {
-        @include mdc-typography(subheading2);
+        @include mdc-typography(subtitle2);
         margin: 20px 0 0;
     }
 

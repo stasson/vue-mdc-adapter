@@ -3,16 +3,10 @@
     <div
       :style="'background-image: url('+icon+')'"
       class="demo-icon"/>
+
     <mdc-display
       v-if="title"
-      ref="title"
-      typo="display1" >
-      <span
-        v-for="(word, i) in title"
-        :key="word"
-        :class="(i+1 < title.length)? 'hidden-mark hidden-mark--dot' : 'hidden-mark hidden-mark--return'"
-      >{{ word.trim() }}&nbsp;</span>
-    </mdc-display>
+      ref="title">{{ title }} </mdc-display>
     <article
       v-if="demo"
       class="demo-article" >
@@ -103,7 +97,7 @@ export default {
       return key in this.$options.components ? key : undefined
     },
     title() {
-      return titles[this.$route.params.id].split(' ')
+      return titles[this.$route.params.id]
     },
     icon() {
       return icons[this.$route.params.id]

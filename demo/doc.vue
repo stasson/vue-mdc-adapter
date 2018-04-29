@@ -2,13 +2,7 @@
   <section>
     <mdc-display
       v-if="title"
-      ref="title" >
-      <span
-        v-for="(word, i) in title"
-        :key="word"
-        :class="(i+1 < title.length)? 'hidden-mark hidden-mark--dot' : 'hidden-mark hidden-mark--return'"
-      >{{ word.trim() }}&nbsp;</span>
-    </mdc-display>
+      ref="title" >{{ title }}</mdc-display>
     <article class="doc-article markdown">
       <component :is="$route.params.id" />
     </article>
@@ -25,7 +19,7 @@ export default {
   },
   computed: {
     title() {
-      return capitalize(this.$route.params.id).split(' ')
+      return capitalize(this.$route.params.id)
     }
   },
   beforeRouteUpdate(to, from, next) {

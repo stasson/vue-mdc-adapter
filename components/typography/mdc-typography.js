@@ -1,16 +1,17 @@
 const typos = [
-  'display4',
-  'display3',
-  'display2',
-  'display1',
-  'headline',
-  'title',
-  'subheading1',
-  'subheading2',
+  'headline1',
+  'headline2',
+  'headline3',
+  'headline4',
+  'headline5',
+  'headline6',
+  'subtitle1',
+  'subtitle2',
   'body1',
   'body2',
   'caption',
-  'button'
+  'button',
+  'overline'
 ]
 
 export const mdcTypoMixin = name => {
@@ -22,8 +23,7 @@ export const mdcTypoMixin = name => {
           class: {
             'mdc-typo': true,
             [name]: true,
-            [`mdc-typography--${this.typo}`]: true,
-            'mdc-typography--adjust-margin': this.adjustMargin
+            [`mdc-typography--${this.typo}`]: true
           },
           attrs: this.$attrs,
           on: this.$listeners
@@ -45,10 +45,6 @@ export function mdcTypoPropMixin(defaultTag, defaultTypo, validTypos) {
         type: String,
         default: defaultTypo,
         validator: value => validTypos.indexOf(value) !== -1
-      },
-      'adjust-margin': {
-        type: Boolean,
-        default: false
       }
     }
   }
@@ -86,12 +82,12 @@ export const mdcText = {
 export const mdcDisplay = {
   name: 'mdc-display',
   mixins: [
-    mdcTypoMixin('mdc-display'),
-    mdcTypoPropMixin('h1', 'display1', [
-      'display4',
-      'display3',
-      'display2',
-      'display1'
+    mdcTypoMixin('mdc-headline'),
+    mdcTypoPropMixin('h1', 'headline4', [
+      'headline4',
+      'headline3',
+      'headline2',
+      'headline1'
     ])
   ]
 }
@@ -100,7 +96,7 @@ export const mdcHeadline = {
   name: 'mdc-headline',
   mixins: [
     mdcTypoMixin('mdc-headline'),
-    mdcTypoPropMixin('h2', 'headline', ['headline'])
+    mdcTypoPropMixin('h2', 'headline5', ['headline5'])
   ]
 }
 
@@ -108,7 +104,7 @@ export const mdcTitle = {
   name: 'mdc-title',
   mixins: [
     mdcTypoMixin('mdc-title'),
-    mdcTypoPropMixin('h3', 'title', ['title'])
+    mdcTypoPropMixin('h3', 'headline6', ['headline6'])
   ]
 }
 
@@ -116,7 +112,7 @@ export const mdcSubHeading = {
   name: 'mdc-subheading',
   mixins: [
     mdcTypoMixin('mdc-subheading'),
-    mdcTypoPropMixin('h4', 'subheading2', ['subheading1', 'subheading2'])
+    mdcTypoPropMixin('h4', 'subtitle2', ['subtitle1', 'subtitle2'])
   ]
 }
 
