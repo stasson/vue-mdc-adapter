@@ -35,4 +35,8 @@ export default {
 .mdc-demo--appbar {
   width: 100%;
 }
+
+.mdc-demo .mdc-top-app-bar {
+  position: relative;
+}
 </style>
