@@ -70,7 +70,7 @@ export default {
         disabled: this.disabled,
         raised: this.raised,
         outlined: this.outlined,
-        unelevated: this.unelevated,
+        unelevated: this.unelevated
       }
     }
   }
