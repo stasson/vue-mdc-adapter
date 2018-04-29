@@ -28,7 +28,7 @@ var vm = new Vue({
 | `disabled`           | String         |                          | disable the button                                                             |
 | `raised`             | Boolean        |                          | a contained button that is elevated upon the surface                           |
 | `unelevated`         | Boolean        |                          | a contained button that is flush with the surface                              |
-| `stroked`            | Boolean        |                          | a contained button that is flush with the surface and has a visible border(\*) |
+| `outlined`           | Boolean        |                          | a contained button that is flush with the surface and has a visible border(\*) |
 | `dense`              | String         |                          | compresses the button text to make it slightly smaller                         |
 | `event`              | String         | optional                 | optional event to emit on click                                                |
 | `event-target`       | Object         | vm.$root                 | optional event target, defaults to root bus                                    |
@@ -123,7 +123,7 @@ You might want to keep button behaviour and do the navigation programatically:
 
 ```javascript
 // register event from some component context
-this.$root.$on('my-event', () => doSomething());
+this.$root.$on('my-event', () => doSomething())
 ```
 
 ### Reference
