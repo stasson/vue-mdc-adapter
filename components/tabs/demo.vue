@@ -1,18 +1,22 @@
 <template>
   <div class="">
-    <h3>Simple</h3>
+    <mdc-subheading>Simple</mdc-subheading>
     <section class="mdc-demo mdc-demo--container">
       <mdc-tab-bar @change="onSelected">
-        <mdc-tab 
-          v-for="item in items" 
+        <mdc-tab
+          v-for="item in items"
           :key="item">{{ item }}</mdc-tab>
       </mdc-tab-bar>
     </section>
     <br>
-    <div v-if="selectedItem">
-      Selected: <span class="demo-tabs-selected">{{ selectedItem }}</span>
+    <div
+      v-if="selectedItem"
+      style="text-align: right">
+      <mdc-caption>
+        Selected: <span class="demo-tabs-selected">{{ selectedItem }}</span>
+      </mdc-caption>
     </div>
-    <h3>With icons and text</h3>
+    <mdc-subheading>With icons and text</mdc-subheading>
     <section class="mdc-demo mdc-demo--container">
       <mdc-tab-bar>
         <mdc-tab icon="phone">Recents</mdc-tab>

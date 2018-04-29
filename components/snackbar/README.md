@@ -56,18 +56,18 @@ snackbar.
 ```
 
 ```javascript
-vm.$refs.snackbar.show({ message: 'Message' });
+vm.$refs.snackbar.show({ message: 'Message' })
 ```
 
 ### props
 
-| props                 | Type    | Default                          | Description                                                                    |
-| --------------------- | ------- | -------------------------------- | ------------------------------------------------------------------------------ |
-| `snack`               | Object  |                                  | optional v-model when set shows snackbar                                       |
-| `event`               | String  | `show-snackbar` if no snack prop | specifies the name of the event the snackbar listens to.                       |
-| `event-source`        | Vue     | `vm.$root`                       | specifies the source of the event. must be a vue instance or component ref     |
-| `dismisses-on-action` | Boolean | true                             | Whether the snackbar will be dimissed when the user presses the action button. |
-| `align-start`         | Boolean | false                            | Whether the snackbar is start aligned.                                         |
+| props                 | Type    | Default         | Description                                                                    |
+| --------------------- | ------- | --------------- | ------------------------------------------------------------------------------ |
+| `snack`               | Object  |                 | optional v-model when set shows snackbar                                       |
+| `event`               | String  | `show-snackbar` | specifies the name of the event the snackbar listens to.                       |
+| `event-source`        | Vue     | `vm.$root`      | specifies the source of the event. must be a vue instance or component ref     |
+| `dismisses-on-action` | Boolean | true            | Whether the snackbar will be dimissed when the user presses the action button. |
+| `align-start`         | Boolean | false           | Whether the snackbar is start aligned.                                         |
 
 ### methods
 
@@ -75,7 +75,7 @@ vm.$refs.snackbar.show({ message: 'Message' });
 | ------------ | ------------------------------------------------------ |
 | `show(data)` | trigger the display of a message with optional action. |
 
-# events
+### events
 
 | Name      | Description                                               |
 | --------- | --------------------------------------------------------- |
