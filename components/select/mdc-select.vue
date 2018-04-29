@@ -1,39 +1,37 @@
 <template>
-  <div
-    :class="rootClasses"
-    :style="styles"
+  <div 
+    :class="rootClasses" 
+    :style="styles" 
     class="mdc-select">
-    <select
-      ref="native_control"
-      v-bind="$attrs"
-      class="mdc-select__native-control"
+    <select 
+      ref="native_control" 
+      v-bind="$attrs" 
+      class="mdc-select__native-control" 
       v-on="listeners">
-      <option
-        v-if="!!label"
-        class="mdc-option"
-        value=""
-        disabled
+      <option 
+        v-if="!!label" 
+        class="mdc-option" 
+        value="" 
+        disabled 
         selected/>
       <slot/>
     </select>
-    <div
-      ref="label"
-      :class="labelClasses"
+    <div 
+      ref="label" 
+      :class="labelClasses" 
       class="mdc-floating-label">{{ label }}</div>
-    <div
-      v-if="bottomLine"
-      ref="line"
-      :class="lineClasses"
-      :style="lineStyles"
-      class="mdc-line-ripple"
-    />
+    <div 
+      ref="line" 
+      :class="lineClasses" 
+      :style="lineStyles" 
+      class="mdc-line-ripple"/>
   </div>
 </template>
 
 <script>
 import MDCSelectFoundation from '@material/select/foundation'
-import MDCFloatingLabelFoundation from '@material/floating-label/foundation'
 import MDCLineRippleFoundation from '@material/line-ripple/foundation'
+import MDCFloatingLabelFoundation from '@material/floating-label/foundation'
 import { RippleBase } from '../ripple'
 
 export default {
@@ -47,8 +45,7 @@ export default {
     value: String,
     disabled: Boolean,
     label: String,
-    box: Boolean,
-    bottomLine: { type: Boolean, default: true }
+    box: Boolean
   },
   data() {
     return {
@@ -80,44 +77,44 @@ export default {
     value: 'refreshIndex'
   },
   mounted() {
-    if (this.label) {
-      this.labelFoundation = new MDCFloatingLabelFoundation({
-        addClass: className => this.$set(this.labelClasses, className, true),
-        removeClass: className => this.$delete(this.labelClasses, className),
-        getWidth: () => this.$refs.label.offsetWidth,
-        registerInteractionHandler: (evtType, handler) => {
-          this.$refs.label.addEventListener(evtType, handler)
-        },
-        deregisterInteractionHandler: (evtType, handler) => {
-          this.$refs.label.removeEventListener(evtType, handler)
-        }
-      })
-      this.labelFoundation.init()
-    }
+    this.labelFoundation = new MDCFloatingLabelFoundation({
+      addClass: className => {
+        this.$set(this.labelClasses, className, true)
+      },
+      removeClass: className => {
+        this.$delete(this.labelClasses, className)
+      },
+      getWidth: () => this.$refs.label.offsetWidth,
+      registerInteractionHandler: (evtType, handler) => {
+        this.$refs.label.addEventListener(evtType, handler)
+      },
+      deregisterInteractionHandler: (evtType, handler) => {
+        this.$refs.label.removeEventListener(evtType, handler)
+      }
+    })
+    this.labelFoundation.init()
 
-    if (this.bottomLine) {
-      this.lineFoundation = new MDCLineRippleFoundation({
-        addClass: className => {
-          this.$set(this.lineClasses, className, true)
-        },
-        removeClass: className => {
-          this.$delete(this.lineClasses, className)
-        },
-        hasClass: className => {
-          this.$refs.line.classList.contains(className)
-        },
-        setStyle: (name, value) => {
-          this.$set(this.lineStyles, name, value)
-        },
-        registerEventHandler: (evtType, handler) => {
-          this.$refs.line.addEventListener(evtType, handler)
-        },
-        deregisterEventHandler: (evtType, handler) => {
-          this.$refs.line.removeEventListener(evtType, handler)
-        }
-      })
-      this.lineFoundation.init()
-    }
+    this.lineRippleFoundation = new MDCLineRippleFoundation({
+      addClass: className => {
+        this.$set(this.lineClasses, className, true)
+      },
+      removeClass: className => {
+        this.$delete(this.lineClasses, className)
+      },
+      hasClass: className => {
+        this.$refs.line.classList.contains(className)
+      },
+      setStyle: (name, value) => {
+        this.$set(this.lineStyles, name, value)
+      },
+      registerEventHandler: (evtType, handler) => {
+        this.$refs.line.addEventListener(evtType, handler)
+      },
+      deregisterEventHandler: (evtType, handler) => {
+        this.$refs.line.removeEventListener(evtType, handler)
+      }
+    })
+    this.lineRippleFoundation.init()
 
     this.foundation = new MDCSelectFoundation({
       addClass: className => this.$set(this.classes, className, true),
@@ -126,10 +123,10 @@ export default {
         this.labelFoundation.float(value)
       },
       activateBottomLine: () => {
-        this.lineFoundation.activate()
+        this.lineRippleFoundation.activate()
       },
       deactivateBottomLine: () => {
-        this.lineFoundation.deactivate()
+        this.lineRippleFoundation.deactivate()
       },
       registerInteractionHandler: (type, handler) =>
         this.$refs.native_control.addEventListener(type, handler),
@@ -170,9 +167,9 @@ export default {
     this.labelFoundation = null
     labelFoundation.destroy()
 
-    let lineFoundation = this.lineFoundation
-    this.lineFoundation = null
-    lineFoundation.destroy()
+    let lineRippleFoundation = this.lineRippleFoundation
+    this.lineRippleFoundation = null
+    lineRippleFoundation.destroy()
 
     this.ripple && this.ripple.destroy()
   },
