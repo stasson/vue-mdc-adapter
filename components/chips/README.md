@@ -16,20 +16,29 @@
 
 ### props
 
+#### mdc-chip-set
+
+mdc-chip is a compact element that allows a user to enter information or select a choice.
+
+| prop     | Type    | Default  | Description                                                     |
+| -------- | ------- | -------- | --------------------------------------------------------------- |
+| `choice` | Boolean | optional | Optional. Indicates that the chips in the set are choice chips, |
+|          |         |          | which allow a single selection from a set of options.           |
+| `filter` | Boolean | optional | Optional. Indicates that the chips in the set are filter chips, |
+|          |         |          | which allow a multiple selection from a set of options.         |
+| `input`  | Boolean | optional | Optional. Indicates that the chips in the set are input chips,  |
+|          |         |          | which enable user input by converting text into chips.          |
+
 #### mdc-chip
 
 mdc-chip is a compact element that allows a user to enter information or select a choice.
 
-| prop                  | Type    | Default  | Description                                                     |
-| --------------------- | ------- | -------- | --------------------------------------------------------------- |
-| `choice`              | Boolean | optional | Optional. Indicates that the chips in the set are choice chips, |
-|                       |         |          | which allow a single selection from a set of options.           |
-| `filter`              | Boolean | optional | Optional. Indicates that the chips in the set are filter chips, |
-|                       |         |          | which allow a multiple selection from a set of options.         |
-| `leadingIcon`         | String  | optional | optional leading icon                                           |
-| `trailingIcon`        | String  | optional | optional trailing icon                                          |
-| `leadingIconClasses`  | Object  | optional | optional leading icon classes (font-awesome)                    |
-| `trailingIconClasses` | Object  | optional | optional trailing icon classes (font-awesome)                   |
+| prop                  | Type   | Default  | Description                                                                                         |
+| --------------------- | ------ | -------- | --------------------------------------------------------------------------------------------------- |
+| `leadingIcon`         | String | optional | optional leading icon                                                                               |
+| `trailingIcon`        | String | optional | Optional. Indicates a trailing icon which removes the chip from the DOM. Only use with input chips. |
+| `leadingIconClasses`  | Object | optional | optional leading icon classes (font-awesome)                                                        |
+| `trailingIconClasses` | Object | optional | optional trailing icon classes (font-awesome)                                                       |
 
 | event                            | description                                        |
 | -------------------------------- | -------------------------------------------------- |

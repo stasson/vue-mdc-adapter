@@ -141,7 +141,17 @@ export default {
         if (this.$refs.trailingIcon) {
           this.$refs.trailingIcon.removeEventListener(evtType, handler)
         }
-      }
+      },
+      notifyRemoval: () =>
+        this.emit(
+          MDCChipFoundation.strings.REMOVAL_EVENT,
+          { chip: this },
+          true
+        ),
+      getComputedStyleValue: propertyName =>
+        window.getComputedStyle(this.$el).getPropertyValue(propertyName),
+      setStyleProperty: (property, value) =>
+        this.$set(this.styles, property, value)
     })
 
     this.foundation.init()
@@ -156,6 +166,9 @@ export default {
   methods: {
     toggleSelected() {
       this.foundation.toggleSelected()
+    },
+    isSelected() {
+      return this.foundation.isSelected()
     }
   }
 }
