@@ -1,12 +1,12 @@
 <template>
-  <aside 
-    :class="classes" 
+  <aside
+    :class="classes"
     class="mdc-temporary-drawer mdc-drawer--temporary mdc-typography">
-    <nav 
-      ref="drawer" 
+    <nav
+      ref="drawer"
       class="mdc-drawer__drawer">
-      <div 
-        v-if="toolbarSpacer" 
+      <div
+        v-if="toolbarSpacer"
         class="mdc-drawer__toolbar-spacer"/>
       <slot />
     </nav>
@@ -73,10 +73,18 @@ export default {
         )
       },
       registerDrawerInteractionHandler: (evt, handler) => {
-        this.$refs.drawer.addEventListener(util.remapEvent(evt), handler)
+        this.$refs.drawer.addEventListener(
+          util.remapEvent(evt),
+          handler,
+          util.applyPassive()
+        )
       },
       deregisterDrawerInteractionHandler: (evt, handler) => {
-        this.$refs.drawer.removeEventListener(util.remapEvent(evt), handler)
+        this.$refs.drawer.removeEventListener(
+          util.remapEvent(evt),
+          handler,
+          util.applyPassive()
+        )
       },
       registerTransitionEndHandler: handler => {
         this.$refs.drawer.addEventListener('transitionend', handler)

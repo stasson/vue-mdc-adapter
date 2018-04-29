@@ -116,7 +116,8 @@ import {
   extractIconProp,
   DispatchFocusMixin,
   CustomElementMixin,
-  VMAUniqueIdMixin
+  VMAUniqueIdMixin,
+  applyPassive
 } from '../base'
 import { RippleBase } from '../ripple'
 
@@ -425,10 +426,10 @@ export default {
           }
         },
         registerInputInteractionHandler: (evtType, handler) => {
-          this.$refs.input.addEventListener(evtType, handler)
+          this.$refs.input.addEventListener(evtType, handler, applyPassive())
         },
         deregisterInputInteractionHandler: (evtType, handler) => {
-          this.$refs.input.removeEventListener(evtType, handler)
+          this.$refs.input.removeEventListener(evtType, handler, applyPassive())
         },
         registerValidationAttributeChangeHandler: handler => {
           const observer = new MutationObserver(handler)

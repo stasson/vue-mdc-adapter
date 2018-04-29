@@ -1,25 +1,25 @@
 <template>
-  <div 
-    :class="formFieldClasses" 
+  <div
+    :class="formFieldClasses"
     class="mdc-checkbox-wrapper">
-    <div 
-      ref="root" 
+    <div
+      ref="root"
       :class="classes"
-      :style="styles" 
+      :style="styles"
       class="mdc-checkbox">
-      <input 
-        ref="control" 
-        :id="vma_uid_" 
-        :name="name" 
+      <input
+        ref="control"
+        :id="vma_uid_"
+        :name="name"
         :value="value"
-        type="checkbox" 
+        type="checkbox"
         class="mdc-checkbox__native-control"
         @change="onChange">
       <div class="mdc-checkbox__background">
-        <svg 
+        <svg
           class="mdc-checkbox__checkmark"
           viewBox="0 0 24 24">
-          <path 
+          <path
             class="mdc-checkbox__checkmark-path"
             fill="none"
             stroke="white"
@@ -28,8 +28,8 @@
         <div class="mdc-checkbox__mixedmark"/>
       </div>
     </div>
-    <label 
-      ref="label" 
+    <label
+      ref="label"
       :for="vma_uid_"
     ><slot>{{ label }}</slot></label>
   </div>
@@ -42,6 +42,7 @@ import MDCFormFieldFoundation from '@material/form-field/foundation'
 import { getCorrectEventName } from '@material/animation'
 import { DispatchFocusMixin, VMAUniqueIdMixin } from '../base'
 import { RippleBase } from '../ripple'
+import { applyPassive } from '../base'
 
 export default {
   name: 'mdc-checkbox',
@@ -123,10 +124,10 @@ export default {
       isUnbounded: () => true,
       isSurfaceActive: () => RippleBase.isSurfaceActive(this.$refs.control),
       registerInteractionHandler: (evt, handler) => {
-        this.$refs.control.addEventListener(evt, handler)
+        this.$refs.control.addEventListener(evt, handler, applyPassive())
       },
       deregisterInteractionHandler: (evt, handler) => {
-        this.$refs.control.addEventListener(evt, handler)
+        this.$refs.control.removeEventListener(evt, handler, applyPassive())
       },
       computeBoundingRect: () => {
         return this.$refs.root.getBoundingClientRect()

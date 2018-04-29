@@ -42,10 +42,10 @@ export class RippleBase extends MDCRippleFoundation {
           },
           containsEventTarget: target => vm.$el.contains(target),
           registerInteractionHandler: (evt, handler) => {
-            vm.$el.addEventListener(evt, handler)
+            vm.$el.addEventListener(evt, handler, applyPassive())
           },
           deregisterInteractionHandler: (evt, handler) => {
-            vm.$el.removeEventListener(evt, handler)
+            vm.$el.removeEventListener(evt, handler, applyPassive())
           },
           registerDocumentInteractionHandler: (evtType, handler) =>
             document.documentElement.addEventListener(
