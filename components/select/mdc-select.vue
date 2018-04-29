@@ -1,37 +1,39 @@
 <template>
-  <div 
-    :class="rootClasses" 
-    :style="styles" 
+  <div
+    :class="rootClasses"
+    :style="styles"
     class="mdc-select">
-    <select 
-      ref="native_control" 
-      v-bind="$attrs" 
-      class="mdc-select__native-control" 
+    <select
+      ref="native_control"
+      v-bind="$attrs"
+      class="mdc-select__native-control"
       v-on="listeners">
-      <option 
-        v-if="!!label" 
-        class="mdc-option" 
-        value="" 
-        disabled 
+      <option
+        v-if="!!label"
+        class="mdc-option"
+        value=""
+        disabled
         selected/>
       <slot/>
     </select>
-    <div 
-      ref="label" 
-      :class="labelClasses" 
-      class="mdc-select__label">{{ label }}</div>
-    <div 
-      v-if="bottomLine" 
-      ref="bottomLine" 
-      :class="bottomLineClasses" 
-      class="mdc-select__bottom-line"/>
+    <div
+      ref="label"
+      :class="labelClasses"
+      class="mdc-floating-label">{{ label }}</div>
+    <div
+      v-if="bottomLine"
+      ref="line"
+      :class="lineClasses"
+      :style="lineStyles"
+      class="mdc-line-ripple"
+    />
   </div>
 </template>
 
 <script>
 import MDCSelectFoundation from '@material/select/foundation'
-import MDCSelectBottomLineFoundation from '@material/select/bottom-line/foundation'
-import MDCSelectLabelFoundation from '@material/select/label/foundation'
+import MDCFloatingLabelFoundation from '@material/floating-label/foundation'
+import MDCLineRippleFoundation from '@material/line-ripple/foundation'
 import { RippleBase } from '../ripple'
 
 export default {
@@ -52,7 +54,8 @@ export default {
     return {
       styles: {},
       labelClasses: {},
-      bottomLineClasses: {},
+      lineClasses: {},
+      lineStyles: {},
       classes: {}
     }
   },
@@ -78,36 +81,55 @@ export default {
   },
   mounted() {
     if (this.label) {
-      this.labelFoundation = new MDCSelectLabelFoundation({
+      this.labelFoundation = new MDCFloatingLabelFoundation({
         addClass: className => this.$set(this.labelClasses, className, true),
-        removeClass: className => this.$delete(this.labelClasses, className)
+        removeClass: className => this.$delete(this.labelClasses, className),
+        getWidth: () => this.$refs.label.offsetWidth,
+        registerInteractionHandler: (evtType, handler) => {
+          this.$refs.label.addEventListener(evtType, handler)
+        },
+        deregisterInteractionHandler: (evtType, handler) => {
+          this.$refs.label.removeEventListener(evtType, handler)
+        }
       })
       this.labelFoundation.init()
     }
 
     if (this.bottomLine) {
-      this.bottomLineFoundation = new MDCSelectBottomLineFoundation({
+      this.lineFoundation = new MDCLineRippleFoundation({
         addClass: className => {
-          this.$set(this.bottomLineClasses, className, true)
+          this.$set(this.lineClasses, className, true)
         },
         removeClass: className => {
-          this.$delete(this.bottomLineClasses, className)
+          this.$delete(this.lineClasses, className)
+        },
+        hasClass: className => {
+          this.$refs.line.classList.contains(className)
+        },
+        setStyle: (name, value) => {
+          this.$set(this.lineStyles, name, value)
+        },
+        registerEventHandler: (evtType, handler) => {
+          this.$refs.line.addEventListener(evtType, handler)
+        },
+        deregisterEventHandler: (evtType, handler) => {
+          this.$refs.line.removeEventListener(evtType, handler)
         }
       })
-      this.bottomLineFoundation.init()
+      this.lineFoundation.init()
     }
 
     this.foundation = new MDCSelectFoundation({
       addClass: className => this.$set(this.classes, className, true),
       removeClass: className => this.$delete(this.classes, className),
       floatLabel: value => {
-        this.labelFoundation.styleFloat(value)
+        this.labelFoundation.float(value)
       },
       activateBottomLine: () => {
-        this.bottomLineFoundation.activate()
+        this.lineFoundation.activate()
       },
       deactivateBottomLine: () => {
-        this.bottomLineFoundation.deactivate()
+        this.lineFoundation.deactivate()
       },
       registerInteractionHandler: (type, handler) =>
         this.$refs.native_control.addEventListener(type, handler),
@@ -148,9 +170,9 @@ export default {
     this.labelFoundation = null
     labelFoundation.destroy()
 
-    let bottomLineFoundation = this.bottomLineFoundation
-    this.bottomLineFoundation = null
-    bottomLineFoundation.destroy()
+    let lineFoundation = this.lineFoundation
+    this.lineFoundation = null
+    lineFoundation.destroy()
 
     this.ripple && this.ripple.destroy()
   },
