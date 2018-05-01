@@ -16,7 +16,6 @@
         @change="sync">
 
       <div
-        ref="label"
         class="mdc-radio__background">
         <div class="mdc-radio__outer-circle"/>
         <div class="mdc-radio__inner-circle"/>
