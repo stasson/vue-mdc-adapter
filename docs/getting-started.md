@@ -176,7 +176,7 @@ Vue.use(VueMDCButton)
 </script>
 ```
 
-#### Create your own SASS Theme
+### Create your own SASS Theme
 
 > Material Components styles come as highly themable SASS framework. In order to be able to theme properly
 > and avoid any duplicate/ordering style issues in the bundle, we recommend managing styles globally.
@@ -231,17 +231,6 @@ $mdc-theme-background: #fff;
 
 > You may want to optimize your build and leverage the source distribution.
 
-#### Resolve vue-mdc-adapter sources
-
-```javascript
-  // webpack.config.js
-  resolve: {
-    alias: {
-      'vue-mdc-adapter': 'vue-mdc-adapter/components',
-    }
-  }
-```
-
 #### Make sure @material imports are transpiled
 
 ```javascript
@@ -250,8 +239,7 @@ $mdc-theme-background: #fff;
     test: /\.js$/,
     loader: 'babel-loader',
     include: [
-      path.resolve(__dirname, 'node_modules/@material'),
-      path.resolve(__dirname, 'node_modules/vue-mdc-adapter')
+      path.resolve(__dirname, 'node_modules/@material')
     ]
   }
 ```
@@ -277,7 +265,7 @@ $mdc-theme-primary: #212121;
 $mdc-theme-accent: #41b883;
 $mdc-theme-background: #fff;
 
-@import 'vue-mdc-adapter/components/styles.scss';
+@import 'vue-mdc-adapter/styles';
 ```
 
 ```javascript
@@ -296,8 +284,8 @@ $mdc-theme-primary: #212121;
 $mdc-theme-accent: #41b883;
 $mdc-theme-background: #fff;
 
-@import 'vue-mdc-adapter/components/button/styles.scss';
-@import 'vue-mdc-adapter/components/fab/styles.scss';
+@import 'vue-mdc-adapter/button/styles';
+@import 'vue-mdc-adapter/fab/styles';
 ```
 
 ```javascript
