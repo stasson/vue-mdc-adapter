@@ -40,7 +40,7 @@
     "build:demo": "cross-env NODE_ENV=production webpack",
     "build:dist": "run-s build:dist:**",
     "build:dist:clean": "rimraf dist",
-    "build:dist:scss": "copyfiles -u 1 components/*.scss components/**/*.scss dist",
+    "build:dist:scss": "copyfiles -u 1 \"components/**/*.scss\" dist",
     "build:dist:lscss": "ls -R dist",
     "build:dist:rollup": "rollup -c",
     "lint": "run-s lint:**",
