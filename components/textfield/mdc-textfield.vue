@@ -85,10 +85,10 @@
         ref="outlineIdle"
         class="mdc-notched-outline__idle"/>
       <div
-        v-if="hasBottomLine"
-        ref="bottom"
-        :class="bottomClasses"
-        :style="bottomStyles"/>
+        v-if="hasLineRipple"
+        ref="lineRipple"
+        :class="lineRippleClasses"
+        :style="lineRippleStyles"/>
 
     </div>
 
@@ -189,10 +189,10 @@ export default {
       labelClasses: {
         'mdc-floating-label': true
       },
-      bottomClasses: {
+      lineRippleClasses: {
         'mdc-line-ripple': true
       },
-      bottomStyles: {},
+      lineRippleStyles: {},
       helpClasses: {
         'mdc-text-field-helper-text': true,
         'mdc-text-field-helper-text--persistent': this.helptextPersistent,
@@ -215,7 +215,7 @@ export default {
     hasOutline() {
       return !this.fullwidth && this.outline
     },
-    hasBottomLine() {
+    hasLineRipple() {
       return !this.hasOutline && !this.multiline
     },
     hasLeadingIcon() {
@@ -271,28 +271,28 @@ export default {
     }
   },
   mounted() {
-    if (this.$refs.bottom) {
-      this.bottomLineFoundation = new MDCLineRippleFoundation({
+    if (this.$refs.lineRipple) {
+      this.lineRippleFoundation = new MDCLineRippleFoundation({
         addClass: className => {
-          this.$set(this.bottomClasses, className, true)
+          this.$set(this.lineRippleClasses, className, true)
         },
         removeClass: className => {
-          this.$delete(this.bottomClasses, className)
+          this.$delete(this.lineRippleClasses, className)
         },
         hasClass: className => {
-          this.$refs.bottom.classList.contains(className)
+          this.$refs.lineRipple.classList.contains(className)
         },
         setStyle: (name, value) => {
-          this.$set(this.styles, name, value)
+          this.$set(this.lineRippleStyles, name, value)
         },
         registerEventHandler: (evtType, handler) => {
-          this.$refs.bottom.addEventListener(evtType, handler)
+          this.$refs.lineRipple.addEventListener(evtType, handler)
         },
         deregisterEventHandler: (evtType, handler) => {
-          this.$refs.bottom.removeEventListener(evtType, handler)
+          this.$refs.lineRipple.removeEventListener(evtType, handler)
         }
       })
-      this.bottomLineFoundation.init()
+      this.lineRippleFoundation.init()
     }
 
     if (this.$refs.help) {
@@ -411,18 +411,18 @@ export default {
             .getComputedStyle(this.$refs.root)
             .getPropertyValue('direction') === 'rtl',
         deactivateLineRipple: () => {
-          if (this.bottom) {
-            this.bottom.deactivate()
+          if (this.lineRippleFoundation) {
+            this.lineRippleFoundation.deactivate()
           }
         },
         activateLineRipple: () => {
-          if (this.bottom) {
-            this.bottom.activate()
+          if (this.lineRippleFoundation) {
+            this.lineRippleFoundation.activate()
           }
         },
         setLineRippleTransformOrigin: normalizedX => {
-          if (this.bottom) {
-            this.bottom.setRippleCenter(normalizedX)
+          if (this.lineRippleFoundation) {
+            this.lineRippleFoundation.setRippleCenter(normalizedX)
           }
         },
         registerInputInteractionHandler: (evtType, handler) => {
@@ -462,11 +462,8 @@ export default {
         closeOutline: () => this.outlineFoundation.closeNotch()
       },
       {
-        bottomLine: this.bottomLineFoundation,
         helperText: this.helperTextFoundation,
-        icon: this.iconFoundation,
-        label: this.labelFoundation,
-        outline: this.outlineFoundation
+        icon: this.iconFoundation
       }
     )
 
@@ -485,7 +482,7 @@ export default {
   },
   beforeDestroy() {
     this.foundation && this.foundation.destroy()
-    this.bottomLineFoundation && this.bottomLineFoundation.destroy()
+    this.lineRippleFoundation && this.lineRippleFoundation.destroy()
     this.helperTextFoundation && this.helperTextFoundation.destroy()
     this.iconFoundation && this.iconFoundation.destroy()
     this.labelFoundation && this.labelFoundation.destroy()
