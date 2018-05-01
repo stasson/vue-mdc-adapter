@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.2"></a>
+## [0.15.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.15.1...v0.15.2) (2018-05-01)
+
+
+### Bug Fixes
+
+* **ci:** missing files from distribution ([99fe8b3](https://github.com/stasson/vue-mdc-adapter/commit/99fe8b3))
+
+
+### BREAKING CHANGES
+
+* **ci:** components directory is not part of the distribution anymore
+
+
+
 <a name="0.15.1"></a>
 ## [0.15.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.14.0...v0.15.1) (2018-05-01)
 
