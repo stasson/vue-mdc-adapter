@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.1"></a>
+## [0.15.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.14.0...v0.15.1) (2018-05-01)
+
+### Bug Fixes
+
+* **dist:** fix styles distribution ([fd1d66a](https://github.com/stasson/vue-mdc-adapter/commit/fd1d66a)), closes [#423](https://github.com/stasson/vue-mdc-adapter/issues/423)
+* **radio:** mdc-radio has two items with ref="label" [#409](https://github.com/stasson/vue-mdc-adapter/issues/409) ([05cbe6c](https://github.com/stasson/vue-mdc-adapter/commit/05cbe6c))
+* **textfield:** mdc-line-ripple does not get activated when mdc-textfield is focused [#424](https://github.com/stasson/vue-mdc-adapter/issues/424) ([1f173ef](https://github.com/stasson/vue-mdc-adapter/commit/1f173ef))
+
+### BREAKING CHANGES
+
+* **dist:** styles are not located in 'vue-mdc-adapter/dist/components/...' anymore. import them from 'vue-mdc-adapter/dist/...'
+
 <a name="0.15.0"></a>
 # [0.15.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.14.0...v0.15.0) (2018-04-29)
 
