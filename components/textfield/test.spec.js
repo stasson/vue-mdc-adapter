@@ -16,8 +16,8 @@ describe('mdcTextField', () => {
     checkValidFoundation(wrapper.vm.labelFoundation)
   })
 
-  describe('bottomLineFoundation', () => {
-    checkValidFoundation(wrapper.vm.bottomLineFoundation)
+  describe('lineRippleFoundation', () => {
+    checkValidFoundation(wrapper.vm.lineRippleFoundation)
   })
 
   describe('helperTextFoundation', () => {
