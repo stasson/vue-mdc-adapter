@@ -4,7 +4,7 @@
 <mdc-top-app-bar title="Title2" event="nav">
   <mdc-top-app-bar-action @click="showHelp" icon="help"></mdc-top-app-bar-action>
 </mdc-top-app-bar>
-<mdc-drawer toggle-on="nav" />
+<mdc-drawer toggle-on="nav" temporary/>
 ```
 
 ```javascript
