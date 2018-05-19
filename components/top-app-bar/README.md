@@ -1,17 +1,14 @@
 ## Usage
 
 ```html
-<mdc-top-app-bar title="Title2" @click="openDrawer=true">
+<mdc-top-app-bar title="Title2" event="nav">
   <mdc-top-app-bar-action @click="showHelp" icon="help"></mdc-top-app-bar-action>
 </mdc-top-app-bar>
-<mdc-drawer v-model="openDrawer" />
+<mdc-drawer toggle-on="nav" />
 ```
 
 ```javascript
 var vm = new Vue({
-  data: {
-    openDrawer: false
-  },
   methods: {
     showHelp() {
       console.log('show help')
@@ -57,7 +54,7 @@ Short top app bars can be configured to always appear collapsed by applying the 
   | `event-target` | Object | vm.$root | optional event target, defaults to root bus |
 
 ```html
-<mdc-top-app-bar title="Title" @click="toggleDrawer">
+<mdc-top-app-bar title="Title" event="nav">
     <mdc-top-app-bar-action @click="show-help" icon="help"></mdc-top-app-bar-action>
     <mdc-top-app-bar-action @click="do-download" icon="file_download"></mdc-top-app-bar-action>
 </mdc-top-app-bar>
