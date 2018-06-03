@@ -131,6 +131,7 @@ export default {
     })
 
     this.foundation.init()
+    this.onOpen_(this.open)
   },
   beforeDestroy() {
     this.foundation.destroy()
