@@ -13,15 +13,6 @@ By default the drawer component is responsive and will switch from temporary to 
 </mdc-drawer>
 ```
 
-```javascript
-// ...
-methods: {
-  toggle() {
-    this.open = !this.open;
-  }
-},
-```
-
 > For proper positioning of the drawer, use the `mdc-layout-app` component.
 
 ```html

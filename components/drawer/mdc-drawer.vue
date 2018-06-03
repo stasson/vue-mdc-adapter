@@ -1,8 +1,8 @@
 <template>
-  <component 
-    ref="drawer" 
+  <component
+    ref="drawer"
     :is="type"
-    v-model="open_" 
+    v-model="open_"
     :toolbar-spacer="toolbarSpacer"
     class="mdc-drawer"
     @change="onChange"
@@ -122,15 +122,15 @@ export default {
   mounted() {
     if (this.toggleOn) {
       this.toggleOnEventSource = this.toggleOnSource || this.$root
-      this.toggleOnEventSource.$on(this.toggleOn, this.toggleDrawer)
+      this.toggleOnEventSource.$on(this.toggleOn, this.toggle)
     }
     if (this.openOn) {
       this.openOnEventSource = this.openOnSource || this.$root
-      this.openOnEventSource.$on(this.openOn, this.openDrawer)
+      this.openOnEventSource.$on(this.openOn, this.show)
     }
     if (this.closeOn) {
       this.closeOnEventSource = this.closeOnSource || this.$root
-      this.closeOnEventSource.$on(this.closeOn, this.closeDrawer)
+      this.closeOnEventSource.$on(this.closeOn, this.close)
     }
     media.small.addListener(this.refreshMedia)
     media.large.addListener(this.refreshMedia)
@@ -141,13 +141,13 @@ export default {
     media.large.removeListener(this.refreshMedia)
 
     if (this.toggleOnEventSource) {
-      this.toggleOnEventSource.$off(this.toggleOn, this.toggleDrawer)
+      this.toggleOnEventSource.$off(this.toggleOn, this.toggle)
     }
     if (this.openOnEventSource) {
-      this.openOnEventSource.$off(this.openOn, this.openDrawer)
+      this.openOnEventSource.$off(this.openOn, this.show)
     }
     if (this.closeOnEventSource) {
-      this.closeOnEventSource.$off(this.closeOn, this.closeDrawer)
+      this.closeOnEventSource.$off(this.closeOn, this.close)
     }
   },
   methods: {
@@ -158,15 +158,14 @@ export default {
       this.$emit('change', event)
       this.$root.$emit('vma:layout')
     },
-    openDrawer() {
+    show() {
       this.open_ = true
     },
-    closeDrawer() {
+    close() {
       this.isPermanent || (this.open_ = false)
     },
-    toggleDrawer() {
-      this.isPermanent ||
-        (this.isOpen() ? this.closeDrawer() : this.openDrawer())
+    toggle() {
+      this.isPermanent || (this.isOpen() ? this.close() : this.show())
     },
     isOpen() {
       return this.isPermanent || this.open_
@@ -176,9 +175,9 @@ export default {
       this.large = media.large.matches
       if (this.isResponsive) {
         if (this.large) {
-          this.openDrawer()
+          this.show()
         } else {
-          this.closeDrawer()
+          this.close()
         }
       }
     }
