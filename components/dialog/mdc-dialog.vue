@@ -12,7 +12,9 @@
       ref="surface"
       :class="surfaceClasses"
       class="mdc-dialog__surface">
-      <header class="mdc-dialog__header">
+      <header
+        v-if="title"
+        class="mdc-dialog__header">
         <h2
           :id="'label' + vma_uid_"
           class="mdc-dialog__header__title">
@@ -25,7 +27,9 @@
         class="mdc-dialog__body">
         <slot />
       </section>
-      <footer class="mdc-dialog__footer">
+      <footer
+        v-if="accept||cancel"
+        class="mdc-dialog__footer">
         <mdcButton
           v-if="cancel"
           ref="cancel"
@@ -63,10 +67,10 @@ export default {
     event: 'change'
   },
   props: {
-    title: { type: String, required: true },
+    title: { type: String },
     accept: { type: String, default: 'Ok' },
     acceptDisabled: Boolean,
-    cancel: { type: String, default: 'Cancel' },
+    cancel: { type: String },
     accent: Boolean,
     scrollable: Boolean,
     open: Boolean
@@ -85,10 +89,12 @@ export default {
   },
   watch: { open: 'onOpen_' },
   mounted() {
-    this.focusTrap = createFocusTrapInstance(
-      this.$refs.surface,
-      this.$refs.accept
-    )
+    if (this.accept) {
+      this.focusTrap = createFocusTrapInstance(
+        this.$refs.surface,
+        this.$refs.accept
+      )
+    }
 
     this.foundation = new MDCDialogFoundation({
       addClass: className => this.$set(this.classes, className, true),
@@ -125,13 +131,13 @@ export default {
         this.$emit('change', false)
         this.$emit('cancel')
       },
-      trapFocusOnSurface: () => this.focusTrap.activate(),
-      untrapFocusOnSurface: () => this.focusTrap.deactivate(),
+      trapFocusOnSurface: () => this.focusTrap && this.focusTrap.activate(),
+      untrapFocusOnSurface: () => this.focusTrap && this.focusTrap.deactivate(),
       isDialog: el => this.$refs.surface === el
     })
 
     this.foundation.init()
-    this.onOpen_(this.open)
+    this.open && this.foundation.open()
   },
   beforeDestroy() {
     this.foundation.destroy()

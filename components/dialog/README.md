@@ -31,12 +31,14 @@ var vm = new Vue({
 | props             | Type    | Default    | Description                              |
 | ----------------- | ------- | ---------- | ---------------------------------------- |
 | `open`            | Boolean | false      | optional v-model when true opens dialog  |
-| `title`           | String  | required   | the dialog title                         |
+| `title`           | String  | undefined  | the dialog title                         |
 | `accept`          | String  | `'Ok'`     | the dialog accept button text            |
-| `accept-disabled` | String  | `'Ok'`     | the dialog accept button text            |
-| `cancel`          | String  | `'cancel'` | the dialog cancel button text            |
+| `accept-disabled` | Boolean | false      | disable the accept button                |
+| `cancel`          | String  | undefined  | the dialog cancel button text            |
 | `scrollable`      | Boolean | false      | whether the dialog is scrollable         |
 | `accent`          | Boolean | false      | set accented style to the footer buttons |
+
+> In order to hide the Dialog Footer, force the accept property to `""`  
 
 ### events
 
