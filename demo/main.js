@@ -1,4 +1,4 @@
-import './styles/demo.scss'
+import './styles'
 import './polyfill.js'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
