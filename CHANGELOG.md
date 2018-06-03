@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.0"></a>
+# [0.16.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.15.4...v0.16.0) (2018-06-03)
+
+
+### Bug Fixes
+
+* **base:** uid is only unique within components ([7c2683e](https://github.com/stasson/vue-mdc-adapter/commit/7c2683e)), closes [#440](https://github.com/stasson/vue-mdc-adapter/issues/440)
+* **dialog:** dialog does not open if initial open state is true ([9046c25](https://github.com/stasson/vue-mdc-adapter/commit/9046c25)), closes [#446](https://github.com/stasson/vue-mdc-adapter/issues/446)
+
+
+### Features
+
+* upgrade material-components-web to 0.36.0-0 ([5a61095](https://github.com/stasson/vue-mdc-adapter/commit/5a61095))
+* **dialog:** add support for custom dialog ([9658e39](https://github.com/stasson/vue-mdc-adapter/commit/9658e39)), closes [#445](https://github.com/stasson/vue-mdc-adapter/issues/445)
+* **textfield:** fix foundation as per MDCWeb 0.36.0 ([70191b0](https://github.com/stasson/vue-mdc-adapter/commit/70191b0))
+
+
+### BREAKING CHANGES
+
+* **dialog:** Dialog Cancel property defaults to undefined and must be set explicitly
+
+
+
 <a name="0.15.4"></a>
 ## [0.15.4](https://github.com/stasson/vue-mdc-adapter/compare/v0.15.3...v0.15.4) (2018-06-03)
 
