@@ -331,6 +331,10 @@ export default {
         setAttr: (attr, value) => this.$refs.icon.setAttribute(attr, value),
         getAttr: attr => this.$refs.icon.getAttribute(attr),
         removeAttr: attr => this.$refs.icon.removeAttribute(attr),
+        setContent: (/*content*/) => {
+          // icon text get's updated from {{{{ hasTrailingIcon.content }}}}
+          // this.$refs.icon.textContent = content;
+        },
         registerInteractionHandler: (evtType, handler) => {
           this.$refs.icon.addEventListener(evtType, handler)
         },
@@ -432,7 +436,11 @@ export default {
           this.$refs.input.removeEventListener(evtType, handler, applyPassive())
         },
         registerValidationAttributeChangeHandler: handler => {
-          const observer = new MutationObserver(handler)
+          const getAttributesList = mutationsList =>
+            mutationsList.map(mutation => mutation.attributeName)
+          const observer = new MutationObserver(mutationsList =>
+            handler(getAttributesList(mutationsList))
+          )
           const targetNode = this.$refs.input
           const config = { attributes: true }
           observer.observe(targetNode, config)
