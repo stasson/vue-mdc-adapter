@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.4"></a>
+## [0.15.4](https://github.com/stasson/vue-mdc-adapter/compare/v0.15.3...v0.15.4) (2018-06-03)
+
+
+
 <a name="0.15.3"></a>
 ## [0.15.3](https://github.com/stasson/vue-mdc-adapter/compare/v0.15.2...v0.15.3) (2018-05-01)
 
