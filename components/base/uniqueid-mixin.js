@@ -1,7 +1,8 @@
-let uid_ = 0
+const scope =
+  Math.floor(Math.random() * Math.floor(0x10000000)).toString() + '-'
 
 export const VMAUniqueIdMixin = {
   beforeCreate() {
-    this.vma_uid_ = `_vma_${uid_++}`
+    this.vma_uid_ = scope + this._uid
   }
 }
