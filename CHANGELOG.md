@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.2"></a>
+## [0.16.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.16.1...v0.16.2) (2018-06-05)
+
+
+### Bug Fixes
+
+* **chips:** refactor foundation as per MDCWeb 0.16.0 ([d60fdb2](https://github.com/stasson/vue-mdc-adapter/commit/d60fdb2))
+
+
+### Features
+
+* update material-components-web to v0.16.0 ([0c8c3a8](https://github.com/stasson/vue-mdc-adapter/commit/0c8c3a8))
+
+
+
 <a name="0.16.1"></a>
 ## [0.16.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.16.0...v0.16.1) (2018-06-03)
 
