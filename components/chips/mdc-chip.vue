@@ -121,7 +121,6 @@ export default {
         )
       },
       notifyTrailingIconInteraction: () => {
-        this.$emit('trailingIconClick')
         emitCustomEvent(
           this.$el,
           MDCChipFoundation.strings.TRAILING_ICON_INTERACTION_EVENT,
@@ -150,12 +149,14 @@ export default {
           )
         }
       },
-      notifyRemoval: () =>
-        this.emit(
+      notifyRemoval: () => {
+        emitCustomEvent(
+          this.$el,
           MDCChipFoundation.strings.REMOVAL_EVENT,
           { chip: this },
           true
-        ),
+        )
+      },
       getComputedStyleValue: propertyName =>
         window.getComputedStyle(this.$el).getPropertyValue(propertyName),
       setStyleProperty: (property, value) =>
