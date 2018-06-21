@@ -40,6 +40,7 @@ export default [
   link('chips', icChips),
   link('dialog', icDialog),
   link('drawer', icSideNavigation),
+  link('elevation', icCard),
   link('fab', icButton, 'FAB', 'Floating Action Button'),
   link('grid-list', icCard),
   link('icon', icComponent),
