@@ -211,7 +211,9 @@ module.exports = {
   // ...
   css: {
     loaderOptions: {
-      includePaths: [path.resolve(__dirname,'node_modules')],
+      sass: {
+        includePaths: [path.resolve(__dirname,'node_modules')],
+      },
     },
   },
 };
