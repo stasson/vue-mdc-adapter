@@ -42,16 +42,18 @@ var vm = new Vue({
 
 ### events
 
-| props       | args    | Description                                             |
-| ----------- | ------- | ------------------------------------------------------- |
-| `@change`   | Boolean | notify v-model/listeners that drawer state has changed. |
-| `@accept`   | none    | emitted when dialog is accepted                         |
-| `@cancel`   | none    | emitted when dialog is cancelled                        |
-| `@validate` | accept  | emmited before the dialog is accepted _(\*)_            |
+| props             | args    | Description                                             |
+| ----------------- | ------- | ------------------------------------------------------- |
+| `@change`         | Boolean | notify v-model/listeners that drawer state has changed. |
+| `@accept`         | none    | emitted when dialog is accepted                         |
+| `@cancel`         | none    | emitted when dialog is cancelled                        |
+| `@validate`       | accept  | emitted before the dialog is accepted _(\*)_            |
+| `@validateCancel` | cancel  | emitted before the dialog is cancelled _(\*)_           |
 
-> Note that if you listen to the @validate event, then You must call
-> the accept argument to finally close the box. Use `accept(false)` to
-> prevent emitting the `accept` event and just close.
+> Note that if you listen to the @validate or @validateCancel events, then You must call
+> the accept or cancel argument to finally close the box. Use `accept(false)` to
+> prevent emitting the `accept` event and just close, and `cancel(false)` to prevent emitting
+> the `cancel` event.
 
 ### Custom validation logic
 
@@ -81,6 +83,29 @@ export default {
       // ..
       if (isValid) {
         accept();
+      }
+    },
+  },
+};
+```
+
+You can use `@validateCancel` to trigger validation logic for the cancel event, as follows:
+
+```html
+<mdc-dialog ref="dialog" title="Dialog" accept="Accept" cancel="Decline"
+  @validateCancel="onValidateCancel"
+>Lorem ipsum dolor sit amet</mdc-dialog>
+```
+
+```javascript
+export default {
+  methods: {
+    onValidateCancel({ cancel }) {
+      let isValid = false;
+      // custom validation logic here
+      // ..
+      if (isValid) {
+        cancel();
       }
     },
   },

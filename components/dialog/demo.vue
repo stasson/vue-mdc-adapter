@@ -6,7 +6,8 @@
       title="Dialog" 
       accept="Accept" 
       cancel="Decline" 
-      @validate="$event.accept(false)">
+      @validate="$event.accept(false)"
+      @validateCancel="$event.cancel(false)">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
       ea commodo consequat.
