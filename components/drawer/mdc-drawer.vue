@@ -114,7 +114,7 @@ export default {
     open: 'onOpen_'
   },
   created() {
-    if (window && window.matchMedia) {
+    if (typeof window !== 'undefined' && window.matchMedia) {
       this.small = media.small.matches
       this.large = media.large.matches
     }
