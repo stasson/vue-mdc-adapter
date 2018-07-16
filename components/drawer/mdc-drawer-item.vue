@@ -1,16 +1,16 @@
 <template>
-  <custom-link 
+  <custom-link
     :link="link"
     :class="[classes, itemClasses]"
-    :style="styles" 
+    :style="styles"
     class="mdc-drawer-item mdc-list-item"
     v-on="mylisteners">
-    <span 
-      v-if="hasStartDetail" 
+    <span
+      v-if="hasStartDetail"
       class="mdc-list-item__graphic">
       <slot name="start-detail">
-        <i 
-          class="material-icons" 
+        <i
+          class="material-icons"
           aria-hidden="true">{{ startIcon }}</i>
       </slot>
     </span>
@@ -51,7 +51,7 @@ export default {
         click: e => {
           this.mdcDrawer.isTemporary &&
             this.temporaryClose &&
-            this.mdcDrawer.closeDrawer()
+            this.mdcDrawer.close()
           this.dispatchEvent(e)
         }
       }

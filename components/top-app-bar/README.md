@@ -72,6 +72,23 @@ Short top app bars can be configured to always appear collapsed by applying the 
 
 refer to the [MDC Documentation](https://material.io/components/web/catalog/toolbar/#flexible-toolbar-requires-javascript) to learn about customization options.
 
+### Tab Bar Row
+
+* `mdc-top-app-bar` has an additional available slot for use when creating a
+  top bar combined w/ top tabs, named `tabs`.
+
+
+```html
+<mdc-top-app-bar title="Title" event="nav" dense>
+    <mdc-top-app-bar-action @click="show-help" icon="help"></mdc-top-app-bar-action>
+    <mdc-top-app-bar-action @click="do-download" icon="file_download"></mdc-top-app-bar-action>
+    <mdc-tab-bar slot="tabs">
+      <mdc-tab to="/dogs">Dogs</mdc-tab>
+      <mdc-tab to="/cats">Cats</mdc-tab>
+    </mdc-tab-bar>
+</mdc-top-app-bar>
+```
+
 ### Reference
 
 * <https://material.io/components/web/catalog/top-app-bar>
