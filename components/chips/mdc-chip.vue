@@ -38,7 +38,7 @@
 </template>
 applyPassive
 <script>
-import MDCChipFoundation from '@material/chips/chip/foundation'
+import { MDCChipFoundation } from '@material/chips/chip/foundation'
 import { CustomLinkMixin, emitCustomEvent, applyPassive } from '../base'
 import { RippleBase } from '../ripple'
 
