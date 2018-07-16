@@ -61,6 +61,7 @@ export default {
     }
   },
   watch: {
+    checked: 'setChecked',
     disabled(value) {
       this.foundation.setDisabled(value)
     }
@@ -122,6 +123,9 @@ export default {
     this.foundation.destroy()
   },
   methods: {
+    setChecked(checked) {
+        this.foundation.setChecked(checked)
+    },
     isChecked() {
       return this.foundation.isChecked()
     },
