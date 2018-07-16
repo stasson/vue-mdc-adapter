@@ -22,6 +22,11 @@
         <slot/>
       </section>
     </div>
+    <div
+      v-if="$slots.tabs"
+      class="mdc-top-app-bar__row">
+      <slot name="tabs"/>
+    </div>
   </header>
 </template>
 
