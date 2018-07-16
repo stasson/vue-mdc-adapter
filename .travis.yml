@@ -16,13 +16,13 @@ branches:
   - dev
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
-script: npm run ci 
+script: npm run ci
 deploy:
   - provider: npm
     skip_cleanup: true
     email: sebastien.tasson@gmail.com
     api_key:
-      secure: Vgwn5a5bM9qcBkQnEcmFXfCe3Yeckl+slJ2Bmj2ogsDrchPkUqf92rODgAnjV6Z/1SgMMHqak9MEhPXlDipmLXf1F9wCH/j3OCWhISNrh39CScFHI7FUwVWFEMj+laYMf+Xr7oPG8a6z+XLPCoPpX7Muw5L08pl1Dmc61IQ38L29Jmsfqy4Iizv/SRnCwoP7shklw0LeGbnoLiADFbVt7v497Nzx3ZdAx9nuKZMRigrLzctoJHQo6Xptk5Ut8Rp/S/X37ha6Hj8bLCpdw5pO3Q7VY0TjDyyNixZQKGr+BS1b6xnPksvD0sGig0YXn+vPv/F65GoHa6DH75QMsHCG3dGyFzWxaeiPCCKlVJFiLkrTfR1yWvmw5KLXrLdm4Wv92LrPgL2YPK3pfR4Miqj/dFcE+KkatKB/bBXj5Mv1Aid2wyLkSJUqg05u3GFxRlFq2+w6SH9ORzPzYPDTFpSWDH8qVtPEnypeiCU/jJjsaBrRg/vErsg3xVVQ+4F9WWPbAju/MU2yZ1RzcINvA6FojJCPin86wxS8nWNIE9I1TC62Pp3Xj6YmSH/qiFB2J1rPeJ9jpivI3uN1UrucoPBSQaNWKgsRPc+Y9lULeAMkcCIX8DdCVf9fWjyxy7P/s/f02kAC8MgBaeZIridl1qf7+tI2IUKgmAR9UJw/38YnhpQ=
+      secure: Mot+1zVEid1MfZh7/HgPRMCjuzvyIlVMCe412AHSkYcnrYm8K/jmYAnLauGciHbsZR9phlrbu5xmdKjWmsMfjf9LYsBwEn9IlNUEWqhZ3DKfi87FN/PfV4lNrq1pgQJhtH1/bi656wFNAOG1JE2wjyEFknMN5I/rh33R7U5VnhubWBG5qdE4R54Z/AT1GTHgHd5NZISjxZsv2oLD35ktTpY/Z2zNXQ+eLdmOhOUN4jKr/0niq298fwdRG64lv2MikihJFM/88FYNQ/qIODnpS5b/vnxpYRHc6bHiWlZsVqzQXnA9xg/61ePm9+dTjSGSRmPkDzB+LFO8+XV7AcTzqoUrfSssU2JXcNqS/ZKlcJQcBPN7X6BAwHb7PXUuofSTIhIXv1xNfIpIh1w8aoLhDiUFIiWKo96B8Dy7Or44LeazM+vxVZCtm4aLpb1oFA0VLG2RffE7EbQmo8ehMeMLk2H/dy6tt0fdR+J0MI+ycS8FG7abKP0KZngvnT9ZbtzNow8rCYmGM+FSqiZVrL8MgBmJlsQifqPb5lUcBIEbIdnvCD/jSFMoKJckJKM/rZMy3untPD73dUQ55IjPyO4bn5cIxYBrdF1sU8oQnclNTT6norTImwCXQgqoHwh7aRVyfgNtPssczngb4DHn9Igi5yUIYOUHq9swU8D26Bi4TYM=
     on:
       repo: stasson/vue-mdc-adapter
       tags: true

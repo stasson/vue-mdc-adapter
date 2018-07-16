@@ -37,6 +37,7 @@ export default {
     vm.use(VueMDCCard)
     vm.use(VueMDCCheckbox)
     vm.use(VueMDCChipSet)
+    vm.use(VueMDCElevation)
     vm.use(VueMDCDialog)
     vm.use(VueMDCDrawer)
     vm.use(VueMDCElevation)
