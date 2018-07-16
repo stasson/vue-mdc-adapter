@@ -58,6 +58,13 @@ export default {
       return !!this.$slots.default
     }
   },
+  watch: {
+    active(value) {
+      if (value) {
+        this.foundation.adapter_.notifySelected()
+      }
+    }
+  },
   mounted() {
     this.foundation = new MDCTabFoundation({
       addClass: className => this.$set(this.classes, className, true),
