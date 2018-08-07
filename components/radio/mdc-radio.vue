@@ -108,7 +108,7 @@ export default {
     this.ripple.init()
     this.formField.init()
 
-    this.value && this.foundation.setValue(this.value)
+    this.foundation.setValue(this.value || this.label)
     this.foundation.setDisabled(this.disabled)
     this.foundation.setChecked(
       this.checked || this.picked == this.foundation.getValue()
