@@ -68,6 +68,7 @@
     }
   },
   "dependencies": {
+    "@material/tabs": "^0.38.0",
     "material-components-web": "^0.38.0"
   },
   "peerDependencies": {
