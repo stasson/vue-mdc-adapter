@@ -6,6 +6,7 @@
     class="mdc-select">
     <select
       ref="native_control"
+      :disabled="disabled"
       v-bind="$attrs"
       class="mdc-select__native-control"
       v-on="listeners">
@@ -57,7 +58,6 @@ export default {
     value: String,
     disabled: Boolean,
     label: String,
-    box: Boolean,
     outlined: Boolean,
     id: { type: String }
   },
@@ -70,7 +70,7 @@ export default {
   computed: {
     rootClasses() {
       return {
-        'mdc-select--box': this.box,
+        'mdc-select--box': !this.outlined,
         'mdc-select--outlined': this.outlined,
         ...this.classes
       }
@@ -78,13 +78,13 @@ export default {
     listeners() {
       return {
         ...this.$listeners,
-        change: event => this.$emit('change', event.target.value)
+        change: event => this.onChange(event)
       }
     }
   },
   watch: {
     disabled(value) {
-      this.foundation && this.foundation.setDisabled(value)
+      this.foundation && this.foundation.updateDisabledStyle(value)
     },
     value: 'refreshIndex'
   },
@@ -103,16 +103,7 @@ export default {
           this.$refs.line.foundation.deactivate()
         }
       },
-      setDisabled: disabled => (this.$refs.native_control.disabled = disabled),
-      registerInteractionHandler: (type, handler) =>
-        this.$refs.native_control.addEventListener(type, handler),
-      deregisterInteractionHandler: (type, handler) =>
-        this.$refs.native_control.removeEventListener(type, handler),
-      getSelectedIndex: () => this.$refs.native_control.selectedIndex,
-      setSelectedIndex: index =>
-        (this.$refs.native_control.selectedIndex = index),
       getValue: () => this.$refs.native_control.value,
-      setValue: value => (this.$refs.native_control.value = value),
       isRtl: () => {
         return (
           window.getComputedStyle(this.$el).getPropertyValue('direction') ===
@@ -144,8 +135,7 @@ export default {
     })
 
     this.foundation.init()
-
-    this.foundation.setDisabled(this.disabled)
+    this.foundation.handleChange()
 
     // initial sync with DOM
     this.refreshIndex()
@@ -176,8 +166,13 @@ export default {
       })
 
       if (this.$refs.native_control.selectedIndex !== idx) {
-        this.foundation.setSelectedIndex(idx)
+        this.$refs.native_control.selectedIndex = idx
+        this.foundation.handleChange()
       }
+    },
+    onChange(event) {
+      this.foundation.handleChange()
+      this.$emit('change', event.target.value)
     }
   }
 }
