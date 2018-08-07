@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.1"></a>
+## [0.18.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.18.0...v0.18.1) (2018-08-07)
+
+
+### Bug Fixes
+
+* **radio:** radio button value should be initialized by default ([9fed121](https://github.com/stasson/vue-mdc-adapter/commit/9fed121)), closes [#504](https://github.com/stasson/vue-mdc-adapter/issues/504)
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.17.0...v0.18.0) (2018-08-07)
 
