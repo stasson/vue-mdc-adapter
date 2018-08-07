@@ -26,24 +26,24 @@ var vm = new Vue({
 
 ### props
 
-| props | Type | Default | Description |
-|-------|------|---------|-------------|
-|`name`|String || radio group name (__*__)  |
-|`label`| String|static| radio label |
-|`align-end`| Boolean|| align the radio after the label |
-|`value`|String|| input control value |
-|`checked`|Boolean|| forces this radio to be selected. follows v-model otherwise |
-|`:disabled`| Boolean|| whether the radio is disabled |
-|`v-model`| String || tracks selected radio's value |
+| props       | Type    | Default | Description                                                 |
+| ----------- | ------- | ------- | ----------------------------------------------------------- |
+| `name`      | String  |         | radio group name (__*__)                                    |
+| `label`     | String  |         | radio label                                                 |
+| `align-end` | Boolean |         | align the radio after the label                             |
+| `value`     | String  | `label` | radio value, defaults to label value if any                 |
+| `checked`   | Boolean |         | forces this radio to be selected. follows v-model otherwise |
+| `:disabled` | Boolean |         | whether the radio is disabled                               |
+| `v-model`   | String  |         | tracks selected radio's value                               |
 
 > (__*__) name prop is required for proper behavior.
 
 ### events
 
-| event | args | Description |
-|-------|------|-------------|
-|`@focus`| - |emitted on focus gained |
-|`@blur`| - |emitted on focus lost |
+| event    | args | Description             |
+| -------- | ---- | ----------------------- |
+| `@focus` | -    | emitted on focus gained |
+| `@blur`  | -    | emitted on focus lost   |
 
 ### Reference
 
