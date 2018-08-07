@@ -29,7 +29,7 @@ var vm = new Vue({
 |`disabled`| Boolean|| whether the checkbox is disabled |
 |`label`| String|| checkbox label |
 |`align-end`| Boolean|| align the checkbox after the label |
-|`value`|String| `'on'`| checkbox value |
+|`value`|String|| input control value |
 |`name`|String|| input name |
 
 
