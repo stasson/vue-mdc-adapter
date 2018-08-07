@@ -42,8 +42,6 @@ mdc-chip is a compact element that allows a user to enter information or select 
 
 | event                            | description                                        |
 | -------------------------------- | -------------------------------------------------- |
-| @click                           | emitted on chip interaction                        |
-| @trailingIconClick               | emitted on trailing icon interaction               |
 | @MDCChip:interaction             | emitted on chip interaction (will bubble)          |
 | @MDCChip:trailingIconInteraction | emitted on trailing icon interaction (will bubble) |
 

@@ -3,7 +3,10 @@
     :class="classes"
     :style="styles"
     tabindex="0"
-    v-on="$listeners">
+    @click="handleInteraction"
+    @keydown="handleInteraction"
+    @transitionend="handleTransitionEnd"
+  >
     <i
       v-if="haveleadingIcon"
       ref="leadingIcon"
@@ -33,13 +36,15 @@
       class="mdc-chip__icon mdc-chip__icon--trailing"
       tabindex="0"
       role="button"
+      @click="handleTrailingIconInteraction"
+      @keydown="handleTrailingIconInteraction"
     >{{ trailingIcon }}</i>
   </div>
 </template>
 applyPassive
 <script>
 import { MDCChipFoundation } from '@material/chips/chip/foundation'
-import { CustomLinkMixin, emitCustomEvent, applyPassive } from '../base'
+import { CustomLinkMixin, emitCustomEvent } from '../base'
 import { RippleBase } from '../ripple'
 
 export default {
@@ -106,10 +111,6 @@ export default {
       },
       eventTargetHasClass: (target, className) =>
         target.classList.contains(className),
-      registerEventHandler: (evtType, handler) =>
-        this.$el.addEventListener(evtType, handler),
-      deregisterEventHandler: (evtType, handler) =>
-        this.$el.removeEventListener(evtType, handler),
       notifyInteraction: () => {
         emitCustomEvent(
           this.$el,
@@ -119,6 +120,7 @@ export default {
           },
           true
         )
+        this.mdcChipSet && this.mdcChipSet.handleInteraction
       },
       notifyTrailingIconInteraction: () => {
         emitCustomEvent(
@@ -129,25 +131,6 @@ export default {
           },
           true
         )
-      },
-
-      registerTrailingIconInteractionHandler: (evtType, handler) => {
-        if (this.$refs.trailingIcon) {
-          this.$refs.trailingIcon.addEventListener(
-            evtType,
-            handler,
-            applyPassive()
-          )
-        }
-      },
-      deregisterTrailingIconInteractionHandler: (evtType, handler) => {
-        if (this.$refs.trailingIcon) {
-          this.$refs.trailingIcon.removeEventListener(
-            evtType,
-            handler,
-            applyPassive()
-          )
-        }
       },
       notifyRemoval: () => {
         emitCustomEvent(
@@ -173,6 +156,15 @@ export default {
     this.foundation.destroy()
   },
   methods: {
+    handleInteraction(evt) {
+      this.foundation.handleInteraction(evt)
+    },
+    handleTransitionEnd(evt) {
+      this.foundation.handleTransitionEnd(evt)
+    },
+    handleTrailingIconInteraction(evt) {
+      this.foundation.handleTrailingIconInteraction(evt)
+    },
     toggleSelected() {
       this.foundation.toggleSelected()
     },
