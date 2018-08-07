@@ -21,13 +21,12 @@ var vm = new Vue({
 
 ### mdc-select
 
-| props      | Type            | Default | Description                                  |
-| ---------- | --------------- | ------- | -------------------------------------------- |
-| `label`    | String          |         | the selection label (placeholder)            |
-| `value`    | [String, Array] |         | bind with v-model (update on `change` event) |
-| `disabled` | Boolean         | false   | whether this select is disabled              |
-| `box`      | Boolean         | false   | box style                                    |
-| `outlined` | Boolean         | false   | outlined style                               |
+| props      | Type    | Default | Description                                  |
+| ---------- | ------- | ------- | -------------------------------------------- |
+| `label`    | String  |         | the selection label (placeholder)            |
+| `value`    | String  |         | bind with v-model (update on `change` event) |
+| `disabled` | Boolean | false   | whether this select is disabled              |
+| `outlined` | Boolean | false   | outlined style                               |
 
 | event    | Description             |
 | -------- | ----------------------- |

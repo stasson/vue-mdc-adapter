@@ -1,13 +1,8 @@
-<template>
-  <div
-    :class="classes"
-    v-on="$listeners">
-    <slot/>
-  </div>
-</template>
 
 <script>
 import MDCChipSetFoundation from '@material/chips/chip-set/foundation'
+import { MDCChipFoundation } from '@material/chips/chip/foundation'
+
 export default {
   name: 'mdc-chip-set',
   props: {
@@ -31,12 +26,6 @@ export default {
   mounted() {
     this.foundation = new MDCChipSetFoundation({
       hasClass: className => this.$el.classList.contains(className),
-      registerInteractionHandler: (evtType, handler) => {
-        this.$el.addEventListener(evtType, handler)
-      },
-      deregisterInteractionHandler: (evtType, handler) => {
-        this.$el.removeEventListener(evtType, handler)
-      },
       removeChip: chip => {
         // TODO: may need refactoring
         this.$nextTick(() => chip.$destroy())
@@ -48,6 +37,28 @@ export default {
   beforeDestroy() {
     this.foundation.destroy()
   },
-  methods: {}
+  methods: {
+    handleChipInteraction(evt) {
+      this.foundation.handleChipInteraction(evt)
+    },
+    handleChipRemoval(evt) {
+      this.foundation.handleChipRemoval(evt)
+    }
+  },
+  render(h) {
+    return h(
+      'div',
+      {
+        class: this.classes,
+        on: {
+          [MDCChipFoundation.strings.INTERACTION_EVENT]: evt =>
+            this.handleChipInteraction(evt),
+          [MDCChipFoundation.strings.REMOVAL_EVENT]: evt =>
+            this.handleChipRemoval(evt)
+        }
+      },
+      this.$slots.default
+    )
+  }
 }
 </script>

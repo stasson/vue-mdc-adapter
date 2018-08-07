@@ -4,12 +4,10 @@
       <mdc-select
         v-model="selectedType"
         label="Pick up a food type">
-        <optgroup label="categories">
-          <option
-            v-for="type in types"
-            :value="type"
-            :key="type">{{ type }}</option>
-        </optgroup>
+        <option
+          v-for="type in types"
+          :value="type"
+          :key="type">{{ type }}</option>
       </mdc-select>
 
       <mdc-caption
