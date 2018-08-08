@@ -115,7 +115,7 @@
     "parse5": "^5.0.0",
     "postcss": "^7.0.2",
     "postcss-csso": "^3.0.0",
-    "postcss-loader": "^2.1.4",
+    "postcss-loader": "^3.0.0",
     "prettier": "^1.12.1",
     "regenerator-runtime": "^0.12.1",
     "rimraf": "^2.6.2",
