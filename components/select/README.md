@@ -13,19 +13,20 @@
 var vm = new Vue({
   data() {
     return {
-      selected: '',
-    };
-  },
-});
+      selected: ''
+    }
+  }
+})
 ```
 
 ### mdc-select
 
-| props      | Type            | Default | Description                                  |
-| ---------- | --------------- | ------- | -------------------------------------------- |
-| `disabled` | Boolean         | false   | whether this select is disabled              |
-| `label`    | String          |         | the selection label (placeholder)            |
-| `value`    | [String, Array] |         | bind with v-model (update on `change` event) |
+| props      | Type    | Default | Description                                  |
+| ---------- | ------- | ------- | -------------------------------------------- |
+| `label`    | String  |         | the selection label (placeholder)            |
+| `value`    | String  |         | bind with v-model (update on `change` event) |
+| `disabled` | Boolean | false   | whether this select is disabled              |
+| `outlined` | Boolean | false   | outlined style                               |
 
 | event    | Description             |
 | -------- | ----------------------- |
@@ -47,4 +48,4 @@ var vm = new Vue({
 
 ### Reference
 
-* <https://material.io/components/web/catalog/input-controls/select-menus>
+- <https://material.io/components/web/catalog/input-controls/select-menus>

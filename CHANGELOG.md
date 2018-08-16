@@ -2,6 +2,59 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.1"></a>
+## [0.18.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.18.0...v0.18.1) (2018-08-07)
+
+
+### Bug Fixes
+
+* **radio:** radio button value should be initialized by default ([9fed121](https://github.com/stasson/vue-mdc-adapter/commit/9fed121)), closes [#504](https://github.com/stasson/vue-mdc-adapter/issues/504)
+
+
+
+<a name="0.18.0"></a>
+# [0.18.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.17.0...v0.18.0) (2018-08-07)
+
+
+### Bug Fixes
+
+* **menu:** menu styles should import list styles ([2e7b57b](https://github.com/stasson/vue-mdc-adapter/commit/2e7b57b)), closes [#482](https://github.com/stasson/vue-mdc-adapter/issues/482)
+* **package:** update material-components-web to version 0.38.0 ([b177f14](https://github.com/stasson/vue-mdc-adapter/commit/b177f14))
+* **tabs:** add legacy tabs dependency waiting for new implementation ([47e8a7b](https://github.com/stasson/vue-mdc-adapter/commit/47e8a7b))
+
+
+### Features
+
+* **chips:** update foundations as per MDCWeb 0.38 ([92fee4b](https://github.com/stasson/vue-mdc-adapter/commit/92fee4b))
+* **select:** update select foundation as per MDCWeb 0.38.0 ([eded3e6](https://github.com/stasson/vue-mdc-adapter/commit/eded3e6))
+* **switch:** add foundation as per MDCWeb 0.38 ([7251a6c](https://github.com/stasson/vue-mdc-adapter/commit/7251a6c))
+
+
+### BREAKING CHANGES
+
+* **select:** the box property has been removed as it is now the default.
+
+
+
+<a name="0.17.0"></a>
+# [0.17.0](https://github.com/stasson/vue-mdc-adapter/compare/v0.16.2...v0.17.0) (2018-07-16)
+
+
+### Bug Fixes
+
+* **chips:** update foundation import as per MDCWeb 0.37.0 ([6d8623e](https://github.com/stasson/vue-mdc-adapter/commit/6d8623e))
+* **mdc-radio:** Add 'checked' watcher ([8fbafcb](https://github.com/stasson/vue-mdc-adapter/commit/8fbafcb))
+* **package:** update material-components-web to version 0.37.0 ([4acbbca](https://github.com/stasson/vue-mdc-adapter/commit/4acbbca))
+
+
+### Features
+
+* **dialog:** Add validation functionality for cancel event ([7256827](https://github.com/stasson/vue-mdc-adapter/commit/7256827))
+* **select:** update select as per MDCWeb 0.37.0 ([cffa49d](https://github.com/stasson/vue-mdc-adapter/commit/cffa49d))
+* **top-app-bar:** Add tabs slot. ([2f22a17](https://github.com/stasson/vue-mdc-adapter/commit/2f22a17))
+
+
+
 <a name="0.16.2"></a>
 ## [0.16.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.16.1...v0.16.2) (2018-06-05)
 
