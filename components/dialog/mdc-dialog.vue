@@ -119,10 +119,6 @@ export default {
         document.addEventListener('keydown', handler),
       deregisterDocumentKeydownHandler: handler =>
         document.removeEventListener('keydown', handler),
-      registerTransitionEndHandler: handler =>
-        this.$refs.surface.addEventListener('transitionend', handler),
-      deregisterTransitionEndHandler: handler =>
-        this.$refs.surface.removeEventListener('transitionend', handler),
       notifyAccept: () => {
         this.$emit('change', false)
         this.$emit('accept')
