@@ -1,0 +1,71 @@
+<html lang="en">
+    <head>
+        <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+        <link rel="stylesheet prefetch" href="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.css">
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script src="https://unpkg.com/vue-mdc-adapter/dist/vue-mdc-adapter.min.js"></script>
+        <style>
+            html, body {
+                height: 100%;
+                width:100%;
+            }
+
+            .card-demo {
+                max-width: 80%;
+                margin: 32px auto;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="layout-app-demo">
+            <mdc-layout-app>
+                <mdc-toolbar slot="toolbar" fixed>
+                <mdc-toolbar-row>
+                    <mdc-toolbar-section align-start >
+                    <mdc-toolbar-menu-icon event="toggle-drawer">
+                    </mdc-toolbar-menu-icon>
+                    <mdc-toolbar-title>Title</mdc-toolbar-title>
+                    </mdc-toolbar-section>
+                    <mdc-toolbar-section align-end>
+                    <mdc-toolbar-icon event="show-help" icon="help">
+                    </mdc-toolbar-icon>
+                    </mdc-toolbar-section>
+                </mdc-toolbar-row>
+                </mdc-toolbar>
+                
+                <mdc-drawer ref="drawer" slot="drawer" toggle-on="toggle-drawer" persistent>
+                <mdc-drawer-list>
+                    <mdc-drawer-item start-icon="inbox">Inbox</mdc-drawer-item>
+                    <mdc-drawer-item start-icon="send">Sent Mail</mdc-drawer-item>
+                    <mdc-drawer-item start-icon="drafts">Drafts</mdc-drawer-item>
+                </mdc-drawer-list>
+                </mdc-drawer>
+                
+                <main>
+                    <mdc-card class="card-demo">
+                        <mdc-card-header title="Card Title" 
+                                        subtitle="Card Subtitle" large-title>
+                        </mdc-card-header>
+                        <mdc-card-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </mdc-card-text> 
+                        <mdc-card-actions>
+                            <mdc-card-action-button>Action 1</mdc-card-action-button>
+                            <mdc-card-action-button>Action 2</mdc-card-action-button>
+                        </mdc-card-actions>
+                        </mdc-card>
+                    <mdc-fab fixed icon="edit"/>     
+                </main>
+                
+            </mdc-layout-app>
+        </div>
+                    
+        <script>
+            var app = new Vue({
+                el: '#layout-app-demo'
+            })
+        </script>
+    </body>
+</html>
