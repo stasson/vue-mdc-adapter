@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.2"></a>
+## [0.18.2](https://github.com/stasson/vue-mdc-adapter/compare/v0.18.1...v0.18.2) (2018-08-18)
+
+
+### Bug Fixes
+
+* **top-app-bar:** Don't wrap tabs slot in mdc-top-app-bar__row. ([4419693](https://github.com/stasson/vue-mdc-adapter/commit/4419693))
+
+
+### Features
+
+* upgrade to material-components-web@0.38.2 ([1534a14](https://github.com/stasson/vue-mdc-adapter/commit/1534a14))
+
+
+
 <a name="0.18.1"></a>
 ## [0.18.1](https://github.com/stasson/vue-mdc-adapter/compare/v0.18.0...v0.18.1) (2018-08-07)
 
