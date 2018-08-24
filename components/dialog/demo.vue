@@ -3,6 +3,7 @@
 
     <mdc-dialog 
       v-model="open" 
+      accept-raised
       title="Dialog" 
       accept="Accept" 
       cancel="Decline" 
