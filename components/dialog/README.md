@@ -2,7 +2,7 @@
 
 ```html
 <mdc-button raised @click="open=!open">Show dialog</mdc-button>
-<mdc-dialog v-model="open"
+<mdc-dialog v-model="open" accept-raised
   title="Title" accept="Accept" cancel="Decline"
   @accept="onAccept" @cancel="onDecline">
   {{ dialogText }}
@@ -34,7 +34,9 @@ var vm = new Vue({
 | `title`           | String  | undefined  | the dialog title                         |
 | `accept`          | String  | `'Ok'`     | the dialog accept button text            |
 | `accept-disabled` | Boolean | false      | disable the accept button                |
+| `accept-raised`   | Boolean | false      | display accept button as raised          |
 | `cancel`          | String  | undefined  | the dialog cancel button text            |
+| `cancel-raised`   | Boolean | false      | display cancel button as raised          |
 | `scrollable`      | Boolean | false      | whether the dialog is scrollable         |
 | `accent`          | Boolean | false      | set accented style to the footer buttons |
 
