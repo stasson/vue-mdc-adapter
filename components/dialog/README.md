@@ -36,6 +36,7 @@ var vm = new Vue({
 | `accept-disabled` | Boolean | false      | disable the accept button                |
 | `accept-raised`   | Boolean | false      | display accept button as raised          |
 | `cancel`          | String  | undefined  | the dialog cancel button text            |
+| `cancel-disabled` | Boolean | false      | disable the cancel button                |
 | `cancel-raised`   | Boolean | false      | display cancel button as raised          |
 | `scrollable`      | Boolean | false      | whether the dialog is scrollable         |
 | `accent`          | Boolean | false      | set accented style to the footer buttons |
@@ -59,7 +60,7 @@ var vm = new Vue({
 
 ### Custom validation logic
 
-You can use the `accept-disabled` property to prevent the dialog to close
+You can use the `accept-disabled` property to prevent the dialog from closing
 when the accept button is clicked.
 
 ```html
@@ -68,7 +69,7 @@ when the accept button is clicked.
 >Lorem ipsum dolor sit amet</mdc-dialog>
 ```
 
-Or use the `@validate` event to trigger your own validation logic as follow:
+Or use the `@validate` event to trigger your own validation logic, as follows:
 
 ```html
 <mdc-dialog ref="dialog" title="Dialog" accept="Accept" cancel="Decline"
@@ -91,7 +92,16 @@ export default {
 };
 ```
 
-You can use `@validateCancel` to trigger validation logic for the cancel event, as follows:
+You can use the `cancel-disabled` property to prevent the dialog from closing 
+when the cancel button is clicked.
+
+```html
+<mdc-dialog ref="dialog" title="Dialog" accept="Accept" cancel="Decline"
+  :cancel-disabled="isThisCancelable"
+>Lorem ipsum dolor sit amet</mdc-dialog>
+```
+
+Or use `@validateCancel` event to trigger your own validation logic, as follows:
 
 ```html
 <mdc-dialog ref="dialog" title="Dialog" accept="Accept" cancel="Decline"

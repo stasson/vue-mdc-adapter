@@ -34,6 +34,7 @@
           v-if="cancel"
           ref="cancel"
           :class="{'mdc-dialog__action':accent}"
+          :disabled="cancelDisabled"
           :raised="cancelRaised"
           class="mdc-dialog__footer__button mdc-dialog__footer__button--cancel"
           @click="onCancel"
@@ -74,6 +75,7 @@ export default {
     acceptDisabled: Boolean,
     acceptRaised: { type: Boolean, default: false },
     cancel: { type: String },
+    cancelDisabled: Boolean,
     cancelRaised: { type: Boolean, default: false },
     accent: Boolean,
     scrollable: Boolean,
