@@ -142,7 +142,7 @@
     "vue-analytics": "^5.10.4",
     "vue-eslint-parser": "^3.0.0",
     "vue-jest": "^2.5.0",
-    "vue-loader": "^14.2.2",
+    "vue-loader": "^15.4.2",
     "vue-markdown-loader": "^2.4.1",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16",
