@@ -116,7 +116,7 @@
     "postcss": "^7.0.2",
     "postcss-csso": "^3.0.0",
     "postcss-loader": "^2.1.4",
-    "prettier": "^1.12.1",
+    "prettier": "^1.14.3",
     "regenerator-runtime": "^0.12.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.64.1",
