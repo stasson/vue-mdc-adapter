@@ -35,9 +35,11 @@ export class RippleBase extends MDCRippleFoundation {
             return vm.disabled
           },
           addClass(className) {
+            vm.$el.classList.add(className)
             vm.$set(vm.classes, className, true)
           },
           removeClass(className) {
+            vm.$el.classList.remove(className)
             vm.$delete(vm.classes, className)
           },
           containsEventTarget: target => vm.$el.contains(target),
