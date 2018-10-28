@@ -131,7 +131,7 @@
     "standard-changelog": "^2.0.0",
     "standard-version": "^4.3.0",
     "style-loader": "^0.21.0",
-    "stylelint": "^9.2.0",
+    "stylelint": "^9.7.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-processor-html": "^1.0.0",
     "stylelint-scss": "^3.1.0",
