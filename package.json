@@ -111,7 +111,7 @@
     "jest-cli": "^23.1.0",
     "markdown-it": "^8.4.1",
     "markdown-it-highlightjs": "^3.0.0",
-    "npm-run-all": "^4.1.1",
+    "npm-run-all": "^4.1.4",
     "parse5": "^5.0.0",
     "postcss": "^7.0.2",
     "postcss-csso": "^3.0.0",
