@@ -150,4 +150,4 @@ var vm = new Vue({
 | `blur()`  | -    | blur the input element  |
 
 ### Reference
-- <https://material.io/components/web/catalog/input-controls/text-fields>
+- <https://material.io/develop/web/components/input-controls/text-field/>
