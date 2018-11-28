@@ -127,7 +127,7 @@ or SASS mixins:
 ```
 
 see MDC reference documentation for more: 
-<https://material.io/components/web/catalog/layout-grids>
+<https://material.io/develop/web/components/layout-grid/>
 
 
 
