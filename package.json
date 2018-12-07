@@ -145,7 +145,7 @@
     "vue-loader": "^14.2.2",
     "vue-markdown-loader": "^2.4.1",
     "vue-router": "^3.0.1",
-    "vue-template-compiler": "^2.5.16",
+    "vue-template-compiler": "^2.5.18",
     "vue-template-validator": "^1.1.5",
     "webpack": "^4.6.0",
     "webpack-cdn-plugin": "^2.0.1",
