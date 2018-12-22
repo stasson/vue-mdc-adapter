@@ -134,7 +134,7 @@
     "stylelint": "^9.2.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-processor-html": "^1.0.0",
-    "stylelint-scss": "^3.1.0",
+    "stylelint-scss": "^3.4.3",
     "uglify-es": "^3.3.10",
     "url-loader": "^1.0.1",
     "validate-commit-msg": "^2.14.0",
