@@ -17,7 +17,7 @@ const PLUGINS = [
   'button',
   'card',
   'checkbox',
-  'chips',
+  'chip-set',
   'dialog',
   'drawer',
   'elevation',
