@@ -6,3 +6,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 test/unit/coverage
+.idea/workspace.xml
+.idea/vue-mdc-adapter.iml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/codeStyles/Project.xml
+.idea/codeStyles/codeStyleConfig.xml
