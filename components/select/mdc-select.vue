@@ -161,7 +161,7 @@ export default {
     refreshIndex() {
       const options = [...this.$refs.native_control.querySelectorAll('option')]
 
-      const idx = options.findIndex(({ value }) => {        
+      const idx = options.findIndex(({ value }) => {
         return this.value == value
       })
 
