@@ -55,7 +55,7 @@ export default {
     event: 'change'
   },
   props: {
-    value: String,
+    value: { type: [String, Number] },
     disabled: Boolean,
     label: String,
     outlined: Boolean,
@@ -161,8 +161,8 @@ export default {
     refreshIndex() {
       const options = [...this.$refs.native_control.querySelectorAll('option')]
 
-      const idx = options.findIndex(({ value }) => {
-        return this.value === value
+      const idx = options.findIndex(({ value }) => {        
+        return this.value == value
       })
 
       if (this.$refs.native_control.selectedIndex !== idx) {
