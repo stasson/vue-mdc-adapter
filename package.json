@@ -1,6 +1,6 @@
 {
-  "name": "vue-mdc-adapter",
-  "version": "0.18.3",
+  "name": "@visit/vue-mdc-adapter",
+  "version": "0.19.0",
   "description": "Vue wrapper arround Material Components for the Web",
   "keywords": [
     "vue",
@@ -33,7 +33,7 @@
     "url": "https://github.com/Lampy09/vue-mdc-adapter/issues"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --port 8095",
     "test": "jest --runInBand",
     "testnc": "NODE_ENV=test; jest --runInBand --no-cache",
     "build": "run-s build:**",
@@ -68,6 +68,7 @@
     }
   },
   "dependencies": {
+    "@material/snackbar": "0.39.1",
     "@material/tabs": "0.38.0",
     "material-components-web": "0.38.2"
   },
@@ -148,6 +149,7 @@
     "vue-template-compiler": "2.5.16",
     "vue-template-validator": "1.1.5",
     "webpack": "4.6.0",
+    "webpack-bundle-analyzer": "^3.0.4",
     "webpack-cdn-plugin": "2.0.1",
     "webpack-cli": "3.0.1",
     "webpack-dev-server": "3.1.3"
@@ -158,6 +160,6 @@
   },
   "browserslist": [
     "defaults",
-    "not ie <= 8"
+    "not ie <= 10"
   ]
 }

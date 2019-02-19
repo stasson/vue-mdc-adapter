@@ -35,7 +35,7 @@ export default {
   components: {
     'button-readme': () => import('../components/button/README.md'),
     'card-readme': () => import('../components/card/README.md'),
-    'chips-readme': () => import('../components/chips/README.md'),
+    'chips-readme': () => import('../components/chip-set/README.md'),
     'checkbox-readme': () => import('../components/checkbox/README.md'),
     'dialog-readme': () => import('../components/dialog/README.md'),
     'drawer-readme': () => import('../components/drawer/README.md'),
@@ -64,7 +64,7 @@ export default {
     'button-demo': () => import('../components/button/demo.vue'),
     'card-demo': () => import('../components/card/demo.vue'),
     'checkbox-demo': () => import('../components/checkbox/demo.vue'),
-    'chips-demo': () => import('../components/chips/demo.vue'),
+    'chips-demo': () => import('../components/chip-set/demo.vue'),
     'dialog-demo': () => import('../components/dialog/demo.vue'),
     'drawer-demo': () => import('../components/drawer/demo.vue'),
     'elevation-demo': () => import('../components/elevation/demo.vue'),

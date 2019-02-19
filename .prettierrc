@@ -1,12 +1,7 @@
-
 {
-  "semi": false,
-  "trailingComma":"none",
+  "useTabs": false,
+  "printWidth": 120,
+  "tabWidth": 4,
   "singleQuote": true,
-  "overrides": [{
-    "files": "*.scss",
-    "options": {
-      "singleQuote": false
-    }
-  }]
+  "trailingComma": "none"
 }
