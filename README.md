@@ -55,11 +55,7 @@ customization while sticking to the _Vue Spirit_ (approachable, versatile, and p
 
 ## Project Status
 
-This project is under active development.
-The focus is on known issues, validation, and keeping up with MDC updates.  
-Do not hesitate to open an issue on [GitHub](https://github.com/stasson/vue-mdc-adapter/issues),
-contact us on [Gitter](https://gitter.im/vue-mdc-adapter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge),
-or follow us on Twitter [@vuemdc](https://twitter.com/vuemdc)
+**This project is no longer under active development.**
 
 > Each MDCWeb component is mapped to a single vue plugin
 
