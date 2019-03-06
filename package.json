@@ -68,7 +68,7 @@
     }
   },
   "dependencies": {
-    "@material/tabs": "0.38.0",
+    "@material/tabs": "1.0.0",
     "material-components-web": "0.38.2"
   },
   "peerDependencies": {
