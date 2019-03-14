@@ -90,7 +90,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
-    "clean-webpack-plugin": "^0.1.19",
+    "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^4.5.1",
     "copyfiles": "^2.0.0",
     "cross-env": "^5.1.4",
