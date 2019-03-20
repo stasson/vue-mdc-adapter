@@ -138,7 +138,7 @@
     "uglify-es": "^3.3.10",
     "url-loader": "^1.0.1",
     "validate-commit-msg": "^2.14.0",
-    "vue": "^2.5.16",
+    "vue": "^2.6.10",
     "vue-analytics": "^5.10.4",
     "vue-eslint-parser": "^3.0.0",
     "vue-jest": "^2.5.0",
