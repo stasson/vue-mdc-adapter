@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@material/tabs": "0.38.0",
-    "material-components-web": "0.38.2"
+    "material-components-web": "1.1.0"
   },
   "peerDependencies": {
     "vue": "^2.5.6"
