@@ -1,3 +1,5 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 # DEPRECATED
 
 > **This project is stale. You may be interested in following alternatives:**
