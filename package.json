@@ -92,7 +92,7 @@
     "canvas-prebuilt": "^1.6.5-prerelease.1",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
-    "copyfiles": "^2.0.0",
+    "copyfiles": "^2.1.1",
     "cross-env": "^5.1.4",
     "css-loader": "^1.0.0",
     "cz-conventional-changelog": "^2.1.0",
