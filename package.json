@@ -109,7 +109,7 @@
     "husky": "^0.14.3",
     "jest": "^23.1.0",
     "jest-cli": "^23.1.0",
-    "markdown-it": "^8.4.1",
+    "markdown-it": "^9.1.0",
     "markdown-it-highlightjs": "^3.0.0",
     "npm-run-all": "^4.1.1",
     "parse5": "^5.0.0",
