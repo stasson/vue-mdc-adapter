@@ -105,7 +105,7 @@
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "friendly-errors-webpack-plugin": "^1.7.0",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^4.1.0",
     "husky": "^0.14.3",
     "jest": "^23.1.0",
     "jest-cli": "^23.1.0",
